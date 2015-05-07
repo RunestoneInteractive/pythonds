@@ -26,9 +26,9 @@ options(
     sphinx = Bunch(docroot=".",),
 
     build = Bunch(
-        builddir="../../static/"+project_name,
+        builddir="./build/"+project_name,
         sourcedir="./source/",
-        outdir="../../static/"+project_name,
+        outdir="./build/"+project_name,
         confdir=".",
         template_args={'course_id':project_name,
                        'login_required':'false',
@@ -56,10 +56,12 @@ def build(options):
       options['force_all'] = True
       options['freshenv'] = True
 
-    bi = sh('git describe --long',capture=True)[:-1]
-    bi = bi.split('-')[0]
-    options.build.template_args["build_info"] = bi
-
+    try:
+        bi = sh('git describe --long',capture=True)[:-1]
+        bi = bi.split('-')[0]
+        options.build.template_args["build_info"] = bi
+    except:
+        options.build.template_args["build_info"] = 'unknown'
 
     if 'outputdir' in options.build:
         options.build.outdir = options.build.outputdir
