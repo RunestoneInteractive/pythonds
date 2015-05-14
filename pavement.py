@@ -30,16 +30,20 @@ options(
         sourcedir="./source/",
         outdir="./build/"+project_name,
         confdir=".",
-        template_args={'course_id':project_name,
-                       'login_required':'false',
-                       'appname':master_app,
-                       'loglevel':10,
-                       'course_url':master_url }
+        template_args = {
+            'course_id':project_name,
+            'login_required':'false',
+            'appname':master_app,
+            'loglevel':10,
+            'course_url':master_url,
+            'use_services': 'true',
+            'python3': 'true',
+        }
     )
 )
 
 if project_name == "<project_name>":
-  print "Please edit pavement.py and give your project a name"
+  print("Please edit pavement.py and give your project a name")
   exit()
 
 @task
@@ -72,9 +76,9 @@ def build(options):
     if 'masterapp' in options.build:
         options.build.template_args['appname'] = options.build.masterapp
 
-    print 'Building into ', options.build.outdir    
+    print('Building into ', options.build.outdir)
     paverutils.run_sphinx(options, 'build')
 
     if updateProgressTables:
-        print 'Creating Chapter Information'
+        print('Creating Chapter Information')
         populateChapterInfo(project_name, "%s/index.rst" % options.build.confdir)

@@ -41,8 +41,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Problem Solving with Algorithms and Data Structures'
-copyright = u'2014 Brad Miller, David Ranum'
+project = 'Problem Solving with Algorithms and Data Structures'
+copyright = '2014 Brad Miller, David Ranum'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -170,7 +170,7 @@ html_short_title ='Problem Solving with Algorithms and Data Structures'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 
-html_static_path = ['_static']  + runestone_static_dirs()
+html_static_path = ['source/_static']  + runestone_static_dirs()
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -233,8 +233,8 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'ProblemSolvingwithAlgorithmsandDataStructures.tex', u'Problem Solving with Algorithms and Data Structures',
-   u'Brad Miller, David Ranum', 'manual'),
+  ('index', 'ProblemSolvingwithAlgorithmsandDataStructures.tex', 'Problem Solving with Algorithms and Data Structures',
+   'Brad Miller, David Ranum', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -263,8 +263,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'problemsolvingwithalgorithmsanddatastructures', u'Problem Solving with Algorithms and Data Structures Documentation',
-     [u'Brad Miller, David Ranum'], 1)
+    ('index', 'problemsolvingwithalgorithmsanddatastructures', 'Problem Solving with Algorithms and Data Structures Documentation',
+     ['Brad Miller, David Ranum'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -278,8 +278,8 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'PythonCourseware',
-   u'Python Courseware Project',
-   u'Brad Miller, David Ranum',
+   'Python Courseware Project',
+   'Brad Miller, David Ranum',
    'PythonCoursewareProject', 'One line description of project.', 'Miscellaneous'),
 ]
 
