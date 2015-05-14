@@ -3,7 +3,7 @@
 
 
 Introduction: Visualizing Recursion
-=====================
+===================================
 
 
 In the previous section we looked at some problems that were easy to

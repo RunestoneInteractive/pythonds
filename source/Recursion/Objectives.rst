@@ -19,3 +19,7 @@ The goals for this chapter are as follows:
 -  To implement the recursive formulation of a problem.
 
 -  To understand how recursion is implemented by a computer system.
+
+
+.. index:: mutable, immutable, tuple
+.. index:: fractal, fractal; Koch, Koch fractal

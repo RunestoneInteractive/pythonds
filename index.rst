@@ -132,9 +132,11 @@ Sorting and Searching
     :maxdepth: 2
 
     SortSearch/Objectives.rst
+    SortSearch/searching.rst
     SortSearch/TheSequentialSearch.rst
     SortSearch/TheBinarySearch.rst
     SortSearch/Hashing.rst
+    SortSearch/sorting.rst
     SortSearch/TheBubbleSort.rst
     SortSearch/TheSelectionSort.rst
     SortSearch/TheInsertionSort.rst
