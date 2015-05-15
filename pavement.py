@@ -9,11 +9,6 @@ from sphinxcontrib import paverutils
 sys.path.append(os.getcwd())
 sys.path.append('../modules')
 
-updateProgressTables = True
-try:
-    from chapternames import populateChapterInfo
-except:
-    updateProgressTables = False
 
 ######## CHANGE THIS ##########
 project_name = "pythonds"
@@ -54,8 +49,6 @@ if project_name == "<project_name>":
     ('masterapp=', 'p', 'override the default master app')
 ])
 def build(options):
-    sh('cp %s/index.rst %s' % (options.build.confdir,options.build.sourcedir))
-
     if 'all' in options.build:
       options['force_all'] = True
       options['freshenv'] = True
@@ -77,8 +70,16 @@ def build(options):
         options.build.template_args['appname'] = options.build.masterapp
 
     print('Building into ', options.build.outdir)
-    paverutils.run_sphinx(options, 'build')
+    rc = paverutils.run_sphinx(options, 'build')
 
-    if updateProgressTables:
+    try:
+        from chapternames import populateChapterInfo
         print('Creating Chapter Information')
         populateChapterInfo(project_name, "%s/index.rst" % options.build.confdir)
+    except ImportError:
+        print('Chapter information database population skipped, This is OK for a standalone build.')
+
+    if rc == 0:
+        print("Done, {} build successful".format(project_name))
+    else:
+        print("Error in building {}".format(project_name) )
