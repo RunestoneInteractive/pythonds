@@ -154,23 +154,27 @@ resulting string.
 .. admonition:: Self Check
 
    .. fillintheblank:: baseconvert1
-      :correct: \\b31\\b
-      :blankid: bcblank1
 
-      What is value of 25 expressed as an octal number :textfield:`bcblank1::mini`
+      .. blank:: bcblank1
+         :correct: \\b31\\b
+         :feedback1: (".*", "Incorrect")
+
+         What is value of 25 expressed as an octal number
 
    .. fillintheblank:: baseconvert2
-      :correct: \\b100\\b
-      :blankid: bcblank2
 
-      What is value of 256 expressed as a hexidecimal number :textfield:`bcblank2::mini`
+      .. blank:: bcblank2
+         :correct: \\b100\\b
+
+         What is value of 256 expressed as a hexidecimal number
 
    .. fillintheblank:: baseconvert3
-      :correct: \\b10\\b
-      :feedback1: ('.*', 'You may need to modify the baseConverter function, or simply find a pattern in the conversion of bases.')
-      :blankid: bcblank3
 
-      What is value of 26 expressed in base 26 :textfield:`bcblank3::mini`
+      .. blank:: bcblank3
+         :correct: \\b10\\b
+         :feedback1: ('.*', 'You may need to modify the baseConverter function, or simply find a pattern in the conversion of bases.')
+
+         What is value of 26 expressed in base 26
 
 
 .. video:: video_Stack2

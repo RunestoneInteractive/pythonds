@@ -16,7 +16,7 @@ options(
 
     build = Bunch(
         builddir="./build/"+project_name,
-        sourcedir="./source/",
+        sourcedir="./_sources/",
         outdir="./build/"+project_name,
         confdir=".",
         project_name = project_name,

@@ -210,7 +210,6 @@ structure resulting from this set of calls.
       :feedback_b: This is close, but if you carefully you will see that the left and right children of the root are swapped.
       :feedback_c: Very good
       :feedback_d: This is close, but the left and right child names have been swapped along with the underlying structures.
-      :iscode:
 
       Given the following statments:
 

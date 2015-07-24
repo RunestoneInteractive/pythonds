@@ -141,7 +141,6 @@ benchmark testing.
 .. admonition:: Self Check
 
    .. mchoicemf:: stack_1
-      :iscode:
       :answer_a: 'x'
       :answer_b: 'y'
       :answer_c: 'z'

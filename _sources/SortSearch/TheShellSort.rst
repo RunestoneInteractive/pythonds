@@ -181,7 +181,6 @@ at :math:`O(n^{\frac {3}{2}})`.
       :feedback_b:  This solution is for a gap size of two.
       :feedback_c: This is list completely sorted, you have gone too far.
       :feedback_d: The gap size of three indicates that the group represented by every third number e.g. 0, 3, 6, 9  and 1, 4, 7 and 2, 5, 8 are sorted not groups of 3.
-      :iscode:
 
       Given the following list of numbers:  [5, 16, 20, 12, 3, 8, 9, 17, 19, 7]
       Which answer illustrates the contents of the list after all swapping is complete for a gap size of 3?

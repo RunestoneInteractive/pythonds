@@ -92,7 +92,6 @@ Further manipulation of this queue would give the following results:
 
    .. mchoicemf:: queue_1
       :correct: b
-      :iscode:
       :answer_a: 'hello', 'dog'
       :answer_b: 'dog', 3
       :answer_c: 'hello', 3

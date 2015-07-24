@@ -1,6 +1,6 @@
 {% extends "basic/layout.html" %}
 
-{% set script_files = script_files + [
+{% set script_files = ['_static/runestonebase.js'] + script_files + [
     '_static'+'/jquery-ui-1.10.3.custom.min.js',
     '_static'+'/jquery-fix.js',
     '_static'+'/bootstrap-3.0.0/js/bootstrap.min.js',
@@ -112,7 +112,7 @@
             <i class="glyphicon glyphicon-search" style='opacity:0.9;'></i>
           </a>
           <ul class='dropdown-menu'>
-            {% if 'overview' in course_id: %}
+            {% if 'overview' in course_id %}
                 <li><a href='/{{appname}}/static/{{course_id}}/overview.html'>Table of Contents</a></li>
             {% else: %}
                 <li><a href='{{ pathto(master_doc) }}'>Table of Contents</a></li>
@@ -216,9 +216,11 @@
   eBookConfig.ajaxURL = eBookConfig.app+'/ajax/';
   eBookConfig.course = '{{course_id}}';
   eBookConfig.logLevel = {{loglevel}};
-  eBookConfig.loginRequired = {{login_required}}
+  eBookConfig.loginRequired = {{login_required}};
   eBookConfig.build_info = "{{build_info}}";
   eBookConfig.isLoggedIn = false;
+  eBookConfig.useRunestoneServices = {{ use_services }};
+  eBookConfig.python3 = {{ python3 }};
 </script>
 
 <div id="fb-root"></div>
