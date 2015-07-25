@@ -183,7 +183,7 @@ sets.
 
 .. admonition:: Self Check
 
-   .. mchoicemf:: question_sort_5
+   .. mchoice:: question_sort_5
       :correct: b
       :answer_a: [16, 49, 39, 27, 43, 34, 46, 40]
       :answer_b: [21,1]
@@ -196,7 +196,7 @@ sets.
 
       Given the following list of numbers: <br> [21, 1, 26, 45, 29, 28, 2, 9, 16, 49, 39, 27, 43, 34, 46, 40] <br> which answer illustrates the list to be sorted after 3 recursive calls to mergesort?
 
-   .. mchoicemf:: question_sort_6
+   .. mchoice:: question_sort_6
       :correct: c
       :answer_a: [21, 1] and [26, 45]
       :answer_b: [[1, 2, 9, 21, 26, 28, 29, 45] and [16, 27, 34, 39, 40, 43, 46, 49]

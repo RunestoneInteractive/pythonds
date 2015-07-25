@@ -112,7 +112,7 @@ studies, insertion sort will show very good performance.
 
 .. admonition:: Self Check
 
-   .. mchoicemf:: question_sort_3
+   .. mchoice:: question_sort_3
       :correct: c
       :answer_a: [4, 5, 12, 15, 14, 10, 8, 18, 19, 20]
       :answer_b: [15, 5, 4, 10, 12, 8, 14, 18, 19, 20]

@@ -226,7 +226,7 @@ pivot value selection as an exercise.
 
 .. admonition:: Self Check
 
-   .. mchoicemf:: question_sort_7
+   .. mchoice:: question_sort_7
       :correct: d
       :answer_a: [9, 3, 10, 13, 12]
       :answer_b: [9, 3, 10, 13, 12, 14]
@@ -239,7 +239,7 @@ pivot value selection as an exercise.
 
       Given the following list of numbers [14, 17, 13, 15, 19, 10, 3, 16, 9, 12] which answer shows the contents of the list after the second partitioning according to the quicksort algorithm?
 
-   .. mchoicemf:: question_sort_8
+   .. mchoice:: question_sort_8
        :correct: b
        :answer_a: 1
        :answer_b: 9
@@ -254,7 +254,8 @@ pivot value selection as an exercise.
 
 
 
-   .. mchoicema:: question_sort_9
+   .. mchoice:: question_sort_9
+       :multiple_answers:
        :answer_a: Shell Sort
        :answer_b: Quick Sort
        :answer_c: Merge Sort

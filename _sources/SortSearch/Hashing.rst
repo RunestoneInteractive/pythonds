@@ -369,7 +369,7 @@ the analysis for hashing at the end of this section.
 
 .. admonition:: Self Check
 
-   .. mchoicemf:: HASH_1
+   .. mchoice:: HASH_1
       :correct: c
       :answer_a: 1, 10
       :answer_b: 13, 0
@@ -382,7 +382,7 @@ the analysis for hashing at the end of this section.
 
       In a hash table of size 13 which index positions would the following two keys map to?  27,  130
 
-   .. mchoicemf:: HASH_2
+   .. mchoice:: HASH_2
       :correct: b
       :answer_a: 100, __, __, 113, 114, 105, 116, 117, 97, 108, 99
       :answer_b: 99, 100, __, 113, 114, __, 116, 117, 105, 97, 108

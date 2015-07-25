@@ -88,7 +88,7 @@ the bubble sort makes 20 exchanges, while the selection sort makes only
 
 .. admonition:: Self Check
 
-   .. mchoicemf:: question_sort_2
+   .. mchoice:: question_sort_2
       :correct: d
       :answer_a: [7, 11, 12, 1, 6, 14, 8, 18, 19, 20]
       :answer_b: [7, 11, 12, 14, 19, 1, 6, 18, 8, 20]

@@ -200,7 +200,7 @@ to as the **short bubble**.
  
 .. admonition:: Self Check
 
-   .. mchoicemf:: question_sort_1
+   .. mchoice:: question_sort_1
        :correct: b
        :answer_a: [1, 9, 19, 7, 3, 10, 13, 15, 8, 12]
        :answer_b: [1, 3, 7, 9, 10, 8, 12, 13, 15, 19]

@@ -200,7 +200,7 @@ structure resulting from this set of calls.
 
 .. admonition:: Self Check
 
-   .. mchoicemf:: mctree_1
+   .. mchoice:: mctree_1
       :correct: c
       :answer_a: ['a', ['b', [], []], ['c', [], ['d', [], []]]]
       :answer_b: ['a', ['c', [], ['d', ['e', [], []], []]], ['b', [], []]]

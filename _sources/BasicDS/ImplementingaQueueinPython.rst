@@ -90,7 +90,7 @@ Further manipulation of this queue would give the following results:
 
 .. admonition:: Self Check
 
-   .. mchoicemf:: queue_1
+   .. mchoice:: queue_1
       :correct: b
       :answer_a: 'hello', 'dog'
       :answer_b: 'dog', 3

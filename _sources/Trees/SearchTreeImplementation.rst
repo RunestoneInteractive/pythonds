@@ -239,7 +239,7 @@ that were visited during the insertion process.
 
 .. admonition:: Self Check
 
-    .. mchoicemf:: bst_1
+    .. mchoice:: bst_1
        :correct: b
        :answer_a: <img src="../_static/bintree_a.png">
        :feedback_a: Remember, starting at the root keys less than the root must be in the left subtree, while keys greater than the root go in the right subtree.
@@ -250,11 +250,6 @@ that were visited during the insertion process.
 
        Which of the trees shows a correct binary search tree given that the keys were
        inserted in the following order 5, 30, 2, 40, 25, 4.
-
-    .. .. mchoicema:: bst_2
-    ..     :correct: a,c
-
-    ..     Which the following sequences of insertions would produce the binary search tree shown below?
 
 
 Once the tree is constructed, the next task is to implement the

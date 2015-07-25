@@ -175,7 +175,7 @@ the list only in the case where we do not find the item.
 
 .. admonition:: Self Check
 
-   .. mchoicemf:: question_SRCH_1
+   .. mchoice:: question_SRCH_1
       :correct: d
       :answer_a: 5
       :answer_b: 10
@@ -188,7 +188,7 @@ the list only in the case where we do not find the item.
 
       Suppose you are doing a sequential search of the list [15, 18, 2, 19, 18, 0, 8, 14, 19, 14].  How many comparisons would you need to do in order to find the key 18?
 
-   .. mchoicemf:: question_SRCH_2
+   .. mchoice:: question_SRCH_2
       :correct: c
       :answer_a: 10
       :answer_b: 5

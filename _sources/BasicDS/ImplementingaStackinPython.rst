@@ -140,7 +140,7 @@ benchmark testing.
 
 .. admonition:: Self Check
 
-   .. mchoicemf:: stack_1
+   .. mchoice:: stack_1
       :answer_a: 'x'
       :answer_b: 'y'
       :answer_c: 'z'
@@ -162,7 +162,7 @@ benchmark testing.
        m.push('z')
        m.peek()
 
-   .. mchoicemf:: stack_2
+   .. mchoice:: stack_2
       :answer_a: 'x'
       :answer_b: the stack is empty
       :answer_c: an error will occur

@@ -210,7 +210,7 @@ problem.
 
 .. admonition:: Self Check
 
-   .. mchoicemf:: analysis_1
+   .. mchoice:: analysis_1
        :answer_a: O(n)
        :answer_b: O(n^2)
        :answer_c: O(log n)
@@ -230,7 +230,7 @@ problem.
             for j in range(n):
                test = test + i * j
 
-   .. mchoicemf:: analysis_2
+   .. mchoice:: analysis_2
        :answer_a: O(n)
        :answer_b: O(n^2)
        :answer_c: O(log n)
@@ -252,7 +252,7 @@ problem.
          for j in range(n):
             test = test - 1
 
-   .. mchoicemf:: analysis_3
+   .. mchoice:: analysis_3
        :answer_a: O(n)
        :answer_b: O(n^2)
        :answer_c: O(log n)

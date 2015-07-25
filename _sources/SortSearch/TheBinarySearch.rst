@@ -158,7 +158,7 @@ performing a sequential search from the start may be the best choice.
 
 .. admonition:: Self Check
 
-   .. mchoicemf:: BSRCH_1
+   .. mchoice:: BSRCH_1
       :correct: b
       :answer_a: 11, 5, 6, 8
       :answer_b: 12, 6, 11, 8
@@ -171,7 +171,7 @@ performing a sequential search from the start may be the best choice.
 
       Suppose you have the following sorted list [3, 5, 6, 8, 11, 12, 14, 15, 17, 18] and are using the recursive binary search algorithm.  Which group of numbers correctly shows the sequence of comparisons used to find the key 8.
 
-   .. mchoicemf:: BSRCH_2
+   .. mchoice:: BSRCH_2
       :correct: d
       :answer_a: 11, 14, 17
       :answer_b: 18, 17, 15

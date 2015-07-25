@@ -113,7 +113,7 @@ the Python wiki has a nice time complexity page that can be found at the
 
 .. admonition:: Self Check
 
-    .. mchoicemf:: mcpyperform
+    .. mchoice:: mcpyperform
        :answer_a: list.pop(0)
        :answer_b: list.pop()
        :answer_c: list.append()
@@ -128,7 +128,7 @@ the Python wiki has a nice time complexity page that can be found at the
 
        Which of the list operations shown below is not O(1)?
 
-    .. mchoicemf:: mcpydictperf
+    .. mchoice:: mcpydictperf
       :answer_a: 'x' in mydict
       :answer_b: del mydict['x']
       :answer_c: mydict['x'] == 10
