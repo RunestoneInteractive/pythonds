@@ -47,7 +47,7 @@ most one.
 
 .. _lst_merge:
 
-.. activecode:: lst_merge
+.. activecode:: lst_mergeSort
     :caption: Merge Sort
 
     def mergeSort(alist):
@@ -63,8 +63,8 @@ most one.
             i=0
             j=0
             k=0
-            while i<len(lefthalf) and j<len(righthalf):
-                if lefthalf[i]<righthalf[j]:
+            while i < len(lefthalf) and j < len(righthalf):
+                if lefthalf[i] < righthalf[j]:
                     alist[k]=lefthalf[i]
                     i=i+1
                 else:
@@ -72,12 +72,12 @@ most one.
                     j=j+1
                 k=k+1
 
-            while i<len(lefthalf):
+            while i < len(lefthalf):
                 alist[k]=lefthalf[i]
                 i=i+1
                 k=k+1
 
-            while j<len(righthalf):
+            while j < len(righthalf):
                 alist[k]=righthalf[j]
                 j=j+1
                 k=k+1
@@ -86,6 +86,7 @@ most one.
     alist = [54,26,93,17,77,31,44,55,20]
     mergeSort(alist)
     print(alist)
+
 
 
 Once the ``mergeSort`` function is invoked on the left half and the
