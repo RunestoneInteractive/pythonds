@@ -109,12 +109,10 @@ implements the process described earlier.
        done = False
        while not done:
 
-           while leftmark <= rightmark and \
-                   alist[leftmark] <= pivotvalue:
+           while leftmark <= rightmark and alist[leftmark] <= pivotvalue:
                leftmark = leftmark + 1
 
-           while alist[rightmark] >= pivotvalue and \
-                   rightmark >= leftmark:
+           while alist[rightmark] >= pivotvalue and rightmark >= leftmark:
                rightmark = rightmark -1
 
            if rightmark < leftmark:
