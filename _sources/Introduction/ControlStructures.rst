@@ -210,7 +210,7 @@ Regardless, the next action is to compute the square root.
    http://media.interactivepython.org/pythondsVideos/list_unique.webm
 
 Returning to lists, there is an alternative method for creating a list
-that uses iteration and selection constructs. The is known as a **list
+that uses iteration and selection constructs known as a **list
 comprehension**. A list comprehension allows you to easily create a list
 based on some processing or selection criteria. For example, if we would
 like to create a list of the first 10 perfect squares, we could use a
