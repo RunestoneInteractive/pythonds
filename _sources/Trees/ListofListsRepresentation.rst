@@ -29,10 +29,10 @@ shows a simple tree and the corresponding list implementation.
 
         myTree = ['a',   #root
               ['b',  #left subtree
-               ['d' [], []],
-               ['e' [], []] ],  
+               ['d', [], []],
+               ['e', [], []] ],
               ['c',  #right subtree
-               ['f' [], []],
+               ['f', [], []],
                [] ]  
              ]           
                   
