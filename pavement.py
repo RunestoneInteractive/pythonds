@@ -10,6 +10,8 @@ project_name = "pythonds"
 
 master_url = 'http://127.0.0.1:8000'
 master_app = 'runestone'
+serving_dir = './build/pythonds'
+dest = '../../static'
 
 options(
     sphinx = Bunch(docroot=".",),
