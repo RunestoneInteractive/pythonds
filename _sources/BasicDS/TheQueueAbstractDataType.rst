@@ -46,8 +46,8 @@ is the first item returned by dequeue.
                     ``q.size()``       ``[True,'dog',4]``              ``3`` 
                  ``q.isEmpty()``       ``[True,'dog',4]``          ``False`` 
               ``q.enqueue(8.4)``   ``[8.4,True,'dog',4]``                    
-                 ``q.dequeue()``     ``[8.4,True,'dog']``              ``4`` 
-                 ``q.dequeue()``           ``[8.4,True]``          ``'dog'`` 
+                 ``q.dequeue()``      ``[True,'dog', 4]``            ``8.4`` 
+                 ``q.dequeue()``           ``['dog', 4]``          ``'True'`` 
                     ``q.size()``           ``[8.4,True]``              ``2`` 
     ============================ ======================== ================== 
 
