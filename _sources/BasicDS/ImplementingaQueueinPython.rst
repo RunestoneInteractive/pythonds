@@ -35,7 +35,7 @@ will be O(n) and dequeue will be O(1).
             self.items.insert(0,item)
 
         def dequeue(self):
-            return self.items.pop()
+            return self.items.pop(0)
 
         def size(self):
             return len(self.items)
@@ -58,7 +58,7 @@ action as we perform the sequence of operations from
            self.items.insert(0,item)
 
        def dequeue(self):
-           return self.items.pop()
+           return self.items.pop(0)
 
        def size(self):
            return len(self.items)
