@@ -180,7 +180,7 @@ see is that the time required to pop from the end of the list will stay
 constant even as the list grows in size, while the time to pop from the
 beginning of the list will continue to increase as the list grows.
 
-:ref:`Listing 10 <lst_popmeas>` shows one attempt to measure the difference
+:ref:`Listing 4 <lst_popmeas>` shows one attempt to measure the difference
 between the two uses of pop. As you can see from this first example,
 popping from the end takes 0.0003 milliseconds, whereas popping from the
 beginning takes 4.82 milliseconds. For a list of two million elements
