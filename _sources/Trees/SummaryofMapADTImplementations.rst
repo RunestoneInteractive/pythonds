@@ -24,5 +24,5 @@ map ADT (see :ref:`Table 1 <tab_compare>`).
          put    :math:`O(n)`            :math:`O(1)`       :math:`O(n)`    :math:`O(\log_2{n})`   
          get    :math:`O(\log_2{n})`    :math:`O(1)`       :math:`O(n)`    :math:`O(\log_2{n})`   
          in     :math:`O(\log_2{n})`    :math:`O(1)`       :math:`O(n)`    :math:`O(\log_2{n})`   
-         del    :math:`O(n))`           :math:`O(1)`       :math:`O(n)`    :math:`O(\log_2{n})`   
+         del    :math:`O(n)`            :math:`O(1)`       :math:`O(n)`    :math:`O(\log_2{n})`
     =========== ======================  ============   ==================  ====================
