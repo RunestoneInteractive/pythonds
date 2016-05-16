@@ -413,9 +413,9 @@ left child. The decision proceeds as follows:
    to point to the current node’s left child.
 
 #. If the current node is a right child then we only need to update the
-   parent reference of the right child to point to the parent of the
+   parent reference of the left child to point to the parent of the
    current node, and then update the right child reference of the parent
-   to point to the current node’s right child.
+   to point to the current node’s left child.
 
 #. If the current node has no parent, it must be the root. In this case
    we will just replace the ``key``, ``payload``, ``leftChild``, and
