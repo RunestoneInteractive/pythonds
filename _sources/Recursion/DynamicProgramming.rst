@@ -174,7 +174,7 @@ minimum in the table. Using this modified algorithm reduces the number
 of recursive calls we need to make for the four coin, 63 cent problem to
 221 calls!
 
-Although the algorithm in :ref:`AcitveCode 3 <lst_change2>` is correct, it looks and
+Although the algorithm in :ref:`AcitveCode 1 <lst_change2>` is correct, it looks and
 feels like a bit of a hack.  Also, if we look at the ``knownResults`` lists
 we can see that there are some holes in the table. In fact the term for
 what we have done is not dynamic programming but rather we have improved
