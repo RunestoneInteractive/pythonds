@@ -226,4 +226,4 @@ shown in :ref:`Listing 7 <lst_printexp>`.
 Notice that the ``printexp`` function as we have implemented it puts
 parentheses around each number. While not incorrect, the parentheses are
 clearly not needed. In the exercises at the end of this chapter you are
-asked to modify the ``printexp`` function to remove this set of
+asked to modify the ``printexp`` function to remove this set of parentheses.
