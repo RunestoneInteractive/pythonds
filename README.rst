@@ -3,6 +3,8 @@ Problem Solving with Algorithms and Data Structures Using Python
 
 This book began as a paper book, first published by Franklin Beedle & Associates back in 2005.  Written by Brad Miller and David Ranum.  We are grateful for the vision of Jim Leisy who gave us permission to take our text and publish it online as an interactive textbook.
 
+.. image:: http://bnmnetp.me:8088/buildStatus/icon?job=pythondsBuild
+
 Getting Started
 ===============
 
