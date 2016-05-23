@@ -1,5 +1,6 @@
 import paver
 from paver.easy import *
+from socket import gethostname
 import paver.setuputils
 paver.setuputils.install_distutils_tasks()
 
@@ -8,7 +9,17 @@ paver.setuputils.install_distutils_tasks()
 project_name = "pythonds"
 ###############################
 
-master_url = 'http://127.0.0.1:8000'
+# if you want to override the master url do it here.  Otherwise setting it to None
+# configures it for the default case of wanting to use localhost for development
+# and interactivepython for deployment
+
+master_url = None
+if master_url is None:
+    if gethostname() == 'web407.webfaction.com':
+        master_url = 'http://interactivepython.org'
+    else:
+        master_url = 'http://127.0.0.1:8000'
+
 master_app = 'runestone'
 serving_dir = './build/pythonds'
 dest = '../../static'
