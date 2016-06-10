@@ -49,7 +49,7 @@ options(
 
 # Check to see if we are building on our Jenkins build server, if so use the environment variables
 # to update the DB information for this build
-if environ['DBHOST'] and environ['DBPASS'] and environ['DBUSER'] and environ['DBNAME']:
+if 'DBHOST' in environ and  'DBPASS' in environ and 'DBUSER' in environ and 'DBNAME' in environ:
     options.build.template_args['dburl'] = 'postgresql://{DBUSER}:{DBPASS}@{DBHOST}/{DBNAME}'.format(**environ)
 
 from runestone import build  # build is called implicitly by the paver driver.
