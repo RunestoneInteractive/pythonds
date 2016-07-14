@@ -464,7 +464,8 @@ there will eventually be an empty slot unless the key is already present
 in the ``self.slots``. It computes the original hash value and if that
 slot is not empty, iterates the ``rehash`` function until an empty slot
 occurs. If a nonempty slot already contains the key, the old data value
-is replaced with the new data value.
+is replaced with the new data value.  Dealing with the situation where there are
+no empty slots left is an exercise.
 
 .. _lst_hashtablecodestore:
 
