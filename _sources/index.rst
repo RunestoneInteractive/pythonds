@@ -226,10 +226,6 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-.. toctree::
-   :hidden:
-
-   navhelp
 
 .. raw:: html
 

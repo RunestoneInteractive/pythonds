@@ -143,7 +143,6 @@ If there is already a result in the table, we use the value from the
 table rather than recomputing. :ref:`ActiveCode 1 <lst_change2>` shows a modified
 algorithm to incorporate our table lookup scheme.
 
-.. _lst_change2:
 
 .. activecode:: lst_change2
     :caption: Recursively Counting Coins with Table Lookup
@@ -290,7 +289,6 @@ Then we take :math:`63 - 21 = 42` and look at the 42nd element of the
 list. Once again we find a 21 stored there. Finally, element 21 of the
 array also contains 21, giving us the three 21 cent pieces.
 
-.. _lst_dpremember:
 
 .. activecode:: lst_dpremember
     :caption: Complete Solution to the Change Problem

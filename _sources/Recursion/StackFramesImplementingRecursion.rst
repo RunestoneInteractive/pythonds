@@ -11,7 +11,6 @@ algorithm to push the strings onto a stack prior to making the recursive
 call. The code for this modified algorithm is shown in
 :ref:`ActiveCode 1 <lst_recstack>`.
 
-.. _lst_recstack:
 
 .. activecode:: lst_recstack
     :caption: Converting an Integer to a String Using a Stack

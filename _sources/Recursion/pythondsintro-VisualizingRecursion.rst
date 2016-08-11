@@ -40,7 +40,6 @@ the function ``myWin.exitonclick()``, this is a handy little method of
 the window that puts the turtle into a wait mode until you click inside
 the window, after which the program cleans up and exits.
 
-.. _lst_turt1:
 
 .. activecode:: lst_turt1
     :caption: Drawing a Recursive Spriral using turtle
@@ -129,7 +128,6 @@ the recursive calls and think about how this tree will unfold. Will it
 be drawn symmetrically with the right and left halves of the tree taking
 shape simultaneously? Will it be drawn right side first then left side?
 
-.. _lst_complete_tree:
 
 .. activecode:: lst_complete_tree
     :caption: Recursively Drawing a Tree

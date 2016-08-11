@@ -13,7 +13,6 @@ is shown in :ref:`ActiveCode 1 <lst_itsum>`. The function uses an accumulator va
 (``theSum``) to compute a running total of all the numbers in the list
 by starting with :math:`0` and adding each number in the list.
 
-.. _lst_itsum:
 
 .. activecode:: lst_itsum
     :caption: Iterative Summation
@@ -76,7 +75,6 @@ the list and :math:`rest(numList)` returns a list of everything but
 the first element. This is easily expressed in Python as shown in
 :ref:`ActiveCode 2 <lst_recsum>`.
 
-.. _lst_recsum:
 
 .. activecode:: lst_recsum
     :caption: Recursive Summation

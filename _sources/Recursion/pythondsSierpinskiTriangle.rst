@@ -36,7 +36,6 @@ reach a degree of 0, we stop making recursive calls. The code that
 generated the Sierpinski Triangle in :ref:`Figure 3 <fig_sierpinski>` is shown in
 :ref:`ActiveCode 1 <lst_st>`.
 
-.. _lst_st:
 
 .. activecode:: lst_st
     :caption: Drawing a Sierpinski Triangle

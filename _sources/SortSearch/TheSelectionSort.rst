@@ -29,8 +29,6 @@ places 55, and so on. The function is shown in
    Figure 3: ``selectionSort``
 
 
-.. _lst_selectionsortcode:
-
 
 .. activecode:: lst_selectionsortcode
     :caption: Selection Sort

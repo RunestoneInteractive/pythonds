@@ -83,7 +83,6 @@ equal to one, it is already sorted. If it is greater, then it can be
 partitioned and recursively sorted. The ``partition`` function
 implements the process described earlier.
 
-.. _lst_quick:
 
 .. activecode:: lst_quick
     :caption: Quick Sort

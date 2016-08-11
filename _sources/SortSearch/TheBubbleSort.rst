@@ -69,7 +69,6 @@ The following activecode example shows the complete ``bubbleSort`` function work
 shown above.
 
 
-.. _lst_bubble:
 
 .. activecode:: lst_bubble
     :caption: The Bubble Sort
@@ -154,7 +153,6 @@ advantage in that it will recognize the sorted list and stop.
 :ref:`ActiveCode 2 <lst_shortbubble>` shows this modification, which is often referred
 to as the **short bubble**.
 
-.. _lst_shortbubble:
 
 .. activecode:: lst_shortbubble
     :caption: The Short Bubble Sort

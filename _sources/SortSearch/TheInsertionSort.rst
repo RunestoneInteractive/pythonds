@@ -61,7 +61,6 @@ a shift operation requires approximately a third of the processing work
 of an exchange since only one assignment is performed. In benchmark
 studies, insertion sort will show very good performance.
 
-.. _lst_insertion:
 
 .. activecode:: lst_insertion
     :caption: Insertion Sort
