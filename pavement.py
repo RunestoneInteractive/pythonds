@@ -17,8 +17,10 @@ master_url = None
 if master_url is None:
     if gethostname() == 'web407.webfaction.com':
         master_url = 'http://interactivepython.org'
+        doctrees = '../../custom_courses/{}/doctrees'.format(project_name)
     else:
         master_url = 'http://127.0.0.1:8000'
+        doctrees = './build/{}/doctrees'.format(project_name)
 
 master_app = 'runestone'
 serving_dir = './build/pythonds'
@@ -33,6 +35,7 @@ options(
         outdir="./build/"+project_name,
         confdir=".",
         project_name = project_name,
+        doctrees = doctrees,
         template_args = {
             'course_id':project_name,
             'login_required':'false',
