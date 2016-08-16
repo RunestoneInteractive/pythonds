@@ -145,11 +145,12 @@
             <li><span class='loggedinuser'></span></li>
             <li class="divider"></li>
             <li><a href='/{{appname}}/default/courses'>Change Course</a></li>
+            <!--
             <li class="divider"></li>
             <li><a href='{{course_url}}/{{appname}}/mygroup/initiateGroup' id="joinGroupLink">Join a Study Group</a></li>
             <li><a href='{{course_url}}/{{appname}}/mygroup/schedule' id="groupScheduleLink">Group Schedule</a></li>
             <li><a href='{{course_url}}/{{appname}}/mygroup/newschedule' id="newChapterLink">Schedule New Chapter</a></li>
-            <li><a href='{{course_url}}/{{appname}}/mygroup/manageGroup' id="manageGroupLink">Manage Group</a></li>
+            <li><a href='{{course_url}}/{{appname}}/mygroup/manageGroup' id="manageGroupLink">Manage Group</a></li> -->
 			<li class="divider"></li>
             <li><a href='{{course_url}}/{{appname}}/admin/index'>Instructor's Page</a></li>
             <li><a href='{{ course_url }}/{{ appname }}/assignments/index'>Progress Page</a></li>
@@ -185,10 +186,11 @@
 
       <ul class="nav navbar-nav">
         <li class="divider-vertical"></li>
-        <!--{% block sidebartoc %}
-          {% include "localtoc.html" %}
+        {% block sidebartoc %}
+          {% include "globaltoc.html" %}
           <li class="divider-vertical"></li>
         {% endblock %}
+        <!--
         {% block sidebarrel %}
           {% include "relations.html" %}
         {% endblock %}-->

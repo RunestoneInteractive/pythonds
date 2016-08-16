@@ -27,6 +27,7 @@ Introduction
 ::::::::::::
 
 .. toctree::
+    :caption: Introduction
     :maxdepth: 2
 
     Introduction/Objectives.rst
@@ -51,6 +52,7 @@ Analysis
 ::::::::
 
 .. toctree::
+    :caption: Analysis
     :maxdepth: 2
 
     AlgorithmAnalysis/Objectives.rst
@@ -69,6 +71,7 @@ Basic Data Structures
 :::::::::::::::::::::
 
 .. toctree::
+    :caption: Basic Data Structures
     :maxdepth: 2
 
     BasicDS/Objectives.rst
@@ -104,6 +107,7 @@ Recursion
 :::::::::
 
 .. toctree::
+    :caption: Recursion
     :maxdepth: 2
 
     Recursion/Objectives.rst
@@ -129,6 +133,7 @@ Sorting and Searching
 :::::::::::::::::::::
 
 .. toctree::
+    :caption: Sorting and Searching
     :maxdepth: 2
 
     SortSearch/Objectives.rst
@@ -154,6 +159,7 @@ Trees and Tree Algorithms
 :::::::::::::::::::::::::
 
 .. toctree::
+    :caption: Trees and Tree Algorithms
     :maxdepth: 2
 
     Trees/Objectives.rst
@@ -185,6 +191,7 @@ Graphs and Graph Algorithms
 :::::::::::::::::::::::::::
 
 .. toctree::
+    :caption: Graphs and Graph Algorithms
     :maxdepth: 2
 
     Graphs/Objectives.rst
