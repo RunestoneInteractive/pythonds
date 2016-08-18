@@ -144,4 +144,5 @@ Programming Exercises
    references, one to the first node in the linked list and one to the
    last. Code this implementation in Python.
 
-#. Create an implementation of a queue that would have an average
+#. Create an implementation of a queue that would have an average performance of
+   O(1) for enqueue and dequeue operations.
