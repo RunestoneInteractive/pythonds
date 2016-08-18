@@ -278,9 +278,9 @@ works with random numbers each run will return different results.
     Average Wait 376.05 secs 1 tasks remaining.
 
 After running our 10 trials we can see that the mean average wait time
-is 122.155 seconds. You can also see that there is a large variation in
+is 122.09 seconds. You can also see that there is a large variation in
 the average weight time with a minimum average of 17.27 seconds and a
-maximum of 239.61 seconds. You may also notice that in only two of the
+maximum of 376.05 seconds. You may also notice that in only two of the
 cases were all the tasks completed.
 
 Now, we will adjust the page rate to 10 pages per minute, and run the 10
