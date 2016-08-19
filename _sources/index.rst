@@ -9,9 +9,9 @@
 
 .. toc_version: 2
 
-.. ==============================================================
-.. Welcome to Problem Solving with Algorithms and Data Structures
-.. ==============================================================
+================================================================
+Problem Solving with Algorithms and Data Structures using Python
+================================================================
 
 .. image:: _static/PythonDScover.jpg
     :alt: PythonDS Cover
@@ -31,20 +31,13 @@ By Brad Miller and David Ranum, Luther College
    Trees/toctree.rst
    Graphs/toctree.rst
 
-
-
-
-
-
-
-
-
-
-
-
 Acknowledgements
 ::::::::::::::::
 
+We are very grateful to Franklin Beedle Publishers for allowing us to
+make this interactive textbook freely available. This online version is
+dedicated to the memory of our first editor, Jim Leisy, who wanted us
+to "change the world."
 
 Indices and tables
 ::::::::::::::::::
