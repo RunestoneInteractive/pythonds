@@ -18,11 +18,16 @@ Problem Solving with Algorithms and Data Structures using Python
 
 By Brad Miller and David Ranum, Luther College
 
+.. raw:: html
+
+   <ul>
+   <li><a href="assignments.html">Assignments</a></li>
+   </ul>
+
 .. toctree::
    :numbered:
    :maxdepth: 3
 
-   assignments.rst
    Introduction/toctree.rst
    BasicDS/toctree.rst
    AlgorithmAnalysis/toctree.rst
