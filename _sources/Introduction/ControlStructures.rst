@@ -262,7 +262,7 @@ a new list.
 .. admonition:: Self Check
 
     Test your understanding of list comprehensions by redoing Activecode 8
-    using list comprehensions.  For an extra challence, see if you can figure out
+    using list comprehensions.  For an extra challenge, see if you can figure out
     how to remove the duplicates.
 
     .. activecode:: self_check_2
