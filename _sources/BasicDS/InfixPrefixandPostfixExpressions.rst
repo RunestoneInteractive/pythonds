@@ -505,7 +505,7 @@ this as an exercise at the end of the chapter.
          :correct: 5\\s+3\\s+4\\s+2\\s*-\\s*\\^\\s*\\*
          :feedback1: ('.*', 'Hint: You only need to add one line to the function!!')
 
-         Modify the infixToPostfix function so that it can convert the following expression:  ``5 * 3 ^ (4 - 2)``   Paste the answer here:
+         Modify the infixToPostfix function so that it can convert the following expression:  ``5 * 3 ** (4 - 2)``   Paste the answer here:
 
 
 .. video:: video_Stack3
