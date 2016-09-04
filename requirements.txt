@@ -1,7 +1,7 @@
 alabaster==0.7.4
 Babel==1.3
 click==4.0
-cogapp==2.4
+cogapp>=2.4
 docutils==0.12
 itsdangerous==0.24
 Jinja2==2.7.3
@@ -14,5 +14,5 @@ snowballstemmer==1.2.0
 Sphinx==1.3.1
 sphinx-rtd-theme==0.1.8
 sphinxcontrib-paverutils==1.7
-runestone>=2.6.7
+runestone>=2.7.2
 SQLAlchemy>=1.0.8
