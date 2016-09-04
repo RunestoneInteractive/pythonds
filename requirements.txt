@@ -4,7 +4,7 @@ click>=6.0
 cogapp>=2.4
 docutils==0.12
 itsdangerous==0.24
-Jinja2==2.7.3
+Jinja2>=2.8
 MarkupSafe==0.23
 Paver==1.2.4
 Pygments==2.0.2
