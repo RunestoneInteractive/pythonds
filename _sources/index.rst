@@ -29,8 +29,8 @@ By Brad Miller and David Ranum, Luther College
    :maxdepth: 3
 
    Introduction/toctree.rst
-   BasicDS/toctree.rst
    AlgorithmAnalysis/toctree.rst
+   BasicDS/toctree.rst
    Recursion/toctree.rst
    SortSearch/toctree.rst
    Trees/toctree.rst
