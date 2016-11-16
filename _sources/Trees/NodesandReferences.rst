@@ -195,12 +195,13 @@ tree as a binary tree itself.
 
 .. admonition:: Self Check
 
-   Write a function ``buildTree`` that returns a tree using the nodes and references implementation that looks like this:
-
-   .. image:: Figures/tree_ex.png
 
    .. actex:: mctree_3
 
+      Write a function ``buildTree`` that returns a tree using the nodes and references implementation that looks like this:
+
+      .. image:: Figures/tree_ex.png
+      ~~~~
       from test import testEqual
       
       def buildTree():

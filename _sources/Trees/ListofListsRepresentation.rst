@@ -223,12 +223,12 @@ structure resulting from this set of calls.
 
       Which of the answers is the correct representation of the tree?
 
-   Write a function ``buildTree`` that returns a tree using the list of lists functions that looks like this:
-
-   .. image:: Figures/tree_ex.png
-
    .. actex:: mctree_2
 
+      Write a function ``buildTree`` that returns a tree using the list of lists functions that looks like this:
+
+      .. image:: Figures/tree_ex.png
+      ~~~~
       from test import testEqual
       
       def buildTree():
