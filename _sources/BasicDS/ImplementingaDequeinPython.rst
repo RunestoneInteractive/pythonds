@@ -80,7 +80,7 @@ action as we perform the sequence of operations from
        def size(self):
            return len(self.items)
 
-   d=Deque()
+   d = Deque()
    print(d.isEmpty())
    d.addRear(4)
    d.addRear('dog')

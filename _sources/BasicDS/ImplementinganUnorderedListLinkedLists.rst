@@ -60,7 +60,7 @@ to access and modify the data and the next reference.
 .. sourcecode:: python
 
    class Node:
-       def __init__(self,initdata):
+       def __init__(self, initdata):
            self.data = initdata
            self.next = None
 
@@ -70,10 +70,10 @@ to access and modify the data and the next reference.
        def getNext(self):
            return self.next
 
-       def setData(self,newdata):
+       def setData(self, newdata):
            self.data = newdata
 
-       def setNext(self,newnext):
+       def setNext(self, newnext):
            self.next = newnext
            
 We create ``Node`` objects in the usual way.
@@ -245,7 +245,7 @@ no longer be accessed.
 
 ::
 
-    def add(self,item):
+    def add(self, item):
         temp = Node(item)
         temp.setNext(self.head)
         self.head = temp
@@ -340,7 +340,7 @@ set to ``True``.
 
 ::
 
-    def search(self,item):
+    def search(self, item):
         current = self.head
         found = False
         while current != None and not found:
@@ -431,7 +431,7 @@ list looking for the node containing the value 17.
 
 ::
 
-    def remove(self,item):
+    def remove(self, item):
         current = self.head
         previous = None
         found = False
@@ -513,7 +513,7 @@ You can try out the ``UnorderedList`` class in ActiveCode 1.
    :nocodelens:
    
    class Node:
-       def __init__(self,initdata):
+       def __init__(self, initdata):
            self.data = initdata
            self.next = None
 
@@ -523,10 +523,10 @@ You can try out the ``UnorderedList`` class in ActiveCode 1.
        def getNext(self):
            return self.next
 
-       def setData(self,newdata):
+       def setData(self, newdata):
            self.data = newdata
 
-       def setNext(self,newnext):
+       def setNext(self, newnext):
            self.next = newnext
 
 
@@ -538,7 +538,7 @@ You can try out the ``UnorderedList`` class in ActiveCode 1.
        def isEmpty(self):
            return self.head == None
 
-       def add(self,item):
+       def add(self, item):
            temp = Node(item)
            temp.setNext(self.head)
            self.head = temp
@@ -552,7 +552,7 @@ You can try out the ``UnorderedList`` class in ActiveCode 1.
 
            return count
 
-       def search(self,item):
+       def search(self, item):
            current = self.head
            found = False
            while current != None and not found:
@@ -563,7 +563,7 @@ You can try out the ``UnorderedList`` class in ActiveCode 1.
 
            return found
 
-       def remove(self,item):
+       def remove(self, item):
            current = self.head
            previous = None
            found = False
@@ -619,7 +619,7 @@ starting with 0.
        :nocodelens:
    
        class Node:
-           def __init__(self,initdata):
+           def __init__(self, initdata):
                self.data = initdata
                self.next = None
 
@@ -629,10 +629,10 @@ starting with 0.
            def getNext(self):
                return self.next
 
-           def setData(self,newdata):
+           def setData(self, newdata):
                self.data = newdata
 
-           def setNext(self,newnext):
+           def setNext(self, newnext):
                self.next = newnext
 
 
@@ -644,7 +644,7 @@ starting with 0.
            def isEmpty(self):
                return self.head == None
 
-           def add(self,item):
+           def add(self, item):
                temp = Node(item)
                temp.setNext(self.head)
                self.head = temp
@@ -658,7 +658,7 @@ starting with 0.
 
                return count
 
-           def search(self,item):
+           def search(self, item):
                current = self.head
                found = False
                while current != None and not found:
@@ -669,7 +669,7 @@ starting with 0.
 
                return found
 
-           def remove(self,item):
+           def remove(self, item):
                current = self.head
                previous = None
                found = False
@@ -695,7 +695,7 @@ starting with 0.
        :nocodelens:
    
        class Node:
-           def __init__(self,initdata):
+           def __init__(self, initdata):
                self.data = initdata
                self.next = None
 
@@ -705,10 +705,10 @@ starting with 0.
            def getNext(self):
                return self.next
 
-           def setData(self,newdata):
+           def setData(self, newdata):
                self.data = newdata
 
-           def setNext(self,newnext):
+           def setNext(self, newnext):
                self.next = newnext
 
 
@@ -720,7 +720,7 @@ starting with 0.
            def isEmpty(self):
                return self.head == None
 
-           def add(self,item):
+           def add(self, item):
                temp = Node(item)
                temp.setNext(self.head)
                self.head = temp
@@ -734,7 +734,7 @@ starting with 0.
 
                return count
 
-           def search(self,item):
+           def search(self, item):
                current = self.head
                found = False
                while current != None and not found:
@@ -745,7 +745,7 @@ starting with 0.
 
                return found
 
-           def remove(self,item):
+           def remove(self, item):
                current = self.head
                previous = None
                found = False

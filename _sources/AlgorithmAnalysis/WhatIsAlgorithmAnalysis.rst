@@ -34,11 +34,11 @@ iterates through the *n* integers, adding each to the accumulator.
     :caption: Summation of the First n Integers
 
     def sumOfN(n):
-       theSum = 0
-       for i in range(1,n+1):
-           theSum = theSum + i
+        theSum = 0
+        for i in range(1, n + 1):
+            theSum = theSum + i
 
-       return theSum
+        return theSum
 
     print(sumOfN(10))
 
@@ -56,9 +56,9 @@ during the accumulation step that was not really necessary.
 
     def foo(tom):
         fred = 0
-        for bill in range(1,tom+1):
-           barney = bill
-           fred = fred + barney
+        for bill in range(1, tom + 1):
+            barney = bill
+            fred = fred + barney
 
         return fred
 
@@ -114,15 +114,15 @@ and then computing the difference, we can get an exact number of seconds
     import time
 
     def sumOfN2(n):
-       start = time.time()
+        start = time.time()
 
-       theSum = 0
-       for i in range(1,n+1):
-          theSum = theSum + i
+        theSum = 0
+        for i in range(1, n + 1):
+            theSum = theSum + i
 
-       end = time.time()
+        end = time.time()
 
-       return theSum,end-start
+        return theSum, end - start
 
 :ref:`Listing 1 <lst_sum11>` shows the original ``sumOfN`` function with the timing
 calls embedded before and after the summation. The function returns a
@@ -136,7 +136,7 @@ the following:
 ::
 
     >>>for i in range(5):
-           print("Sum is %d required %10.7f seconds"%sumOfN(10000))
+           print("Sum is %d required %10.7f seconds" % sumOfN(10000))
     Sum is 50005000 required  0.0018950 seconds
     Sum is 50005000 required  0.0018620 seconds
     Sum is 50005000 required  0.0019171 seconds
@@ -150,7 +150,7 @@ adding the first 100,000 integers?
 ::
 
     >>>for i in range(5):
-           print("Sum is %d required %10.7f seconds"%sumOfN(100000))
+           print("Sum is %d required %10.7f seconds" % sumOfN(100000))
     Sum is 5000050000 required  0.0199420 seconds
     Sum is 5000050000 required  0.0180972 seconds
     Sum is 5000050000 required  0.0194821 seconds
@@ -165,7 +165,7 @@ consistent, averaging about 10 times more seconds. For ``n`` equal to
 ::
 
     >>>for i in range(5):
-           print("Sum is %d required %10.7f seconds"%sumOfN(1000000))
+           print("Sum is %d required %10.7f seconds" % sumOfN(1000000))
     Sum is 500000500000 required  0.1948988 seconds
     Sum is 500000500000 required  0.1850290 seconds
     Sum is 500000500000 required  0.1809771 seconds
@@ -187,7 +187,7 @@ compute the sum of the first ``n`` integers without iterating.
     :caption: Summation Without Iteration
 
     def sumOfN3(n):
-       return (n*(n+1))/2
+        return (n * (n + 1)) / 2
 
     print(sumOfN3(10))
 

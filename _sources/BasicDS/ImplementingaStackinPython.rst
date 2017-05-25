@@ -37,7 +37,7 @@ of the list. ``pop`` operations will manipulate that same end.
    :caption: Implementing a Stack class using Python lists
    :nocodelens:
 
-   class Stack:
+    class Stack:
         def __init__(self):
             self.items = []
 
@@ -51,7 +51,7 @@ of the list. ``pop`` operations will manipulate that same end.
             return self.items.pop()
 
         def peek(self):
-            return self.items[len(self.items)-1]
+            return self.items[len(self.items) - 1]
 
         def size(self):
             return len(self.items)
@@ -72,7 +72,7 @@ imported from the ``pythonds`` module.
 
    from pythonds.basic.stack import Stack
 
-   s=Stack()
+   s = Stack()
    
    print(s.isEmpty())
    s.push(4)
@@ -100,7 +100,7 @@ explicitly using ``pop`` and ``insert``. The implementation is shown in
 .. codelens:: stack_cl_1
    :caption: Alternative Implementation of the Stack class
 
-   class Stack:
+    class Stack:
         def __init__(self):
             self.items = []
 
@@ -108,7 +108,7 @@ explicitly using ``pop`` and ``insert``. The implementation is shown in
             return self.items == []
 
         def push(self, item):
-            self.items.insert(0,item)
+            self.items.insert(0, item)
 
         def pop(self):
             return self.items.pop(0)
@@ -182,8 +182,8 @@ benchmark testing.
         m.push('y')
         m.push('z')
         while not m.isEmpty():
-           m.pop()
-           m.pop()
+            m.pop()
+            m.pop()
 
    Write a function `revstring(mystr)` that uses a stack to reverse the
    characters in a string.
@@ -195,11 +195,11 @@ benchmark testing.
       from pythonds.basic.stack import Stack
 
       def revstring(mystr):
-          # your code here
+          # Your code here:
 
-      testEqual(revstring('apple'),'elppa')
-      testEqual(revstring('x'),'x')
-      testEqual(revstring('1234567890'),'0987654321')
+      testEqual(revstring('apple'), 'elppa')
+      testEqual(revstring('x'), 'x')
+      testEqual(revstring('1234567890'), '0987654321')
 
 
 .. video:: stack1_video

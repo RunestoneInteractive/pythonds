@@ -128,17 +128,17 @@ analyze performance.
 
 ::
 
-    a=5
-    b=6
-    c=10
+    a = 5
+    b = 6
+    c = 10
     for i in range(n):
-       for j in range(n):
-          x = i * i
-          y = j * j
-          z = i * j
+        for j in range(n):
+            x = i * i
+            y = j * j
+            z = i * j
     for k in range(n):
-       w = a*k + 45
-       v = b*b
+        w = a * k + 45
+        v = b * b
     d = 33
 
 The number of assignment operations is the sum of four terms. The first

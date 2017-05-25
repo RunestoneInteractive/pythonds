@@ -28,21 +28,21 @@ serving_dir = './build/pythonds'
 dest = '../../static'
 
 options(
-    sphinx = Bunch(docroot=".",),
+    sphinx=Bunch(docroot=".",),
 
-    build = Bunch(
-        builddir="./build/"+project_name,
+    build=Bunch(
+        builddir="./build/" + project_name,
         sourcedir="./_sources/",
-        outdir="./build/"+project_name,
+        outdir="./build/" + project_name,
         confdir=".",
-        project_name = project_name,
-        doctrees = doctrees,
-        template_args = {
-            'course_id':project_name,
-            'login_required':'false',
-            'appname':master_app,
-            'loglevel':10,
-            'course_url':master_url,
+        project_name=project_name,
+        doctrees=doctrees,
+        template_args={
+            'course_id': project_name,
+            'login_required': 'false',
+            'appname': master_app,
+            'loglevel': 10,
+            'course_url': master_url,
             'use_services': 'true',
             'python3': 'true',
             'dburl': 'postgresql://bmiller@localhost/runestone',
@@ -56,7 +56,8 @@ options.build.template_args['runestone_version'] = version
 
 # Check to see if we are building on our Jenkins build server, if so use the environment variables
 # to update the DB information for this build
-if 'DBHOST' in environ and  'DBPASS' in environ and 'DBUSER' in environ and 'DBNAME' in environ:
-    options.build.template_args['dburl'] = 'postgresql://{DBUSER}:{DBPASS}@{DBHOST}/{DBNAME}'.format(**environ)
+if 'DBHOST' in environ and 'DBPASS' in environ and 'DBUSER' in environ and 'DBNAME' in environ:
+    options.build.template_args['dburl'] = 'postgresql://{DBUSER}:{DBPASS}@{DBHOST}/{DBNAME}'.format(
+        **environ)
 
 from runestone import build  # build is called implicitly by the paver driver.

@@ -63,7 +63,7 @@ action as we perform the sequence of operations from
        def size(self):
            return len(self.items)
 
-   q=Queue()
+   q = Queue()
    
    q.enqueue(4)
    q.enqueue('dog')

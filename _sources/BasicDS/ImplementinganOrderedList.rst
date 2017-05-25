@@ -182,7 +182,7 @@ list is now ordered.
    :nocodelens:
    
    class Node:
-       def __init__(self,initdata):
+       def __init__(self, initdata):
            self.data = initdata
            self.next = None
 
@@ -192,10 +192,10 @@ list is now ordered.
        def getNext(self):
            return self.next
 
-       def setData(self,newdata):
+       def setData(self, newdata):
            self.data = newdata
 
-       def setNext(self,newnext):
+       def setNext(self, newnext):
            self.next = newnext
 
 
@@ -203,7 +203,7 @@ list is now ordered.
        def __init__(self):
            self.head = None
 
-       def search(self,item):
+       def search(self, item):
            current = self.head
            found = False
            stop = False
@@ -218,7 +218,7 @@ list is now ordered.
 
            return found
 
-       def add(self,item):
+       def add(self, item):
            current = self.head
            previous = None
            stop = False

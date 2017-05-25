@@ -11,7 +11,8 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys, os
+import sys
+import os
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -19,7 +20,7 @@ import sys, os
 from runestone import runestone_static_dirs, runestone_extensions
 
 
-# -- General configuration -----------------------------------------------------
+# -- General configuration -----------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
@@ -65,14 +66,14 @@ release = '3.0'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['ActiveIndexFiles/*','OldIndexAndConfFiles/*','ExtraStuff/*',
-                    'Classes/*','Dictionaries/*', 'Files/*', 'Functions/*', 'GeneralIntro/*',
-                    'Labs/*','MoreAboutIteration/*','PythonModules/*','PythonTurtle/*',
-                    'Selection/*','SimplePythonData/*','Test/*', 'Appendices/app_*',
-                     '_static/skulpt/doc/*','toc.rst', 'Strings/strings.rst',
-                     'Recursion/introexercises.rst','Recursion/thinkpyrecursion.rst',
-                     'Lists/lists.rst','FrontBackMatter/*','ErrorHelp/parseerror.rst',
-                     'Appendices/errorsAndDebug.rst']
+exclude_patterns = ['ActiveIndexFiles/*', 'OldIndexAndConfFiles/*', 'ExtraStuff/*',
+                    'Classes/*', 'Dictionaries/*', 'Files/*', 'Functions/*', 'GeneralIntro/*',
+                    'Labs/*', 'MoreAboutIteration/*', 'PythonModules/*', 'PythonTurtle/*',
+                    'Selection/*', 'SimplePythonData/*', 'Test/*', 'Appendices/app_*',
+                    '_static/skulpt/doc/*', 'toc.rst', 'Strings/strings.rst',
+                    'Recursion/introexercises.rst', 'Recursion/thinkpyrecursion.rst',
+                    'Lists/lists.rst', 'FrontBackMatter/*', 'ErrorHelp/parseerror.rst',
+                    'Appendices/errorsAndDebug.rst']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -95,7 +96,7 @@ pygments_style = 'sphinx'
 #modindex_common_prefix = []
 
 
-# -- Options for HTML output ---------------------------------------------------
+# -- Options for HTML output ---------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
@@ -156,7 +157,7 @@ html_theme_path = ["./_sources/_templates/plugin_layouts"]
 html_title = 'Problem Solving with Algorithms and Data Structures'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-html_short_title ='Problem Solving with Algorithms and Data Structures'
+html_short_title = 'Problem Solving with Algorithms and Data Structures'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
@@ -170,7 +171,7 @@ html_short_title ='Problem Solving with Algorithms and Data Structures'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 
-html_static_path = ['_sources/_static']  + runestone_static_dirs()
+html_static_path = ['_sources/_static'] + runestone_static_dirs()
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -217,24 +218,24 @@ html_show_sourcelink = False
 htmlhelp_basename = 'PythonCoursewareProjectdoc'
 
 
-# -- Options for LaTeX output --------------------------------------------------
+# -- Options for LaTeX output --------------------------------------------
 
 latex_elements = {
-# The paper size ('letterpaper' or 'a4paper').
-#'papersize': 'letterpaper',
+    # The paper size ('letterpaper' or 'a4paper').
+    #'papersize': 'letterpaper',
 
-# The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
+    # The font size ('10pt', '11pt' or '12pt').
+    #'pointsize': '10pt',
 
-# Additional stuff for the LaTeX preamble.
-#'preamble': '',
+    # Additional stuff for the LaTeX preamble.
+    #'preamble': '',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'ProblemSolvingwithAlgorithmsandDataStructures.tex', 'Problem Solving with Algorithms and Data Structures',
-   'Brad Miller, David Ranum', 'manual'),
+    ('index', 'ProblemSolvingwithAlgorithmsandDataStructures.tex', 'Problem Solving with Algorithms and Data Structures',
+     'Brad Miller, David Ranum', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -258,7 +259,7 @@ latex_documents = [
 #latex_domain_indices = True
 
 
-# -- Options for manual page output --------------------------------------------
+# -- Options for manual page output --------------------------------------
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
@@ -271,16 +272,16 @@ man_pages = [
 #man_show_urls = False
 
 
-# -- Options for Texinfo output ------------------------------------------------
+# -- Options for Texinfo output ------------------------------------------
 
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'PythonCourseware',
-   'Python Courseware Project',
-   'Brad Miller, David Ranum',
-   'PythonCoursewareProject', 'One line description of project.', 'Miscellaneous'),
+    ('index', 'PythonCourseware',
+     'Python Courseware Project',
+     'Brad Miller, David Ranum',
+     'PythonCoursewareProject', 'One line description of project.', 'Miscellaneous'),
 ]
 
 # Documents to append as an appendix to all manuals.

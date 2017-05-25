@@ -33,7 +33,7 @@ replacement. :ref:`ActiveCode 1 <lst_anagramSolution>` shows this function.
 .. activecode:: active5
     :caption: Checking Off
 
-    def anagramSolution1(s1,s2):
+    def anagramSolution1(s1, s2):
         alist = list(s2)
 
         pos1 = 0
@@ -57,7 +57,7 @@ replacement. :ref:`ActiveCode 1 <lst_anagramSolution>` shows this function.
 
         return stillOK
 
-    print(anagramSolution1('abcd','dcba'))
+    print(anagramSolution1('abcd', 'dcba'))
 
 To analyze this algorithm, we need to note that each of the *n*
 characters in ``s1`` will cause an iteration through up to *n*
@@ -91,7 +91,7 @@ on lists by simply converting each string to a list at the start.
 .. activecode:: active6
     :caption: Sort and Compare
 
-    def anagramSolution2(s1,s2):
+    def anagramSolution2(s1, s2):
         alist1 = list(s1)
         alist2 = list(s2)
 
@@ -102,14 +102,14 @@ on lists by simply converting each string to a list at the start.
         matches = True
 
         while pos < len(s1) and matches:
-            if alist1[pos]==alist2[pos]:
+            if alist1[pos] == alist2[pos]:
                 pos = pos + 1
             else:
                 matches = False
 
         return matches
 
-    print(anagramSolution2('abcde','edcba'))
+    print(anagramSolution2('abcde', 'edcba'))
 
 At first glance you may be tempted to think that this algorithm is
 :math:`O(n)`, since there is one simple iteration to compare the *n*
@@ -160,29 +160,29 @@ anagrams. :ref:`ActiveCode 3 <lst_ana4>` shows this solution.
 .. activecode:: active7
     :caption: Count and Compare
 
-    def anagramSolution4(s1,s2):
+    def anagramSolution4(s1, s2):
         c1 = [0]*26
         c2 = [0]*26
 
         for i in range(len(s1)):
-            pos = ord(s1[i])-ord('a')
+            pos = ord(s1[i]) - ord('a')
             c1[pos] = c1[pos] + 1
 
         for i in range(len(s2)):
-            pos = ord(s2[i])-ord('a')
+            pos = ord(s2[i]) - ord('a')
             c2[pos] = c2[pos] + 1
 
         j = 0
         stillOK = True
-        while j<26 and stillOK:
-            if c1[j]==c2[j]:
+        while j < 26 and stillOK:
+            if c1[j] == c2[j]:
                 j = j + 1
             else:
                 stillOK = False
 
         return stillOK
 
-    print(anagramSolution4('apple','pleap'))
+    print(anagramSolution4('apple', 'pleap'))
 
 
 
@@ -227,8 +227,8 @@ problem.
 
          test = 0
          for i in range(n):
-            for j in range(n):
-               test = test + i * j
+             for j in range(n):
+                 test = test + i * j
 
    .. mchoice:: analysis_2
        :answer_a: O(n)
@@ -247,10 +247,10 @@ problem.
 
          test = 0
          for i in range(n):
-            test = test + 1
+             test = test + 1
 
          for j in range(n):
-            test = test - 1
+             test = test - 1
 
    .. mchoice:: analysis_3
        :answer_a: O(n)

@@ -140,9 +140,9 @@ the printer to idle (line 11) if the task is completed.
            else:
                return False
 
-       def startNext(self,newtask):
+       def startNext(self, newtask):
            self.currentTask = newtask
-           self.timeRemaining = newtask.getPages() * 60/self.pagerate
+           self.timeRemaining = newtask.getPages() * 60 / self.pagerate
                                 
 .. highlight:: python
     :linenothreshold: 500
@@ -155,9 +155,9 @@ function from the ``random`` module.
 ::
 
     >>> import random
-    >>> random.randrange(1,21)
+    >>> random.randrange(1, 21)
     18
-    >>> random.randrange(1,21)
+    >>> random.randrange(1, 21)
     8
     >>> 
 
@@ -180,7 +180,7 @@ printing begins.
    class Task:
        def __init__(self,time):
            self.timestamp = time
-           self.pages = random.randrange(1,21)
+           self.pages = random.randrange(1, 21)
 
        def getStamp(self):
            return self.timestamp
@@ -223,29 +223,29 @@ printer.
 
        for currentSecond in range(numSeconds):
 
-         if newPrintTask():
-            task = Task(currentSecond)
-            printQueue.enqueue(task)
+           if newPrintTask():
+               task = Task(currentSecond)
+               printQueue.enqueue(task)
 
-         if (not labprinter.busy()) and (not printQueue.isEmpty()):
-           nexttask = printQueue.dequeue()
-           waitingtimes.append(nexttask.waitTime(currentSecond))
-           labprinter.startNext(nexttask)
+           if (not labprinter.busy()) and (not printQueue.isEmpty()):
+               nexttask = printQueue.dequeue()
+               waitingtimes.append(nexttask.waitTime(currentSecond))
+               labprinter.startNext(nexttask)
 
-         labprinter.tick()
+           labprinter.tick()
 
-       averageWait=sum(waitingtimes)/len(waitingtimes)
-       print("Average Wait %6.2f secs %3d tasks remaining."%(averageWait,printQueue.size()))
+       averageWait = sum(waitingtimes) / len(waitingtimes)
+       print("Average Wait %6.2f secs %3d tasks remaining." % (averageWait, printQueue.size()))
 
    def newPrintTask():
-       num = random.randrange(1,181)
+       num = random.randrange(1, 181)
        if num == 180:
            return True
        else:
            return False
 
    for i in range(10):
-       simulation(3600,5)
+       simulation(3600, 5)
        
 .. highlight:: python
    :linenothreshold: 500
@@ -264,7 +264,7 @@ works with random numbers each run will return different results.
 ::
 
     >>>for i in range(10):
-          simulation(3600,5)
+          simulation(3600, 5)
 
     Average Wait 165.38 secs 2 tasks remaining.
     Average Wait  95.07 secs 1 tasks remaining.
@@ -290,7 +290,7 @@ would be completed in the one hour time frame.
 ::
 
     >>>for i in range(10):
-          simulation(3600,10)
+          simulation(3600, 10)
 
     Average Wait   1.29 secs 0 tasks remaining.
     Average Wait   7.00 secs 0 tasks remaining.
@@ -332,14 +332,14 @@ You can run the simulation for yourself in ActiveCode 2.
            else:
                return False
 
-       def startNext(self,newtask):
+       def startNext(self, newtask):
            self.currentTask = newtask
-           self.timeRemaining = newtask.getPages() * 60/self.pagerate   
+           self.timeRemaining = newtask.getPages() * 60 / self.pagerate   
 
    class Task:
-       def __init__(self,time):
+       def __init__(self, time):
            self.timestamp = time
-           self.pages = random.randrange(1,21)
+           self.pages = random.randrange(1, 21)
 
        def getStamp(self):
            return self.timestamp
@@ -359,29 +359,29 @@ You can run the simulation for yourself in ActiveCode 2.
 
        for currentSecond in range(numSeconds):
 
-         if newPrintTask():
-            task = Task(currentSecond)
-            printQueue.enqueue(task)
+           if newPrintTask():
+               task = Task(currentSecond)
+               printQueue.enqueue(task)
 
-         if (not labprinter.busy()) and (not printQueue.isEmpty()):
-           nexttask = printQueue.dequeue()
-           waitingtimes.append( nexttask.waitTime(currentSecond))
-           labprinter.startNext(nexttask)
+           if (not labprinter.busy()) and (not printQueue.isEmpty()):
+               nexttask = printQueue.dequeue()
+               waitingtimes.append( nexttask.waitTime(currentSecond))
+               labprinter.startNext(nexttask)
 
-         labprinter.tick()
+           labprinter.tick()
 
-       averageWait=sum(waitingtimes)/len(waitingtimes)
-       print("Average Wait %6.2f secs %3d tasks remaining."%(averageWait,printQueue.size()))
+       averageWait = sum(waitingtimes) / len(waitingtimes)
+       print("Average Wait %6.2f secs %3d tasks remaining." % (averageWait, printQueue.size()))
 
    def newPrintTask():
-       num = random.randrange(1,181)
+       num = random.randrange(1, 181)
        if num == 180:
            return True
        else:
            return False
 
    for i in range(10):
-       simulation(3600,5)
+       simulation(3600, 5)
 
 Discussion
 ^^^^^^^^^^
@@ -454,14 +454,14 @@ necessary to construct a robust simulation.
                  else:
                      return False
 
-             def startNext(self,newtask):
+             def startNext(self, newtask):
                  self.currentTask = newtask
-                 self.timeRemaining = newtask.getPages() * 60/self.pagerate
+                 self.timeRemaining = newtask.getPages() * 60 / self.pagerate
 
          class Task:
-             def __init__(self,time):
+             def __init__(self, time):
                  self.timestamp = time
-                 self.pages = random.randrange(1,21)
+                 self.pages = random.randrange(1, 21)
 
              def getStamp(self):
                  return self.timestamp
@@ -481,27 +481,27 @@ necessary to construct a robust simulation.
 
              for currentSecond in range(numSeconds):
 
-               if newPrintTask():
-                  task = Task(currentSecond)
-                  printQueue.enqueue(task)
+                 if newPrintTask():
+                     task = Task(currentSecond)
+                     printQueue.enqueue(task)
 
-               if (not labprinter.busy()) and (not printQueue.isEmpty()):
-                 nexttask = printQueue.dequeue()
-                 waitingtimes.append(nexttask.waitTime(currentSecond))
-                 labprinter.startNext(nexttask)
+                 if (not labprinter.busy()) and (not printQueue.isEmpty()):
+                     nexttask = printQueue.dequeue()
+                     waitingtimes.append(nexttask.waitTime(currentSecond))
+                     labprinter.startNext(nexttask)
 
-               labprinter.tick()
+                 labprinter.tick()
 
-             averageWait=sum(waitingtimes)/len(waitingtimes)
-             print("Average Wait %6.2f secs %3d tasks remaining." % (averageWait,printQueue.size()))
+             averageWait = sum(waitingtimes) / len(waitingtimes)
+             print("Average Wait %6.2f secs %3d tasks remaining." % (averageWait, printQueue.size()))
 
          def newPrintTask():
-             num = random.randrange(1,181)
+             num = random.randrange(1, 181)
              if num == 180:
                  return True
              else:
                  return False
 
          for i in range(10):
-             simulation(3600,5)
+             simulation(3600, 5)
 

@@ -82,7 +82,7 @@ The program is shown in :ref:`ActiveCode 1 <lst_josephussim>`. A call to the
 
        return simqueue.dequeue()
 
-   print(hotPotato(["Bill","David","Susan","Jane","Kent","Brad"],7))
+   print(hotPotato(["Bill", "David", "Susan", "Jane", "Kent", "Brad"], 7))
 
 
 Note that in this example the value of the counting constant is greater
