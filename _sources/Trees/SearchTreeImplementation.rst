@@ -16,14 +16,14 @@ property holds for each parent and child. All of the keys in the left
 subtree are less than the key in the root. All of the keys in the right
 subtree are greater than the root.
 
-   
+
 .. _fig_simpleBST:
 
 .. figure:: Figures/simpleBST.png
    :align: center
 
    Figure 1: A Simple Binary Search Tree
-    
+
 
 Now that you know what a binary search tree is, we will look at how a
 binary search tree is constructed. The search tree in
@@ -66,7 +66,7 @@ miscellaneous functions is shown in :ref:`Listing 1 <lst_bst1>`.
         def __init__(self):
     	    self.root = None
     	    self.size = 0
-	
+
         def length(self):
     	    return self.size
 
@@ -75,7 +75,7 @@ miscellaneous functions is shown in :ref:`Listing 1 <lst_bst1>`.
 
         def __iter__(self):
     	    return self.root.__iter__()
-	    
+
 
 The ``TreeNode`` class provides many helper functions that make the work
 done in the ``BinarySearchTree`` class methods much easier. The
@@ -119,7 +119,7 @@ are used.
 
 	def hasRightChild(self):
 	    return self.rightChild
-	
+
 	def isLeftChild(self):
 	    return self.parent and self.parent.leftChild == self
 
@@ -137,7 +137,7 @@ are used.
 
 	def hasBothChildren(self):
 	    return self.rightChild and self.leftChild
-	
+
 	def replaceNodeData(self,key,value,lc,rc):
 	    self.key = key
 	    self.payload = value
@@ -147,7 +147,7 @@ are used.
 		self.leftChild.parent = self
 	    if self.hasRightChild():
 		self.rightChild.parent = self
-		
+
 
 Now that we have the ``BinarySearchTree`` shell and the ``TreeNode`` it
 is time to write the ``put`` method that will allow us to build our
@@ -224,7 +224,7 @@ put method. This allows us to write Python statements like
 
 	def __setitem__(self,k,v):
 	    self.put(k,v)
-	    
+
 
 :ref:`Figure 2 <fig_bstput>` illustrates the process for inserting a new node
 into a binary search tree. The lightly shaded nodes indicate the nodes
@@ -245,7 +245,7 @@ that were visited during the insertion process.
        :feedback_a: Remember, starting at the root keys less than the root must be in the left subtree, while keys greater than the root go in the right subtree.
        :answer_b: <img src="../_static/bintree_b.png">
        :feedback_b: good job.
-       :answer_c: <img src="../_static/bintree_c.png">       
+       :answer_c: <img src="../_static/bintree_c.png">
        :feedback_c: This looks like a binary tree that satisfies the full tree property needed for a heap.
 
        Which of the trees shows a correct binary search tree given that the keys were
@@ -304,7 +304,7 @@ fact we are using a binary search tree, for example
     	    return self._get(key,currentNode.rightChild)
 
     def __getitem__(self,key):
-    	return self.get(key) 
+    	return self.get(key)
 
 Using ``get``, we can implement the ``in`` operation by writing a
 ``__contains__`` method for the ``BinarySearchTree``. The
@@ -651,6 +651,46 @@ full version of the ``BinarySearchTree`` and ``TreeNode`` classes.
         def hasBothChildren(self):
             return self.rightChild and self.leftChild
 
+        def spliceOut(self):
+            if self.isLeaf():
+                if self.isLeftChild():
+                    self.parent.leftChild = None
+                else:
+                    self.parent.rightChild = None
+            elif self.hasAnyChildren():
+                if self.hasLeftChild():
+                    if self.isLeftChild():
+                        self.parent.leftChild = self.leftChild
+                    else:
+                        self.parent.rightChild = self.leftChild
+                    self.leftChild.parent = self.parent
+                else:
+                    if self.isLeftChild():
+                        self.parent.leftChild = self.rightChild
+                    else:
+                        self.parent.rightChild = self.rightChild
+                    self.rightChild.parent = self.parent
+
+        def findSuccessor(self):
+            succ = None
+            if self.hasRightChild():
+                succ = self.rightChild.findMin()
+            else:
+                if self.parent:
+                       if self.isLeftChild():
+                           succ = self.parent
+                       else:
+                           self.parent.rightChild = None
+                           succ = self.parent.findSuccessor()
+                           self.parent.rightChild = self
+            return succ
+
+        def findMin(self):
+            current = self
+            while current.hasLeftChild():
+                current = current.leftChild
+            return current
+
         def replaceNodeData(self,key,value,lc,rc):
             self.key = key
             self.payload = value
@@ -660,7 +700,7 @@ full version of the ``BinarySearchTree`` and ``TreeNode`` classes.
                 self.leftChild.parent = self
             if self.hasRightChild():
                 self.rightChild.parent = self
-            
+
 
     class BinarySearchTree:
 
@@ -742,46 +782,6 @@ full version of the ``BinarySearchTree`` and ``TreeNode`` classes.
         def __delitem__(self,key):
            self.delete(key)
 
-        def spliceOut(self):
-           if self.isLeaf():
-               if self.isLeftChild():
-                      self.parent.leftChild = None
-               else:
-                      self.parent.rightChild = None
-           elif self.hasAnyChildren():
-               if self.hasLeftChild():
-                      if self.isLeftChild():
-                         self.parent.leftChild = self.leftChild
-                      else:
-                         self.parent.rightChild = self.leftChild
-                      self.leftChild.parent = self.parent
-               else:
-                      if self.isLeftChild():
-                         self.parent.leftChild = self.rightChild
-                      else:
-                         self.parent.rightChild = self.rightChild
-                      self.rightChild.parent = self.parent
-
-        def findSuccessor(self):
-          succ = None
-          if self.hasRightChild():
-              succ = self.rightChild.findMin()
-          else:
-              if self.parent:
-                     if self.isLeftChild():
-                         succ = self.parent
-                     else:
-                         self.parent.rightChild = None
-                         succ = self.parent.findSuccessor()
-                         self.parent.rightChild = self
-          return succ
-
-        def findMin(self):
-          current = self
-          while current.hasLeftChild():
-              current = current.leftChild
-          return current
-
         def remove(self,currentNode):
              if currentNode.isLeaf(): #leaf
                if currentNode == currentNode.parent.leftChild:
@@ -831,6 +831,3 @@ full version of the ``BinarySearchTree`` and ``TreeNode`` classes.
 
     print(mytree[6])
     print(mytree[2])
-
-
-
