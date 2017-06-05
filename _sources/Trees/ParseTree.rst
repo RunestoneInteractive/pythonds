@@ -215,24 +215,27 @@ in :ref:`ActiveCode 1 <lst_buildparse>`.
         eTree = BinaryTree('')
         pStack.push(eTree)
         currentTree = eTree
+
         for i in fplist:
-            if i == '(':            
+            if i == '(':
                 currentTree.insertLeft('')
                 pStack.push(currentTree)
                 currentTree = currentTree.getLeftChild()
-            elif i not in ['+', '-', '*', '/', ')']:  
+
+            elif i not in ['+', '-', '*', '/', ')']:
                 currentTree.setRootVal(int(i))
                 parent = pStack.pop()
                 currentTree = parent
-            elif i in ['+', '-', '*', '/']:       
+
+            elif i in ['+', '-', '*', '/']:
                 currentTree.setRootVal(i)
                 currentTree.insertRight('')
                 pStack.push(currentTree)
                 currentTree = currentTree.getRightChild()
-            elif i == ')':          
+
+            elif i == ')':
                 currentTree = pStack.pop()
-            else:
-                raise ValueError
+
         return eTree
 
     pt = buildParseTree("( ( 10 + 5 ) * 3 )")
@@ -244,9 +247,9 @@ clauses of the ``if`` statement on lines 11, 15,
 19, and 24 of :ref:`ActiveCode 1 <lst_buildparse>`. In each case you
 can see that the code implements the rule, as described above, with a
 few calls to the ``BinaryTree`` or ``Stack`` methods. The only error
-checking we do in this function is in the ``else`` clause where we
-raise a ``ValueError`` exception if we get a token from the list that we
-do not recognize.
+checking we do in this function is in the first ``elif`` clause where a
+a ``ValueError`` exception will be raised if we get a token from the list
+that we do not recognize as a valid integer.
 
 Now that we have built a parse tree, what can we do with it? As a first
 example, we will write a function to evaluate the parse tree, returning
@@ -300,10 +303,10 @@ equivalent to ``operator.add(2,2)``.
 
     def evaluate(parseTree):
         opers = {'+':operator.add, '-':operator.sub, '*':operator.mul, '/':operator.truediv}
-         
+
         leftC = parseTree.getLeftChild()
         rightC = parseTree.getRightChild()
-    
+
         if leftC and rightC:
             fn = opers[parseTree.getRootVal()]
             return fn(evaluate(leftC),evaluate(rightC))
@@ -344,4 +347,3 @@ With the two parameters evaluated, we return the result of
 the top level ``'+'`` operator and all that is left to do is finish the
 call to ``operator.add(3,20)``. The result of the evaluation of the
 entire expression tree for :math:`(3 + (4 * 5))` is 23.
-
