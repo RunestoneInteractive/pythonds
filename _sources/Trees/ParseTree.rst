@@ -222,11 +222,6 @@ in :ref:`ActiveCode 1 <lst_buildparse>`.
                 pStack.push(currentTree)
                 currentTree = currentTree.getLeftChild()
 
-            elif i not in ['+', '-', '*', '/', ')']:
-                currentTree.setRootVal(int(i))
-                parent = pStack.pop()
-                currentTree = parent
-
             elif i in ['+', '-', '*', '/']:
                 currentTree.setRootVal(i)
                 currentTree.insertRight('')
@@ -236,6 +231,15 @@ in :ref:`ActiveCode 1 <lst_buildparse>`.
             elif i == ')':
                 currentTree = pStack.pop()
 
+            elif i not in ['+', '-', '*', '/', ')']:
+                try:
+                    currentTree.setRootVal(int(i))
+                    parent = pStack.pop()
+                    currentTree = parent
+
+                except ValueError:
+                    raise ValueError("token '{}' is not a valid integer".format(i))
+
         return eTree
 
     pt = buildParseTree("( ( 10 + 5 ) * 3 )")
@@ -243,13 +247,13 @@ in :ref:`ActiveCode 1 <lst_buildparse>`.
 
 
 The four rules for building a parse tree are coded as the first four
-clauses of the ``if`` statement on lines 11, 15,
-19, and 24 of :ref:`ActiveCode 1 <lst_buildparse>`. In each case you
+clauses of the ``if`` statement on lines 12, 17,
+23, and 26 of :ref:`ActiveCode 1 <lst_buildparse>`. In each case you
 can see that the code implements the rule, as described above, with a
 few calls to the ``BinaryTree`` or ``Stack`` methods. The only error
-checking we do in this function is in the first ``elif`` clause where a
-a ``ValueError`` exception will be raised if we get a token from the list
-that we do not recognize as a valid integer.
+checking we do in this function is in the ``else`` clause where a
+``ValueError`` exception will be raised if we get a token from the list
+that we do not recognize.
 
 Now that we have built a parse tree, what can we do with it? As a first
 example, we will write a function to evaluate the parse tree, returning
