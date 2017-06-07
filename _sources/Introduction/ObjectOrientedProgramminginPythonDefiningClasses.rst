@@ -845,7 +845,7 @@ output.
 
         def getPinA(self):
             if self.pinA == None:
-                return input("Enter Pin A input for gate " + self.getName()+"-->")
+                return input("Enter Pin A input for gate " + self.getLabel()+"-->")
             else:
                 return self.pinA.getFrom().getOutput()
 
@@ -887,7 +887,7 @@ Try it yourself using ActiveCode 4.
             self.name = n
             self.output = None
 
-        def getName(self):
+        def getLabel(self):
             return self.name
 
         def getOutput(self):
@@ -905,13 +905,13 @@ Try it yourself using ActiveCode 4.
 
         def getPinA(self):
             if self.pinA == None:
-                return int(input("Enter Pin A input for gate "+self.getName()+"-->"))
+                return int(input("Enter Pin A input for gate "+self.getLabel()+"-->"))
             else:
                 return self.pinA.getFrom().getOutput()
 
         def getPinB(self):
             if self.pinB == None:
-                return int(input("Enter Pin B input for gate "+self.getName()+"-->"))
+                return int(input("Enter Pin B input for gate "+self.getLabel()+"-->"))
             else:
                 return self.pinB.getFrom().getOutput()
 
@@ -962,7 +962,7 @@ Try it yourself using ActiveCode 4.
 
         def getPin(self):
             if self.pin == None:
-                return int(input("Enter Pin input for gate "+self.getName()+"-->"))
+                return int(input("Enter Pin input for gate "+self.getLabel()+"-->"))
             else:
                 return self.pin.getFrom().getOutput()
 
@@ -1028,7 +1028,7 @@ Try it yourself using ActiveCode 4.
               self.name = n
               self.output = None
 
-          def getName(self):
+          def getLabel(self):
               return self.name
 
           def getOutput(self):
@@ -1046,13 +1046,13 @@ Try it yourself using ActiveCode 4.
 
           def getPinA(self):
               if self.pinA == None:
-                  return int(input("Enter Pin A input for gate "+self.getName()+"-->"))
+                  return int(input("Enter Pin A input for gate "+self.getLabel()+"-->"))
               else:
                   return self.pinA.getFrom().getOutput()
 
           def getPinB(self):
               if self.pinB == None:
-                  return int(input("Enter Pin B input for gate "+self.getName()+"-->"))
+                  return int(input("Enter Pin B input for gate "+self.getLabel()+"-->"))
               else:
                   return self.pinB.getFrom().getOutput()
 
@@ -1103,7 +1103,7 @@ Try it yourself using ActiveCode 4.
 
           def getPin(self):
               if self.pin == None:
-                  return int(input("Enter Pin input for gate "+self.getName()+"-->"))
+                  return int(input("Enter Pin input for gate "+self.getLabel()+"-->"))
               else:
                   return self.pin.getFrom().getOutput()
 
