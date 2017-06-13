@@ -393,7 +393,7 @@ the analysis for hashing at the end of this section.
       :feedback_c: It looks like you are using modulo 10 arithmetic, use the table size.
       :feedback_d: Be careful to use modulo not integer division.
 
-      Suppose you are given the following set of keys to insert into a hash table that holds exactly 11 values:  113 , 117 , 97 , 100 , 114 , 108 , 116 , 105 , 99 Which of the following best demonstrates the contents of the has table after all the keys have been inserted using linear probing?
+      Suppose you are given the following set of keys to insert into a hash table that holds exactly 11 values:  113 , 117 , 97 , 100 , 114 , 108 , 116 , 105 , 99 Which of the following best demonstrates the contents of the hash table after all the keys have been inserted using linear probing?
 
 Implementing the ``Map`` Abstract Data Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
