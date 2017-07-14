@@ -21,7 +21,7 @@ By Brad Miller and David Ranum, Luther College
 .. raw:: html
 
    <ul>
-   <li><a href="assignments.html">Assignments</a></li>
+   <li><a href="../../assignments/chooseAssignment.html">Assignments</a></li>
    </ul>
 
 .. toctree::
