@@ -488,9 +488,9 @@ this as an exercise at the end of the chapter.
 
       |blank|
 
-      -  :\\b10\\s+3\\s+5\\s*\\*\\s*16\\s+4\\s*-\\s*/\\s*\\+: Correct.
-         :x: ('10.*3.*5.*16.*4', 'The numbers appear to be in the correct order check your operators')
-         :x: ('.*', 'Remember the numbers will be in the same order as the original equation')
+      -  :10\\s+3\\s+5\\s*\\*\\s*16\\s+4\\s*-\\s*/\\s*\\+: Correct.
+         :10.*3.*5.*16.*4: The numbers appear to be in the correct order check your operators
+         :x: Remember the numbers will be in the same order as the original equation
 
 
    .. fillintheblank:: postfix2
@@ -499,8 +499,8 @@ this as an exercise at the end of the chapter.
 
       |blank|
 
-      -  :\\b9\\b: Correct.
-         :x: ('.*', "Remember to push each intermediate result back on the stack" )
+      -  :9: Correct.
+         :x: Remember to push each intermediate result back on the stack
 
 
    .. fillintheblank:: postfix3
@@ -510,7 +510,7 @@ this as an exercise at the end of the chapter.
       |blank|
 
       -  :5\\s+3\\s+4\\s+2\\s*-\\s*\\^\\s*\\*: Correct.
-         :x: ('.*', 'Hint: You only need to add one line to the function!!')
+         :x: Hint: You only need to add one line to the function!!
 
 
 .. video:: video_Stack3

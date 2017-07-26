@@ -159,8 +159,8 @@ resulting string.
 
       |blank|
 
-      -  :\\b31\\b: Correct.
-         :x: (".*", "Incorrect")
+      -  :31: Correct.
+         :x: Incorrect
 
    .. fillintheblank:: baseconvert2
 
@@ -168,7 +168,7 @@ resulting string.
 
       |blank|
 
-      -  :\\b100\\b: Correct.
+      -  :100: Correct.
          :x: Incorrect.
 
    .. fillintheblank:: baseconvert3
@@ -177,8 +177,8 @@ resulting string.
 
       |blank|
 
-      -  :\\b10\\b: Correct.
-         :x: ('.*', 'You may need to modify the baseConverter function, or simply find a pattern in the conversion of bases.')
+      -  :10: Correct.
+         :x: You may need to modify the baseConverter function, or simply find a pattern in the conversion of bases.
 
 
 
