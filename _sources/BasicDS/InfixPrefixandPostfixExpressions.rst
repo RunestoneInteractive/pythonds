@@ -488,8 +488,8 @@ this as an exercise at the end of the chapter.
 
       |blank|
 
-      -  :10\\s+3\\s+5\\s*\\*\\s*16\\s+4\\s*-\\s*/\\s*\\+: Correct.
-         :10.*3.*5.*16.*4: The numbers appear to be in the correct order check your operators
+      -  :10\s+3\s+5\s*\*\s*16\s+4\s*-\s*/\s*\+: Correct.
+         :10.*3.*5.*16.*4\s+[ /+*-]*: The numbers appear to be in the correct order check your operators
          :x: Remember the numbers will be in the same order as the original equation
 
 
@@ -509,7 +509,7 @@ this as an exercise at the end of the chapter.
 
       |blank|
 
-      -  :5\\s+3\\s+4\\s+2\\s*-\\s*\\^\\s*\\*: Correct.
+      -  :5\s+3\s+4\s+2\s*-\s*\^\s*\*: Correct.
          :x: Hint: You only need to add one line to the function!!
 
 
