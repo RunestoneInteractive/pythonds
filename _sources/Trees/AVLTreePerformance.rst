@@ -60,7 +60,7 @@ the equation for :math:`N_h` as:
 
 .. math::
 
-   N_h = F_{h+2} - 1, h \ge 1
+   N_h = F_{h+1} - 1, h \ge 1
 
 
 By replacing the Fibonacci reference with its golden ratio approximation
@@ -76,7 +76,7 @@ then solve for :math:`h` we get the following derivation:
 
 .. math::
 
-   \log{N_h+1} = (H+2)\log{\Phi} - \frac{1}{2} \log{5} \\
+   \log{N_h+1} = (h+2)\log{\Phi} - \frac{1}{2} \log{5} \\
    h = \frac{\log{N_h+1} - 2 \log{\Phi} + \frac{1}{2} \log{5}}{\log{\Phi}} \\
    h = 1.44 \log{N_h}
 
