@@ -509,7 +509,7 @@ this as an exercise at the end of the chapter.
 
       |blank|
 
-      -  :5\s+3\s+4\s+2\s*-\s*\^\s*\*: Correct.
+      -  :5\s+3\s+4\s+2\s*-\s*\*\*\s*\*: Correct.
          :x: Hint: You only need to add one line to the function!!
 
 
