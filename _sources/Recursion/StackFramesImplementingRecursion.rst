@@ -16,24 +16,31 @@ call. The code for this modified algorithm is shown in
     :caption: Converting an Integer to a String Using a Stack
     :nocodelens:
 
-    from pythonds.basic.stack import Stack
+    def toStr(n, base, rStack):
 
-    rStack = Stack()
-
-    def toStr(n,base):
         convertString = "0123456789ABCDEF"
-        while n > 0:
-            if n < base:
-                rStack.push(convertString[n])
-            else:
-                rStack.push(convertString[n % base])
-            n = n // base
+
+        if n < base:
+            rStack.push(convertString[n])
+        else:
+            rStack.push(convertString[n % base])
+            toStr(n//base, base, rStack)
+
+    def num_to_string(n, base):
+
+        from pythonds.basic.stack import Stack
+
+        rStack = Stack()
+
+        toStr(n, base, rStack)
+
         res = ""
         while not rStack.isEmpty():
             res = res + str(rStack.pop())
+
         return res
 
-    print(toStr(1453,16))
+    print(num_to_string(1453, 16))
 
 Each time we make a call to ``toStr``, we push a character on the stack.
 Returning to the previous example we can see that after the fourth call
