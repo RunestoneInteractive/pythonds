@@ -16,15 +16,6 @@ call. The code for this modified algorithm is shown in
     :caption: Converting an Integer to a String Using a Stack
     :nocodelens:
 
-    def toStr(n, base, rStack):
-
-        convertString = "0123456789ABCDEF"
-
-        if n < base:
-            rStack.push(convertString[n])
-        else:
-            rStack.push(convertString[n % base])
-            toStr(n//base, base, rStack)
 
     def num_to_string(n, base):
 
@@ -32,7 +23,18 @@ call. The code for this modified algorithm is shown in
 
         rStack = Stack()
 
-        toStr(n, base, rStack)
+        def toStr(n, base):
+            """ Helper function """
+
+            convertString = "0123456789ABCDEF"
+
+            if n < base:
+                rStack.push(convertString[n])
+            else:
+                rStack.push(convertString[n % base])
+                toStr(n//base, base)
+
+        toStr(n, base)
 
         res = ""
         while not rStack.isEmpty():
