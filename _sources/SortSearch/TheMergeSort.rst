@@ -64,7 +64,7 @@ most one.
             j=0
             k=0
             while i < len(lefthalf) and j < len(righthalf):
-                if lefthalf[i] < righthalf[j]:
+                if lefthalf[i] <= righthalf[j]:
                     alist[k]=lefthalf[i]
                     i=i+1
                 else:
@@ -94,7 +94,10 @@ right half (lines 8–9), it is assumed they are sorted. The rest of the
 function (lines 11–31) is responsible for merging the two smaller sorted
 lists into a larger sorted list. Notice that the merge operation places
 the items back into the original list (``alist``) one at a time by
-repeatedly taking the smallest item from the sorted lists.
+repeatedly taking the smallest item from the sorted lists. Note that the
+statement ``lefthalf[i] <= righthalf[j]`` ensures that the algorithm is
+stable. A **stable algorithm** maintains the order of duplicate items in
+a list and is preferred in most cases.
 
 The ``mergeSort`` function has been augmented with a ``print`` statement
 (line 2) to show the contents of the list being sorted at the start of
@@ -133,7 +136,7 @@ list that can be immediately merged with other sorted lists.
 ..             j=0
 ..             k=0
 ..             while i<len(lefthalf) and j<len(righthalf):
-..                 if lefthalf[i]<righthalf[j]:
+..                 if lefthalf[i]<=righthalf[j]:
 ..                     alist[k]=lefthalf[i]
 ..                     i=i+1
 ..                 else:
