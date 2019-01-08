@@ -294,7 +294,7 @@ dictionary will map each operator to an integer that can be compared
 against the precedence levels of other operators (we have arbitrarily
 used the integers 3, 2, and 1). The left parenthesis will receive the
 lowest value possible. This way any operator that is compared against it
-will have higher precedence and will be placed on top of it. 
+will have higher precedence and will be placed on top of it.
 Line 15 defines the operands to be any upper-case character or digit.
 The complete conversion function is
 shown in :ref:`ActiveCode 1 <lst_intopost>`.
@@ -484,28 +484,33 @@ this as an exercise at the end of the chapter.
 
    .. fillintheblank:: postfix1
 
-      .. blank:: pfblank1
-         :correct: \\b10\\s+3\\s+5\\s*\\*\\s*16\\s+4\\s*-\\s*/\\s*\\+
-         :feedback1:  ('10.*3.*5.*16.*4', 'The numbers appear to be in the correct order check your operators')
-         :feedback2: ('.*', 'Remember the numbers will be in the same order as the original equation')
+      Without using the activecode infixToPostfix function, convert the following expression to postfix  ``10 + 3 * 5 / (16 - 4)`` .
 
-         Without using the activecode infixToPostfix function, convert the following expression to postfix  ``10 + 3 * 5 / (16 - 4)``
+      |blank|
+
+      -  :10\s+3\s+5\s*\*\s*16\s+4\s*-\s*/\s*\+: Correct.
+         :10.*3.*5.*16.*4\s+[ /+*-]*: The numbers appear to be in the correct order check your operators
+         :x: Remember the numbers will be in the same order as the original equation
+
 
    .. fillintheblank:: postfix2
 
-      .. blank:: pfblank2
-         :correct: \\b9\\b
-         :feedback1: ('.*', "Remember to push each intermediate result back on the stack" )
+      What is the result of evaluating the following: ``17 10 + 3 * 9 / ==`` ?
 
-         What is the result of evaluating the following: ``17 10 + 3 * 9 / ==``
+      |blank|
+
+      -  :9: Correct.
+         :x: Remember to push each intermediate result back on the stack
+
 
    .. fillintheblank:: postfix3
 
-      .. blank:: pfblank3
-         :correct: 5\\s+3\\s+4\\s+2\\s*-\\s*\\^\\s*\\*
-         :feedback1: ('.*', 'Hint: You only need to add one line to the function!!')
+      Modify the infixToPostfix function so that it can convert the following expression:  ``5 * 3 ** (4 - 2)``. Run the function on the expression and paste the answer here:
 
-         Modify the infixToPostfix function so that it can convert the following expression:  ``5 * 3 ** (4 - 2)``   Paste the answer here:
+      |blank|
+
+      -  :5\s+3\s+4\s+2\s*-\s*\*\*\s*\*: Correct.
+         :x: Hint: You only need to add one line to the function!!
 
 
 .. video:: video_Stack3

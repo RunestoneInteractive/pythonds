@@ -65,7 +65,7 @@ right-hand end of the string. The binary string is then returned.
    :nocodelens:
 
    from pythonds.basic.stack import Stack
-   
+
    def divideBy2(decNumber):
        remstack = Stack()
 
@@ -119,7 +119,7 @@ beyond 9.
     :nocodelens:
 
     from pythonds.basic.stack import Stack
-    
+
     def baseConverter(decNumber,base):
         digits = "0123456789ABCDEF"
 
@@ -155,26 +155,33 @@ resulting string.
 
    .. fillintheblank:: baseconvert1
 
-      .. blank:: bcblank1
-         :correct: \\b31\\b
-         :feedback1: (".*", "Incorrect")
+      What is value of 25 expressed as an octal number?
 
-         What is value of 25 expressed as an octal number
+      |blank|
+
+      -  :31: Correct.
+         :x: Incorrect
 
    .. fillintheblank:: baseconvert2
 
-      .. blank:: bcblank2
-         :correct: \\b100\\b
+      What is value of 256 expressed as a hexidecimal number?
 
-         What is value of 256 expressed as a hexidecimal number
+      |blank|
+
+      -  :100: Correct.
+         :x: Incorrect.
 
    .. fillintheblank:: baseconvert3
 
-      .. blank:: bcblank3
-         :correct: \\b10\\b
-         :feedback1: ('.*', 'You may need to modify the baseConverter function, or simply find a pattern in the conversion of bases.')
+      What is value of 26 expressed in base 26?
 
-         What is value of 26 expressed in base 26
+      |blank|
+
+      -  :10: Correct.
+         :x: You may need to modify the baseConverter function, or simply find a pattern in the conversion of bases.
+
+
+
 
 
 .. video:: video_Stack2
@@ -183,4 +190,3 @@ resulting string.
 
     http://media.interactivepython.org/pythondsVideos/Stack2.mov
     http://media.interactivepython.org/pythondsVideos/Stack2.webm
-

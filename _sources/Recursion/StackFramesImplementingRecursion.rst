@@ -7,7 +7,7 @@ Stack Frames: Implementing Recursion
 
 Suppose that instead of concatenating the result of the recursive call
 to ``toStr`` with the string from ``convertString``, we modified our
-algorithm to push the strings onto a stack prior to making the recursive
+algorithm to push the strings onto a stack instead of making the recursive
 call. The code for this modified algorithm is shown in
 :ref:`ActiveCode 1 <lst_recstack>`.
 

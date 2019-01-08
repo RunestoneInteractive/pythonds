@@ -688,7 +688,7 @@ inherits two input lines, one output line, and a label.
     class AndGate(BinaryGate):
 
         def __init__(self,n):
-            BinaryGate.__init__(self,n)
+            super(AndGate,self).__init__(self,n)
 
         def performGateLogic(self):
 
@@ -898,7 +898,7 @@ Try it yourself using ActiveCode 4.
     class BinaryGate(LogicGate):
 
         def __init__(self,n):
-            LogicGate.__init__(self,n)
+            super().__init__(self,n)
 
             self.pinA = None
             self.pinB = None
