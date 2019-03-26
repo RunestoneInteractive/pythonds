@@ -58,8 +58,8 @@ mismatch occurs, the boolean variable ``balanced`` is set to ``False``.
    :caption: Solving the General Balanced Symbol Problem
    :nocodelens:
 
-   from pythonds.basic.stack import Stack
-   
+   from pythonds.basic import Stack
+
    def parChecker(symbolString):
        s = Stack()
        balanced = True
@@ -85,7 +85,7 @@ mismatch occurs, the boolean variable ``balanced`` is set to ``False``.
        opens = "([{"
        closers = ")]}"
        return opens.index(open) == closers.index(close)
-       
+
 
    print(parChecker('{{([][])}()}'))
    print(parChecker('[{()]'))

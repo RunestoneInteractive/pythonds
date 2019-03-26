@@ -64,7 +64,7 @@ right-hand end of the string. The binary string is then returned.
    :caption: Converting from Decimal to Binary
    :nocodelens:
 
-   from pythonds.basic.stack import Stack
+   from pythonds.basic import Stack
 
    def divideBy2(decNumber):
        remstack = Stack()
@@ -118,7 +118,7 @@ beyond 9.
     :caption: Converting from Decimal to any Base
     :nocodelens:
 
-    from pythonds.basic.stack import Stack
+    from pythonds.basic import Stack
 
     def baseConverter(decNumber,base):
         digits = "0123456789ABCDEF"

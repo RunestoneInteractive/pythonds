@@ -16,7 +16,7 @@ call. The code for this modified algorithm is shown in
     :caption: Converting an Integer to a String Using a Stack
     :nocodelens:
 
-    from pythonds.basic.stack import Stack
+    from pythonds.basic import Stack
 
     rStack = Stack()
 

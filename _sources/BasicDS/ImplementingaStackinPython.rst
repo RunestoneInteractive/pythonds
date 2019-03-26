@@ -60,20 +60,20 @@ Remember that nothing happens when we click the ``run`` button other than the
 definition of the class.  We must create a ``Stack`` object and then use it.
 :ref:`ActiveCode 2 <lst_stackcode1>` shows the ``Stack`` class in
 action as we perform the sequence of operations from
-:ref:`Table 1 <tbl_stackops>`.  Notice that the definition of the ``Stack`` class is 
+:ref:`Table 1 <tbl_stackops>`.  Notice that the definition of the ``Stack`` class is
 imported from the ``pythonds`` module.
 
-.. note:: 
+.. note::
     The ``pythonds`` module contains implementations of all data structures discussed in this book.  It is structured according to the sections: basic, trees, and graphs.  The module can be downloaded from `pythonworks.org <http://www.pythonworks.org/pythonds>`_.
-    
+
 
 .. activecode:: stack_ex_1
    :nocodelens:
 
-   from pythonds.basic.stack import Stack
+   from pythonds.basic import Stack
 
    s=Stack()
-   
+
    print(s.isEmpty())
    s.push(4)
    s.push('dog')
@@ -152,9 +152,9 @@ benchmark testing.
       :feedback_d: Remember that a stack is built from the bottom up.
 
       Given the following sequence of stack operations, what is the top item on the stack when the sequence is complete?
-       
+
       .. code-block:: python
-       
+
        m = Stack()
        m.push('x')
        m.push('y')
@@ -176,7 +176,7 @@ benchmark testing.
       Given the following sequence of stack operations, what is the top item on the stack when the sequence is complete?
 
       .. code-block:: python
-  
+
         m = Stack()
         m.push('x')
         m.push('y')
@@ -192,7 +192,7 @@ benchmark testing.
       :nocodelens:
 
       from test import testEqual
-      from pythonds.basic.stack import Stack
+      from pythonds.basic import Stack
 
       def revstring(mystr):
           # your code here

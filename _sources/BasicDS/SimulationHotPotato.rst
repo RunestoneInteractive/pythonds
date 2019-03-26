@@ -67,8 +67,8 @@ The program is shown in :ref:`ActiveCode 1 <lst_josephussim>`. A call to the
    :caption: Hot Potato Simulation
    :nocodelens:
 
-   from pythonds.basic.queue import Queue
-   
+   from pythonds.basic import Queue
+
    def hotPotato(namelist, num):
        simqueue = Queue()
        for name in namelist:

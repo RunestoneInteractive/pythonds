@@ -305,7 +305,7 @@ shown in :ref:`ActiveCode 1 <lst_intopost>`.
    :caption: Converting Infix Expressions to Postfix Expressions
    :nocodelens:
 
-   from pythonds.basic.stack import Stack
+   from pythonds.basic import Stack
 
    def infixToPostfix(infixexpr):
        prec = {}
@@ -446,7 +446,7 @@ operator and then perform the proper arithmetic operation.
    :caption: Postfix Evaluation
    :nocodelens:
 
-   from pythonds.basic.stack import Stack
+   from pythonds.basic import Stack
 
    def postfixEval(postfixExpr):
        operandStack = Stack()

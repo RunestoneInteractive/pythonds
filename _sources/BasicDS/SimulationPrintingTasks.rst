@@ -143,7 +143,7 @@ the printer to idle (line 11) if the task is completed.
        def startNext(self,newtask):
            self.currentTask = newtask
            self.timeRemaining = newtask.getPages() * 60/self.pagerate
-                                
+
 .. highlight:: python
     :linenothreshold: 500
 
@@ -159,7 +159,7 @@ function from the ``random`` module.
     18
     >>> random.randrange(1,21)
     8
-    >>> 
+    >>>
 
 Each task will also need to keep a timestamp to be used for computing
 waiting time. This timestamp will represent the time that the task was
@@ -176,7 +176,7 @@ printing begins.
 .. sourcecode:: python
 
    import random
-   
+
    class Task:
        def __init__(self,time):
            self.timestamp = time
@@ -211,7 +211,7 @@ printer.
 
 .. code-block:: python
 
-   from pythonds.basic.queue import Queue
+   from pythonds.basic.queue Queue
 
    import random
 
@@ -246,7 +246,7 @@ printer.
 
    for i in range(10):
        simulation(3600,5)
-       
+
 .. highlight:: python
    :linenothreshold: 500
 
@@ -302,18 +302,18 @@ would be completed in the one hour time frame.
     Average Wait  12.39 secs 0 tasks remaining.
     Average Wait   7.27 secs 0 tasks remaining.
     Average Wait  18.17 secs 0 tasks remaining.
-    
-    
+
+
 You can run the simulation for yourself in ActiveCode 2.
 
 .. activecode:: qumainsim
    :caption: Printer Queue Simulation
    :nocodelens:
 
-   from pythonds.basic.queue import Queue
+   from pythonds.basic import Queue
 
    import random
-   
+
    class Printer:
        def __init__(self, ppm):
            self.pagerate = ppm
@@ -334,7 +334,7 @@ You can run the simulation for yourself in ActiveCode 2.
 
        def startNext(self,newtask):
            self.currentTask = newtask
-           self.timeRemaining = newtask.getPages() * 60/self.pagerate   
+           self.timeRemaining = newtask.getPages() * 60/self.pagerate
 
    class Task:
        def __init__(self,time):
@@ -425,14 +425,14 @@ of print tasks per hour and the number of students per hour was
 necessary to construct a robust simulation.
 
 .. admonition:: Self Check
-   
+
    How would you modify the printer simulation to reflect a larger number of students?  Suppose that the number of students was doubled.  You make need to make some reasonable assumptions about how this simulation was put together but what would you change?  Modify the code.  Also suppose that the length of the average print task was cut in half.  Change the code to reflect that change.  Finally How would you parametertize the number of students, rather than changing the code we would like
    to make the number of students a parameter of the simulation.
 
    .. actex:: print_sim_selfcheck
          :nocodelens:
 
-         from pythonds.basic.queue import Queue
+         from pythonds.basic import Queue
 
          import random
 
