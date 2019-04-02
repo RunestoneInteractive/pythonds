@@ -201,11 +201,9 @@ benchmark testing.
       testEqual(revstring('x'),'x')
       testEqual(revstring('1234567890'),'0987654321')
 
-
-.. video:: stack1_video
-    :controls:
-    :thumb: ../_static/activecodethumb.png
-
-    http://media.interactivepython.org/pythondsVideos/Stack1.mov
-    http://media.interactivepython.org/pythondsVideos/Stack1.webm
+.. youtube:: fZtLSM7k_54
+    :divid: stack1_video
+    :height: 315
+    :width: 560
+    :align: left
 

@@ -444,12 +444,11 @@ methods as exercises.
 
    .. actex:: self_check_4
 
-.. video:: fraction
-   :controls:
-   :thumb: ../_static/videothumb.png
-
-   http://media.interactivepython.org/pythondsVideos/fraction.mov
-   http://media.interactivepython.org/pythondsVideos/fraction.webm
+.. youtube:: gFb9tvJZHXo
+    :divid: fraction
+    :height: 315
+    :width: 560
+    :align: left
 
 Inheritance: Logic Gates and Circuits
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1149,13 +1148,11 @@ Try it yourself using ActiveCode 4.
 
       main()
 
-
-.. video:: logicgates
-   :controls:
-   :thumb: ../_static/videothumb.png
-
-   http://media.interactivepython.org/pythondsVideos/logicgates.mov
-   http://media.interactivepython.org/pythondsVideos/logicgates.webm
+.. youtube:: brrpvAlzOyM
+    :divid: logicgates
+    :height: 315
+    :width: 560
+    :align: left
 
 
 .. .. admonition:: Self  Check Challenge

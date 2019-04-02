@@ -200,14 +200,12 @@ Regardless, the next action is to compute the square root.
        # the answer is: ['c', 'a', 't', 'd', 'o', 'g', 'r', 'b', 'i']
 
 
+.. youtube:: vJ_KDaJZ4f4
+    :divid: list_unique
+    :height: 315
+    :width: 560
+    :align: left
 
-
-.. video:: list_unique
-   :controls:
-   :thumb: ../_static/videothumb.png
-
-   http://media.interactivepython.org/pythondsVideos/list_unique.mov
-   http://media.interactivepython.org/pythondsVideos/list_unique.webm
 
 Returning to lists, there is an alternative method for creating a list
 that uses iteration and selection constructs known as a **list
@@ -269,12 +267,10 @@ a new list.
 
        # the answer is: ['c', 'a', 't', 'd', 'o', 'g', 'r', 'a', 'b', 'b', 'i', 't']
 
-
-.. video:: listcomp
-   :controls:
-   :thumb: ../_static/videothumb.png
-
-   http://media.interactivepython.org/pythondsVideos/listcomp.mov
-   http://media.interactivepython.org/pythondsVideos/listcomp.webm
+.. youtube:: pcrcYy9UlVM
+    :divid: listcomp
+    :height: 315
+    :width: 560
+    :align: left
 
 
