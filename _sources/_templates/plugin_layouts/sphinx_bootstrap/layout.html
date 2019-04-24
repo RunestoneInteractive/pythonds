@@ -149,7 +149,7 @@
             <li><a href='{{course_url}}/{{appname}}/mygroup/newschedule' id="newChapterLink">Schedule New Chapter</a></li>
             <li><a href='{{course_url}}/{{appname}}/mygroup/manageGroup' id="manageGroupLink">Manage Group</a></li> -->
 			<li class="divider"></li>
-            <li><a href='{{course_url}}/{{appname}}/admin/index'>Instructor's Page</a></li>
+            <li id="ip_dropdown_link"><a href='{{course_url}}/{{appname}}/admin/index'>Instructor's Page</a></li>
             <li><a href='{{ course_url }}/{{ appname }}/assignments/index'>Progress Page</a></li>
             <li class="divider"></li>
             <li><a href="{{course_url}}/{{appname}}/default/user/profile" id="profilelink">Edit Profile</a></li>
@@ -303,9 +303,9 @@
 
 <script type="text/javascript" >
   {
-    var resizerTimeout = null; 
+    var resizerTimeout = null;
     var initialTimerInterval = setInterval(function(){
-      if (window.annotator){ 
+      if (window.annotator){
         clearInterval(initialTimerInterval);
         setInterval(resizeBook, 1000);
       }
@@ -314,7 +314,7 @@
 
     function resizeBook() {
       setTimeout(function() {
-        var sidebarWidth = $(".annotator-toolbar").width(); 
+        var sidebarWidth = $(".annotator-toolbar").width();
         if (window.annotator.isOpen()) {
           sidebarWidth += $(".annotator-outer").width();
         }
@@ -322,15 +322,15 @@
         var windowWidth = $(window).width();
         var bookWidth = windowWidth - sidebarWidth;
 
-        $(".navbar-default, .footer").css({width:bookWidth}); 
-        $("#relations-next").css({"right":sidebarWidth+"px"});  
+        $(".navbar-default, .footer").css({width:bookWidth});
+        $("#relations-next").css({"right":sidebarWidth+"px"});
         // $(".container").css({"max-width": "none !important;"});
 
-        var currentMarginRight = parseInt($("#main-content").css("margin-right")); 
+        var currentMarginRight = parseInt($("#main-content").css("margin-right"));
         if (window.annotator.isOpen() && (currentMarginRight < sidebarWidth+10)) {
-          $("#main-content").css({"margin-right":sidebarWidth+"px"}); 
+          $("#main-content").css({"margin-right":sidebarWidth+"px"});
         } else {
-          $("#main-content").css({"margin-right":""}); 
+          $("#main-content").css({"margin-right":""});
         }
       }, 100);
     }
