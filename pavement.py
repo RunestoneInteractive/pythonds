@@ -16,15 +16,7 @@ project_name = "pythonds"
 
 master_url = None
 if master_url is None:
-    if gethostname() == 'runestone-deploy':
-        master_url = 'https://runestone.academy'
-        doctrees = '../../custom_courses/{}/doctrees'.format(project_name)
-    elif environ['RUNESTONE_HOST']:
-        master_url = 'http://{}'.format(environ['RUNESTONE_HOST'])
-        doctrees = './build/{}/doctrees'.format(project_name)
-    else:
-        master_url = 'http://127.0.0.1:8000'
-        doctrees = './build/{}/doctrees'.format(project_name)
+    master_url = get_master_url()
 
 master_app = 'runestone'
 dynamic_pages = True
@@ -33,6 +25,8 @@ if dynamic_pages:
     dest = './published'
 else:
     dest = '../../static'
+
+doctrees = './build/{}/doctrees'.format(project_name)
 
 options(
     sphinx = Bunch(docroot=".",),
