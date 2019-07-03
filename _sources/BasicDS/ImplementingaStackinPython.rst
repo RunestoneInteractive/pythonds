@@ -64,7 +64,7 @@ action as we perform the sequence of operations from
 imported from the ``pythonds`` module.
 
 .. note::
-    The ``pythonds`` module contains implementations of all data structures discussed in this book.  It is structured according to the sections: basic, trees, and graphs.  The module can be downloaded from `pythonworks.org <http://www.pythonworks.org/pythonds>`_.
+    The ``pythonds`` module contains implementations of all data structures discussed in this book.  It is structured according to the sections: basic, trees, and graphs.  The module can be downloaded from `GitHub <https://github.com/bnmnetp/pythonds>`_. or installed from the command line using ``pip install pythonds``.
 
 
 .. activecode:: stack_ex_1
