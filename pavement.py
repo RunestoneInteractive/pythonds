@@ -5,6 +5,7 @@ import paver.setuputils
 paver.setuputils.install_distutils_tasks()
 from os import environ
 import pkg_resources
+from runestone import get_master_url
 
 ######## CHANGE THIS ##########
 project_name = "pythonds"
