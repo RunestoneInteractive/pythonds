@@ -87,7 +87,7 @@ mismatch occurs, the boolean variable ``balanced`` is set to ``False``.
        return opens.index(open) == closers.index(close)
 
 
-   print(parChecker('{{([][])}()}'))
+   print(parChecker('{({([][])}())}'))
    print(parChecker('[{()]'))
 
 These two examples show that stacks are very important data structures
