@@ -18,12 +18,12 @@ that will take two strings and return whether they are anagrams.
 Solution 1: Checking Off
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Our first solution to the anagram problem will check the lengths of the 
+Our first solution to the anagram problem will check the lengths of the
 strings and then to see that each character in the first string actually
 occurs in the second. If it is possible to “checkoff” each character, then
-the two strings must be anagrams. Checking off a character will be 
-accomplished by replacing it with the special Python value ``None``. 
-However, since strings in Python are immutable, the first step in the 
+the two strings must be anagrams. Checking off a character will be
+accomplished by replacing it with the special Python value ``None``.
+However, since strings in Python are immutable, the first step in the
 process will be to convert the second string to a list. Each character
 from the first string can be checked against the characters in the list
 and if found, checked off by replacement.:ref:`ActiveCode 1 <lst_anagramSolution>` shows this function.
@@ -34,13 +34,12 @@ and if found, checked off by replacement.:ref:`ActiveCode 1 <lst_anagramSolution
     :caption: Checking Off
 
     def anagramSolution1(s1,s2):
+        stillOK = True
         if len(s1) != len(s2):
             stillOK = False
-            
-        alist = list(s2)
 
+        alist = list(s2)
         pos1 = 0
-        stillOK = True
 
         while pos1 < len(s1) and stillOK:
             pos2 = 0
@@ -263,7 +262,7 @@ problem.
        :correct: c
        :feedback_a: Look carefully at the loop variable i.  Notice that the value of i is cut in half each time through the loop.  This is a big hint that the performance is better than O(n)
        :feedback_b: Check again, is this a nested loop?
-       :feedback_d: Check again, is this a nested loop?       
+       :feedback_d: Check again, is this a nested loop?
        :feedback_c: The value of i is cut in half each time through the loop so it will only take log n iterations.
 
        Given the following code fragment what is its Big-O running time?
