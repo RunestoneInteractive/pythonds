@@ -41,8 +41,8 @@ complete function for palindrome-checking appears in
    :caption: A Palindrome Checker Using Deque
    :nocodelens:
 
-   from pythonds.basic.deque import Deque
-   
+   from pythonds.basic import Deque
+
    def palchecker(aString):
        chardeque = Deque()
 

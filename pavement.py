@@ -5,6 +5,7 @@ import paver.setuputils
 paver.setuputils.install_distutils_tasks()
 from os import environ
 import pkg_resources
+from runestone import get_master_url
 
 ######## CHANGE THIS ##########
 project_name = "pythonds"
@@ -16,16 +17,17 @@ project_name = "pythonds"
 
 master_url = None
 if master_url is None:
-    if gethostname() == 'web407.webfaction.com':
-        master_url = 'http://interactivepython.org'
-        doctrees = '../../custom_courses/{}/doctrees'.format(project_name)
-    else:
-        master_url = 'http://127.0.0.1:8000'
-        doctrees = './build/{}/doctrees'.format(project_name)
+    master_url = get_master_url()
 
 master_app = 'runestone'
+dynamic_pages = True
 serving_dir = './build/pythonds'
-dest = '../../static'
+if dynamic_pages:
+    dest = './published'
+else:
+    dest = '../../static'
+
+doctrees = './build/{}/doctrees'.format(project_name)
 
 options(
     sphinx = Bunch(docroot=".",),
@@ -44,9 +46,13 @@ options(
             'loglevel':10,
             'course_url':master_url,
             'use_services': 'true',
+            'dynamic_pages': dynamic_pages,
             'python3': 'true',
             'dburl': 'postgresql://bmiller@localhost/runestone',
             'basecourse': 'pythonds',
+            'downloads_enabled': 'false',
+            'enable_chatcodes': 'false',
+            'allow_pairs': 'false'
         }
     )
 )

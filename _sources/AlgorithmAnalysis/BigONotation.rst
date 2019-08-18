@@ -86,7 +86,7 @@ order to decide which of these functions is the dominant part of any
 :math:`T(n)` function, we must see how they compare with one another
 as *n* gets large.
 
-.. _tbl_fntable: 
+.. _tbl_fntable:
 
 .. table:: **Table 1: Common Functions for Big-O**
 
@@ -173,10 +173,8 @@ to see that :math:`T(n)` then follows the quadratic function as
 
    Write two Python functions to find the minimum number in a list.  The first function should compare each number to every other number on the list. :math:`O(n^2)`.  The second function should be linear :math:`O(n)`.
 
-
-.. video::  findMinVid
-   :controls:
-   :thumb: ../_static/function_intro.png
-
-   http://media.interactivepython.org/pythondsVideos/findmin.mov
-   http://media.interactivepython.org/pythondsVideos/findmin.webm
+.. youtube:: p0COF_m6H1c
+    :divid: findMinVid
+    :height: 315
+    :width: 560
+    :align: left

@@ -11,7 +11,7 @@ Basic Data Structures
     TheStackAbstractDataType.rst
     ImplementingaStackinPython.rst
     SimpleBalancedParentheses.rst
-    BalancedSymbols(AGeneralCase).rst
+    BalancedSymbolsAGeneralCase.rst
     ConvertingDecimalNumberstoBinaryNumbers.rst
     InfixPrefixandPostfixExpressions.rst
     WhatIsaQueue.rst

@@ -34,15 +34,15 @@ is removed each time.  We will now turn our attention to creating an implementat
 .. activecode:: heap1
     :caption: Using the Binary Heap
     :nocodelens:
-    
-    from pythonds.trees.binheap import BinHeap
-    
+
+    from pythonds.trees import BinHeap
+
     bh = BinHeap()
     bh.insert(5)
     bh.insert(7)
     bh.insert(3)
     bh.insert(11)
-    
+
     print(bh.delMin())
 
     print(bh.delMin())

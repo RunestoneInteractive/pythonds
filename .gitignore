@@ -1,0 +1,5 @@
+published/*
+sphinx-enki-info.txt
+sphinx_settings.json
+.vscode
+__pycache__

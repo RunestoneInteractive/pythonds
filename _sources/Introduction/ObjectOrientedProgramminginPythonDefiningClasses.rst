@@ -260,8 +260,8 @@ addition, and then printing our result.
             newden = self.den * otherfraction.den
 
             return Fraction(newnum,newden)
-            
-            
+
+
 
 ::
 
@@ -331,8 +331,8 @@ the bottom by 2 creates a new fraction, :math:`3/4` (see
             newden = self.den * otherfraction.den
             common = gcd(newnum,newden)
             return Fraction(newnum//common,newden//common)
-            
-            
+
+
 ::
 
     >>> f1=Fraction(1,4)
@@ -444,12 +444,11 @@ methods as exercises.
 
    .. actex:: self_check_4
 
-.. video:: fraction
-   :controls:
-   :thumb: ../_static/videothumb.png
-
-   http://media.interactivepython.org/pythondsVideos/fraction.mov
-   http://media.interactivepython.org/pythondsVideos/fraction.webm
+.. youtube:: gFb9tvJZHXo
+    :divid: fraction
+    :height: 315
+    :width: 560
+    :align: left
 
 Inheritance: Logic Gates and Circuits
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -643,8 +642,8 @@ we will use that terminology in our implementation.
 
         def getPin(self):
             return int(input("Enter Pin input for gate "+ self.getLabel()+"-->"))
-            
-            
+
+
 
 :ref:`Listing 9 <lst_logicgateclass>` and :ref:`Listing 10 <lst_logicgateclass>` implement these two
 classes. The constructors in both of these classes start with an
@@ -688,7 +687,7 @@ inherits two input lines, one output line, and a label.
     class AndGate(BinaryGate):
 
         def __init__(self,n):
-            super(AndGate,self).__init__(self,n)
+            super(AndGate,self).__init__(n)
 
         def performGateLogic(self):
 
@@ -786,7 +785,7 @@ connection.
 
 .. _lst_Connectorclass:
 
-**Listing 12** 
+**Listing 12**
 
 .. sourcecode:: python
 
@@ -898,7 +897,7 @@ Try it yourself using ActiveCode 4.
     class BinaryGate(LogicGate):
 
         def __init__(self,n):
-            super().__init__(self,n)
+            super(BinaryGate, self).__init__(n)
 
             self.pinA = None
             self.pinB = None
@@ -1149,13 +1148,11 @@ Try it yourself using ActiveCode 4.
 
       main()
 
-
-.. video:: logicgates
-   :controls:
-   :thumb: ../_static/videothumb.png
-
-   http://media.interactivepython.org/pythondsVideos/logicgates.mov
-   http://media.interactivepython.org/pythondsVideos/logicgates.webm
+.. youtube:: brrpvAlzOyM
+    :divid: logicgates
+    :height: 315
+    :width: 560
+    :align: left
 
 
 .. .. admonition:: Self  Check Challenge

@@ -206,8 +206,8 @@ in :ref:`ActiveCode 1 <lst_buildparse>`.
     :caption: Building a Parse Tree
     :nocodelens:
 
-    from pythonds.basic.stack import Stack
-    from pythonds.trees.binaryTree import BinaryTree
+    from pythonds.basic import Stack
+    from pythonds.trees import BinaryTree
 
     def buildParseTree(fpexp):
         fplist = fpexp.split()

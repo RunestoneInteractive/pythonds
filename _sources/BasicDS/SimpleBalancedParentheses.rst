@@ -88,7 +88,7 @@ this algorithm is shown in :ref:`ActiveCode 1 <lst_parcheck1>`.
     :caption: Solving the Balanced Parentheses Problem
     :nocodelens:
 
-    from pythonds.basic.stack import Stack
+    from pythonds.basic import Stack
 
     def parChecker(symbolString):
         s = Stack()

@@ -80,8 +80,8 @@ dictionary.
         x = {j:None for j in range(i)}
         d_time = t.timeit(number=1000)
         print("%d,%10.3f,%10.3f" % (i, lst_time, d_time))
-        
-        
+
+
 
 
 :ref:`Figure 4 <fig_listvdict>` summarizes the results of running
@@ -139,13 +139,12 @@ the Python wiki has a nice time complexity page that can be found at the
       :feedback_b: deleting an element from a dictionary is a constant operation but there is a better answer.
       :feedback_c: Assignment to a dictionary key is constant but there is a better answer.
       :feedback_d: Re-assignment to a dictionary key is constant but there is a better answer.
-      :feedback_e: The only dictionary operations that are not O(1) are those that require iteration.                  
+      :feedback_e: The only dictionary operations that are not O(1) are those that require iteration.
 
       Which of the dictionary operations shown below is O(1)?
 
-.. video::  pythonopsperf
-   :controls:
-   :thumb: ../_static/function_intro.png
-
-   http://media.interactivepython.org/pythondsVideos/pythonops.mov
-   http://media.interactivepython.org/pythondsVideos/pythonops.webm
+.. youtube:: zKq8iVEX6gU
+    :divid: pythonopsperf
+    :height: 315
+    :width: 560
+    :align: left
