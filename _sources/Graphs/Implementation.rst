@@ -84,12 +84,12 @@ themselves.
         def __contains__(self,n):
             return n in self.vertList
         
-        def addEdge(self,f,t,cost=0):
+        def addEdge(self,f,t,weight=0):
             if f not in self.vertList:
                 nv = self.addVertex(f)
             if t not in self.vertList:
                 nv = self.addVertex(t)
-            self.vertList[f].addNeighbor(self.vertList[t], cost)
+            self.vertList[f].addNeighbor(self.vertList[t], weight)
         
         def getVertices(self):
             return self.vertList.keys()
