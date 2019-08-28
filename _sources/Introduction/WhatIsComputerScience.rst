@@ -5,7 +5,7 @@
 What Is Computer Science?
 -------------------------
 
-Computer science is often difficult to define. This is probably due to
+Computer science is difficult to define. This is probably due to
 the unfortunate use of the word “computer” in the name. As you are
 perhaps aware, computer science is not simply the study of computers.
 Although computers play an important supporting role as a tool in the
