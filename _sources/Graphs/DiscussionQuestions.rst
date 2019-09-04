@@ -5,13 +5,13 @@
 Discussion Questions
 --------------------
 
-#. Draw the graph corresponding to the following adjacency matrix.
+1. Draw the graph corresponding to the following adjacency matrix.
 
 .. figure:: Figures/adjMatEX.png
    :align: center
 
 
-#. Draw the graph corresponding to the following list of edges.
+2. Draw the graph corresponding to the following list of edges.
 
    .. table:: 
 
@@ -37,30 +37,30 @@ Discussion Questions
            | 5      | 6    | 13     |
            +--------+------+--------+
 
-#. Ignoring the weights, perform a breadth first search on the graph
+3. Ignoring the weights, perform a breadth first search on the graph
    from the previous question.
 
-#. What is the Big-O running time of the ``buildGraph`` function?
+4. What is the Big-O running time of the ``buildGraph`` function?
 
-#. Derive the Big-O running time for the topological sort algorithm.
+5. Derive the Big-O running time for the topological sort algorithm.
 
-#. Derive the Big-O running time for the strongly connected components
+6. Derive the Big-O running time for the strongly connected components
    algorithm.
 
-#. Show each step in applying Dijkstra’s algorithm to the graph shown above.
+7. Show each step in applying Dijkstra’s algorithm to the graph shown above.
 
-#. Using Prim’s algorithm, find the minimum weight spanning tree for the
+8. Using Prim’s algorithm, find the minimum weight spanning tree for the
    graph shown above.
 
-#. Draw a dependency graph illustrating the steps needed to send an
+9. Draw a dependency graph illustrating the steps needed to send an
    email. Perform a topological sort on your graph.
 
-#. Derive an expression for the base of the exponent used in expressing
+10. Derive an expression for the base of the exponent used in expressing
    the running time of the knights tour.
 
-#. Explain why the general DFS algorithm is not suitable for solving the
+11. Explain why the general DFS algorithm is not suitable for solving the
    knights tour problem.
 
-#. What is the Big-O running time for Prim’s minimum spanning tree
+12. What is the Big-O running time for Prim’s minimum spanning tree
    algorithm?
 
