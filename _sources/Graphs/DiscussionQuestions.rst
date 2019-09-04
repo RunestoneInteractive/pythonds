@@ -55,12 +55,12 @@ Discussion Questions
 9. Draw a dependency graph illustrating the steps needed to send an
    email. Perform a topological sort on your graph.
 
-10. Derive an expression for the base of the exponent used in expressing
-   the running time of the knights tour.
+10. Derive an expression for the base of the exponent used in expressing the 
+    running time of the knights tour.
 
-11. Explain why the general DFS algorithm is not suitable for solving the
-   knights tour problem.
+11. Explain why the general DFS algorithm is not suitable for solving 
+    the knights tour problem.
 
-12. What is the Big-O running time for Prim’s minimum spanning tree
-   algorithm?
+12. What is the Big-O running time for Prim’s minimum 
+    spanning tree algorithm?
 
