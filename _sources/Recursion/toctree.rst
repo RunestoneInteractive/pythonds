@@ -21,4 +21,4 @@ Recursion
     KeyTerms.rst
     DiscussionQuestions.rst
     Glossary.rst
-    pythondsProgrammingExercises.rst
+    Exercises.rst

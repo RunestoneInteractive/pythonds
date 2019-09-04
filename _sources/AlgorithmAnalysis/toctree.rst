@@ -15,4 +15,4 @@ Analysis
     Summary.rst
     KeyTerms.rst
     DiscussionQuestions.rst
-    ProgrammingExercises.rst
+    Exercises.rst

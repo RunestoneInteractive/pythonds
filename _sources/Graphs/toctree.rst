@@ -30,4 +30,4 @@ Graphs and Graph Algorithms
     Summary.rst
     KeyTerms.rst
     DiscussionQuestions.rst
-    ProgrammingExercises.rst
+    Exercises.rst
