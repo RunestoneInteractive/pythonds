@@ -44,8 +44,12 @@ Discussion Questions
 
 5. Derive the Big-O running time for the topological sort algorithm.
 
+.. shortanswer:: shorta1
+
 6. Derive the Big-O running time for the strongly connected components
    algorithm.
+   
+.. shortanswer:: shorta1
 
 7. Show each step in applying Dijkstra’s algorithm to the graph shown above.
 
