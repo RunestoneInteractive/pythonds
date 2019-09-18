@@ -328,7 +328,7 @@ in our examples.
 
 A variation of the linear probing idea is called **quadratic probing**.
 Instead of using a constant “skip” value, we use a rehash function that
-increments the hash value by 1, 3, 5, 7, 9, and so on. This means that
+increments the hash value by 1, 4, 9, 16, 25, 36, and so on. This means that
 if the first hash value is *h*, the successive values are :math:`h+1`,
 :math:`h+4`, :math:`h+9`, :math:`h+16`, and so on. In other words,
 quadratic probing uses a skip consisting of successive perfect squares.
