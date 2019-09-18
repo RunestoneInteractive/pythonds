@@ -42,14 +42,14 @@ Discussion Questions
 
 4. What is the Big-O running time of the ``buildGraph`` function?
 
-5. Derive the Big-O running time for the topological sort algorithm.
+.. shortanswer:: BigO
 
-.. shortanswer:: shorta1
+   5. Derive the Big-O running time for the topological sort algorithm.
 
-6. Derive the Big-O running time for the strongly connected components
+.. shortanswer:: BigOTwo
+
+   6. Derive the Big-O running time for the strongly connected components
    algorithm.
-   
-.. shortanswer:: shorta1
 
 7. Show each step in applying Dijkstra’s algorithm to the graph shown above.
 
