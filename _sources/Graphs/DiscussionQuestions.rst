@@ -39,8 +39,19 @@ Discussion Questions
 
 3. Ignoring the weights, perform a breadth first search on the graph
    from the previous question.
-
-4. What is the Big-O running time of the ``buildGraph`` function?
+   
+.. mchoice:: question1_1
+   :answer_a: O(n)
+   :answer_b: O(n<sup>2</sup>)
+   :answer_c: O(1)
+   :answer_d: O(n<sup>3</sup>)
+   :correct: b
+   :feedback_a: O(n) would suggest that there is no nesting. There are several nested for loops.
+   :feedback_b: Correct. The two consecutively nested for loops would dictate that this is in the realm of O(n<sup>2</sup>).
+   :feedback_c: O(1) would suggest that the function is constant. Since there are multiple for loops intertwined, it is not in constant time.
+   :feedback_d: O(n<sup>3</sup>) would suggest that there are three consecutively nested for loops. There are only two.
+   
+   4. What is the Big-O running time of the ``buildGraph`` function?
 
 .. shortanswer:: BigO
 
@@ -61,8 +72,10 @@ Discussion Questions
 
 10. Derive an expression for the base of the exponent used in expressing the 
     running time of the knights tour.
+    
+.. shortanswer:: DFS
 
-11. Explain why the general DFS algorithm is not suitable for solving 
+   11. Explain why the general DFS algorithm is not suitable for solving 
     the knights tour problem.
 
 12. What is the Big-O running time for Prim’s minimum 
