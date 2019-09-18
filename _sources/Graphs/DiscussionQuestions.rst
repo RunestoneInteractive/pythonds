@@ -78,6 +78,17 @@ Discussion Questions
    11. Explain why the general DFS algorithm is not suitable for solving 
     the knights tour problem.
 
-12. What is the Big-O running time for Prim’s minimum 
+.. mchoice:: question1_2
+   :answer_a: O(1)
+   :answer_b: O(n<sup>3</sup>) 
+   :answer_c: O(n)
+   :answer_d: O(n<sup>2</sup>)
+   :correct: b
+   :feedback_a: (Placeholder)
+   :feedback_b: (Placeholder)
+   :feedback_c: (Placeholder)
+   :feedback_d: (Placeholder)
+   
+   12. What is the Big-O running time for Prim’s minimum 
     spanning tree algorithm?
 
