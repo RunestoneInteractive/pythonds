@@ -37,7 +37,10 @@ Discussion Questions
            | 5      | 6    | 13     |
            +--------+------+--------+
 
-3. Ignoring the weights, perform a breadth first search on the graph
+.. activecode:: breadthfirst
+   :coach:
+
+   3. Ignoring the weights, perform a breadth first search on the graph
    from the previous question.
    
 .. mchoice:: question1_1
@@ -64,7 +67,10 @@ Discussion Questions
 
 7. Show each step in applying Dijkstra’s algorithm to the graph shown above.
 
-8. Using Prim’s algorithm, find the minimum weight spanning tree for the
+.. activecode:: primsalg
+   :coach:
+
+   8. Using Prim’s algorithm, find the minimum weight spanning tree for the
    graph shown above.
 
 9. Draw a dependency graph illustrating the steps needed to send an
