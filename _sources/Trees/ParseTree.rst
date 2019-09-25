@@ -304,7 +304,8 @@ equivalent to ``operator.add(2,2)``.
 **Listing 1**
 
 .. sourcecode:: python
-
+    
+    import operator
     def evaluate(parseTree):
         opers = {'+':operator.add, '-':operator.sub, '*':operator.mul, '/':operator.truediv}
 
