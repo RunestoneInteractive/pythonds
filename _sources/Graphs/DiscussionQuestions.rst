@@ -36,9 +36,12 @@ Discussion Questions
            +--------+------+--------+
            | 5      | 6    | 13     |
            +--------+------+--------+
-
 3. Ignoring the weights, perform a breadth first search on the graph
    from the previous question.
+
+
+.. activecode:: breadthfirst
+   :coach:
    
 .. mchoice:: question1_1
    :answer_a: O(n)
@@ -67,6 +70,9 @@ Discussion Questions
 8. Using Prim’s algorithm, find the minimum weight spanning tree for the
    graph shown above.
 
+.. activecode:: primsalg
+   :coach:
+
 9. Draw a dependency graph illustrating the steps needed to send an
    email. Perform a topological sort on your graph.
 
@@ -83,11 +89,11 @@ Discussion Questions
    :answer_b: O(n<sup>3</sup>) 
    :answer_c: O(n)
    :answer_d: O(n<sup>2</sup>)
-   :correct: b
-   :feedback_a: (Placeholder)
-   :feedback_b: (Placeholder)
-   :feedback_c: (Placeholder)
-   :feedback_d: (Placeholder)
+   :correct: d
+   :feedback_a: O(1) would mean that the algorithm runs in constant time. This isn't true because there are several comparisons happening in the algorithm.
+   :feedback_b: O(n<sup>3</sup>) suggests that there are three consecutively nested loops. If you look at the example algorithm, it is obvious that there are not three nested loops.
+   :feedback_c: O(n) is linear time. The time it takes for this program to run doesn't grow linearly.
+   :feedback_d: Correct. Since you are not only comparing the weight of a branch but also if the branch has already been connected to, this would make the Big-O of the algorithm O(n<sup>2</sup>)
    
    12. What is the Big-O running time for Prim’s minimum 
     spanning tree algorithm?
