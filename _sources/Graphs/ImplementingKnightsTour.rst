@@ -93,7 +93,7 @@ get to node C again (see :ref:`Figure 8 <fig_ktf>`, :ref:`Figure 9 <fig_ktg>`, a
 test ``n < limit`` fails so we know that we have exhausted all the
 nodes in the graph. At this point we can return ``True`` to indicate
 that we have made a successful tour of the graph. When we return the
-list, ``path`` has the values ``[A,B,D,E,F,C]``, which is the the order
+list, ``path`` has the values ``[A,B,D,E,F,C]``, which is the order
 we need to traverse the graph to visit each node exactly once.
 
 

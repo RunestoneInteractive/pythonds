@@ -215,7 +215,7 @@ To choose the pivot value, we will consider the first, the middle, and
 the last element in the list. In our example, those are 54, 77, and 20.
 Now pick the median value, in our case 54, and use it for the pivot
 value (of course, that was the pivot value we used originally). The idea
-is that in the case where the the first item in the list does not belong
+is that in the case where the first item in the list does not belong
 toward the middle of the list, the median of three will choose a better
 “middle” value. This will be particularly useful when the original list
 is somewhat sorted to begin with. We leave the implementation of this
