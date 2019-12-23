@@ -26,7 +26,7 @@ accomplished by replacing it with the special Python value ``None``.
 However, since strings in Python are immutable, the first step in the
 process will be to convert the second string to a list. Each character
 from the first string can be checked against the characters in the list
-and if found, checked off by replacement.:ref:`ActiveCode 1 <lst_anagramSolution>` shows this function.
+and if found, checked off by replacement. :ref:`ActiveCode 1 <lst_anagramSolution>` shows this function.
 
 .. _lst_anagramSolution:
 

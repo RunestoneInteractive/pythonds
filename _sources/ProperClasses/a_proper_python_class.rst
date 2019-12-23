@@ -59,7 +59,7 @@ This is a nice starting point.  In fact, for some assignments this might be all 
 Lets fix up the representation to make printing and interacting with the die a bit more convenient.  For this we will implement the ``__str__`` and ``__repr__`` magic methods.
 
 
-.. activecode:: msdie_initial
+.. activecode:: msdie_initial1
     :language: python
 
     import random
