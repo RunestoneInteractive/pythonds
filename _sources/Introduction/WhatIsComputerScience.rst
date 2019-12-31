@@ -95,7 +95,7 @@ square root problem but we only need to know how to use it. This is
 sometimes referred to as a “black box” view of a process. We simply
 describe the interface: the name of the function, what is needed (the
 parameters), and what will be returned. The details are hidden inside
-(see :ref:`Figure 1.1 <fig_procabstraction>`).
+(see :ref:`Figure 1 <fig_procabstraction>`).
 
 .. _fig_procabstraction:
 
@@ -103,4 +103,5 @@ parameters), and what will be returned. The details are hidden inside
    :scale: 50 %
    :align: center
 
-   Figure 1.1: Procedural Abstraction
+   Figure 1: Procedural Abstraction
+
