@@ -57,7 +57,7 @@ long as the collection is a sequence. So, for example,
 
 ::
 
-    >>> for item in [1,3,6,2,5]:
+    >>> for item in [1, 3, 6, 2, 5]:
     ...    print(item)
     ...
     1
@@ -67,7 +67,7 @@ long as the collection is a sequence. So, for example,
     5
 
 assigns the variable ``item`` to be each successive value in the list
-[1,3,6,2,5]. The body of the iteration is then executed. This works for
+[1, 3, 6, 2, 5]. The body of the iteration is then executed. This works for
 any collection that is a sequence (lists, tuples, and strings).
 
 A common use of the ``for`` statement is to implement definite iteration
@@ -76,7 +76,7 @@ over a range of values. The statement
 ::
 
     >>> for item in range(5):
-    ...    print(item**2)
+    ...    print(item ** 2)
     ...
     0
     1
@@ -86,7 +86,7 @@ over a range of values. The statement
     >>>
 
 will perform the ``print`` function five times. The ``range`` function
-will return a range object representing the sequence 0,1,2,3,4 and each
+will return a range object representing the sequence 0, 1, 2, 3, 4 and each
 value will be assigned to the variable ``item``. This value is then
 squared and printed.
 
@@ -99,26 +99,30 @@ of the words.
 .. activecode:: intro_8
     :caption: Processing Each Character in a List of Strings
 
-    wordlist = ['cat','dog','rabbit']
-    letterlist = [ ]
-    for aword in wordlist:
-        for aletter in aword:
-            letterlist.append(aletter)
-    print(letterlist)
-
+    word_list = ["cat", "dog", "rabbit"]
+    letter_list = [ ]
+    for a_word in word_list:
+        for a_letter in a_word:
+            letter_list.append(a_letter)
+    print(letter_list)
 
 Selection statements allow programmers to ask questions and then, based
 on the result, perform different actions. Most programming languages
-provide two versions of this useful construct: the ``ifelse`` and the
-``if``. A simple example of a binary selection uses the ``ifelse``
+provide two versions of this useful construct: the ``if..else`` and the
+``if``. A simple example of a binary selection uses the ``if..else``
 statement.
 
 ::
 
-    if n<0:
-       print("Sorry, value is negative")
-    else:
-       print(math.sqrt(n))
+    >>> import math
+    >>> n = 16
+    >>> if n < 0:
+    ...   print("Sorry, value is negative")
+    ... else:
+    ...   print(math.sqrt(n))
+    ... 
+    4.0
+    >>> 
 
 In this example, the object referred to by ``n`` is checked to see if it
 is less than zero. If it is, a message is printed stating that it is
@@ -132,19 +136,19 @@ a score for a computer science test.
 
 ::
 
-    if score >= 90:
-       print('A')
-    else:
-       if score >=80:
-          print('B')
-       else:
-          if score >= 70:
-             print('C')
-          else:
-             if score >= 60:
-                print('D')
-             else:
-                print('F')
+    >>> if score >= 90:
+    ...     print("A")
+    ... else:
+    ...     if score >= 80:
+    ...         print("B")
+    ...     else:
+    ...         if score >= 70:
+    ...             print("C")
+    ...         else:
+    ...             if score >= 60:
+    ...                 print("D")
+    ...             else:
+    ...                 print("F")
 
 This fragment will classify a value called ``score`` by printing the
 letter grade earned. If the score is greater than or equal to 90, the
@@ -163,16 +167,17 @@ conditions fail.
 
 ::
 
-    if score >= 90:
-       print('A')
-    elif score >=80:
-       print('B')
-    elif score >= 70:
-       print('C')
-    elif score >= 60:
-       print('D')
-    else:
-       print('F')
+    >>> if score >= 90:
+    ...     print("A")
+    ... elif score >= 80:
+    ...     print("B")
+    ... elif score >= 70:
+    ...     print("C")
+    ... elif score >= 60:
+    ...     print("D")
+    ... else:
+    ...     print("F")
+    >>> 
 
 Python also has a single way selection construct, the ``if`` statement.
 With this statement, if the condition is true, an action is performed.
@@ -184,7 +189,7 @@ Regardless, the next action is to compute the square root.
 
 ::
 
-    if n<0:
+    if n < 0:
        n = abs(n)
     print(math.sqrt(n))
 
@@ -216,33 +221,33 @@ like to create a list of the first 10 perfect squares, we could use a
 
 ::
 
-    >>> sqlist=[]
-    >>> for x in range(1,11):
-             sqlist.append(x*x)
-
-    >>> sqlist
+    >>> sq_list = []
+    >>> for x in range(1, 11):
+    ...     sq_list.append(x * x)
+    ... 
+    >>> sq_list
     [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
-    >>>
+    >>> 
 
 Using a list comprehension, we can do this in one step as
 
 ::
 
-    >>> sqlist=[x*x for x in range(1,11)]
-    >>> sqlist
+    >>> sq_list=[x * x for x in range(1, 11)]
+    >>> sq_list
     [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
     >>>
 
 The variable ``x`` takes on the values 1 through 10 as specified by the
-``for`` construct. The value of ``x*x`` is then computed and added to
+``for`` construct. The value of ``x * x`` is then computed and added to
 the list that is being constructed. The general syntax for a list
 comprehension also allows a selection criteria to be added so that only
 certain items get added. For example,
 
 ::
 
-    >>> sqlist=[x*x for x in range(1,11) if x%2 != 0]
-    >>> sqlist
+    >>> sq_list=[x * x for x in range(1,11) if x % 2 != 0]
+    >>> sq_list
     [1, 9, 25, 49, 81]
     >>>
 
