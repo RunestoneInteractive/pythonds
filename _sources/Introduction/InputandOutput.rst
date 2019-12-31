@@ -21,10 +21,10 @@ input as follows:
 
 ::
 
-    aName = input('Please enter your name: ')
+    a_name = input("Please enter your name: ")
 
 Now whatever the user types after the prompt will be stored in the
-``aName`` variable. Using the input function, we can easily write
+``a_name`` variable. Using the input function, we can easily write
 instructions that will prompt the user to enter data and then
 incorporate that data into further processing. For example, in the
 following two statements, the first asks the user for their name and the
@@ -34,9 +34,9 @@ that is provided.
 .. activecode::  strstuff
     :caption: The input Function Returns a String
 
-    aName = input("Please enter your name ")
-    print("Your name in all capitals is",aName.upper(),
-          "and has length", len(aName))
+    a_name = input("Please enter your name ")
+    print("Your name in all capitals is",a_name.upper(),
+          "and has length", len(a_name))
 
 It is important to note that the value returned from the ``input``
 function will be a string representing the exact characters that were
@@ -47,9 +47,17 @@ that it can be used in further arithmetic processing.
 
 ::
 
-    sradius = input("Please enter the radius of the circle ")
-    radius = float(sradius)
-    diameter = 2 * radius
+    >>> s_radius = input("Please enter the radius of the circle ")
+    Please enter the radius of the circle 10
+    >>> s_radius
+    '10'
+    >>> radius = float(s_radius)
+    >>> radius
+    10.0
+    >>> diameter = 2 * radius
+    >>> diameter
+    20.0
+    >>> 
 
 String Formatting
 ^^^^^^^^^^^^^^^^^
@@ -67,11 +75,11 @@ the following session:
 
     >>> print("Hello")
     Hello
-    >>> print("Hello","World")
+    >>> print("Hello", "World")
     Hello World
-    >>> print("Hello","World", sep="***")
+    >>> print("Hello", "World", sep="***")
     Hello***World
-    >>> print("Hello","World", end="***")
+    >>> print("Hello", "World", end="***")
     Hello World***>>>
 
 It is often useful to have more control over the look of your output.
@@ -82,7 +90,7 @@ that will be inserted into the string. For example, the statement
 
 ::
 
-    print(aName, "is", age, "years old.")
+    >>> print(a_name, "is", age, "years old.")
 
 contains the words ``is`` and ``years old``, but the name and the age
 will change depending on the variable values at the time of execution.
@@ -90,7 +98,7 @@ Using a formatted string, we write the previous statement as
 
 ::
 
-    print("%s is %d years old." % (aName, age))
+    >>> print("%s is %d years old." % (a_name, age))
 
 This simple example illustrates a new string expression. The ``%``
 operator is a string operator called the **format operator**. The left
@@ -165,14 +173,14 @@ modifier to specify the name of the key.
 
     >>> price = 24
     >>> item = "banana"
-    >>> print("The %s costs %d cents"%(item,price))
+    >>> print("The %s costs %d cents" % (item, price))
     The banana costs 24 cents
-    >>> print("The %+10s costs %5.2f cents"%(item,price))
+    >>> print("The %+10s costs %5.2f cents" % (item, price))
     The     banana costs 24.00 cents
-    >>> print("The %+10s costs %10.2f cents"%(item,price))
+    >>> print("The %+10s costs %10.2f cents" % (item, price))
     The     banana costs      24.00 cents
-    >>> itemdict = {"item":"banana","cost":24}
-    >>> print("The %(item)s costs %(cost)7.1f cents"%itemdict)
+    >>> itemdict = {"item": "banana", "cost": 24}
+    >>> print("The %(item)s costs %(cost)7.1f cents" % itemdict)
     The banana costs    24.0 cents
     >>>
 
@@ -182,3 +190,53 @@ used in conjunction with a new ``Formatter`` class to implement complex
 string formatting. More about these features can be found in the Python
 library reference manual.
 
+::
+
+    >>> print("The {} costs {} cents".format(item, price))
+    The banana costs 24 cents
+    >>> print("The {:s} costs {:d} cents".format(item, price))
+    The banana costs 24 cents
+    >>> 
+
+Python 3.6 introduced **f-strings**, a way to use proper variable names
+instead of placeholders. Formatting conversion symbols can still be used
+inside an f-string but alignment symbols are different
+(see :ref:`Table 11 <tab_fstraast>`). We are going to use this formatting
+method for the rest of the text.
+
+::
+
+    >>> print(f"The {item:10} costs {price:10.2f} cents")
+    The banana     costs      24.00 cents
+    >>> print(f"The {item:<10} costs {price:<10.2f} cents")
+    The banana     costs 24.00      cents
+    >>> print(f"The {item:^10} costs {price:^10.2f} cents")
+    The   banana   costs   24.00    cents
+    >>> print(f"The {item:>10} costs {price:>10.2f} cents")
+    The     banana costs      24.00 cents
+    >>> print(f"The {item:>10} costs {price:>010.2f} cents")
+    The     banana costs 0000024.00 cents
+    >>> itemdict = {"item": "banana", "price": 24}
+    >>> print(f"Item:{itemdict['item']:.>10}\n" +
+    ... f"Price:{'$':.>4}{itemdict['price']:5.2f}")
+    Item:....banana
+    Price:...$24.00
+    >>> 
+
+.. _tab_fstraast:
+
+.. table:: **Table 11: f-string Formatting Options**
+
+    ========================= ============= ==================================================================================================
+                 **Modifier**   **Example**                                                                                    **Description**
+    ========================= ============= ==================================================================================================
+                       number      ``:20d``                                                               Put the value in a field width of 20
+                        ``<``     ``:<20d``                                          Put the value in a field 20 characters wide, left-aligned
+                        ``>``     ``:>20d``                                         Put the value in a field 20 characters wide, right-aligned
+                        ``^``     ``:^20d``                                         Put the value in a field 20 characters wide, right-aligned
+                        ``0``     ``:020d``                           Put the value in a field 20 characters wide, fill in with leading zeros.
+                        ``.``    ``:20.2f``   Put the value in a field 20 characters wide with 2 characters to the right of the decimal point.
+    ========================= ============= ==================================================================================================
+
+
+More about these features can be found in the Python library reference manual.
