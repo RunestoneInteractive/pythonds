@@ -16,7 +16,7 @@ value you pass into it.
 ::
 
     >>> def square(n):
-    ...    return n**2
+    ...    return n ** 2
     ...
     >>> square(3)
     9
@@ -59,21 +59,20 @@ marker. Any characters that follow the # on a line are ignored.
 
 .. sourcecode:: python
 
-    def squareroot(n):
-        root = n/2    #initial guess will be 1/2 of n
+    def square_root(n):
+        root = n / 2  # initial guess will be 1/2 of n
         for k in range(20):
-            root = (1/2)*(root + (n / root))
+            root = (1 / 2) * (root + (n / root))
 
         return root
 
-
 ::
 
-    >>>squareroot(9)
+    >>> square_root(9)
     3.0
-    >>>squareroot(4563)
-    67.549981495186216
-    >>>
+    >>> square_root(4563)
+    67.54998149518622
+    >>> 
 
 .. admonition:: Self Check
 
