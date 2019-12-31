@@ -9,8 +9,8 @@ In this section, we will review the programming language Python and also
 provide some more detailed examples of the ideas from the previous
 section. If you are new to Python or find that you need more information
 about any of the topics presented, we recommend that you consult a resource such as
-the `Python Language Reference <http://docs.python.org/3/reference/index.html>`_
-or a `Python Tutorial <http://docs.python.org/3/tutorial/index.html>`_.
+the `Python Language Reference <https://docs.python.org/3/reference/index.html>`_
+or a `Python Tutorial <https://docs.python.org/3/tutorial/index.html>`_.
 Our goal
 here is to reacquaint you with the language and also reinforce some of
 the concepts that will be central to later chapters.
