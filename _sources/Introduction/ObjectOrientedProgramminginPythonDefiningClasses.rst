@@ -30,8 +30,6 @@ numeric classes for our use. There are times, however, that it would be
 most appropriate to be able to create data objects that “look like”
 fractions.
 
-
-
 A fraction such as :math:`\frac {3}{5}` consists of two parts. The top
 value, known as the numerator, can be any integer. The bottom value,
 called the denominator, can be any integer greater than 0 (negative
@@ -55,7 +53,7 @@ this example,
 
     class Fraction:
 
-       #the methods go here
+       # the methods go here
 
 
 provides the framework for us to define the methods. The first method
@@ -73,9 +71,9 @@ and is shown in :ref:`Listing 2 <lst_pyconstructor>`.
 .. sourcecode:: python
 
     class Fraction:
-
+        """Class Fraction"""
         def __init__(self,top,bottom):
-
+            """Constructor definition"""
             self.num = top
             self.den = bottom
 
@@ -89,7 +87,7 @@ notation ``self.num`` in the constructor defines the ``fraction`` object
 to have an internal data object called ``num`` as part of its state.
 Likewise, ``self.den`` creates the denominator. The values of the two
 formal parameters are initially assigned to the state, allowing the new
-``fraction`` object to know its starting value.
+``Fraction`` object to know its starting value.
 
 To create an instance of the ``Fraction`` class, we must invoke the
 constructor. This happens by using the name of the class and passing
@@ -98,9 +96,9 @@ actual values for the necessary state (note that we never directly
 
 ::
 
-    myfraction = Fraction(3,5)
+    my_fraction = Fraction(3, 5)
 
-creates an object called ``myfraction`` representing the fraction
+creates an object called ``my_fraction`` representing the fraction
 :math:`\frac {3}{5}` (three-fifths). :ref:`Figure 5 <fig_fraction1>` shows this
 object as it is now implemented.
 
@@ -117,14 +115,15 @@ a ``Fraction`` object.
 
 ::
 
-    >>> myf = Fraction(3,5)
-    >>> print(myf)
-    <__main__.Fraction instance at 0x409b1acc>
+    >>> my_fraction = Fraction(3, 5)
+    >>> print(my_fraction)
+    <__main__.Fraction object at 0x103203eb8>
+    >>> 
 
-The ``fraction`` object, ``myf``, does not know how to respond to this
+The ``Fraction`` object, ``my_fraction``, does not know how to respond to this
 request to print. The ``print`` function requires that the object
 convert itself into a string so that the string can be written to the
-output. The only choice ``myf`` has is to show the actual reference that
+output. The only choice ``my_fraction`` has is to show the actual reference that
 is stored in the variable (the address itself). This is not what we
 want.
 
@@ -144,21 +143,17 @@ in order to do its job.
 
 .. sourcecode:: python
 
-       def show(self):
-            print(self.num,"/",self.den)
-
-
+    def show(self):
+            print(f"{self.num}/{self.den}")
 
 ::
 
-    >>> myf = Fraction(3,5)
-    >>> myf.show()
-    3 / 5
-    >>> print(myf)
-    <__main__.Fraction instance at 0x40bce9ac>
+    >>> my_fraction = Fraction(3, 5)
+    >>> my_fraction.show()
+    3/5
+    >>> print(my_fraction)
+    <__main__.Fraction object at 0x40bce9ac>
     >>>
-
-
 
 In Python, all classes have a set of standard methods that are provided
 but may not work properly. One of these, ``__str__``, is the method to
@@ -184,21 +179,21 @@ various ways that this function is used.
 
 .. sourcecode:: python
 
-        def __str__(self):
-            return str(self.num)+"/"+str(self.den)
+    def __str__(self):
+        return f"{self.num}/{self.den}"
 
 
 
 ::
 
-    >>> myf = Fraction(3,5)
-    >>> print(myf)
+    >>> my_fraction = Fraction(3, 5)
+    >>> print(my_fraction)
     3/5
-    >>> print("I ate", myf, "of the pizza")
-    I ate 3/5 of the pizza
-    >>> myf.__str__()
+    >>> print(f"I ate {my_fraction} of pizza")
+    I ate 3/5 of pizza
+    >>> my_fraction.__str__()
     '3/5'
-    >>> str(myf)
+    >>> str(my_fraction)
     '3/5'
     >>>
 
@@ -210,16 +205,13 @@ to add two fractions, we get the following:
 
 ::
 
-    >>> f1 = Fraction(1,4)
-    >>> f2 = Fraction(1,2)
-    >>> f1+f2
-
+    >>> f1 = Fraction(1, 4)
+    >>> f2 = Fraction(1, 2)
+    >>> f1 + f2
     Traceback (most recent call last):
-      File "<pyshell#173>", line 1, in -toplevel-
-        f1+f2
-    TypeError: unsupported operand type(s) for +:
-              'instance' and 'instance'
-    >>>
+    File "<stdin>", line 1, in <module>
+    TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'
+    >>> 
 
 If you look closely at the error, you see that the problem is that the
 “+” operator does not understand the ``Fraction`` operands.
@@ -236,7 +228,7 @@ expression. For example,
 
 would ask the ``Fraction`` object ``f1`` to add the ``Fraction`` object
 ``f2`` to itself. This can be written in the standard notation,
-``f1+f2``.
+``f1 + f2``.
 
 Two fractions must have the same denominator to be added. The easiest
 way to make sure they have the same denominator is to simply use the
@@ -254,20 +246,19 @@ addition, and then printing our result.
 
 .. sourcecode:: python
 
-       def __add__(self,otherfraction):
+   def __add__(self,other_fraction):
 
-            newnum = self.num*otherfraction.den + self.den*otherfraction.num
-            newden = self.den * otherfraction.den
+        new_num = self.num * other_fraction.den + \
+                    self.den * other_fraction.num
+        new_den = self.den * other_fraction.den
 
-            return Fraction(newnum,newden)
-
-
+        return Fraction(new_num, new_den)
 
 ::
 
-    >>> f1=Fraction(1,4)
-    >>> f2=Fraction(1,2)
-    >>> f3=f1+f2
+    >>> f1 = Fraction(1, 4)
+    >>> f2 = Fraction(1, 2)
+    >>> f3 = f1 + f2
     >>> print(f3)
     6/8
     >>>
@@ -300,16 +291,12 @@ represented by a negative numerator.
 .. activecode::  gcd_cl
     :caption: The Greatest Common Divisor Function
 
-    def gcd(m,n):
-        while m%n != 0:
-            oldm = m
-            oldn = n
-
-            m = oldn
-            n = oldm%oldn
+    def gcd(m, n):
+        while m % n != 0:
+            m, n = n, m % n
         return n
 
-    print(gcd(20,10))
+    print(gcd(20, 10))
 
 Now we can use this function to help reduce any fraction. To put a
 fraction in lowest terms, we will divide the numerator and the
@@ -326,18 +313,22 @@ the bottom by 2 creates a new fraction, :math:`3/4` (see
 
 .. sourcecode:: python
 
-        def __add__(self,otherfraction):
-            newnum = self.num*otherfraction.den + self.den*otherfraction.num
-            newden = self.den * otherfraction.den
-            common = gcd(newnum,newden)
-            return Fraction(newnum//common,newden//common)
+    def __add__(self, other_fraction):
+        new_num = self.num * other_fraction.den + \
+                     self.den*other_fraction.num
+        new_den = self.den * other_fraction.den
+        common = gcd(new_num, new_den)
+        return Fraction(
+                        new_num // common,
+                        new_den // common
+                        )
 
 
 ::
 
-    >>> f1=Fraction(1,4)
-    >>> f2=Fraction(1,2)
-    >>> f3=f1+f2
+    >>> f1 = Fraction(1, 4)
+    >>> f2 = Fraction(1, 2)
+    >>> f3 = f1 + f2
     >>> print(f3)
     3/4
     >>>
@@ -385,11 +376,11 @@ are other relational operators that can be overridden. For example, the
 
 .. sourcecode:: python
 
-        def __eq__(self, other):
-            firstnum = self.num * other.den
-            secondnum = other.num * self.den
+    def __eq__(self, other_fraction):
+        first_num = self.num * other_fraction.den
+        second_num = other_fraction.num * self.den
 
-            return firstnum == secondnum
+        return first_num == second_num
 
 The complete ``Fraction`` class, up to this point, is shown in
 :ref:`ActiveCode 2 <lst_fractioncode>`. We leave the remaining arithmetic and relational
@@ -400,42 +391,40 @@ methods as exercises.
 .. activecode:: fraction_class
    :caption: The Fraction Class
 
-   def gcd(m,n):
-       while m%n != 0:
-           oldm = m
-           oldn = n
-
-           m = oldn
-           n = oldm%oldn
+   def gcd(m, n):
+       while m % n != 0:
+           m, n = n, m % n
        return n
 
    class Fraction:
-        def __init__(self,top,bottom):
-            self.num = top
-            self.den = bottom
+       def __init__(self, top, bottom):
+           self.num = top
+           self.den = bottom
 
-        def __str__(self):
-            return str(self.num)+"/"+str(self.den)
+       def __str__(self):
+           return "{:d}/{:d}".format(self.num, self.den)
 
-        def show(self):
-            print(self.num,"/",self.den)
+       def __eq__(self, other_fraction):
+           first_num = self.num * other_fraction.den
+           second_num = other_fraction.num * self.den
 
-        def __add__(self,otherfraction):
-            newnum = self.num*otherfraction.den + \
-                         self.den*otherfraction.num
-            newden = self.den * otherfraction.den
-            common = gcd(newnum,newden)
-            return Fraction(newnum//common,newden//common)
+           return first_num == second_num
 
-        def __eq__(self, other):
-            firstnum = self.num * other.den
-            secondnum = other.num * self.den
+       def __add__(self, other_fraction):
+           new_num = self.num * other_fraction.den \
+           + self.den * other_fraction.num
+           new_den = self.den * other_fraction.den
+           common = gcd(new_num, new_den)
+           return Fraction(new_num // common, new_den // common)
 
-            return firstnum == secondnum
+       def show(self):
+           print("{:d}/{:d}".format(self.num, self.den))
 
-   x = Fraction(1,2)
-   y = Fraction(2,3)
-   print(x+y)
+   x = Fraction(1, 2)
+   x.show()
+   y = Fraction(2, 3)
+   print(y)
+   print(x + y)
    print(x == y)
 
 .. admonition:: Self  Check
@@ -500,7 +489,7 @@ output. In general, gates have a single output line. The value of the
 output is dependent on the values given on the input lines.
 
 AND gates have two input lines, each of which can be either 0 or 1
-(representing ``False`` or ``True``, repectively). If both of the input
+(representing ``False`` or ``True``, respectively). If both of the input
 lines have the value 1, the resulting output is 1. However, if either or
 both of the input lines is 0, the result is 0. OR gates also have two
 input lines and produce a 1 if one or both of the input values is a 1.
@@ -573,19 +562,18 @@ class is shown in :ref:`Listing 8 <lst_logicgateclass>`.
 .. sourcecode:: python
 
     class LogicGate:
-
-        def __init__(self,n):
+        def __init__(self, n):
             self.label = n
             self.output = None
 
-        def getLabel(self):
+        def get_label(self):
             return self.label
 
-        def getOutput(self):
-            self.output = self.performGateLogic()
+        def get_output(self):
+            self.output = self.perform_gate_logic()
             return self.output
 
-At this point, we will not implement the ``performGateLogic`` function.
+At this point, we will not implement the ``perform_gate_logic`` function.
 The reason for this is that we do not know how each gate will perform
 its own logic operation. Those details will be included by each
 individual gate that is added to the hierarchy. This is a very powerful
@@ -593,7 +581,7 @@ idea in object-oriented programming. We are writing a method that will
 use code that does not exist yet. The parameter ``self`` is a reference
 to the actual gate object invoking the method. Any new logic gate that
 gets added to the hierarchy will simply need to implement the
-``performGateLogic`` function and it will be used at the appropriate
+``perform_gate_logic`` function and it will be used at the appropriate
 time. Once done, the gate can provide its output value. This ability to
 extend a hierarchy that currently exists and provide the specific
 functions that the hierarchy needs to use the new class is extremely
@@ -614,18 +602,18 @@ we will use that terminology in our implementation.
 .. sourcecode:: python
 
     class BinaryGate(LogicGate):
+        def __init__(self, lbl):
+            LogicGate.__init__(self, lbl)
+            self.pin_a = None
+            self.pin_b = None
 
-        def __init__(self,n):
-            LogicGate.__init__(self,n)
+        def get_pin_a(self):
+            return int(input(f"Enter pin A input for gate \
+                {self.get_label()}: "))
 
-            self.pinA = None
-            self.pinB = None
-
-        def getPinA(self):
-            return int(input("Enter Pin A input for gate "+ self.getLabel()+"-->"))
-
-        def getPinB(self):
-            return int(input("Enter Pin B input for gate "+ self.getLabel()+"-->"))
+        def get_pin_b(self):
+            return int(input(f"Enter pin B input for gate \
+                {self.get_label()}: "))
 
 .. _lst_unarygateclass:
 
@@ -634,14 +622,13 @@ we will use that terminology in our implementation.
 .. sourcecode:: python
 
     class UnaryGate(LogicGate):
-
-        def __init__(self,n):
-            LogicGate.__init__(self,n)
-
+        def __init__(self, lbl):
+            LogicGate.__init__(self, lbl)
             self.pin = None
 
-        def getPin(self):
-            return int(input("Enter Pin input for gate "+ self.getLabel()+"-->"))
+        def get_pin(self):
+            return int(input(f"Enter pin input for gate \
+                {self.get_label()}: "))
 
 
 
@@ -651,8 +638,8 @@ explicit call to the constructor of the parent class using the parent's ``__init
 method. When creating an instance of the ``BinaryGate`` class, we
 first want to initialize any data items that are inherited from
 ``LogicGate``. In this case, that means the label for the gate. The
-constructor then goes on to add the two input lines (``pinA`` and
-``pinB``). This is a very common pattern that you should always use when
+constructor then goes on to add the two input lines (``pin_a`` and
+``pin_b``). This is a very common pattern that you should always use when
 building class hierarchies. Child class constructors need to call parent
 class constructors and then move on to their own distinguishing data.
 
@@ -660,8 +647,9 @@ Python
 also has a function called ``super`` which can be used in place of explicitly
 naming the parent class.  This is a more general mechanism, and is widely
 used, especially when a class has more than one parent.  But, this is not something
-we are going to discuss in this introduction.  For example in our example above
-``LogicGate.__init__(self,n)`` could be replaced with ``super(UnaryGate,self).__init__(n)``.
+we are going to discuss in this introduction.  In our example above
+``LogicGate.__init__(self, lbl)`` could be replaced with ``super().__init__(lbl)``, 
+``super(UnaryGate, self).__init__(lbl)``, or ``super().__init__("UnaryGate", lbl)``.
 
 The only behavior that the ``BinaryGate`` class adds is the ability to
 get the values from the two input lines. Since these values come from
@@ -685,22 +673,20 @@ inherits two input lines, one output line, and a label.
 .. sourcecode:: python
 
     class AndGate(BinaryGate):
+        def __init__(self, lbl):
+            super().__init__(lbl)
 
-        def __init__(self,n):
-            super(AndGate,self).__init__(n)
-
-        def performGateLogic(self):
-
-            a = self.getPinA()
-            b = self.getPinB()
-            if a==1 and b==1:
+        def perform_gate_logic(self):
+            a = self.get_pin_a()
+            b = self.get_pin_b()
+            if a == 1 and b == 1:
                 return 1
             else:
                 return 0
 
 The only thing ``AndGate`` needs to add is the specific behavior that
 performs the boolean operation that was described earlier. This is the
-place where we can provide the ``performGateLogic`` method. For an AND
+place where we can provide the ``perform_gate_logic`` method. For an AND
 gate, this method first must get the two input values and then only
 return 1 if both input values are 1. The complete class is shown in
 :ref:`Listing 11 <lst_andgateclass>`.
@@ -708,23 +694,23 @@ return 1 if both input values are 1. The complete class is shown in
 We can show the ``AndGate`` class in action by creating an instance and
 asking it to compute its output. The following session shows an
 ``AndGate`` object, ``g1``, that has an internal label ``"G1"``. When we
-invoke the ``getOutput`` method, the object must first call its
-``performGateLogic`` method which in turn queries the two input lines.
+invoke the ``get_output`` method, the object must first call its
+``perform_gate_logic`` method which in turn queries the two input lines.
 Once the values are provided, the correct output is shown.
 
 ::
 
-   >>> g1 = AndGate("G1")
-   >>> g1.getOutput()
-   Enter Pin A input for gate G1-->1
-   Enter Pin B input for gate G1-->0
-   0
+    >>> g1 = AndGate("G1")
+    >>> g1.get_output()
+    Enter pin A input for gate G1: 1
+    Enter pin B input for gate G1: 0
+    0
 
 
 The same development can be done for OR gates and NOT gates. The
 ``OrGate`` class will also be a subclass of ``BinaryGate`` and the
 ``NotGate`` class will extend the ``UnaryGate`` class. Both of these
-classes will need to provide their own ``performGateLogic`` functions,
+classes will need to provide their own ``perform_gate_logic`` functions,
 as this is their specific behavior.
 
 We can use a single gate by first constructing an instance of one of the
@@ -734,17 +720,17 @@ need inputs to be provided). For example:
 ::
 
     >>> g2 = OrGate("G2")
-    >>> g2.getOutput()
-    Enter Pin A input for gate G2-->1
-    Enter Pin B input for gate G2-->1
+    >>> g2.get_output()
+    Enter pin A input for gate G2: 1
+    Enter pin B input for gate G2: 1
     1
-    >>> g2.getOutput()
-    Enter Pin A input for gate G2-->0
-    Enter Pin B input for gate G2-->0
+    >>> g2.get_output()
+    Enter pin A input for gate G2: 0
+    Enter pin B input for gate G2: 0
     0
     >>> g3 = NotGate("G3")
-    >>> g3.getOutput()
-    Enter Pin input for gate G3-->0
+    >>> g3.get_output()
+    Enter pin input for gate G3: 0
     1
 
 Now that we have the basic gates working, we can turn our attention to
@@ -776,11 +762,11 @@ that have HAS-A relationships (with no inheritance).
 
 :ref:`Listing 12 <lst_Connectorclass>` shows the ``Connector`` class. The two gate
 instances within each connector object will be referred to as the
-``fromgate`` and the ``togate``, recognizing that data values will
+``from_gate`` and the ``to_gate``, recognizing that data values will
 “flow” from the output of one gate into an input line of the next. The
-call to ``setNextPin`` is very important for making connections (see
+call to ``set_next_pin`` is very important for making connections (see
 :ref:`Listing 13 <lst_setpin>`). We need to add this method to our gate classes so
-that each ``togate`` can choose the proper input line for the
+that each ``to_gate`` can choose the proper input line for the
 connection.
 
 .. _lst_Connectorclass:
@@ -790,23 +776,22 @@ connection.
 .. sourcecode:: python
 
     class Connector:
-
         def __init__(self, fgate, tgate):
-            self.fromgate = fgate
-            self.togate = tgate
+            self.from_gate = fgate
+            self.to_gate = tgate
 
-            tgate.setNextPin(self)
+            tgate.set_next_pin(self)
 
-        def getFrom(self):
-            return self.fromgate
+        def get_from(self):
+            return self.from_gate
 
-        def getTo(self):
-            return self.togate
+        def get_to(self):
+            return self.to_gate
 
 In the ``BinaryGate`` class, for gates with two possible input lines,
 the connector must be connected to only one line. If both of them are
-available, we will choose ``pinA`` by default. If ``pinA`` is already
-connected, then we will choose ``pinB``. It is not possible to connect
+available, we will choose ``pin_a`` by default. If ``pin_a`` is already
+connected, then we will choose ``pin_b``. It is not possible to connect
 to a gate with no available input lines.
 
 .. _lst_setpin:
@@ -815,21 +800,21 @@ to a gate with no available input lines.
 
 .. sourcecode:: python
 
-        def setNextPin(self,source):
-            if self.pinA == None:
-                self.pinA = source
+    def set_next_pin(self, source):
+        if self.pin_a == None:
+            self.pin_a = source
+        else:
+            if self.pin_b == None:
+                self.pin_b = source
             else:
-                if self.pinB == None:
-                    self.pinB = source
-                else:
-                   raise RuntimeError("Error: NO EMPTY PINS")
+                raise RuntimeError("Error: NO EMPTY PINS")
 
 Now it is possible to get input from two places: externally, as before,
 and from the output of a gate that is connected to that input line. This
-requires a change to the ``getPinA`` and ``getPinB`` methods (see
+requires a change to the ``get_pin_a`` and ``get_pin_b`` methods (see
 :ref:`Listing 14 <lst_newgetpin>`). If the input line is not connected to anything
 (``None``), then ask the user externally as before. However, if there is
-a connection, the connection is accessed and ``fromgate``’s output value
+a connection, the connection is accessed and ``from_gate``’s output value
 is retrieved. This in turn causes that gate to process its logic. This
 continues until all input is available and the final output value
 becomes the required input for the gate in question. In a sense, the
@@ -842,11 +827,14 @@ output.
 
 .. sourcecode:: python
 
-        def getPinA(self):
-            if self.pinA == None:
-                return input("Enter Pin A input for gate " + self.getLabel()+"-->")
-            else:
-                return self.pinA.getFrom().getOutput()
+    def get_pin_a(self):
+        if self.pin_a == None:
+            return input(
+                f"Enter pin A input for gate \
+                {self.get_label()}: "
+            )
+        else:
+            return self.pin_a.get_from().get_output()
 
 The following fragment constructs the circuit shown earlier in the
 section:
@@ -857,9 +845,9 @@ section:
     >>> g2 = AndGate("G2")
     >>> g3 = OrGate("G3")
     >>> g4 = NotGate("G4")
-    >>> c1 = Connector(g1,g3)
-    >>> c2 = Connector(g2,g3)
-    >>> c3 = Connector(g3,g4)
+    >>> c1 = Connector(g1, g3)
+    >>> c2 = Connector(g2, g3)
+    >>> c3 = Connector(g3, g4)
 
 The outputs from the two AND gates (``g1`` and ``g2``) are connected to
 the OR gate (``g3``) and that output is connected to the NOT gate
@@ -868,11 +856,11 @@ circuit. For example:
 
 ::
 
-    >>> g4.getOutput()
-    Pin A input for gate G1-->0
-    Pin B input for gate G1-->1
-    Pin A input for gate G2-->1
-    Pin B input for gate G2-->1
+    >>> g4.get_output()
+    Enter pin A input for gate G1: 0
+    Enter pin B input for gate G1: 1
+    Enter pin A input for gate G2: 1
+    Enter pin B input for gate G2: 1
     0
 
 Try it yourself using ActiveCode 4.
@@ -882,90 +870,90 @@ Try it yourself using ActiveCode 4.
 
     class LogicGate:
 
-        def __init__(self,n):
+        def __init__(self, n):
             self.name = n
             self.output = None
 
-        def getLabel(self):
+        def get_label(self):
             return self.name
 
-        def getOutput(self):
-            self.output = self.performGateLogic()
+        def get_output(self):
+            self.output = self.perform_gate_logic()
             return self.output
 
 
     class BinaryGate(LogicGate):
 
-        def __init__(self,n):
+        def __init__(self, n):
             super(BinaryGate, self).__init__(n)
 
-            self.pinA = None
-            self.pinB = None
+            self.pin_a = None
+            self.pin_b = None
 
-        def getPinA(self):
-            if self.pinA == None:
-                return int(input("Enter Pin A input for gate "+self.getLabel()+"-->"))
+        def get_pin_a(self):
+            if self.pin_a == None:
+                return int(input("Enter Pin A input for gate " + self.get_label() + ": "))
             else:
-                return self.pinA.getFrom().getOutput()
+                return self.pin_a.get_from().get_output()
 
-        def getPinB(self):
-            if self.pinB == None:
-                return int(input("Enter Pin B input for gate "+self.getLabel()+"-->"))
+        def get_pin_b(self):
+            if self.pin_b == None:
+                return int(input("Enter Pin B input for gate " + self.get_label() + ": "))
             else:
-                return self.pinB.getFrom().getOutput()
+                return self.pin_b.get_from().get_output()
 
-        def setNextPin(self,source):
-            if self.pinA == None:
-                self.pinA = source
+        def set_next_pin(self, source):
+            if self.pin_a == None:
+                self.pin_a = source
             else:
-                if self.pinB == None:
-                    self.pinB = source
+                if self.pin_b == None:
+                    self.pin_b = source
                 else:
                     print("Cannot Connect: NO EMPTY PINS on this gate")
 
 
     class AndGate(BinaryGate):
 
-        def __init__(self,n):
-            BinaryGate.__init__(self,n)
+        def __init__(self, n):
+            BinaryGate.__init__(self, n)
 
-        def performGateLogic(self):
+        def perform_gate_logic(self):
 
-            a = self.getPinA()
-            b = self.getPinB()
-            if a==1 and b==1:
+            a = self.get_pin_a()
+            b = self.get_pin_b()
+            if a == 1 and b == 1:
                 return 1
             else:
                 return 0
 
     class OrGate(BinaryGate):
 
-        def __init__(self,n):
-            BinaryGate.__init__(self,n)
+        def __init__(self, n):
+            BinaryGate.__init__(self, n)
 
-        def performGateLogic(self):
+        def perform_gate_logic(self):
 
-            a = self.getPinA()
-            b = self.getPinB()
-            if a ==1 or b==1:
+            a = self.get_pin_a()
+            b = self.get_pin_b()
+            if a == 1 or b == 1:
                 return 1
             else:
                 return 0
 
     class UnaryGate(LogicGate):
 
-        def __init__(self,n):
-            LogicGate.__init__(self,n)
+        def __init__(self, n):
+            LogicGate.__init__(self, n)
 
             self.pin = None
 
-        def getPin(self):
+        def get_pin(self):
             if self.pin == None:
-                return int(input("Enter Pin input for gate "+self.getLabel()+"-->"))
+                return int(input("Enter Pin input for gate " + self.get_label() + ": "))
             else:
-                return self.pin.getFrom().getOutput()
+                return self.pin.get_from().get_output()
 
-        def setNextPin(self,source):
+        def set_next_pin(self, source):
             if self.pin == None:
                 self.pin = source
             else:
@@ -974,11 +962,11 @@ Try it yourself using ActiveCode 4.
 
     class NotGate(UnaryGate):
 
-        def __init__(self,n):
-            UnaryGate.__init__(self,n)
+        def __init__(self, n):
+            UnaryGate.__init__(self, n)
 
-        def performGateLogic(self):
-            if self.getPin():
+        def perform_gate_logic(self):
+            if self.get_pin():
                 return 0
             else:
                 return 1
@@ -987,27 +975,27 @@ Try it yourself using ActiveCode 4.
     class Connector:
 
         def __init__(self, fgate, tgate):
-            self.fromgate = fgate
-            self.togate = tgate
+            self.from_gate = fgate
+            self.to_gate = tgate
 
-            tgate.setNextPin(self)
+            tgate.set_next_pin(self)
 
-        def getFrom(self):
-            return self.fromgate
+        def get_from(self):
+            return self.from_gate
 
         def getTo(self):
-            return self.togate
+            return self.to_gate
 
 
     def main():
-       g1 = AndGate("G1")
-       g2 = AndGate("G2")
-       g3 = OrGate("G3")
-       g4 = NotGate("G4")
-       c1 = Connector(g1,g3)
-       c2 = Connector(g2,g3)
-       c3 = Connector(g3,g4)
-       print(g4.getOutput())
+        g1 = AndGate("G1")
+        g2 = AndGate("G2")
+        g3 = OrGate("G3")
+        g4 = NotGate("G4")
+        c1 = Connector(g1, g3)
+        c2 = Connector(g2, g3)
+        c3 = Connector(g3, g4)
+        print(g4.get_output())
 
     main()
 
@@ -1027,11 +1015,11 @@ Try it yourself using ActiveCode 4.
               self.name = n
               self.output = None
 
-          def getLabel(self):
+          def get_label(self):
               return self.name
 
-          def getOutput(self):
-              self.output = self.performGateLogic()
+          def get_output(self):
+              self.output = self.perform_gate_logic()
               return self.output
 
 
@@ -1040,27 +1028,27 @@ Try it yourself using ActiveCode 4.
           def __init__(self,n):
               LogicGate.__init__(self,n)
 
-              self.pinA = None
-              self.pinB = None
+              self.pin_a = None
+              self.pin_b = None
 
-          def getPinA(self):
-              if self.pinA == None:
-                  return int(input("Enter Pin A input for gate "+self.getLabel()+"-->"))
+          def get_pin_a(self):
+              if self.pin_a == None:
+                  return int(input("Enter Pin A input for gate "+self.get_label()+"-->"))
               else:
-                  return self.pinA.getFrom().getOutput()
+                  return self.pin_a.get_from().get_output()
 
-          def getPinB(self):
-              if self.pinB == None:
-                  return int(input("Enter Pin B input for gate "+self.getLabel()+"-->"))
+          def get_pin_b(self):
+              if self.pin_b == None:
+                  return int(input("Enter Pin B input for gate "+self.get_label()+"-->"))
               else:
-                  return self.pinB.getFrom().getOutput()
+                  return self.pin_b.get_from().get_output()
 
-          def setNextPin(self,source):
-              if self.pinA == None:
-                  self.pinA = source
+          def set_next_pin(self,source):
+              if self.pin_a == None:
+                  self.pin_a = source
               else:
-                  if self.pinB == None:
-                      self.pinB = source
+                  if self.pin_b == None:
+                      self.pin_b = source
                   else:
                       print("Cannot Connect: NO EMPTY PINS on this gate")
 
@@ -1070,10 +1058,10 @@ Try it yourself using ActiveCode 4.
           def __init__(self,n):
               BinaryGate.__init__(self,n)
 
-          def performGateLogic(self):
+          def perform_gate_logic(self):
 
-              a = self.getPinA()
-              b = self.getPinB()
+              a = self.get_pin_a()
+              b = self.get_pin_b()
               if a==1 and b==1:
                   return 1
               else:
@@ -1084,10 +1072,10 @@ Try it yourself using ActiveCode 4.
           def __init__(self,n):
               BinaryGate.__init__(self,n)
 
-          def performGateLogic(self):
+          def perform_gate_logic(self):
 
-              a = self.getPinA()
-              b = self.getPinB()
+              a = self.get_pin_a()
+              b = self.get_pin_b()
               if a ==1 or b==1:
                   return 1
               else:
@@ -1100,13 +1088,13 @@ Try it yourself using ActiveCode 4.
 
               self.pin = None
 
-          def getPin(self):
+          def get_pin(self):
               if self.pin == None:
-                  return int(input("Enter Pin input for gate "+self.getLabel()+"-->"))
+                  return int(input("Enter Pin input for gate "+self.get_label()+"-->"))
               else:
-                  return self.pin.getFrom().getOutput()
+                  return self.pin.get_from().get_output()
 
-          def setNextPin(self,source):
+          def set_next_pin(self,source):
               if self.pin == None:
                   self.pin = source
               else:
@@ -1118,8 +1106,8 @@ Try it yourself using ActiveCode 4.
           def __init__(self,n):
               UnaryGate.__init__(self,n)
 
-          def performGateLogic(self):
-              if self.getPin():
+          def perform_gate_logic(self):
+              if self.get_pin():
                   return 0
               else:
                   return 1
@@ -1128,23 +1116,23 @@ Try it yourself using ActiveCode 4.
       class Connector:
 
           def __init__(self, fgate, tgate):
-              self.fromgate = fgate
-              self.togate = tgate
+              self.from_gate = fgate
+              self.to_gate = tgate
 
-              tgate.setNextPin(self)
+              tgate.set_next_pin(self)
 
-          def getFrom(self):
-              return self.fromgate
+          def get_from(self):
+              return self.from_gate
 
           def getTo(self):
-              return self.togate
+              return self.to_gate
 
 
 
       def main():
          g1 = AndGate("G1")
 
-         print(g1.getOutput())
+         print(g1.get_output())
 
       main()
 
