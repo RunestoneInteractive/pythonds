@@ -16,13 +16,13 @@ complicated problem and will depend on how the algorithm is implemented.
 
 A good basic unit of computation for comparing the summation algorithms
 shown earlier might be to count the number of assignment statements
-performed to compute the sum. In the function ``sumOfN``, the number of
-assignment statements is 1 (:math:`theSum = 0`)
+performed to compute the sum. In the function ``sum_of_n``, the number of
+assignment statements is 1 (:math:`the\_sum = 0`)
 plus the value of *n* (the number of times we perform
-:math:`theSum=theSum+i`). We can denote this by a function, call it T,
-where :math:`T(n)=1 + n`. The parameter *n* is often referred to as
+:math:`the\_sum = the\_sum + i`). We can denote this by a function, call it T,
+where :math:`T(n) = 1 + n`. The parameter *n* is often referred to as
 the “size of the problem,” and we can read this as “T(n) is the time
-it takes to solve a problem of size n, namely 1+n steps.”
+it takes to solve a problem of size n, namely 1 + n steps.”
 
 In the summation functions given above, it makes sense to use the number
 of terms in the summation to denote the size of the problem. We can then
@@ -47,7 +47,7 @@ number of steps in the computation. The function :math:`f(n)` provides
 a simple representation of the dominant part of the original
 :math:`T(n)`.
 
-In the above example, :math:`T(n)=1+n`. As *n* gets large, the
+In the above example, :math:`T(n) = 1 + n`. As *n* gets large, the
 constant 1 will become less and less significant to the final result. If
 we are looking for an approximation for :math:`T(n)`, then we can drop
 the 1 and simply say that the running time is :math:`O(n)`. It is
@@ -56,7 +56,7 @@ important to note that the 1 is certainly significant for
 just as accurate without it.
 
 As another example, suppose that for some algorithm, the exact number of
-steps is :math:`T(n)=5n^{2}+27n+1005`. When *n* is small, say 1 or 2,
+steps is :math:`T(n)=5n^{2} + 27n + 1005`. When *n* is small, say 1 or 2,
 the constant 1005 seems to be the dominant part of the function.
 However, as *n* gets larger, the :math:`n^{2}` term becomes the most
 important. In fact, when *n* is really large, the other two terms become
@@ -65,7 +65,7 @@ result. Again, to approximate :math:`T(n)` as *n* gets large, we can
 ignore the other terms and focus on :math:`5n^{2}`. In addition, the
 coefficient :math:`5` becomes insignificant as *n* gets large. We
 would say then that the function :math:`T(n)` has an order of
-magnitude :math:`f(n)=n^{2}`, or simply that it is :math:`O(n^{2})`.
+magnitude :math:`f(n) = n^{2}`, or simply that it is :math:`O(n^{2})`.
 
 Although we do not see this in the summation example, sometimes the
 performance of an algorithm depends on the exact values of the data
@@ -128,17 +128,17 @@ analyze performance.
 
 ::
 
-    a=5
-    b=6
-    c=10
+    a = 5
+    b = 6
+    c = 10
     for i in range(n):
-       for j in range(n):
-          x = i * i
-          y = j * j
-          z = i * j
+        for j in range(n):
+            x = i * i
+            y = j * j
+            z = i * j
     for k in range(n):
-       w = a*k + 45
-       v = b*b
+        w = a * k + 45
+        v = b * b
     d = 33
 
 The number of assignment operations is the sum of four terms. The first
@@ -148,7 +148,7 @@ there are three statements that are performed :math:`n^{2}` times due
 to the nested iteration. The third term is :math:`2n`, two statements
 iterated *n* times. Finally, the fourth term is the constant 1,
 representing the final assignment statement. This gives us
-:math:`T(n)=3+3n^{2}+2n+1=3n^{2}+2n+4`. By looking at the exponents,
+:math:`T(n) = 3 + 3n^{2} + 2n + 1 = 3n^{2} + 2n + 4`. By looking at the exponents,
 we can easily see that the :math:`n^{2}` term will be dominant and
 therefore this fragment of code is :math:`O(n^{2})`. Note that all of
 the other terms as well as the coefficient on the dominant term can be
