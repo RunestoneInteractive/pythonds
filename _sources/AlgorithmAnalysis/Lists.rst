@@ -13,7 +13,7 @@ how fast list operations perform. To help them make the right choices
 they looked at the ways that people would most commonly use the list
 data structure and they optimized their implementation of a list so that
 the most common operations were very fast. Of course they also tried to
-make the less common operations fast, but when a tradeoff had to be made
+make the less common operations fast, but when a trade-off had to be made
 the performance of a less common operation was often sacrificed in favor
 of the more common operation.
 
@@ -49,13 +49,16 @@ making our list four different ways.
         for i in range(1000):
             l = l + [i]
 
+
     def test2():
         l = []
         for i in range(1000):
             l.append(i)
 
+
     def test3():
         l = [i for i in range(1000)]
+
 
     def test4():
         l = list(range(1000))
@@ -82,19 +85,23 @@ of our test functions 1000 times.
 
 ::
 
-    t1 = Timer("test1()", "from __main__ import test1")
-    print("concat ",t1.timeit(number=1000), "milliseconds")
-    t2 = Timer("test2()", "from __main__ import test2")
-    print("append ",t2.timeit(number=1000), "milliseconds")
-    t3 = Timer("test3()", "from __main__ import test3")
-    print("comprehension ",t3.timeit(number=1000), "milliseconds")
-    t4 = Timer("test4()", "from __main__ import test4")
-    print("list range ",t4.timeit(number=1000), "milliseconds")
+    from timeit import Timer
 
-    concat  6.54352807999 milliseconds
-    append  0.306292057037 milliseconds
-    comprehension  0.147661924362 milliseconds
-    list range  0.0655000209808 milliseconds
+
+    t1 = Timer("test1()", "from __main__ import test1")
+    print(f"concatenation: {t1.timeit(number=1000):15.2f} milliseconds")
+    t2 = Timer("test2()", "from __main__ import test2")
+    print(f"appending: {t2.timeit(number=1000):19.2f} milliseconds")
+    t3 = Timer("test3()", "from __main__ import test3")
+    print(f"list comprehension: {t3.timeit(number=1000):10.2f} milliseconds")
+    t4 = Timer("test4()", "from __main__ import test4")
+    print(f"list range: {t4.timeit(number=1000):18.2f} milliseconds")
+
+    concatenation:           6.54 milliseconds
+    appending:               0.31 milliseconds
+    list comprehension:      0.15 milliseconds
+    list range:              0.07 milliseconds
+
 
 In the experiment above the statement that we are timing is the function
 call to ``test1()``, ``test2()``, and so on. The setup statement may
@@ -108,7 +115,7 @@ this because it wants to run the timing tests in an environment that is
 uncluttered by any stray variables you may have created, that may
 interfere with your function’s performance in some unforeseen way.
 
-From the experiment above it is clear that the append operation at 0.30
+From the experiment above it is clear that the append operation at 0.31
 milliseconds is much faster than concatenation at 6.54 milliseconds. In
 the above experiment we also show the times for two additional methods
 for creating a list; using the list constructor with a call to ``range``
@@ -202,19 +209,17 @@ the overall size by :math:`0.05\%`
 
 ::
 
-
-    popzero = timeit.Timer("x.pop(0)",
-                           "from __main__ import x")
-    popend = timeit.Timer("x.pop()",
-                          "from __main__ import x")
+    pop_zero = Timer("x.pop(0)", "from __main__ import x")
+    pop_end = Timer("x.pop()", "from __main__ import x")
 
     x = list(range(2000000))
-    popzero.timeit(number=1000)
-    4.8213560581207275
+    print(f"pop(0): {pop_zero.timeit(number=1000):10.5f} milliseconds")
 
     x = list(range(2000000))
-    popend.timeit(number=1000)
-    0.0003161430358886719
+    print(f"pop(): {pop_end.timeit(number=1000):11.5f} milliseconds")
+
+    pop(0):    2.09779 milliseconds
+    pop():     0.00014 milliseconds
 
 While our first test does show that ``pop(0)`` is indeed slower than
 ``pop()``, it does not validate the claim that ``pop(0)`` is
@@ -228,17 +233,15 @@ sizes. :ref:`Listing 5 <lst_poplists>` implements this test.
 
 ::
 
-    popzero = Timer("x.pop(0)",
-                    "from __main__ import x")
-    popend = Timer("x.pop()",
-                   "from __main__ import x")
-    print("pop(0)   pop()")
-    for i in range(1000000,100000001,1000000):
+    pop_zero = Timer("x.pop(0)", "from __main__ import x")
+    pop_end = Timer("x.pop()", "from __main__ import x")
+    print(f"{'n':10s}{'pop(0)':>15s}{'pop()':>15s}")
+    for i in range(1_000_000, 100_000_001, 1_000_000):
         x = list(range(i))
-        pt = popend.timeit(number=1000)
+        pop_zero_t = pop_zero.timeit(number=1000)
         x = list(range(i))
-        pz = popzero.timeit(number=1000)
-        print("%15.5f, %15.5f" %(pz,pt))
+        pop_end_t = pop_end.timeit(number=1000)
+        print(f"{i:<10d}{pop_zero_t:>15.5f}{pop_end_t:>15.5f}")
 
 :ref:`Figure 3 <fig_poptest>` shows the results of our experiment. You can see
 that as the list gets longer and longer the time it takes to ``pop(0)``
