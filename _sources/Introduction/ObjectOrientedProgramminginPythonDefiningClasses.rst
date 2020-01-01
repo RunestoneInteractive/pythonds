@@ -72,7 +72,7 @@ and is shown in :ref:`Listing 2 <lst_pyconstructor>`.
 
     class Fraction:
         """Class Fraction"""
-        def __init__(self,top,bottom):
+        def __init__(self, top, bottom):
             """Constructor definition"""
             self.num = top
             self.den = bottom
@@ -182,8 +182,6 @@ various ways that this function is used.
     def __str__(self):
         return f"{self.num}/{self.den}"
 
-
-
 ::
 
     >>> my_fraction = Fraction(3, 5)
@@ -246,7 +244,7 @@ addition, and then printing our result.
 
 .. sourcecode:: python
 
-   def __add__(self,other_fraction):
+   def __add__(self, other_fraction):
 
         new_num = self.num * other_fraction.den + \
                     self.den * other_fraction.num
@@ -562,8 +560,8 @@ class is shown in :ref:`Listing 8 <lst_logicgateclass>`.
 .. sourcecode:: python
 
     class LogicGate:
-        def __init__(self, n):
-            self.label = n
+        def __init__(self, lbl):
+            self.label = lbl
             self.output = None
 
         def get_label(self):
@@ -870,8 +868,8 @@ Try it yourself using ActiveCode 4.
 
     class LogicGate:
 
-        def __init__(self, n):
-            self.name = n
+        def __init__(self, lbl):
+            self.name = lbl
             self.output = None
 
         def get_label(self):
@@ -884,21 +882,21 @@ Try it yourself using ActiveCode 4.
 
     class BinaryGate(LogicGate):
 
-        def __init__(self, n):
-            super(BinaryGate, self).__init__(n)
+        def __init__(self, lbl):
+            super(BinaryGate, self).__init__(lbl)
 
             self.pin_a = None
             self.pin_b = None
 
         def get_pin_a(self):
             if self.pin_a == None:
-                return int(input("Enter Pin A input for gate " + self.get_label() + ": "))
+                return int(input("Enter pin A input for gate " + self.get_label() + ": "))
             else:
                 return self.pin_a.get_from().get_output()
 
         def get_pin_b(self):
             if self.pin_b == None:
-                return int(input("Enter Pin B input for gate " + self.get_label() + ": "))
+                return int(input("Enter pin B input for gate " + self.get_label() + ": "))
             else:
                 return self.pin_b.get_from().get_output()
 
@@ -914,8 +912,8 @@ Try it yourself using ActiveCode 4.
 
     class AndGate(BinaryGate):
 
-        def __init__(self, n):
-            BinaryGate.__init__(self, n)
+        def __init__(self, lbl):
+            BinaryGate.__init__(self, lbl)
 
         def perform_gate_logic(self):
 
@@ -928,8 +926,8 @@ Try it yourself using ActiveCode 4.
 
     class OrGate(BinaryGate):
 
-        def __init__(self, n):
-            BinaryGate.__init__(self, n)
+        def __init__(self, lbl):
+            BinaryGate.__init__(self, lbl)
 
         def perform_gate_logic(self):
 
@@ -942,14 +940,14 @@ Try it yourself using ActiveCode 4.
 
     class UnaryGate(LogicGate):
 
-        def __init__(self, n):
-            LogicGate.__init__(self, n)
+        def __init__(self, lbl):
+            LogicGate.__init__(self, lbl)
 
             self.pin = None
 
         def get_pin(self):
             if self.pin == None:
-                return int(input("Enter Pin input for gate " + self.get_label() + ": "))
+                return int(input("Enter pin input for gate " + self.get_label() + ": "))
             else:
                 return self.pin.get_from().get_output()
 
@@ -962,8 +960,8 @@ Try it yourself using ActiveCode 4.
 
     class NotGate(UnaryGate):
 
-        def __init__(self, n):
-            UnaryGate.__init__(self, n)
+        def __init__(self, nlbl):
+            UnaryGate.__init__(self, lbl)
 
         def perform_gate_logic(self):
             if self.get_pin():
@@ -983,7 +981,7 @@ Try it yourself using ActiveCode 4.
         def get_from(self):
             return self.from_gate
 
-        def getTo(self):
+        def get_to(self):
             return self.to_gate
 
 
@@ -1124,7 +1122,7 @@ Try it yourself using ActiveCode 4.
           def get_from(self):
               return self.from_gate
 
-          def getTo(self):
+          def get_to(self):
               return self.to_gate
 
 
