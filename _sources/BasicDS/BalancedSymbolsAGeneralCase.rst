@@ -10,7 +10,7 @@ more general situation that arises in many programming languages. The
 general problem of balancing and nesting different kinds of opening and
 closing symbols occurs frequently. For example, in Python
 square brackets, ``[`` and ``]``, are used for lists; curly braces, ``{`` and ``}``, are
-used for dictionaries; and parentheses, ``(`` and ``)``, are used for tuples and
+used for sets and dictionaries; and parentheses, ``(`` and ``)``, are used for tuples and
 arithmetic expressions. It is possible to mix symbols as long as each
 maintains its own open and close relationship. Strings of symbols such
 as
@@ -46,49 +46,39 @@ the two symbols do not match, the string is not balanced. Once again, if
 the entire string is processed and nothing is left on the stack, the
 string is correctly balanced.
 
-The Python program to implement this is shown in :ref:`ActiveCode 1 <lst_parcheck2>`.
-The only change appears in line 16 where we call a helper function, ``matches``, to
+The Python program to implement this is shown in :ref:`ActiveCode 1 <lst_balcheck>`.
+The only change appears in line 13 where we call a helper function, ``matches``, to
 assist with symbol-matching. Each symbol that is removed from the stack
 must be checked to see that it matches the current closing symbol. If a
-mismatch occurs, the boolean variable ``balanced`` is set to ``False``.
+mismatch occurs, the balance checker returns ``False`` immediately.
 
-.. _lst_parcheck2:
+.. _lst_balcheck:
 
-.. activecode :: parcheck2
-   :caption: Solving the General Balanced Symbol Problem
-   :nocodelens:
+.. activecode:: balcheck
+    :caption: Solving the General Balanced Symbol Problem
+    :nocodelens:
 
-   from pythonds.basic import Stack
-
-   def parChecker(symbolString):
-       s = Stack()
-       balanced = True
-       index = 0
-       while index < len(symbolString) and balanced:
-           symbol = symbolString[index]
-           if symbol in "([{":
-               s.push(symbol)
-           else:
-               if s.isEmpty():
-                   balanced = False
-               else:
-                   top = s.pop()
-                   if not matches(top,symbol):
-                          balanced = False
-           index = index + 1
-       if balanced and s.isEmpty():
-           return True
-       else:
-           return False
-
-   def matches(open,close):
-       opens = "([{"
-       closers = ")]}"
-       return opens.index(open) == closers.index(close)
+    from pythonds3.basic import Stack
 
 
-   print(parChecker('{({([][])}())}'))
-   print(parChecker('[{()]'))
+    def balance_checker(symbol_string):
+        s = Stack()
+        for symbol in symbol_string:
+            if symbol in "([{":
+                s.push(symbol)
+            else:
+                if s.is_empty():
+                    return False
+                else:
+                    if not matches(s.pop(), symbol):
+                        return False
+
+        return s.is_empty()
+
+
+    print(balance_checker('{({([][])}())}'))
+    print(balance_checker('[{()]'))
+
 
 These two examples show that stacks are very important data structures
 for the processing of language constructs in computer science. Almost
