@@ -8,7 +8,7 @@ Simple Balanced Parentheses
 We now turn our attention to using stacks to solve real computer science
 problems. You have no doubt written arithmetic expressions such as
 
-:math:`(5+6)*(7+8)/(4+3)`
+:math:`(5 + 6) * (7 + 8) / (4 + 3)`
 
 where parentheses are used to order the performance of operations. You
 may also have some experience programming in a language such as Lisp
@@ -88,41 +88,37 @@ this algorithm is shown in :ref:`ActiveCode 1 <lst_parcheck1>`.
     :caption: Solving the Balanced Parentheses Problem
     :nocodelens:
 
-    from pythonds.basic import Stack
+    from pythonds3.basic import Stack
 
-    def parChecker(symbolString):
+
+    def par_checker(symbol_string):
         s = Stack()
-        balanced = True
-        index = 0
-        while index < len(symbolString) and balanced:
-            symbol = symbolString[index]
+        for symbol in symbol_string:
             if symbol == "(":
                 s.push(symbol)
             else:
-                if s.isEmpty():
-                    balanced = False
+                if s.is_empty():
+                    return False
                 else:
                     s.pop()
 
-            index = index + 1
-
-        if balanced and s.isEmpty():
-            return True
-        else:
-            return False
-
-    print(parChecker('((()))'))
-    print(parChecker('(()'))
+        return s.is_empty()
 
 
-This function, ``parChecker``, assumes that a ``Stack`` class is
+    print(par_checker("((()))"))  # expected True
+    print(par_checker("((()()))"))  # expected True
+    print(par_checker("(()"))  # expected False
+    print(par_checker(")("))  # expected False
+
+
+This function, ``par_checker``, assumes that a ``Stack`` class is
 available and returns a boolean result as to whether the string of
-parentheses is balanced. Note that the boolean variable ``balanced`` is
-initialized to ``True`` as there is no reason to assume otherwise at the
-start. If the current symbol is ``(``, then it is pushed on the stack
-(lines 9–10). Note also in line 15 that ``pop`` simply removes a symbol
-from the stack. The returned value is not used since we know it must be
-an opening symbol seen earlier. At the end (lines 19–22), as long as the
-expression is balanced and the stack has been completely cleaned off,
-the string represents a correctly balanced sequence of parentheses.
+parentheses is balanced. If the current symbol is ``(``,
+then it is pushed on the stack (lines 7-8).
+Note also in line 13 that ``pop`` simply removes a symbol from the stack.
+The returned value is not used since we know it must be an opening symbol seen earlier.
+If the stack becomes empty before we reach the end of the ``symbol_string``,
+then there are too many closing parentheses and the string is not balanced,
+so we immediately return ``False`` (line 11).
+At the end (line 15), the string represents a correctly balanced sequence of parentheses as long as the stack has been completely cleaned off.
 
