@@ -20,7 +20,7 @@ ordering property. The queue operations are given below.
 -  ``dequeue()`` removes the front item from the queue. It needs no
    parameters and returns the item. The queue is modified.
 
--  ``isEmpty()`` tests to see whether the queue is empty. It needs no
+-  ``is_empty()`` tests to see whether the queue is empty. It needs no
    parameters and returns a boolean value.
 
 -  ``size()`` returns the number of items in the queue. It needs no
@@ -36,19 +36,19 @@ is the first item returned by dequeue.
 
 .. table:: **Table 1: Example Queue Operations**
 
-    ============================ ======================== ================== 
-             **Queue Operation**       **Queue Contents**   **Return Value** 
-    ============================ ======================== ================== 
-                 ``q.isEmpty()``                   ``[]``           ``True`` 
-                ``q.enqueue(4)``                  ``[4]``                    
-            ``q.enqueue('dog')``            ``['dog',4]``                    
-             ``q.enqueue(True)``       ``[True,'dog',4]``                    
-                    ``q.size()``       ``[True,'dog',4]``              ``3`` 
-                 ``q.isEmpty()``       ``[True,'dog',4]``          ``False`` 
-              ``q.enqueue(8.4)``   ``[8.4,True,'dog',4]``                    
-                 ``q.dequeue()``     ``[8.4,True,'dog']``              ``4`` 
-                 ``q.dequeue()``           ``[8.4,True]``          ``'dog'`` 
-                    ``q.size()``           ``[8.4,True]``              ``2`` 
-    ============================ ======================== ================== 
+    ============================ ======================== ==================
+             **Queue Operation**       **Queue Contents**   **Return Value**
+    ============================ ======================== ==================
+                ``q.is_empty()``                   ``[]``           ``True``
+                ``q.enqueue(4)``                  ``[4]``                   
+            ``q.enqueue("dog")``            ``['dog',4]``                   
+             ``q.enqueue(True)``     ``[True, 'dog', 4]``                   
+                    ``q.size()``     ``[True, 'dog', 4]``              ``3``
+                ``q.is_empty()``     ``[True, 'dog', 4]``          ``False``
+              ``q.enqueue(8.4)`` ``[8.4,True, 'dog', 4]``                   
+                 ``q.dequeue()``   ``[8.4, True, 'dog']``              ``4``
+                 ``q.dequeue()``          ``[8.4, True]``          ``'dog'``
+                    ``q.size()``          ``[8.4, True]``              ``2``
+    ============================ ======================== ==================
 
 
