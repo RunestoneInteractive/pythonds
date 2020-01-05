@@ -16,7 +16,7 @@ assumes that the rear is at position 0 in the list. This allows us to
 use the ``insert`` function on lists to add new elements to the rear of
 the queue. The ``pop`` operation can be used to remove the front element
 (the last element of the list). Recall that this also means that enqueue
-will be O(n) and dequeue will be O(1). 
+will be :math:`O(n)` and dequeue will be :math:`O(1)`. 
 
 .. _lst_queuecode:
 
@@ -25,50 +25,63 @@ will be O(n) and dequeue will be O(1).
 ::
 
     class Queue:
-        def __init__(self):
-            self.items = []
+        """Queue implementation as a list"""
 
-        def isEmpty(self):
-            return self.items == []
+        def __init__(self):
+            """Create new queue"""
+            self._items = []
+
+        def is_empty(self):
+            """Check if the queue is empty"""
+            return not bool(self._items)
 
         def enqueue(self, item):
-            self.items.insert(0,item)
+            """Add an item to the queue"""
+            self._items.insert(0, item)
 
         def dequeue(self):
-            return self.items.pop()
+            """Remove an item from the queue"""
+            return self._items.pop()
 
         def size(self):
-            return len(self.items)
+            """Get the number of items in the queue"""
+            return len(self._items)
 
 CodeLens 1 shows the ``Queue`` class in
 action as we perform the sequence of operations from
 :ref:`Table 1 <tbl_queueoperations>`.
 
 .. codelens:: ququeuetest
-   :caption: Example Queue Operations
+    :caption: Example Queue Operations
 
-   class Queue:
-       def __init__(self):
-           self.items = []
+    class Queue:
+        """Queue implementation as a list"""
 
-       def isEmpty(self):
-           return self.items == []
+        def __init__(self):
+            """Create new queue"""
+            self._items = []
 
-       def enqueue(self, item):
-           self.items.insert(0,item)
+        def is_empty(self):
+            """Check if the queue is empty"""
+            return not bool(self._items)
 
-       def dequeue(self):
-           return self.items.pop()
+        def enqueue(self, item):
+            """Add an item to the queue"""
+            self._items.insert(0, item)
 
-       def size(self):
-           return len(self.items)
+        def dequeue(self):
+            """Remove an item from the queue"""
+            return self._items.pop()
 
-   q=Queue()
-   
-   q.enqueue(4)
-   q.enqueue('dog')
-   q.enqueue(True)
-   print(q.size())
+        def size(self):
+            """Get the number of items in the queue"""
+            return len(self._items)
+
+    q = Queue()
+    q.enqueue(4)
+    q.enqueue("dog")
+    q.enqueue(True)
+    print(q.size())
 
 
 Further manipulation of this queue would give the following results:
@@ -78,7 +91,7 @@ Further manipulation of this queue would give the following results:
 
     >>> q.size()
     3
-    >>> q.isEmpty()
+    >>> q.is_empty()
     False
     >>> q.enqueue(8.4)
     >>> q.dequeue()
@@ -104,10 +117,10 @@ Further manipulation of this queue would give the following results:
       Suppose you have the following series of queue operations.
 
       ::
-      
+
           q = Queue()
-          q.enqueue('hello')
-          q.enqueue('dog')
+          q.enqueue("hello")
+          q.enqueue("dog")
           q.enqueue(3)
           q.dequeue()
 
