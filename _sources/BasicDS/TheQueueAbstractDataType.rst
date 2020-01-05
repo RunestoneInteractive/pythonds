@@ -27,14 +27,14 @@ ordering property. The queue operations are given below.
    parameters and returns an integer.
 
 As an example, if we assume that ``q`` is a queue that has been created
-and is currently empty, then :ref:`Table 1 <tbl_queueoperations>` shows the
+and is currently empty, then :ref:`Table 5 <tbl_queueoperations>` shows the
 results of a sequence of queue operations. The queue contents are shown
 such that the front is on the right. 4 was the first item enqueued so it
 is the first item returned by dequeue.
 
 .. _tbl_queueoperations:
 
-.. table:: **Table 1: Example Queue Operations**
+.. table:: **Table 5: Example Queue Operations**
 
     ============================ ======================== ==================
              **Queue Operation**       **Queue Contents**   **Return Value**
