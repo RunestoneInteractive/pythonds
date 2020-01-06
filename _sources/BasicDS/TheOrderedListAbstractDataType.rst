@@ -26,12 +26,12 @@ are the same as those of the unordered list.
    is not already in the list.
 
 -  ``remove(item)`` removes the item from the list. It needs the item
-   and modifies the list. Assume the item is present in the list.
+   and modifies the list. Raise an error if the item is not present in the list.
 
 -  ``search(item)`` searches for the item in the list. It needs the item
    and returns a boolean value.
 
--  ``isEmpty()`` tests to see whether the list is empty. It needs no
+-  ``is_empty()`` tests to see whether the list is empty. It needs no
    parameters and returns a boolean value.
 
 -  ``size()`` returns the number of items in the list. It needs no
