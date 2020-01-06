@@ -16,7 +16,7 @@ others. Some possible unordered list operations are given below.
    returns nothing. Assume the item is not already in the list.
 
 -  ``remove(item)`` removes the item from the list. It needs the item
-   and modifies the list. Assume the item is present in the list.
+   and modifies the list. Raise an error if the item is not present in the list.
 
 -  ``search(item)`` searches for the item in the list. It needs the item
    and returns a boolean value.
