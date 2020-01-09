@@ -69,7 +69,7 @@ definition of the class.  We must create a ``Stack`` object and then use it.
 :ref:`ActiveCode 2 <lst_stackcode1>` shows the ``Stack`` class in
 action as we perform the sequence of operations from
 :ref:`Table 1 <tbl_stackops>`.  Notice that the definition of the ``Stack`` class is
-imported from the ``pythonds`` module.
+imported from the ``pythonds3`` module.
 
 .. note::
     The ``pythonds3`` module contains implementations of all data structures discussed in this book.
