@@ -36,7 +36,7 @@ be denoted by a ``head`` reference to ``None`` (see
             self.head = None
 
 As we consider the operations for the ordered list, we should note that
-the ``isEmpty`` and ``size`` methods can be implemented the same as
+the ``is_empty`` and ``size`` methods can be implemented the same as
 with unordered lists since they deal only with the number of nodes in
 the list without regard to the actual item values. Likewise, the
 ``remove`` method will work just fine since we still need to find the
@@ -72,12 +72,9 @@ exist further out in the linked list.
 
 
 :ref:`Listing 9 <lst_ordersearch>` shows the complete ``search`` method. It is
-easy to incorporate the new condition discussed above by adding another
-boolean variable, ``stop``, and initializing it to ``False`` (line 4).
-While ``stop`` is ``False`` (not ``stop``) we can continue to look
-forward in the list (line 5). If any node is ever discovered that
-contains data greater than the item we are looking for, we will set
-``stop`` to ``True`` (lines 9–10). The remaining lines are identical to
+easy to incorporate the new condition discussed above by adding another check (line 6).
+We can continue to look forward in the list (line 3). If any node is ever discovered that
+contains data greater than the item we are looking for, we will immediately return ``False``. The remaining lines are identical to
 the unordered list search.
 
 .. _lst_ordersearch:
@@ -90,18 +87,14 @@ the unordered list search.
 
     def search(self,item):
         current = self.head
-        found = False
-        stop = False
-        while current != None and not found and not stop:
-            if current.getData() == item:
-                found = True
-            else:
-                if current.getData() > item:
-                    stop = True
-                else:
-                    current = current.getNext()
+        while current is not None:
+            if current.data == item:
+                return True
+            if current.data > item:
+                return False
+            current = current.next
 
-        return found
+        return False
 
 The most significant method modification will take place in ``add``.
 Recall that for unordered lists, the ``add`` method could simply place a
@@ -151,25 +144,24 @@ beginning of the linked list or some place in the middle. Again,
 
 ::
 
-    def add(self,item):
+    def add(self, item):
+        """Add a new node"""
         current = self.head
         previous = None
-        stop = False
-        while current != None and not stop:
-            if current.getData() > item:
-                stop = True
-            else:
-                previous = current
-                current = current.getNext()
-
         temp = Node(item)
-        if previous == None:
-            temp.setNext(self.head)
+
+        while current is not None and current.data < item:
+            previous = current
+            current = current.next
+
+        if previous is None:
+            temp.next = self.head
             self.head = temp
         else:
-            temp.setNext(current)
-            previous.setNext(temp)
-            
+            temp.next = current
+            previous.next = temp
+
+
 The ``OrderedList`` class with methods discussed thus far can be found
 in ActiveCode 1.
 We leave the remaining methods as exercises. You should carefully
@@ -177,99 +169,111 @@ consider whether the unordered implementations will work given that the
 list is now ordered.
 
 .. activecode:: orderedlistclass
-   :caption: OrderedList Class Thus Far
-   :hidecode:
-   :nocodelens:
-   
-   class Node:
-       def __init__(self,initdata):
-           self.data = initdata
-           self.next = None
+    :caption: OrderedList Class Thus Far
+    :hidecode:
+    :nocodelens:
 
-       def getData(self):
-           return self.data
+    class Node:
+        """A node of a linked list"""
 
-       def getNext(self):
-           return self.next
+        def __init__(self, node_data):
+            self._data = node_data
+            self._next = None
 
-       def setData(self,newdata):
-           self.data = newdata
+        def get_data(self):
+            """Get node data"""
+            return self._data
 
-       def setNext(self,newnext):
-           self.next = newnext
+        def set_data(self, node_data):
+            """Set node data"""
+            self._data = node_data
 
+        data = property(get_data, set_data)
 
-   class OrderedList:
-       def __init__(self):
-           self.head = None
+        def get_next(self):
+            """Get next node"""
+            return self._next
 
-       def search(self,item):
-           current = self.head
-           found = False
-           stop = False
-           while current != None and not found and not stop:
-               if current.getData() == item:
-                   found = True
-               else:
-                   if current.getData() > item:
-                       stop = True
-                   else:
-                       current = current.getNext()
+        def set_next(self, node_next):
+            """Set next node"""
+            self._next = node_next
 
-           return found
+        next = property(get_next, set_next)
 
-       def add(self,item):
-           current = self.head
-           previous = None
-           stop = False
-           while current != None and not stop:
-               if current.getData() > item:
-                   stop = True
-               else:
-                   previous = current
-                   current = current.getNext()
-
-           temp = Node(item)
-           if previous == None:
-               temp.setNext(self.head)
-               self.head = temp
-           else:
-               temp.setNext(current)
-               previous.setNext(temp)       
-
-       def isEmpty(self):
-           return self.head == None
-
-       def size(self):
-           current = self.head
-           count = 0
-           while current != None:
-               count = count + 1
-               current = current.getNext()
-
-           return count
+        def __str__(self):
+            """String"""
+            return str(self._data)
 
 
-   mylist = OrderedList()
-   mylist.add(31)
-   mylist.add(77)
-   mylist.add(17)
-   mylist.add(93)
-   mylist.add(26)
-   mylist.add(54)
+    class OrderedList:
+        """Ordered linked list implementation"""
+        def __init__(self):
+            self.head = None
 
-   print(mylist.size())
-   print(mylist.search(93))
-   print(mylist.search(100))
-   
-   
+        def search(self, item):
+            """Search for a node with a specific value"""
+            current = self.head
+            while current is not None:
+                if current.data == item:
+                    return True
+                if current.data > item:
+                    return False
+                current = current.next
+
+            return False
+
+        def add(self, item):
+            """Add a new node"""
+            current = self.head
+            previous = None
+            temp = Node(item)
+
+            while current is not None and current.data < item:
+                previous = current
+                current = current.next
+
+            if previous is None:
+                temp.next = self.head
+                self.head = temp
+            else:
+                temp.next = current
+                previous.next = temp
+
+        def is_empty(self):
+            """Is the list empty"""
+            return self.head == None
+
+        def size(self):
+            """Size of the list"""
+            current = self.head
+            count = 0
+            while current is not None:
+                count = count + 1
+                current = current.next
+
+            return count
+
+
+    my_list = OrderedList()
+    my_list.add(31)
+    my_list.add(77)
+    my_list.add(17)
+    my_list.add(93)
+    my_list.add(26)
+    my_list.add(54)
+
+    print(my_list.size())
+    print(my_list.search(93))
+    print(my_list.search(100))
+
+
 
 Analysis of Linked Lists
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 To analyze the complexity of the linked list operations, we need to
 consider whether they require traversal. Consider a linked list that has
-*n* nodes. The ``isEmpty`` method is :math:`O(1)` since it requires
+*n* nodes. The ``is_empty`` method is :math:`O(1)` since it requires
 one step to check the head reference for ``None``. ``size``, on the
 other hand, will always require *n* steps since there is no way to know
 how many nodes are in the linked list without traversing from head to
@@ -284,4 +288,4 @@ process every node in the list.
 You may also have noticed that the performance of this implementation
 differs from the actual performance given earlier for Python lists. This
 suggests that linked lists are not the way Python lists are implemented.
-The actual implementation of a Python list is based on the notion of an array.  We discuss this in more detail in Chapter 8.
+The actual implementation of a Python list is based on the notion of an array.  We discuss this in more detail in a later chapter.
