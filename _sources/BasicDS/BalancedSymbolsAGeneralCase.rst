@@ -75,6 +75,11 @@ mismatch occurs, the balance checker returns ``False`` immediately.
 
         return s.is_empty()
 
+    def matches(sym_left, sym_right):
+        all_lefts = "([{"
+        all_rights = ")]}"
+        return all_lefts.index(sym_left) == all_rights.index(sym_right)
+
 
     print(balance_checker('{({([][])}())}'))
     print(balance_checker('[{()]'))
