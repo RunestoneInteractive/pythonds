@@ -263,9 +263,9 @@ works with random numbers each run will return different results.
 
 ::
 
-    >>>for i in range(10):
-          simulation(3600, 5)
-
+    >>> for i in range(10):
+    ...     simulation(3600, 5)
+    ... 
     Average Wait 165.38 secs 2 tasks remaining.
     Average Wait  95.07 secs 1 tasks remaining.
     Average Wait  65.05 secs 2 tasks remaining.
@@ -276,6 +276,7 @@ works with random numbers each run will return different results.
     Average Wait  48.33 secs 0 tasks remaining.
     Average Wait  39.31 secs 3 tasks remaining.
     Average Wait 376.05 secs 1 tasks remaining.
+    >>> 
 
 After running our 10 trials we can see that the mean average wait time
 is 122.09 seconds. You can also see that there is a large variation in
@@ -289,9 +290,9 @@ would be completed in the one hour time frame.
 
 ::
 
-    >>>for i in range(10):
-          simulation(3600, 10)
-
+    >>> for i in range(10):
+    ...     simulation(3600, 10)
+    ... 
     Average Wait   1.29 secs 0 tasks remaining.
     Average Wait   7.00 secs 0 tasks remaining.
     Average Wait  28.96 secs 1 tasks remaining.
@@ -302,6 +303,7 @@ would be completed in the one hour time frame.
     Average Wait  12.39 secs 0 tasks remaining.
     Average Wait   7.27 secs 0 tasks remaining.
     Average Wait  18.17 secs 0 tasks remaining.
+    >>> 
 
 
 You can run the simulation for yourself in ActiveCode 2.

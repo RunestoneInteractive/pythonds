@@ -91,11 +91,11 @@ Programming Exercises
    spaces. For example, I PREFER PI is a palindrome that reads the same
    forward and backward if you ignore the blank characters.
 
-#. To implement the ``length`` method, we counted the number of nodes in
+#. To implement the ``size`` method, we counted the number of nodes in
    the list. An alternative strategy would be to store the number of
    nodes in the list as an additional piece of data in the head of the
    list. Modify the ``UnorderedList`` class to include this information
-   and rewrite the ``length`` method.
+   and rewrite the ``size`` method.
 
 #. Implement the ``remove`` method so that it works correctly in the
    case where the item is not in the list.
@@ -103,10 +103,10 @@ Programming Exercises
 #. Modify the list classes to allow duplicates. Which methods will be
    impacted by this change?
 
-#. Implement the __str__ method in the UnorderedList class. What
+#. Implement the ``__str__`` method in the UnorderedList class. What
    would be a good string representation for a list?
 
-#. Implement __str__ method so that lists are displayed the
+#. Implement ``__str__`` method so that lists are displayed the
    Python way (with square brackets).
 
 #. Implement the remaining operations defined in the UnorderedList ADT

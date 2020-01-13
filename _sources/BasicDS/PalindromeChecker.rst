@@ -43,6 +43,7 @@ complete function for palindrome-checking appears in
 
     from pythonds3.basic import Deque
 
+
     def pal_checker(a_string):
         char_deque = Deque()
 
