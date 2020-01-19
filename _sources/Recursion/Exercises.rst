@@ -13,10 +13,10 @@ Programming Exercises
 #. Modify the recursive tree program using one or all of the following
    ideas:
 
-   -  Modify the thickness of the branches so that as the ``branchLen``
+   -  Modify the thickness of the branches so that as the ``branch_len``
       gets smaller, the line gets thinner.
 
-   -  Modify the color of the branches so that as the ``branchLen`` gets
+   -  Modify the color of the branches so that as the ``branch_len`` gets
       very short it is colored like a leaf.
 
    -  Modify the angle used in turning the turtle so that at each branch
@@ -24,7 +24,7 @@ Programming Exercises
       choose the angle between 15 and 45 degrees. Play around to see
       what looks good.
 
-   -  Modify the ``branchLen`` recursively so that instead of always
+   -  Modify the ``branch_len`` recursively so that instead of always
       subtracting the same amount you subtract a random amount in some
       range.
 
