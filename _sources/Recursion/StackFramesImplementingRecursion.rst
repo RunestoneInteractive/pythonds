@@ -6,7 +6,7 @@ Stack Frames: Implementing Recursion
 ------------------------------------
 
 Suppose that instead of concatenating the result of the recursive call
-to ``toStr`` with the string from ``convertString``, we modified our
+to ``to_str`` with the string from ``convert_string``, we modified our
 algorithm to push the strings onto a stack instead of making the recursive
 call. The code for this modified algorithm is shown in
 :ref:`ActiveCode 1 <lst_recstack>`.
@@ -16,28 +16,29 @@ call. The code for this modified algorithm is shown in
     :caption: Converting an Integer to a String Using a Stack
     :nocodelens:
 
-    from pythonds.basic import Stack
+    from pythonds3.basic import Stack
 
-    rStack = Stack()
 
-    def toStr(n,base):
-        convertString = "0123456789ABCDEF"
+    def to_str(n, base):
+        r_stack = Stack()
+        convert_string = "0123456789ABCDEF"
         while n > 0:
             if n < base:
-                rStack.push(convertString[n])
+                r_stack.push(convert_string[n])
             else:
-                rStack.push(convertString[n % base])
+                r_stack.push(convert_string[n % base])
             n = n // base
         res = ""
-        while not rStack.isEmpty():
-            res = res + str(rStack.pop())
+        while not r_stack.is_empty():
+            res = res + str(r_stack.pop())
         return res
 
-    print(toStr(1453,16))
 
-Each time we make a call to ``toStr``, we push a character on the stack.
+    print(to_str(1453, 16))
+
+Each time we make a call to ``to_str``, we push a character on the stack.
 Returning to the previous example we can see that after the fourth call
-to ``toStr`` the stack would look like :ref:`Figure 5 <fig_recstack>`. Notice
+to ``to_str`` the stack would look like :ref:`Figure 5 <fig_recstack>`. Notice
 that now we can simply pop the characters off the stack and concatenate
 them into the final result, ``"1010"``.
 
@@ -58,15 +59,15 @@ call stack after the return statement on line 4.
 
 .. _fig_callstack:
 
-.. figure:: Figures/newcallstack.png
+.. figure:: Figures/callstack.png
    :align: center
 
-   Figure 6: Call Stack Generated from ``toStr(10,2)``
+   Figure 6: Call Stack Generated from ``to_str(10, 2)``
 
 
-Notice that the call to ``toStr(2//2,2)`` leaves a return value of
+Notice that the call to ``to_str(2 // 2, 2)`` leaves a return value of
 ``"1"`` on the stack. This return value is then used in place of the
-function call (``toStr(1,2)``) in the expression ``"1" + convertString[2%2]``, which will leave the string ``"10"`` on the top of
+function call (``to_str(1, 2)``) in the expression ``"1" + convert_string[2 % 2]``, which will leave the string ``"10"`` on the top of
 the stack. In this way, the Python call stack takes the place of the
 stack we used explicitly in :ref:`Listing 4 <lst_recstack>`. In our list summing
 example, you can think of the return value on the stack taking the place
