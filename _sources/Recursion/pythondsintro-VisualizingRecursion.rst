@@ -29,14 +29,14 @@ Here is a simple example to illustrate some turtle graphics basics. We
 will use the turtle module to draw a spiral recursively.
 :ref:`ActiveCode 1 <lst_turt1>` shows how it is done. After importing the ``turtle``
 module we create a turtle. When the turtle is created it also creates a
-window for itself to draw in. Next we define the drawSpiral function.
+window for itself to draw in. Next we define the ``draw_spiral`` function.
 The base case for this simple function is when the length of the line we
 want to draw, as given by the ``len`` parameter, is reduced to zero or
 less. If the length of the line is longer than zero we instruct the
 turtle to go forward by ``len`` units and then turn right 90 degrees.
-The recursive step is when we call drawSpiral again with a reduced
+The recursive step is when we call draw_spiral again with a reduced
 length. At the end of :ref:`ActiveCode 1 <lst_turt1>` you will notice that we call
-the function ``myWin.exitonclick()``, this is a handy little method of
+the function ``my_win.exitonclick()``, this is a handy little method of
 the window that puts the turtle into a wait mode until you click inside
 the window, after which the program cleans up and exits.
 
@@ -48,17 +48,18 @@ the window, after which the program cleans up and exits.
 
     import turtle
 
-    myTurtle = turtle.Turtle()
-    myWin = turtle.Screen()
 
-    def drawSpiral(myTurtle, lineLen):
-        if lineLen > 0:
-            myTurtle.forward(lineLen)
-            myTurtle.right(90)
-            drawSpiral(myTurtle,lineLen-5)
+    def draw_spiral(my_turtle, line_len):
+        if line_len > 0:
+            my_turtle.forward(line_len)
+            my_turtle.right(90)
+            draw_spiral(my_turtle, line_len - 5)
 
-    drawSpiral(myTurtle,100)
-    myWin.exitonclick()
+
+    my_turtle = turtle.Turtle()
+    my_win = turtle.Screen()
+    draw_spiral(my_turtle, 100)
+    my_win.exitonclick()
 
 That is really about all the turtle graphics you need to know in order
 to make some pretty impressive drawings. For our next program we are
@@ -94,9 +95,9 @@ turtle must turn left by 40 degrees is that it needs to undo the
 original 20 degree turn to the right and then do an additional 20 degree
 turn to the left in order to draw the left tree. Also notice that each
 time we make a recursive call to ``tree`` we subtract some amount from
-the ``branchLen`` parameter; this is to make sure that the recursive
+the ``branch_len`` parameter; this is to make sure that the recursive
 trees get smaller and smaller. You should also recognize the initial
-``if`` statement on line 2 as a check for the base case of ``branchLen``
+``if`` statement on line 2 as a check for the base case of ``branch_len``
 getting too small.
 
 .. _lst_fractree:
@@ -108,15 +109,15 @@ getting too small.
 
 ::
 
-    def tree(branchLen,t):
-        if branchLen > 5:
-            t.forward(branchLen)
+    def tree(branch_len, t):
+        if branch_len > 5:
+            t.forward(branch_len)
             t.right(20)
-            tree(branchLen-15,t)
+            tree(branch_len - 15, t)
             t.left(40)
-            tree(branchLen-10,t)
+            tree(branch_len - 15, t)
             t.right(20)
-            t.backward(branchLen)
+            t.backward(branch_len)
             
             
 .. highlight:: python
@@ -134,28 +135,29 @@ shape simultaneously? Will it be drawn right side first then left side?
     :nocodelens:
 
     import turtle
-    
-    def tree(branchLen,t):
-        if branchLen > 5:
-            t.forward(branchLen)
+
+
+    def tree(branch_len, t):
+        if branch_len > 5:
+            t.forward(branch_len)
             t.right(20)
-            tree(branchLen-15,t)
+            tree(branch_len - 15, t)
             t.left(40)
-            tree(branchLen-15,t)
+            tree(branch_len - 15, t)
             t.right(20)
-            t.backward(branchLen)
+            t.backward(branch_len)
 
     def main():
         t = turtle.Turtle()
-        myWin = turtle.Screen()
+        my_win = turtle.Screen()
         t.left(90)
         t.up()
         t.backward(100)
         t.down()
         t.color("green")
-        tree(75,t)
-        myWin.exitonclick()
-        
+        tree(75, t)
+        my_win.exitonclick()
+
     main()
 
 
@@ -196,10 +198,10 @@ interesting options to make your tree look more realistic.
    Modify the recursive tree program using one or all of the following
    ideas:
 
-   -  Modify the thickness of the branches so that as the ``branchLen``
+   -  Modify the thickness of the branches so that as the ``branch_len``
       gets smaller, the line gets thinner.
 
-   -  Modify the color of the branches so that as the ``branchLen`` gets
+   -  Modify the color of the branches so that as the ``branch_len`` gets
       very short it is colored like a leaf.
 
    -  Modify the angle used in turning the turtle so that at each branch
@@ -207,7 +209,7 @@ interesting options to make your tree look more realistic.
       choose the angle between 15 and 45 degrees. Play around to see
       what looks good.
 
-   -  Modify the ``branchLen`` recursively so that instead of always
+   -  Modify the ``branch_len`` recursively so that instead of always
       subtracting the same amount you subtract a random amount in some
       range.
 
