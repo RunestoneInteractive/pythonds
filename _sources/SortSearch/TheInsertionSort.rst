@@ -17,7 +17,7 @@ items represent the ordered sublists as the algorithm makes each pass.
 .. figure:: Figures/insertionsort.png
    :align: center
 
-   Figure 4: ``insertionSort``
+   Figure 4: Insertion Sort: Complete
 
 
 We begin by assuming that a list with one item (position :math:`0`) is
@@ -40,11 +40,11 @@ have a sorted sublist of six items.
 .. figure:: Figures/insertionpass.png
    :align: center
 
-   Figure 5: ``insertionSort``: Fifth Pass of the Sort
+   Figure 5: Insertion Sort: Fifth Pass of the Sort
 
 
-The implementation of ``insertionSort`` (:ref:`ActiveCode 1 <lst_insertion>`) shows that
-there are again :math:`n-1` passes to sort *n* items. The iteration
+The implementation of ``insertion_sort`` (:ref:`ActiveCode 1 <lst_insertion>`) shows that
+there are again :math:`n-1` passes to sort :math:`n` items. The iteration
 starts at position 1 and moves through position :math:`n-1`, as these
 are the items that need to be inserted back into the sorted sublists.
 Line 8 performs the shift operation that moves a value up one position
@@ -65,21 +65,20 @@ studies, insertion sort will show very good performance.
 .. activecode:: lst_insertion
     :caption: Insertion Sort
 
-    def insertionSort(alist):
-       for index in range(1,len(alist)):
+    def insertion_sort(a_list):
+        for i in range(1, len(a_list)):
+            cur_val = a_list[i]
+            cur_pos = i
 
-         currentvalue = alist[index]
-         position = index
+            while cur_pos > 0 and a_list[cur_pos - 1] > cur_val:
+                a_list[cur_pos] = a_list[cur_pos - 1]
+                cur_pos = cur_pos - 1
+            a_list[cur_pos] = cur_val
 
-         while position>0 and alist[position-1]>currentvalue:
-             alist[position]=alist[position-1]
-             position = position-1
 
-         alist[position]=currentvalue
-
-    alist = [54,26,93,17,77,31,44,55,20]
-    insertionSort(alist)
-    print(alist)
+    a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+    insertion_sort(a_list)
+    print(a_list)
 
 .. animation:: insertion_anim
    :modelfile: sortmodels.js
@@ -93,21 +92,20 @@ studies, insertion sort will show very good performance.
 .. .. codelens:: insertionsortcodetrace
 ..     :caption: Tracing the Insertion Sort
 ..
-..     def insertionSort(alist):
-..        for index in range(1,len(alist)):
-..
-..          currentvalue = alist[index]
-..          position = index
-..
-..          while position>0 and alist[position-1]>currentvalue:
-..              alist[position]=alist[position-1]
-..              position = position-1
-..
-..          alist[position]=currentvalue
-..
-..     alist = [54,26,93,17,77,31,44,55,20]
-..     insertionSort(alist)
-..     print(alist)
+..     def insertion_sort(a_list):
+..         for i in range(1, len(a_list)):
+..             cur_val = a_list[i]
+..             cur_pos = i
+..     
+..             while cur_pos > 0 and a_list[cur_pos - 1] > cur_val:
+..                 a_list[cur_pos] = a_list[cur_pos - 1]
+..                 cur_pos = cur_pos - 1
+..             a_list[cur_pos] = cur_val
+..     
+..     
+..     a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+..     insertion_sort(a_list)
+..     print(a_list)
 
 .. admonition:: Self Check
 
