@@ -19,10 +19,10 @@ Programming Exercises
    starting and ending index values for the sublist. Generate a random,
    ordered list of integers and do a benchmark analysis.
 
-#. Implement the ``len`` method (\_\_len\_\_) for the hash table Map ADT
+#. Implement the ``len`` method (``__len__``) for the hash table Map ADT
    implementation.
 
-#. Implement the ``in`` method (\_\_contains\_\_) for the hash table Map
+#. Implement the ``in`` method (``__contains__``) for the hash table Map
    ADT implementation.
 
 #. How can you delete items from a hash table that uses chaining for
@@ -43,20 +43,16 @@ Programming Exercises
    Perform a benchmark analysis using some of the sorting algorithms
    from this chapter. What is the difference in execution speed?
 
-#. Implement the bubble sort using simultaneous assignment.
-
 #. A bubble sort can be modified to “bubble” in both directions. The
    first pass moves “up” the list, and the second pass moves “down.”
    This alternating pattern continues until no more passes are
    necessary. Implement this variation and describe under what
    circumstances it might be appropriate.
 
-#. Implement the selection sort using simultaneous assignment.
-
 #. Perform a benchmark analysis for a shell sort, using different
    increment sets on the same list.
 
-#. Implement the ``mergeSort`` function without using the slice
+#. Implement the ``merge_sort`` function without using the slice
    operator.
 
 #. One way to improve the quick sort is to use an insertion sort on
@@ -66,5 +62,5 @@ Programming Exercises
    sizes for the partition limit.
 
 #. Implement the median-of-three method for selecting a pivot value as a
-   modification to ``quickSort``. Run an experiment to compare the two
+   modification to ``quick_sort``. Run an experiment to compare the two
    techniques.
