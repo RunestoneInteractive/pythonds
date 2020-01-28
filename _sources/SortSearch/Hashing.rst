@@ -26,8 +26,8 @@ value starting at 0. For example, we will have a slot named 0, a slot
 named 1, a slot named 2, and so on. Initially, the hash table contains
 no items so every slot is empty. We can implement a hash table by using
 a list with each element initialized to the special Python value
-``None``. :ref:`Figure 4 <fig_hashtable1>` shows a hash table of size :math:`m=11`.
-In other words, there are *m* slots in the table, named 0 through 10.
+``None``. :ref:`Figure 4 <fig_hashtable1>` shows a hash table of size :math:`m = 11`.
+In other words, there are :math:`m` slots in the table, named 0 through 10.
 
 .. _fig_hashtable1:
 
@@ -40,7 +40,7 @@ In other words, there are *m* slots in the table, named 0 through 10.
 The mapping between an item and the slot where that item belongs in the
 hash table is called the **hash function**. The hash function will take
 any item in the collection and return an integer in the range of slot
-names, between 0 and *m*-1. Assume that we have the set of integer items
+names, between 0 and :math:`m - 1`. Assume that we have the set of integer items
 54, 26, 93, 17, 77, and 31. Our first hash function, sometimes referred
 to as the “remainder method,” simply takes an item and divides it by the
 table size, returning the remainder as its hash value
@@ -70,7 +70,7 @@ Once the hash values have been computed, we can insert each item into
 the hash table at the designated position as shown in
 :ref:`Figure 5 <fig_hashtable2>`. Note that 6 of the 11 slots are now occupied. This
 is referred to as the **load factor**, and is commonly denoted by
-:math:`\lambda = \frac {numberofitems}{tablesize}`. For this example,
+:math:`\lambda = \frac {number\_of\_items}{table\_size}`. For this example,
 :math:`\lambda = \frac {6}{11}`.
 
 
@@ -92,7 +92,7 @@ be, we have found a constant time search algorithm.
 You can probably already see that this technique is going to work only
 if each item maps to a unique location in the hash table. For example,
 if the item 44 had been the next item in our collection, it would have a
-hash value of 0 (:math:`44 \% 11 == 0`). Since 77 also had a hash
+hash value of 0 (:math:`44\ \%\ 11 = 0`). Since 77 also had a hash
 value of 0, we would have a problem. According to the hash function, two
 or more items would need to be in the same slot. This is referred to as
 a **collision** (it may also be called a “clash”). Clearly, collisions
@@ -130,13 +130,13 @@ dividing the item into equal-size pieces (the last piece may not be of
 equal size). These pieces are then added together to give the resulting
 hash value. For example, if our item was the phone number 436-555-4601,
 we would take the digits and divide them into groups of 2
-(43,65,55,46,01). After the addition, :math:`43+65+55+46+01`, we get
+(43, 65, 55, 46, 01). After the addition, :math:`43 + 65 + 55 + 46 + 01`, we get
 210. If we assume our hash table has 11 slots, then we need to perform
 the extra step of dividing by 11 and keeping the remainder. In this case
 :math:`210\ \%\ 11` is 1, so the phone number 436-555-4601 hashes to
 slot 1. Some folding methods go one step further and reverse every other
 piece before the addition. For the above example, we get
-:math:`43+56+55+64+01 = 219` which gives :math:`219\ \%\ 11 = 10`.
+:math:`43 + 56 + 55 + 64 + 01 = 219` which gives :math:`219\ \%\ 11 = 10`.
 
 Another numerical technique for constructing a hash function is called
 the **mid-square method**. We first square the item, and then extract
@@ -170,18 +170,18 @@ values.
 
 ::
 
-    >>> ord('c')
+    >>> ord("c")
     99
-    >>> ord('a')
+    >>> ord("a")
     97
-    >>> ord('t')
+    >>> ord("t")
     116
 
 We can then take these three ordinal values, add them up, and use the
 remainder method to get a hash value (see :ref:`Figure 6 <fig_stringhash>`).
-:ref:`Listing 1 <lst_hashfunction1>` shows a function called ``hash`` that takes a
+:ref:`Listing 1 <lst_hashfunction1>` shows a function called ``hash_str`` that takes a
 string and a table size and returns the hash value in the range from 0
-to ``tablesize``-1.
+to ``table_size``-1.
 
 
 .. _fig_stringhash:
@@ -198,19 +198,15 @@ to ``tablesize``-1.
 
 ::
 
-    def hash(astring, tablesize):
-        sum = 0
-        for pos in range(len(astring)):
-            sum = sum + ord(astring[pos])
-
-        return sum%tablesize
+  def hash_str(a_string, table_size):
+      return sum([ord(c) for c in a_string]) % table_size
         
 
 It is interesting to note that when using this hash function, anagrams
 will always be given the same hash value. To remedy this, we could use
 the position of the character as a weight. :ref:`Figure 7 <fig_stringhash2>` shows
 one possible way to use the positional value as a weighting factor. The
-modification to the ``hash`` function is left as an exercise.
+modification to the ``hash_str`` function is left as an exercise.
 
 .. _fig_stringhash2:
 
@@ -250,7 +246,7 @@ By systematically visiting each slot one at a time, we are performing an
 open addressing technique called **linear probing**.
 
 :ref:`Figure 8 <fig_linearprobing>` shows an extended set of integer items under the
-simple remainder method hash function (54,26,93,17,77,31,44,55,20).
+simple remainder method hash function (54, 26, 93, 17, 77, 31, 44, 55, 20).
 :ref:`Table 4 <tbl_hashvalues1>` above shows the hash values for the original items.
 :ref:`Figure 5 <fig_hashtable2>` shows the original contents. When we attempt to
 place 44 into slot 0, a collision occurs. Under linear probing, we look
@@ -316,10 +312,10 @@ that is empty.
 
 The general name for this process of looking for another slot after a
 collision is **rehashing**. With simple linear probing, the rehash
-function is :math:`newhashvalue = rehash(oldhashvalue)` where
-:math:`rehash(pos) = (pos + 1) \% sizeoftable`. The “plus 3” rehash
-can be defined as :math:`rehash(pos) = (pos+3) \% sizeoftable`. In
-general, :math:`rehash(pos) = (pos + skip) \% sizeoftable`. It is
+function is :math:`new\_hash = rehash(old\_hash)` where
+:math:`rehash(pos) = (pos + 1) \% size`. The “plus 3” rehash
+can be defined as :math:`rehash(pos) = (pos + 3) \% size`. In
+general, :math:`rehash(pos) = (pos + skip) \% size`. It is
 important to note that the size of the “skip” must be such that all the
 slots in the table will eventually be visited. Otherwise, part of the
 table will be unused. To ensure this, it is often suggested that the
@@ -329,8 +325,8 @@ in our examples.
 A variation of the linear probing idea is called **quadratic probing**.
 Instead of using a constant “skip” value, we use a rehash function that
 increments the hash value by 1, 3, 5, 7, 9, and so on. This means that
-if the first hash value is *h*, the successive values are :math:`h+1`,
-:math:`h+4`, :math:`h+9`, :math:`h+16`, and so on. In general, the i will be i^2 :math:`rehash(pos) = (h + i^2)`. In other words,
+if the first hash value is :math:`h`, the successive values are :math:`h + 1`,
+:math:`h + 4`, :math:`h + 9`, :math:`h + 16`, and so on. In general, the :math:`i` will be :math:`i ^ {2}` and :math:`rehash(pos) = (h + i ^ {2}) \% size`. In other words,
 quadratic probing uses a skip consisting of successive perfect squares.
 :ref:`Figure 11 <fig_quadratic>` shows our example values after they are placed using
 this technique.
@@ -411,7 +407,7 @@ between a key and a value. The operations are given below.
 -  ``Map()`` Create a new, empty map. It returns an empty map
    collection.
 
--  ``put(key,val)`` Add a new key-value pair to the map. If the key is
+-  ``put(key, val)`` Add a new key-value pair to the map. If the key is
    already in the map then replace the old value with the new value.
 
 -  ``get(key)`` Given a key, return the value stored in the map or
@@ -434,7 +430,7 @@ described above since looking up an item in a hash table can approach
 :math:`O(1)` performance.
 
 In :ref:`Listing 2 <lst_hashtablecodeconstructor>` we use two lists to create a
-``HashTable`` class that implements the Map abstract data type. One
+``HashTable`` class that implements the ``Map`` abstract data type. One
 list, called ``slots``, will hold the key items and a parallel list,
 called ``data``, will hold the data values. When we look up a key, the
 corresponding position in the data list will hold the associated data
@@ -457,7 +453,7 @@ can be as efficient as possible.
             self.data = [None] * self.size
 
 
-``hashfunction`` implements the simple remainder method. The collision
+``hash_function`` implements the simple remainder method. The collision
 resolution technique is linear probing with a “plus 1” rehash function.
 The ``put`` function (see :ref:`Listing 3 <lst_hashtablecodestore>`) assumes that
 there will eventually be an empty slot unless the key is already present
@@ -473,45 +469,47 @@ no empty slots left is an exercise.
 
 ::
 
-    def put(self,key,data):
-      hashvalue = self.hashfunction(key,len(self.slots))
+    def put(self, key, data):
+        hash_value = self.hash_function(key, len(self.slots))
 
-      if self.slots[hashvalue] == None:
-        self.slots[hashvalue] = key
-        self.data[hashvalue] = data
-      else:
-        if self.slots[hashvalue] == key:
-          self.data[hashvalue] = data  #replace
+        if self.slots[hash_value] is None:
+            self.slots[hash_value] = key
+            self.data[hash_value] = data
         else:
-          nextslot = self.rehash(hashvalue,len(self.slots))
-          while self.slots[nextslot] != None and \
-                          self.slots[nextslot] != key:
-            nextslot = self.rehash(nextslot,len(self.slots))
+            if self.slots[hash_value] == key:
+                self.data[hash_value] = data  # replace
+            else:
+                next_slot = self.rehash(hash_value, len(self.slots))
+                while (
+                    self.slots[next_slot] is not None
+                    and self.slots[next_slot] != key
+                ):
+                    next_slot = self.rehash(next_slot, len(self.slots))
 
-          if self.slots[nextslot] == None:
-            self.slots[nextslot]=key
-            self.data[nextslot]=data
-          else:
-            self.data[nextslot] = data #replace
+                if self.slots[next_slot] is None:
+                    self.slots[next_slot] = key
+                    self.data[next_slot] = data
+                else:
+                    self.data[next_slot] = data
 
-    def hashfunction(self,key,size):
-         return key%size
+    def hash_function(self, key, size):
+        return key % size
 
-    def rehash(self,oldhash,size):
-        return (oldhash+1)%size
+    def rehash(self, old_hash, size):
+        return (old_hash + 1) % size
 
 
 Likewise, the ``get`` function (see :ref:`Listing 4 <lst_hashtablecodesearch>`)
 begins by computing the initial hash value. If the value is not in the
 initial slot, ``rehash`` is used to locate the next possible position.
-Notice that line 15 guarantees that the search will terminate by
+Notice that line 14 guarantees that the search will terminate by
 checking to make sure that we have not returned to the initial slot. If
 that happens, we have exhausted all possible slots and the item must not
 be present.
 
 The final methods of the ``HashTable`` class provide additional
-dictionary functionality. We overload the __getitem__ and
-__setitem__ methods to allow access using``[]``. This means that
+dictionary functionality. We overload the ``__getitem__`` and
+``__setitem__`` methods to allow access using``[]``. This means that
 once a ``HashTable`` has been created, the familiar index operator will
 be available. We leave the remaining methods as exercises.
 
@@ -524,29 +522,23 @@ be available. We leave the remaining methods as exercises.
 
 ::
 
-    def get(self,key):
-      startslot = self.hashfunction(key,len(self.slots))
+    def get(self, key):
+        start_slot = self.hash_function(key, len(self.slots))
 
-      data = None
-      stop = False
-      found = False
-      position = startslot
-      while self.slots[position] != None and  \
-                           not found and not stop:
-         if self.slots[position] == key:
-           found = True
-           data = self.data[position]
-         else:
-           position=self.rehash(position,len(self.slots))
-           if position == startslot:
-               stop = True
-      return data
+        position = start_slot
+        while self.slots[position] is not None:
+            if self.slots[position] == key:
+                return self.data[position]
+            else:
+                position = self.rehash(position, len(self.slots))
+                if position == start_slot:
+                    return None
 
-    def __getitem__(self,key):
+    def __getitem__(self, key):
         return self.get(key)
 
-    def __setitem__(self,key,data):
-        self.put(key,data)
+    def __setitem__(self, key, data):
+        self.put(key, data)
         
         
         
@@ -561,19 +553,19 @@ string data values.
 
 ::
 
-    >>> H=HashTable()
-    >>> H[54]="cat"
-    >>> H[26]="dog"
-    >>> H[93]="lion"
-    >>> H[17]="tiger"
-    >>> H[77]="bird"
-    >>> H[31]="cow"
-    >>> H[44]="goat"
-    >>> H[55]="pig"
-    >>> H[20]="chicken"
-    >>> H.slots
+    >>> h = HashTable()
+    >>> h[54] = "cat"
+    >>> h[26] = "dog"
+    >>> h[93] = "lion"
+    >>> h[17] = "tiger"
+    >>> h[77] = "bird"
+    >>> h[31] = "cow"
+    >>> h[44] = "goat"
+    >>> h[55] = "pig"
+    >>> h[20] = "chicken"
+    >>> h.slots
     [77, 44, 55, 20, 26, 93, 17, None, None, 31, 54]
-    >>> H.data
+    >>> h.data
     ['bird', 'goat', 'pig', 'chicken', 'dog', 'lion',
            'tiger', None, None, 'cow', 'cat']
 
@@ -582,102 +574,96 @@ the value for the key 20 is being replaced.
 
 ::
 
-    >>> H[20]
+    >>> h[20]
     'chicken'
-    >>> H[17]
+    >>> h[17]
     'tiger'
-    >>> H[20]='duck'
-    >>> H[20]
+    >>> h[20] = "duck"
+    >>> h[20]
     'duck'
-    >>> H.data
+    >>> h.data
     ['bird', 'goat', 'pig', 'duck', 'dog', 'lion',
            'tiger', None, None, 'cow', 'cat']
-    >> print(H[99])
+    >> print(h[99])
     None
 
 
 The complete hash table example can be found in ActiveCode 1.
 
 .. activecode:: hashtablecomplete
-   :caption: Complete Hash Table Example
-   :hidecode:
+    :caption: Complete Hash Table Example
+    :hidecode:
    
-   class HashTable:
-       def __init__(self):
-           self.size = 11
-           self.slots = [None] * self.size
-           self.data = [None] * self.size
+    class HashTable:
+        def __init__(self):
+            self.size = 11
+            self.slots = [None] * self.size
+            self.data = [None] * self.size
 
-       def put(self,key,data):
-         hashvalue = self.hashfunction(key,len(self.slots))
+        def put(self, key, data):
+            hash_value = self.hash_function(key, len(self.slots))
 
-         if self.slots[hashvalue] == None:
-           self.slots[hashvalue] = key
-           self.data[hashvalue] = data
-         else:
-           if self.slots[hashvalue] == key:
-             self.data[hashvalue] = data  #replace
-           else:
-             nextslot = self.rehash(hashvalue,len(self.slots))
-             while self.slots[nextslot] != None and \
-                             self.slots[nextslot] != key:
-               nextslot = self.rehash(nextslot,len(self.slots))
-
-             if self.slots[nextslot] == None:
-               self.slots[nextslot]=key
-               self.data[nextslot]=data
-             else:
-               self.data[nextslot] = data #replace
-
-       def hashfunction(self,key,size):
-            return key%size
-
-       def rehash(self,oldhash,size):
-           return (oldhash+1)%size
-
-       def get(self,key):
-         startslot = self.hashfunction(key,len(self.slots))
-
-         data = None
-         stop = False
-         found = False
-         position = startslot
-         while self.slots[position] != None and  \
-                              not found and not stop:
-            if self.slots[position] == key:
-              found = True
-              data = self.data[position]
+            if self.slots[hash_value] is None:
+                self.slots[hash_value] = key
+                self.data[hash_value] = data
             else:
-              position=self.rehash(position,len(self.slots))
-              if position == startslot:
-                  stop = True
-         return data
+                if self.slots[hash_value] == key:
+                    self.data[hash_value] = data  # replace
+                else:
+                    next_slot = self.rehash(hash_value, len(self.slots))
+                    while (
+                        self.slots[next_slot] is not None
+                        and self.slots[next_slot] != key
+                    ):
+                        next_slot = self.rehash(next_slot, len(self.slots))
 
-       def __getitem__(self,key):
-           return self.get(key)
+                    if self.slots[next_slot] is None:
+                        self.slots[next_slot] = key
+                        self.data[next_slot] = data
+                    else:
+                        self.data[next_slot] = data
 
-       def __setitem__(self,key,data):
-           self.put(key,data)
+        def hash_function(self, key, size):
+            return key % size
 
-   H=HashTable()
-   H[54]="cat"
-   H[26]="dog"
-   H[93]="lion"
-   H[17]="tiger"
-   H[77]="bird"
-   H[31]="cow"
-   H[44]="goat"
-   H[55]="pig"
-   H[20]="chicken"
-   print(H.slots)
-   print(H.data)
+        def rehash(self, old_hash, size):
+            return (old_hash + 1) % size
 
-   print(H[20])
+        def get(self, key):
+            start_slot = self.hash_function(key, len(self.slots))
 
-   print(H[17])
-   H[20]='duck'
-   print(H[20])
-   print(H[99])
+            position = start_slot
+            while self.slots[position] is not None:
+                if self.slots[position] == key:
+                    return self.data[position]
+                else:
+                    position = self.rehash(position, len(self.slots))
+                    if position == start_slot:
+                        return None
+
+        def __getitem__(self, key):
+            return self.get(key)
+
+        def __setitem__(self, key, data):
+            self.put(key, data)
+
+    h = HashTable()
+    h[54] = "cat"
+    h[26] = "dog"
+    h[93] = "lion"
+    h[17] = "tiger"
+    h[77] = "bird"
+    h[31] = "cow"
+    h[44] = "goat"
+    h[55] = "pig"
+    h[20] = "chicken"
+    print(h.slots)
+    print(h.data)
+    print(h[20])
+    print(h[17])
+    h[20] = "duck"
+    print(h[20])
+    print(h[99])
    
     
 
