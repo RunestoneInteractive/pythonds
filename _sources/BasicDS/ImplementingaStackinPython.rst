@@ -20,7 +20,7 @@ use a list.
 
 Recall that the list class in Python provides an ordered collection
 mechanism and a set of methods. For example, if we have the list
-[2,5,3,6,7,4], we need only to decide which end of the list will be
+[2, 5, 3, 6, 7, 4], we need only to decide which end of the list will be
 considered the top of the stack and which will be the base. Once that
 decision is made, the operations can be implemented using the list
 methods such as ``append`` and ``pop``.
@@ -34,57 +34,68 @@ of the list. ``pop`` operations will manipulate that same end.
 
 
 .. activecode:: stack_1ac
-   :caption: Implementing a Stack class using Python lists
-   :nocodelens:
+    :caption: Implementing a Stack class using Python lists
+    :nocodelens:
 
-   class Stack:
+    class Stack:
+        """Stack implementation as a list"""
+
         def __init__(self):
-            self.items = []
+            """Create new stack"""
+            self._items = []
 
-        def isEmpty(self):
-            return self.items == []
+        def is_empty(self):
+            """Check if the stack is empty"""
+            return not bool(self._items)
 
         def push(self, item):
-            self.items.append(item)
+            """Add an item to the stack"""
+            self._items.append(item)
 
         def pop(self):
-            return self.items.pop()
+            """Remove an item from the stack"""
+            return self._items.pop()
 
         def peek(self):
-            return self.items[len(self.items)-1]
+            """Get the value of the top item in the stack"""
+            return self._items[-1]
 
         def size(self):
-            return len(self.items)
+            """Get the number of items in the stack"""
+            return len(self._items)
 
 Remember that nothing happens when we click the ``run`` button other than the
 definition of the class.  We must create a ``Stack`` object and then use it.
 :ref:`ActiveCode 2 <lst_stackcode1>` shows the ``Stack`` class in
 action as we perform the sequence of operations from
 :ref:`Table 1 <tbl_stackops>`.  Notice that the definition of the ``Stack`` class is
-imported from the ``pythonds`` module.
+imported from the ``pythonds3`` module.
 
 .. note::
-    The ``pythonds`` module contains implementations of all data structures discussed in this book.  It is structured according to the sections: basic, trees, and graphs.  The module can be downloaded from `GitHub <https://github.com/bnmnetp/pythonds>`_. or installed from the command line using ``pip install pythonds``.
+    The ``pythonds3`` module contains implementations of all data structures discussed in this book.
+    It is structured according to the sections: basic, trees, and graphs.
+    The module can be downloaded from `GitHub <https://github.com/yasinovskyy/pythonds3>`_
+    or installed from the command line using ``pip install pythonds3``.
 
 
 .. activecode:: stack_ex_1
-   :nocodelens:
+    :nocodelens:
 
-   from pythonds.basic import Stack
+    from pythonds3.basic import Stack
 
-   s=Stack()
+    s = Stack()
 
-   print(s.isEmpty())
-   s.push(4)
-   s.push('dog')
-   print(s.peek())
-   s.push(True)
-   print(s.size())
-   print(s.isEmpty())
-   s.push(8.4)
-   print(s.pop())
-   print(s.pop())
-   print(s.size())
+    print(s.is_empty())
+    s.push(4)
+    s.push("dog")
+    print(s.peek())
+    s.push(True)
+    print(s.size())
+    print(s.is_empty())
+    s.push(8.4)
+    print(s.pop())
+    print(s.pop())
+    print(s.size())
 
 
 
@@ -98,17 +109,17 @@ explicitly using ``pop`` and ``insert``. The implementation is shown in
 .. _lst_stackcode2:
 
 .. codelens:: stack_cl_1
-   :caption: Alternative Implementation of the Stack class
+    :caption: Alternative Implementation of the Stack class
 
-   class Stack:
+    class Stack:
         def __init__(self):
             self.items = []
 
-        def isEmpty(self):
+        def is_empty(self):
             return self.items == []
 
         def push(self, item):
-            self.items.insert(0,item)
+            self.items.insert(0, item)
 
         def pop(self):
             return self.items.pop(0)
@@ -119,10 +130,10 @@ explicitly using ``pop`` and ``insert``. The implementation is shown in
         def size(self):
             return len(self.items)
 
-   s = Stack()
-   s.push('hello')
-   s.push('true')
-   print(s.pop())
+    s = Stack()
+    s.push("hello")
+    s.push("true")
+    print(s.pop())
 
 
 This ability to change the physical implementation of an abstract data
@@ -141,9 +152,9 @@ benchmark testing.
 .. admonition:: Self Check
 
    .. mchoice:: stack_1
-      :answer_a: 'x'
-      :answer_b: 'y'
-      :answer_c: 'z'
+      :answer_a: "x"
+      :answer_b: "y"
+      :answer_c: "z"
       :answer_d: The stack is empty
       :correct: c
       :feedback_a: Remember that a stack is built from the bottom up.
@@ -156,17 +167,17 @@ benchmark testing.
       .. code-block:: python
 
        m = Stack()
-       m.push('x')
-       m.push('y')
+       m.push("x")
+       m.push("y")
        m.pop()
-       m.push('z')
+       m.push("z")
        m.peek()
 
    .. mchoice:: stack_2
-      :answer_a: 'x'
+      :answer_a: "x"
       :answer_b: the stack is empty
       :answer_c: an error will occur
-      :answer_d: 'z'
+      :answer_d: "z"
       :correct: c
       :feedback_a: You may want to check out the docs for isEmpty
       :feedback_b: There is an odd number of things on the stack but each time through the loop 2 things are popped.
@@ -178,28 +189,28 @@ benchmark testing.
       .. code-block:: python
 
         m = Stack()
-        m.push('x')
-        m.push('y')
-        m.push('z')
-        while not m.isEmpty():
+        m.push("x")
+        m.push("y")
+        m.push("z")
+        while not m.is_empty():
            m.pop()
            m.pop()
 
-   Write a function `revstring(mystr)` that uses a stack to reverse the
+   Write a function `rev_string(my_str)` that uses a stack to reverse the
    characters in a string.
 
    .. actex:: stack_stringrev
       :nocodelens:
 
       from test import testEqual
-      from pythonds.basic import Stack
+      from pythonds3.basic import Stack
 
-      def revstring(mystr):
+      def rev_string(my_str):
           # your code here
 
-      testEqual(revstring('apple'),'elppa')
-      testEqual(revstring('x'),'x')
-      testEqual(revstring('1234567890'),'0987654321')
+      testEqual(rev_string("apple"), "elppa")
+      testEqual(rev_string("x"), "x")
+      testEqual(rev_string("1234567890"), "0987654321")
 
 .. youtube:: fZtLSM7k_54
     :divid: stack1_video

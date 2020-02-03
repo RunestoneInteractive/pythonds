@@ -38,26 +38,25 @@ complete function for palindrome-checking appears in
 .. _lst_palchecker:
 
 .. activecode:: palchecker
-   :caption: A Palindrome Checker Using Deque
-   :nocodelens:
+    :caption: A Palindrome Checker Using Deque
+    :nocodelens:
 
-   from pythonds.basic import Deque
+    from pythonds3.basic import Deque
 
-   def palchecker(aString):
-       chardeque = Deque()
 
-       for ch in aString:
-           chardeque.addRear(ch)
+    def pal_checker(a_string):
+        char_deque = Deque()
 
-       stillEqual = True
+        for ch in a_string:
+            char_deque.add_rear(ch)
 
-       while chardeque.size() > 1 and stillEqual:
-           first = chardeque.removeFront()
-           last = chardeque.removeRear()
-           if first != last:
-               stillEqual = False
+        while char_deque.size() > 1:
+            first = char_deque.remove_front()
+            last = char_deque.remove_rear()
+            if first != last:
+                return False
 
-       return stillEqual
+        return True
 
-   print(palchecker("lsdkjfskf"))
-   print(palchecker("radar"))
+    print(pal_checker("lsdkjfskf"))
+    print(pal_checker("radar"))

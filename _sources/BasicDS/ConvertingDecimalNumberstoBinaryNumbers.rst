@@ -50,37 +50,39 @@ appropriate data structure for solving the problem.
 
 
 The Python code in :ref:`ActiveCode 1 <lst_binconverter>` implements the Divide by 2
-algorithm. The function ``divideBy2`` takes an argument that is a
-decimal number and repeatedly divides it by 2. Line 7 uses the built-in
-modulo operator, %, to extract the remainder and line 8 then pushes it
+algorithm. The function ``divide_by_2`` takes an argument that is a
+decimal number and repeatedly divides it by 2. Line 8 uses the built-in
+modulo operator, %, to extract the remainder and line 9 then pushes it
 on the stack. After the division process reaches 0, a binary string is
-constructed in lines 11-13. Line 11 creates an empty string. The binary
+constructed in lines 12-14. Line 12 creates an empty string. The binary
 digits are popped from the stack one at a time and appended to the
 right-hand end of the string. The binary string is then returned.
 
 .. _lst_binconverter:
 
 .. activecode:: divby2
-   :caption: Converting from Decimal to Binary
-   :nocodelens:
+    :caption: Converting from Decimal to Binary
+    :nocodelens:
 
-   from pythonds.basic import Stack
+    pythonds3.basic import Stack
 
-   def divideBy2(decNumber):
-       remstack = Stack()
 
-       while decNumber > 0:
-           rem = decNumber % 2
-           remstack.push(rem)
-           decNumber = decNumber // 2
+    def divide_by_2(decimal_num):
+        rem_stack = Stack()
 
-       binString = ""
-       while not remstack.isEmpty():
-           binString = binString + str(remstack.pop())
+        while decimal_num > 0:
+            rem = decimal_num % 2
+            rem_stack.push(rem)
+            decimal_num = decimal_num // 2
 
-       return binString
+        bin_string = ""
+        while not rem_stack.is_empty():
+            bin_string = bin_string + str(rem_stack.pop())
 
-   print(divideBy2(42))
+        return bin_string
+
+    print(divide_by_2(42))
+    print(divide_by_2(31))
 
 The algorithm for binary conversion can easily be extended to perform
 the conversion for any base. In computer science it is common to use a
@@ -97,10 +99,10 @@ and
 
 :math:`14\times16^{1} + 9\times16^{0}`
 
-The function ``divideBy2`` can be modified to accept not only a decimal
+The function ``divide_by_2`` can be modified to accept not only a decimal
 value but also a base for the intended conversion. The “Divide by 2”
 idea is simply replaced with a more general “Divide by base.” A new
-function called ``baseConverter``, shown in :ref:`ActiveCode 2 <lst_baseconverter>`,
+function called ``base_converter``, shown in :ref:`ActiveCode 2 <lst_baseconverter>`,
 takes a decimal number and any base between 2 and 16 as parameters. The
 remainders are still pushed onto the stack until the value being
 converted becomes 0. The same left-to-right string construction
@@ -118,31 +120,31 @@ beyond 9.
     :caption: Converting from Decimal to any Base
     :nocodelens:
 
-    from pythonds.basic import Stack
+    from pythonds3.basic import Stack
 
-    def baseConverter(decNumber,base):
+
+    def base_converter(decimal_num, base):
         digits = "0123456789ABCDEF"
+        rem_stack = Stack()
 
-        remstack = Stack()
+        while decimal_num > 0:
+            rem = decimal_num % base
+            rem_stack.push(rem)
+            decimal_num = decimal_num // base
 
-        while decNumber > 0:
-            rem = decNumber % base
-            remstack.push(rem)
-            decNumber = decNumber // base
+        new_string = ""
+        while not rem_stack.is_empty():
+            new_string = new_string + digits[rem_stack.pop()]
 
-        newString = ""
-        while not remstack.isEmpty():
-            newString = newString + digits[remstack.pop()]
+        return new_string
 
-        return newString
-
-    print(baseConverter(25,2))
-    print(baseConverter(25,16))
+    print(base_converter(25, 2))
+    print(base_converter(25, 16))
 
 A solution to this problem is to extend the digit set to include some
 alphabet characters. For example, hexadecimal uses the ten decimal
 digits along with the first six alphabet characters for the 16 digits.
-To implement this, a digit string is created (line 4 in
+To implement this, a digit string is created (line 5 in
 :ref:`Listing 6 <lst_baseconverter>`) that stores the digits in their corresponding
 positions. 0 is at position 0, 1 is at position 1, A is at position 10,
 B is at position 11, and so on. When a remainder is removed from the

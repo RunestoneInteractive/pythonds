@@ -23,7 +23,7 @@ given below.
 -  ``peek()`` returns the top item from the stack but does not remove
    it. It needs no parameters. The stack is not modified.
 
--  ``isEmpty()`` tests to see whether the stack is empty. It needs no
+-  ``is_empty()`` tests to see whether the stack is empty. It needs no
    parameters and returns a boolean value.
 
 -  ``size()`` returns the number of items on the stack. It needs no
@@ -38,20 +38,20 @@ far right.
 
 .. table:: **Table 1: Sample Stack Operations**
 
-    ============================ ======================== ==================
-             **Stack Operation**       **Stack Contents**   **Return Value**
-    ============================ ======================== ==================
-                 ``s.isEmpty()``                   ``[]``           ``True``
-                   ``s.push(4)``                  ``[4]``
-               ``s.push('dog')``            ``[4,'dog']``
-                    ``s.peek()``            ``[4,'dog']``          ``'dog'``
-                ``s.push(True)``       ``[4,'dog',True]``
-                    ``s.size()``       ``[4,'dog',True]``              ``3``
-                 ``s.isEmpty()``       ``[4,'dog',True]``          ``False``
-                 ``s.push(8.4)``   ``[4,'dog',True,8.4]``
-                     ``s.pop()``       ``[4,'dog',True]``            ``8.4``
-                     ``s.pop()``            ``[4,'dog']``           ``True``
-                    ``s.size()``            ``[4,'dog']``              ``2``
-    ============================ ======================== ==================
+    ============================ =========================== ==================
+             **Stack Operation**          **Stack Contents**   **Return Value**
+    ============================ =========================== ==================
+                ``s.is_empty()``                      ``[]``           ``True``
+                   ``s.push(4)``                     ``[4]``
+               ``s.push('dog')``              ``[4, 'dog']``
+                    ``s.peek()``              ``[4, 'dog']``          ``'dog'``
+                ``s.push(True)``        ``[4, 'dog', True]``
+                    ``s.size()``        ``[4, 'dog', True]``              ``3``
+                ``s.is_empty()``        ``[4, 'dog', True]``          ``False``
+                 ``s.push(8.4)``   ``[4, 'dog', True, 8.4]``
+                     ``s.pop()``        ``[4, 'dog', True]``            ``8.4``
+                     ``s.pop()``              ``[4, 'dog']``           ``True``
+                    ``s.size()``              ``[4, 'dog']``              ``2``
+    ============================ =========================== ==================
 
 

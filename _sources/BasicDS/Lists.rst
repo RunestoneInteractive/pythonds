@@ -24,5 +24,5 @@ For example, the collection of integers 54, 26, 93, 17, 77, and 31 might
 represent a simple unordered list of exam scores. Note that we have
 written them as comma-delimited values, a common way of showing the list
 structure. Of course, Python would show this list as
-:math:`[54,26,93,17,77,31]`.
+``[54, 26, 93, 17, 77, 31]``.
 

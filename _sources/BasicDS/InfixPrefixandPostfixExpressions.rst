@@ -2,8 +2,8 @@
     This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 
 
-Infix, Prefix and Postfix Expressions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Infix, Prefix, and Postfix Expressions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When you write an arithmetic expression such as B \* C, the form of the
 expression provides you with information so that you can interpret it
@@ -248,7 +248,7 @@ parentheses, ( and ). The operand tokens are the single-character
 identifiers A, B, C, and so on. The following steps will produce a
 string of tokens in postfix order.
 
-#. Create an empty stack called ``opstack`` for keeping operators.
+#. Create an empty stack called ``op_stack`` for keeping operators.
    Create an empty list for output.
 
 #. Convert the input infix string to a list by using the string method
@@ -259,19 +259,19 @@ string of tokens in postfix order.
    -  If the token is an operand, append it to the end of the output
       list.
 
-   -  If the token is a left parenthesis, push it on the ``opstack``.
+   -  If the token is a left parenthesis, push it on the ``op_stack``.
 
-   -  If the token is a right parenthesis, pop the ``opstack`` until the
+   -  If the token is a right parenthesis, pop the ``op_stack`` until the
       corresponding left parenthesis is removed. Append each operator to
       the end of the output list.
 
    -  If the token is an operator, \*, /, +, or -, push it on the
-      ``opstack``. However, first remove any operators already on the
-      ``opstack`` that have higher or equal precedence and append them
+      ``op_stack``. However, first remove any operators already on the
+      ``op_stack`` that have higher or equal precedence and append them
       to the output list.
 
 #. When the input expression has been completely processed, check the
-   ``opstack``. Any operators still on the stack can be removed and
+   ``op_stack``. Any operators still on the stack can be removed and
    appended to the end of the output list.
 
 :ref:`Figure 9 <fig_intopost>` shows the conversion algorithm working on the
@@ -301,45 +301,46 @@ shown in :ref:`ActiveCode 1 <lst_intopost>`.
 
 .. _lst_intopost:
 
+
 .. activecode:: intopost
-   :caption: Converting Infix Expressions to Postfix Expressions
-   :nocodelens:
+    :caption: Converting Infix Expressions to Postfix Expressions
+    :nocodelens:
 
-   from pythonds.basic import Stack
+    from pythonds3.basic import Stack
 
-   def infixToPostfix(infixexpr):
-       prec = {}
-       prec["*"] = 3
-       prec["/"] = 3
-       prec["+"] = 2
-       prec["-"] = 2
-       prec["("] = 1
-       opStack = Stack()
-       postfixList = []
-       tokenList = infixexpr.split()
+    def infix_to_postfix(infix_expr):
+        prec = {}
+        prec["*"] = 3
+        prec["/"] = 3
+        prec["+"] = 2
+        prec["-"] = 2
+        prec["("] = 1
+        op_stack = Stack()
+        postfix_list = []
+        token_list = infix_expr.split()
 
-       for token in tokenList:
-           if token in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" or token in "0123456789":
-               postfixList.append(token)
-           elif token == '(':
-               opStack.push(token)
-           elif token == ')':
-               topToken = opStack.pop()
-               while topToken != '(':
-                   postfixList.append(topToken)
-                   topToken = opStack.pop()
-           else:
-               while (not opStack.isEmpty()) and \
-                  (prec[opStack.peek()] >= prec[token]):
-                     postfixList.append(opStack.pop())
-               opStack.push(token)
+        for token in token_list:
+            if token in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" or token in "0123456789":
+                postfix_list.append(token)
+            elif token == "(":
+                op_stack.push(token)
+            elif token == ")":
+                top_token = op_stack.pop()
+                while top_token != "(":
+                    postfix_list.append(top_token)
+                    top_token = op_stack.pop()
+            else:
+                while (not op_stack.is_empty()) and (prec[op_stack.peek()] >= prec[token]):
+                    postfix_list.append(op_stack.pop())
+                op_stack.push(token)
 
-       while not opStack.isEmpty():
-           postfixList.append(opStack.pop())
-       return " ".join(postfixList)
+        while not op_stack.is_empty():
+            postfix_list.append(op_stack.pop())
 
-   print(infixToPostfix("A * B + C * D"))
-   print(infixToPostfix("( A + B ) * C - ( D - E ) * ( F + G )"))
+        return " ".join(postfix_list)
+
+    print(infix_to_postfix("A * B + C * D"))
+    print(infix_to_postfix("( A + B ) * C - ( D - E ) * ( F + G )"))
 
 --------------
 
@@ -347,11 +348,11 @@ A few more examples of execution in the Python shell are shown below.
 
 ::
 
-    >>> infixtopostfix("( A + B ) * ( C + D )")
+    >>> infix_to_postfix("( A + B ) * ( C + D )")
     'A B + C D + *'
-    >>> infixtopostfix("( A + B ) * C")
+    >>> infix_to_postfix("( A + B ) * C")
     'A B + C *'
-    >>> infixtopostfix("A + B * C")
+    >>> infix_to_postfix("A + B * C")
     'A B C * +'
     >>>
 
@@ -417,62 +418,64 @@ Assume the postfix expression is a string of tokens delimited by spaces.
 The operators are \*, /, +, and - and the operands are assumed to be
 single-digit integer values. The output will be an integer result.
 
-#. Create an empty stack called ``operandStack``.
+#. Create an empty stack called ``operand_stack``.
 
 #. Convert the string to a list by using the string method ``split``.
 
 #. Scan the token list from left to right.
 
    -  If the token is an operand, convert it from a string to an integer
-      and push the value onto the ``operandStack``.
+      and push the value onto the ``operand_stack``.
 
    -  If the token is an operator, \*, /, +, or -, it will need two
-      operands. Pop the ``operandStack`` twice. The first pop is the
+      operands. Pop the ``operand_stack`` twice. The first pop is the
       second operand and the second pop is the first operand. Perform
       the arithmetic operation. Push the result back on the
-      ``operandStack``.
+      ``operand_stack``.
 
 #. When the input expression has been completely processed, the result
-   is on the stack. Pop the ``operandStack`` and return the value.
+   is on the stack. Pop the ``operand_stack`` and return the value.
 
 The complete function for the evaluation of postfix expressions is shown
 in :ref:`ActiveCode 2 <lst_postfixeval>`. To assist with the arithmetic, a helper
-function ``doMath`` is defined that will take two operands and an
+function ``do_math`` is defined that will take two operands and an
 operator and then perform the proper arithmetic operation.
 
 .. _lst_postfixeval:
 
 .. activecode:: postfixeval
-   :caption: Postfix Evaluation
-   :nocodelens:
+    :caption: Postfix Evaluation
+    :nocodelens:
 
-   from pythonds.basic import Stack
+    from pythonds3.basic import Stack
 
-   def postfixEval(postfixExpr):
-       operandStack = Stack()
-       tokenList = postfixExpr.split()
+    def postfix_eval(postfix_expr):
+        operand_stack = Stack()
+        token_list = postfix_expr.split()
 
-       for token in tokenList:
-           if token in "0123456789":
-               operandStack.push(int(token))
-           else:
-               operand2 = operandStack.pop()
-               operand1 = operandStack.pop()
-               result = doMath(token,operand1,operand2)
-               operandStack.push(result)
-       return operandStack.pop()
+        for token in token_list:
+            if token in "0123456789":
+                operand_stack.push(int(token))
+            else:
+                operand2 = operand_stack.pop()
+                operand1 = operand_stack.pop()
+                result = do_math(token, operand1, operand2)
+                operand_stack.push(result)
+        return operand_stack.pop()
 
-   def doMath(op, op1, op2):
-       if op == "*":
-           return op1 * op2
-       elif op == "/":
-           return op1 / op2
-       elif op == "+":
-           return op1 + op2
-       else:
-           return op1 - op2
 
-   print(postfixEval('7 8 + 3 2 + /'))
+    def do_math(op, op1, op2):
+        if op == "*":
+            return op1 * op2
+        elif op == "/":
+            return op1 / op2
+        elif op == "+":
+            return op1 + op2
+        else:
+            return op1 - op2
+
+
+    print(postfix_eval("7 8 + 3 2 + /"))
 
 It is important to note that in both the postfix conversion and the
 postfix evaluation programs we assumed that there were no errors in the
@@ -484,7 +487,7 @@ this as an exercise at the end of the chapter.
 
    .. fillintheblank:: postfix1
 
-      Without using the activecode infixToPostfix function, convert the following expression to postfix  ``10 + 3 * 5 / (16 - 4)`` .
+      Without using the activecode ``infix_to_postfix`` function, convert the following expression to postfix  ``10 + 3 * 5 / (16 - 4)`` .
 
       |blank|
 
@@ -505,7 +508,7 @@ this as an exercise at the end of the chapter.
 
    .. fillintheblank:: postfix3
 
-      Modify the infixToPostfix function so that it can convert the following expression:  ``5 * 3 ** (4 - 2)``. Run the function on the expression and paste the answer here:
+      Modify the ``infix_to_postfix`` function so that it can convert the following expression:  ``5 * 3 ** (4 - 2)``. Run the function on the expression and paste the answer here:
 
       |blank|
 

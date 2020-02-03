@@ -21,34 +21,43 @@ the rear of the deque is at position 0 in the list.
 ::
 
     class Deque:
+        """Queue implementation as a list"""
+
         def __init__(self):
-            self.items = []
+            """Create new deque"""
+            self._items = []
 
-        def isEmpty(self):
-            return self.items == []
+        def is_empty(self):
+            """Check if the deque is empty"""
+            return not bool(self._items)
 
-        def addFront(self, item):
-            self.items.append(item)
+        def add_front(self, item):
+            """Add an item to the front of the deque"""
+            self._items.append(item)
 
-        def addRear(self, item):
-            self.items.insert(0,item)
+        def add_rear(self, item):
+            """Add an item to the rear of the deque"""
+            self._items.insert(0, item)
 
-        def removeFront(self):
-            return self.items.pop()
+        def remove_front(self):
+            """Remove an item from the front of the deque"""
+            return self._items.pop()
 
-        def removeRear(self):
-            return self.items.pop(0)
+        def remove_rear(self):
+            """Remove an item from the rear of the deque"""
+            return self._items.pop(0)
 
         def size(self):
-            return len(self.items)
+            """Get the number of items in the deque"""
+            return len(self._items)
 
 .. highlight:: python
    :linenothreshold: 500
 
-In ``removeFront`` we use the ``pop`` method to remove the last element
-from the list. However, in ``removeRear``, the ``pop(0)`` method must
+In ``remove_front`` we use the ``pop`` method to remove the last element
+from the list. However, in ``remove_rear``, the ``pop(0)`` method must
 remove the first element of the list. Likewise, we need to use the
-``insert`` method (line 12) in ``addRear`` since the ``append`` method
+``insert`` method (line 12) in ``add_rear`` since the ``append`` method
 assumes the addition of a new element to the end of the list.
 
 CodeLens 1 shows the ``Deque`` class in
@@ -56,42 +65,51 @@ action as we perform the sequence of operations from
 :ref:`Table 1 <tbl_dequeoperations>`.
 
 .. codelens:: deqtest
-   :caption: Example Deque Operations
+    :caption: Example Deque Operations
 
-   class Deque:
-       def __init__(self):
-           self.items = []
+    class Deque:
+        """Queue implementation as a list"""
 
-       def isEmpty(self):
-           return self.items == []
+        def __init__(self):
+            """Create new deque"""
+            self._items = []
 
-       def addFront(self, item):
-           self.items.append(item)
+        def is_empty(self):
+            """Check if the deque is empty"""
+            return not bool(self._items)
 
-       def addRear(self, item):
-           self.items.insert(0,item)
+        def add_front(self, item):
+            """Add an item to the front of the deque"""
+            self._items.append(item)
 
-       def removeFront(self):
-           return self.items.pop()
+        def add_rear(self, item):
+            """Add an item to the rear of the deque"""
+            self._items.insert(0, item)
 
-       def removeRear(self):
-           return self.items.pop(0)
+        def remove_front(self):
+            """Remove an item from the front of the deque"""
+            return self._items.pop()
 
-       def size(self):
-           return len(self.items)
+        def remove_rear(self):
+            """Remove an item from the rear of the deque"""
+            return self._items.pop(0)
 
-   d=Deque()
-   print(d.isEmpty())
-   d.addRear(4)
-   d.addRear('dog')
-   d.addFront('cat')
-   d.addFront(True)
-   print(d.size())
-   print(d.isEmpty())
-   d.addRear(8.4)
-   print(d.removeRear())
-   print(d.removeFront())
-   
+        def size(self):
+            """Get the number of items in the deque"""
+            return len(self._items)
+
+    d=Deque()
+    print(d.is_empty())
+    d.add_rear(4)
+    d.add_rear('dog')
+    d.add_front('cat')
+    d.add_front(True)
+    print(d.size())
+    print(d.is_empty())
+    d.add_rear(8.4)
+    print(d.remove_rear())
+    print(d.remove_front())
+
 
 You can see many similarities to Python code already described for
 stacks and queues. You are also likely to observe that in this
