@@ -16,19 +16,19 @@ important laws:
 #. A recursive algorithm must call itself, recursively.
 
 Let’s look at each one of these laws in more detail and see how it was
-used in the ``listsum`` algorithm. First, a base case is the condition
+used in the ``list_sum`` algorithm. First, a base case is the condition
 that allows the algorithm to stop recursing. A base case is typically a
-problem that is small enough to solve directly. In the ``listsum``
+problem that is small enough to solve directly. In the ``list_sum``
 algorithm the base case is a list of length 1.
 
 To obey the second law, we must arrange for a change of state that moves
 the algorithm toward the base case. A change of state means that some
 data that the algorithm is using is modified. Usually the data that
-represents our problem gets smaller in some way. In the ``listsum``
+represents our problem gets smaller in some way. In the ``list_sum``
 algorithm our primary data structure is a list, so we must focus our
 state-changing efforts on the list. Since the base case is a list of
 length 1, a natural progression toward the base case is to shorten the
-list. This is exactly what happens on line 5 of :ref:`ActiveCode 2 <lst_recsum>` when we call ``listsum`` with a shorter list.
+list. This is exactly what happens on line 5 of :ref:`ActiveCode 2 <lst_recsum>` when we call ``list_sum`` with a shorter list.
 
 The final law is that the algorithm must call itself. This is the very
 definition of recursion. Recursion is a confusing concept to many
@@ -56,11 +56,11 @@ problem by using the three laws of recursion.
       :answer_c: 4
       :answer_d: 3
       :feedback_a: There are only five numbers on the list, the number of recursive calls will not be greater than the size of the list.
-      :feedback_b: The initial call to listsum is not a recursive call.
-      :feedback_c: the first recursive call passes the list [4,6,8,10], the second [6,8,10] and so on until [10].
+      :feedback_b: The initial call to list_sum is not a recursive call.
+      :feedback_c: the first recursive call passes the list [4, 6, 8, 10], the second [6, 8, 10] and so on until [10].
       :feedback_d: This would not be enough calls to cover all the numbers on the list
 
-      How many recursive calls are made when computing the sum of the list [2,4,6,8,10]?
+      How many recursive calls are made when computing the sum of the list [2, 4, 6, 8, 10]?
 
    .. mchoice:: question_recsimp_2
       :correct: d
