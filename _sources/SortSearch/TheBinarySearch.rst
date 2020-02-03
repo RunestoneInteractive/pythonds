@@ -39,26 +39,26 @@ in :ref:`CodeLens 3 <lst_binarysearchpy>`.
 .. codelens:: search3
     :caption: Binary Search of an Ordered List
 
-    def binarySearch(alist, item):
+    def binary_search(a_list, item):
         first = 0
-        last = len(alist)-1
-        found = False
+        last = len(a_list) - 1
 
-        while first<=last and not found:
-            midpoint = (first + last)//2
-            if alist[midpoint] == item:
-                found = True
+        while first <= last:
+            midpoint = (first + last) // 2
+            if a_list[midpoint] == item:
+                return True
+            elif item < a_list[midpoint]:
+                last = midpoint - 1
             else:
-                if item < alist[midpoint]:
-                    last = midpoint-1
-                else:
-                    first = midpoint+1
+                first = midpoint + 1
 
-        return found
+        return False
 
-    testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42,]
-    print(binarySearch(testlist, 3))
-    print(binarySearch(testlist, 13))
+
+    test_list = [0, 1, 2, 8, 13, 17, 19, 32, 42]
+
+    print(binary_search(test_list, 3))
+    print(binary_search(test_list, 13))
 
 Before we move on to the analysis, we should note that this algorithm is
 a great example of a divide and conquer strategy. Divide and conquer
@@ -77,22 +77,27 @@ shows this recursive version.
 .. codelens:: search4
     :caption: A Binary Search--Recursive Version
 
-    def binarySearch(alist, item):
-        if len(alist) == 0:
+    def binary_search_rec(a_list, item):
+        if len(a_list) == 0:
             return False
         else:
-            midpoint = len(alist)//2
-            if alist[midpoint]==item:
-              return True
+            midpoint = len(a_list) // 2
+            if a_list[midpoint] == item:
+                return True
+            elif item < a_list[midpoint]:
+                return binary_search_rec(
+                    a_list[:midpoint], item
+                )
             else:
-              if item<alist[midpoint]:
-                return binarySearch(alist[:midpoint],item)
-              else:
-                return binarySearch(alist[midpoint+1:],item)
+                return binary_search_rec(
+                    a_list[midpoint + 1 :], item
+                )
 
-    testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42,]
-    print(binarySearch(testlist, 3))
-    print(binarySearch(testlist, 13))
+
+    test_list = [0, 1, 2, 8, 13, 17, 19, 32, 42]
+
+    print(binary_search_rec(test_list, 3))
+    print(binary_search_rec(test_list, 13))
 
 
 
@@ -102,7 +107,7 @@ Analysis of Binary Search
 To analyze the binary search algorithm, we need to recall that each
 comparison eliminates about half of the remaining items from
 consideration. What is the maximum number of comparisons this algorithm
-will require to check the entire list? If we start with *n* items, about
+will require to check the entire list? If we start with :math:`n` items, about
 :math:`\frac{n}{2}` items will be left after the first comparison.
 After the second comparison, there will be about :math:`\frac{n}{4}`.
 Then :math:`\frac{n}{8}`, :math:`\frac{n}{16}`, and so on. How many
@@ -120,35 +125,35 @@ answer.
                            2                   :math:`\frac {n}{4}` 
                            3                   :math:`\frac {n}{8}` 
                          ...                                        
-                           i                 :math:`\frac {n}{2^i}` 
+                   :math:`i`                 :math:`\frac {n}{2^i}` 
     ======================== ====================================== 
 
 
 When we split the list enough times, we end up with a list that has just
 one item. Either that is the item we are looking for or it is not.
 Either way, we are done. The number of comparisons necessary to get to
-this point is *i* where :math:`\frac {n}{2^i} =1`. Solving for *i*
-gives us :math:`i=\log n`. The maximum number of comparisons is
+this point is :math:`i` where :math:`\frac {n}{2^i} =1`. Solving for :math:`i`
+gives us :math:`i=\log{n}`. The maximum number of comparisons is
 logarithmic with respect to the number of items in the list. Therefore,
-the binary search is :math:`O(\log n)`.
+the binary search is :math:`O(\log{n})`.
 
 One additional analysis issue needs to be addressed. In the recursive
 solution shown above, the recursive call,
 
-``binarySearch(alist[:midpoint],item)``
+``binary_search_rec(a_list[:midpoint], item)``
 
 uses the slice operator to create the left half of the list that is then
 passed to the next invocation (similarly for the right half as well).
 The analysis that we did above assumed that the slice operator takes
 constant time. However, we know that the slice operator in Python is
-actually O(k). This means that the binary search using slice will not
+actually :math:`O(k)`. This means that the binary search using slice will not
 perform in strict logarithmic time. Luckily this can be remedied by
 passing the list along with the starting and ending indices. The indices
 can be calculated as we did in :ref:`Listing 3 <lst_binarysearchpy>`. We leave this
 implementation as an exercise.
 
 Even though a binary search is generally better than a sequential
-search, it is important to note that for small values of *n*, the
+search, it is important to note that for small values of :math:`n`, the
 additional cost of sorting is probably not worth it. In fact, we should
 always consider whether it is cost effective to take on the extra work
 of sorting to gain searching benefits. If we can sort once and then
