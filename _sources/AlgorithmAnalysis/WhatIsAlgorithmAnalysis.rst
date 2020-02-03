@@ -33,14 +33,16 @@ iterates through the *n* integers, adding each to the accumulator.
 .. activecode:: active1
     :caption: Summation of the First n Integers
 
-    def sumOfN(n):
-       theSum = 0
-       for i in range(1,n+1):
-           theSum = theSum + i
+    def sum_of_n(n):
+        the_sum = 0
+        for i in range(1, n + 1):
+            the_sum = the_sum + i
 
-       return theSum
+        return the_sum
 
-    print(sumOfN(10))
+
+    print(sum_of_n(10))
+
 
 Now look at the function in :ref:`ActiveCode 2 <lst_sum2>`. At first glance it may look
 strange, but upon further inspection you can see that this function is
@@ -56,16 +58,17 @@ during the accumulation step that was not really necessary.
 
     def foo(tom):
         fred = 0
-        for bill in range(1,tom+1):
-           barney = bill
-           fred = fred + barney
+        for bill in range(1, tom + 1):
+            barney = bill
+            fred = fred + barney
 
         return fred
+
 
     print(foo(10))
 
 The question we raised earlier asked whether one function is better than
-another. The answer depends on your criteria. The function ``sumOfN`` is
+another. The answer depends on your criteria. The function ``sum_of_n`` is
 certainly better than the function ``foo`` if you are concerned with
 readability. In fact, you have probably seen many examples of this in
 your introductory programming course since one of the goals there is to
@@ -95,7 +98,7 @@ As an alternative to space requirements, we can analyze and compare
 algorithms based on the amount of time they require to execute. This
 measure is sometimes referred to as the “execution time” or “running
 time” of the algorithm. One way we can measure the execution time for
-the function ``sumOfN`` is to do a benchmark analysis. This means that
+the function ``sum_of_n`` is to do a benchmark analysis. This means that
 we will track the actual time required for the program to compute its
 result. In Python, we can benchmark a function by noting the starting
 time and ending time with respect to the system we are using. In the
@@ -113,18 +116,19 @@ and then computing the difference, we can get an exact number of seconds
 
     import time
 
-    def sumOfN2(n):
-       start = time.time()
 
-       theSum = 0
-       for i in range(1,n+1):
-          theSum = theSum + i
+    def sum_of_n_2(n):
+        start = time.time()
 
-       end = time.time()
+        the_sum = 0
+        for i in range(1, n + 1):
+            the_sum = the_sum + i
 
-       return theSum,end-start
+        end = time.time()
 
-:ref:`Listing 1 <lst_sum11>` shows the original ``sumOfN`` function with the timing
+        return the_sum, end - start
+
+:ref:`Listing 1 <lst_sum11>` shows the original ``sum_of_n`` function with the timing
 calls embedded before and after the summation. The function returns a
 tuple consisting of the result and the amount of time (in seconds)
 required for the calculation. If we perform 5 invocations of the
@@ -135,13 +139,15 @@ the following:
 
 ::
 
-    >>>for i in range(5):
-           print("Sum is %d required %10.7f seconds"%sumOfN(10000))
+    >>> for i in range(5):
+    ...     print("Sum is %d required %10.7f seconds" % sum_of_n_2(10000))
+    ... 
     Sum is 50005000 required  0.0018950 seconds
     Sum is 50005000 required  0.0018620 seconds
     Sum is 50005000 required  0.0019171 seconds
     Sum is 50005000 required  0.0019162 seconds
     Sum is 50005000 required  0.0019360 seconds
+    >>>
 
 We discover that the time is fairly consistent and it takes on average
 about 0.0019 seconds to execute that code. What if we run the function
@@ -149,8 +155,9 @@ adding the first 100,000 integers?
 
 ::
 
-    >>>for i in range(5):
-           print("Sum is %d required %10.7f seconds"%sumOfN(100000))
+    >>> for i in range(5):
+    ...     print("Sum is %d required %10.7f seconds" % sum_of_n_2(100000))
+    ... 
     Sum is 5000050000 required  0.0199420 seconds
     Sum is 5000050000 required  0.0180972 seconds
     Sum is 5000050000 required  0.0194821 seconds
@@ -163,9 +170,9 @@ consistent, averaging about 10 times more seconds. For ``n`` equal to
 1,000,000 we get:
 
 ::
-
-    >>>for i in range(5):
-           print("Sum is %d required %10.7f seconds"%sumOfN(1000000))
+    >>> for i in range(5):
+    ...     print("Sum is %d required %10.7f seconds" % sum_of_n_2(1000000))
+    ... 
     Sum is 500000500000 required  0.1948988 seconds
     Sum is 500000500000 required  0.1850290 seconds
     Sum is 500000500000 required  0.1809771 seconds
@@ -177,7 +184,7 @@ In this case, the average again turns out to be about 10 times the
 previous.
 
 Now consider :ref:`ActiveCode 3 <lst_sum3>`, which shows a different means of solving
-the summation problem. This function, ``sumOfN3``, takes advantage of a
+the summation problem. This function, ``sum_of_n_3``, takes advantage of a
 closed equation :math:`\sum_{i=1}^{n} i = \frac {(n)(n+1)}{2}` to
 compute the sum of the first ``n`` integers without iterating.
 
@@ -186,12 +193,13 @@ compute the sum of the first ``n`` integers without iterating.
 .. activecode:: active3
     :caption: Summation Without Iteration
 
-    def sumOfN3(n):
-       return (n*(n+1))/2
+    def sum_of_n_3(n):
+        return (n * (n + 1)) / 2
 
-    print(sumOfN3(10))
 
-If we do the same benchmark measurement for ``sumOfN3``, using five
+    print(sum_of_n_3(10))
+
+If we do the same benchmark measurement for ``sum_of_n_3``, using five
 different values for ``n`` (10,000, 100,000, 1,000,000, 10,000,000, and
 100,000,000), we get the following results:
 
@@ -206,7 +214,7 @@ different values for ``n`` (10,000, 100,000, 1,000,000, 10,000,000, and
 There are two important things to notice about this output. First, the
 times recorded above are shorter than any of the previous examples.
 Second, they are very consistent no matter what the value of ``n``. It
-appears that ``sumOfN3`` is hardly impacted by the number of integers
+appears that ``sum_of_n_3`` is hardly impacted by the number of integers
 being added.
 
 But what does this benchmark really tell us? Intuitively, we can see
@@ -216,7 +224,7 @@ longer. Also, the time required for the iterative solution seems to
 increase as we increase the value of ``n``. However, there is a problem.
 If we ran the same function on a different computer or used a different
 programming language, we would likely get different results. It could
-take even longer to perform ``sumOfN3`` if the computer were older.
+take even longer to perform ``sum_of_n_3`` if the computer were older.
 
 We need a better way to characterize these algorithms with respect to
 execution time. The benchmark technique computes the actual time to

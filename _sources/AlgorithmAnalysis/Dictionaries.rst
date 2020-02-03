@@ -11,14 +11,14 @@ The second major Python data structure is the dictionary. As you
 probably recall, dictionaries differ from lists in that you can access
 items in a dictionary by a key rather than a position. Later in this
 book you will see that there are many ways to implement a dictionary.
-The thing that is most important to notice right now is that the get
-item and set item operations on a dictionary are :math:`O(1)`. Another
-important dictionary operation is the contains operation. Checking to
+The thing that is most important to notice right now is that the ``get
+item`` and ``set item`` operations on a dictionary are :math:`O(1)`. Another
+important dictionary operation is the ``contains`` operation. Checking to
 see whether a key is in the dictionary or not is also :math:`O(1)`.
 The efficiency of all dictionary operations is summarized in
 :ref:`Table 3 <tbl_dictbigo>`. One important side note on dictionary performance
 is that the efficiencies we provide in the table are for average
-performance. In some rare cases the contains, get item, and set item
+performance. In some rare cases the ``contains``, ``get item``, and ``set item``
 operations can degenerate into :math:`O(n)` performance but we will
 get into that in a later chapter when we talk about the different ways
 that a dictionary could be implemented.
@@ -46,7 +46,7 @@ will confirm that the contains operator for lists is :math:`O(n)` and
 the contains operator for dictionaries is :math:`O(1)`. The experiment
 we will use to compare the two is simple. We’ll make a list with a range
 of numbers in it. Then we will pick numbers at random and check to see
-if the numbers are in the list. If our performance tables are correct
+if the numbers are in the list. If our performance tables are correct,
 the bigger the list the longer it should take to determine if any one
 number is contained in the list.
 
@@ -58,7 +58,7 @@ dictionary grows larger.
 
 :ref:`Listing 6 <lst_listvdict>` implements this comparison. Notice that we are
 performing exactly the same operation, ``number in container``. The
-difference is that on line 7 ``x`` is a list, and on line 9 ``x`` is a
+difference is that on line 8 ``x`` is a list, and on line 10 ``x`` is a
 dictionary.
 
 .. _lst_listvdict:
@@ -72,14 +72,15 @@ dictionary.
     import timeit
     import random
 
-    for i in range(10000,1000001,20000):
-        t = timeit.Timer("random.randrange(%d) in x"%i,
-                         "from __main__ import random,x")
+    print(f"{'n':10s}{'list':>10s}{'dict':>10s}")
+    for i in range(10_000, 1_000_001, 20_000):
+        t = timeit.Timer(f"random.randrange({i}) in x", 
+        "from __main__ import random, x")
         x = list(range(i))
         lst_time = t.timeit(number=1000)
-        x = {j:None for j in range(i)}
-        d_time = t.timeit(number=1000)
-        print("%d,%10.3f,%10.3f" % (i, lst_time, d_time))
+        x = {j: None for j in range(i)}
+        dict_time = t.timeit(number=1000)
+        print(f"{i:<10,}{lst_time:>10.3f}{dict_time:>10.3f}")
 
 
 
@@ -114,10 +115,10 @@ the Python wiki has a nice time complexity page that can be found at the
 .. admonition:: Self Check
 
     .. mchoice:: mcpyperform
-       :answer_a: list.pop(0)
-       :answer_b: list.pop()
-       :answer_c: list.append()
-       :answer_d: list[10]
+       :answer_a: a_list.pop(0)
+       :answer_b: a_list.pop()
+       :answer_c: a_list.append()
+       :answer_d: a_list[10]
        :answer_e: all of the above are O(1)
        :correct: a
        :feedback_a: When you remove the first element of a list, all the other elements of the list must be shifted forward.
@@ -129,10 +130,10 @@ the Python wiki has a nice time complexity page that can be found at the
        Which of the list operations shown below is not O(1)?
 
     .. mchoice:: mcpydictperf
-      :answer_a: 'x' in mydict
-      :answer_b: del mydict['x']
-      :answer_c: mydict['x'] == 10
-      :answer_d: mydict['x'] = mydict['x'] + 1
+      :answer_a: "x" in a_dict
+      :answer_b: del a_dict["x"]
+      :answer_c: a_dict["x"] == 10
+      :answer_d: a_dict["x"] = a_dict["x"] + 1
       :answer_e: all of the above are O(1)
       :correct: e
       :feedback_a: in is a constant operation for a dictionary because you do not have to iterate but there is a better answer.
