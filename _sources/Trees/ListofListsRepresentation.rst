@@ -27,21 +27,24 @@ shows a simple tree and the corresponding list implementation.
 
 ::
 
-        myTree = ['a',   #root
-              ['b',  #left subtree
-               ['d', [], []],
-               ['e', [], []] ],
-              ['c',  #right subtree
-               ['f', [], []],
-               [] ]  
-             ]           
-                  
+
+    my_tree = [
+        "a",  # root
+            ["b",  # left subtree
+                ["d", [], []],
+                ["e", [], []]
+            ],
+            ["c",  # right subtree
+                ["f", [], []], 
+                []
+            ],
+        ]
 
 
 
 Notice that we can access subtrees of the list using standard list
-indexing. The root of the tree is ``myTree[0]``, the left subtree of the
-root is ``myTree[1]``, and the right subtree is ``myTree[2]``. :ref:`ActiveCode 1 <lst_treelist1>` illustrates creating a simple tree using a
+indexing. The root of the tree is ``my_tree[0]``, the left subtree of the
+root is ``my_tree[1]``, and the right subtree is ``my_tree[2]``. :ref:`ActiveCode 1 <lst_treelist1>` illustrates creating a simple tree using a
 list. Once the tree is constructed, we can access the root and the left
 and right subtrees. One very nice property of this list of lists
 approach is that the structure of a list representing a subtree adheres
@@ -56,11 +59,11 @@ is more than a binary tree, another subtree is just another list.
 .. activecode:: tree_list1
     :caption: Using Indexing to Access Subtrees
 
-    myTree = ['a', ['b', ['d',[],[]], ['e',[],[]] ], ['c', ['f',[],[]], []] ]
-    print(myTree)
-    print('left subtree = ', myTree[1])
-    print('root = ', myTree[0])
-    print('right subtree = ', myTree[2])
+    my_tree = ["a", ["b", ["d", [], []], ["e", [], []]], ["c", ["f", [], []], []]]
+    print(my_tree)
+    print("left subtree = ", my_tree[1])
+    print("root = ", my_tree[0])
+    print("right subtree = ", my_tree[2])
 
 
 Let’s formalize this definition of the tree data structure by providing
@@ -72,10 +75,10 @@ working with a tree.
 ::
 
 
-    def BinaryTree(r):
-        return [r, [], []]    
+    def make_binary_tree(root):
+        return [root, [], []]
 
-The ``BinaryTree`` function simply constructs a list with a root node
+The ``make_binary_tree`` function simply constructs a list with a root node
 and two empty sublists for the children. To add a left subtree to the
 root of a tree, we need to insert a new list into the second position of
 the root list. We must be careful. If the list already has something in
@@ -89,19 +92,19 @@ shows the Python code for inserting a left child.
 
 ::
 
-    def insertLeft(root,newBranch):
-        t = root.pop(1)
-        if len(t) > 1:
-            root.insert(1,[newBranch,t,[]])
+    def insert_left(root, new_child):
+        old_child = root.pop(1)
+        if len(old_child) > 1:
+            root.insert(1, [new_child, old_child, []])
         else:
-            root.insert(1,[newBranch, [], []])
+            root.insert(1, [new_child, [], []])
         return root
 
 Notice that to insert a left child, we first obtain the (possibly empty)
 list that corresponds to the current left child. We then add the new
 left child, installing the old left child as the left child of the new
 one. This allows us to splice a new node into the tree at any position.
-The code for ``insertRight`` is similar to ``insertLeft`` and is shown
+The code for ``insert_right`` is similar to ``insert_left`` and is shown
 in :ref:`Listing 2 <lst_linsright>`.
 
 .. _lst_linsright:
@@ -110,12 +113,12 @@ in :ref:`Listing 2 <lst_linsright>`.
 
 ::
 
-    def insertRight(root,newBranch):
-        t = root.pop(2)
-        if len(t) > 1:
-            root.insert(2,[newBranch,[],t])
+    def insert_right(root, new_child):
+        old_child = root.pop(2)
+        if len(old_child) > 1:
+            root.insert(2, [new_child, [], old_child])
         else:
-            root.insert(2,[newBranch,[],[]])
+            root.insert(2, [new_child, [], []])
         return root
 
 To round out this set of tree-making functions(see :ref:`Listing 3 <lst_treeacc>`), let’s write a couple of
@@ -129,16 +132,19 @@ getting the left or right subtrees.
 ::
 
 
-    def getRootVal(root):
+    def get_root_val(root):
         return root[0]
-    
-    def setRootVal(root,newVal):
-        root[0] = newVal
-    
-    def getLeftChild(root):
+
+
+    def set_root_val(root, new_value):
+        root[0] = new_value
+
+
+    def get_left_child(root):
         return root[1]
-    
-    def getRightChild(root):
+
+
+    def get_right_child(root):
         return root[2]
 
 :ref:`ActiveCode 2 <lst_bintreetry>` exercises the tree
@@ -152,61 +158,68 @@ structure resulting from this set of calls.
 .. activecode:: bin_tree
     :caption: A Python Session to Illustrate Basic Tree Functions
 
-    def BinaryTree(r):
-        return [r, [], []]    
+    def make_binary_tree(root):
+        return [root, [], []]
 
-    def insertLeft(root,newBranch):
-        t = root.pop(1)
-        if len(t) > 1:
-            root.insert(1,[newBranch,t,[]])
+
+    def insert_left(root, new_child):
+        old_child = root.pop(1)
+        if len(old_child) > 1:
+            root.insert(1, [new_child, old_child, []])
         else:
-            root.insert(1,[newBranch, [], []])
+            root.insert(1, [new_child, [], []])
         return root
 
-    def insertRight(root,newBranch):
-        t = root.pop(2)
-        if len(t) > 1:
-            root.insert(2,[newBranch,[],t])
+
+    def insert_right(root, new_child):
+        old_child = root.pop(2)
+        if len(old_child) > 1:
+            root.insert(2, [new_child, [], old_child])
         else:
-            root.insert(2,[newBranch,[],[]])
+            root.insert(2, [new_child, [], []])
         return root
 
-    def getRootVal(root):
+
+    def get_root_val(root):
         return root[0]
-    
-    def setRootVal(root,newVal):
-        root[0] = newVal
-    
-    def getLeftChild(root):
+
+
+    def set_root_val(root, new_value):
+        root[0] = new_value
+
+
+    def get_left_child(root):
         return root[1]
-    
-    def getRightChild(root):
+
+
+    def get_right_child(root):
         return root[2]
 
-    r = BinaryTree(3)
-    insertLeft(r,4)
-    insertLeft(r,5)
-    insertRight(r,6)
-    insertRight(r,7)
-    l = getLeftChild(r)
-    print(l)
-    
-    setRootVal(l,9)
-    print(r)
-    insertLeft(l,11)
-    print(r)
-    print(getRightChild(getRightChild(r)))
+
+    a_tree = make_binary_tree(3)
+    insert_left(a_tree, 4)
+    insert_left(a_tree, 5)
+    insert_right(a_tree, 6)
+    insert_right(a_tree, 7)
+    left_child = get_left_child(a_tree)
+    print(left_child)
+
+    set_root_val(left_child, 9)
+    print(a_tree)
+    insert_left(left_child, 11)
+    print(a_tree)
+    print(get_right_child(get_right_child(a_tree)))
     
 
 .. admonition:: Self Check
 
    .. mchoice:: mctree_1
       :correct: c
-      :answer_a: ['a', ['b', [], []], ['c', [], ['d', [], []]]]
-      :answer_b: ['a', ['c', [], ['d', ['e', [], []], []]], ['b', [], []]]
-      :answer_c: ['a', ['b', [], []], ['c', [], ['d', ['e', [], []], []]]]
-      :answer_d: ['a', ['b', [], ['d', ['e', [], []], []]], ['c', [], []]]
-      :feedback_a: Not quite, this tree is missing the 'e' node.
+      :answer_a: ["a", ["b", [], []], ["c", [], ["d", [], []]]]
+      :answer_b: ["a", ["c", [], ["d", ["e", [], []], []]], ["b", [], []]]
+      :answer_c: ["a", ["b", [], []], ["c", [], ["d", ["e", [], []], []]]]
+      :answer_d: ["a", ["b", [], ["d", ["e", [], []], []]], ["c", [], []]]
+      :feedback_a: Not quite, this tree is missing the "e" node.
       :feedback_b: This is close, but if you carefully you will see that the left and right children of the root are swapped.
       :feedback_c: Very good
       :feedback_d: This is close, but the left and right child names have been swapped along with the underlying structures.
@@ -215,27 +228,27 @@ structure resulting from this set of calls.
 
       .. sourcecode:: python
       
-          x = BinaryTree('a')
-          insertLeft(x,'b')
-          insertRight(x,'c')
-          insertRight(getRightChild(x),'d')
-          insertLeft(getRightChild(getRightChild(x)),'e')    
+          x = make_binary_tree("a")
+          insert_left(x, "b")
+          insert_right(x, "c")
+          insert_right(get_right_child(x), "d")
+          insert_left(get_right_child(get_right_child(x)), "e")    
 
       Which of the answers is the correct representation of the tree?
 
    .. actex:: mctree_2
 
-      Write a function ``buildTree`` that returns a tree using the list of lists functions that looks like this:
+      Write a function ``build_tree`` that returns a tree using the list of lists functions that looks like this:
 
       .. image:: Figures/tree_ex.png
       ~~~~
       from test import testEqual
       
-      def buildTree():
+      def build_tree():
           pass
           
-      ttree = buildTree()
-      testEqual(getRootVal(getRightChild(ttree)),'c')
-      testEqual(getRootVal(getRightChild(getLeftChild(ttree))),'d')      
-      testEqual(getRootVal(getRightChild(getRightChild(ttree))),'f')            
+      ttree = build_tree()
+      testEqual(get_root_val(get_right_child(ttree)), "c")
+      testEqual(get_root_val(get_right_child(get_left_child(ttree))), "d")      
+      testEqual(get_root_val(get_right_child(get_right_child(ttree))), "f")            
       
