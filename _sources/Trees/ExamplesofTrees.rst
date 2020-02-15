@@ -108,7 +108,7 @@ that corresponds to each of the HTML tags used to create the page.
 	<li>List item one</li>
 	<li>List item two</li>
     </ul>
-    <h2><a href="http://www.cs.luther.edu">Luther CS </a><h2>
+    <h2><a href="https://www.cs.luther.edu">Luther CS </a><h2>
     </body>
     </html>
 
