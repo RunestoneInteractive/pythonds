@@ -12,17 +12,17 @@ follows:
 
 -  ``insert(k)`` adds a new item to the heap.
 
--  ``findMin()`` returns the item with the minimum key value, leaving
+-  ``get_min()`` returns the item with the minimum key value, leaving
    item in the heap.
 
--  ``delMin()`` returns the item with the minimum key value, removing
+-  ``delete()`` returns the item with the minimum key value, removing
    the item from the heap.
 
--  ``isEmpty()`` returns true if the heap is empty, false otherwise.
+-  ``is_empty()`` returns true if the heap is empty, false otherwise.
 
 -  ``size()`` returns the number of items in the heap.
 
--  ``buildHeap(list)`` builds a new heap from a list of keys.
+-  ``heapify(list)`` builds a new heap from a list of keys.
 
 :ref:`ActiveCode 1 <lst_heap1>` demonstrates the use of some of the binary
 heap methods.  Notice that no matter the order that we add items to the heap, the smallest
@@ -35,20 +35,15 @@ is removed each time.  We will now turn our attention to creating an implementat
     :caption: Using the Binary Heap
     :nocodelens:
 
-    from pythonds.trees import BinHeap
+    from pythonds3.trees import BinaryHeap
 
-    bh = BinHeap()
-    bh.insert(5)
-    bh.insert(7)
-    bh.insert(3)
-    bh.insert(11)
+    my_heap = BinaryHeap()
+    my_heap.insert(5)
+    my_heap.insert(7)
+    my_heap.insert(3)
+    my_heap.insert(11)
 
-    print(bh.delMin())
-
-    print(bh.delMin())
-
-    print(bh.delMin())
-
-    print(bh.delMin())
-
-
+    print(my_heap.delete())
+    print(my_heap.delete())
+    print(my_heap.delete())
+    print(my_heap.delete())
