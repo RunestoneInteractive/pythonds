@@ -11,27 +11,27 @@ Discussion Questions
    ::
 
        >>> r = BinaryTree(3)
-       >>> insertLeft(r,4)
+       >>> insert_left(r, 4)
        [3, [4, [], []], []]
-       >>> insertLeft(r,5)
+       >>> insert_left(r, 5)
        [3, [5, [4, [], []], []], []]
-       >>> insertRight(r,6)
+       >>> insert_right(r, 6)
        [3, [5, [4, [], []], []], [6, [], []]]
-       >>> insertRight(r,7)
+       >>> insert_right(r, 7)
        [3, [5, [4, [], []], []], [7, [], [6, [], []]]]
-       >>> setRootVal(r,9)
-       >>> insertLeft(r,11)
+       >>> set_root_val(r, 9)
+       >>> insert_left(r, 11)
        [9, [11, [5, [4, [], []], []], []], [7, [], [6, [], []]]]
 	      
 
 #. Trace the algorithm for creating an expression tree for the
    expression :math:`(4 * 8) / 6 - 3`.
 
-#. Consider the following list of integers: [1,2,3,4,5,6,7,8,9,10]. Show
+#. Consider the following list of integers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]. Show
    the binary search tree resulting from inserting the integers in the
    list.
 
-#. Consider the following list of integers: [10,9,8,7,6,5,4,3,2,1]. Show
+#. Consider the following list of integers: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]. Show
    the binary search tree resulting from inserting the integers in the
    list.
 
@@ -39,19 +39,19 @@ Discussion Questions
    resulting from inserting the integers on the list one at a time.
 
 #. Using the list from the previous question, show the binary heap tree
-   resulting from using the list as a parameter to the ``buildHeap``
+   resulting from using the list as a parameter to the ``heapify``
    method. Show both the tree and list form.
 
 #. Draw the binary search tree that results from inserting the following
-   keys in the order given: 68,88,61,89,94,50,4,76,66, and 82.
+   keys in the order given: 68, 88, 61, 89, 94, 50, 4, 76, 66, and 82.
 
 #. Generate a random list of integers. Draw the binary search tree
    resulting from inserting the integers on the list.
 
-#. Consider the following list of integers: [1,2,3,4,5,6,7,8,9,10]. Show
+#. Consider the following list of integers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]. Show
    the binary heap resulting from inserting the integers one at a time.
 
-#. Consider the following list of integers: [10,9,8,7,6,5,4,3,2,1]. Show
+#. Consider the following list of integers: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]. Show
    the binary heap resulting from inserting the integers one at a time.
 
 #. Consider the two different techniques we used for implementing traversals of a binary
