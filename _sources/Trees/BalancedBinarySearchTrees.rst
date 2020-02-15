@@ -13,7 +13,7 @@ binary search tree that automatically makes sure that the tree remains
 balanced at all times. This tree is called an **AVL tree** and is named
 for its inventors: G.M. Adelson-Velskii and E.M. Landis.
 
-An AVL tree implements the Map abstract data type just like a regular
+An AVL tree implements the ``Map`` abstract data type just like a regular
 binary search tree, the only difference is in how the tree performs. To
 implement our AVL tree we need to keep track of a **balance factor** for
 each node in the tree. We do this by looking at the heights of the left
@@ -23,7 +23,7 @@ subtree and the height of the right subtree.
 
 .. math::
 
-   balanceFactor = height(leftSubTree) - height(rightSubTree)
+   balance\_factor = height(left\_subtree) - height(right\_subtree)
 
 Using the definition for balance factor given above we say that a
 subtree is left-heavy if the balance factor is greater than zero. If the
