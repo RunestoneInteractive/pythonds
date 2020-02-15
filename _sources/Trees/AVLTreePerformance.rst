@@ -24,8 +24,8 @@ rules.
    
 
 Looking at the total number of nodes in the tree we see that for a tree
-of height 0 there is 1 node, for a tree of height 1 there is :math:`1+1
-= 2` nodes, for a tree of height 2 there are :math:`1+1+2 = 4` and
+of height 0 there is 1 node, for a tree of height 1 there is :math:`1 + 1
+= 2` nodes, for a tree of height 2 there are :math:`1 + 1 + 2 = 4` and
 for a tree of height 3 there are :math:`1 + 2 + 4 = 7`. More generally
 the pattern we see for the number of nodes in a tree of height h
 (:math:`N_h`) is:
