@@ -564,20 +564,21 @@ You can try out the ``UnorderedList`` class in ActiveCode 1.
            return found
 
        def remove(self,item):
-           current = self.head
-           previous = None
-           found = False
-           while not found:
-               if current.getData() == item:
-                   found = True
-               else:
-                   previous = current
-                   current = current.getNext()
+            current = self.head
+            previous = None
+            found = False
+            while current and not found:
+                if current.getData() == item:
+                    found = True
+                else:
+                    previous = current
+                    current = current.getNext()
 
-           if previous == None:
-               self.head = current.getNext()
-           else:
-               previous.setNext(current.getNext())
+            if found:
+                if previous == None:
+                    self.head = current.getNext()
+                else:
+                    previous.setNext(current.getNext())
 
    mylist = UnorderedList()
 
@@ -670,20 +671,21 @@ starting with 0.
                return found
 
            def remove(self,item):
-               current = self.head
-               previous = None
-               found = False
-               while not found:
-                   if current.getData() == item:
-                       found = True
-                   else:
-                       previous = current
-                       current = current.getNext()
+                current = self.head
+                previous = None
+                found = False
+                while current and not found:
+                    if current.getData() == item:
+                        found = True
+                    else:
+                        previous = current
+                        current = current.getNext()
 
-               if previous == None:
-                   self.head = current.getNext()
-               else:
-                   previous.setNext(current.getNext())
+                if found:
+                    if previous == None:
+                        self.head = current.getNext()
+                    else:
+                        previous.setNext(current.getNext())
 
        mylist = UnorderedList()
    
@@ -746,20 +748,21 @@ starting with 0.
                return found
 
            def remove(self,item):
-               current = self.head
-               previous = None
-               found = False
-               while not found:
-                   if current.getData() == item:
-                       found = True
-                   else:
-                       previous = current
-                       current = current.getNext()
+                current = self.head
+                previous = None
+                found = False
+                while current and not found:
+                    if current.getData() == item:
+                        found = True
+                    else:
+                        previous = current
+                        current = current.getNext()
 
-               if previous == None:
-                   self.head = current.getNext()
-               else:
-                   previous.setNext(current.getNext())
+                if found:
+                    if previous == None:
+                        self.head = current.getNext()
+                    else:
+                        previous.setNext(current.getNext())
 
        mylist = UnorderedList()
    
