@@ -9,18 +9,18 @@ The graph abstract data type (ADT) is defined as follows:
 
 -  ``Graph()`` creates a new, empty graph.
 
--  ``addVertex(vert)`` adds an instance of ``Vertex`` to the graph.
+-  ``add_vertex(vert)`` adds an instance of ``Vertex`` to the graph.
 
--  ``addEdge(fromVert, toVert)`` Adds a new, directed edge to the graph
+-  ``add_edge(from_vert, to_vert)`` Adds a new, directed edge to the graph
    that connects two vertices.
 
--  ``addEdge(fromVert, toVert, weight)`` Adds a new, weighted, directed
+-  ``add_edge(from_vert, to_vert, weight)`` Adds a new, weighted, directed
    edge to the graph that connects two vertices.
 
--  ``getVertex(vertKey)`` finds the vertex in the graph named
-   ``vertKey``.
+-  ``get_vertex(vert_key)`` finds the vertex in the graph named
+   ``vert_key``.
 
--  ``getVertices()`` returns the list of all vertices in the graph.
+-  ``get_vertices()`` returns the list of all vertices in the graph.
 
 -  ``in`` returns ``True`` for a statement of the form
    ``vertex in graph``, if the given vertex is in the graph, ``False``
