@@ -13,7 +13,7 @@ Vertex
     A vertex (also called a “node”) is a fundamental part of a graph. It
     can have a name, which we will call the “key.” A vertex may also
     have additional information. We will call this additional
-    information the “payload.”
+    information the “value” or the “payload.”
 
 Edge
     An edge (also called an “arc”) is another fundamental part of a
@@ -33,8 +33,8 @@ Weight
 With those definitions in hand we can formally define a graph. A graph
 can be represented by :math:`G` where :math:`G =(V,E)`. For the
 graph :math:`G`, :math:`V` is a set of vertices and :math:`E` is a
-set of edges. Each edge is a tuple :math:`(v,w)` where
-:math:`w,v \in V`. We can add a third component to the edge tuple to
+set of edges. Each edge is a tuple :math:`(v, w)` where
+:math:`v, w \in V`. We can add a third component to the edge tuple to
 represent a weight. A subgraph :math:`s` is a set of edges :math:`e`
 and vertices :math:`v` such that :math:`e \subset E` and
 :math:`v \subset V`.
@@ -45,15 +45,16 @@ vertices:
 
 .. math::
 
-   V = \left\{ V0,V1,V2,V3,V4,V5 \right\}
+   V = \left\{ v_0, v_1, v_2, v_3, v_4, v_5 \right\}
 
 
 and the set of nine edges:
 
 .. math::
 
-   E = \left\{ \begin{array}{l}(v0,v1,5), (v1,v2,4), (v2,v3,9), (v3,v4,7), (v4,v0,1), \\
-                (v0,v5,2),(v5,v4,8),(v3,v5,3),(v5,v2,1)
+   E = \left\{ \begin{array}{l}(v_0, v_1, 5), (v_1, v_2, 4), (v_2, v_3, 9), \\
+                                (v_3, v_4, 7), (v_4, v_0, 1), (v_0, v_5, 2), \\
+                                (v_5, v_4, 8), (v_3, v_5, 3), (v_5, v_2, 1)
                 \end{array} \right\}
 
 ..  _fig_dgsimple:
@@ -74,14 +75,14 @@ Path
     The unweighted path length is the number of edges in the path,
     specifically :math:`n-1`. The weighted path length is the sum of
     the weights of all the edges in the path. For example in
-    :ref:`Figure 2 <fig_dgsimple>` the path from :math:`V3` to :math:`V1` is
-    the sequence of vertices :math:`(V3,V4,V0,V1)`. The edges are
-    :math:`\left\{(v3,v4,7),(v4,v0,1),(v0,v1,5) \right\}`.
+    :ref:`Figure 2 <fig_dgsimple>` the path from :math:`v_3` to :math:`v_1` is
+    the sequence of vertices :math:`(v_3, v_4, v_0, v_1)`. The edges are
+    :math:`\left\{(v_3, v_4, 7), (v_4, v_0, 1), (v_0, v_1, 5) \right\}`.
 
 Cycle
     A cycle in a directed graph is a path that starts and ends at the
     same vertex. For example, in :ref:`Figure 2 <fig_dgsimple>` the path
-    :math:`(V5,V2,V3,V5)` is a cycle. A graph with no cycles is called
+    :math:`(v_5, v_2, v_3, v_5)` is a cycle. A graph with no cycles is called
     an **acyclic graph**. A directed graph with no cycles is called a
     **directed acyclic graph** or a **DAG**. We will see that we can
     solve several important problems if the problem can be represented
