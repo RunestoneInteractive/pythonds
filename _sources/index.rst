@@ -24,6 +24,8 @@ By Brad Miller and David Ranum, Luther College
    <li><a href="/runestone/assignments/chooseAssignment.html">Assignments</a></li>
    </ul>
 
+There is a wonderful `collection of YouTube videos <https://www.youtube.com/user/gjenkinslbcc>`_ recorded by Gerry Jenkins to support all of the chapters in this text.
+
 .. toctree::
    :numbered:
    :maxdepth: 3
