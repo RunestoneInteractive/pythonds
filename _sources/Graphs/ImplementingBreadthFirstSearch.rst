@@ -39,32 +39,32 @@ a crucial point as we will see, to decide which vertex to explore next.
 
 In addition the BFS algorithm uses an extended version of the ``Vertex``
 class. This new vertex class adds three new instance variables:
-distance, predecessor, and color. Each of these instance variables also
+`distance`, `previous`, and `color`. Each of these instance variables also
 has the appropriate getter and setter methods. The code for this
-expanded Vertex class is included in the ``pythonds`` package, but we
+expanded Vertex class is included in the ``pythonds3`` package, but we
 will not show it to you here as there is nothing new to learn by seeing
 the additional instance variables.
 
-BFS begins at the starting vertex ``s`` and colors ``start`` gray to
+BFS begins at the starting vertex ``start`` and paints it gray to
 show that it is currently being explored. Two other values, the distance
-and the predecessor, are initialized to 0 and ``None`` respectively for
+and the previous, are initialized to 0 and ``None`` respectively for
 the starting vertex. Finally, ``start`` is placed on a ``Queue``. The
 next step is to begin to systematically explore vertices at the front of
 the queue. We explore each new node at the front of the queue by
 iterating over its adjacency list. As each node on the adjacency list is
-examined its color is checked. If it is white, the vertex is unexplored,
+examined, its color is checked. If it is white, the vertex is unexplored,
 and four things happen:
 
-#. The new, unexplored vertex ``nbr``, is colored gray.
+#. The new, unexplored vertex ``neighbor``, is colored gray.
 
-#. The predecessor of ``nbr`` is set to the current node ``currentVert``
+#. The predecessor of ``neighbor`` is set to the current node ``current_vert``
 
-#. The distance to ``nbr`` is set to the distance to ``currentVert + 1``
+#. The distance to ``neighbor`` is set to the distance to ``current_vert + 1``
 
-#. ``nbr`` is added to the end of a queue. Adding ``nbr`` to the end of
+#. ``neighbor`` is added to the end of a queue. Adding ``neighbor`` to the end of
    the queue effectively schedules this node for further exploration,
    but not until all the other vertices on the adjacency list of
-   ``currentVert`` have been explored.
+   ``current_vert`` have been explored.
    
    
 .. _lst_wordbucket2:
@@ -73,27 +73,28 @@ and four things happen:
 
 ::
 
-    from pythonds.graphs import Graph, Vertex
-    from pythonds.basic import Queue
-    
-    def bfs(g,start):
-      start.setDistance(0)
-      start.setPred(None)
-      vertQueue = Queue()
-      vertQueue.enqueue(start)
-      while (vertQueue.size() > 0):
-        currentVert = vertQueue.dequeue()
-        for nbr in currentVert.getConnections():
-          if (nbr.getColor() == 'white'):
-            nbr.setColor('gray')
-            nbr.setDistance(currentVert.getDistance() + 1)
-            nbr.setPred(currentVert)
-            vertQueue.enqueue(nbr)
-        currentVert.setColor('black')
+    from pythonds3.graphs import Graph, Vertex
+    from pythonds3.basic import Queue
+
+
+    def bfs(g, start):
+        start.distance = 0
+        start.previous = None
+        vert_queue = Queue()
+        vert_queue.enqueue(start)
+        while vert_queue.size() > 0:
+            current_vert = vert_queue.dequeue()
+            for neighbor in current_vert.get_neighbors():
+                if neighbor.color == "white":
+                    neighbor.color = "gray"
+                    neighbor.distance = current_vert.distance + 1
+                    neighbor.previous = current_vert
+                    vert_queue.enqueue(neighbor)
+            current_vert.color = "black"
 
 Let’s look at how the ``bfs`` function would construct the breadth first
 tree corresponding to the graph in :ref:`Figure 1 <fig_wordladder>`. Starting
-from fool we take all nodes that are adjacent to fool and add them to
+from *fool* we take all nodes that are adjacent to *fool* and add them to
 the tree. The adjacent nodes include pool, foil, foul, and cool. Each of
 these nodes are added to the queue of new nodes to expand.
 :ref:`Figure 3 <fig_bfs1>` shows the state of the in-progress tree along with the
@@ -123,7 +124,7 @@ poll. The new state of the tree and queue is shown in :ref:`Figure 4 <fig_bfs2>`
 
 
 
-The next vertex on the queue is foil. The only new node that foil can
+The next vertex on the queue is *foil*. The only new node that *foil* can
 add to the tree is fail. As ``bfs`` continues to process the queue,
 neither of the next two nodes add anything new to the queue or the tree.
 :ref:`Figure 5 <fig_bfs3>` shows the tree and the queue after expanding all the
@@ -163,12 +164,13 @@ print out the word ladder.
 
 ::
 
-    def traverse(y):
-        x = y
-        while (x.getPred()):
-            print(x.getId())
-            x = x.getPred()
-        print(x.getId())
+    def traverse(starting_vertex):
+        vert = starting_vertex
+        while vert.previous:
+            print(vert.key)
+            vert = vert.previous
+        print(vert.key)
 
-    traverse(g.getVertex('sage'))
+
+    traverse(g.get_vertex("sage"))
 
