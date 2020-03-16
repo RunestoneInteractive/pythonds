@@ -68,34 +68,35 @@ code required to build the graph.
 
 ::
 
-    from pythonds.graphs import Graph
-    
-    def buildGraph(wordFile):
+    from pythonds3.graphs import Graph
+
+
+    def build_graph(filename):
         d = {}
-        g = Graph()    
-        wfile = open(wordFile,'r')
+        g = Graph()
+        word_file = open(filename, "r")
         # create buckets of words that differ by one letter
-        for line in wfile:
-            word = line[:-1]
+        for line in word_file:
+            word = line.strip()
             for i in range(len(word)):
-                bucket = word[:i] + '_' + word[i+1:]
+                bucket = word[:i] + "_" + word[i + 1 :]
                 if bucket in d:
                     d[bucket].append(word)
                 else:
                     d[bucket] = [word]
-        # add vertices and edges for words in the same bucket
-        for bucket in d.keys():
+        # add edges between words in the same bucket
+        for bucket in d:
             for word1 in d[bucket]:
                 for word2 in d[bucket]:
                     if word1 != word2:
-                        g.addEdge(word1,word2)
+                        g.add_edge(word1, word2)
         return g
 
 Since this is our first real-world graph problem, you might be wondering
 how sparse is the graph? The list of four-letter words we have for this
 problem is 5,110 words long. If we were to use an adjacency matrix, the
 matrix would have 5,110 \* 5,110 = 26,112,100 cells. The graph
-constructed by the ``buildGraph`` function has exactly 53,286 edges, so
+constructed by the ``build_graph`` function has exactly 53,286 edges, so
 the matrix would have only 0.20% of the cells filled! That is a very
 sparse matrix indeed.
 
