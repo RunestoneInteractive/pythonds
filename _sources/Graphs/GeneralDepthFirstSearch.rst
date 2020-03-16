@@ -17,26 +17,26 @@ call this a **depth first forest**. As with the breadth first search our
 depth first search makes use of predecessor links to construct the tree.
 In addition, the depth first search will make use of two additional
 instance variables in the ``Vertex`` class. The new instance variables
-are the discovery and finish times. The discovery time tracks the number
+are the discovery and closing times. The discovery time tracks the number
 of steps in the algorithm before a vertex is first encountered. The
-finish time is the number of steps in the algorithm before a vertex is
+closing time is the number of steps in the algorithm before a vertex is
 colored black. As we will see after looking at the algorithm, the
-discovery and finish times of the nodes provide some interesting
+discovery and closing times of the nodes provide some interesting
 properties we can use in later algorithms.
 
 The code for our depth first search is shown in :ref:`Listing 5 <lst_dfsgeneral>`. Since
-the two functions ``dfs`` and its helper ``dfsvisit`` use a variable to
-keep track of the time across calls to ``dfsvisit`` we chose to
+the two functions ``dfs`` and its helper ``dfs_visit`` use a variable to
+keep track of the time across calls to ``dfs_visit`` we chose to
 implement the code as methods of a class that inherits from the
 ``Graph`` class. This implementation extends the graph class by adding a
-``time`` instance variable and the two methods ``dfs`` and ``dfsvisit``.
+``time`` instance variable and the two methods ``dfs`` and ``dfs_visit``.
 Looking at line 11 you will notice that the ``dfs`` method
-iterates over all of the vertices in the graph calling ``dfsvisit`` on
+iterates over all of the vertices in the graph calling ``dfs_visit`` on
 the nodes that are white. The reason we iterate over all the nodes,
 rather than simply searching from a chosen starting node, is to make
 sure that all nodes in the graph are considered and that no vertices are
 left out of the depth first forest. It may look unusual to see the
-statement ``for aVertex in self``, but remember that in this case ``self``
+statement ``for vertex in self``, but remember that in this case ``self``
 is an instance of the ``DFSGraph`` class, and iterating over all the
 vertices in an instance of a graph is a natural thing to do.
 
@@ -49,31 +49,33 @@ vertices in an instance of a graph is a natural thing to do.
 
 ::
 
-    from pythonds.graphs import Graph
+    from pythonds3.graphs import Graph
+
+
     class DFSGraph(Graph):
         def __init__(self):
             super().__init__()
             self.time = 0
 
         def dfs(self):
-            for aVertex in self:
-                aVertex.setColor('white')
-                aVertex.setPred(-1)
-            for aVertex in self:
-                if aVertex.getColor() == 'white':
-                    self.dfsvisit(aVertex)
+            for vertex in self:
+                vertex.color = "white"
+                vertex.previous = -1
+            for vertex in self:
+                if vertex.color == "white":
+                    self.dfs_visit(vertex)
 
-        def dfsvisit(self,startVertex):
-            startVertex.setColor('gray')
-            self.time += 1
-            startVertex.setDiscovery(self.time)
-            for nextVertex in startVertex.getConnections():
-                if nextVertex.getColor() == 'white':
-                    nextVertex.setPred(startVertex)
-                    self.dfsvisit(nextVertex)
-            startVertex.setColor('black')
-            self.time += 1
-            startVertex.setFinish(self.time)
+        def dfs_visit(self, start_vertex):
+            start_vertex.color = "gray"
+            self.time = self.time + 1
+            start_vertex.discovery_time = self.time
+            for next_vertex in start_vertex.get_neighbors():
+                if next_vertex.color == "white":
+                    next_vertex.previous = start_vertex
+                    self.dfs_visit(next_vertex)
+            start_vertex.color = "black"
+            self.time = self.time + 1
+            start_vertex.closing_time = self.time
 
 .. highlight:: python
     :linenothreshold: 500
@@ -85,17 +87,17 @@ shortest path between all pairs of nodes in the graph. We leave this as
 an exercise. In our next two algorithms we will see why keeping track of
 the depth first forest is important.
 
-The ``dfsvisit`` method starts with a single vertex called
-``startVertex`` and explores all of the neighboring white vertices as
-deeply as possible. If you look carefully at the code for ``dfsvisit``
+The ``dfs_visit`` method starts with a single vertex called
+``start_vertex`` and explores all of the neighboring white vertices as
+deeply as possible. If you look carefully at the code for ``dfs_visit``
 and compare it to breadth first search, what you should notice is that
-the ``dfsvisit`` algorithm is almost identical to ``bfs`` except that on
-the last line of the inner ``for`` loop, ``dfsvisit`` calls itself
+the ``dfs_visit`` algorithm is almost identical to ``bfs`` except that on
+the last line of the inner ``for`` loop, ``dfs_visit`` calls itself
 recursively to continue the search at a deeper level, whereas ``bfs``
 adds the node to a queue for later exploration. It is interesting to
-note that where ``bfs`` uses a queue, ``dfsvisit`` uses a stack. You
+note that where ``bfs`` uses a queue, ``dfs_visit`` uses a stack. You
 don’t see a stack in the code, but it is implicit in the recursive call
-to ``dfsvisit``.
+to ``dfs_visit``.
 
 
 The following sequence of figures illustrates the depth first search algorithm in
@@ -120,7 +122,7 @@ Visiting vertex C (:ref:`Figure 16 <fig_gdfsc>`) brings us to the end of one bra
 coloring the node gray and setting its discovery time to 3, the
 algorithm also determines that there are no adjacent vertices to C. This
 means that we are done exploring node C and so we can color the vertex
-black, and set the finish time to 4. You can see the state of our search
+black, and set the closing time to 4. You can see the state of our search
 at this point in :ref:`Figure 17 <fig_gdfsd>`.
 
 Since vertex C was the end of one branch we now return to vertex B and
@@ -137,7 +139,7 @@ Vertex F has only one adjacent vertex, C, but since C is colored black
 there is nothing else to explore, and the algorithm has reached the end
 of another branch. From here on, you will see in :ref:`Figure 21 <fig_gdfsh>` through
 :ref:`Figure 25 <fig_gdfsl>`  that the algorithm works its way back to the first node,
-setting finish times and coloring vertices black.
+setting closing times and coloring vertices black.
      
 .. _fig_gdfsa:
 
@@ -223,10 +225,10 @@ setting finish times and coloring vertices black.
 
    Figure 25: Constructing the Depth First Search Tree-21
 
-The starting and finishing times for each node display a property called
+The discovery and closing times for each node display a property called
 the **parenthesis property**. This property means that all the children
 of a particular node in the depth first tree have a later discovery time
-and an earlier finish time than their parent. :ref:`Figure 26 <fig_dfstree>` shows
+and an earlier closing time than their parent. :ref:`Figure 26 <fig_dfstree>` shows
 the tree constructed by the depth first search algorithm.
 
 .. _fig_dfstree:
