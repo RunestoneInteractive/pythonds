@@ -12,13 +12,13 @@ and ``Vertex``, which will represent each vertex in the graph.
 
 Each ``Vertex`` uses a dictionary to keep track of the vertices to which
 it is connected, and the weight of each edge. This dictionary is called
-``connectedTo``. The listing below shows the code for the ``Vertex``
-class. The constructor simply initializes the ``id``, which will
-typically be a string, and the ``connectedTo`` dictionary. The
-``addNeighbor`` method is used add a connection from this vertex to
-another. The ``getConnections`` method returns all of the vertices in
-the adjacency list, as represented by the ``connectedTo`` instance
-variable. The ``getWeight`` method returns the weight of the edge from
+``neighbors``. The listing below shows the code for the ``Vertex``
+class. The constructor simply initializes the ``key``, which will
+typically be a string, and the ``neighbors`` dictionary. The
+``set_neighbor`` method is used add a connection from this vertex to
+another. The ``get_neighbors`` method returns all of the vertices in
+the adjacency list, as represented by the ``neighbors`` instance
+variable. The ``get_neighbor`` method returns the weight of the edge from
 this vertex to the vertex passed as a parameter.
 
 .. _lst_vertex:
@@ -28,30 +28,34 @@ this vertex to the vertex passed as a parameter.
 ::
 
     class Vertex:
-        def __init__(self,key):
-            self.id = key
-            self.connectedTo = {}
+        def __init__(self, key):
+            self.key = key
+            self.neighbors = {}
 
-        def addNeighbor(self,nbr,weight=0):
-            self.connectedTo[nbr] = weight
+        def get_neighbor(self, other):
+            return self.neighbors.get(other, None)
+
+        def set_neighbor(self, other, weight=0):
+            self.neighbors[other] = weight
 
         def __str__(self):
-            return str(self.id) + ' connectedTo: ' + str([x.id for x in self.connectedTo])
+            return (
+                str(self.key)
+                + " connected to: "
+                + str([x.key for x in self.neighbors])
+            )
 
-        def getConnections(self):
-            return self.connectedTo.keys()
+        def get_neighbors(self):
+            return self.neighbors.keys()
 
-        def getId(self):
-            return self.id
-
-        def getWeight(self,nbr):
-            return self.connectedTo[nbr]
+        def get_key(self):
+            return self.key
 
 The ``Graph`` class, shown in the next listing, contains a dictionary
 that maps vertex names to vertex objects. In :ref:`Figure 4 <fig_adjlist>` this
 dictionary object is represented by the shaded gray box. ``Graph`` also
 provides methods for adding vertices to a graph and connecting one
-vertex to another. The ``getVertices`` method returns the names of all
+vertex to another. The ``get_vertices`` method returns the names of all
 of the vertices in the graph. In addition, we have implemented the
 ``__iter__`` method to make it easy to iterate over all the vertex
 objects in a particular graph. Together, the two methods allow you to
@@ -66,36 +70,29 @@ themselves.
 
     class Graph:
         def __init__(self):
-            self.vertList = {}
-            self.numVertices = 0
-            
-        def addVertex(self,key):
-            self.numVertices = self.numVertices + 1
-            newVertex = Vertex(key)
-            self.vertList[key] = newVertex
-            return newVertex
-        
-        def getVertex(self,n):
-            if n in self.vertList:
-                return self.vertList[n]
-            else:
-                return None
+            self.vertices = {}
 
-        def __contains__(self,n):
-            return n in self.vertList
-        
-        def addEdge(self,f,t,weight=0):
-            if f not in self.vertList:
-                nv = self.addVertex(f)
-            if t not in self.vertList:
-                nv = self.addVertex(t)
-            self.vertList[f].addNeighbor(self.vertList[t], weight)
-        
-        def getVertices(self):
-            return self.vertList.keys()
-            
+        def set_vertex(self, key):
+            self.vertices[key] = Vertex(key)
+
+        def get_vertex(self, key):
+            return self.vertices.get(key, None)
+
+        def __contains__(self, key):
+            return key in self.vertices
+
+        def add_edge(self, from_vert, to_vert, weight=0):
+            if from_vert not in self.vertices:
+                self.set_vertex(from_vert)
+            if to_vert not in self.vertices:
+                self.set_vertex(to_vert)
+            self.vertices[from_vert].set_neighbor(self.vertices[to_vert], weight)
+
+        def get_vertices(self):
+            return self.vertices.keys()
+
         def __iter__(self):
-            return iter(self.vertList.values())
+            return iter(self.vertices.values())
 
 Using the ``Graph`` and ``Vertex`` classes just defined, the following
 Python session creates the graph in :ref:`Figure 2 <fig_dgsimple>`. First we
@@ -110,29 +107,29 @@ at the end of this session against :ref:`Figure 2 <fig_dgsimple>`.
 
     >>> g = Graph()
     >>> for i in range(6):
-    ...    g.addVertex(i)
-    >>> g.vertList
-    {0: <adjGraph.Vertex instance at 0x41e18>, 
-     1: <adjGraph.Vertex instance at 0x7f2b0>, 
-     2: <adjGraph.Vertex instance at 0x7f288>, 
-     3: <adjGraph.Vertex instance at 0x7f350>, 
-     4: <adjGraph.Vertex instance at 0x7f328>, 
-     5: <adjGraph.Vertex instance at 0x7f300>}
-    >>> g.addEdge(0,1,5)
-    >>> g.addEdge(0,5,2)
-    >>> g.addEdge(1,2,4)
-    >>> g.addEdge(2,3,9)
-    >>> g.addEdge(3,4,7)
-    >>> g.addEdge(3,5,3)
-    >>> g.addEdge(4,0,1)
-    >>> g.addEdge(5,4,8)
-    >>> g.addEdge(5,2,1)
+    ...     g.set_vertex(i)
+    >>> g.vertices
+    {0: <__main__.Vertex object at 0x101ef1b70>,
+    1: <__main__.Vertex object at 0x103853518>,
+    2: <__main__.Vertex object at 0x103859ac8>,
+    3: <__main__.Vertex object at 0x103859b00>,
+    4: <__main__.Vertex object at 0x103859b38>,
+    5: <__main__.Vertex object at 0x103859b70>}
+    >>> g.add_edge(0, 1, 5)
+    >>> g.add_edge(0, 5, 2)
+    >>> g.add_edge(1, 2, 4)
+    >>> g.add_edge(2, 3, 9)
+    >>> g.add_edge(3, 4, 7)
+    >>> g.add_edge(3, 5, 3)
+    >>> g.add_edge(4, 0, 1)
+    >>> g.add_edge(5, 4, 8)
+    >>> g.add_edge(5, 2, 1)
     >>> for v in g:
-    ...    for w in v.getConnections(): 
-    ...        print("( %s , %s )" % (v.getId(), w.getId()))
-    ... 
-    ( 0 , 5 )
+    ...     for w in v.get_neighbors():
+    ...         print("( {} , {} )".format(v.get_key(), w.get_key()))
+    ...
     ( 0 , 1 )
+    ( 0 , 5 )
     ( 1 , 2 )
     ( 2 , 3 )
     ( 3 , 4 )
