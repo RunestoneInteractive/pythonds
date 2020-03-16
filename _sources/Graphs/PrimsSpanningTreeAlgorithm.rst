@@ -17,9 +17,9 @@ listening to. :ref:`Figure 9 <fig_bcast1>` illustrates the broadcast problem.
 .. _fig_bcast1:
 
 .. figure:: Figures/bcast1.png
-   :align: center
+    :align: center
 
-   Figure 9: The Broadcast Problem 
+    Figure 9: The Broadcast Problem 
 
 There are some brute force solutions to this problem, so let’s look at
 them first to help understand the broadcast problem better. This will
@@ -74,9 +74,9 @@ that are interested see a copy of the message.
 .. _fig_mst1:
 
 .. figure:: Figures/mst1.png
-   :align: center
+    :align: center
 
-   Figure 10: Minimum Spanning Tree for the Broadcast Graph 
+    Figure 10: Minimum Spanning Tree for the Broadcast Graph 
 
 The algorithm we will use to solve this problem is called Prim’s
 algorithm. Prim’s algorithm belongs to a family of algorithms called the
@@ -88,7 +88,7 @@ The basic idea in constructing a spanning tree is as follows:
 
 ::
 
-   While T is not yet a spanning tree
+    While T is not yet a spanning tree
       Find an edge that is safe to add to the tree
       Add the new edge to T
 
@@ -107,23 +107,25 @@ to the growing graph.
 
 ::
 
-    from pythonds.graphs import PriorityQueue, Graph, Vertex
+    import sys
+    from pythonds3.graphs import PriorityQueue, Graph, Vertex
 
-    def prim(G,start):
+
+    def prim(graph, start):
         pq = PriorityQueue()
-        for v in G:
-            v.setDistance(sys.maxsize)
-            v.setPred(None)
-        start.setDistance(0)
-        pq.buildHeap([(v.getDistance(),v) for v in G])
-        while not pq.isEmpty():
-            currentVert = pq.delMin()
-            for nextVert in currentVert.getConnections():
-              newCost = currentVert.getWeight(nextVert)
-              if nextVert in pq and newCost<nextVert.getDistance():
-                  nextVert.setPred(currentVert)
-                  nextVert.setDistance(newCost)
-                  pq.decreaseKey(nextVert,newCost)
+        for v in graph:
+            v.distance = sys.maxsize
+            v.previous = None
+        start.distance = 0
+        pq.heapify([(vertex.distance, vertex) for vertex in graph])
+        while not pq.is_empty():
+            current_vertex = pq.delete()
+            for next_vertex in current_vertex.get_neighbors():
+                new_distance = current_vertex.get_neighbor(next_vertex)
+                if next_vertex in pq and new_distance < next_vertex.distance:
+                    next_vertex.previous = current_vertex
+                    next_vertex.distance = new_distance
+                    pq.change_priority(new_distance, next_vertex)
 
 The following sequence of figures (:ref:`Figure 11 <fig_mst1>` through :ref:`Figure 17 <fig_mst1>`) shows the algorithm in operation on our sample
 tree. We begin with the starting vertex as A. The distances to all the
@@ -153,49 +155,49 @@ to the tree.
 .. _fig_prima:
 
 .. figure:: Figures/prima.png
-   :align: center
-   
-   Figure 11: Tracing Prim’s Algorithm
+    :align: center
+    
+    Figure 11: Tracing Prim’s Algorithm
 
 .. _fig_primb:
 
 .. figure:: Figures/primb.png
-   :align: center
+    :align: center
 
-   Figure 12: Tracing Prim’s Algorithm
+    Figure 12: Tracing Prim’s Algorithm
 
 .. _fig_primc:
 
 .. figure:: Figures/primc.png
-   :align: center
+    :align: center
 
-   Figure 13: Tracing Prim’s Algorithm
+    Figure 13: Tracing Prim’s Algorithm
    
 .. _fig_primd:
 
 .. figure:: Figures/primd.png
-   :align: center
+    :align: center
 
-   Figure 14: Tracing Prim’s Algorithm
+    Figure 14: Tracing Prim’s Algorithm
    
 .. _fig_prime:
 
 .. figure:: Figures/prime.png
-   :align: center
+    :align: center
 
-   Figure 15: Tracing Prim’s Algorithm
+    Figure 15: Tracing Prim’s Algorithm
    
 .. _fig_primf:
 
 .. figure:: Figures/primf.png
-   :align: center
-   
-   Figure 16: Tracing Prim’s Algorithm
+    :align: center
+    
+    Figure 16: Tracing Prim’s Algorithm
     
 .. _fig_primg:
 
 .. figure:: Figures/primg.png
-   :align: center
+    :align: center
 
-   Figure 17: Tracing Prim’s Algorithm
+    Figure 17: Tracing Prim’s Algorithm
 
