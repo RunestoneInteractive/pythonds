@@ -54,7 +54,7 @@ Discussion Questions
    :feedback_c: O(1) would suggest that the function is constant. Since there are multiple for loops intertwined, it is not in constant time.
    :feedback_d: O(n<sup>3</sup>) would suggest that there are three consecutively nested for loops. There are only two.
    
-   4. What is the Big-O running time of the ``buildGraph`` function?
+   4. What is the Big-O running time of the ``build_graph`` function?
 
 .. shortanswer:: BigO
 
