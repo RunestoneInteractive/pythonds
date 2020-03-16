@@ -107,13 +107,13 @@ components.
 We can now describe the algorithm to compute the strongly connected
 components for a graph.
 
-#. Call ``dfs`` for the graph :math:`G` to compute the finish times
+#. Call ``dfs`` for the graph :math:`G` to compute the closing times
    for each vertex.
 
 #. Compute :math:`G^T`.
 
 #. Call ``dfs`` for the graph :math:`G^T` but in the main loop of DFS
-   explore each vertex in decreasing order of finish time.
+   explore each vertex in decreasing order of closing time.
 
 #. Each tree in the forest computed in step 3 is a strongly connected
    component. Output the vertex ids for each vertex in each tree in the
@@ -121,8 +121,8 @@ components for a graph.
 
 Let's trace the operation of the steps described above on the example
 graph in :ref:`Figure 31 <fig_scc1>`. :ref:`Figure 35 <fig_sccalga>` shows the starting and
-finishing times computed for the original graph by the DFS algorithm.
-:ref:`Figure 36 <fig_sccalgb>` shows the starting and finishing times computed by
+closing times computed for the original graph by the DFS algorithm.
+:ref:`Figure 36 <fig_sccalgb>` shows the starting and closing times computed by
 running DFS on the transposed graph.
 
  
