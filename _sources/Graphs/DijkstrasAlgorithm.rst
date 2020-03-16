@@ -12,18 +12,18 @@ starting node to all other nodes in the graph. Again this is similar to
 the results of a breadth first search.
 
 To keep track of the total cost from the start node to each destination
-we will make use of the ``dist`` instance variable in the Vertex class.
-The ``dist`` instance variable will contain the current total weight of
+we will make use of the ``distance`` instance variable in the Vertex class.
+The ``distance`` instance variable will contain the current total weight of
 the smallest weight path from the start to the vertex in question. The
 algorithm iterates once for every vertex in the graph; however, the
 order that we iterate over the vertices is controlled by a priority
 queue. The value that is used to determine the order of the objects in
-the priority queue is ``dist``. When a vertex is first created ``dist``
-is set to a very large number. Theoretically you would set ``dist`` to
+the priority queue is ``distance``. When a vertex is first created ``distance``
+is set to a very large number. Theoretically you would set ``distance`` to
 infinity, but in practice we just set it to a number that is larger than
 any real distance we would have in the problem we are trying to solve.
 
-The code for Dijkstra’s algorithm is shown in :ref:`Listing 1 <lst_shortpath>`. When the algorithm finishes the distances are set
+The code for Dijkstra’s algorithm is shown in :ref:`Listing 1 <lst_shortpath>`. When the algorithm finishes, the distances are set
 correctly as are the predecessor links for each vertex in the graph.
 
 .. _lst_shortpath:
@@ -32,20 +32,23 @@ correctly as are the predecessor links for each vertex in the graph.
 
 ::
 
-    from pythonds.graphs import PriorityQueue, Graph, Vertex
-    def dijkstra(aGraph,start):
-        pq = PriorityQueue()
-        start.setDistance(0)
-        pq.buildHeap([(v.getDistance(),v) for v in aGraph])        
-        while not pq.isEmpty():
-            currentVert = pq.delMin()
-            for nextVert in currentVert.getConnections():
-                newDist = currentVert.getDistance() \
-                        + currentVert.getWeight(nextVert)
-                if newDist < nextVert.getDistance():
-                    nextVert.setDistance( newDist )
-                    nextVert.setPred(currentVert)
-                    pq.decreaseKey(nextVert,newDist)
+   from pythonds3.graphs import PriorityQueue, Graph, Vertex
+
+
+   def dijkstra(graph, start):
+      pq = PriorityQueue()
+      start.distance = 0
+      pq.heapify([(v.distance, v) for v in graph])
+      while pq:
+         current_vertex = pq.delete()
+         for next_vertex in current_vertex.get_neighbors():
+               new_distance = current_vertex.distance + current_vertex.get_neighbor(
+                  next_vertex
+               )
+               if new_distance < next_vertex.distance:
+                  next_vertex.distance = new_distance
+                  next_vertex.previous = current_vertex
+                  pq.change_priority(next_vertex, new_distance)
 
 
 Dijkstra’s algorithm uses a priority queue. You may recall that a
@@ -53,14 +56,14 @@ priority queue is based on the heap that we implemented in the Tree Chapter.
 There are a couple of differences between that
 simple implementation and the implementation we
 use for Dijkstra’s algorithm. First, the ``PriorityQueue`` class stores
-tuples of key, value pairs. This is important for Dijkstra’s algorithm
+tuples of (priority, key) pairs. This is important for Dijkstra’s algorithm
 as the key in the priority queue must match the key of the vertex in the
-graph. Secondly the value is used for deciding the priority, and thus
-the position of the key in the priority queue. In this implementation we
+graph. Secondly the priority is used for deciding the position of the key
+in the priority queue. In this implementation we
 use the distance to the vertex as the priority because as we will see
 when we are exploring the next vertex, we always want to explore the
 vertex that has the smallest distance. The second difference is the
-addition of the ``decreaseKey`` method. As you can see, this method is used when the distance to a vertex that
+addition of the ``change_priority`` method. As you can see, this method is used when the distance to a vertex that
 is already in the queue is reduced, and thus moves that vertex toward
 the front of the queue.
 
@@ -69,8 +72,8 @@ the front of the queue.
 Let’s walk through an application of Dijkstra’s algorithm one vertex at
 a time using the following sequence of figures as our guide. We begin with the vertex
 :math:`u`. The three vertices adjacent to :math:`u` are
-:math:`v,w,` and :math:`x`. Since the initial distances to
-:math:`v,w,` and :math:`x` are all initialized to ``sys.maxint``,
+:math:`v, w,` and :math:`x`. Since the initial distances to
+:math:`v, w,` and :math:`x` are all initialized to ``sys.maxsize``,
 the new costs to get to them through the start node are all their direct
 costs. So we update the costs to each of these three nodes. We also set
 the predecessor for each node to :math:`u` and we add each node to the
@@ -81,10 +84,10 @@ In the next iteration of the ``while`` loop we examine the vertices that
 are adjacent to :math:`x`. The vertex :math:`x` is next because it
 has the lowest overall cost and therefore bubbled its way to the
 beginning of the priority queue. At :math:`x` we look at its neighbors
-:math:`u,v,w` and :math:`y`. For each neighboring vertex we check to
+:math:`u, v, w,` and :math:`y`. For each neighboring vertex we check to
 see if the distance to that vertex through :math:`x` is smaller than
 the previously known distance. Obviously this is the case for
-:math:`y` since its distance was ``sys.maxint``. It is not the case
+:math:`y` since its distance was ``sys.maxsize``. It is not the case
 for :math:`u` or :math:`v` since their distances are 0 and 2
 respectively. However, we now learn that the distance to :math:`w` is
 smaller if we go through :math:`x` than from :math:`u` directly to
