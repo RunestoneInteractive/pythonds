@@ -19,12 +19,12 @@ moves by a knight and the corresponding edges in a graph.
    Figure 1: Legal Moves for a Knight on Square 12, and the Corresponding Graph     
 
 To build the full graph for an n-by-n board we can use the Python
-function shown in :ref:`Listing 1 <lst_knighttour1>`. The ``knightGraph`` function
+function shown in :ref:`Listing 1 <lst_knighttour1>`. The ``knight_graph`` function
 makes one pass over the entire board. At each square on the board the
-``knightGraph`` function calls a helper, ``genLegalMoves``, to create a
+``knight_graph`` function calls a helper, ``gen_legal_moves``, to create a
 list of legal moves for that position on the board. All legal moves are
 then converted into edges in the graph. Another helper function
-``posToNodeId`` converts a location on the board in terms of a row and a
+``pos_to_node_id`` converts a location on the board in terms of a row and a
 column into a linear vertex number similar to the vertex numbers shown
 in :ref:`Figure 1 <fig_knightmoves>`.
 
@@ -34,24 +34,26 @@ in :ref:`Figure 1 <fig_knightmoves>`.
 
 ::
 
-    from pythonds.graphs import Graph
-    
-    def knightGraph(bdSize):
-        ktGraph = Graph()
-        for row in range(bdSize):
-           for col in range(bdSize):
-               nodeId = posToNodeId(row,col,bdSize)
-               newPositions = genLegalMoves(row,col,bdSize)
-               for e in newPositions:
-                   nid = posToNodeId(e[0],e[1],bdSize)
-                   ktGraph.addEdge(nodeId,nid)
-        return ktGraph
+    from pythonds3.graphs import Graph
 
-    def posToNodeId(row, column, board_size):
+
+    def knight_graph(board_size):
+        kt_graph = Graph()
+        for row in range(board_size):
+            for col in range(board_size):
+                node_id = pos_to_node_id(row, col, board_size)
+                new_positions = gen_legal_moves(row, col, board_size)
+                for e in new_positions:
+                    other_node_id = pos_to_node_id(e[0], e[1], board_size)
+                    kt_graph.add_edge(node_id, other_node_id)
+        return kt_graph
+
+
+    def pos_to_node_id(row, column, board_size):
         return (row * board_size) + column
 
-The ``genLegalMoves`` function (:ref:`Listing 2 <lst_knighttour2>`) takes the position of the knight on the
-board and generates each of the eight possible moves. The ``legalCoord``
+The ``gen_legal_moves`` function (:ref:`Listing 2 <lst_knighttour2>`) takes the position of the knight on the
+board and generates each of the eight possible moves. The ``legal_coord``
 helper function (:ref:`Listing 2 <lst_knighttour2>`) makes sure that a particular move that is generated is
 still on the board.
 
@@ -61,24 +63,28 @@ still on the board.
 
 ::
 
+    def gen_legal_moves(x, y, board_size):
+        new_moves = []
+        move_offsets = [
+            (-1, -2),
+            (-1, 2),
+            (-2, -1),
+            (-2, 1),
+            (1, -2),
+            (1, 2),
+            (2, -1),
+            (2, 1),
+        ]
+        for i in move_offsets:
+            new_x = x + i[0]
+            new_y = y + i[1]
+            if legal_coord(new_x, board_size) and legal_coord(new_y, board_size):
+                new_moves.append((new_x, new_y))
+        return new_moves
 
-    def genLegalMoves(x,y,bdSize):
-        newMoves = []
-        moveOffsets = [(-1,-2),(-1,2),(-2,-1),(-2,1),
-                       ( 1,-2),( 1,2),( 2,-1),( 2,1)]
-        for i in moveOffsets:
-            newX = x + i[0]
-            newY = y + i[1]
-            if legalCoord(newX,bdSize) and \
-                            legalCoord(newY,bdSize):
-                newMoves.append((newX,newY))
-        return newMoves
 
-    def legalCoord(x,bdSize):
-        if x >= 0 and x < bdSize:
-            return True
-        else:
-            return False
+    def legal_coord(x, board_size):
+        return x >= 0 and x < board_size
 
 :ref:`Figure 2 <fig_bigknight>` shows the complete graph of possible moves on an
 eight-by-eight board. There are exactly 336 edges in the graph. Notice
