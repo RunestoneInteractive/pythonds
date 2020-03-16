@@ -11,7 +11,7 @@ tour puzzle is played on a chess board with a single chess piece, the
 knight. The object of the puzzle is to find a sequence of moves that
 allow the knight to visit every square on the board exactly once. One
 such sequence is called a “tour.” The knight’s tour puzzle has
-fascinated chess players, mathematicians and computer scientists alike
+fascinated chess players, mathematicians, and computer scientists alike
 for many years. The upper bound on the number of possible legal tours
 for an eight-by-eight chessboard is known to be
 :math:`1.305 \times 10^{35}`; however, there are even more possible
