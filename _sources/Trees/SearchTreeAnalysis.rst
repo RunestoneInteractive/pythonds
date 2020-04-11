@@ -52,7 +52,7 @@ performance of the ``put`` method is :math:`O(n)`.
 
 Now that you understand that the performance of
 the ``put`` method is limited by the height of the tree, you can
-probably guess that other methods, ``get, in,`` and ``del``, are limited
+probably guess that other methods, ``get``, ``in``, and ``del``, are limited
 as well. Since ``get`` searches the tree to find the key, in the worst
 case the tree is searched all the way to the bottom and no key is found.
 At first glance ``del`` might seem more complicated, since it may need

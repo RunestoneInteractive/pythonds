@@ -11,7 +11,7 @@ tree and its components.
 Node
     A node is a fundamental part of a tree. It can have a name, which we
     call the “key.” A node may also have additional information. We call
-    this additional information the “payload.” While the payload
+    this additional information the “value” or “payload.” While the payload
     information is not central to many tree algorithms, it is often
     critical in applications that make use of trees.
 
@@ -33,9 +33,8 @@ Path
 
 Children
     The set of nodes :math:`c` that have incoming edges from the same
-    node to are said to be the children of that node. In Figure
-    :ref:`Figure 2 <fig_filetree>`, nodes log/, spool/, and yp/ are the children of node
-    var/.
+    node to are said to be the children of that node. In :ref:`Figure 2 <fig_filetree>`,
+    nodes log/, spool/, and yp/ are the children of node var/.
 
 Parent
     A node is the parent of all the nodes it connects to with outgoing
@@ -110,4 +109,4 @@ nodes than that, but we do not know unless we look deeper into the tree.
    :align: center
    :alt: image
 
-   Figure 4: A recursive Definition of a tree
+   Figure 4: A Recursive Definition of a Tree

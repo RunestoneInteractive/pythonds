@@ -24,11 +24,11 @@ structured like the one shown in :ref:`Figure 2 <fig_treerec>`.
 
 We will start out with a simple class definition for the nodes and
 references approach as shown in :ref:`Listing 4 <lst_nar>`. The important thing
-to remember about this representation is that the attributes ``left``
-and ``right`` will become references to other instances of the
+to remember about this representation is that the attributes ``left_child``
+and ``right_child`` will become references to other instances of the
 ``BinaryTree`` class. For example, when we insert a new left child into
 the tree we create another instance of ``BinaryTree`` and modify
-``self.leftChild`` in the root to reference the new tree.
+``self.left_child`` in the root to reference the new tree.
 
 .. _lst_nar:
 
@@ -37,10 +37,10 @@ the tree we create another instance of ``BinaryTree`` and modify
 ::
 
     class BinaryTree:
-        def __init__(self,rootObj):
-            self.key = rootObj
-            self.leftChild = None
-            self.rightChild = None
+        def __init__(self, root_obj):
+            self.key = root_obj
+            self.left_child = None
+            self.right_child = None
         
 
 Notice that in :ref:`Listing 4 <lst_nar>`, the constructor function expects to
@@ -53,8 +53,8 @@ BinaryTree class.
 
 Next let’s look at the functions we need to build the tree beyond the
 root node. To add a left child to the tree, we will create a new binary
-tree object and set the ``left`` attribute of the root to refer to this
-new object. The code for ``insertLeft`` is shown in
+tree object and set the ``left_child`` attribute of the root to refer to this
+new object. The code for ``insert_left`` is shown in
 :ref:`Listing 5 <lst_insl>`.
 
 .. _lst_insl:
@@ -66,13 +66,13 @@ new object. The code for ``insertLeft`` is shown in
 
 ::
 
-    def insertLeft(self,newNode):
-        if self.leftChild == None:
-            self.leftChild = BinaryTree(newNode)
-        else:  
-            t = BinaryTree(newNode)
-            t.leftChild = self.leftChild
-            self.leftChild = t
+    def insert_left(self, new_node):
+        if self.left_child is None:
+            self.left_child = BinaryTree(new_node)
+        else:
+            new_child = BinaryTree(new_node)
+            new_child.left_child = self.left_child
+            self.left_child = new_child
             
 .. highlight:: python
     :linenothreshold: 500
@@ -85,7 +85,7 @@ case, we insert a node and push the existing child down one level in the
 tree. The second case is handled by the ``else`` statement on line
 4 of :ref:`Listing 5 <lst_insl>`.
 
-The code for ``insertRight`` must consider a symmetric set of cases.
+The code for ``insert_right`` must consider a symmetric set of cases.
 There will either be no right child, or we must insert the node between
 the root and an existing right child. The insertion code is shown in
 :ref:`Listing 6 <lst_insr>`.
@@ -96,13 +96,13 @@ the root and an existing right child. The insertion code is shown in
 
 ::
 
-    def insertRight(self,newNode):
-        if self.rightChild == None:
-            self.rightChild = BinaryTree(newNode)
+    def insert_right(self, new_node):
+        if self.right_child == None:
+            self.right_child = BinaryTree(new_node)
         else:
-            t = BinaryTree(newNode)
-            t.rightChild = self.rightChild
-            self.rightChild = t
+            new_child = BinaryTree(new_node)
+            new_child.right_child = self.right_child
+            self.right_child = new_child
 
 To round out the definition for a simple binary tree data structure, we
 will write accessor methods (see :ref:`Listing 7 <lst_naracc>`) for the left and right children, as well as
@@ -114,23 +114,23 @@ the root values.
 
 ::
 
-    def getRightChild(self):
-        return self.rightChild
-
-    def getLeftChild(self):
-        return self.leftChild
-
-    def setRootVal(self,obj):
-        self.key = obj
-
-    def getRootVal(self):
+    def get_root_val(self):
         return self.key
+
+    def set_root_val(self, new_obj):
+        self.key = new_obj
+
+    def get_left_child(self):
+        return self.left_child
+
+    def get_right_child(self):
+        return self.right_child
         
 
 Now that we have all the pieces to create and manipulate a binary tree,
 let’s use them to check on the structure a bit more. Let’s make a simple
-tree with node a as the root, and add nodes b and c as children. :ref:`ActiveCode 1 <lst_comptest>` creates the tree and looks at the some of the
-values stored in ``key``, ``left``, and ``right``. Notice that both the
+tree with node a as the root, and add nodes "b" and "c" as children. :ref:`ActiveCode 1 <lst_comptest>` creates the tree and looks at the some of the
+values stored in ``key``, ``left_child``, and ``right_child``. Notice that both the
 left and right children of the root are themselves distinct instances of
 the ``BinaryTree`` class. As we said in our original recursive
 definition for a tree, this allows us to treat any child of a binary
@@ -145,52 +145,51 @@ tree as a binary tree itself.
 
 
     class BinaryTree:
-        def __init__(self,rootObj):
-            self.key = rootObj
-            self.leftChild = None
-            self.rightChild = None
+        def __init__(self, root_obj):
+            self.key = root_obj
+            self.left_child = None
+            self.right_child = None
 
-        def insertLeft(self,newNode):
-            if self.leftChild == None:
-                self.leftChild = BinaryTree(newNode)
-            else:  
-                t = BinaryTree(newNode)
-                t.leftChild = self.leftChild
-                self.leftChild = t
-
-        def insertRight(self,newNode):
-            if self.rightChild == None:
-                self.rightChild = BinaryTree(newNode)
+        def insert_left(self, new_node):
+            if self.left_child is None:
+                self.left_child = BinaryTree(new_node)
             else:
-                t = BinaryTree(newNode)
-                t.rightChild = self.rightChild
-                self.rightChild = t
+                new_child = BinaryTree(new_node)
+                new_child.left_child = self.left_child
+                self.left_child = new_child
+
+        def insert_right(self, new_node):
+            if self.right_child == None:
+                self.right_child = BinaryTree(new_node)
+            else:
+                new_child = BinaryTree(new_node)
+                new_child.right_child = self.right_child
+                self.right_child = new_child
+
+        def get_root_val(self):
+            return self.key
+
+        def set_root_val(self, new_obj):
+            self.key = new_obj
+
+        def get_left_child(self):
+            return self.left_child
+
+        def get_right_child(self):
+            return self.right_child             
 
 
-        def getRightChild(self):
-            return self.rightChild
-
-        def getLeftChild(self):
-            return self.leftChild
-
-        def setRootVal(self,obj):
-            self.key = obj
-
-        def getRootVal(self):
-            return self.key                
-
-
-    r = BinaryTree('a')
-    print(r.getRootVal())
-    print(r.getLeftChild())
-    r.insertLeft('b')
-    print(r.getLeftChild())
-    print(r.getLeftChild().getRootVal())
-    r.insertRight('c')
-    print(r.getRightChild())
-    print(r.getRightChild().getRootVal())
-    r.getRightChild().setRootVal('hello')
-    print(r.getRightChild().getRootVal())
+    a_tree = BinaryTree("a")
+    print(a_tree.get_root_val())
+    print(a_tree.get_left_child())
+    a_tree.insert_left("b")
+    print(a_tree.get_left_child())
+    print(a_tree.get_left_child().get_root_val())
+    a_tree.insert_right("c")
+    print(a_tree.get_right_child())
+    print(a_tree.get_right_child().get_root_val())
+    a_tree.get_right_child().set_root_val("hello")
+    print(a_tree.get_right_child().get_root_val())
 
 
 .. admonition:: Self Check
@@ -198,17 +197,17 @@ tree as a binary tree itself.
 
    .. actex:: mctree_3
 
-      Write a function ``buildTree`` that returns a tree using the nodes and references implementation that looks like this:
+      Write a function ``build_tree`` that returns a tree using the nodes and references implementation that looks like this:
 
       .. image:: Figures/tree_ex.png
       ~~~~
       from test import testEqual
       
-      def buildTree():
+      def build_tree():
           pass
 
-      ttree = buildTree()
+      ttree = build_tree()
 
-      testEqual(ttree.getRightChild().getRootVal(),'c')
-      testEqual(ttree.getLeftChild().getRightChild().getRootVal(),'d')
-      testEqual(ttree.getRightChild().getLeftChild().getRootVal(),'e')
+      testEqual(ttree.get_right_child().get_root_val(), "c")
+      testEqual(ttree.get_left_child().get_right_child().get_root_val(), "d")
+      testEqual(ttree.get_right_child().get_left_child().get_root_val(), "e")
