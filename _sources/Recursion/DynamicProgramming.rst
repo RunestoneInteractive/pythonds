@@ -145,8 +145,8 @@ algorithm to incorporate our table lookup scheme.
 
 
 .. activecode:: lst_change2
-    :caption: Recursively Counting Coins with Table Lookup
-    :nocodelens:
+   :caption: Recursively Counting Coins with Table Lookup
+   :nocodelens:
 
     def recDC(coinValueList,change,knownResults):
        minCoins = change

@@ -16,7 +16,7 @@ import sys, os
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-from runestone import runestone_static_dirs, runestone_extensions
+from runestone import runestone_static_dirs, runestone_extensions, setup
 import pkg_resources
 
 # -- General configuration -----------------------------------------------------
