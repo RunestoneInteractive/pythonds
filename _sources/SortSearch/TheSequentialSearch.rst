@@ -31,29 +31,28 @@ the item we were searching for was not present.
 The Python implementation for this algorithm is shown in
 :ref:`CodeLens 1 <lst_seqsearchpython>`. The function needs the list and the item we
 are looking for and returns a boolean value as to whether it is present.
-The boolean variable ``found`` is initialized to ``False`` and is
-assigned the value ``True`` if we discover the item in the list.
+
 
 .. _lst_seqsearchpython:
 
 .. codelens:: search1
     :caption: Sequential Search of an Unordered List
 
-    def sequentialSearch(alist, item):
+    def sequential_search(a_list, item):
         pos = 0
-        found = False
-        
-        while pos < len(alist) and not found:
-            if alist[pos] == item:
-                found = True
+
+        while pos < len(a_list):
+            if a_list[pos] == item:
+                return True
             else:
-                pos = pos+1
+                pos = pos + 1
 
-        return found
+        return False
 
-    testlist = [1, 2, 32, 8, 17, 19, 42, 13, 0]
-    print(sequentialSearch(testlist, 3))
-    print(sequentialSearch(testlist, 13))
+
+    test_list = [1, 2, 32, 8, 17, 19, 42, 13, 0]
+    print(sequential_search(test_list, 3))
+    print(sequential_search(test_list, 13))
 
 Analysis of Sequential Search
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -80,7 +79,7 @@ very last comparison, the `nth` comparison.
 
 What about the average case? On average, we will find the item about
 halfway into the list; that is, we will compare against
-:math:`\frac{n}{2}` items. Recall, however, that as *n* gets large,
+:math:`\frac{n}{2}` items. Recall, however, that as :math:`n` gets large,
 the coefficients, no matter what they are, become insignificant in our
 approximation, so the complexity of the sequential search, is
 :math:`O(n)`. :ref:`Table 1 <tbl_seqsearchtable>` summarizes these results.
@@ -107,7 +106,7 @@ Would we be able to gain any efficiency in our search technique?
 
 Assume that the list of items was constructed so that the items were in
 ascending order, from low to high. If the item we are looking for is
-present in the list, the chance of it being in any one of the *n*
+present in the list, the chance of it being in any one of the :math:`n`
 positions is still the same as before. We will still have the same
 number of comparisons to find the item. However, if the item is not
 present there is a slight advantage. :ref:`Figure 2 <fig_seqsearch2>` shows this
@@ -134,24 +133,23 @@ sequential search function.
 .. codelens:: search2
     :caption: Sequential Search of an Ordered List
 
-    def orderedSequentialSearch(alist, item):
+    def ordered_sequential_search(a_list, item):
         pos = 0
-        found = False
-        stop = False
-        while pos < len(alist) and not found and not stop:
-            if alist[pos] == item:
-                found = True
+        while pos < len(a_list):
+            if a_list[pos] == item:
+                return True
             else:
-                if alist[pos] > item:
-                    stop = True
+                if a_list[pos] > item:
+                    return False
                 else:
-                    pos = pos+1
+                    pos = pos + 1
 
-        return found
+        return False
 
-    testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42,]
-    print(orderedSequentialSearch(testlist, 3))
-    print(orderedSequentialSearch(testlist, 13))
+
+    test_list = [0, 1, 2, 8, 13, 17, 19, 32, 42]
+    print(ordered_sequential_search(test_list, 3))
+    print(ordered_sequential_search(test_list, 13))
 
 :ref:`Table 2 <tbl_seqsearchtable2>` summarizes these results. Note that in the best
 case we might discover that the item is not in the list by looking at

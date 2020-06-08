@@ -85,9 +85,9 @@ then the function returns without taking any action.
 
     def preorder(tree):
         if tree:
-            print(tree.getRootVal())
-            preorder(tree.getLeftChild())
-            preorder(tree.getRightChild())  
+            print(tree.get_root_val())
+            preorder(tree.get_left_child())
+            preorder(tree.get_right_child())
 
 
 We can also implement ``preorder`` as a method of the ``BinaryTree``
@@ -106,10 +106,10 @@ children *before* making the recursive call to ``preorder``.
 
     def preorder(self):
         print(self.key)
-        if self.leftChild:
-            self.leftChild.preorder()
-        if self.rightChild:
-            self.rightChild.preorder()
+        if self.left_child:
+            self.left_child.preorder()
+        if self.right_child:
+            self.right_child.preorder()
 
 
 
@@ -134,10 +134,10 @@ we move the call to print to the end of the function.
 ::
 
     def postorder(tree):
-        if tree != None:
-            postorder(tree.getLeftChild())
-            postorder(tree.getRightChild())
-            print(tree.getRootVal())
+        if tree:
+            postorder(tree.get_left_child())
+            postorder(tree.get_right_child())
+            print(tree.get_root_val())
 
 
 
@@ -156,16 +156,21 @@ closely on the ``postorder`` code in :ref:`Listing 4 <lst_postorder1>` (see :ref
 ::
 
     def postordereval(tree):
-        opers = {'+':operator.add, '-':operator.sub, '*':operator.mul, '/':operator.truediv}
-        res1 = None
-        res2 = None
+        operators = {
+            "+": operator.add,
+            "-": operator.sub,
+            "*": operator.mul,
+            "/": operator.truediv,
+        }
+        result_1 = None
+        result_2 = None
         if tree:
-            res1 = postordereval(tree.getLeftChild())
-            res2 = postordereval(tree.getRightChild())
-            if res1 and res2:
-                return opers[tree.getRootVal()](res1,res2)
+            result_1 = postordereval(tree.get_left_child())
+            result_2 = postordereval(tree.get_right_child())
+            if result_1 and result_2:
+                return operators[tree.get_root_val()](result_1, result_2)
             else:
-                return tree.getRootVal()
+                return tree.get_root_val()
                 
 
 .. highlight:: python
@@ -182,7 +187,7 @@ traversal. In the inorder traversal we visit the left subtree, followed
 by the root, and finally the right subtree. :ref:`Listing 6 <lst_inorder1>` shows
 our code for the inorder traversal. Notice that in all three of the
 traversal functions we are simply changing the position of the ``print``
-statement with respect to the two recursive function calls.
+function with respect to the two recursive function calls.
 
 .. _lst_inorder1:
 
@@ -192,10 +197,10 @@ statement with respect to the two recursive function calls.
 
 
     def inorder(tree):
-      if tree != None:
-          inorder(tree.getLeftChild())
-          print(tree.getRootVal())
-          inorder(tree.getRightChild())
+        if tree:
+            inorder(tree.get_left_child())
+            print(tree.get_root_val())
+            inorder(tree.get_right_child())
 
 
 If we perform a simple inorder traversal of a parse tree we get our
@@ -213,17 +218,17 @@ shown in :ref:`Listing 7 <lst_printexp>`.
 
 ::
 
-    def printexp(tree):
-      sVal = ""
-      if tree:
-          sVal = '(' + printexp(tree.getLeftChild())
-          sVal = sVal + str(tree.getRootVal())
-          sVal = sVal + printexp(tree.getRightChild())+')'
-      return sVal
+    def print_exp(tree):
+        result = ""
+        if tree:
+            result = "(" + print_exp(tree.get_left_child())
+            result = result + str(tree.get_root_val())
+            result = result + print_exp(tree.get_right_child()) + ")"
+        return result
 
 
 
-Notice that the ``printexp`` function as we have implemented it puts
+Notice that the ``print_exp`` function as we have implemented it puts
 parentheses around each number. While not incorrect, the parentheses are
 clearly not needed. In the exercises at the end of this chapter you are
-asked to modify the ``printexp`` function to remove this set of parentheses.
+asked to modify the ``print_exp`` function to remove this set of parentheses.

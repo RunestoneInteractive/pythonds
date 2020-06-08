@@ -24,6 +24,7 @@ drawing the Sierpinski triangle yourself, using the method described.
 
 .. figure:: Figures/sierpinski.png
      :align: center
+     :width: 480px
 
      Figure 3: The Sierpinski Triangle
 
@@ -43,58 +44,63 @@ generated the Sierpinski Triangle in :ref:`Figure 3 <fig_sierpinski>` is shown i
 
     import turtle
 
-    def drawTriangle(points,color,myTurtle):
-        myTurtle.fillcolor(color)
-        myTurtle.up()
-        myTurtle.goto(points[0][0],points[0][1])
-        myTurtle.down()
-        myTurtle.begin_fill()
-        myTurtle.goto(points[1][0],points[1][1])
-        myTurtle.goto(points[2][0],points[2][1])
-        myTurtle.goto(points[0][0],points[0][1])
-        myTurtle.end_fill()
 
-    def getMid(p1,p2):
-        return ( (p1[0]+p2[0]) / 2, (p1[1] + p2[1]) / 2)
+    def draw_triangle(points, color, my_turtle):
+        my_turtle.fillcolor(color)
+        my_turtle.up()
+        my_turtle.goto(points[0][0], points[0][1])
+        my_turtle.down()
+        my_turtle.begin_fill()
+        my_turtle.goto(points[1][0], points[1][1])
+        my_turtle.goto(points[2][0], points[2][1])
+        my_turtle.goto(points[0][0], points[0][1])
+        my_turtle.end_fill()
 
-    def sierpinski(points,degree,myTurtle):
-        colormap = ['blue','red','green','white','yellow',
-                    'violet','orange']
-        drawTriangle(points,colormap[degree],myTurtle)
+
+    def get_mid(p1, p2):
+        return ((p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2)
+
+
+    def sierpinski(points, degree, my_turtle):
+        colormap = ["blue", "red", "green", "white", "yellow", "violet", "orange"]
+        draw_triangle(points, colormap[degree], my_turtle)
         if degree > 0:
-            sierpinski([points[0],
-                            getMid(points[0], points[1]),
-                            getMid(points[0], points[2])],
-                       degree-1, myTurtle)
-            sierpinski([points[1],
-                            getMid(points[0], points[1]),
-                            getMid(points[1], points[2])],
-                       degree-1, myTurtle)
-            sierpinski([points[2],
-                            getMid(points[2], points[1]),
-                            getMid(points[0], points[2])],
-                       degree-1, myTurtle)
+            sierpinski(
+                [points[0], get_mid(points[0], points[1]), get_mid(points[0], points[2])],
+                degree - 1,
+                my_turtle,
+            )
+            sierpinski(
+                [points[1], get_mid(points[0], points[1]), get_mid(points[1], points[2])],
+                degree - 1,
+                my_turtle,
+            )
+            sierpinski(
+                [points[2], get_mid(points[2], points[1]), get_mid(points[0], points[2])],
+                degree - 1,
+                my_turtle,
+            )
+
 
     def main():
-       myTurtle = turtle.Turtle()
-       myWin = turtle.Screen()
-       myPoints = [[-100,-50],[0,100],[100,-50]]
-       sierpinski(myPoints,3,myTurtle)
-       myWin.exitonclick()
+        my_turtle = turtle.Turtle()
+        my_win = turtle.Screen()
+        my_points = [[-180, -150], [0, 150], [180, -150]]
+        sierpinski(my_points, 5, my_turtle)
+        my_win.exitonclick()
+
 
     main()
 
 
 
-    
-    
 The program in :ref:`ActiveCode 1 <lst_st>` follows the ideas outlined above. The
 first thing ``sierpinski`` does is draw the outer triangle. Next, there
 are three recursive calls, one for each of the new corner triangles we
 get when we connect the midpoints. Once again we make use of the
 standard turtle module that comes with Python. You can learn all the
 details of the methods available in the turtle module by using
-``help('turtle')`` from the Python prompt.
+``help("turtle")`` from the Python prompt.
 
 Look at the code and think about the order in which the triangles will
 be drawn. While the exact order of the corners depends upon how the
@@ -123,8 +129,8 @@ finished with the bottom left it moves to the bottom middle, and so on.
    
     Figure 4: Building a Sierpinski Triangle
 
-The ``sierpinski`` function relies heavily on the ``getMid`` function.
-``getMid`` takes as arguments two endpoints and returns the point
+The ``sierpinski`` function relies heavily on the ``get_mid`` function.
+``get_mid`` takes as arguments two endpoints and returns the point
 halfway between them. In addition, :ref:`ActiveCode 1 <lst_st>` has a function that
 draws a filled triangle using the ``begin_fill`` and ``end_fill`` turtle
 methods.

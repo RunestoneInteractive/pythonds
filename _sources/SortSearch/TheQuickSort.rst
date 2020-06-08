@@ -38,7 +38,7 @@ either less than or greater than the pivot value.
 
 
 Partitioning begins by locating two position markers—let’s call them
-``leftmark`` and ``rightmark``—at the beginning and end of the remaining
+``left_mark`` and ``right_mark``—at the beginning and end of the remaining
 items in the list (positions 1 and 8 in :ref:`Figure 13 <fig_partitionA>`). The goal
 of the partition process is to move items that are on the wrong side
 with respect to the pivot value while also converging on the split
@@ -52,15 +52,15 @@ of 54.
 
    Figure 13: Finding the Split Point for 54
 
-We begin by incrementing ``leftmark`` until we locate a value that is
-greater than the pivot value. We then decrement ``rightmark`` until we
+We begin by incrementing ``left_mark`` until we locate a value that is
+greater than the pivot value. We then decrement ``right_mark`` until we
 find a value that is less than the pivot value. At this point we have
 discovered two items that are out of place with respect to the eventual
 split point. For our example, this occurs at 93 and 20. Now we can
 exchange these two items and then repeat the process again.
 
-At the point where ``rightmark`` becomes less than ``leftmark``, we
-stop. The position of ``rightmark`` is now the split point. The pivot
+At the point where ``right_mark`` becomes less than ``left_mark``, we
+stop. The position of ``right_mark`` is now the split point. The pivot
 value can be exchanged with the contents of the split point and the
 pivot value is now in place (:ref:`Figure 14 <fig_partitionB>`). In addition, all the
 items to the left of the split point are less than the pivot value, and
@@ -76,8 +76,8 @@ can be invoked recursively on the two halves.
    Figure 14: Completing the Partition Process to Find the Split Point for 54
 
 
-The ``quickSort`` function shown in :ref:`ActiveCode 1 <lst_quick>` invokes a recursive
-function, ``quickSortHelper``. ``quickSortHelper`` begins with the same
+The ``quick_sort`` function shown in :ref:`ActiveCode 1 <lst_quick>` invokes a recursive
+function, ``quick_sort_helper``. ``quick_sort_helper`` begins with the same
 base case as the merge sort. If the length of the list is less than or
 equal to one, it is already sorted. If it is greater, then it can be
 partitioned and recursively sorted. The ``partition`` function
@@ -87,50 +87,43 @@ implements the process described earlier.
 .. activecode:: lst_quick
     :caption: Quick Sort
 
-    def quickSort(alist):
-       quickSortHelper(alist,0,len(alist)-1)
-
-    def quickSortHelper(alist,first,last):
-       if first<last:
-
-           splitpoint = partition(alist,first,last)
-
-           quickSortHelper(alist,first,splitpoint-1)
-           quickSortHelper(alist,splitpoint+1,last)
+    def quick_sort(a_list):
+        quick_sort_helper(a_list, 0, len(a_list) - 1)
 
 
-    def partition(alist,first,last):
-       pivotvalue = alist[first]
-
-       leftmark = first+1
-       rightmark = last
-
-       done = False
-       while not done:
-
-           while leftmark <= rightmark and alist[leftmark] <= pivotvalue:
-               leftmark = leftmark + 1
-
-           while alist[rightmark] >= pivotvalue and rightmark >= leftmark:
-               rightmark = rightmark -1
-
-           if rightmark < leftmark:
-               done = True
-           else:
-               temp = alist[leftmark]
-               alist[leftmark] = alist[rightmark]
-               alist[rightmark] = temp
-
-       temp = alist[first]
-       alist[first] = alist[rightmark]
-       alist[rightmark] = temp
+    def quick_sort_helper(a_list, first, last):
+        if first < last:
+            split = partition(a_list, first, last)
+            quick_sort_helper(a_list, first, split - 1)
+            quick_sort_helper(a_list, split + 1, last)
 
 
-       return rightmark
+    def partition(a_list, first, last):
+        pivot_val = a_list[first]
+        left_mark = first + 1
+        right_mark = last
+        done = False
 
-    alist = [54,26,93,17,77,31,44,55,20]
-    quickSort(alist)
-    print(alist)
+        while not done:
+            while left_mark <= right_mark and a_list[left_mark] <= pivot_val:
+                left_mark = left_mark + 1
+            while left_mark <= right_mark and a_list[right_mark] >= pivot_val:
+                right_mark = right_mark - 1
+            if right_mark < left_mark:
+                done = True
+            else:
+                a_list[left_mark], a_list[right_mark] = (
+                    a_list[right_mark],
+                    a_list[left_mark],
+                )
+        a_list[first], a_list[right_mark] = a_list[right_mark], a_list[first]
+
+        return right_mark
+
+
+    a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+    quick_sort(a_list)
+    print(a_list)
 
 
 
@@ -146,66 +139,57 @@ implements the process described earlier.
 .. .. codelens:: quicktrace
 ..     :caption: Tracing the Quick Sort
 ..
-..     def quickSort(alist):
-..        quickSortHelper(alist,0,len(alist)-1)
-..
-..     def quickSortHelper(alist,first,last):
-..        if first<last:
-..
-..            splitpoint = partition(alist,first,last)
-..
-..            quickSortHelper(alist,first,splitpoint-1)
-..            quickSortHelper(alist,splitpoint+1,last)
-..
-..
-..     def partition(alist,first,last):
-..        pivotvalue = alist[first]
-..
-..        leftmark = first+1
-..        rightmark = last
-..
-..        done = False
-..        while not done:
-..
-..            while leftmark <= rightmark and \
-..                    alist[leftmark] <= pivotvalue:
-..                leftmark = leftmark + 1
-..
-..            while alist[rightmark] >= pivotvalue and \
-..                    rightmark >= leftmark:
-..                rightmark = rightmark -1
-..
-..            if rightmark < leftmark:
-..                done = True
-..            else:
-..                temp = alist[leftmark]
-..                alist[leftmark] = alist[rightmark]
-..                alist[rightmark] = temp
-..
-..        temp = alist[first]
-..        alist[first] = alist[rightmark]
-..        alist[rightmark] = temp
-..
-..
-..        return rightmark
-..
-..     alist = [54,26,93,17,77,31,44,55,20]
-..     quickSort(alist)
-..     print(alist)
+..     def quick_sort(a_list):
+..         quick_sort_helper(a_list, 0, len(a_list) - 1)
+..     
+..     
+..     def quick_sort_helper(a_list, first, last):
+..         if first < last:
+..             split = partition(a_list, first, last)
+..             quick_sort_helper(a_list, first, split - 1)
+..             quick_sort_helper(a_list, split + 1, last)
+..     
+..     
+..     def partition(a_list, first, last):
+..         pivot_val = a_list[first]
+..         left_mark = first + 1
+..         right_mark = last
+..         done = False
+..     
+..         while not done:
+..             while left_mark <= right_mark and a_list[left_mark] <= pivot_val:
+..                 left_mark = left_mark + 1
+..             while left_mark <= right_mark and a_list[right_mark] >= pivot_val:
+..                 right_mark = right_mark - 1
+..             if right_mark < left_mark:
+..                 done = True
+..             else:
+..                 a_list[left_mark], a_list[right_mark] = (
+..                     a_list[right_mark],
+..                     a_list[left_mark],
+..                 )
+..         a_list[first], a_list[right_mark] = a_list[right_mark], a_list[first]
+..     
+..         return right_mark
+..     
+..     
+..     a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+..     quick_sort(a_list)
+..     print(a_list)
 
-To analyze the ``quickSort`` function, note that for a list of length
-*n*, if the partition always occurs in the middle of the list, there
-will again be :math:`\log n` divisions. In order to find the split
-point, each of the *n* items needs to be checked against the pivot
-value. The result is :math:`n\log n`. In addition, there is no need
+To analyze the ``quick_sort`` function, note that for a list of length
+:math:`n`, if the partition always occurs in the middle of the list, there
+will again be :math:`\log{n}` divisions. In order to find the split
+point, each of the :math:`n` items needs to be checked against the pivot
+value. The result is :math:`n\log{n}`. In addition, there is no need
 for additional memory as in the merge sort process.
 
 Unfortunately, in the worst case, the split points may not be in the
 middle and can be very skewed to the left or the right, leaving a very
-uneven division. In this case, sorting a list of *n* items divides into
-sorting a list of 0 items and a list of :math:`n-1` items. Then
-sorting a list of :math:`n-1` divides into a list of size 0 and a list
-of size :math:`n-2`, and so on. The result is an :math:`O(n^{2})`
+uneven division. In this case, sorting a list of :math:`n` items divides into
+sorting a list of 0 items and a list of :math:`n - 1` items. Then
+sorting a list of :math:`n - 1` divides into a list of size 0 and a list
+of size :math:`n - 2`, and so on. The result is an :math:`O(n^{2})`
 sort with all of the overhead that recursion requires.
 
 We mentioned earlier that there are different ways to choose the pivot

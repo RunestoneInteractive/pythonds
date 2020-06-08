@@ -19,9 +19,9 @@ of items. We use the ``in`` operator.
 
 ::
 
-    >>> 15 in [3,5,2,4,1]
+    >>> 15 in [3, 5, 2, 4, 1]
     False
-    >>> 3 in [3,5,2,4,1]
+    >>> 3 in [3, 5, 2, 4, 1]
     True
     >>> 
 

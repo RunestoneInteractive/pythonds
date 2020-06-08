@@ -8,8 +8,8 @@ An Anagram Detection Example
 A good example problem for showing algorithms with different orders of
 magnitude is the classic anagram detection problem for strings. One
 string is an anagram of another if the second is simply a rearrangement
-of the first. For example, ``'heart'`` and ``'earth'`` are anagrams. The
-strings ``'python'`` and ``'typhon'`` are anagrams as well. For the sake
+of the first. For example, ``"heart"`` and ``"earth"`` are anagrams. The
+strings ``"python"`` and ``"typhon"`` are anagrams as well. For the sake
 of simplicity, we will assume that the two strings in question are of
 equal length and that they are made up of symbols from the set of 26
 lowercase alphabetic characters. Our goal is to write a boolean function
@@ -33,33 +33,36 @@ and if found, checked off by replacement. :ref:`ActiveCode 1 <lst_anagramSolutio
 .. activecode:: active5
     :caption: Checking Off
 
-    def anagramSolution1(s1,s2):
-        stillOK = True
+    def anagram_solution_1(s1, s2):
+        still_ok = True
         if len(s1) != len(s2):
-            stillOK = False
+            still_ok = False
 
-        alist = list(s2)
-        pos1 = 0
+        a_list = list(s2)
+        pos_1 = 0
 
-        while pos1 < len(s1) and stillOK:
-            pos2 = 0
+        while pos_1 < len(s1) and still_ok:
+            pos_2 = 0
             found = False
-            while pos2 < len(alist) and not found:
-                if s1[pos1] == alist[pos2]:
+            while pos_2 < len(a_list) and not found:
+                if s1[pos_1] == a_list[pos_2]:
                     found = True
                 else:
-                    pos2 = pos2 + 1
+                    pos_2 = pos_2 + 1
 
             if found:
-                alist[pos2] = None
+                a_list[pos_2] = None
             else:
-                stillOK = False
+                still_ok = False
 
-            pos1 = pos1 + 1
+            pos_1 = pos_1 + 1
 
-        return stillOK
+        return still_ok
 
-    print(anagramSolution1('abcd','dcba'))
+
+    print(anagram_solution_1("apple", "pleap"))  # expected: True
+    print(anagram_solution_1("abcd", "dcba"))  # expected: True
+    print(anagram_solution_1("abcd", "dcda"))  # expected: False
 
 To analyze this algorithm, we need to note that each of the *n*
 characters in ``s1`` will cause an iteration through up to *n*
@@ -93,25 +96,28 @@ on lists by simply converting each string to a list at the start.
 .. activecode:: active6
     :caption: Sort and Compare
 
-    def anagramSolution2(s1,s2):
-        alist1 = list(s1)
-        alist2 = list(s2)
+    def anagram_solution_2(s1, s2):
+        a_list_1 = list(s1)
+        a_list_2 = list(s2)
 
-        alist1.sort()
-        alist2.sort()
+        a_list_1.sort()
+        a_list_2.sort()
 
         pos = 0
         matches = True
 
         while pos < len(s1) and matches:
-            if alist1[pos]==alist2[pos]:
+            if a_list_1[pos] == a_list_2[pos]:
                 pos = pos + 1
             else:
                 matches = False
 
         return matches
 
-    print(anagramSolution2('abcde','edcba'))
+
+    print(anagram_solution_2("apple", "pleap"))  # expected: True
+    print(anagram_solution_2("abcd", "dcba"))  # expected: True
+    print(anagram_solution_2("abcd", "dcda"))  # expected: False
 
 At first glance you may be tempted to think that this algorithm is
 :math:`O(n)`, since there is one simple iteration to compare the *n*
@@ -130,16 +136,16 @@ exhaust all possibilities. For the anagram detection problem, we can
 simply generate a list of all possible strings using the characters from
 ``s1`` and then see if ``s2`` occurs. However, there is a difficulty
 with this approach. When generating all possible strings from ``s1``,
-there are *n* possible first characters, :math:`n-1` possible
-characters for the second position, :math:`n-2` for the third, and so
+there are *n* possible first characters, :math:`n - 1` possible
+characters for the second position, :math:`n - 2` for the third, and so
 on. The total number of candidate strings is
-:math:`n*(n-1)*(n-2)*...*3*2*1`, which is :math:`n!`. Although some
+:math:`n * (n - 1) * (n - 2) * ... * 3 * 2 * 1`, which is :math:`n!`. Although some
 of the strings may be duplicates, the program cannot know this ahead of
 time and so it will still generate :math:`n!` different strings.
 
 It turns out that :math:`n!` grows even faster than :math:`2^{n}` as
 *n* gets large. In fact, if ``s1`` were 20 characters long, there would
-be :math:`20!=2,432,902,008,176,640,000` possible candidate strings.
+be :math:`20! = 2,432,902,008,176,640,000` possible candidate strings.
 If we processed one possibility every second, it would still take us
 77,146,816,596 years to go through the entire list. This is probably not
 going to be a good solution.
@@ -162,30 +168,32 @@ anagrams. :ref:`ActiveCode 3 <lst_ana4>` shows this solution.
 .. activecode:: active7
     :caption: Count and Compare
 
-    def anagramSolution4(s1,s2):
-        c1 = [0]*26
-        c2 = [0]*26
+    def anagram_solution_4(s1, s2):
+        c1 = [0] * 26
+        c2 = [0] * 26
 
         for i in range(len(s1)):
-            pos = ord(s1[i])-ord('a')
+            pos = ord(s1[i]) - ord("a")
             c1[pos] = c1[pos] + 1
 
         for i in range(len(s2)):
-            pos = ord(s2[i])-ord('a')
+            pos = ord(s2[i]) - ord("a")
             c2[pos] = c2[pos] + 1
 
         j = 0
-        stillOK = True
-        while j<26 and stillOK:
-            if c1[j]==c2[j]:
+        still_ok = True
+        while j < 26 and still_ok:
+            if c1[j] == c2[j]:
                 j = j + 1
             else:
-                stillOK = False
+                still_ok = False
 
-        return stillOK
+        return still_ok
 
-    print(anagramSolution4('apple','pleap'))
 
+    print(anagram_solution_4("apple", "pleap"))  # expected: True
+    print(anagram_solution_4("abcd", "dcba"))  # expected: True
+    print(anagram_solution_4("abcd", "dcda"))  # expected: False
 
 
 Again, the solution has a number of iterations. However, unlike the

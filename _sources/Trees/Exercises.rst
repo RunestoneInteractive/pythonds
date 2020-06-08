@@ -6,14 +6,14 @@
 Programming Exercises
 ---------------------
 
-#. Extend the ``buildParseTree`` function to handle mathematical
+#. Extend the ``build_parse_tree`` function to handle mathematical
    expressions that do not have spaces between every character.
 
-#. Modify the ``buildParseTree`` and ``evaluate`` functions to handle
+#. Modify the ``build_parse_tree`` and ``evaluate`` functions to handle
    boolean statements (and, or, and not). Remember that “not” is a unary
    operator, so this will complicate your code somewhat.
 
-#. Using the ``findSuccessor`` method, write a non-recursive inorder
+#. Using the ``find_successor`` method, write a non-recursive inorder
    traversal for a binary search tree.
 
 #. Modify the code for a binary search tree to make it threaded. Write a
@@ -31,10 +31,10 @@ Programming Exercises
    grows in size to more than ``n`` items the least important item is
    dropped.
 
-#. Clean up the ``printexp`` function so that it does not include an
+#. Clean up the ``print_exp`` function so that it does not include an
    ‘extra’ set of parentheses around each number.
 
-#. Using the ``buildHeap`` method, write a sorting function that can
+#. Using the ``heapify`` method, write a sorting function that can
    sort a list in :math:`O(n\log{n})` time.
 
 #. Write a function that takes a parse tree for a mathematical

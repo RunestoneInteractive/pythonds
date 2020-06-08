@@ -15,7 +15,7 @@ sort on both halves. Once the two halves are sorted, the fundamental
 operation, called a **merge**, is performed. Merging is the process of
 taking two smaller sorted lists and combining them together into a
 single, sorted, new list. :ref:`Figure 10 <fig_mergesortA>` shows our familiar example
-list as it is being split by ``mergeSort``. :ref:`Figure 11 <fig_mergesortB>` shows
+list as it is being split by ``merge_sort``. :ref:`Figure 11 <fig_mergesortB>` shows
 the simple lists, now sorted, as they are merged back together.
 
 
@@ -36,7 +36,7 @@ the simple lists, now sorted, as they are merged back together.
 
 
 
-The ``mergeSort`` function shown in :ref:`ActiveCode 1 <lst_merge>` begins by asking the
+The ``merge_sort`` function shown in :ref:`ActiveCode 1 <lst_mergeSort>` begins by asking the
 base case question. If the length of the list is less than or equal to
 one, then we already have a sorted list and no more processing is
 necessary. If, on the other hand, the length is greater than one, then
@@ -50,62 +50,60 @@ most one.
 .. activecode:: lst_mergeSort
     :caption: Merge Sort
 
-    def mergeSort(alist):
-        print("Splitting ",alist)
-        if len(alist)>1:
-            mid = len(alist)//2
-            lefthalf = alist[:mid]
-            righthalf = alist[mid:]
+    def merge_sort(a_list):
+        print("Splitting", a_list)
+        if len(a_list) > 1:
+            mid = len(a_list) // 2
+            left_half = a_list[:mid]
+            right_half = a_list[mid:]
 
-            mergeSort(lefthalf)
-            mergeSort(righthalf)
+            merge_sort(left_half)
+            merge_sort(right_half)
 
-            i=0
-            j=0
-            k=0
-            while i < len(lefthalf) and j < len(righthalf):
-                if lefthalf[i] <= righthalf[j]:
-                    alist[k]=lefthalf[i]
-                    i=i+1
+            i, j, k = 0, 0, 0
+            while i < len(left_half) and j < len(right_half):
+                if left_half[i] <= right_half[j]:
+                    a_list[k] = left_half[i]
+                    i = i + 1
                 else:
-                    alist[k]=righthalf[j]
-                    j=j+1
-                k=k+1
+                    a_list[k] = right_half[j]
+                    j = j + 1
+                k = k + 1
 
-            while i < len(lefthalf):
-                alist[k]=lefthalf[i]
-                i=i+1
-                k=k+1
+            while i < len(left_half):
+                a_list[k] = left_half[i]
+                i = i + 1
+                k = k + 1
 
-            while j < len(righthalf):
-                alist[k]=righthalf[j]
-                j=j+1
-                k=k+1
-        print("Merging ",alist)
-        
-    alist = [54,26,93,17,77,31,44,55,20]
-    mergeSort(alist)
-    print(alist)
+            while j < len(right_half):
+                a_list[k] = right_half[j]
+                j = j + 1
+                k = k + 1
+        print("Merging", a_list)
 
 
+    a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+    merge_sort(a_list)
+    print(a_list)
 
-Once the ``mergeSort`` function is invoked on the left half and the
+
+Once the ``merge_sort`` function is invoked on the left half and the
 right half (lines 8–9), it is assumed they are sorted. The rest of the
-function (lines 11–31) is responsible for merging the two smaller sorted
+function (lines 11–29) is responsible for merging the two smaller sorted
 lists into a larger sorted list. Notice that the merge operation places
-the items back into the original list (``alist``) one at a time by
+the items back into the original list (``a_list``) one at a time by
 repeatedly taking the smallest item from the sorted lists. Note that the
-statement ``lefthalf[i] <= righthalf[j]`` ensures that the algorithm is
+statement in line 13 (``left_half[i] <= right_half[j]``) ensures that the algorithm is
 stable. A **stable algorithm** maintains the order of duplicate items in
 a list and is preferred in most cases.
 
-The ``mergeSort`` function has been augmented with a ``print`` statement
+The ``merge_sort`` function has been augmented with a ``print`` statement
 (line 2) to show the contents of the list being sorted at the start of
-each invocation. There is also a ``print`` statement (line 32) to show
+each invocation. There is also a ``print`` statement (line 30) to show
 the merging process. The transcript shows the result of executing the
 function on our example list. Note that the list with 44, 55, and 20
 will not divide evenly. The first split gives [44] and the second gives
-[55,20]. It is easy to see how the splitting process eventually yields a
+[55, 20]. It is easy to see how the splitting process eventually yields a
 list that can be immediately merged with other sorted lists.
 
 
@@ -122,63 +120,63 @@ list that can be immediately merged with other sorted lists.
 .. .. codelens:: mergetrace
 ..     :caption: Tracing the Merge Sort
 ..
-..     def mergeSort(alist):
-..         print("Splitting ",alist)
-..         if len(alist)>1:
-..             mid = len(alist)//2
-..             lefthalf = alist[:mid]
-..             righthalf = alist[mid:]
+..     def merge_sort(a_list):
+..         print("Splitting ",a_list)
+..         if len(a_list)>1:
+..             mid = len(a_list)//2
+..             left_half = a_list[:mid]
+..             right_half = a_list[mid:]
 ..
-..             mergeSort(lefthalf)
-..             mergeSort(righthalf)
+..             merge_sort(left_half)
+..             merge_sort(right_half)
 ..
 ..             i=0
 ..             j=0
 ..             k=0
-..             while i<len(lefthalf) and j<len(righthalf):
-..                 if lefthalf[i]<=righthalf[j]:
-..                     alist[k]=lefthalf[i]
+..             while i<len(left_half) and j<len(right_half):
+..                 if left_half[i]<=right_half[j]:
+..                     a_list[k]=left_half[i]
 ..                     i=i+1
 ..                 else:
-..                     alist[k]=righthalf[j]
+..                     a_list[k]=right_half[j]
 ..                     j=j+1
 ..                 k=k+1
 ..
-..             while i<len(lefthalf):
-..                 alist[k]=lefthalf[i]
+..             while i<len(left_half):
+..                 a_list[k]=left_half[i]
 ..                 i=i+1
 ..                 k=k+1
 ..
-..             while j<len(righthalf):
-..                 alist[k]=righthalf[j]
+..             while j<len(right_half):
+..                 a_list[k]=right_half[j]
 ..                 j=j+1
 ..                 k=k+1
-..         print("Merging ",alist)
+..         print("Merging ",a_list)
 ..
-..     alist = [54,26,93,17,77,31,44,55,20]
-..     mergeSort(alist)
-..     print(alist)
+..     a_list = [54,26,93,17,77,31,44,55,20]
+..     merge_sort(a_list)
+..     print(a_list)
 
 
-In order to analyze the ``mergeSort`` function, we need to consider the
+In order to analyze the ``merge_sort`` function, we need to consider the
 two distinct processes that make up its implementation. First, the list
 is split into halves. We already computed (in a binary search) that we
-can divide a list in half :math:`\log n` times where *n* is the
+can divide a list in half :math:`\log{n}` times where :math:`n` is the
 length of the list. The second process is the merge. Each item in the
 list will eventually be processed and placed on the sorted list. So the
-merge operation which results in a list of size *n* requires *n*
-operations. The result of this analysis is that :math:`\log n` splits,
-each of which costs :math:`n` for a total of :math:`n\log n`
-operations. A merge sort is an :math:`O(n\log n)` algorithm.
+merge operation which results in a list of size :math:`n` requires :math:`n`
+operations. The result of this analysis is that :math:`\log{n}` splits,
+each of which costs :math:`n` for a total of :math:`n\log{n}`
+operations. A merge sort is an :math:`O(n\log{n})` algorithm.
 
-Recall that the slicing operator is :math:`O(k)` where k is the size
-of the slice. In order to guarantee that ``mergeSort`` will be
+Recall that the slicing operator is :math:`O(k)` where :math:`k` is the size
+of the slice. In order to guarantee that ``merge_sort`` will be
 :math:`O(n\log n)` we will need to remove the slice operator. Again,
 this is possible if we simply pass the starting and ending indices along
 with the list when we make the recursive call. We leave this as an
 exercise.
 
-It is important to notice that the ``mergeSort`` function requires extra
+It is important to notice that the ``merge_sort`` function requires extra
 space to hold the two halves as they are extracted with the slicing
 operations. This additional space can be a critical factor if the list
 is large and can make this sort problematic when working on large data

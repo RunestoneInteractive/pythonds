@@ -7,7 +7,7 @@ Simulation: Hot Potato
 
 One of the typical applications for showing a queue in action is to
 simulate a real situation that requires data to be managed in a FIFO
-manner. To begin, let’s consider the children’s game Hot Potato. In this
+manner. To begin, let’s consider the children’s game *Hot Potato*. In this
 game (see :ref:`Figure 2 <fig_quhotpotato>`) children line up in a circle and
 pass an item from neighbor to neighbor as fast as they can. At a certain
 point in the game, the action is stopped and the child who has the item
@@ -59,30 +59,32 @@ until only one name remains (the size of the queue is 1).
    Figure 3: A Queue Implementation of Hot Potato
 
 The program is shown in :ref:`ActiveCode 1 <lst_josephussim>`. A call to the
-``hotPotato`` function using 7 as the counting constant returns ``Susan``.
+``hot_potato`` function using 7 as the counting constant returns ``Susan``.
 
 .. _lst_josephussim:
 
 .. activecode:: qujosephussim
-   :caption: Hot Potato Simulation
-   :nocodelens:
+    :caption: Hot Potato Simulation
+    :nocodelens:
 
-   from pythonds.basic import Queue
+    from pythonds3.basic import Queue
 
-   def hotPotato(namelist, num):
-       simqueue = Queue()
-       for name in namelist:
-           simqueue.enqueue(name)
 
-       while simqueue.size() > 1:
-           for i in range(num):
-               simqueue.enqueue(simqueue.dequeue())
+    def hot_potato(name_list, num):
+        sim_queue = Queue()
+        for name in name_list:
+            sim_queue.enqueue(name)
 
-           simqueue.dequeue()
+        while sim_queue.size() > 1:
+            for i in range(num):
+                sim_queue.enqueue(sim_queue.dequeue())
 
-       return simqueue.dequeue()
+            sim_queue.dequeue()
 
-   print(hotPotato(["Bill","David","Susan","Jane","Kent","Brad"],7))
+        return sim_queue.dequeue()
+
+
+    print(hot_potato(["Bill", "David", "Susan", "Jane", "Kent", "Brad"], 7))
 
 
 Note that in this example the value of the counting constant is greater

@@ -86,12 +86,12 @@ Tower of Hanoi puzzle.
 
 ::
 
-    def moveTower(height,fromPole, toPole, withPole):
+    def move_tower(height, from_pole, to_pole, with_pole):
         if height >= 1:
-            moveTower(height-1,fromPole,withPole,toPole)
-            moveDisk(fromPole,toPole)
-            moveTower(height-1,withPole,toPole,fromPole)
-            
+            move_tower(height - 1, from_pole, with_pole, to_pole)
+            move_disk(from_pole, to_pole)
+            move_tower(height - 1, with_pole, to_pole, from_pole)
+
 .. highlight:: python
     :linenothreshold: 500
 
@@ -103,14 +103,14 @@ disk on the initial tower to an intermediate pole. The next line simply
 moves the bottom disk to its final resting place. Then on line
 5 we move the tower from the intermediate pole to the top of
 the largest disk. The base case is detected when the tower height is 0;
-in this case there is nothing to do, so the ``moveTower`` function
+in this case there is nothing to do, so the ``move_tower`` function
 simply returns. The important thing to remember about handling the base
-case this way is that simply returning from ``moveTower`` is what
-finally allows the ``moveDisk`` function to be called.
+case this way is that simply returning from ``move_tower`` is what
+finally allows the ``move_disk`` function to be called.
 
-The function ``moveDisk``, shown in :ref:`Listing 2 <lst_movedisk>`, is very
+The function ``move_disk``, shown in :ref:`Listing 2 <lst_movedisk>`, is very
 simple. All it does is print out that it is moving a disk from one pole
-to another. If you type in and run the ``moveTower`` program you can see
+to another. If you type in and run the ``move_tower`` program you can see
 that it gives you a very efficient solution to the puzzle.
 
 .. _lst_movedisk:
@@ -119,26 +119,28 @@ that it gives you a very efficient solution to the puzzle.
 
 ::
 
-    def moveDisk(fp,tp):
-        print("moving disk from",fp,"to",tp)
+    def move_disk(from_p, to_p):
+        print("moving disk from", from_p, "to", to_p)
         
 The program in ActiveCode 1 provides the entire solution for three disks.
         
 .. activecode:: hanoi
     :caption: Solving Tower of Hanoi Recursively
 
-    def moveTower(height,fromPole, toPole, withPole):
+    def move_tower(height, from_pole, to_pole, with_pole):
         if height >= 1:
-            moveTower(height-1,fromPole,withPole,toPole)
-            moveDisk(fromPole,toPole)
-            moveTower(height-1,withPole,toPole,fromPole)
+            move_tower(height - 1, from_pole, with_pole, to_pole)
+            move_disk(from_pole, to_pole)
+            move_tower(height - 1, with_pole, to_pole, from_pole)
 
-    def moveDisk(fp,tp):
-        print("moving disk from",fp,"to",tp)
-    
-    moveTower(3,"A","B","C")
 
-Now that you have seen the code for both ``moveTower`` and ``moveDisk``,
+    def move_disk(from_p, to_p):
+        print("moving disk from", from_p, "to", to_p)
+
+
+    move_tower(3, "A", "B", "C")
+
+Now that you have seen the code for both ``move_tower`` and ``move_disk``,
 you may be wondering why we do not have a data structure that explicitly
 keeps track of what disks are on what poles. Here is a hint: if you were
 going to explicitly keep track of the disks, you would probably use

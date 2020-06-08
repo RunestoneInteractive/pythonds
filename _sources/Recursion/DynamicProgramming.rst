@@ -50,17 +50,17 @@ coins needed to make change for the original amount minus five cents, or
 a dime plus the number of coins needed to make change for the original
 amount minus ten cents, and so on. So the number of coins needed to make
 change for the original amount can be computed according to the
-following: 
+following:
 
 .. math::
 
-      numCoins =
+      num\_coins =
    min
    \begin{cases}
-   1 + numCoins(original amount - 1) \\
-   1 + numCoins(original amount - 5) \\
-   1 + numCoins(original amount - 10) \\
-   1 + numCoins(original amount - 25)
+   1 + num\_coins(original\ amount - 1) \\
+   1 + num\_coins(original\ amount - 5) \\
+   1 + num\_coins(original\ amount - 10) \\
+   1 + num\_coins(original\ amount - 25)
    \end{cases}
    \label{eqn_change}
 
@@ -89,18 +89,19 @@ where we satisfy the base case condition immediately.
 
 ::
 
-    def recMC(coinValueList,change):
-       minCoins = change
-       if change in coinValueList:
+   def make_change_1(coin_value_list, change):
+      min_coins = change
+      if change in coin_value_list:
          return 1
-       else:
-          for i in [c for c in coinValueList if c <= change]:
-             numCoins = 1 + recMC(coinValueList,change-i)
-             if numCoins < minCoins:
-                minCoins = numCoins
-       return minCoins
+      else:
+         for i in [c for c in coin_value_list if c <= change]:
+               num_coins = 1 + make_change_1(coin_value_list, change - i)
+               if num_coins < min_coins:
+                  min_coins = num_coins
+      return min_coins
 
-    print(recMC([1,5,10,25],63))
+
+   print(make_change_1([1, 5, 10, 25], 63))
 
 
 .. highlight:: python
@@ -113,7 +114,7 @@ understand the fatal flaw in our approach look at :ref:`Figure 5 <fig_c1ct>`,
 which illustrates a small fraction of the 377 function calls needed to
 find the optimal set of coins to make change for 26 cents.
 
-Each node in the graph corresponds to a call to ``recMC``. The label on
+Each node in the graph corresponds to a call to ``make_change_1``. The label on
 the node indicates the amount of change for which we are computing the
 number of coins. The label on the arrow indicates the coin that we just
 used. By following the graph we can see the combination of coins that
@@ -148,23 +149,22 @@ algorithm to incorporate our table lookup scheme.
    :caption: Recursively Counting Coins with Table Lookup
    :nocodelens:
 
-    def recDC(coinValueList,change,knownResults):
-       minCoins = change
-       if change in coinValueList:   
-          knownResults[change] = 1
-          return 1
-       elif knownResults[change] > 0:
-          return knownResults[change]
-       else:
-           for i in [c for c in coinValueList if c <= change]:
-             numCoins = 1 + recDC(coinValueList, change-i, 
-                                  knownResults)
-             if numCoins < minCoins:
-                minCoins = numCoins
-                knownResults[change] = minCoins
-       return minCoins
+    def make_change_2(coin_value_list, change, known_results):
+        min_coins = change
+        if change in coin_value_list:
+            known_results[change] = 1
+            return 1
+        elif known_results[change] > 0:
+            return known_results[change]
+        else:
+            for i in [c for c in coin_value_list if c <= change]:
+                num_coins = 1 + make_change_2(coin_value_list, change - i, known_results)
+                if num_coins < min_coins:
+                    min_coins = num_coins
+                known_results[change] = min_coins
+        return min_coins
 
-    print(recDC([1,5,10,25],63,[0]*64))
+    print(make_change_2([1, 5, 10, 25], 63, [0] * 64))
 
 Notice that in line 6 we have added a test to see if our table
 contains the minimum number of coins for a certain amount of change. If
@@ -174,7 +174,7 @@ of recursive calls we need to make for the four coin, 63 cent problem to
 221 calls!
 
 Although the algorithm in :ref:`AcitveCode 1 <lst_change2>` is correct, it looks and
-feels like a bit of a hack.  Also, if we look at the ``knownResults`` lists
+feels like a bit of a hack.  Also, if we look at the ``known_results`` lists
 we can see that there are some holes in the table. In fact the term for
 what we have done is not dynamic programming but rather we have improved
 the performance of our program by using a technique known as
@@ -218,7 +218,7 @@ minimum number of coins for 11 cents.
 .. figure:: Figures/changeTable.png
    :align: center
    :alt: image
-       
+
    Figure 4: Minimum Number of Coins Needed to Make Change
 
 .. _fig_eleven:
@@ -230,10 +230,10 @@ minimum number of coins for 11 cents.
    Figure 5: Three Options to Consider for the Minimum Number of Coins for Eleven Cents
 
 :ref:`Listing 8 <lst_dpchange>` is a dynamic programming algorithm to solve our
-change-making problem. ``dpMakeChange`` takes three parameters: a list
+change-making problem. ``make_change_3`` takes three parameters: a list
 of valid coin values, the amount of change we want to make, and a list
 of the minimum number of coins needed to make each value. When the
-function is done ``minCoins`` will contain the solution for all values
+function is done ``min_coins`` will contain the solution for all values
 from 0 to the value of ``change``.
 
 .. _lst_dpchange:
@@ -242,16 +242,16 @@ from 0 to the value of ``change``.
 
 ::
 
-    def dpMakeChange(coinValueList,change,minCoins):
-       for cents in range(change+1):
-          coinCount = cents
-          for j in [c for c in coinValueList if c <= cents]:
-                if minCoins[cents-j] + 1 < coinCount:
-                   coinCount = minCoins[cents-j]+1
-          minCoins[cents] = coinCount
-       return minCoins[change]
+   def make_change_3(coin_value_list, change, min_coins):
+      for cents in range(change + 1):
+         coin_count = cents
+         for j in [c for c in coin_value_list if c <= cents]:
+               if min_coins[cents - j] + 1 < coin_count:
+                  coin_count = min_coins[cents - j] + 1
+         min_coins[cents] = coin_count
+      return min_coins[change]
 
-Note that ``dpMakeChange`` is not a recursive function, even though we
+Note that ``make_change_3`` is not a recursive function, even though we
 started with a recursive solution to this problem. It is important to
 realize that just because you can write a recursive solution to a
 problem does not mean it is the best or most efficient solution. The
@@ -259,31 +259,31 @@ bulk of the work in this function is done by the loop that starts on
 line 4. In this loop we consider using all possible coins to
 make change for the amount specified by ``cents``. Like we did for the
 11 cent example above, we remember the minimum value and store it in our
-``minCoins`` list.
+``min_coins`` list.
 
 Although our making change algorithm does a good job of figuring out the
 minimum number of coins, it does not help us make change since we do not
-keep track of the coins we use. We can easily extend ``dpMakeChange`` to
+keep track of the coins we use. We can easily extend ``make_change_3`` to
 keep track of the coins used by simply remembering the last coin we add
-for each entry in the ``minCoins`` table. If we know the last coin
+for each entry in the ``min_coins`` table. If we know the last coin
 added, we can simply subtract the value of the coin to find a previous
 entry in the table that tells us the last coin we added to make that
 amount. We can keep tracing back through the table until we get to the
-beginning. 
+beginning.
 
-:ref:`ActiveCode 2 <lst_dpremember>` shows the ``dpMakeChange`` algorithm
+:ref:`ActiveCode 2 <lst_dpremember>` shows the ``make_change_3`` algorithm
 modified to keep track of the coins used, along with a function
-``printCoins`` that walks backward through the table to print out the
+``print_coins`` that walks backward through the table to print out the
 value of each coin used.
 This shows the algorithm in
 action solving the problem for our friends in Lower Elbonia. The first
 two lines of ``main`` set the amount to be converted and create the list of coins used. The next two
-lines create the lists we need to store the results. ``coinsUsed`` is a
-list of the coins used to make change, and ``coinCount`` is the minimum
+lines create the lists we need to store the results. ``coins_used`` is a
+list of the coins used to make change, and ``coin_count`` is the minimum
 number of coins used to make change for the amount corresponding to the
 position in the list.
 
-Notice that the coins we print out come directly from the ``coinsUsed``
+Notice that the coins we print out come directly from the ``coins_used``
 array. For the first call we start at array position 63 and print 21.
 Then we take :math:`63 - 21 = 42` and look at the 42nd element of the
 list. Once again we find a 21 stored there. Finally, element 21 of the
@@ -294,40 +294,47 @@ array also contains 21, giving us the three 21 cent pieces.
     :caption: Complete Solution to the Change Problem
     :nocodelens:
 
-    def dpMakeChange(coinValueList,change,minCoins,coinsUsed):
-       for cents in range(change+1):
-          coinCount = cents
-          newCoin = 1
-          for j in [c for c in coinValueList if c <= cents]:  
-                if minCoins[cents-j] + 1 < coinCount:
-                   coinCount = minCoins[cents-j]+1
-                   newCoin = j
-          minCoins[cents] = coinCount
-          coinsUsed[cents] = newCoin
-       return minCoins[change]
+    def make_change_4(coin_value_list, change, min_coins, coins_used):
+        for cents in range(change + 1):
+            coin_count = cents
+            new_coin = 1
+            for j in [c for c in coin_value_list if c <= cents]:
+                if min_coins[cents - j] + 1 < coin_count:
+                    coin_count = min_coins[cents - j] + 1
+                    new_coin = j
+            min_coins[cents] = coin_count
+            coins_used[cents] = new_coin
+        return min_coins[change]
 
-    def printCoins(coinsUsed,change):
-       coin = change
-       while coin > 0:
-          thisCoin = coinsUsed[coin]
-          print(thisCoin)
-          coin = coin - thisCoin
+
+    def print_coins(coins_used, change):
+        coin = change
+        while coin > 0:
+            this_coin = coins_used[coin]
+            print(this_coin, end=" ")
+            coin = coin - this_coin
+        print()
+
 
     def main():
         amnt = 63
-        clist = [1,5,10,21,25]
-        coinsUsed = [0]*(amnt+1)
-        coinCount = [0]*(amnt+1)
-        
-        print("Making change for",amnt,"requires")
-        print(dpMakeChange(clist,amnt,coinCount,coinsUsed),"coins")
-        print("They are:")
-        printCoins(coinsUsed,amnt)
+        clist = [1, 5, 10, 21, 25]
+        coins_used = [0] * (amnt + 1)
+        coin_count = [0] * (amnt + 1)
+
+        print(
+           "Making change for {} requires the following {} coins: ".format(
+                 amnt, make_change_4(clist, amnt, coin_count, coins_used)
+           ),
+           end="",
+        )
+        print_coins(coins_used, amnt)
         print("The used list is as follows:")
-        print(coinsUsed)
-        
+        print(coins_used)
+
+
     main()
-        
+
 
 
 

@@ -12,7 +12,7 @@ essence, each item “bubbles” up to the location where it belongs.
 
 :ref:`Figure 1 <fig_bubblepass>` shows the first pass of a bubble sort. The shaded
 items are being compared to see if they are out of order. If there are
-*n* items in the list, then there are :math:`n-1` pairs of items that
+:math:`n` items in the list, then there are :math:`n-1` pairs of items that
 need to be compared on the first pass. It is important to note that once
 the largest value in the list is part of a pair, it will continually be
 moved along until the pass is complete.
@@ -22,7 +22,7 @@ moved along until the pass is complete.
 .. figure:: Figures/bubblepass.png
    :align: center
 
-   Figure 1: ``bubbleSort``: The First Pass
+   Figure 1: Bubble Sort: The First Pass
 
 
 At the start of the second pass, the largest value is now in place.
@@ -31,7 +31,7 @@ There are :math:`n-1` items left to sort, meaning that there will be
 place, the total number of passes necessary will be :math:`n-1`. After
 completing the :math:`n-1` passes, the smallest item must be in the
 correct position with no further processing required. :ref:`ActiveCode 1 <lst_bubble>`
-shows the complete ``bubbleSort`` function. It takes the list as a
+shows the complete ``bubble_sort`` function. It takes the list as a
 parameter, and modifies it by exchanging items as necessary.
 
 The exchange operation, sometimes called a “swap,” is slightly different
@@ -41,20 +41,20 @@ additional memory location). A code fragment such as
 
 ::
 
-    temp = alist[i]
-    alist[i] = alist[j]
-    alist[j] = temp
+    temp = a_list[i]
+    a_list[i] = a_list[j]
+    a_list[j] = temp
 
-will exchange the `ith` and `jth` items in the list. Without the
+will exchange the :math:`i`-th and :math:`j`-th items in the list. Without the
 temporary storage, one of the values would be overwritten.
 
 In Python, it is possible to perform simultaneous assignment. The
-statement ``a,b=b,a`` will result in two assignment statements being
+statement ``a, b = b, a`` will result in two assignment statements being
 done at the same time (see :ref:`Figure 2 <fig_pythonswap>`). Using simultaneous
 assignment, the exchange operation can be done in one statement.
 
 Lines 5-7 in :ref:`ActiveCode 1 <lst_bubble>` perform the exchange of the :math:`i` and
-:math:`(i+1)th` items using the three–step procedure described
+:math:`(i+1)`-th items using the three–step procedure described
 earlier. Note that we could also have used the simultaneous assignment
 to swap the items.
 
@@ -65,27 +65,28 @@ to swap the items.
 
    Figure 2: Exchanging Two Values in Python
 
-The following activecode example shows the complete ``bubbleSort`` function working on the list
+The following activecode example shows the complete ``bubble_sort`` function working on the list
 shown above.
 
 
 
 .. activecode:: lst_bubble
-    :caption: The Bubble Sort
+    :caption: The Bubble Sort Implementation
 
-    def bubbleSort(alist):
-        for passnum in range(len(alist)-1,0,-1):
-            for i in range(passnum):
-                if alist[i]>alist[i+1]:
-                    temp = alist[i]
-                    alist[i] = alist[i+1]
-                    alist[i+1] = temp
+    def bubble_sort(a_list):
+        for i in range(len(a_list) - 1, 0, -1):
+            for j in range(i):
+                if a_list[j] > a_list[j + 1]:
+                    temp = a_list[j]
+                    a_list[j] = a_list[j + 1]
+                    a_list[j + 1] = temp
 
-    alist = [54,26,93,17,77,31,44,55,20]
-    bubbleSort(alist)
-    print(alist)
 
-The following animation shows ``bubbleSort`` in action.
+    a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+    bubble_sort(a_list)
+    print(a_list)
+
+The following animation shows ``bubble_sort`` in action.
 
 .. animation:: bubble_anim
    :modelfile: sortmodels.js
@@ -98,25 +99,26 @@ The following animation shows ``bubbleSort`` in action.
 .. .. codelens:: bubbletrace
 ..     :caption: Tracing the Bubble Sort
 ..
-..     def bubbleSort(alist):
-..         for passnum in range(len(alist)-1,0,-1):
-..             for i in range(passnum):
-..                 if alist[i]>alist[i+1]:
-..                     temp = alist[i]
-..                     alist[i] = alist[i+1]
-..                     alist[i+1] = temp
+..     def bubble_sort(a_list):
+..         for i in range(len(a_list) - 1, 0, -1):
+..             for j in range(i):
+..                 if a_list[j] > a_list[j + 1]:
+..                     temp = a_list[j]
+..                     a_list[j] = a_list[j + 1]
+..                     a_list[j + 1] = temp
 ..
-..     alist = [54,26,93,17,77,31,44,55,20]
-..     bubbleSort(alist)
-..     print(alist)
+..
+..     a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+..     bubble_sort(a_list)
+..     print(a_list)
                     
 
 To analyze the bubble sort, we should note that regardless of how the
 items are arranged in the initial list, :math:`n-1` passes will be
-made to sort a list of size *n*. :ref:`Table 1 <tbl_bubbleanalysis>` shows the number
+made to sort a list of size :math:`n`. :ref:`Table 1 <tbl_bubbleanalysis>` shows the number
 of comparisons for each pass. The total number of comparisons is the sum
 of the first :math:`n-1` integers. Recall that the sum of the first
-*n* integers is :math:`\frac{1}{2}n^{2} + \frac{1}{2}n`. The sum of
+:math:`n` integers is :math:`\frac{1}{2}n^{2} + \frac{1}{2}n`. The sum of
 the first :math:`n-1` integers is
 :math:`\frac{1}{2}n^{2} + \frac{1}{2}n - n`, which is
 :math:`\frac{1}{2}n^{2} - \frac{1}{2}n`. This is still
@@ -155,46 +157,42 @@ to as the **short bubble**.
 
 
 .. activecode:: lst_shortbubble
-    :caption: The Short Bubble Sort
+    :caption: The Short Bubble Sort Implementation
 
-    def shortBubbleSort(alist):
-        exchanges = True
-        passnum = len(alist)-1
-        while passnum > 0 and exchanges:
-           exchanges = False
-           for i in range(passnum):
-               if alist[i]>alist[i+1]:
-                   exchanges = True
-                   temp = alist[i]
-                   alist[i] = alist[i+1]
-                   alist[i+1] = temp
-           passnum = passnum-1
+    def bubble_sort_short(a_list):
+        for i in range(len(a_list) - 1, 0, -1):
+            exchanges = False
+            for j in range(i):
+                if a_list[j] > a_list[j + 1]:
+                    exchanges = True
+                    a_list[j], a_list[j + 1] = a_list[j + 1], a_list[j]
+            if not exchanges:
+                break
 
-    alist=[20,30,40,90,50,60,70,80,100,110]
-    shortBubbleSort(alist)
-    print(alist)
+
+    a_list = [20, 30, 40, 90, 50, 60, 70, 80, 100, 110]
+    bubble_sort_short(a_list)
+    print(a_list)
     
-.. Finally, here is ``shortBubbleSort`` in CodeLens (CodeLens 2)..
+.. Finally, here is ``bubble_sort_short`` in CodeLens (CodeLens 2)..
 ..
 .. .. codelens:: shortbubbletrace
 ..     :caption: Tracing the Short Bubble Sort
 ..
-..     def shortBubbleSort(alist):
-..         exchanges = True
-..         passnum = len(alist)-1
-..         while passnum > 0 and exchanges:
-..            exchanges = False
-..            for i in range(passnum):
-..                if alist[i]>alist[i+1]:
-..                    exchanges = True
-..                    temp = alist[i]
-..                    alist[i] = alist[i+1]
-..                    alist[i+1] = temp
-..            passnum = passnum-1
+..     def bubble_sort_short(a_list):
+..         for i in range(len(a_list) - 1, 0, -1):
+..             exchanges = False
+..             for j in range(i):
+..                 if a_list[j] > a_list[j + 1]:
+..                     exchanges = True
+..                     a_list[j], a_list[j + 1] = a_list[j + 1], a_list[j]
+..             if not exchanges:
+..                 break
 ..
-..     alist=[20,30,40,90,50,60,70,80,100,110]
-..     shortBubbleSort(alist)
-..     print(alist)
+..
+..     a_list = [20, 30, 40, 90, 50, 60, 70, 80, 100, 110]
+..     bubble_sort_short(a_list)
+..     print(a_list)
  
 .. admonition:: Self Check
 

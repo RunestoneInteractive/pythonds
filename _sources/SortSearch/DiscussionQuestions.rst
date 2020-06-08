@@ -47,7 +47,7 @@ Discussion Questions
 
    -  quick sort (you decide on the pivot value)
 
-#. Consider the following list of integers: [1,2,3,4,5,6,7,8,9,10]. Show
+#. Consider the following list of integers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]. Show
    how this list is sorted by the following algorithms:
 
    -  bubble sort
@@ -62,7 +62,7 @@ Discussion Questions
 
    -  quick sort (you decide on the pivot value)
 
-#. Consider the following list of integers: [10,9,8,7,6,5,4,3,2,1]. Show
+#. Consider the following list of integers: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]. Show
    how this list is sorted by the following algorithms:
 
    -  bubble sort
@@ -77,7 +77,7 @@ Discussion Questions
 
    -  quick sort (you decide on the pivot value)
 
-#. Consider the list of characters: [``'P','Y','T','H','O','N'``]. Show
+#. Consider the list of characters: [``"P", "Y", "T", "H", "O", "N"``]. Show
    how this list is sorted using the following algorithms:
 
    -  bubble sort

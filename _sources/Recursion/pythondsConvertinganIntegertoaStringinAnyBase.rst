@@ -15,10 +15,10 @@ elegant.
 
 Let’s look at a concrete example using base 10 and the number 769.
 Suppose we have a sequence of characters corresponding to the first 10
-digits, like ``convString = "0123456789"``. It is easy to convert a
+digits, like ``convert_string = "0123456789"``. It is easy to convert a
 number less than 10 to its string equivalent by looking it up in the
 sequence. For example, if the number is 9, then the string is
-``convString[9]`` or ``"9"``. If we can arrange to break up the number
+``convert_string[9]`` or ``"9"``. If we can arrange to break up the number
 769 into three single-digit numbers, 7, 6, and 9, then converting it to
 a string is simple. A number less than 10 sounds like a good base case.
 
@@ -68,19 +68,19 @@ outlined above for any base between 2 and 16.
 .. activecode:: lst_rectostr
     :caption: Recursively Converting from Integer to String
 
-    def toStr(n,base):
-       convertString = "0123456789ABCDEF"
+    def to_str(n, base):
+       convert_string = "0123456789ABCDEF"
        if n < base:
-          return convertString[n]
+          return convert_string[n]
        else:
-          return toStr(n//base,base) + convertString[n%base]
+          return to_str(n // base, base) + convert_string[n % base]
 
-    print(toStr(1453,16))
+    print(to_str(1453, 16))
 
 Notice that in line 3 we check for the base case where ``n``
 is less than the base we are converting to. When we detect the base
 case, we stop recursing and simply return the string from the
-``convertString`` sequence. In line 6 we satisfy both the
+``convert_string`` sequence. In line 6 we satisfy both the
 second and third laws–by making the recursive call and by reducing the
 problem size–using division.
 
@@ -99,8 +99,8 @@ to its base 2 string representation (``"1010"``).
 but it looks like the digits are in the wrong order. The algorithm works
 correctly because we make the recursive call first on line
 6, then we add the string representation of the remainder.
-If we reversed returning the ``convertString`` lookup and returning the
-``toStr`` call, the resulting string would be backward! But by delaying
+If we reversed returning the ``convert_string`` lookup and returning the
+``to_str`` call, the resulting string would be backward! But by delaying
 the concatenation operation until after the recursive call has returned,
 we get the result in the proper order. This should remind you of our
 discussion of stacks back in the previous chapter.
@@ -113,15 +113,17 @@ discussion of stacks back in the previous chapter.
       :nocodelens:
 
       from test import testEqual
+
+      
       def reverse(s):
           return s
       
-      testEqual(reverse("hello"),"olleh")
-      testEqual(reverse("l"),"l")      
-      testEqual(reverse("follow"),"wollof")
-      testEqual(reverse(""),"")
+      testEqual(reverse("hello"), "olleh")
+      testEqual(reverse("l"), "l")      
+      testEqual(reverse("follow"), "wollof")
+      testEqual(reverse(""), "")
 
-   Write a function that takes a string as a parameter and returns True if the string is a palindrome, False otherwise.  Remember that a string is a palindrome if it is spelled the same both forward and backward.  For example:  radar is a palindrome.  for bonus points palindromes can also be phrases, but you need to remove the spaces and punctuation before checking.  for example:  madam i'm adam  is a palindrome.  Other fun palindromes include:
+   Write a function that takes a string as a parameter and returns ``True`` if the string is a palindrome, ``False`` otherwise.  Remember that a string is a palindrome if it is spelled the same both forward and backward.  For example:  *radar* is a palindrome.  For bonus points palindromes can also be phrases, but you need to remove the spaces and punctuation before checking.  For example:  *madam i'm adam*  is a palindrome.  Other fun palindromes include:
    
    * kayak
    * aibohphobia
@@ -129,23 +131,25 @@ discussion of stacks back in the previous chapter.
    * Reviled did I live, said I, as evil I did deliver
    * Go hang a salami; I'm a lasagna hog.
    * Able was I ere I saw Elba
-   * Kanakanak --  a town in Alaska
+   * Kanakanak -- a town in Alaska
    * Wassamassaw -- a town in South Dakota
 
    .. actex:: recursion_sc_2
       :nocodelens:
 
       from test import testEqual
-      def removeWhite(s):
+
+
+      def remove_white(s):
           return s
 
-      def isPal(s):
+      def is_pal(s):
           return False
       
-      testEqual(isPal(removeWhite("x")),True)            
-      testEqual(isPal(removeWhite("radar")),True)
-      testEqual(isPal(removeWhite("hello")),False)
-      testEqual(isPal(removeWhite("")),True)                  
-      testEqual(isPal(removeWhite("hannah")),True)      
-      testEqual(isPal(removeWhite("madam i'm adam")),True)
+      testEqual(is_pal(remove_white("x")), True)            
+      testEqual(is_pal(remove_white("radar")), True)
+      testEqual(is_pal(remove_white("hello")), False)
+      testEqual(is_pal(removeWremove_whitehite("")), True)                  
+      testEqual(is_pal(remove_white("hannah")), True)      
+      testEqual(is_pal(remove_white("madam i'm adam")), True)
 

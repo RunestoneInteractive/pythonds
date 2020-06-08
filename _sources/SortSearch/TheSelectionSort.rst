@@ -11,7 +11,7 @@ selection sort looks for the largest value as it makes a pass and, after
 completing the pass, places it in the proper location. As with a bubble
 sort, after the first pass, the largest item is in the correct place.
 After the second pass, the next largest is in place. This process
-continues and requires :math:`n-1` passes to sort *n* items, since the
+continues and requires :math:`n-1` passes to sort :math:`n` items, since the
 final item must be in place after the :math:`(n-1)` st pass.
 
 :ref:`Figure 3 <fig_selectionsort>` shows the entire sorting process. On each pass,
@@ -26,27 +26,26 @@ places 55, and so on. The function is shown in
    :align: center
 
    
-   Figure 3: ``selectionSort``
+   Figure 3: Selection Sort: Complete
 
 
 
 .. activecode:: lst_selectionsortcode
     :caption: Selection Sort
 
-    def selectionSort(alist):
-       for fillslot in range(len(alist)-1,0,-1):
-           positionOfMax=0
-           for location in range(1,fillslot+1):
-               if alist[location]>alist[positionOfMax]:
-                   positionOfMax = location
+    def selection_sort(a_list):
+        for i, item in enumerate(a_list):
+            min_idx = len(a_list) - 1
+            for j in range(i, len(a_list)):
+                if a_list[j] < a_list[min_idx]:
+                    min_idx = j
+            if min_idx != i:
+                a_list[min_idx], a_list[i] = a_list[i], a_list[min_idx]
 
-           temp = alist[fillslot]
-           alist[fillslot] = alist[positionOfMax]
-           alist[positionOfMax] = temp
 
-    alist = [54,26,93,17,77,31,44,55,20]
-    selectionSort(alist)
-    print(alist)
+    a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+    selection_sort(a_list)
+    print(a_list)
 
 .. animation:: selection_anim
    :modelfile: sortmodels.js
@@ -61,20 +60,18 @@ places 55, and so on. The function is shown in
 .. .. codelens:: selectionsortcodetrace
 ..     :caption: Tracing the Selection Sort
 ..
-..     def selectionSort(alist):
-..        for fillslot in range(len(alist)-1,0,-1):
-..            positionOfMax=0
-..            for location in range(1,fillslot+1):
-..                if alist[location]>alist[positionOfMax]:
-..                    positionOfMax = location
+..     def selection_sort(a_list):
+..         for i, item in enumerate(a_list):
+..             min_idx = len(a_list) - 1
+..             for j in range(i, len(a_list)):
+..                 if a_list[j] < a_list[min_idx]:
+..                     min_idx = j
+..             if min_idx != i:
+..                 a_list[min_idx], a_list[i] = a_list[i], a_list[min_idx]
 ..
-..            temp = alist[fillslot]
-..            alist[fillslot] = alist[positionOfMax]
-..            alist[positionOfMax] = temp
-..
-..     alist = [54,26,93,17,77,31,44,55,20]
-..     selectionSort(alist)
-..     print(alist)
+..     a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+..     selection_sort(a_list)
+..     print(a_list)
 
 You may see that the selection sort makes the same number of comparisons
 as the bubble sort and is therefore also :math:`O(n^{2})`. However,

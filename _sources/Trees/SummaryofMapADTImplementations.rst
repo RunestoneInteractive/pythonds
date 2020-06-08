@@ -11,10 +11,10 @@ that can be used to implement the map abstract data type. A binary
 Search on a list, a hash table, a binary search tree, and a balanced
 binary search tree. To conclude this section, let’s summarize the
 performance of each data structure for the key operations defined by the
-map ADT (see :ref:`Table 1 <tab_compare>`).
+map ADT (see :ref:`Table 1 <tbl_compare>`).
 
 
-.. _tab_compare:
+.. _tbl_compare:
 
 .. table:: **Table 1: Comparing the Performance of Different Map Implementations**
 

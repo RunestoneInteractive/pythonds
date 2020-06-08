@@ -49,8 +49,8 @@ implementation. To construct a node, you need to supply the initial data
 value for the node. Evaluating the assignment statement below will yield
 a node object containing the value 93 (see :ref:`Figure 3 <fig_node>`). You
 should note that we will typically represent a node object as shown in
-:ref:`Figure 4 <fig_node2>`. The ``Node`` class also includes the usual methods
-to access and modify the data and the next reference.
+:ref:`Figure 4 <fig_node2>`. Hidden fields ``_data`` and ``_next`` of the ``Node`` class
+are turned into properties and can be accessed as ``data`` and ``next`` respectively.
 
 
 .. _lst_nodeclass:
@@ -59,29 +59,43 @@ to access and modify the data and the next reference.
 
 .. sourcecode:: python
 
-   class Node:
-       def __init__(self,initdata):
-           self.data = initdata
-           self.next = None
+    class Node:
+        """A node of a linked list"""
 
-       def getData(self):
-           return self.data
+        def __init__(self, node_data):
+            self._data = node_data
+            self._next = None
 
-       def getNext(self):
-           return self.next
+        def get_data(self):
+            """Get node data"""
+            return self._data
 
-       def setData(self,newdata):
-           self.data = newdata
+        def set_data(self, node_data):
+            """Set node data"""
+            self._data = node_data
 
-       def setNext(self,newnext):
-           self.next = newnext
+        data = property(get_data, set_data)
+
+        def get_next(self):
+            """Get next node"""
+            return self._next
+
+        def set_next(self, node_next):
+            """Set next node"""
+            self._next = node_next
+
+        next = property(get_next, set_next)
+
+        def __str__(self):
+            """String"""
+            return str(self._data)
            
 We create ``Node`` objects in the usual way.
 
 ::
 
         >>> temp = Node(93)
-        >>> temp.getData()
+        >>> temp.data
         93
 
 The special Python reference value ``None`` will play an important role
@@ -129,7 +143,7 @@ to the head of the list.
 .. sourcecode:: python
 
     class UnorderedList:
-    
+
         def __init__(self):
             self.head = None
 
@@ -138,7 +152,7 @@ statement
 
 ::
 
-    >>> mylist = UnorderedList()
+    >>> my_list = UnorderedList()
 
 creates the linked list representation shown in
 :ref:`Figure 5 <fig_initlinkedlist>`. As we discussed in the ``Node`` class, the
@@ -170,9 +184,9 @@ in the linked structure.
 
 
 
-The ``isEmpty`` method, shown in :ref:`Listing 3 <lst_isempty>`, simply checks to
+The ``is_empty`` method, shown in :ref:`Listing 3 <lst_isempty>`, simply checks to
 see if the head of the list is a reference to ``None``. The result of
-the boolean expression ``self.head==None`` will only be true if there
+the boolean expression ``self.head == None`` will only be true if there
 are no nodes in the linked list. Since a new list is empty, the
 constructor and the check for empty must be consistent with one another.
 This shows the advantage to using the reference ``None`` to denote the
@@ -186,7 +200,7 @@ object. We will use this often in our remaining methods.
 
 ::
 
-    def isEmpty(self):
+    def is_empty(self):
         return self.head == None
 
 So, how do we get items into our list? We need to implement the ``add``
@@ -210,12 +224,12 @@ the ``add`` method a number of times.
 
 ::
 
-    >>> mylist.add(31)
-    >>> mylist.add(77)
-    >>> mylist.add(17)
-    >>> mylist.add(93)
-    >>> mylist.add(26)
-    >>> mylist.add(54)
+    >>> my_list.add(31)
+    >>> my_list.add(77)
+    >>> my_list.add(17)
+    >>> my_list.add(93)
+    >>> my_list.add(26)
+    >>> my_list.add(54)
 
 Note that since 31 is the first item added to the list, it will
 eventually be the last node on the linked list as every other item is
@@ -243,11 +257,14 @@ no longer be accessed.
 
 **Listing 4**
 
+.. highlight:: python
+  :linenothreshold: 1
+
 ::
 
-    def add(self,item):
+    def add(self, item):
         temp = Node(item)
-        temp.setNext(self.head)
+        temp.set_next(self.head)
         self.head = temp
 
 .. _fig_addtohead:
@@ -298,12 +315,12 @@ Finally, ``count`` gets returned after the iteration stops.
     def size(self):
         current = self.head
         count = 0
-        while current != None:
+        while current is not None:
             count = count + 1
-            current = current.getNext()
+            current = current.next
 
         return count
-        
+
 
 
 .. _fig_traversal:
@@ -324,15 +341,9 @@ present. Also, if we do find the item, there is no need to continue.
 
 :ref:`Listing 6 <lst_search>` shows the implementation for the ``search`` method.
 As in the ``size`` method, the traversal is initialized to start at
-the head of the list (line 2). We also use a boolean variable called
-``found`` to remember whether we have located the item we are searching
-for. Since we have not found the item at the start of the traversal,
-``found`` can be set to ``False`` (line 3). The iteration in line 4
-takes into account both conditions discussed above. As long as there are
-more nodes to visit and we have not found the item we are looking for,
-we continue to check the next node. The question in line 5 asks whether
-the data item is present in the current node. If so, ``found`` can be
-set to ``True``.
+the head of the list (line 2). We continue to iterate over the list as long as there are
+more nodes to visit. The question in line 4 asks whether
+the data item is present in the current node. If so, we return ``True`` immediately.
 
 .. _lst_search:
 
@@ -340,29 +351,27 @@ set to ``True``.
 
 ::
 
-    def search(self,item):
+    def search(self, item):
         current = self.head
-        found = False
-        while current != None and not found:
-            if current.getData() == item:
-                found = True
-            else:
-                current = current.getNext()
+        while current is not None:
+            if current.data == item:
+                return True
+            current = current.next
 
-        return found
+        return False
 
 As an example, consider invoking the ``search`` method looking for the
 item 17.
 
 ::
 
-    >>> mylist.search(17)
+    >>> my_list.search(17)
     True
 
 Since 17 is in the list, the traversal process needs to move only to the
-node containing 17. At that point, the variable ``found`` is set to
-``True`` and the ``while`` condition will fail, leading to the return
-value seen above. This process can be seen in :ref:`Figure 10 <fig_searchpic>`.
+node containing 17. At that point, the condition in line 4 becomes ``True`` and
+we return the result of the search.
+This process can be seen in :ref:`Figure 10 <fig_searchpic>`.
 
 .. _fig_searchpic:
 
@@ -374,15 +383,14 @@ value seen above. This process can be seen in :ref:`Figure 10 <fig_searchpic>`.
 
 The ``remove`` method requires two logical steps. First, we need to
 traverse the list looking for the item we want to remove. Once we find
-the item (recall that we assume it is present), we must remove it. The
-first step is very similar to ``search``. Starting with an external
-reference set to the head of the list, we traverse the links until we
-discover the item we are looking for. Since we assume that item is
-present, we know that the iteration will stop before ``current`` gets to
-``None``. This means that we can simply use the boolean ``found`` in the
-condition.
+the item , we must remove it. If the item is not in the list, our method
+should raise a ``ValueError``.
 
-When ``found`` becomes ``True``, ``current`` will be a reference to the
+The first step is very similar to ``search``. Starting with an external
+reference set to the head of the list, we traverse the links until we
+discover the item we are looking for.
+
+When the item is found and we break out of the loop, ``current`` will be a reference to the
 node containing the item to be removed. But how do we remove it? One
 possibility would be to replace the value of the item with some marker
 that suggests that the item is no longer present. The problem with this
@@ -411,11 +419,10 @@ starts out at the list head as in the other traversal examples.
 ``previous``, however, is assumed to always travel one node behind
 current. For this reason, ``previous`` starts out with a value of
 ``None`` since there is no node before the head (see
-:ref:`Figure 11 <fig_removeinit>`). The boolean variable ``found`` will again be
-used to control the iteration.
+:ref:`Figure 11 <fig_removeinit>`).
 
 In lines 6–7 we ask whether the item stored in the current node is the
-item we wish to remove. If so, ``found`` can be set to ``True``. If we
+item we wish to remove. If so, we break out of the loop. If we
 do not find the item, ``previous`` and ``current`` must both be moved
 one node ahead. Again, the order of these two statements is crucial.
 ``previous`` must first be moved one node ahead to the location of
@@ -431,21 +438,24 @@ list looking for the node containing the value 17.
 
 ::
 
-    def remove(self,item):
+    def remove(self, item):
         current = self.head
         previous = None
-        found = False
-        while not found:
-            if current.getData() == item:
-                found = True
-            else:
-                previous = current
-                current = current.getNext()
 
-        if previous == None:
-            self.head = current.getNext()
+        while current is not None:
+            if current.data == item:
+                break
+            previous = current
+            current = current.next
+
+        if current is None:
+            raise ValueError("{} is not in the list".format(item))
+        if previous is None:
+            self.head = current.next
         else:
-            previous.setNext(current.getNext())
+            previous.next = current.next
+
+
 
 .. _fig_removeinit:
 
@@ -472,7 +482,9 @@ linked list. This also means that ``previous`` will be ``None``. We said
 earlier that ``previous`` would be referring to the node whose next
 reference needs to be modified in order to complete the remove. In this
 case, it is not ``previous`` but rather the head of the list that needs
-to be changed (see :ref:`Figure 14 <fig_removehead>`).
+to be changed (see :ref:`Figure 14 <fig_removehead>`). Another special case occurs if
+the item is not in the list. In that case ``current is None`` evaluates to ``True``
+and an error is raised.
 
 .. _fig_removepic1:
 
@@ -490,17 +502,17 @@ to be changed (see :ref:`Figure 14 <fig_removehead>`).
    Figure 14: Removing the First Node from the List
 
 
-Line 12 allows us to check whether we are dealing with the special case
+Line 13 allows us to check whether we are dealing with the special case
 described above. If ``previous`` did not move, it will still have the
-value ``None`` when the boolean ``found`` becomes ``True``. In that case
-(line 13) the head of the list is modified to refer to the node after
+value ``None`` when the loop breaks. In that case
+(line 14) the head of the list is modified to refer to the node after
 the current node, in effect removing the first node from the linked
 list. However, if previous is not ``None``, the node to be removed is
 somewhere down the linked list structure. In this case the previous
 reference is providing us with the node whose next reference must be
-changed. Line 15 uses the ``setNext`` method from ``previous`` to
+changed. Line 16 modifies the ``next`` property of the ``previous`` to
 accomplish the removal. Note that in both cases the destination of the
-reference change is ``current.getNext()``. One question that often
+reference change is ``current.next``. One question that often
 arises is whether the two cases shown here will also handle the
 situation where the item to be removed is in the last node of the linked
 list. We leave that for you to consider.
@@ -508,101 +520,119 @@ list. We leave that for you to consider.
 You can try out the ``UnorderedList`` class in ActiveCode 1.  
 
 .. activecode:: unorderedlistcomplete
-   :caption: The Complete UnorderedList Class
-   :hidecode:
-   :nocodelens:
-   
-   class Node:
-       def __init__(self,initdata):
-           self.data = initdata
-           self.next = None
+    :caption: The Complete UnorderedList Class
+    :hidecode:
+    :nocodelens:
+    
+    class Node:
+        """A node of a linked list"""
 
-       def getData(self):
-           return self.data
+        def __init__(self, node_data):
+            self._data = node_data
+            self._next = None
 
-       def getNext(self):
-           return self.next
+        def get_data(self):
+            """Get node data"""
+            return self._data
 
-       def setData(self,newdata):
-           self.data = newdata
+        def set_data(self, node_data):
+            """Set node data"""
+            self._data = node_data
 
-       def setNext(self,newnext):
-           self.next = newnext
+        data = property(get_data, set_data)
+
+        def get_next(self):
+            """Get next node"""
+            return self._next
+
+        def set_next(self, node_next):
+            """Set next node"""
+            self._next = node_next
+
+        next = property(get_next, set_next)
+
+        def __str__(self):
+            """String"""
+            return str(self._data)
 
 
-   class UnorderedList:
+    class UnorderedList:
+        def __init__(self):
+            self.head = None
 
-       def __init__(self):
-           self.head = None
+        def is_empty(self):
+            return self.head == None
 
-       def isEmpty(self):
-           return self.head == None
+        def add(self, item):
+            temp = Node(item)
+            temp.set_next(self.head)
+            self.head = temp
 
-       def add(self,item):
-           temp = Node(item)
-           temp.setNext(self.head)
-           self.head = temp
+        def size(self):
+            current = self.head
+            count = 0
+            while current is not None:
+                count = count + 1
+                current = current.next
 
-       def size(self):
-           current = self.head
-           count = 0
-           while current != None:
-               count = count + 1
-               current = current.getNext()
+            return count
 
-           return count
+        def search(self, item):
+            current = self.head
+            while current is not None:
+                if current.data == item:
+                    return True
+                current = current.next
 
-       def search(self,item):
-           current = self.head
-           found = False
-           while current != None and not found:
-               if current.getData() == item:
-                   found = True
-               else:
-                   current = current.getNext()
+            return False
 
-           return found
+        def remove(self, item):
+            current = self.head
+            previous = None
 
-       def remove(self,item):
-           current = self.head
-           previous = None
-           found = False
-           while not found:
-               if current.getData() == item:
-                   found = True
-               else:
-                   previous = current
-                   current = current.getNext()
+            while current is not None:
+                if current.data == item:
+                    break
+                previous = current
+                current = current.next
 
-           if previous == None:
-               self.head = current.getNext()
-           else:
-               previous.setNext(current.getNext())
+            if current is None:
+                raise ValueError("{} is not in the list".format(item))
+            if previous is None:
+                self.head = current.next
+            else:
+                previous.next = current.next
 
-   mylist = UnorderedList()
 
-   mylist.add(31)
-   mylist.add(77)
-   mylist.add(17)
-   mylist.add(93)
-   mylist.add(26)
-   mylist.add(54)
+    my_list = UnorderedList()
 
-   print(mylist.size())
-   print(mylist.search(93))
-   print(mylist.search(100))
+    my_list.add(31)
+    my_list.add(77)
+    my_list.add(17)
+    my_list.add(93)
+    my_list.add(26)
+    my_list.add(54)
 
-   mylist.add(100)
-   print(mylist.search(100))
-   print(mylist.size())
+    print(my_list.size())
+    print(my_list.search(93))
+    print(my_list.search(100))
 
-   mylist.remove(54)
-   print(mylist.size())
-   mylist.remove(93)
-   print(mylist.size())
-   mylist.remove(31)
-   print(mylist.size())
-   print(mylist.search(93))
+    my_list.add(100)
+    print(my_list.search(100))
+    print(my_list.size())
+
+    my_list.remove(54)
+    print(my_list.size())
+    my_list.remove(93)
+    print(my_list.size())
+    my_list.remove(31)
+    print(my_list.size())
+    print(my_list.search(93))
+
+    try:
+        my_list.remove(27)
+    except ValueError as ve:
+        print(ve)
 
 The remaining methods ``append``, ``insert``, ``index``, and ``pop`` are
 left as exercises. Remember that each of these must take into account
@@ -616,152 +646,177 @@ starting with 0.
    Part I:  Implement the append method for UnorderedList.  What is the time complexity of the method you created?
 
    .. actex:: self_check_list1
-       :nocodelens:
+        :nocodelens:
    
-       class Node:
-           def __init__(self,initdata):
-               self.data = initdata
-               self.next = None
+        class Node:
+            """A node of a linked list"""
 
-           def getData(self):
-               return self.data
+            def __init__(self, node_data):
+                self._data = node_data
+                self._next = None
 
-           def getNext(self):
-               return self.next
+            def get_data(self):
+                """Get node data"""
+                return self._data
 
-           def setData(self,newdata):
-               self.data = newdata
+            def set_data(self, node_data):
+                """Set node data"""
+                self._data = node_data
 
-           def setNext(self,newnext):
-               self.next = newnext
+            data = property(get_data, set_data)
+
+            def get_next(self):
+                """Get next node"""
+                return self._next
+
+            def set_next(self, node_next):
+                """Set next node"""
+                self._next = node_next
+
+            next = property(get_next, set_next)
+
+            def __str__(self):
+                """String"""
+                return str(self._data)
 
 
-       class UnorderedList:
+        class UnorderedList:
+            def __init__(self):
+                self.head = None
 
-           def __init__(self):
-               self.head = None
+            def is_empty(self):
+                return self.head == None
 
-           def isEmpty(self):
-               return self.head == None
+            def add(self, item):
+                temp = Node(item)
+                temp.set_next(self.head)
+                self.head = temp
 
-           def add(self,item):
-               temp = Node(item)
-               temp.setNext(self.head)
-               self.head = temp
+            def size(self):
+                current = self.head
+                count = 0
+                while current is not None:
+                    count = count + 1
+                    current = current.next
 
-           def size(self):
-               current = self.head
-               count = 0
-               while current != None:
-                   count = count + 1
-                   current = current.getNext()
+                return count
 
-               return count
+            def search(self, item):
+                current = self.head
+                while current is not None:
+                    if current.data == item:
+                        return True
+                    current = current.next
 
-           def search(self,item):
-               current = self.head
-               found = False
-               while current != None and not found:
-                   if current.getData() == item:
-                       found = True
-                   else:
-                       current = current.getNext()
+                return False
 
-               return found
+            def remove(self, item):
+                current = self.head
+                previous = None
 
-           def remove(self,item):
-               current = self.head
-               previous = None
-               found = False
-               while not found:
-                   if current.getData() == item:
-                       found = True
-                   else:
-                       previous = current
-                       current = current.getNext()
+                while current is not None:
+                    if current.data == item:
+                        break
+                    previous = current
+                    current = current.next
 
-               if previous == None:
-                   self.head = current.getNext()
-               else:
-                   previous.setNext(current.getNext())
+                if current is None:
+                    raise ValueError("{} is not in the list".format(item))
+                if previous is None:
+                    self.head = current.next
+                else:
+                    previous.next = current.next
 
-       mylist = UnorderedList()
-   
+
+        my_list = UnorderedList()
    
 
    Part II:  In the previous problem, you most likely created an append method that was :math:`O(n)`  If you add an instance variable to the UnorderedList class you can create an append method that is :math:`O(1)`.  Modify your append method to be :math:`O(1)`  Be Careful!  To really do this correctly you will need to consider a couple of special cases that may require you to make a modification to the add method as well.
 
    .. actex:: self_check_list2
-       :nocodelens:
+        :nocodelens:
    
-       class Node:
-           def __init__(self,initdata):
-               self.data = initdata
-               self.next = None
+        class Node:
+            """A node of a linked list"""
 
-           def getData(self):
-               return self.data
+            def __init__(self, node_data):
+                self._data = node_data
+                self._next = None
 
-           def getNext(self):
-               return self.next
+            def get_data(self):
+                """Get node data"""
+                return self._data
 
-           def setData(self,newdata):
-               self.data = newdata
+            def set_data(self, node_data):
+                """Set node data"""
+                self._data = node_data
 
-           def setNext(self,newnext):
-               self.next = newnext
+            data = property(get_data, set_data)
+
+            def get_next(self):
+                """Get next node"""
+                return self._next
+
+            def set_next(self, node_next):
+                """Set next node"""
+                self._next = node_next
+
+            next = property(get_next, set_next)
+
+            def __str__(self):
+                """String"""
+                return str(self._data)
 
 
-       class UnorderedList:
+        class UnorderedList:
+            def __init__(self):
+                self.head = None
 
-           def __init__(self):
-               self.head = None
+            def is_empty(self):
+                return self.head == None
 
-           def isEmpty(self):
-               return self.head == None
+            def add(self, item):
+                temp = Node(item)
+                temp.set_next(self.head)
+                self.head = temp
 
-           def add(self,item):
-               temp = Node(item)
-               temp.setNext(self.head)
-               self.head = temp
+            def size(self):
+                current = self.head
+                count = 0
+                while current is not None:
+                    count = count + 1
+                    current = current.next
 
-           def size(self):
-               current = self.head
-               count = 0
-               while current != None:
-                   count = count + 1
-                   current = current.getNext()
+                return count
 
-               return count
+            def search(self, item):
+                current = self.head
+                while current is not None:
+                    if current.data == item:
+                        return True
+                    current = current.next
 
-           def search(self,item):
-               current = self.head
-               found = False
-               while current != None and not found:
-                   if current.getData() == item:
-                       found = True
-                   else:
-                       current = current.getNext()
+                return False
 
-               return found
+            def remove(self, item):
+                current = self.head
+                previous = None
 
-           def remove(self,item):
-               current = self.head
-               previous = None
-               found = False
-               while not found:
-                   if current.getData() == item:
-                       found = True
-                   else:
-                       previous = current
-                       current = current.getNext()
+                while current is not None:
+                    if current.data == item:
+                        break
+                    previous = current
+                    current = current.next
 
-               if previous == None:
-                   self.head = current.getNext()
-               else:
-                   previous.setNext(current.getNext())
+                if current is None:
+                    raise ValueError("{} is not in the list".format(item))
+                if previous is None:
+                    self.head = current.next
+                else:
+                    previous.next = current.next
 
-       mylist = UnorderedList()
-   
+
+        my_list = UnorderedList()
+
 
 

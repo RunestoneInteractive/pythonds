@@ -14,7 +14,11 @@ forget the colon.
 ::
 
     >>> for i in range(10)
-    SyntaxError: invalid syntax (<pyshell#61>, line 1)
+    File "<stdin>", line 1
+        for i in range(10)
+                        ^
+    SyntaxError: invalid syntax
+    >>> 
 
 In this case, the Python interpreter has found that it cannot complete
 the processing of this instruction since it does not conform to the
@@ -49,14 +53,14 @@ exception.
 
 ::
 
-    >>> anumber = int(input("Please enter an integer "))
+    >>> import math
+    >>> a_number = int(input("Please enter an integer "))
     Please enter an integer -23
-    >>> print(math.sqrt(anumber))
+    >>> print(math.sqrt(a_number))
     Traceback (most recent call last):
-      File "<pyshell#102>", line 1, in <module>
-        print(math.sqrt(anumber))
+      File "<stdin>", line 1, in <module>
     ValueError: math domain error
-    >>>
+    >>> 
 
 We can handle this exception by calling the print function from within a
 ``try`` block. A corresponding ``except`` block “catches” the exception
@@ -66,16 +70,16 @@ occurs. For example:
 ::
 
     >>> try:
-           print(math.sqrt(anumber))
-        except:
-           print("Bad Value for square root")
-           print("Using absolute value instead")
-           print(math.sqrt(abs(anumber)))
-
-    Bad Value for square root
-    Using absolute value instead
-    4.79583152331
-    >>>
+    ...   print(math.sqrt(a_number))
+    ... except:
+    ...   print("Bad value for the square root function")
+    ...   print("Using the absolute value instead")
+    ...   print(math.sqrt(abs(a_number)))
+    ... 
+    Bad value for the square root function
+    Using the absolute value instead
+    4.795831523312719
+    >>> 
 
 will catch the fact that an exception is raised by ``sqrt`` and will
 instead print the messages back to the user and use the absolute value
@@ -93,15 +97,15 @@ termination is something explicitly created by the programmer.
 
 ::
 
-    >>> if anumber < 0:
-    ...    raise RuntimeError("You can't use a negative number")
+    >>> if a_number < 0:
+    ...   raise RuntimeError("You can't use a negative number")
     ... else:
-    ...    print(math.sqrt(anumber))
-    ...
+    ...   print(math.sqrt(a_number))
+    ... 
     Traceback (most recent call last):
       File "<stdin>", line 2, in <module>
     RuntimeError: You can't use a negative number
-    >>>
+    >>> 
 
 There are many kinds of exceptions that can be raised in addition to the
 ``RuntimeError`` shown above. See the Python reference manual for a list

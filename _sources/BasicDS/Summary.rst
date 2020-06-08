@@ -11,13 +11,13 @@ Summary
    first-out, ordering.
 
 -  The fundamental operations for a stack are ``push``, ``pop``, and
-   ``isEmpty``.
+   ``is_empty``.
 
 -  Queues are simple data structures that maintain a FIFO, first-in
    first-out, ordering.
 
 -  The fundamental operations for a queue are ``enqueue``, ``dequeue``,
-   and ``isEmpty``.
+   and ``is_empty``.
 
 -  Prefix, infix, and postfix are all ways to write expressions.
 
@@ -34,8 +34,8 @@ Summary
 -  Deques are data structures that allow hybrid behavior like that of
    stacks and queues.
 
--  The fundamental operations for a deque are ``addFront``, ``addRear``,
-   ``removeFront``, ``removeRear``, and ``isEmpty``.
+-  The fundamental operations for a deque are ``add_front``, ``add_rear``,
+   ``remove_front``, ``remove_rear``, and ``is_empty``.
 
 -  Lists are collections of items where each item holds a relative
    position.

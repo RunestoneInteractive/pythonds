@@ -32,17 +32,17 @@ quotient by truncating any fractional part.
 .. activecode:: intro_1
     :caption: Basic Arithmetic Operators
 
-    print(2+3*4)
-    print((2+3)*4)
-    print(2**10)
-    print(6/3)
-    print(7/3)
-    print(7//3)
-    print(7%3)
-    print(3/6)
-    print(3//6)
-    print(3%6)
-    print(2**100)
+    print(2 + 3 * 4)
+    print((2 + 3) * 4)
+    print(2 ** 10)
+    print(6 / 3)
+    print(7 / 3)
+    print(7 // 3)
+    print(7 % 3)
+    print(3 / 6)
+    print(3 // 6)
+    print(3 % 6)
+    print(2 ** 100)
 
 
 The boolean data type, implemented as the Python ``bool`` class, will be
@@ -92,7 +92,7 @@ and logical operators with examples shown in the session that follows.
 .. activecode:: intro_2
     :caption: Basic Relational and Logical Operators
 
-    print(5==10)
+    print(5 == 10)
     print(10 > 5)
     print((5 >= 1) and (5 <= 10))
 
@@ -110,25 +110,25 @@ following session:
 
 ::
 
-    >>> theSum = 0
-    >>> theSum
+    >>> the_sum = 0
+    >>> the_sum
     0
-    >>> theSum = theSum + 1
-    >>> theSum
+    >>> the_sum = the_sum + 1
+    >>> the_sum
     1
-    >>> theSum = True
-    >>> theSum
+    >>> the_sum = True
+    >>> the_sum
     True
 
-The assignment statement ``theSum = 0`` creates a variable called
-``theSum`` and lets it hold the reference to the data object ``0`` (see
+The assignment statement ``the_sum = 0`` creates a variable called
+``the_sum`` and lets it hold the reference to the data object ``0`` (see
 :ref:`Figure 3 <fig_assignment1>`). In general, the right-hand side of the assignment
 statement is evaluated and a reference to the resulting data object is
 “assigned” to the name on the left-hand side. At this point in our
 example, the type of the variable is integer as that is the type of the
-data currently being referred to by ``theSum``. If the type of the data
+data currently being referred to by ``the_sum``. If the type of the data
 changes (see :ref:`Figure 4 <fig_assignment2>`), as shown above with the boolean
-value ``True``, so does the type of the variable (``theSum`` is now of
+value ``True``, so does the type of the variable (``the_sum`` is now of
 the type boolean). The assignment statement changes the reference being
 held by the variable. This is a dynamic characteristic of Python. The
 same variable can refer to many different types of data.
@@ -165,10 +165,10 @@ The following fragment shows a variety of Python data objects in a list.
 
 ::
 
-    >>> [1,3,True,6.5]
+    >>> [1, 3, True, 6.5]
     [1, 3, True, 6.5]
-    >>> myList = [1,3,True,6.5]
-    >>> myList
+    >>> my_list = [1, 3, True, 6.5]
+    >>> my_list
     [1, 3, True, 6.5]
 
 Note that when Python evaluates a list, the list itself is returned.
@@ -197,7 +197,7 @@ gives examples of their use.
 
 
 Note that the indices for lists (sequences) start counting with 0. The
-slice operation, myList[1:3], returns a list of items starting with the
+slice operation, my_list[1:3], returns a list of items starting with the
 item indexed by 1 up to but not including the item indexed by 3.
 
 Sometimes, you will want to initialize a list. This can quickly be
@@ -205,8 +205,8 @@ accomplished by using repetition. For example,
 
 ::
 
-    >>> myList = [0] * 6
-    >>> myList
+    >>> my_list = [0] * 6
+    >>> my_list
     [0, 0, 0, 0, 0, 0]
 
 One very important aside relating to the repetition operator is that the
@@ -216,16 +216,16 @@ sequence. This can best be seen by considering the following session:
 .. activecode:: intro_3
     :caption: Repetition of References
 
-    myList = [1,2,3,4]
-    A = [myList]*3
-    print(A)
-    myList[2]=45
-    print(A)
+    my_list = [1, 2, 3, 4]
+    big_list = [my_list] * 3
+    print(big_list)
+    my_list[2] = 45
+    print(big_list)
 
 
-The variable ``A`` holds a collection of three references to the
-original list called ``myList``. Note that a change to one element of
-``myList`` shows up in all three occurrences in ``A``.
+The variable ``big_list`` holds a collection of three references to the
+original list called ``my_list``. Note that a change to one element of
+``my_list`` shows up in all three occurrences in ``big_list``.
 
 Lists support a number of methods that will be used to build data
 structures. :ref:`Table 3 <tab_listmethods>` provides a summary. Examples of their
@@ -238,43 +238,43 @@ use follow.
     ======================== ========================== =======================================================
              **Method Name**                    **Use**                                         **Explanation**
     ======================== ========================== =======================================================
-                  ``append``     ``alist.append(item)``                    Adds a new item to the end of a list
-                  ``insert``   ``alist.insert(i,item)``           Inserts an item at the ith position in a list
-                     ``pop``            ``alist.pop()``             Removes and returns the last item in a list
-                     ``pop``           ``alist.pop(i)``              Removes and returns the ith item in a list
-                    ``sort``           ``alist.sort()``                            Modifies a list to be sorted
-                 ``reverse``        ``alist.reverse()``                  Modifies a list to be in reverse order
-                     ``del``           ``del alist[i]``                    Deletes the item in the ith position
-                   ``index``      ``alist.index(item)``   Returns the index of the first occurrence of ``item``
-                   ``count``      ``alist.count(item)``           Returns the number of occurrences of ``item``
-                  ``remove``     ``alist.remove(item)``                Removes the first occurrence of ``item``
+                  ``append``    ``a_list.append(item)``                    Adds a new item to the end of a list
+                  ``insert``  ``a_list.insert(i,item)``           Inserts an item at the ith position in a list
+                     ``pop``           ``a_list.pop()``             Removes and returns the last item in a list
+                     ``pop``          ``a_list.pop(i)``              Removes and returns the ith item in a list
+                    ``sort``          ``a_list.sort()``                            Modifies a list to be sorted
+                 ``reverse``       ``a_list.reverse()``                  Modifies a list to be in reverse order
+                     ``del``          ``del a_list[i]``                    Deletes the item in the ith position
+                   ``index``     ``a_list.index(item)``   Returns the index of the first occurrence of ``item``
+                   ``count``     ``a_list.count(item)``           Returns the number of occurrences of ``item``
+                  ``remove``    ``a_list.remove(item)``                Removes the first occurrence of ``item``
     ======================== ========================== =======================================================
 
 
 .. activecode:: intro_5
     :caption: Examples of List Methods
 
-    myList = [1024, 3, True, 6.5]
-    myList.append(False)
-    print(myList)
-    myList.insert(2,4.5)
-    print(myList)
-    print(myList.pop())
-    print(myList)
-    print(myList.pop(1))
-    print(myList)
-    myList.pop(2)
-    print(myList)
-    myList.sort()
-    print(myList)
-    myList.reverse()
-    print(myList)
-    print(myList.count(6.5))
-    print(myList.index(4.5))
-    myList.remove(6.5)
-    print(myList)
-    del myList[0]
-    print(myList)
+    my_list = [1024, 3, True, 6.5]
+    my_list.append(False)
+    print(my_list)
+    my_list.insert(2,4.5)
+    print(my_list)
+    print(my_list.pop())
+    print(my_list)
+    print(my_list.pop(1))
+    print(my_list)
+    my_list.pop(2)
+    print(my_list)
+    my_list.sort()
+    print(my_list)
+    my_list.reverse()
+    print(my_list)
+    print(my_list.count(6.5))
+    print(my_list.index(4.5))
+    my_list.remove(6.5)
+    print(my_list)
+    del my_list[0]
+    print(my_list)
 
 
 You can see that some of the methods, such as ``pop``, return a value
@@ -283,7 +283,7 @@ list with no return value. ``pop`` will default to the end of the list
 but can also remove and return a specific item. The index range starting
 from 0 is again used for these methods. You should also notice the
 familiar “dot” notation for asking an object to invoke a method.
-``myList.append(False)`` can be read as “ask the object ``myList`` to
+``my_list.append(False)`` can be read as “ask the object ``my_list`` to
 perform its ``append`` method and send it the value ``False``.” Even
 simple data objects such as integers can invoke methods in this way.
 
@@ -311,13 +311,13 @@ illustrated below.
     range(0, 10)
     >>> list(range(10))
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    >>> range(5,10)
+    >>> range(5, 10)
     range(5, 10)
-    >>> list(range(5,10))
+    >>> list(range(5, 10))
     [5, 6, 7, 8, 9]
-    >>> list(range(5,10,2))
+    >>> list(range(5, 10, 2))
     [5, 7, 9]
-    >>> list(range(10,1,-1))
+    >>> list(range(10, 1, -1))
     [10, 9, 8, 7, 6, 5, 4, 3, 2]
     >>>
 
@@ -338,12 +338,12 @@ by using quotation marks (either single or double).
 
     >>> "David"
     'David'
-    >>> myName = "David"
-    >>> myName[3]
+    >>> my_name = "David"
+    >>> my_name[3]
     'i'
-    >>> myName*2
+    >>> my_name * 2
     'DavidDavid'
-    >>> len(myName)
+    >>> len(my_name)
     5
     >>>
 
@@ -353,16 +353,17 @@ methods, some of which are shown in :ref:`Table 4<tab_stringmethods>`. For exam
 
 ::
 
-    >>> myName
+    >>> my_name
     'David'
-    >>> myName.upper()
+    >>> my_name.upper()
     'DAVID'
-    >>> myName.center(10)
+    >>> my_name.center(10)
     '  David   '
-    >>> myName.find('v')
+    >>> my_name.find("v")
     2
-    >>> myName.split('v')
+    >>> my_name.split("v")
     ['Da', 'id']
+    >>>
 
 Of these, ``split`` will be very useful for processing data. ``split``
 will take a string and return a list of strings using the split
@@ -374,17 +375,17 @@ whitespace characters such as tab, newline and space.
 
 .. table:: **Table 4: Methods Provided by Strings in Python**
 
-    ======================== ========================= =============================================================
-             **Method Name**                   **Use**                                               **Explanation**
-    ======================== ========================= =============================================================
-                  ``center``     ``astring.center(w)``            Returns a string centered in a field of size ``w``
-                   ``count``   ``astring.count(item)``   Returns the number of occurrences of ``item`` in the string
-                   ``ljust``      ``astring.ljust(w)``      Returns a string left-justified in a field of size ``w``
-                   ``lower``       ``astring.lower()``                             Returns a string in all lowercase
-                   ``rjust``      ``astring.rjust(w)``     Returns a string right-justified in a field of size ``w``
-                    ``find``    ``astring.find(item)``         Returns the index of the first occurrence of ``item``
-                   ``split``  ``astring.split(schar)``                  Splits a string into substrings at ``schar``
-    ======================== ========================= =============================================================
+    ======================== ========================== =============================================================
+             **Method Name**                    **Use**                                               **Explanation**
+    ======================== ========================== =============================================================
+                  ``center``     ``a_string.center(w)``            Returns a string centered in a field of size ``w``
+                   ``count``   ``a_string.count(item)``   Returns the number of occurrences of ``item`` in the string
+                   ``ljust``      ``a_string.ljust(w)``      Returns a string left-justified in a field of size ``w``
+                   ``lower``       ``a_string.lower()``                             Returns a string in all lowercase
+                   ``rjust``      ``a_string.rjust(w)``     Returns a string right-justified in a field of size ``w``
+                    ``find``    ``a_string.find(item)``         Returns the index of the first occurrence of ``item``
+                   ``split`` ``a_string.split(s_char)``                 Splits a string into substrings at ``s_char``
+    ======================== ========================== =============================================================
 
 
 A major difference between lists and strings is that lists can be
@@ -395,23 +396,21 @@ change is not allowed.
 
 ::
 
-    >>> myList
+    >>> my_list
     [1, 3, True, 6.5]
-    >>> myList[0]=2**10
-    >>> myList
+    >>> my_list[0] = 2 ** 10
+    >>> my_list
     [1024, 3, True, 6.5]
     >>>
-    >>> myName
+    >>> my_name
     'David'
-    >>> myName[0]='X'
-
+    >>> my_name[0] = "X"
     Traceback (most recent call last):
-      File "<pyshell#84>", line 1, in -toplevel-
-        myName[0]='X'
-    TypeError: object doesn't support item assignment
+    File "<stdin>", line 1, in <module>
+    TypeError: 'str' object does not support item assignment
     >>>
 
-Tuples are very similar to lists in that they are heterogeneous
+**Tuples** are very similar to lists in that they are heterogeneous
 sequences of data. The difference is that a tuple is immutable, like a
 string. A tuple cannot be changed. Tuples are written as comma-delimited
 values enclosed in parentheses. As sequences, they can use any operation
@@ -419,16 +418,16 @@ described above. For example,
 
 ::
 
-    >>> myTuple = (2,True,4.96)
-    >>> myTuple
+    >>> my_tuple = (2, True, 4.96)
+    >>> my_tuple
     (2, True, 4.96)
-    >>> len(myTuple)
+    >>> len(my_tuple)
     3
-    >>> myTuple[0]
+    >>> my_tuple[0]
     2
-    >>> myTuple * 3
+    >>> my_tuple * 3
     (2, True, 4.96, 2, True, 4.96, 2, True, 4.96)
-    >>> myTuple[0:2]
+    >>> my_tuple[0:2]
     (2, True)
     >>>
 
@@ -438,15 +437,13 @@ problem.
 
 ::
 
-    >>> myTuple[1]=False
-
+    >>> my_tuple[1] = False
     Traceback (most recent call last):
-      File "<pyshell#137>", line 1, in -toplevel-
-        myTuple[1]=False
-    TypeError: object doesn't support item assignment
+    File "<stdin>", line 1, in <module>
+    TypeError: 'tuple' object does not support item assignment
     >>>
 
-A set is an unordered collection of zero or more immutable Python data
+A **set** is an unordered collection of zero or more immutable Python data
 objects. Sets do not allow duplicates and are written as comma-delimited
 values enclosed in curly braces. The empty set is represented by
 ``set()``. Sets are heterogeneous, and the collection can be assigned to
@@ -454,12 +451,12 @@ a variable as below.
 
 ::
 
-    >>> {3,6,"cat",4.5,False}
-    {False, 4.5, 3, 6, 'cat'}
-    >>> mySet = {3,6,"cat",4.5,False}
-    >>> mySet
-    {False, 4.5, 3, 6, 'cat'}
-    >>>
+    >>> {3, 6, "cat", 4.5, False}
+    {False, 3, 4.5, 6, 'cat'}
+    >>> my_set = {3, 6, "cat", 4.5, False}
+    >>> my_set
+    {False, 3, 4.5, 6, 'cat'}
+    >>> 
 
 Even though sets are not considered to be sequential, they do support a
 few of the familiar operations presented earlier. :ref:`Table 5 <tab_setops>` reviews
@@ -469,29 +466,29 @@ these operations and the following session gives examples of their use.
 
 .. table:: **Table 5: Operations on a Set in Python**
 
-    =========================== ===================== ===================================================================
-             **Operation Name**          **Operator**                                                     **Explanation**
-    =========================== ===================== ===================================================================
-                     membership                    in                                                      Set membership
-                         length                   len                                  Returns the cardinality of the set
-                          ``|``   ``aset | otherset``                  Returns a new set with all elements from both sets
-                          ``&``   ``aset & otherset``      Returns a new set with only those elements common to both sets
-                          ``-``   ``aset - otherset``   Returns a new set with all items from the first set not in second
-                         ``<=``  ``aset <= otherset``       Asks whether all elements of  the first set are in the second
-    =========================== ===================== ===================================================================
+    =========================== ====================== ===================================================================
+             **Operation Name**           **Operator**                                                     **Explanation**
+    =========================== ====================== ===================================================================
+                     membership                     in                                                      Set membership
+                         length                    len                                  Returns the cardinality of the set
+                          ``|``  ``a_set | other_set``                  Returns a new set with all elements from both sets
+                          ``&``  ``a_set & other_set``      Returns a new set with only those elements common to both sets
+                          ``-``  ``a_set - other_set``   Returns a new set with all items from the first set not in second
+                         ``<=`` ``a_set <= other_set``       Asks whether all elements of  the first set are in the second
+    =========================== ====================== ===================================================================
 
 
 ::
 
-    >>> mySet
-    {False, 4.5, 3, 6, 'cat'}
-    >>> len(mySet)
+    >>> my_set
+    {False, 3, 4.5, 6, 'cat'}
+    >>> len(my_set)
     5
-    >>> False in mySet
+    >>> False in my_set
     True
-    >>> "dog" in mySet
+    >>> "dog" in my_set
     False
-    >>>
+    >>> 
 
 Sets support a number of methods that should be familiar to those who
 have worked with them in a mathematics setting. :ref:`Table 6 <tab_setmethods>`
@@ -503,55 +500,55 @@ that can be used as well.
 
 .. table:: **Table 6: Methods Provided by Sets in Python**
 
-    ======================== ================================= ================================================================
-             **Method Name**                           **Use**                                                  **Explanation**
-    ======================== ================================= ================================================================
-                   ``union``          ``aset.union(otherset)``               Returns a new set with all elements from both sets
-            ``intersection``   ``aset.intersection(otherset)``   Returns a new set with only those elements common to both sets
-              ``difference``     ``aset.difference(otherset)``    Returns a new set with all items from first set not in second
-                ``issubset``       ``aset.issubset(otherset)``            Asks whether all elements of one set are in the other
-                     ``add``                ``aset.add(item)``                                             Adds item to the set
-                  ``remove``             ``aset.remove(item)``                                        Removes item from the set
-                     ``pop``                    ``aset.pop()``                        Removes an arbitrary element from the set
-                   ``clear``                  ``aset.clear()``                                Removes all elements from the set
-    ======================== ================================= ================================================================
+    ======================== =================================== ================================================================
+             **Method Name**                             **Use**                                                  **Explanation**
+    ======================== =================================== ================================================================
+                   ``union``          ``a_set.union(other_set)``               Returns a new set with all elements from both sets
+            ``intersection``   ``a_set.intersection(other_set)``   Returns a new set with only those elements common to both sets
+              ``difference``     ``a_set.difference(other_set)``    Returns a new set with all items from first set not in second
+                ``issubset``       ``a_set.issubset(othe_rset)``            Asks whether all elements of one set are in the other
+                     ``add``                 ``a_set.add(item)``                                             Adds item to the set
+                  ``remove``              ``a_set.remove(item)``                                        Removes item from the set
+                     ``pop``                     ``a_set.pop()``                        Removes an arbitrary element from the set
+                   ``clear``                   ``a_set.clear()``                                Removes all elements from the set
+    ======================== =================================== ================================================================
 
 
 ::
 
-    >>> mySet
-    {False, 4.5, 3, 6, 'cat'}
-    >>> yourSet = {99,3,100}
-    >>> mySet.union(yourSet)
-    {False, 4.5, 3, 100, 6, 'cat', 99}
-    >>> mySet | yourSet
-    {False, 4.5, 3, 100, 6, 'cat', 99}
-    >>> mySet.intersection(yourSet)
+    >>> my_set
+    {False, 3, 4.5, 6, 'cat'}
+    >>> your_set = {99, 3, 100}
+    >>> my_set.union(your_set)
+    {False, 3, 4.5, 'cat', 6, 99, 100}
+    >>> my_set | your_set
+    {False, 3, 4.5, 'cat', 6, 99, 100}
+    >>> my_set.intersection(your_set)
     {3}
-    >>> mySet & yourSet
+    >>> my_set & your_set
     {3}
-    >>> mySet.difference(yourSet)
-    {False, 4.5, 6, 'cat'}
-    >>> mySet - yourSet
-    {False, 4.5, 6, 'cat'}
-    >>> {3,100}.issubset(yourSet)
+    >>> my_set.difference(your_set)
+    {False, 'cat', 4.5, 6}
+    >>> my_set - your_set
+    {False, 'cat', 4.5, 6}
+    >>> {3, 100}.issubset(your_set)
     True
-    >>> {3,100}<=yourSet
+    >>> {3, 100} <= your_set
     True
-    >>> mySet.add("house")
-    >>> mySet
-    {False, 4.5, 3, 6, 'house', 'cat'}
-    >>> mySet.remove(4.5)
-    >>> mySet
-    {False, 3, 6, 'house', 'cat'}
-    >>> mySet.pop()
+    >>> my_set.add("house")
+    >>> my_set
+    {False, 'house', 3, 4.5, 6, 'cat'}
+    >>> my_set.remove(4.5)
+    >>> my_set
+    {False, 'house', 3, 6, 'cat'}
+    >>> my_set.pop()
     False
-    >>> mySet
-    {3, 6, 'house', 'cat'}
-    >>> mySet.clear()
-    >>> mySet
+    >>> my_set
+    {'house', 3, 6, 'cat'}
+    >>> my_set.clear()
+    >>> my_set
     set()
-    >>>
+    >>> 
 
 Our final Python collection is an unordered structure called a
 **dictionary**. Dictionaries are collections of associated pairs of
@@ -561,10 +558,10 @@ comma-delimited key:value pairs enclosed in curly braces. For example,
 
 ::
 
-    >>> capitals = {'Iowa':'DesMoines','Wisconsin':'Madison'}
+    >>> capitals = {"Iowa": "Des Moines", "Wisconsin": "Madison"}
     >>> capitals
-    {'Wisconsin': 'Madison', 'Iowa': 'DesMoines'}
-    >>>
+    {'Iowa': 'Des Moines', 'Wisconsin': 'Madison'}
+    >>> 
 
 We can manipulate a dictionary by accessing a value via its key or by
 adding another key-value pair. The syntax for access looks much like a
@@ -574,21 +571,21 @@ use the key value. To add a new value is similar.
 .. activecode:: intro_7
     :caption: Using a Dictionary
 
-    capitals = {'Iowa':'DesMoines','Wisconsin':'Madison'}
-    print(capitals['Iowa'])
-    capitals['Utah']='SaltLakeCity'
+    capitals = {"Iowa": "Des Moines", "Wisconsin": "Madison"}
+    print(capitals["Iowa"])
+    capitals["Utah"] = "Salt Lake City"
     print(capitals)
-    capitals['California']='Sacramento'
+    capitals["California"] = "Sacramento"
     print(len(capitals))
     for k in capitals:
-       print(capitals[k]," is the capital of ", k)
+        print(capitals[k],"is the capital of", k)
 
-It is important to note that the dictionary is maintained in no
+It is important to note that prior to Python 3.6 dictionaries were maintained in no
 particular order with respect to the keys. The first pair added
-(``'Utah':`` ``'SaltLakeCity'``) was placed first in the dictionary and
-the second pair added (``'California':`` ``'Sacramento'``) was placed
+(``"Utah":`` ``"Salt Lake City"``) would be placed first in the dictionary and
+the second pair added (``"California":`` ``"Sacramento"``) would be placed
 last. The placement of a key is dependent on the idea of “hashing,”
-which will be explained in more detail in Chapter 4. We also show the
+which will be explained in more detail in Chapter 4. Python dictionaries maintain the order since Python 3.6. We also show the
 length function performing the same role as with previous collections.
 
 Dictionaries have both methods and operators. :ref:`Table 7 <tab_dictopers>` and
@@ -604,35 +601,35 @@ specify a return value instead.
 
 .. table:: **Table 7: Operators Provided by Dictionaries in Python**
 
-    ===================== ================== =====================================================================
-             **Operator**            **Use**                                                       **Explanation**
-    ===================== ================== =====================================================================
-                   ``[]``      ``myDict[k]``       Returns the value associated with ``k``, otherwise its an error
-                   ``in``   ``key in adict``   Returns ``True`` if key is in the   dictionary, ``False`` otherwise
-                  ``del`` del ``adict[key]``                                Removes the entry from the  dictionary
-    ===================== ================== =====================================================================
+    ===================== =================== =====================================================================
+             **Operator**             **Use**                                                       **Explanation**
+    ===================== =================== =====================================================================
+                   ``[]``       ``a_dict[k]``       Returns the value associated with ``k``, otherwise its an error
+                   ``in``   ``key in a_dict``   Returns ``True`` if key is in the   dictionary, ``False`` otherwise
+                  ``del`` del ``a_dict[key]``                                 Removes the entry from the dictionary
+    ===================== =================== =====================================================================
 
 
 
 ::
 
-    >>> phoneext={'david':1410,'brad':1137}
-    >>> phoneext
-    {'brad': 1137, 'david': 1410}
-    >>> phoneext.keys()
-    dict_keys(['brad', 'david'])
-    >>> list(phoneext.keys())
-    ['brad', 'david']
-    >>> phoneext.values()
-    dict_values([1137, 1410])
-    >>> list(phoneext.values())
-    [1137, 1410]
-    >>> phoneext.items()
-    dict_items([('brad', 1137), ('david', 1410)])
-    >>> list(phoneext.items())
-    [('brad', 1137), ('david', 1410)]
-    >>> phoneext.get("kent")
-    >>> phoneext.get("kent","NO ENTRY")
+    >>> phone_ext={"david": 1410, "brad": 1137, "roman": 1171}
+    >>> phone_ext
+    {'david': 1410, 'brad': 1137, 'roman': 1171}
+    >>> phone_ext.keys()
+    dict_keys(['david', 'brad', 'roman'])
+    >>> list(phone_ext.keys())
+    ['david', 'brad', 'roman']
+    >>> phone_ext.values()
+    dict_values([1410, 1137, 1171])
+    >>> list(phone_ext.values())
+    [1410, 1137, 1171]
+    >>> phone_ext.items()
+    dict_items([('david', 1410), ('brad', 1137), ('roman', 1171)])
+    >>> list(phone_ext.items())
+    [('david', 1410), ('brad', 1137), ('roman', 1171)]
+    >>> phone_ext.get("kent")
+    >>> phone_ext.get("kent", "NO ENTRY")
     'NO ENTRY'
     >>>
 
@@ -640,15 +637,15 @@ specify a return value instead.
 
 .. table:: **Table 8: Methods Provided by Dictionaries in Python**
 
-    ======================== ==================== ===============================================================
-             **Method Name**              **Use**                                                 **Explanation**
-    ======================== ==================== ===============================================================
-                    ``keys``     ``adict.keys()``       Returns the keys of the dictionary in a dict_keys object
-                  ``values``   ``adict.values()``   Returns the values of the dictionary in a dict_values object
-                   ``items``    ``adict.items()``             Returns the key-value pairs in a dict_items object
-                     ``get``     ``adict.get(k)``     Returns the value associated with ``k``, ``None`` otherwise
-                     ``get`` ``adict.get(k,alt)``      Returns the value associated with ``k``, ``alt`` otherwise
-    ======================== ==================== ===============================================================
+    ======================== ====================== ==============================================================
+             **Method Name**                **Use**                                                **Explanation**
+    ======================== ====================== ==============================================================
+                    ``keys``      ``a_dict.keys()``       Returns the keys of the dictionary in a dict_keys object
+                  ``values``    ``a_dict.values()``   Returns the values of the dictionary in a dict_values object
+                   ``items``     ``a_dict.items()``             Returns the key-value pairs in a dict_items object
+                     ``get``      ``a_dict.get(k)``    Returns the value associated with ``k``, ``None`` otherwise
+                     ``get`` ``a_dict.get(k, alt)``     Returns the value associated with ``k``, ``alt`` otherwise
+    ======================== ====================== ==============================================================
 
 
 .. note::
