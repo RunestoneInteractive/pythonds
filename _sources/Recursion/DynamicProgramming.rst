@@ -50,7 +50,7 @@ coins needed to make change for the original amount minus five cents, or
 a dime plus the number of coins needed to make change for the original
 amount minus ten cents, and so on. So the number of coins needed to make
 change for the original amount can be computed according to the
-following: 
+following:
 
 .. math::
 
@@ -149,20 +149,20 @@ algorithm to incorporate our table lookup scheme.
     :caption: Recursively Counting Coins with Table Lookup
     :nocodelens:
 
-   def make_change_2(coin_value_list, change, known_results):
-      min_coins = change
-      if change in coin_value_list:
-         known_results[change] = 1
-         return 1
-      elif known_results[change] > 0:
-         return known_results[change]
-      else:
-         for i in [c for c in coin_value_list if c <= change]:
-               num_coins = 1 + make_change_2(coin_value_list, change - i, known_results)
-               if num_coins < min_coins:
-                  min_coins = num_coins
-               known_results[change] = min_coins
-      return min_coins
+    def make_change_2(coin_value_list, change, known_results):
+        min_coins = change
+        if change in coin_value_list:
+            known_results[change] = 1
+            return 1
+        elif known_results[change] > 0:
+            return known_results[change]
+        else:
+            for i in [c for c in coin_value_list if c <= change]:
+                num_coins = 1 + make_change_2(coin_value_list, change - i, known_results)
+                if num_coins < min_coins:
+                    min_coins = num_coins
+                known_results[change] = min_coins
+        return min_coins
 
     print(make_change_2([1, 5, 10, 25], 63, [0] * 64))
 
@@ -218,7 +218,7 @@ minimum number of coins for 11 cents.
 .. figure:: Figures/changeTable.png
    :align: center
    :alt: image
-       
+
    Figure 4: Minimum Number of Coins Needed to Make Change
 
 .. _fig_eleven:
@@ -269,7 +269,7 @@ for each entry in the ``min_coins`` table. If we know the last coin
 added, we can simply subtract the value of the coin to find a previous
 entry in the table that tells us the last coin we added to make that
 amount. We can keep tracing back through the table until we get to the
-beginning. 
+beginning.
 
 :ref:`ActiveCode 2 <lst_dpremember>` shows the ``make_change_3`` algorithm
 modified to keep track of the coins used, along with a function
@@ -334,7 +334,7 @@ array also contains 21, giving us the three 21 cent pieces.
 
 
     main()
-        
+
 
 
 

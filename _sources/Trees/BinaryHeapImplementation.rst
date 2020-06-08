@@ -75,7 +75,7 @@ the constructor will do is initialize the list.
 **Listing 1**
 
 ::
-    
+
     class BinaryHeap:
         def __init__(self):
             self._heap = []
@@ -142,8 +142,8 @@ properly.
     def insert(self, item):
         self._heap.append(item)
         self._perc_up(len(self._heap) - 1)
-        
-        
+
+
 
 With the ``insert`` method properly defined, we can now look at the
 ``delete`` method. Since the heap property requires that the root of the
@@ -155,13 +155,13 @@ by taking the last item in the list and moving it to the root position.
 Moving the last item maintains our heap structure property. However, we
 have probably destroyed the heap order property of our binary heap.
 Second, we will restore the heap order property by pushing the new root
-node down the tree to its proper position. :ref:`Figure 3 <fig__perc_down>` shows
+node down the tree to its proper position. :ref:`Figure 3 <fig_perc_down>` shows
 the series of swaps needed to move the new root node to its proper
 position in the heap.
 
-.. _fig_percdown:
+.. _fig_perc_down:
 
-.. figure:: Figures/_perc_down.png
+.. figure:: Figures/percDown.png
    :align: center
    :alt: image
 
@@ -277,7 +277,7 @@ list representation of this series of swaps as shown in
           i = 2  [9, 5, 6, 2, 3]
           i = 1  [9, 2, 6, 5, 3]
           i = 0  [2, 3, 6, 5, 9]
-          
+
 
 The complete binary heap implementation can be seen in ActiveCode 1.
 
@@ -286,7 +286,7 @@ The complete binary heap implementation can be seen in ActiveCode 1.
 .. activecode:: completeheap
     :caption: The Complete Binary Heap Example
     :hidecode:
-   
+
     class BinaryHeap:
         def __init__(self):
             self._heap = []
@@ -354,7 +354,7 @@ The complete binary heap implementation can be seen in ActiveCode 1.
 
     while not a_heap.is_empty():
         print(a_heap.delete())
-   
+
 
 The assertion that we can build the heap in :math:`O(n)` may seem a
 bit mysterious at first, and a proof is beyond the scope of this book.
