@@ -41,7 +41,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Problem Solving with Algorithms and Data Structures'
+project = 'Problem Solving with Algorithms and Data Structures - 3rd Edition'
 copyright = '2014 Brad Miller, David Ranum'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -123,7 +123,7 @@ html_theme = 'sphinx_bootstrap'
 #html_theme_options = {'nosidebar': 'true'}
 html_theme_options = {
     # Navigation bar title. (Default: ``project`` value)
-    'navbar_title': "Problem Solving with Algorithms and Data Structures",
+    'navbar_title': "Problem Solving with Algorithms and Data Structures 3rd edition",
 
     # Tab name for entire site. (Default: "Site")
     'navbar_site_name': "Chapters",
@@ -169,10 +169,10 @@ html_theme_path = [pkg_resources.resource_filename('runestone', 'common/project_
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = 'Problem Solving with Algorithms and Data Structures'
+html_title = 'Problem Solving with Algorithms and Data Structures 3rd edition'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-html_short_title ='Problem Solving with Algorithms and Data Structures'
+html_short_title ='Problem Solving with Algorithms and Data Structures 3rd edition'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
