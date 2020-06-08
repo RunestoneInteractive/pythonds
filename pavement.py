@@ -8,7 +8,7 @@ import pkg_resources
 from runestone import get_master_url
 
 ######## CHANGE THIS ##########
-project_name = "pythonds"
+project_name = "pythonds3"
 ###############################
 
 # if you want to override the master url do it here.  Otherwise setting it to None
@@ -49,7 +49,7 @@ options(
             'dynamic_pages': dynamic_pages,
             'python3': 'true',
             'dburl': 'postgresql://bmiller@localhost/runestone',
-            'basecourse': 'pythonds',
+            'basecourse': 'pythonds3',
             'downloads_enabled': 'false',
             'enable_chatcodes': 'false',
             'allow_pairs': 'false'
