@@ -38,6 +38,7 @@ There is a wonderful `collection of YouTube videos <https://www.youtube.com/user
    SortSearch/toctree.rst
    Trees/toctree.rst
    Graphs/toctree.rst
+   Advanced/toctree.rst
 
 Acknowledgements
 ::::::::::::::::
