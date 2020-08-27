@@ -21,7 +21,7 @@ the rear of the deque is at position 0 in the list.
 ::
 
     class Deque:
-        """Queue implementation as a list"""
+        """Deque implementation as a list"""
 
         def __init__(self):
             """Create new deque"""
