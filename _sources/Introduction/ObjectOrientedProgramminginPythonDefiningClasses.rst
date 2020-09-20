@@ -14,7 +14,7 @@ data that is needed to solve the problem.
 
 Remember that we use abstract data types to provide the logical
 description of what a data object looks like (its state) and what it can
-do (its methods). By building a class that implements an abstract data
+do (its **methods**). By building a class that implements an abstract data
 type, a programmer can take advantage of the abstraction process and at
 the same time provide the details necessary to actually use the
 abstraction in a program. Whenever we want to implement an abstract data
@@ -27,8 +27,7 @@ A very common example to show the details of implementing a user-defined
 class is to construct a class to implement the abstract data type
 ``Fraction``. We have already seen that Python provides a number of
 numeric classes for our use. There are times, however, that it would be
-most appropriate to be able to create data objects that “look like”
-fractions.
+most appropriate to be able to create data objects that look like fractions to the user.
 
 A fraction such as :math:`\frac {3}{5}` consists of two parts. The top
 value, known as the numerator, can be any integer. The bottom value,
@@ -61,8 +60,8 @@ that all classes should provide is the constructor. The constructor
 defines the way in which data objects are created. To create a
 ``Fraction`` object, we will need to provide two pieces of data, the
 numerator and the denominator. In Python, the constructor method is
-always called __init__ (two underscores before and after ``init``)
-and is shown in :ref:`Listing 2 <lst_pyconstructor>`.
+always called __init__ (two underscores before and after ``init``),
+as shown in :ref:`Listing 2 <lst_pyconstructor>`.
 
 .. _lst_pyconstructor:
 
@@ -83,7 +82,7 @@ be used as a reference back to the object itself. It must always be the
 first formal parameter; however, it will never be given an actual
 parameter value upon invocation. As described earlier, fractions require
 two pieces of state data, the numerator and the denominator. The
-notation ``self.num`` in the constructor defines the ``fraction`` object
+notation ``self.num`` in the constructor defines the ``Fraction`` object
 to have an internal data object called ``num`` as part of its state.
 Likewise, ``self.den`` creates the denominator. The values of the two
 formal parameters are initially assigned to the state, allowing the new
@@ -130,9 +129,9 @@ want.
 There are two ways we can solve this problem. One is to define a method
 called ``show`` that will allow the ``Fraction`` object to print itself
 as a string. We can implement this method as shown in
-:ref:`Listing 3 <lst_showmethod>`. If we create a ``Fraction`` object as before, we
-can ask it to show itself, in other words, print itself in the proper
-format. Unfortunately, this does not work in general. In order to make
+:ref:`Listing 3 <lst_showmethod>`. If we create a ``Fraction`` object as before
+we can ask it to show itself (in other words, print itself  in the proper format).
+Unfortunately, this does not work in general. In order to make
 printing work properly, we need to tell the ``Fraction`` class how to
 convert itself into a string. This is what the ``print`` function needs
 in order to do its job.
@@ -159,7 +158,7 @@ In Python, all classes have a set of standard methods that are provided
 but may not work properly. One of these, ``__str__``, is the method to
 convert an object into a string. The default implementation for this
 method is to return the instance address string as we have already seen.
-What we need to do is provide a “better” implementation for this method.
+What we need to do is provide a better implementation for this method.
 We will say that this implementation **overrides** the previous one, or
 that it redefines the method’s behavior.
 
@@ -198,7 +197,7 @@ various ways that this function is used.
 We can override many other methods for our new ``Fraction`` class. Some
 of the most important of these are the basic arithmetic operations. We
 would like to be able to create two ``Fraction`` objects and then add
-them together using the standard “+” notation. At this point, if we try
+them together using the standard ``+`` notation. At this point, if we try
 to add two fractions, we get the following:
 
 ::
@@ -212,8 +211,7 @@ to add two fractions, we get the following:
     >>> 
 
 If you look closely at the error, you see that the problem is that the
-“+” operator does not understand the ``Fraction`` operands.
-
+``+`` operator does not understand the ``Fraction`` operands.
 We can fix this by providing the ``Fraction`` class with a method that
 overrides the addition method. In Python, this method is called
 ``__add__`` and it requires two parameters. The first, ``self``, is
@@ -231,7 +229,7 @@ would ask the ``Fraction`` object ``f1`` to add the ``Fraction`` object
 Two fractions must have the same denominator to be added. The easiest
 way to make sure they have the same denominator is to simply use the
 product of the two denominators as a common denominator so that
-:math:`\frac {a}{b} + \frac {c}{d} = \frac {ad}{bd} + \frac {cb}{bd} = \frac{ad+cb}{bd}`
+:math:`\frac {a}{b} + \frac {c}{d} = \frac {ad}{bd} + \frac {cb}{bd} = \frac{ad+cb}{bd}`.
 The implementation is shown in :ref:`Listing 5 <lst_addmethod>`. The addition
 function returns a new ``Fraction`` object with the numerator and
 denominator of the sum. We can use this method by writing a standard
@@ -245,7 +243,6 @@ addition, and then printing our result.
 .. sourcecode:: python
 
    def __add__(self, other_fraction):
-
         new_num = self.num * other_fraction.den + \
                     self.den * other_fraction.num
         new_den = self.den * other_fraction.den
@@ -271,16 +268,16 @@ fractions. This function will need to look for the greatest common
 divisor, or GCD. We can then divide the numerator and the denominator by
 the GCD and the result will be reduced to lowest terms.
 
-The best-known algorithm for finding a greatest common divisor is
-Euclid’s Algorithm, which will be discussed in detail in Chapter 8.
-Euclid’s Algorithm states that the greatest common divisor of two
+The best-known algorithm for finding the greatest common divisor is
+Euclid’s algorithm, which will be discussed in detail in Chapter 8.
+It states that the greatest common divisor of two
 integers :math:`m` and :math:`n` is :math:`n` if :math:`n`
 divides :math:`m` evenly. However, if :math:`n` does not divide
 :math:`m` evenly, then the answer is the greatest common divisor of
 :math:`n` and the remainder of :math:`m` divided by :math:`n`. We
 will simply provide an iterative implementation here (see
-:ref:`ActiveCode 1 <lst_gcd>`). Note that this implementation of the GCD algorithm only
-works when the denominator is positive. This is acceptable for our
+:ref:`ActiveCode 1 <lst_gcd>`). Note that this implementation of the GCD algorithm
+works only when the denominator is positive. This is acceptable for our
 fraction class because we have said that a negative fraction will be
 represented by a negative numerator.
 
@@ -313,14 +310,19 @@ the bottom by 2 creates a new fraction, :math:`3/4` (see
 
     def __add__(self, other_fraction):
         new_num = self.num * other_fraction.den + \
-                     self.den*other_fraction.num
+                     self.den * other_fraction.num
         new_den = self.den * other_fraction.den
         common = gcd(new_num, new_den)
-        return Fraction(
-                        new_num // common,
-                        new_den // common
-                        )
+        return Fraction(new_num // common, new_den // common)
 
+Our ``Fraction`` object now has two very useful methods as depicted in :ref:`Figure 6 <fig_fraction2>`.
+
+.. _fig_fraction2:
+
+.. figure:: Figures/fraction2.png
+   :align: center
+
+   Figure 6: An Instance of the ``Fraction`` Class with Two Methods
 
 ::
 
@@ -331,16 +333,7 @@ the bottom by 2 creates a new fraction, :math:`3/4` (see
     3/4
     >>>
 
-.. _fig_fraction2:
-
-.. figure:: Figures/fraction2.png
-   :align: center
-
-   Figure 6: An Instance of the ``Fraction`` Class with Two Methods
-
-
-Our ``Fraction`` object now has two very useful methods and looks
-like :ref:`Figure 6 <fig_fraction2>`. An additional group of methods that we need to
+An additional group of methods that we need to
 include in our example ``Fraction`` class will allow two fractions to
 compare themselves to one another. Assume we have two ``Fraction``
 objects, ``f1`` and ``f2``. ``f1==f2`` will only be ``True`` if they are
@@ -356,9 +349,10 @@ implementation. This is called **shallow equality** (see
 
    Figure 7: Shallow Equality Versus Deep Equality
 
-We can create **deep equality** (see :ref:`Figure 7 <fig_fraction3>`)–equality by the
+We can create **deep equality**–equality by the
 same value, not the same reference–by overriding the ``__eq__``
-method. The ``__eq__`` method is another standard method available in
+method (see :ref:`Figure 7 <fig_fraction3>`).
+The ``__eq__`` method is another standard method available in
 any class. The ``__eq__`` method compares two objects and returns
 ``True`` if their values are the same, ``False`` otherwise.
 
@@ -412,8 +406,8 @@ methods as exercises.
            new_num = self.num * other_fraction.den \
            + self.den * other_fraction.num
            new_den = self.den * other_fraction.den
-           common = gcd(new_num, new_den)
-           return Fraction(new_num // common, new_den // common)
+           cmmn = gcd(new_num, new_den)
+           return Fraction(new_num // cmmn, new_den // cmmn)
 
        def show(self):
            print("{:d}/{:d}".format(self.num, self.den))
@@ -441,7 +435,7 @@ Inheritance: Logic Gates and Circuits
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Our final section will introduce another important aspect of
-object-oriented programming. **Inheritance** is the ability for one
+object-oriented programming. **Inheritance** is the ability of one
 class to be related to another class in much the same way that people
 can be related to one another. Children inherit characteristics from
 their parents. Similarly, Python child classes can inherit
@@ -450,10 +444,10 @@ often referred to as **subclasses** and **superclasses**.
 
 :ref:`Figure 8 <fig_inherit1>` shows the built-in Python collections and their
 relationships to one another. We call a relationship structure such as
-this an **inheritance hierarchy**. For example, the list is a child of
+this an **inheritance hierarchy**. For example, the list is a *child* of
 the sequential collection. In this case, we call the list the child and
-the sequence the parent (or subclass list and superclass sequence). This
-is often referred to as an ``IS-A Relationship`` (the list **IS-A**
+the *sequence* the parent (or *subclass list* and *superclass sequence*). This
+is often referred to as an **Is-a relationship** (the list **Is-a**
 sequential collection). This implies that lists inherit important
 characteristics from sequences, namely the ordering of the underlying
 data and operations such as concatenation, repetition, and indexing.
@@ -466,7 +460,7 @@ data and operations such as concatenation, repetition, and indexing.
    Figure 8: An Inheritance Hierarchy for Python Collections
 
 
-Lists, tuples, and strings are all types of sequential collections. They
+Lists, tuples, and strings are all examples of sequential collections. They
 all inherit common data organization and operations. However, each of
 them is distinct based on whether the data is homogeneous and whether
 the collection is immutable. The children all gain from their parents
@@ -482,7 +476,7 @@ representations.
 To explore this idea further, we will construct a **simulation**, an
 application to simulate digital circuits. The basic building block for
 this simulation will be the logic gate. These electronic switches
-represent boolean algebra relationships between their input and their
+represent Boolean algebra relationships between their input and their
 output. In general, gates have a single output line. The value of the
 output is dependent on the values given on the input lines.
 
@@ -493,7 +487,7 @@ both of the input lines is 0, the result is 0. OR gates also have two
 input lines and produce a 1 if one or both of the input values is a 1.
 In the case where both input lines are 0, the result is 0.
 
-NOT gates differ from the other two gates in that they only have a
+NOT gates differ from the other two gates in that they have only a
 single input line. The output value is simply the opposite of the input
 value. If 0 appears on the input, 1 is produced on the output.
 Similarly, 1 produces 0. :ref:`Figure 9 <fig_truthtable>` shows how each of these
@@ -585,13 +579,24 @@ extend a hierarchy that currently exists and provide the specific
 functions that the hierarchy needs to use the new class is extremely
 important for reusing existing code.
 
-We categorized the logic gates based on the number of input lines. The
-AND gate has two input lines. The OR gate also has two input lines. NOT
-gates have one input line. The ``BinaryGate`` class will be a subclass
-of ``LogicGate`` and will add two input lines. The ``UnaryGate`` class
-will also subclass ``LogicGate`` but will have only a single input line.
-In computer circuit design, these lines are sometimes called “pins” so
-we will use that terminology in our implementation.
+We categorized the logic gates based on the number of input lines,
+as shown in :ref:`Figure 11 <fig_gates>`: the AND gate and OR gate both have two input lines,
+whereas the NOT gate has only one. ``LogicGate`` has two subclasses: ``BinaryGate``,
+which will add two input lines, and ``UnaryGate``, which will have only a single input line.
+In computer circuit design, these lines
+are sometimes called *pins*, so we will use that terminology in our
+implementation.
+
+:ref:`Listing 9 <lst_logicgateclass>` and :ref:`Listing 10 <lst_logicgateclass>` implement these two
+classes. The constructors in both of these classes start with an
+explicit call to the constructor of the parent class using the parent's ``__init__``
+method. When creating an instance of the ``BinaryGate`` class, we
+first want to initialize any data items that are inherited from
+``LogicGate``. In this case, that means the label for the gate. The
+constructor then goes on to add the two input lines (``pin_a`` and
+``pin_b``). This is a very common pattern that you should always use when
+building class hierarchies. Child class constructors need to call parent
+class constructors and then move on to their own distinguishing data.
 
 .. _lst_binarygateclass:
 
@@ -630,29 +635,17 @@ we will use that terminology in our implementation.
 
 
 
-:ref:`Listing 9 <lst_logicgateclass>` and :ref:`Listing 10 <lst_logicgateclass>` implement these two
-classes. The constructors in both of these classes start with an
-explicit call to the constructor of the parent class using the parent's ``__init__``
-method. When creating an instance of the ``BinaryGate`` class, we
-first want to initialize any data items that are inherited from
-``LogicGate``. In this case, that means the label for the gate. The
-constructor then goes on to add the two input lines (``pin_a`` and
-``pin_b``). This is a very common pattern that you should always use when
-building class hierarchies. Child class constructors need to call parent
-class constructors and then move on to their own distinguishing data.
-
-Python
-also has a function called ``super`` which can be used in place of explicitly
-naming the parent class.  This is a more general mechanism, and is widely
-used, especially when a class has more than one parent.  But, this is not something
-we are going to discuss in this introduction.  In our example above
+Python also has a function called ``super`` which can be used in place of explicitly
+naming the parent class.  This is a more general mechanism and is widely
+used, especially when a class has more than one parent. In our example above,
 ``LogicGate.__init__(self, lbl)`` could be replaced with ``super().__init__(lbl)``, 
 ``super(UnaryGate, self).__init__(lbl)``, or ``super().__init__("UnaryGate", lbl)``.
+The specific details are beyond the scope of this text.
 
 The only behavior that the ``BinaryGate`` class adds is the ability to
 get the values from the two input lines. Since these values come from
-some external place, we will simply ask the user via an input statement
-to provide them. The same implementation occurs for the ``UnaryGate``
+some external place, we will simply ask the user to provide them via an input statement.
+The same implementation occurs for the ``UnaryGate``
 class except that there is only one input line.
 
 Now that we have a general class for gates depending on the number of
@@ -663,6 +656,13 @@ constructor calls upon the parent class constructor (``BinaryGate``),
 which in turn calls its parent class constructor (``LogicGate``). Note
 that the ``AndGate`` class does not provide any new data since it
 inherits two input lines, one output line, and a label.
+
+The only thing ``AndGate`` needs to add is the specific behavior that
+performs the Boolean operation that was described earlier. This is the
+place where we can provide the ``perform_gate_logic`` method. For an AND
+gate, this method first must get the two input values and then only
+return 1 if both input values are 1. The complete class is shown in
+:ref:`Listing 11 <lst_andgateclass>`.
 
 .. _lst_andgateclass:
 
@@ -681,13 +681,6 @@ inherits two input lines, one output line, and a label.
                 return 1
             else:
                 return 0
-
-The only thing ``AndGate`` needs to add is the specific behavior that
-performs the boolean operation that was described earlier. This is the
-place where we can provide the ``perform_gate_logic`` method. For an AND
-gate, this method first must get the two input values and then only
-return 1 if both input values are 1. The complete class is shown in
-:ref:`Listing 11 <lst_andgateclass>`.
 
 We can show the ``AndGate`` class in action by creating an instance and
 asking it to compute its output. The following session shows an
@@ -739,10 +732,10 @@ do this, we will implement a new class called ``Connector``.
 The ``Connector`` class will not reside in the gate hierarchy. It will,
 however, use the gate hierarchy in that each connector will have two
 gates, one on either end (see :ref:`Figure 12 <fig_connector>`). This relationship is
-very important in object-oriented programming. It is called the **HAS-A
-Relationship**. Recall earlier that we used the phrase “IS-A
-Relationship” to say that a child class is related to a parent class,
-for example ``UnaryGate`` IS-A ``LogicGate``.
+very important in object-oriented programming. It is called the **Has-a
+relationship**. Recall earlier that we used the phrase *Is-a
+relationship* to say that a child class is related to a parent class,
+for example ``UnaryGate`` Is-a ``LogicGate``.
 
 .. _fig_connector:
 
@@ -751,12 +744,12 @@ for example ``UnaryGate`` IS-A ``LogicGate``.
 
    Figure 12: A Connector Connects the Output of One Gate to the Input of Another
 
-Now, with the ``Connector`` class, we say that a ``Connector`` HAS-A
-``LogicGate`` meaning that connectors will have instances of the
+Now, with the ``Connector`` class, we say that a ``Connector`` Has-a
+``LogicGate``, meaning that connectors will have instances of the
 ``LogicGate`` class within them but are not part of the hierarchy. When
 designing classes, it is very important to distinguish between those
-that have the IS-A relationship (which requires inheritance) and those
-that have HAS-A relationships (with no inheritance).
+that have the Is-a relationship (which requires inheritance) and those
+that have Has-a relationships (with no inheritance).
 
 :ref:`Listing 12 <lst_Connectorclass>` shows the ``Connector`` class. The two gate
 instances within each connector object will be referred to as the
