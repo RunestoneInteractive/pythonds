@@ -12,7 +12,7 @@ most useful for the given circumstance.
 
 For iteration, Python provides a standard ``while`` statement and a very
 powerful ``for`` statement. The while statement repeats a body of code
-as long as a condition is true. For example,
+as long as a condition evaluates to ``True``. For example,
 
 ::
 
@@ -28,13 +28,13 @@ as long as a condition is true. For example,
     Hello, world
     Hello, world
 
-prints out the phrase “Hello, world” five times. The condition on the
+prints out the phrase ``Hello, world`` five times. The condition on the
 ``while`` statement is evaluated at the start of each repetition. If the
-condition is ``True``, the body of the statement will execute. It is
+condition evaluates to ``True``, the body of the statement will execute. It is
 easy to see the structure of a Python ``while`` statement due to the
 mandatory indentation pattern that the language enforces.
 
-The ``while`` statement is a very general purpose iterative structure
+The ``while`` statement is a very general-purpose iterative structure
 that we will use in a number of different algorithms. In many cases, a
 compound condition will control the iteration. A fragment such as
 
@@ -45,7 +45,7 @@ compound condition will control the iteration. A fragment such as
 
 would cause the body of the statement to be executed only in the case
 where both parts of the condition are satisfied. The value of the
-variable ``counter`` would need to be less than or equal to 10 and the
+variable ``counter`` would need to be less than or equal to 10, and the
 value of the variable ``done`` would need to be ``False`` (``not False``
 is ``True``) so that ``True and True`` results in ``True``.
 
@@ -90,7 +90,7 @@ will return a range object representing the sequence 0, 1, 2, 3, 4 and each
 value will be assigned to the variable ``item``. This value is then
 squared and printed.
 
-The other very useful version of this iteration structure is used to
+Another useful version of this iteration structure is used to
 process each character of a string. The following code fragment iterates
 over a list of strings and for each string processes each character by
 appending it to a list. The result is a list of all the letters in all
@@ -108,8 +108,8 @@ of the words.
 
 Selection statements allow programmers to ask questions and then, based
 on the result, perform different actions. Most programming languages
-provide two versions of this useful construct: the ``if..else`` and the
-``if``. A simple example of a binary selection uses the ``if..else``
+provide two versions of this useful construct: the ``if...else`` and the
+``if``. A simple example of a binary selection uses the ``if...else``
 statement.
 
 ::
@@ -153,7 +153,7 @@ a score for a computer science test.
 This fragment will classify a value called ``score`` by printing the
 letter grade earned. If the score is greater than or equal to 90, the
 statement will print ``A``. If it is not (``else``), the next question
-is asked. If the score is greater than or equal to 80 then it must be
+is asked. If the score is greater than or equal to 80, then it must be
 between 80 and 89 since the answer to the first question was false. In
 this case print ``B`` is printed. You can see that the Python
 indentation pattern helps to make sense of the association between
@@ -179,7 +179,7 @@ conditions fail.
     ...     print("F")
     >>> 
 
-Python also has a single way selection construct, the ``if`` statement.
+Python also has a single-way selection construct, the ``if`` statement.
 With this statement, if the condition is true, an action is performed.
 In the case where the condition is false, processing simply continues on
 to the next statement after the ``if``. For example, the following
@@ -240,7 +240,9 @@ Using a list comprehension, we can do this in one step as
 
 The variable ``x`` takes on the values 1 through 10 as specified by the
 ``for`` construct. The value of ``x * x`` is then computed and added to
-the list that is being constructed. The general syntax for a list
+the list that is being constructed.
+
+The general syntax for a list
 comprehension also allows a selection criteria to be added so that only
 certain items get added. For example,
 
@@ -251,8 +253,8 @@ certain items get added. For example,
     [1, 9, 25, 49, 81]
     >>>
 
-This list comprehension constructed a list that only contained the
-squares of the odd numbers in the range from 1 to 10. Any sequence that
+This list comprehension constructs a list that contains the
+squares of only the odd numbers in the range from 1 to 10. Any sequence that
 supports iteration can be used within a list comprehension to construct
 a new list.
 

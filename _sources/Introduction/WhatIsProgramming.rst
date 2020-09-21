@@ -35,7 +35,7 @@ digits. In order to give these strings meaning, we need to have **data
 types**. Data types provide an interpretation for this binary data so
 that we can think about the data in terms that make sense with respect
 to the problem being solved. These low-level, built-in data types
-(sometimes called the primitive data types) provide the building blocks
+(sometimes called the *primitive* data types) provide the building blocks
 for algorithm development.
 
 For example, most programming languages provide a data type for
