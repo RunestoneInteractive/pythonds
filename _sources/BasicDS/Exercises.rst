@@ -30,7 +30,7 @@ Programming Exercises
    dequeue have :math:`O(1)` performance *on average*. In this case it
    means that most of the time enqueue and dequeue will be
    :math:`O(1)` except in one particular circumstance where dequeue
-   will be :math:`O(n)`.
+   will be :math:`O(n)`. Create an implementation of a queue that would have an average performance of :math:`O(1)` for enqueue and dequeue operations.
 
 #. Consider a real life situation. Formulate a question and then design
    a simulation that can help to answer it. Possible situations include:
@@ -144,6 +144,3 @@ Programming Exercises
    node (commonly called back). The head reference also contains two
    references, one to the first node in the linked list and one to the
    last. Code this implementation in Python.
-
-#. Create an implementation of a queue that would have an average performance of
-   O(1) for enqueue and dequeue operations.
