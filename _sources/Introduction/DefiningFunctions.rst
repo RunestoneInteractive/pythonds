@@ -35,7 +35,8 @@ Note that the call to ``square`` returns an integer that can in turn be
 passed to another invocation.
 
 We could implement our own square root function by using a well-known
-technique called “Newton’s Method.” Newton’s Method for approximating
+technique called Newton's method or the Newton–Raphson method,
+named after Isaac Newton and Joseph Raphson. Newton–Raphson method for approximating
 square roots performs an iterative computation that converges on the
 correct value. The equation
 :math:`newguess = \frac {1}{2} * (oldguess + \frac {n}{oldguess})`
@@ -44,11 +45,11 @@ making each :math:`newguess` the :math:`oldguess` in the subsequent
 iteration. The initial guess used here is :math:`\frac {n}{2}`.
 :ref:`Listing 1 <lst_root>` shows a function definition that accepts a value
 :math:`n` and returns the square root of :math:`n` after making 20
-guesses. Again, the details of Newton’s Method are hidden inside the
+guesses. Again, the details of the Newton–Raphson method are hidden inside the
 function definition and the user does not have to know anything about
 the implementation to use the function for its intended purpose.
-:ref:`Listing 1 <lst_root>` also shows the use of the # character as a comment
-marker. Any characters that follow the # on a line are ignored.
+:ref:`Listing 1 <lst_root>` also shows the use of the ``#`` character as a comment
+marker. Any characters that follow the ``#`` on a line are ignored.
 
 
 
