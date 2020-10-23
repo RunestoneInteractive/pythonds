@@ -64,7 +64,7 @@ right-hand end of the string. The binary string is then returned.
     :caption: Converting from Decimal to Binary
     :nocodelens:
 
-    pythonds3.basic import Stack
+    from pythonds3.basic import Stack
 
 
     def divide_by_2(decimal_num):
