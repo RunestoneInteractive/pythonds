@@ -6,7 +6,7 @@ Exception Handling
 ~~~~~~~~~~~~~~~~~~
 
 There are two types of errors that typically occur when writing
-programs. The first, known as a syntax error, simply means that the
+programs. The first, known as a *syntax error*, simply means that the
 programmer has made a mistake in the structure of a statement or
 expression. For example, it is incorrect to write a for statement and
 forget the colon.
@@ -25,7 +25,7 @@ the processing of this instruction since it does not conform to the
 rules of the language. Syntax errors are usually more frequent when you
 are first learning a language.
 
-The other type of error, known as a logic error, denotes a situation
+The other type of error, known as a *logic error*, denotes a situation
 where the program executes but gives the wrong result. This can be due
 to an error in the underlying algorithm or an error in your translation
 of that algorithm. In some cases, logic errors lead to very bad
@@ -62,7 +62,7 @@ exception.
     ValueError: math domain error
     >>> 
 
-We can handle this exception by calling the print function from within a
+We can handle this exception by calling the ``print`` function from within a
 ``try`` block. A corresponding ``except`` block “catches” the exception
 and prints a message back to the user in the event that an exception
 occurs. For example:
@@ -92,7 +92,7 @@ using the ``raise`` statement. For example, instead of calling the
 square root function with a negative number, we could have checked the
 value first and then raised our own exception. The code fragment below
 shows the result of creating a new ``RuntimeError`` exception. Note that
-the program would still terminate but now the exception that caused the
+the program would still terminate, but now the exception that caused the
 termination is something explicitly created by the programmer.
 
 ::

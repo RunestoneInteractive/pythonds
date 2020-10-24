@@ -14,12 +14,12 @@ to develop pattern recognition so that the next time a similar problem
 arises, we are better able to solve it.
 
 Algorithms are often quite different from one another. Consider the
-example of ``sqrt`` seen earlier. It is entirely possible that there are
+example of ``sqrt`` seen earlier (see Figure 1.1). It is entirely possible that there are
 many different ways to implement the details to compute the square root
 function. One algorithm may use many fewer resources than another. One
 algorithm might take 10 times as long to return the result as the other.
 We would like to have some way to compare these two solutions. Even
-though they both work, one is perhaps “better” than the other. We might
+though they both work, one is perhaps “better" than the other. We might
 suggest that one is more efficient or that one simply works faster or
 uses less memory. As we study algorithms, we can learn analysis
 techniques that allow us to compare and contrast solutions based solely

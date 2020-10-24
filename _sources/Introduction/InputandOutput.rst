@@ -14,7 +14,7 @@ function that allows us to ask a user to enter some data and returns a
 reference to the data in the form of a string. The function is called
 ``input``.
 
-Python’s input function takes a single parameter that is a string. This
+Python’s function ``input`` takes a single parameter that is a string. This
 string is often called the **prompt** because it contains some helpful
 text prompting the user to enter something. For example, you might call
 input as follows:
@@ -24,7 +24,7 @@ input as follows:
     a_name = input("Please enter your name: ")
 
 Now whatever the user types after the prompt will be stored in the
-``a_name`` variable. Using the input function, we can easily write
+``a_name`` variable. Using the ``input`` function, we can easily write
 instructions that will prompt the user to enter data and then
 incorporate that data into further processing. For example, in the
 following two statements, the first asks the user for their name and the
@@ -130,19 +130,19 @@ various type specifications.
                          ``f``                                                                            Floating point as m.ddddd
                          ``e``                                                                      Floating point as m.ddddde+/-xx
                          ``E``                                                                      Floating point as m.dddddE+/-xx
-                         ``g``   Use ``%e`` for exponents less than :math:`-4` or greater than :math:`+5`, otherwise use ``%f``
+                         ``g``       Use ``%e`` for exponents less than :math:`-4` or greater than :math:`+5`, otherwise use ``%f``
                          ``c``                                                                                     Single character
-                         ``s``   String, or any Python data object that can be converted to a string by using the ``str`` function.
-                         ``%``                                                                         Insert a literal % character
+                         ``s``    String, or any Python data object that can be converted to a string by using the ``str`` function
+                         ``%``                                                                     Insert a literal ``%`` character
     ========================== ====================================================================================================
 
 
 In addition to the format character, you can also include a format
 modifier between the ``%`` and the format character. Format modifiers may
-be used to left-justify or right-justifiy the value with a specified
+be used to left-justify or right-justify the value with a specified
 field width. Modifiers can also be used to specify the field width along
 with a number of digits after the decimal point. :ref:`Table 10 <tab_fmtaddsa>`
-explains these format modifiers
+explains these format modifiers.
 
 .. _tab_fmtaddsa:
 
@@ -154,13 +154,13 @@ explains these format modifiers
                        number      ``%20d``                                                               Put the value in a field width of 20
                         ``-``     ``%-20d``                                        Put the value in a field 20 characters wide, left-justified
                         ``+``     ``%+20d``                                       Put the value in a field 20 characters wide, right-justified
-                        ``0``     ``%020d``                           Put the value in a field 20 characters wide, fill in with leading zeros.
-                        ``.``    ``%20.2f``   Put the value in a field 20 characters wide with 2 characters to the right of the decimal point.
-                   ``(name)``  ``%(name)d``                              Get the value from the supplied dictionary using ``name`` as the key.
+                        ``0``     ``%020d``                            Put the value in a field 20 characters wide, fill in with leading zeros
+                        ``.``    ``%20.2f``    Put the value in a field 20 characters wide with 2 characters to the right of the decimal point
+                   ``(name)``  ``%(name)d``                               Get the value from the supplied dictionary using ``name`` as the key
     ========================= ============= ==================================================================================================
 
 
-The right side of the format operator is a collection of values that
+As mentioned, the right side of the format operator is a collection of values that
 will be inserted into the format string. The collection will be either a
 tuple or a dictionary. If the collection is a tuple, the values are
 inserted in order of position. That is, the first element in the tuple
@@ -200,7 +200,7 @@ library reference manual.
 
 Python 3.6 introduced **f-strings**, a way to use proper variable names
 instead of placeholders. Formatting conversion symbols can still be used
-inside an f-string but alignment symbols are different
+inside an f-string, but the alignment symbols are different from those used with placeholders
 (see :ref:`Table 11 <tab_fstraast>`). We are going to use this formatting
 method for the rest of the text.
 
