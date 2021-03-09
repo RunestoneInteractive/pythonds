@@ -233,7 +233,7 @@ method for the rest of the text.
                        number      ``:20d``                                                               Put the value in a field width of 20
                         ``<``     ``:<20d``                                          Put the value in a field 20 characters wide, left-aligned
                         ``>``     ``:>20d``                                         Put the value in a field 20 characters wide, right-aligned
-                        ``^``     ``:^20d``                                         Put the value in a field 20 characters wide, right-aligned
+                        ``^``     ``:^20d``                                        Put the value in a field 20 characters wide, center-aligned
                         ``0``     ``:020d``                           Put the value in a field 20 characters wide, fill in with leading zeros.
                         ``.``    ``:20.2f``   Put the value in a field 20 characters wide with 2 characters to the right of the decimal point.
     ========================= ============= ==================================================================================================
