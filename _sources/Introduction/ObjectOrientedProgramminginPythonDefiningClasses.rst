@@ -953,7 +953,7 @@ Try it yourself using ActiveCode 4.
 
     class NotGate(UnaryGate):
 
-        def __init__(self, nlbl):
+        def __init__(self, lbl):
             UnaryGate.__init__(self, lbl)
 
         def perform_gate_logic(self):
