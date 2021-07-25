@@ -20,7 +20,7 @@ if master_url is None:
     master_url = get_master_url()
 
 master_app = 'runestone'
-dynamic_pages = True
+dynamic_pages = False
 serving_dir = './build/pythonds3'
 if dynamic_pages:
     dest = './published'
