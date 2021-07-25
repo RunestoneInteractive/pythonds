@@ -20,11 +20,11 @@ of the more common operation.
 Two common operations are indexing and assigning to an index position.
 Both of these operations take the same amount of time no matter how
 large the list becomes. When an operation like this is independent of
-the size of the list they are :math:`O(1)`.
+the size of the list, it is :math:`O(1)`.
 
 Another very common programming task is to grow a list. There are two
-ways to create a longer list.  You can use the append method or the
-concatenation operator. The append method is :math:`O(1)`. However,
+ways to create a longer list.  You can use the ``append`` method or the
+concatenation operator. The ``append`` method is :math:`O(1)`. However,
 the concatenation operator is :math:`O(k)` where :math:`k` is the
 size of the list that is being concatenated. This is important for you
 to know because it can help you make your own programs more efficient by
@@ -32,7 +32,7 @@ choosing the right tool for the job.
 
 Let's look at four different ways we might generate a list of ``n``
 numbers starting with 0. First we’ll try a ``for`` loop and create the
-list by concatenation, then we’ll use append rather than concatenation.
+list by concatenation, then we’ll use ``append`` rather than concatenation.
 Next, we’ll try creating the list using list comprehension and finally,
 and perhaps the most obvious way, using the range function wrapped by a
 call to the list constructor. :ref:`Listing 3 <lst_mklist>` shows the code for
@@ -74,14 +74,14 @@ Python statements. The first parameter is a Python statement that you
 want to time; the second parameter is a statement that will run once to
 set up the test. The ``timeit`` module will then time how long it takes
 to execute the statement some number of times. By default ``timeit``
-will try to run the statement one million times. When its done it
-returns the time as a floating point value representing the total number
-of seconds. However, since it executes the statement a million times you
+will try to run the statement one million times. When it's done it
+returns the time as a floating-point value representing the total number
+of seconds. However, since it executes the statement a million times, you
 can read the result as the number of microseconds to execute the test
 one time. You can also pass ``timeit`` a named parameter called
 ``number`` that allows you to specify how many times the test statement
 is executed. The following session shows how long it takes to run each
-of our test functions 1000 times.
+of our test functions a thousand times.
 
 ::
 
@@ -106,20 +106,20 @@ of our test functions 1000 times.
 In the experiment above the statement that we are timing is the function
 call to ``test1()``, ``test2()``, and so on. The setup statement may
 look very strange to you, so let’s consider it in more detail. You are
-probably very familiar with the ``from``, ``import`` statement, but this
+probably very familiar with the ``from...import`` statement, but this
 is usually used at the beginning of a Python program file. In this case
 the statement ``from __main__ import test1`` imports the function
 ``test1`` from the ``__main__`` namespace into the namespace that
 ``timeit`` sets up for the timing experiment. The ``timeit`` module does
 this because it wants to run the timing tests in an environment that is
-uncluttered by any stray variables you may have created, that may
+uncluttered by any stray variables you may have created that may
 interfere with your function’s performance in some unforeseen way.
 
-From the experiment above it is clear that the append operation at 0.31
-milliseconds is much faster than concatenation at 6.54 milliseconds. In
-the above experiment we also show the times for two additional methods
-for creating a list; using the list constructor with a call to ``range``
-and a list comprehension. It is interesting to note that the list
+From the experiment above it is clear that the ``append`` operation at 0.31
+milliseconds is much faster than *concatenation* at 6.54 milliseconds.
+We also show the times for two additional methods
+for creating a list: using the list constructor with a call to ``range``
+and a *list comprehension*. It is interesting to note that the list
 comprehension is twice as fast as a ``for`` loop with an ``append``
 operation.
 
@@ -133,19 +133,19 @@ concatenation test function takes 6.54 milliseconds. As an exercise you
 could test the time it takes to call an empty function and subtract that
 from the numbers above.
 
-Now that we have seen how performance can be measured concretely you can
+Now that we have seen how performance can be measured concretely, you can
 look at :ref:`Table 2 <tbl_listbigo>` to see the Big-O efficiency of all the
 basic list operations. After thinking carefully about
 :ref:`Table 2 <tbl_listbigo>`, you may be wondering about the two different times
 for ``pop``. When ``pop`` is called on the end of the list it takes
-:math:`O(1)` but when pop is called on the first element in the list
-or anywhere in the middle it is :math:`O(n)`. The reason for this lies
+:math:`O(1)`, but when ``pop`` is called on the first element in the list---or anywhere in the middle it---is :math:`O(n)`
+The reason for this lies
 in how Python chooses to implement lists. When an item is taken from the
-front of the list, in Python’s implementation, all the other elements in
+front of the list, all the other elements in
 the list are shifted one position closer to the beginning. This may seem
 silly to you now, but if you look at :ref:`Table 2 <tbl_listbigo>` you will see
 that this implementation also allows the index operation to be
-:math:`O(1)`. This is a tradeoff that the Python implementors thought
+:math:`O(1)`. This is a tradeoff that the Python designers thought
 was a good one.
 
 
@@ -153,31 +153,31 @@ was a good one.
 
 .. table:: **Table 2: Big-O Efficiency of Python List Operators**
 
-    ================== ==================
-             Operation   Big-O Efficiency
-    ================== ==================
-              index []               O(1)
-      index assignment               O(1)
-                append               O(1)
-                 pop()               O(1)
-                pop(i)               O(n)
-        insert(i,item)               O(n)
-          del operator               O(n)
-             iteration               O(n)
-         contains (in)               O(n)
-       get slice [x:y]               O(k)
-             del slice               O(n)
-             set slice             O(n+k)
-               reverse               O(n)
-           concatenate               O(k)
-                  sort         O(n log n)
-              multiply              O(nk)
-    ================== ==================
+    ====================== ==================
+                 Operation   Big-O Efficiency
+    ====================== ==================
+              ``index []``               O(1)
+      ``index assignment``               O(1)
+                ``append``               O(1)
+                 ``pop()``               O(1)
+                ``pop(i)``               O(n)
+       ``insert(i, item)``               O(n)
+          ``del operator``               O(n)
+             ``iteration``               O(n)
+         ``contains (in)``               O(n)
+       ``get slice [x:y]``               O(k)
+             ``del slice``               O(n)
+             ``set slice``             O(n+k)
+               ``reverse``               O(n)
+           ``concatenate``               O(k)
+                  ``sort``         O(n log n)
+              ``multiply``              O(nk)
+    ====================== ==================
 
 
 
 
-As a way of demonstrating this difference in performance let’s do
+As a way of demonstrating this difference in performance, let’s do
 another experiment using the ``timeit`` module. Our goal is to be able
 to verify the performance of the ``pop`` operation on a list of a known
 size when the program pops from the end of the list, and again when the
@@ -188,20 +188,20 @@ constant even as the list grows in size, while the time to pop from the
 beginning of the list will continue to increase as the list grows.
 
 :ref:`Listing 4 <lst_popmeas>` shows one attempt to measure the difference
-between the two uses of pop. As you can see from this first example,
-popping from the end takes 0.0003 milliseconds, whereas popping from the
-beginning takes 4.82 milliseconds. For a list of two million elements
-this is a factor of 16,000.
+between the two uses of ``pop``. As you can see from this first example,
+popping from the end takes 0.00014 milliseconds, whereas popping from the
+beginning takes 2.09779 milliseconds. For a list of two million elements
+this is a factor of 15,000.
 
 There are a couple of things to notice about :ref:`Listing 4 <lst_popmeas>`. The
 first is the statement ``from __main__ import x``. Although we did not
-define a function we do want to be able to use the list object x in our
+define a function, we do want to be able to use the list object x in our
 test. This approach allows us to time just the single ``pop`` statement
 and get the most accurate measure of the time for that single operation.
-Because the timer repeats 1000 times it is also important to point out
-that the list is decreasing in size by 1 each time through the loop. But
-since the initial list is two million elements in size we only reduce
-the overall size by :math:`0.05\%`
+Because the timer repeats a thousand times, it is also important to point out
+that the list is decreasing in size by one each time through the loop. But
+since the initial list is two million elements in size, we only reduce
+the overall size by :math:`0.05\%`.
 
 .. _lst_popmeas:
 
@@ -246,19 +246,19 @@ sizes. :ref:`Listing 5 <lst_poplists>` implements this test.
 :ref:`Figure 3 <fig_poptest>` shows the results of our experiment. You can see
 that as the list gets longer and longer the time it takes to ``pop(0)``
 also increases while the time for ``pop`` stays very flat. This is
-exactly what we would expect to see for a :math:`O(n)` and
+exactly what we would expect to see for an :math:`O(n)` and
 :math:`O(1)` algorithm.
-
-Some sources of error in our little experiment include the fact that
-there are other processes running on the computer as we measure that may
-slow down our code, so even though we try to minimize other things
-happening on the computer there is bound to be some variation in time.
-That is why the loop runs the test one thousand times in the first place
-to statistically gather enough information to make the measurement
-reliable.
 
 .. _fig_poptest:
 
 .. figure:: Figures/poptime.png
 
    Figure 3: Comparing the Performance of ``pop`` and ``pop(0)``
+
+Among the sources of error in our little experiment is the fact that
+there are other processes running on the computer as we measure that may
+slow down our code, so even though we try to minimize other things
+happening on the computer there is bound to be some variation in time.
+That is why the loop runs the test one thousand times in the first place
+to statistically gather enough information to make the measurement
+reliable.
