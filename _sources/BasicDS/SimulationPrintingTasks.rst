@@ -2,13 +2,13 @@
     This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 
 
-Simulation: Printing Tasks
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Queue Simulation: Printing Tasks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A more interesting simulation allows us to study the behavior of the
 printing queue described earlier in this section. Recall that as
 students send printing tasks to the shared printer, the tasks are placed
-in a queue to be processed in a first-come first-served manner. Many
+in a queue to be processed in a first-come, first-served manner. Many
 questions arise with this configuration. The most important of these
 might be whether the printer is capable of handling a certain amount of
 work. If it cannot, students will be waiting too long for printing and
@@ -198,7 +198,7 @@ whether a new printing task has been created. We have again chosen to
 use the ``randrange`` function from the ``random`` module to return a
 random integer between 1 and 180. Print tasks arrive once every 180
 seconds. By arbitrarily choosing 180 from the range of random integers
-(line 32), we can simulate this random event. The simulation function
+(line 31), we can simulate this random event. The simulation function
 allows us to set the total time and the pages per minute for the
 printer.
 
@@ -279,14 +279,14 @@ works with random numbers each run will return different results.
     >>> 
 
 After running our 10 trials we can see that the mean average wait time
-is 122.09 seconds. You can also see that there is a large variation in
+is (165.38 + 95.07 + 65.05 + 99.74 + 17.27 + 239.61 + 75.11 + 48.33 + 39.31 + 376.05) / 10 = 122.09 seconds. You can also see that there is a large variation in
 the average wait time with a minimum average of 17.27 seconds and a
 maximum of 376.05 seconds. You may also notice that in only two of the
 cases were all the tasks completed.
 
-Now, we will adjust the page rate to 10 pages per minute, and run the 10
-trials again, with a faster page rate our hope would be that more tasks
-would be completed in the one hour time frame.
+Now we will adjust the page rate to 10 pages per minute and run the 10
+trials again. With a faster page rate, our hope would be that more tasks
+would be completed in the one-hour time frame.
 
 ::
 
@@ -403,14 +403,14 @@ that long for their papers, especially when they need to be getting on
 to their next class. A six-minute wait would simply be too long.
 
 This type of simulation analysis allows us to answer many questions,
-commonly known as “what if” questions. All we need to do is vary the
+commonly known as what-if questions. All we need to do is vary the
 parameters used by the simulation and we can simulate any number of
 interesting behaviors. For example,
 
 -  What if enrollment goes up and the average number of students
    increases by 20?
 
--  What if it is Saturday and students are not needing to get to class?
+-  What if it is Saturday and students do not need to get to class?
    Can they afford to wait?
 
 -  What if the size of the average print task decreases since Python is

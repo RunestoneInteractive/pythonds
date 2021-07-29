@@ -46,8 +46,8 @@ methods, ``search`` and ``add``, will require some modification.
 The search of an unordered linked list required that we traverse the
 nodes one at a time until we either find the item we are looking for or
 run out of nodes (``None``). It turns out that the same approach would
-actually work with the ordered list and in fact in the case where we
-find the item it is exactly what we need. However, in the case where the
+work with the ordered list and no changes are necessary if the item
+is in the list. However, in the case where the
 item is not in the list, we can take advantage of the ordering to stop
 the search as soon as possible.
 
@@ -124,10 +124,10 @@ to stop.
 As we saw with unordered lists, it is necessary to have an additional
 reference, again called ``previous``, since ``current`` will not provide
 access to the node that must be modified. :ref:`Listing 10 <lst_orderadd>` shows
-the complete ``add`` method. Lines 2–3 set up the two external
-references and lines 9–10 again allow ``previous`` to follow one node
+the complete ``add`` method. Lines 3–4 set up the two external
+references and lines 8–9 again allow ``previous`` to follow one node
 behind ``current`` every time through the iteration. The condition (line
-5) allows the iteration to continue as long as there are more nodes and
+7) allows the iteration to continue as long as there are more nodes and
 the value in the current node is not larger than the item. In either
 case, when the iteration fails, we have found the location for the new
 node.
@@ -136,7 +136,7 @@ The remainder of the method completes the two-step process shown in
 :ref:`Figure 17 <fig_orderinsert>`. Once a new node has been created for the item,
 the only remaining question is whether the new node will be added at the
 beginning of the linked list or some place in the middle. Again,
-``previous == None`` (line 13) can be used to provide the answer.
+``previous is None`` (line 11) can be used to provide the answer.
 
 .. _lst_orderadd:
 
@@ -288,4 +288,5 @@ process every node in the list.
 You may also have noticed that the performance of this implementation
 differs from the actual performance given earlier for Python lists. This
 suggests that linked lists are not the way Python lists are implemented.
-The actual implementation of a Python list is based on the notion of an array.  We discuss this in more detail in a later chapter.
+The actual implementation of a Python list is based on the notion of an array.
+We discuss this in more detail in the last chapter.

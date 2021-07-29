@@ -5,22 +5,22 @@
 Infix, Prefix, and Postfix Expressions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When you write an arithmetic expression such as B \* C, the form of the
+When you write an arithmetic expression such as B · C, the form of the
 expression provides you with information so that you can interpret it
 correctly. In this case we know that the variable B is being multiplied
-by the variable C since the multiplication operator \* appears between
+by the variable C since the multiplication operator · appears between
 them in the expression. This type of notation is referred to as
 **infix** since the operator is *in between* the two operands that it is
 working on.
 
-Consider another infix example, A + B \* C. The operators + and \* still
+Consider another infix example, A + B · C. The operators + and · still
 appear between the operands, but there is a problem. Which operands do
-they work on? Does the + work on A and B or does the \* take B and C?
+they work on? Does the + work on A and B, or does the · take B and C?
 The expression seems ambiguous.
 
 In fact, you have been reading and writing these types of expressions
 for a long time and they do not cause you any problem. The reason for
-this is that you know something about the operators + and \*. Each
+this is that you know something about the operators + and ·. Each
 operator has a **precedence** level. Operators of higher precedence are
 used before operators of lower precedence. The only thing that can
 change that order is the presence of parentheses. The precedence order
@@ -28,14 +28,14 @@ for arithmetic operators places multiplication and division above
 addition and subtraction. If two operators of equal precedence appear,
 then a left-to-right ordering or associativity is used.
 
-Let’s interpret the troublesome expression A + B \* C using operator
+Let’s interpret the troublesome expression A + B · C using operator
 precedence. B and C are multiplied first, and A is then added to that
-result. (A + B) \* C would force the addition of A and B to be done
-first before the multiplication. In expression A + B + C, by precedence
+result. (A + B) · C would force the addition of A and B to be done
+first before the multiplication. In the expression A + B + C, by precedence
 (via associativity), the leftmost + would be done first.
 
 Although all this may be obvious to you, remember that computers need to
-know exactly what operators to perform and in what order. One way to
+know exactly what operations to perform and in what order. One way to
 write an expression that guarantees there will be no confusion with
 respect to the order of operations is to create what is called a **fully
 parenthesized** expression. This type of expression uses one pair of
@@ -43,7 +43,7 @@ parentheses for each operator. The parentheses dictate the order of
 operations; there is no ambiguity. There is also no need to remember any
 precedence rules.
 
-The expression A + B \* C + D can be rewritten as ((A + (B \* C)) + D)
+The expression A + B · C + D can be rewritten as ((A + (B · C)) + D)
 to show that the multiplication happens first, followed by the leftmost
 addition. A + B + C + D can be written as (((A + B) + C) + D) since the
 addition operations associate from left to right.
@@ -52,7 +52,7 @@ There are two other very important expression formats that may not seem
 obvious to you at first. Consider the infix expression A + B. What would
 happen if we moved the operator before the two operands? The resulting
 expression would be + A B. Likewise, we could move the operator to the
-end. We would get A B +. These look a bit strange.
+end, resulting in A B +. These look a bit strange.
 
 These changes to the position of the operator with respect to the
 operands create two new expression formats, **prefix** and **postfix**.
@@ -61,40 +61,40 @@ operands that they work on. Postfix, on the other hand, requires that
 its operators come after the corresponding operands. A few more examples
 should help to make this a bit clearer (see :ref:`Table 2 <tbl_example1>`).
 
-A + B \* C would be written as + A \* B C in prefix. The multiplication
-operator comes immediately before the operands B and C, denoting that \*
+A + B · C would be written as + A · B C in prefix. The multiplication
+operator comes immediately before the operands B and C, denoting that ·
 has precedence over +. The addition operator then appears before the A
 and the result of the multiplication.
 
-In postfix, the expression would be A B C \* +. Again, the order of
-operations is preserved since the \* appears immediately after the B and
-the C, denoting that \* has precedence, with + coming after. Although
+In postfix, the expression would be A B C · +. Again, the order of
+operations is preserved since the · appears immediately after the B and
+the C, denoting that · has precedence, with + coming after. Although
 the operators moved and now appear either before or after their
 respective operands, the order of the operands stayed exactly the same
 relative to one another.
 
 .. _tbl_example1:
 
-.. table:: **Table 2: Examples of Infix, Prefix, and Postfix**
+.. table:: **Table 2: Examples of Infix, Prefix, and Postfix Expressions**
 
     ============================ ======================= ========================
             **Infix Expression**   **Prefix Expression**   **Postfix Expression**
     ============================ ======================= ========================
                            A + B                  \+ A B                    A B +
-                      A + B \* C             \+ A \* B C               A B C \* +
+                       A + B · C              \+ A · B C                A B C · +
     ============================ ======================= ========================
 
 
-Now consider the infix expression (A + B) \* C. Recall that in this
+Now consider the infix expression (A + B) · C. Recall that in this
 case, infix requires the parentheses to force the performance of the
 addition before the multiplication. However, when A + B was written in
 prefix, the addition operator was simply moved before the operands, + A
 B. The result of this operation becomes the first operand for the
 multiplication. The multiplication operator is moved in front of the
-entire expression, giving us \* + A B C. Likewise, in postfix A B +
+entire expression, giving us · + A B C. Likewise, in postfix A B +
 forces the addition to happen first. The multiplication can be done to
 that result and the remaining operand C. The proper postfix expression
-is then A B + C \*.
+is then A B + C ·.
 
 Consider these three expressions again (see :ref:`Table 3 <tbl_parexample>`).
 Something very important has happened. Where did the parentheses go? Why
@@ -107,12 +107,12 @@ ways, this makes infix the least desirable notation to use.
 
 .. _tbl_parexample:
 
-.. table:: **Table 3: An Expression with Parentheses**
+.. table:: **Table 3: Comparison of Infix, Prefix, and Postfix Expressions**
 
     ============================ ======================= ========================
             **Infix Expression**   **Prefix Expression**   **Postfix Expression**
     ============================ ======================= ========================
-                    (A + B) \* C              \* + A B C               A B + C \*
+                     (A + B) · C               · + A B C                A B + C ·
     ============================ ======================= ========================
 
 
@@ -123,14 +123,14 @@ operations being performed.
 
 .. _tbl_example3:
 
-.. table:: **Table 4: Additional Examples of Infix, Prefix, and Postfix**
+.. table:: **Table 4: Additional Examples of Infix, Prefix, and Postfix Expressions**
 
     ============================ ======================= ========================
             **Infix Expression**   **Prefix Expression**   **Postfix Expression**
     ============================ ======================= ========================
-                  A + B \* C + D        \+ \+ A \* B C D           A B C \* + D +
-              (A + B) \* (C + D)          \* + A B + C D           A B + C D + \*
-                 A \* B + C \* D        \+ \* A B \* C D          A B \* C D \* +
+                   A + B · C + D         \+ \+ A · B C D            A B C · + D +
+               (A + B) · (C + D)           · + A B + C D            A B + C D + ·
+                   A · B + C · D          \+ · A B · C D            A B · C D · +
                    A + B + C + D          \+ + + A B C D            A B + C + D +
     ============================ ======================= ========================
 
@@ -145,15 +145,15 @@ any expression of any complexity to be correctly transformed.
 
 The first technique that we will consider uses the notion of a fully
 parenthesized expression that was discussed earlier. Recall that A + B
-\* C can be written as (A + (B \* C)) to show explicitly that the
+· C can be written as (A + (B · C)) to show explicitly that the
 multiplication has precedence over the addition. On closer observation,
 however, you can see that each parenthesis pair also denotes the
 beginning and the end of an operand pair with the corresponding operator
 in the middle.
 
-Look at the right parenthesis in the subexpression (B \* C) above. If we
+Look at the right parenthesis in the subexpression (B · C) above. If we
 were to move the multiplication symbol to that position and remove the
-matching left parenthesis, giving us B C \*, we would in effect have
+matching left parenthesis, giving us B C ·, we would in effect have
 converted the subexpression to postfix notation. If the addition
 operator were also moved to its corresponding right parenthesis position
 and the matching left parenthesis were removed, the complete postfix
@@ -185,8 +185,8 @@ order of operations. Then move the enclosed operator to the position of
 either the left or the right parenthesis depending on whether you want
 prefix or postfix notation.
 
-Here is a more complex expression: (A + B) \* C - (D - E) \* (F + G).
-:ref:`Figure 8 <fig_complexmove>` shows the conversion to postfix and prefix
+Here is a more complex expression: (A + B) · C - (D - E) · (F + G).
+:ref:`Figure 8 <fig_complexmove>` shows the conversion to prefix and postfix
 notations.
 
 .. _fig_complexmove:
@@ -203,13 +203,13 @@ We need to develop an algorithm to convert any infix expression to a
 postfix expression. To do this we will look closer at the conversion
 process.
 
-Consider once again the expression A + B \* C. As shown above,
-A B C \* + is the postfix equivalent. We have already noted that the
+Consider once again the expression A + B · C. As shown above,
+A B C · + is the postfix equivalent. We have already noted that the
 operands A, B, and C stay in their relative positions. It is only the
 operators that change position. Let’s look again at the operators in the
 infix expression. The first operator that appears from left to right is
 +. However, in the postfix expression, + is at the end since the next
-operator, \*, has precedence over addition. The order of the operators
+operator, ·, has precedence over addition. The order of the operators
 in the original expression is reversed in the resulting postfix
 expression.
 
@@ -223,10 +223,10 @@ after the multiplication operator is used. Because of this reversal of
 order, it makes sense to consider using a stack to keep the operators
 until they are needed.
 
-What about (A + B) \* C? Recall that A B + C \* is the postfix
+What about (A + B) · C? Recall that A B + C · is the postfix
 equivalent. Again, processing this infix expression from left to right,
-we see + first. In this case, when we see \*, + has already been placed
-in the result expression because it has precedence over \* by virtue of
+we see + first. In this case, when we see ·, + has already been placed
+in the result expression because it has precedence over · by virtue of
 the parentheses. We can now start to see how the conversion algorithm
 will work. When we see a left parenthesis, we will save it to denote
 that another operator of high precedence will be coming. That operator
@@ -243,7 +243,7 @@ consider how that operator compares in precedence with the operators, if
 any, already on the stack.
 
 Assume the infix expression is a string of tokens delimited by spaces.
-The operator tokens are \*, /, +, and -, along with the left and right
+The operator tokens are ·, /, +, and -, along with the left and right
 parentheses, ( and ). The operand tokens are the single-character
 identifiers A, B, C, and so on. The following steps will produce a
 string of tokens in postfix order.
@@ -265,7 +265,7 @@ string of tokens in postfix order.
       corresponding left parenthesis is removed. Append each operator to
       the end of the output list.
 
-   -  If the token is an operator, \*, /, +, or -, push it on the
+   -  If the token is an operator, ·, /, +, or -, push it on the
       ``op_stack``. However, first remove any operators already on the
       ``op_stack`` that have higher or equal precedence and append them
       to the output list.
@@ -275,9 +275,9 @@ string of tokens in postfix order.
    appended to the end of the output list.
 
 :ref:`Figure 9 <fig_intopost>` shows the conversion algorithm working on the
-expression A \* B + C \* D. Note that the first \* operator is removed
+expression A · B + C · D. Note that the first · operator is removed
 upon seeing the + operator. Also, + stays on the stack when the second
-\* occurs, since multiplication has precedence over addition. At the end
+· occurs, since multiplication has precedence over addition. At the end
 of the infix expression the stack is popped twice, removing both
 operators and placing + as the last operator in the postfix expression.
 
@@ -286,18 +286,17 @@ operators and placing + as the last operator in the postfix expression.
 .. figure:: Figures/intopost.png
    :align: center
 
-   Figure 9: Converting A \* B + C \* D to Postfix Notation
+   Figure 9: Converting A · B + C · D to Postfix Notation
 
 In order to code the algorithm in Python, we will use a dictionary
-called ``prec`` to hold the precedence values for the operators. This
+called ``prec`` to hold the precedence values for the operators,
+as seen in in :ref:`ActiveCode 1 <lst_intopost>`. This
 dictionary will map each operator to an integer that can be compared
 against the precedence levels of other operators (we have arbitrarily
 used the integers 3, 2, and 1). The left parenthesis will receive the
 lowest value possible. This way any operator that is compared against it
 will have higher precedence and will be placed on top of it.
 Line 15 defines the operands to be any upper-case character or digit.
-The complete conversion function is
-shown in :ref:`ActiveCode 1 <lst_intopost>`.
 
 .. _lst_intopost:
 
@@ -368,13 +367,13 @@ is that whenever an operator is seen on the input, the two most recent
 operands will be used in the evaluation.
 
 To see this in more detail, consider the postfix expression
-``4 5 6 * +``. As you scan the expression from left to right, you first
+4 5 6 · +. As you scan the expression from left to right, you first
 encounter the operands 4 and 5. At this point, you are still unsure what
 to do with them until you see the next symbol. Placing each on the stack
 ensures that they are available if an operator comes next.
 
 In this case, the next symbol is another operand. So, as before, push it
-and check the next symbol. Now we see an operator, \*. This means that
+and check the next symbol. Now we see an operator, ·. This means that
 the two most recent operands need to be used in a multiplication
 operation. By popping the stack twice, we can get the proper operands
 and then perform the multiplication (in this case getting the result
@@ -415,7 +414,7 @@ the order of the operands is not switched.
 
 
 Assume the postfix expression is a string of tokens delimited by spaces.
-The operators are \*, /, +, and - and the operands are assumed to be
+The operators are ·, /, +, and - and the operands are assumed to be
 single-digit integer values. The output will be an integer result.
 
 #. Create an empty stack called ``operand_stack``.
@@ -427,7 +426,7 @@ single-digit integer values. The output will be an integer result.
    -  If the token is an operand, convert it from a string to an integer
       and push the value onto the ``operand_stack``.
 
-   -  If the token is an operator, \*, /, +, or -, it will need two
+   -  If the token is an operator, ·, /, +, or -, it will need two
       operands. Pop the ``operand_stack`` twice. The first pop is the
       second operand and the second pop is the first operand. Perform
       the arithmetic operation. Push the result back on the
@@ -438,7 +437,7 @@ single-digit integer values. The output will be an integer result.
 
 The complete function for the evaluation of postfix expressions is shown
 in :ref:`ActiveCode 2 <lst_postfixeval>`. To assist with the arithmetic, a helper
-function ``do_math`` is defined that will take two operands and an
+function ``do_math`` is defined. It will take two operands and an
 operator and then perform the proper arithmetic operation.
 
 .. _lst_postfixeval:

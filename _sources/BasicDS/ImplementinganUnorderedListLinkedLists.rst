@@ -28,7 +28,7 @@ link from one item to the next.
 .. figure:: Figures/idea2.png
    :align: center
 
-   Figure 2: Relative Positions Maintained by Explicit Links.
+   Figure 2: Relative Positions Maintained by Explicit Links
 
 
 It is important to note that the location of the first item of the list
@@ -47,7 +47,7 @@ First, the node must contain the list item itself. We will call this the
 to the next node. :ref:`Listing 1 <lst_nodeclass>` shows the Python
 implementation. To construct a node, you need to supply the initial data
 value for the node. Evaluating the assignment statement below will yield
-a node object containing the value 93 (see :ref:`Figure 3 <fig_node>`). You
+a ``Node`` object containing the value ``93`` (see :ref:`Figure 3 <fig_node>`). You
 should note that we will typically represent a node object as shown in
 :ref:`Figure 4 <fig_node2>`. Hidden fields ``_data`` and ``_next`` of the ``Node`` class
 are turned into properties and can be accessed as ``data`` and ``next`` respectively.
@@ -124,7 +124,7 @@ referring to ``None``. It is always a good idea to explicitly assign
    Figure 4: A Typical Representation for a Node
 
 
-The ``Unordered List`` Class
+The ``UnorderedList`` Class
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As we suggested above, the unordered list will be built from a
@@ -190,7 +190,7 @@ the boolean expression ``self.head == None`` will only be true if there
 are no nodes in the linked list. Since a new list is empty, the
 constructor and the check for empty must be consistent with one another.
 This shows the advantage to using the reference ``None`` to denote the
-“end” of the linked structure. In Python, ``None`` can be compared to
+end of the linked structure. In Python, ``None`` can be compared to
 any reference. Two references are equal if they both refer to the same
 object. We will use this often in our remaining methods.
 
@@ -203,7 +203,7 @@ object. We will use this often in our remaining methods.
     def is_empty(self):
         return self.head == None
 
-So, how do we get items into our list? We need to implement the ``add``
+So how do we get items into our list? We need to implement the ``add``
 method. However, before we can do that, we need to address the important
 question of where in the linked list to place the new item. Since this
 list is unordered, the specific location of the new item with respect to
@@ -231,9 +231,9 @@ the ``add`` method a number of times.
     >>> my_list.add(26)
     >>> my_list.add(54)
 
-Note that since 31 is the first item added to the list, it will
+Note that since ``31`` is the first item added to the list, it will
 eventually be the last node on the linked list as every other item is
-added ahead of it. Also, since 54 is the last item added, it will become
+added ahead of it. Also, since ``54`` is the last item added, it will become
 the data value in the first node of the linked list.
 
 The ``add`` method is shown in :ref:`Listing 4 <lst_add>`. Each item of the list
@@ -246,12 +246,6 @@ rest of the list has been properly attached to the new node, we can
 modify the head of the list to refer to the new node. The assignment
 statement in line 4 sets the head of the list.
 
-The order of the two steps described above is very important. What
-happens if the order of line 3 and line 4 is reversed? If the
-modification of the head of the list happens first, the result can be
-seen in :ref:`Figure 8 <fig_wrongorder>`. Since the head was the only external
-reference to the list nodes, all of the original nodes are lost and can
-no longer be accessed.
 
 .. _lst_add:
 
@@ -274,6 +268,13 @@ no longer be accessed.
 
    Figure 7: Adding a New Node is a Two-Step Process
 
+The order of the two steps described above is very important. What
+happens if the order of line 3 and line 4 is reversed? If the
+modification of the head of the list happens first, the result can be
+seen in :ref:`Figure 8 <fig_wrongorder>`. Since the head was the only external
+reference to the list nodes, all of the original nodes are lost and can
+no longer be accessed.
+
 .. _fig_wrongorder:
 
 .. figure:: Figures/wrongorder.png
@@ -284,7 +285,7 @@ no longer be accessed.
 
 The next methods that we will implement–``size``, ``search``, and
 ``remove``–are all based on a technique known as **linked list
-traversal**. Traversal refers to the process of systematically visiting
+traversal**. *Traversal* refers to the process of systematically visiting
 each node. To do this we use an external reference that starts at the
 first node in the list. As we visit each node, we move the reference to
 the next node by “traversing” the next reference.
@@ -368,8 +369,8 @@ item 17.
     >>> my_list.search(17)
     True
 
-Since 17 is in the list, the traversal process needs to move only to the
-node containing 17. At that point, the condition in line 4 becomes ``True`` and
+Since ``17`` is in the list, the traversal process needs to move only to the
+node containing ``17``. At that point, the condition in line 4 becomes ``True`` and
 we return the result of the search.
 This process can be seen in :ref:`Figure 10 <fig_searchpic>`.
 
@@ -383,7 +384,7 @@ This process can be seen in :ref:`Figure 10 <fig_searchpic>`.
 
 The ``remove`` method requires two logical steps. First, we need to
 traverse the list looking for the item we want to remove. Once we find
-the item , we must remove it. If the item is not in the list, our method
+the item, we must remove it. If the item is not in the list, our method
 should raise a ``ValueError``.
 
 The first step is very similar to ``search``. Starting with an external
@@ -407,17 +408,17 @@ modification.
 
 The solution to this dilemma is to use two external references as we
 traverse down the linked list. ``current`` will behave just as it did
-before, marking the current location of the traverse. The new reference,
+before, marking the current location of the traversal. The new reference,
 which we will call ``previous``, will always travel one node behind
 ``current``. That way, when ``current`` stops at the node to be removed,
-``previous`` will be referring to the proper place in the linked list
+``previous`` will refer to the proper place in the linked list
 for the modification.
 
 :ref:`Listing 7 <lst_remove>` shows the complete ``remove`` method. Lines 2–3
 assign initial values to the two references. Note that ``current``
 starts out at the list head as in the other traversal examples.
 ``previous``, however, is assumed to always travel one node behind
-current. For this reason, ``previous`` starts out with a value of
+``current``. For this reason, ``previous`` starts out with a value of
 ``None`` since there is no node before the head (see
 :ref:`Figure 11 <fig_removeinit>`).
 
@@ -427,7 +428,7 @@ do not find the item, ``previous`` and ``current`` must both be moved
 one node ahead. Again, the order of these two statements is crucial.
 ``previous`` must first be moved one node ahead to the location of
 ``current``. At that point, ``current`` can be moved. This process is
-often referred to as “inch-worming” as ``previous`` must catch up to
+often referred to as *inchworming*, as ``previous`` must catch up to
 ``current`` before ``current`` moves ahead. :ref:`Figure 12 <fig_prevcurr>` shows
 the movement of ``previous`` and ``current`` as they progress down the
 list looking for the node containing the value 17.
@@ -480,7 +481,7 @@ to be addressed. If the item to be removed happens to be the first item
 in the list, then ``current`` will reference the first node in the
 linked list. This also means that ``previous`` will be ``None``. We said
 earlier that ``previous`` would be referring to the node whose next
-reference needs to be modified in order to complete the remove. In this
+reference needs to be modified in order to complete the removal. In this
 case, it is not ``previous`` but rather the head of the list that needs
 to be changed (see :ref:`Figure 14 <fig_removehead>`). Another special case occurs if
 the item is not in the list. In that case ``current is None`` evaluates to ``True``
@@ -504,11 +505,11 @@ and an error is raised.
 
 Line 13 allows us to check whether we are dealing with the special case
 described above. If ``previous`` did not move, it will still have the
-value ``None`` when the loop breaks. In that case
-(line 14) the head of the list is modified to refer to the node after
-the current node, in effect removing the first node from the linked
-list. However, if previous is not ``None``, the node to be removed is
-somewhere down the linked list structure. In this case the previous
+value ``None`` when the loop breaks. In that case,
+the head of the list is modified to refer to the node after
+the current node (line 14), in effect removing the first node from the linked
+list. However, if ``previous`` is not ``None``, the node to be removed is
+somewhere down the linked list structure. In this case the ``previous``
 reference is providing us with the node whose next reference must be
 changed. Line 16 modifies the ``next`` property of the ``previous`` to
 accomplish the removal. Note that in both cases the destination of the

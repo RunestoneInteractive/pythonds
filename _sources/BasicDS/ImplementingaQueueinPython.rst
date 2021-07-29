@@ -15,8 +15,8 @@ use as the front. The implementation shown in :ref:`Listing 1 <lst_queuecode>`
 assumes that the rear is at position 0 in the list. This allows us to
 use the ``insert`` function on lists to add new elements to the rear of
 the queue. The ``pop`` operation can be used to remove the front element
-(the last element of the list). Recall that this also means that enqueue
-will be :math:`O(n)` and dequeue will be :math:`O(1)`. 
+(the last element of the list). Recall that this also means that ``enqueue``
+will be :math:`O(n)` and ``dequeue`` will be :math:`O(1)`. 
 
 .. _lst_queuecode:
 

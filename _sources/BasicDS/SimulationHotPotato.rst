@@ -2,12 +2,12 @@
     This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 
 
-Simulation: Hot Potato
-~~~~~~~~~~~~~~~~~~~~~~
+Queue Simulation: Hot Potato
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 One of the typical applications for showing a queue in action is to
 simulate a real situation that requires data to be managed in a FIFO
-manner. To begin, let’s consider the children’s game *Hot Potato*. In this
+manner. To begin, let’s consider the children’s game hot potato. In this
 game (see :ref:`Figure 2 <fig_quhotpotato>`) children line up in a circle and
 pass an item from neighbor to neighbor as fast as they can. At a certain
 point in the game, the action is stopped and the child who has the item
@@ -19,7 +19,7 @@ child is left.
 .. figure:: Figures/hotpotato.png
    :align: center
 
-   Figure 2: A Six Person Game of Hot Potato
+   Figure 2: A Six-Person Game of Hot Potato
 
 
 This game is a modern-day equivalent of the famous Josephus problem.
@@ -44,9 +44,9 @@ repetitive counting by ``num``. What happens at that point is up to you.
 To simulate the circle, we will use a queue (see
 :ref:`Figure 3 <fig_qupotatoqueue>`). Assume that the child holding the potato will
 be at the front of the queue. Upon passing the potato, the simulation
-will simply dequeue and then immediately enqueue that child, putting her
-at the end of the line. She will then wait until all the others have
-been at the front before it will be her turn again. After ``num``
+will simply dequeue and then immediately enqueue that child, putting them
+at the end of the line. They will then wait until all the others have
+been at the front before it will be their turn again. After ``num``
 dequeue/enqueue operations, the child at the front will be removed
 permanently and another cycle will begin. This process will continue
 until only one name remains (the size of the queue is 1).

@@ -7,8 +7,8 @@ The Queue Abstract Data Type
 
 The queue abstract data type is defined by the following structure and
 operations. A queue is structured, as described above, as an ordered
-collection of items which are added at one end, called the “rear,” and
-removed from the other end, called the “front.” Queues maintain a FIFO
+collection of items which are added at one end, called the *rear*, and
+removed from the other end, called the *front*. Queues maintain a FIFO
 ordering property. The queue operations are given below.
 
 -  ``Queue()`` creates a new queue that is empty. It needs no parameters
@@ -29,8 +29,8 @@ ordering property. The queue operations are given below.
 As an example, if we assume that ``q`` is a queue that has been created
 and is currently empty, then :ref:`Table 5 <tbl_queueoperations>` shows the
 results of a sequence of queue operations. The queue contents are shown
-such that the front is on the right. 4 was the first item enqueued so it
-is the first item returned by dequeue.
+such that the front is on the right. ``4`` was the first item enqueued so it
+is the first item returned by ``dequeue``.
 
 .. _tbl_queueoperations:
 

@@ -8,7 +8,7 @@ The Stack Abstract Data Type
 The stack abstract data type is defined by the following structure and
 operations. A stack is structured, as described above, as an ordered
 collection of items where items are added to and removed from the end
-called the “top.” Stacks are ordered LIFO. The stack operations are
+called the *top*. Stacks are ordered LIFO. The stack operations are
 given below.
 
 -  ``Stack()`` creates a new stack that is empty. It needs no parameters
@@ -31,7 +31,7 @@ given below.
 
 For example, if ``s`` is a stack that has been created and starts out
 empty, then :ref:`Table 1 <tbl_stackops>` shows the results of a sequence of
-stack operations. Under stack contents, the top item is listed at the
+stack operations. Under Stack Contents, the top item is listed at the
 far right.
 
 .. _tbl_stackops:

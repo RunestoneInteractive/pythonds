@@ -26,14 +26,14 @@ and
 :math:`1\times2^{7} + 1\times2^{6} + 1\times2^{5} + 0\times2^{4} + 1\times2^{3} + 0\times2^{2} + 0\times2^{1} + 1\times2^{0}`
 
 But how can we easily convert integer values into binary numbers? The
-answer is an algorithm called “Divide by 2” that uses a stack to keep
+answer is an algorithm called Divide by 2 that uses a stack to keep
 track of the digits for the binary result.
 
 The Divide by 2 algorithm assumes that we start with an integer greater
 than 0. A simple iteration then continually divides the decimal number
 by 2 and keeps track of the remainder. The first division by 2 gives
-information as to whether the value is even or odd. An even value will
-have a remainder of 0. It will have the digit 0 in the ones place. An
+information as to whether the value is even or odd. An even value will 
+have a remainder of 0 and will have the digit 0 in the ones place. An
 odd value will have a remainder of 1 and will have the digit 1 in the
 ones place. We think about building our binary number as a sequence of
 digits; the first remainder we compute will actually be the last digit
@@ -52,7 +52,7 @@ appropriate data structure for solving the problem.
 The Python code in :ref:`ActiveCode 1 <lst_binconverter>` implements the Divide by 2
 algorithm. The function ``divide_by_2`` takes an argument that is a
 decimal number and repeatedly divides it by 2. Line 8 uses the built-in
-modulo operator, %, to extract the remainder and line 9 then pushes it
+modulo operator, ``%``, to extract the remainder and line 9 then pushes it
 on the stack. After the division process reaches 0, a binary string is
 constructed in lines 12-14. Line 12 creates an empty string. The binary
 digits are popped from the stack one at a time and appended to the
@@ -107,8 +107,8 @@ takes a decimal number and any base between 2 and 16 as parameters. The
 remainders are still pushed onto the stack until the value being
 converted becomes 0. The same left-to-right string construction
 technique can be used with one slight change. Base 2 through base 10
-numbers need a maximum of 10 digits, so the typical digit characters 0,
-1, 2, 3, 4, 5, 6, 7, 8, and 9 work fine. The problem comes when we go
+numbers need a maximum of 10 digits, so the typical digit characters 0 
+through 9 work fine. The problem comes when we go
 beyond base 10. We can no longer simply use the remainders, as they are
 themselves represented as two-digit decimal numbers. Instead we need to
 create a set of digits that can be used to represent those remainders
