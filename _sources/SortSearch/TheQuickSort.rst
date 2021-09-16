@@ -242,9 +242,9 @@ pivot value selection as an exercise.
        :answer_c: Merge Sort
        :answer_d: Insertion Sort
        :correct: c
-       :feedback_a: Shell sort is about ``n^1.5``
+       :feedback_a: Shell sort is about n^1.5
        :feedback_b: Quick sort can be O(n log n), but if the pivot points are not well chosen and the list is just so, it can be O(n^2).
        :feedback_c: Merge Sort is the only guaranteed O(n log n) even in the worst case.  The cost is that merge sort uses more memory.
-       :feedback_d: Insertion sort is ``O(n^2)``
+       :feedback_d: Insertion sort is O(n^2)
 
        Which of the following sort algorithms are guaranteed to be O(n log n) even in the worst case?
