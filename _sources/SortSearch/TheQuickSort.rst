@@ -227,7 +227,7 @@ pivot value selection as an exercise.
        :answer_c: 16
        :answer_d: 19
        :feedback_a: The three numbers used in selecting the pivot are 1, 9, 19.  1 is not the median, and would be a very bad choice for the pivot since it is the smallest number in the list.
-       :feedback_b:  Good job.
+       :feedback_b: Good job.
        :feedback_c: although 16 would be the median of 1, 16, 19 the middle is at len(list) // 2.
        :feedback_d: the three numbers used in selecting the pivot are 1, 9, 19.  9 is the median.  19 would be a bad choice since it is almost the largest.
 
@@ -242,9 +242,9 @@ pivot value selection as an exercise.
        :answer_c: Merge Sort
        :answer_d: Insertion Sort
        :correct: c
-       :feedback_a: Shell sort is about n^1.5
-       :feedback_b: Quick sort can be O(n log n), but if the pivot points are not well chosen and the list is just so, it can be O(n^2).
+       :feedback_a: Shell sort is about O(n<sup>1.5</sup>)
+       :feedback_b: Quick sort can be O(n log n), but if the pivot points are not well chosen and the list is just so, it can be O(n<sup>2</sup>).
        :feedback_c: Merge Sort is the only guaranteed O(n log n) even in the worst case.  The cost is that merge sort uses more memory.
-       :feedback_d: Insertion sort is O(n^2)
+       :feedback_d: Insertion sort is O(n<sup>2</sup>)
 
        Which of the following sort algorithms are guaranteed to be O(n log n) even in the worst case?
