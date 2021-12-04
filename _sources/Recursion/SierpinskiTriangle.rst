@@ -31,7 +31,7 @@ drawing the Sierpinski triangle yourself, using the method described.
 Since we can continue to apply the algorithm indefinitely, what is the
 base case? We will see that the base case is set arbitrarily as the
 number of times we want to divide the triangle into pieces. Sometimes we
-call this number the “degree” of the fractal. Each time we make a
+call this number the *degree* of the fractal. Each time we make a
 recursive call, we subtract 1 from the degree until we reach 0. When we
 reach a degree of 0, we stop making recursive calls. The code that
 generated the Sierpinski Triangle in :ref:`Figure 3 <fig_sierpinski>` is shown in
@@ -98,7 +98,7 @@ The program in :ref:`ActiveCode 1 <lst_st>` follows the ideas outlined above. Th
 first thing ``sierpinski`` does is draw the outer triangle. Next, there
 are three recursive calls, one for each of the new corner triangles we
 get when we connect the midpoints. Once again we make use of the
-standard turtle module that comes with Python. You can learn all the
+standard ``turtle`` module that comes with Python. You can learn all the
 details of the methods available in the turtle module by using
 ``help("turtle")`` from the Python prompt.
 
@@ -107,7 +107,7 @@ be drawn. While the exact order of the corners depends upon how the
 initial set is specified, let’s assume that the corners are ordered
 lower left, top, lower right. Because of the way the ``sierpinski``
 function calls itself, ``sierpinski`` works its way to the smallest
-allowed triangle in the lower-left corner, and then begins to fill out
+allowed triangle in the lower-left corner and then begins to fill out
 the rest of the triangles working back. Then it fills in the triangles
 in the top corner by working toward the smallest, topmost triangle.
 Finally, it fills in the lower-right corner, working its way toward the

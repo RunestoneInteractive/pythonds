@@ -65,10 +65,11 @@ call stack after the return statement on line 4.
    Figure 6: Call Stack Generated from ``to_str(10, 2)``
 
 
-Notice that the call to ``to_str(2 // 2, 2)`` leaves a return value of
+Notice that the call to ``to_str(2 // 2, 2)`` defined in Listing 4.4 leaves a return value of
 ``"1"`` on the stack. This return value is then used in place of the
-function call (``to_str(1, 2)``) in the expression ``"1" + convert_string[2 % 2]``, which will leave the string ``"10"`` on the top of
-the stack. In this way, the Python call stack takes the place of the
+function call (``to_str(1, 2)``) in the expression ``"1" + convert_string[2 % 2]``,
+which will leave the string ``"10"`` on the top of the stack.
+In this way, the Python call stack takes the place of the
 stack we used explicitly in :ref:`Listing 4 <lst_recstack>`. In our list summing
 example, you can think of the return value on the stack taking the place
 of an accumulator variable.

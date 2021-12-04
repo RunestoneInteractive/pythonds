@@ -28,7 +28,7 @@ middle of a move from the first peg to the third. Notice that, as the
 rules specify, the disks on each peg are stacked so that smaller disks
 are always on top of the larger disks. If you have not tried to solve
 this puzzle before, you should try it now. You do not need fancy disks
-and poles–a pile of books or pieces of paper will work.
+and poles—a pile of books or pieces of paper will work.
 
 .. _fig_hanoi:
 
@@ -55,16 +55,16 @@ top of it? But what if you still do not know how to do this? Surely you
 would agree that moving a single disk to peg three is easy enough,
 trivial you might even say. This sounds like a base case in the making.
 
-Here is a high-level outline of how to move a tower from the starting
-pole, to the goal pole, using an intermediate pole:
+Here is a high-level outline of how to move a tower of height :math:`h` from the starting
+pole to the goal pole, using an intermediate pole:
 
-#. Move a tower of height-1 to an intermediate pole, using the final
+#. Move a tower of height :math:`h-1` from the starting pole to an intermediate pole via the goal
    pole.
 
-#. Move the remaining disk to the final pole.
+#. Move the remaining disk from the starting pole to the final pole.
 
-#. Move the tower of height-1 from the intermediate pole to the final
-   pole using the original pole.
+#. Move the tower of height :math:`h-1` from the intermediate pole to the goal
+   pole via the starting pole.
 
 As long as we always obey the rule that the larger disks remain on the
 bottom of the stack, we can use the three steps above recursively,
@@ -87,24 +87,25 @@ Tower of Hanoi puzzle.
 ::
 
     def move_tower(height, from_pole, to_pole, with_pole):
-        if height >= 1:
-            move_tower(height - 1, from_pole, with_pole, to_pole)
-            move_disk(from_pole, to_pole)
-            move_tower(height - 1, with_pole, to_pole, from_pole)
+        if height < 1:
+            return
+        move_tower(height - 1, from_pole, with_pole, to_pole)
+        move_disk(from_pole, to_pole)
+        move_tower(height - 1, with_pole, to_pole, from_pole)
 
 .. highlight:: python
     :linenothreshold: 500
 
 Notice that the code in :ref:`Listing 1 <lst_hanoi>` is almost identical to the
 English description. The key to the simplicity of the algorithm is that
-we make two different recursive calls, one on line 3 and a
-second on line 5. On line 3 we move all but the bottom
-disk on the initial tower to an intermediate pole. The next line simply
+we make two different recursive calls, one on line 4 and a
+second on line 6. On line 4 we move all but the bottom
+disk on the initial tower to an intermediate pole. The next line
 moves the bottom disk to its final resting place. Then on line
-5 we move the tower from the intermediate pole to the top of
-the largest disk. The base case is detected when the tower height is 0;
-in this case there is nothing to do, so the ``move_tower`` function
-simply returns. The important thing to remember about handling the base
+6 we move the tower from the intermediate pole to the top of
+the largest disk. The base case is the tower of height 0;
+in this case there is nothing to do, so the ``move_tower`` function returns.
+The important thing to remember about handling the base
 case this way is that simply returning from ``move_tower`` is what
 finally allows the ``move_disk`` function to be called.
 
@@ -119,8 +120,8 @@ that it gives you a very efficient solution to the puzzle.
 
 ::
 
-    def move_disk(from_p, to_p):
-        print("moving disk from", from_p, "to", to_p)
+    def move_disk(from_pole, to_pole):
+        print(f"moving disk from {from_pole} to {to_pole}")
         
 The program in ActiveCode 1 provides the entire solution for three disks.
         
