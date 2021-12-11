@@ -40,14 +40,14 @@ In other words, there are :math:`m` slots in the table, named 0 through 10.
 The mapping between an item and the slot where that item belongs in the
 hash table is called the **hash function**. The hash function will take
 any item in the collection and return an integer in the range of slot
-names, between 0 and :math:`m - 1`. Assume that we have the set of integer items
+names between 0 and :math:`m - 1`. Assume that we have the set of integer items
 54, 26, 93, 17, 77, and 31. Our first hash function, sometimes referred
-to as the “remainder method,” simply takes an item and divides it by the
+to as the *remainder method*, simply takes an item and divides it by the
 table size, returning the remainder as its hash value
 (:math:`h(item)=item \% 11`). :ref:`Table 4 <tbl_hashvalues1>` gives all of the
 hash values for our example items. Note that this remainder method
-(modulo arithmetic) will typically be present in some form in all hash
-functions, since the result must be in the range of slot names.
+(modulo) will typically be present in some form in all hash
+functions since the result must be in the range of slot names.
 
 .. _tbl_hashvalues1:
 
@@ -84,7 +84,7 @@ is referred to as the **load factor**, and is commonly denoted by
 
 Now when we want to search for an item, we simply use the hash function
 to compute the slot name for the item and then check the hash table to
-see if it is present. This searching operation is :math:`O(1)`, since
+see if it is present. This searching operation is :math:`O(1)` since
 a constant amount of time is required to compute the hash value and then
 index the hash table at that location. If everything is where it should
 be, we have found a constant time search algorithm.
@@ -95,7 +95,7 @@ if the item 44 had been the next item in our collection, it would have a
 hash value of 0 (:math:`44\ \%\ 11 = 0`). Since 77 also had a hash
 value of 0, we would have a problem. According to the hash function, two
 or more items would need to be in the same slot. This is referred to as
-a **collision** (it may also be called a “clash”). Clearly, collisions
+a **collision** (it may also be called a *clash*). Clearly, collisions
 create a problem for the hashing technique. We will discuss them in
 detail later.
 
@@ -105,8 +105,7 @@ Hash Functions
 Given a collection of items, a hash function that maps each item into a
 unique slot is referred to as a **perfect hash function**. If we know
 the items and the collection will never change, then it is possible to
-construct a perfect hash function (refer to the exercises for more about
-perfect hash functions). Unfortunately, given an arbitrary collection of
+construct a perfect hash function. Unfortunately, given an arbitrary collection of
 items, there is no systematic way to construct a perfect hash function.
 Luckily, we do not need the hash function to be perfect to still gain
 performance efficiency.
@@ -122,16 +121,16 @@ almost one billion slots. If we only want to store data for a class of
 
 Our goal is to create a hash function that minimizes the number of
 collisions, is easy to compute, and evenly distributes the items in the
-hash table. There are a number of common ways to extend the simple
+hash table. To that end, there are a number of common ways to extend the simple
 remainder method. We will consider a few of them here.
 
 The **folding method** for constructing hash functions begins by
-dividing the item into equal-size pieces (the last piece may not be of
+dividing the item into equal-sized pieces (the last piece may not be of
 equal size). These pieces are then added together to give the resulting
 hash value. For example, if our item was the phone number 436-555-4601,
 we would take the digits and divide them into groups of 2
 (43, 65, 55, 46, 01). After the addition, :math:`43 + 65 + 55 + 46 + 01`, we get
-210. If we assume our hash table has 11 slots, then we need to perform
+1.   If we assume our hash table has 11 slots, then we need to perform
 the extra step of dividing by 11 and keeping the remainder. In this case
 :math:`210\ \%\ 11` is 1, so the phone number 436-555-4601 hashes to
 slot 1. Some folding methods go one step further and reverse every other
@@ -141,7 +140,7 @@ piece before the addition. For the above example, we get
 Another numerical technique for constructing a hash function is called
 the **mid-square method**. We first square the item, and then extract
 some portion of the resulting digits. For example, if the item were 44,
-we would first compute :math:`44 ^{2} = 1,936`. By extracting the
+we would first compute :math:`44 ^{2} = 1936`. By extracting the
 middle two digits, 93, and performing the remainder step, we get 5
 (:math:`93\ \%\ 11`). :ref:`Table 5 <tbl_hashvalues2>` shows items under both the
 remainder method and the mid-square method. You should verify that you
@@ -165,7 +164,7 @@ understand how these values were computed.
 
 
 We can also create hash functions for character-based items such as
-strings. The word “cat” can be thought of as a sequence of ordinal
+strings. For example, the word *cat* can be thought of as a sequence of ordinal
 values.
 
 ::
@@ -247,8 +246,10 @@ open addressing technique called **linear probing**.
 
 :ref:`Figure 8 <fig_linearprobing>` shows an extended set of integer items under the
 simple remainder method hash function (54, 26, 93, 17, 77, 31, 44, 55, 20).
-:ref:`Table 4 <tbl_hashvalues1>` above shows the hash values for the original items.
-:ref:`Figure 5 <fig_hashtable2>` shows the original contents. When we attempt to
+:ref:`Table 4 <tbl_hashvalues1>` above shows the hash values for the original six items and
+:ref:`Figure 5 <fig_hashtable2>` shows the contents of a hash table with those six items.
+Let's see what happens when we attempt to place the additional three items into the table.
+When we attempt to
 place 44 into slot 0, a collision occurs. Under linear probing, we look
 sequentially, slot by slot, until we find an open position. In this
 case, we find slot 1.
@@ -298,7 +299,7 @@ technique so that instead of looking sequentially for the next open
 slot, we skip slots, thereby more evenly distributing the items that
 have caused collisions. This will potentially reduce the clustering that
 occurs. :ref:`Figure 10 <fig_linearprobing2>` shows the items when collision
-resolution is done with a “plus 3” probe. This means that once a
+resolution is done with what we will call a “plus 3” probe. This means that once a
 collision occurs, we will look at every third slot until we find one
 that is empty.
 
@@ -307,23 +308,23 @@ that is empty.
 .. figure:: Figures/linearprobing2.png
    :align: center
 
-   Figure 10: Collision Resolution Using “Plus 3”
+   Figure 10: Collision Resolution Using a Plus 3 Probe
 
 
 The general name for this process of looking for another slot after a
 collision is **rehashing**. With simple linear probing, the rehash
 function is :math:`new\_hash = rehash(old\_hash)` where
-:math:`rehash(pos) = (pos + 1) \% size`. The “plus 3” rehash
+:math:`rehash(pos) = (pos + 1) \% size`. The plus 3 rehash
 can be defined as :math:`rehash(pos) = (pos + 3) \% size`. In
 general, :math:`rehash(pos) = (pos + skip) \% size`. It is
-important to note that the size of the “skip” must be such that all the
+important to note that the size of the skip must be such that all the
 slots in the table will eventually be visited. Otherwise, part of the
 table will be unused. To ensure this, it is often suggested that the
 table size be a prime number. This is the reason we have been using 11
 in our examples.
 
 A variation of the linear probing idea is called **quadratic probing**.
-Instead of using a constant “skip” value, we use a rehash function that
+Instead of using a constant skip value, we use a rehash function that
 increments the hash value by 1, 3, 5, 7, 9, and so on. This means that
 if the first hash value is :math:`h`, the successive values are :math:`h + 1`,
 :math:`h + 4`, :math:`h + 9`, :math:`h + 16`, and so on. In general, the :math:`i` will be :math:`i ^ {2}` and :math:`rehash(pos) = (h + i ^ {2}) \% size`. In other words,
@@ -357,7 +358,7 @@ table that uses chaining to resolve collisions.
 
 
 When we want to search for an item, we use the hash function to generate
-the slot where it should reside. Since each slot holds a collection, we
+the slot where it should reside. Since with chaining each slot holds a collection, we
 use a searching technique to decide whether the item is present. The
 advantage is that on the average there are likely to be many fewer items
 in each slot, so the search is perhaps more efficient. We will look at
@@ -391,11 +392,11 @@ the analysis for hashing at the end of this section.
 
       Suppose you are given the following set of keys to insert into a hash table that holds exactly 11 values:  113 , 117 , 97 , 100 , 114 , 108 , 116 , 105 , 99 Which of the following best demonstrates the contents of the hash table after all the keys have been inserted using linear probing?
 
-Implementing the ``Map`` Abstract Data Type
+Implementing the Map Abstract Data Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 One of the most useful Python collections is the dictionary. Recall that
-a dictionary is an associative data type where you can store key–data
+a dictionary is an associative data type where you can store key-data
 pairs. The key is used to look up the associated data value. We often
 refer to this idea as a **map**.
 
@@ -404,33 +405,33 @@ unordered collection of associations between a key and a data value. The
 keys in a map are all unique so that there is a one-to-one relationship
 between a key and a value. The operations are given below.
 
--  ``Map()`` Create a new, empty map. It returns an empty map
+-  ``Map()`` Creates a new, empty map. It returns an empty map
    collection.
 
--  ``put(key, val)`` Add a new key-value pair to the map. If the key is
-   already in the map then replace the old value with the new value.
+-  ``put(key, val)`` Adds a new key-value pair to the map. If the key is
+   already in the map, replaces the old value with the new value.
 
--  ``get(key)`` Given a key, return the value stored in the map or
+-  ``get(key)`` Given a key, returns the value stored in the map or
    ``None`` otherwise.
 
--  ``del`` Delete the key-value pair from the map using a statement of
+-  ``del`` Deletes the key-value pair from the map using a statement of
    the form ``del map[key]``.
 
--  ``len()`` Return the number of key-value pairs stored in the map.
+-  ``len()`` Returns the number of key-value pairs stored in the map.
 
--  ``in`` Return ``True`` for a statement of the form ``key in map``, if
+-  ``in`` Returns ``True`` for a statement of the form ``key in map``, if
    the given key is in the map, ``False`` otherwise.
 
 One of the great benefits of a dictionary is the fact that given a key,
 we can look up the associated data value very quickly. In order to
-provide this fast look up capability, we need an implementation that
+provide this fast look-up capability, we need an implementation that
 supports an efficient search. We could use a list with sequential or
-binary search but it would be even better to use a hash table as
+binary search, but it would be even better to use a hash table as
 described above since looking up an item in a hash table can approach
 :math:`O(1)` performance.
 
 In :ref:`Listing 2 <lst_hashtablecodeconstructor>` we use two lists to create a
-``HashTable`` class that implements the ``Map`` abstract data type. One
+``HashTable`` class that implements the map abstract data type. One
 list, called ``slots``, will hold the key items and a parallel list,
 called ``data``, will hold the data values. When we look up a key, the
 corresponding position in the data list will hold the associated data
@@ -453,15 +454,14 @@ can be as efficient as possible.
             self.data = [None] * self.size
 
 
-``hash_function`` implements the simple remainder method. The collision
-resolution technique is linear probing with a “plus 1” rehash function.
+As seen in :ref:`Listing 3 <lst_hashtablecodestore>`, ``hash_function`` implements the simple remainder method. The collision
+resolution technique is linear probing with a “plus 1” rehash value.
 The ``put`` function (see :ref:`Listing 3 <lst_hashtablecodestore>`) assumes that
 there will eventually be an empty slot unless the key is already present
 in the ``self.slots``. It computes the original hash value and if that
 slot is not empty, iterates the ``rehash`` function until an empty slot
 occurs. If a nonempty slot already contains the key, the old data value
-is replaced with the new data value.  Dealing with the situation where there are
-no empty slots left is an exercise.
+is replaced with the new data value.
 
 .. _lst_hashtablecodestore:
 
@@ -499,7 +499,7 @@ no empty slots left is an exercise.
         return (old_hash + 1) % size
 
 
-Likewise, the ``get`` function (see :ref:`Listing 4 <lst_hashtablecodesearch>`)
+The ``get`` function (see :ref:`Listing 4 <lst_hashtablecodesearch>`)
 begins by computing the initial hash value. If the value is not in the
 initial slot, ``rehash`` is used to locate the next possible position.
 Notice that line 14 guarantees that the search will terminate by
