@@ -5,9 +5,9 @@
 Summary
 -------
 
-In this chapter we have looked at the tree data structure. The tree data
-structure enables us to write many interesting algorithms. In this
-chapter we have looked at algorithms that use trees to do the following:
+In this chapter we have looked at the tree data structure,
+which enables us to write many interesting algorithms.
+We have looked at algorithms that use various kinds of trees to do the following:
 
 -  A binary tree for parsing and evaluating expressions.
 

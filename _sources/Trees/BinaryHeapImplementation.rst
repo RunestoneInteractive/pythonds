@@ -47,7 +47,7 @@ The Heap Order Property
 
 The method that we will use to store items in a heap relies on
 maintaining the heap order property. The **heap order property** is as
-follows: In a heap, for every node :math:`x` with parent :math:`p`,
+follows: in a heap, for every node :math:`x` with parent :math:`p`,
 the key in :math:`p` is smaller than or equal to the key in
 :math:`x`. :ref:`Figure 2 <fig_heapOrder>` also illustrates a complete binary
 tree that has the heap order property.
@@ -107,7 +107,8 @@ added item is very small, we may still need to swap it up another level.
 In fact, we may need to keep swapping until we get to the top of the
 tree. :ref:`Listing 2 <lst_heap2>` shows the ``_perc_up`` method, which
 percolates a new item as far up in the tree as it needs to go to
-maintain the heap property. We used leading ``_`` in the name of the method as it is an internal operation.
+maintain the heap property. We used a leading underscore (``_``) in 
+the name of the method as it is an internal operation.
 The parent of the current node
 can be computed by subtracting 1 from the index of the current node and dividing the result by 2.
 
@@ -122,15 +123,15 @@ properly.
 
 ::
 
-    def _perc_up(self, cur_idx):
-        while (cur_idx - 1) // 2 >= 0:
-            parent_idx = (cur_idx - 1) // 2
-            if self._heap[cur_idx] < self._heap[parent_idx]:
-                self._heap[cur_idx], self._heap[parent_idx] = (
+    def _perc_up(self, i):
+        while (i - 1) // 2 >= 0:
+            parent_idx = (i - 1) // 2
+            if self._heap[i] < self._heap[parent_idx]:
+                self._heap[i], self._heap[parent_idx] = (
                     self._heap[parent_idx],
-                    self._heap[cur_idx],
+                    self._heap[i],
                 )
-            cur_idx = parent_idx
+            i = parent_idx
 
 
 .. _lst_heap3:
@@ -168,7 +169,7 @@ position in the heap.
    Figure 3: Percolating the Root Node down the Tree
 
 In order to maintain the heap order property, all we need to do is swap
-the root with its smaller child less than the root. After the initial
+the root with its smaller child that is less than the root. After the initial
 swap, we may repeat the swapping process with a node and its children
 until the node is swapped into a position on the tree where it is
 already less than both children. The code for percolating a node down
@@ -182,24 +183,24 @@ the tree is found in the ``_perc_down`` and ``_get_min_child`` methods in
 
 ::
 
-    def _perc_down(self, cur_idx):
-        while 2 * cur_idx + 1 < len(self._heap):
-            min_child_idx = self._get_min_child(cur_idx)
-            if self._heap[cur_idx] > self._heap[min_child_idx]:
-                self._heap[cur_idx], self._heap[min_child_idx] = (
-                    self._heap[min_child_idx],
-                    self._heap[cur_idx],
+    def _perc_down(self, i):
+        while 2 * i + 1 < len(self._heap):
+            sm_child = self._get_min_child(i)
+            if self._heap[i] > self._heap[sm_child]:
+                self._heap[i], self._heap[sm_child] = (
+                    self._heap[sm_child],
+                    self._heap[i],
                 )
             else:
-                return
-            cur_idx = min_child_idx
+                break
+            i = sm_child
 
-    def _get_min_child(self, parent_idx):
-        if 2 * parent_idx + 2 > len(self._heap) - 1:
-            return 2 * parent_idx + 1
-        if self._heap[2 * parent_idx + 1] < self._heap[2 * parent_idx + 2]:
-            return 2 * parent_idx + 1
-        return 2 * parent_idx + 2
+    def _get_min_child(self, i):
+        if 2 * i + 2 > len(self._heap) - 1:
+            return 2 * i + 1
+        if self._heap[2 * i + 1] < self._heap[2 * i + 2]:
+            return 2 * i + 1
+        return 2 * i + 2
 
 The code for the ``delete`` operation is in :ref:`Listing 5 <lst_heap5>`. Note
 that once again the hard work is handled by a helper function, in this
@@ -221,7 +222,7 @@ To finish our discussion of binary heaps, we will look at a method to
 build an entire heap from a list of keys. The first method you might
 think of may be like the following. Given a list of keys, you could
 easily build a heap by inserting each key one at a time. Since you are
-starting with a list of one item, the list is sorted and you could use
+starting with an empy list, it is sorted and you could use
 binary search to find the right position to insert the next key at a
 cost of approximately :math:`O(\log{n})` operations. However, remember
 that inserting an item in the middle of the list may require
@@ -240,10 +241,10 @@ to build the entire heap.
 
     def heapify(self, not_a_heap):
         self._heap = not_a_heap[:]
-        cur_idx = len(self._heap) // 2 - 1
-        while cur_idx >= 0:
-            self._perc_down(cur_idx)
-            cur_idx = cur_idx - 1
+        i = len(self._heap) // 2 - 1
+        while i >= 0:
+            self._perc_down(cuir_idx)
+            i = i - 1
 
 
 .. _fig_buildheap:
@@ -260,7 +261,7 @@ their proper positions. Although we start out in the middle of the tree
 and work our way back toward the root, the ``_perc_down`` method ensures
 that the largest child is always moved down the tree. Because the heap is a
 complete binary tree, any nodes past the halfway point will be leaves
-and therefore have no children. Notice that when ``i=1``, we are
+and therefore have no children. Notice that when ``i = 0``, we are
 percolating down from the root of the tree, so this may require multiple
 swaps. As you can see in the rightmost two trees of
 :ref:`Figure 4 <fig_buildheap>`, first the 9 is moved out of the root position,
@@ -274,9 +275,9 @@ list representation of this series of swaps as shown in
 
 ::
 
-          i = 2  [9, 5, 6, 2, 3]
-          i = 1  [9, 2, 6, 5, 3]
-          i = 0  [2, 3, 6, 5, 9]
+          start  [9, 6, 5, 2, 3]
+          i = 1  [9, 2, 5, 6, 3]
+          i = 0  [2, 3, 5, 6, 9]
 
 
 The complete binary heap implementation can be seen in ActiveCode 1.
@@ -365,5 +366,5 @@ derived from the height of the tree. For most of the work in
 
 Using the fact that you can build a heap from a list in :math:`O(n)`
 time, you will construct a sorting algorithm that uses a heap and sorts
-a list in :math:`O(n\log{n}))` as an exercise at the end of this
+a list in :math:`O(n\log{n})` as an exercise at the end of this
 chapter.

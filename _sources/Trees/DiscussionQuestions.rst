@@ -56,8 +56,8 @@ Discussion Questions
 
 #. Consider the two different techniques we used for implementing traversals of a binary
    tree. Why must we check before the call to ``preorder`` when
-   implementing as a method, whereas we could check inside the call when
-   implementing as a function?
+   implementing it as a method, whereas we could check inside the call when
+   implementing it as a function?
 
 12. Show the function calls needed to build the following binary tree.
 

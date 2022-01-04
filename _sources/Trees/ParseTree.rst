@@ -7,7 +7,7 @@ Parse Tree
 
 With the implementation of our tree data structure
 complete, we now look at an example of how a tree can be used to solve
-some real problems. In this section we will look at parse trees. Parse
+some real problems. In this section we will look at **parse trees**. Parse
 trees can be used to represent real-world constructions like sentences or mathematical expressions.
 
 .. _fig_nlparse:
@@ -28,10 +28,10 @@ with the individual parts of the sentence by using subtrees.
    :align: center
    :alt: image
 
-   Figure 2: Parse Tree for :math:`((7+3)*(5-2))`
+   Figure 2: Parse Tree for :math:`((7 + 3) \cdot (5 - 2))`
 
 We can also represent a mathematical expression such as
-:math:`((7 + 3) * (5 - 2))` as a parse tree, as shown in
+:math:`((7 + 3) \cdot (5 - 2))` as a parse tree, as shown in
 :ref:`Figure 2 <fig_meparse>`. We have already looked at fully parenthesized
 expressions, so what do we know about this expression? We know that
 multiplication has a higher precedence than either addition or
@@ -53,7 +53,7 @@ simplified tree shown in :ref:`Figure 3 <fig_mesimple>`.
    :align: center
    :alt: image
 
-   Figure 3: A Simplified Parse Tree for :math:`((7 + 3) * (5 - 2))`
+   Figure 3: A Simplified Parse Tree for :math:`((7 + 3) \cdot (5 - 2))`
 
 In the rest of this section we are going to examine parse trees in more
 detail. In particular we will look at
@@ -95,10 +95,10 @@ Using the information from above we can define four rules as follows:
 Before writing the Python code, let’s look at an example of the rules
 outlined above in action. We will use the expression
 :math:`(3 + (4 * 5))`. We will parse this expression into the
-following list of character tokens ``["(", "3", "+", "(", "4", "*", "5", ")", ")"]``.
+following list of character tokens: ``["(", "3", "+", "(", "4", "*", "5", ")", ")"]``.
 Initially we will start out with a
 parse tree that consists of an empty root node. :ref:`Figure 4 <fig_bldExpstep>`
-illustrates the structure and contents of the parse tree, as each new
+illustrates the structure and contents of the parse tree as each new
 token is processed.
 
 .. _fig_bldExpstep:
@@ -148,7 +148,8 @@ token is processed.
 
    Figure 4: Tracing Parse Tree Construction
 
-Using :ref:`Figure 4 <fig_bldExpstep>`, let’s walk through the example step by
+Using :ref:`Figure 4 <fig_bldExpstep>` and the example expression
+from the previous paragraph, let’s walk through the example step by
 step:
 
 a) Create an empty tree.
@@ -163,11 +164,11 @@ d) Read ``+`` as the next token. By rule 2, set the root value of the
    current node to + and add a new node as the right child. The new
    right child becomes the current node.
 
-e) Read a ``(`` as the next token. By rule 1, create a new node as the left
+e) Read ``(`` as the next token. By rule 1, create a new node as the left
    child of the current node. The new left child becomes the current
    node.
 
-f) Read a ``4`` as the next token. By rule 3, set the value of the current
+f) Read ``4`` as the next token. By rule 3, set the value of the current
    node to 4. Make the parent of 4 the current node.
 
 g) Read ``*`` as the next token. By rule 2, set the root value of the
@@ -181,7 +182,7 @@ i) Read ``)`` as the next token. By rule 4 we make the parent of \* the
    current node.
 
 j) Read ``)`` as the next token. By rule 4 we make the parent of + the
-   current node. At this point there is no parent for + so we are done.
+   current node. At this point there is no parent for +, so we are done.
 
 From the example above, it is clear that we need to keep track of the
 current node as well as the parent of the current node. The tree
@@ -222,24 +223,19 @@ in :ref:`ActiveCode 1 <lst_buildparse>`.
                 current_tree.insert_left("")
                 p_stack.push(current_tree)
                 current_tree = current_tree.left_child
-
             elif i in ["+", "-", "*", "/"]:
                 current_tree.root = i
                 current_tree.insert_right("")
                 p_stack.push(current_tree)
                 current_tree = current_tree.right_child
-
+            elif i.isdigit():
+                  current_tree.root = int(i)
+                  parent = p_stack.pop()
+                  current_tree = parent
             elif i == ")":
-                current_tree = p_stack.pop()
-
-            elif i not in ["+", "-", "*", "/", ")"]:
-                try:
-                    current_tree.root = int(i)
-                    parent = p_stack.pop()
-                    current_tree = parent
-
-                except ValueError:
-                    raise ValueError("token '{}' is not a valid integer".format(i))
+                  current_tree = p_stack.pop()
+            else:
+                  raise ValueError(f"Unknown operator '{i}'")
 
         return expr_tree
 
@@ -249,8 +245,8 @@ in :ref:`ActiveCode 1 <lst_buildparse>`.
 
 
 The four rules for building a parse tree are coded as the first four
-clauses of the ``if`` statement on lines 13, 18,
-24, and 27 of :ref:`ActiveCode 1 <lst_buildparse>`. In each case you
+clauses of the ``if..elif`` statements on lines 13, 17,
+22, and 26 of :ref:`ActiveCode 1 <lst_buildparse>`. In each case you
 can see that the code implements the rule, as described above, with a
 few calls to the ``BinaryTree`` or ``Stack`` methods. The only error
 checking we do in this function is in the ``else`` clause where a
@@ -258,7 +254,7 @@ checking we do in this function is in the ``else`` clause where a
 that we do not recognize.
 
 Now that we have built a parse tree, what can we do with it? As a first
-example, we will write a function to evaluate the parse tree, returning
+example, we will write a function to evaluate the parse tree and return
 the numerical result. To write this function, we will make use of the
 hierarchical nature of the tree. Look back at :ref:`Figure 2 <fig_meparse>`.
 Recall that we can replace the original tree with the simplified tree
@@ -292,14 +288,6 @@ leaf node. This check is on line 7. If the current node is not
 a leaf node, look up the operator in the current node and apply it to
 the results from recursively evaluating the left and right children.
 
-To implement the arithmetic, we use a dictionary with the keys ``"+"``, ``"-"``, ``"*"``, and
-``"/"``. The values stored in the dictionary are functions from Python’s
-operator module. The operator module provides us with the functional
-versions of many commonly used operators. When we look up an operator in
-the dictionary, the corresponding function object is retrieved. Since
-the retrieved object is a function, we can call it in the usual way
-``function(param1, param2)``. So the lookup ``operators["+"](2, 2)`` is
-equivalent to ``operator.add(2, 2)``.
 
 .. _lst_eval:
 
@@ -307,6 +295,9 @@ equivalent to ``operator.add(2, 2)``.
 
 .. sourcecode:: python
     
+    import operator
+
+
     def evaluate(parse_tree):
         operators = {
             "+": operator.add,
@@ -328,11 +319,20 @@ equivalent to ``operator.add(2, 2)``.
 .. highlight:: python
     :linenothreshold: 500
 
+To implement the arithmetic, we use a dictionary with the keys ``"+"``, ``"-"``, ``"*"``, and
+``"/"``. The values stored in the dictionary are functions from Python’s
+operator module. The operator module provides us with the function
+versions of many commonly used operators. When we look up an operator in
+the dictionary, the corresponding function object is retrieved. Since
+the retrieved object is a function, we can call it in the usual way:
+``function(param1, param2)``. So the lookup ``operators["+"](2, 2)`` is
+equivalent to ``operator.add(2, 2)``.
+
 Finally, we will trace the ``evaluate`` function on the parse tree we
 created in :ref:`Figure 4 <fig_bldExpstep>`. When we first call ``evaluate``, we
 pass the root of the entire tree as the parameter ``parse_tree``. Then we
 obtain references to the left and right children to make sure they
-exist. The recursive call takes place on line 14. We begin
+exist. The recursive call takes place on line 17. We begin
 by looking up the operator in the root of the tree, which is ``"+"``.
 The ``"+"`` operator maps to the ``operator.add`` function call, which
 takes two parameters. As usual for a Python function call, the first
@@ -342,7 +342,7 @@ our ``evaluate`` function. Using left-to-right evaluation, the first
 recursive call goes to the left. In the first recursive call the
 ``evaluate`` function is given the left subtree. We find that the node
 has no left or right children, so we are in a leaf node. When we are in
-a leaf node we just return the value stored in the leaf node as the
+a leaf node, we just return the value stored in the leaf node as the
 result of the evaluation. In this case we return the integer 3.
 
 At this point we have one parameter evaluated for our top-level call to
@@ -352,7 +352,7 @@ the right child of the root. We find that the node has both a left and a
 right child so we look up the operator stored in this node, ``"*"``, and
 call this function using the left and right children as the parameters.
 At this point you can see that both recursive calls will be to leaf
-nodes, which will evaluate to the integers four and five respectively.
+nodes, which will evaluate to the integers 4 and 5 respectively.
 With the two parameters evaluated, we return the result of
 ``operator.mul(4, 5)``. At this point we have evaluated the operands for
 the top level ``"+"`` operator and all that is left to do is finish the

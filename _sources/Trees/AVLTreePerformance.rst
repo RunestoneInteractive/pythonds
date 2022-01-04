@@ -10,7 +10,7 @@ new balance factor requirement. Our claim is that by ensuring that a
 tree always has a balance factor of -1, 0, or 1 we can get better Big-O
 performance of key operations. Let us start by thinking about how this
 balance condition changes the worst-case tree. There are two
-possibilities to consider, a left-heavy tree and a right heavy tree. If
+possibilities to consider, a left-heavy tree and a right-heavy tree. If
 we consider trees of heights 0, 1, 2, and 3, :ref:`Figure 2 <fig_worstAVL>`
 illustrates the most unbalanced left-heavy tree possible under the new
 rules.
@@ -25,9 +25,9 @@ rules.
 
 Looking at the total number of nodes in the tree we see that for a tree
 of height 0 there is 1 node, for a tree of height 1 there is :math:`1 + 1
-= 2` nodes, for a tree of height 2 there are :math:`1 + 1 + 2 = 4` and
+= 2` nodes, for a tree of height 2 there are :math:`1 + 1 + 2 = 4`, and
 for a tree of height 3 there are :math:`1 + 2 + 4 = 7`. More generally
-the pattern we see for the number of nodes in a tree of height h
+the pattern we see for the number of nodes in a tree of height :math:`h`
 (:math:`N_h`) is:
 
 .. math::
@@ -38,7 +38,7 @@ the pattern we see for the number of nodes in a tree of height h
 This recurrence may look familiar to you because it is very similar to
 the Fibonacci sequence. We can use this fact to derive a formula for the
 height of an AVL tree given the number of nodes in the tree. Recall that
-for the Fibonacci sequence the :math:`i_{th}` Fibonacci number is
+for the Fibonacci sequence the :math:`i^{th}` Fibonacci number is
 given by:
 
 .. math::
@@ -71,8 +71,8 @@ we get:
    N_h = \frac{\Phi^{h+2}}{\sqrt{5}} - 1
 
 
-If we rearrange the terms, and take the base 2 log of both sides and
-then solve for :math:`h` we get the following derivation:
+If we rearrange the terms, take the base 2 log of both sides, and
+then solve for :math:`h`, we get the following derivation:
 
 .. math::
 
@@ -82,7 +82,7 @@ then solve for :math:`h` we get the following derivation:
 
 
 This derivation shows us that at any time the height of our AVL tree is
-equal to a constant(1.44) times the log of the number of nodes in the tree. This
+equal to a constant (1.44) times the log of the number of nodes in the tree. This
 is great news for searching our AVL tree because it limits the search to
-:math:`O(\log{N})`.
+:math:`O(\log{n})`.
 
