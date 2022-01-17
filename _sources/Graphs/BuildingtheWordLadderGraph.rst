@@ -29,34 +29,32 @@ how to connect the words, we could compare each word in the list with
 every other. When we compare we are looking to see how many letters are
 different. If the two words in question are different by only one
 letter, we can create an edge between them in the graph. For a small set
-of words that approach would work fine; however let’s suppose we have a
+of words that approach would work fine; however, let’s suppose we have a
 list of 5,110 words. Roughly speaking, comparing one word to every other
 word on the list is an :math:`O(n^2)` algorithm. For 5,110 words,
 :math:`n^2` is more than 26 million comparisons.
 
-We can do much better by using the following approach. Suppose that we
-have a huge number of buckets, each of them with a four-letter word on
-the outside, except that one of the letters in the label has been
-replaced by an underscore. For example, consider
-:ref:`Figure 2 <fig_wordbucket>`, we might have a bucket labeled “pop\_.” As we
-process each word in our list we compare the word with each bucket,
-using the ‘\_’ as a wildcard, so both “pope” and “pops” would match
-“pop\_.” Every time we find a matching bucket, we put our word in that
-bucket. Once we have all the words in the appropriate buckets we know
-that all the words in the bucket must be connected.
+We can do much better by using the approach shown in :ref:`Figure 2 <fig_wordbucket>`.
+Suppose that we have a number of buckets, each labeled with a four-letter word,
+except that one of the letters on the label has been replaced by an underscore.
+As we process a list of words, we compare each word with each bucket
+using the underscore (\_) as a wildcard. Every time we find a matching bucket
+we put the word in that bucket, so that both POPE and POPS would both go
+into the POP\_ bucket. Once we have all the words in the appropriate buckets,
+we know that all the words in each bucket must be connected.
 
 .. _fig_wordbucket:
     
 .. figure:: Figures/wordbuckets.png
    :align: center
 
-   Figure 2: Word Buckets for Words That are Different by One Letter
+   Figure 2: Word Buckets for Words That Differ by One Letter
 
 
 In Python, we can implement the scheme we have just described by using a
 dictionary. The labels on the buckets we have just described are the
-keys in our dictionary. The value stored for that key is a list of
-words. Once we have the dictionary built we can create the graph. We
+keys in our dictionary. The value stored for each key is a list of
+words. Once we have the dictionary built, we can create the graph. We
 start our graph by creating a vertex for each word in the graph. Then we
 create edges between all the vertices we find for words found under the
 same key in the dictionary. :ref:`Listing 1 <lst_wordbucket1>` shows the Python
@@ -72,30 +70,28 @@ code required to build the graph.
 
 
     def build_graph(filename):
-        d = {}
-        g = Graph()
-        word_file = open(filename, "r")
-        # create buckets of words that differ by one letter
-        for line in word_file:
+        buckets = {}
+        the_graph = Graph()
+        with open(filename, "r", encoding="utf8") as file_in:
+            all_words = file_in.readlines()
+        # create buckets of words that differ by 1 letter
+        for line in all_words:
             word = line.strip()
-            for i in range(len(word)):
-                bucket = word[:i] + "_" + word[i + 1 :]
-                if bucket in d:
-                    d[bucket].append(word)
-                else:
-                    d[bucket] = [word]
-        # add edges between words in the same bucket
-        for bucket in d:
-            for word1 in d[bucket]:
-                for word2 in d[bucket]:
-                    if word1 != word2:
-                        g.add_edge(word1, word2)
-        return g
+            for i, _ in enumerate(word):
+                bucket = f"{word[:i]}_{word[i + 1 :]}"
+                buckets.setdefault(bucket, set()).add(word)
+
+        # add edges between different words in the same bucket
+        for similar_words in buckets.values():
+            for word1 in similar_words:
+                for word2 in similar_words - {word1}:
+                    the_graph.add_edge(word1, word2)
+        return the_graph
 
 Since this is our first real-world graph problem, you might be wondering
-how sparse is the graph? The list of four-letter words we have for this
+how sparse the graph is. The list of four-letter words we have for this
 problem is 5,110 words long. If we were to use an adjacency matrix, the
-matrix would have 5,110 \* 5,110 = 26,112,100 cells. The graph
+matrix would have :math:`5,110 \cdot 5,110` = 26,112,100 cells. The graph
 constructed by the ``build_graph`` function has exactly 53,286 edges, so
 the matrix would have only 0.20% of the cells filled! That is a very
 sparse matrix indeed.

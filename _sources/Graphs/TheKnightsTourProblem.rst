@@ -6,14 +6,14 @@ The Knight’s Tour Problem
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Another classic problem that we can use to illustrate a second common
-graph algorithm is called the “knight’s tour.” The knight’s
+graph algorithm is called the knight’s tour. The knight’s
 tour puzzle is played on a chess board with a single chess piece, the
 knight. The object of the puzzle is to find a sequence of moves that
 allow the knight to visit every square on the board exactly once. One
-such sequence is called a “tour.” The knight’s tour puzzle has
-fascinated chess players, mathematicians, and computer scientists alike
-for many years. The upper bound on the number of possible legal tours
-for an eight-by-eight chessboard is known to be
+such sequence is called a *tour*. The knight’s tour puzzle has
+fascinated chess players, mathematicians, and now, computer scientists,
+for over a thousand years. The upper bound on the number of possible legal tours
+for an :math:`8 \times 8` chessboard is known to be
 :math:`1.305 \times 10^{35}`; however, there are even more possible
 dead ends. Clearly this is a problem that requires some real brains,
 some real computing power, or both.

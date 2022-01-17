@@ -6,19 +6,19 @@ Dijkstra’s Algorithm
 ~~~~~~~~~~~~~~~~~~~~
 
 The algorithm we are going to use to determine the shortest path is
-called “Dijkstra’s algorithm.” Dijkstra’s algorithm is an iterative
+called Dijkstra’s algorithm. Dijkstra’s algorithm is an iterative
 algorithm that provides us with the shortest path from one particular
 starting node to all other nodes in the graph. Again this is similar to
-the results of a breadth first search.
+the results of a breadth-first search.
 
-To keep track of the total cost from the start node to each destination
-we will make use of the ``distance`` instance variable in the Vertex class.
+To keep track of the total cost from the start node to each destination,
+we will make use of the ``distance`` instance variable in the ``Vertex`` class.
 The ``distance`` instance variable will contain the current total weight of
 the smallest weight path from the start to the vertex in question. The
 algorithm iterates once for every vertex in the graph; however, the
-order that we iterate over the vertices is controlled by a priority
+order that it iterates over the vertices is controlled by a priority
 queue. The value that is used to determine the order of the objects in
-the priority queue is ``distance``. When a vertex is first created ``distance``
+the priority queue is ``distance``. When a vertex is first created, ``distance``
 is set to a very large number. Theoretically you would set ``distance`` to
 infinity, but in practice we just set it to a number that is larger than
 any real distance we would have in the problem we are trying to solve.
@@ -32,40 +32,39 @@ correctly as are the predecessor links for each vertex in the graph.
 
 ::
 
-   from pythonds3.graphs import PriorityQueue, Graph, Vertex
-
+   from pythonds3.graphs import PriorityQueue
 
    def dijkstra(graph, start):
       pq = PriorityQueue()
       start.distance = 0
       pq.heapify([(v.distance, v) for v in graph])
       while pq:
-         current_vertex = pq.delete()
-         for next_vertex in current_vertex.get_neighbors():
-               new_distance = current_vertex.distance + current_vertex.get_neighbor(
-                  next_vertex
-               )
-               if new_distance < next_vertex.distance:
-                  next_vertex.distance = new_distance
-                  next_vertex.previous = current_vertex
-                  pq.change_priority(next_vertex, new_distance)
+         distance, current_v = pq.delete()
+         for next_v in current_v.get_neighbors():
+               new_distance = current_v.distance + current_v.get_neighbor(next_v)
+               if new_distance < next_v.distance:
+                  next_v.distance = new_distance
+                  next_v.previous = current_v
+                  pq.change_priority(next_v, new_distance)
 
 
 Dijkstra’s algorithm uses a priority queue. You may recall that a
-priority queue is based on the heap that we implemented in the Tree Chapter. 
+priority queue is based on the heap that we implemented in Chapter 6. 
 There are a couple of differences between that
 simple implementation and the implementation we
-use for Dijkstra’s algorithm. First, the ``PriorityQueue`` class stores
-tuples of (priority, key) pairs. This is important for Dijkstra’s algorithm
-as the key in the priority queue must match the key of the vertex in the
-graph. Secondly the priority is used for deciding the position of the key
+use for Dijkstra’s algorithm, however. First, the ``PriorityQueue`` class stores
+tuples of (priority, key) pairs. This is an important point,
+because Dijkstra's algorithm requires the key in the priority queue to match
+the key of the vertex in the graph.
+The priority is used for deciding the position of the key
 in the priority queue. In this implementation we
 use the distance to the vertex as the priority because as we will see
 when we are exploring the next vertex, we always want to explore the
 vertex that has the smallest distance. The second difference is the
-addition of the ``change_priority`` method. As you can see, this method is used when the distance to a vertex that
-is already in the queue is reduced, and thus moves that vertex toward
-the front of the queue.
+addition of the ``change_priority`` method. As you can see in line 17,
+this method is used when the distance to a vertex that
+is already in the queue is reduced,
+and thus the vertex is moved toward the front of the queue.
 
 
 
@@ -100,7 +99,7 @@ step results in no changes to the graph, so we move on to node
 :math:`y`. At node :math:`y` (see :ref:`Figure 6 <fig_dijd>`) we discover that it is cheaper to get
 to both :math:`w` and :math:`z`, so we adjust the distances and
 predecessor links accordingly. Finally we check nodes :math:`w` and
-:math:`z` (see see :ref:`Figure 6 <fig_dije>` and see :ref:`Figure 8 <fig_dijf>`). However, no additional changes are found and so the
+:math:`z` (see :ref:`Figure 6 <fig_dije>` and :ref:`Figure 8 <fig_dijf>`). However, no additional changes are found and so the
 priority queue is empty and Dijkstra’s algorithm exits.
 
    
@@ -150,15 +149,16 @@ priority queue is empty and Dijkstra’s algorithm exits.
 
 It is important to note that Dijkstra’s algorithm works only when the
 weights are all positive. You should convince yourself that if you
-introduced a negative weight on one of the edges to the graph that the algorithm would never exit.
+introduced a negative weight on one of the edges of the graph
+in :ref:`Figure 2 <fig_network>`, the algorithm would never exit.
 
-We will note that to route messages through the Internet, other
+We will note that to route messages through the internet, other
 algorithms are used for finding the shortest path. One of the problems
-with using Dijkstra’s algorithm on the Internet is that you must have a
+with using Dijkstra’s algorithm on the internet is that you must have a
 complete representation of the graph in order for the algorithm to run.
 The implication of this is that every router has a complete map of all
-the routers in the Internet. In practice this is not the case and other
+the routers in the internet. In practice this is not the case and other
 variations of the algorithm allow each router to discover the graph as
 they go. One such algorithm that you may want to read about is called
-the “distance vector” routing algorithm.
+the *distance vector* routing algorithm.
 

@@ -6,16 +6,18 @@ Implementation
 ~~~~~~~~~~~~~~
 
 Using dictionaries, it is easy to implement the adjacency list in
-Python. In our implementation of the Graph abstract data type we will
-create two classes (see :ref:`Listing 1 <lst_vertex>` and :ref:`Listing 2 <lst_graph>`), ``Graph``, which holds the master list of vertices,
-and ``Vertex``, which will represent each vertex in the graph.
+Python. In our implementation of the graph abstract data type we will
+create two classes:
+``Vertex``, which will represent each vertex in the graph 
+(see :ref:`Listing 1 <lst_vertex>`) and
+``Graph``, which holds the master list of vertices (see :ref:`Listing 2 <lst_graph>`).
 
 Each ``Vertex`` uses a dictionary to keep track of the vertices to which
-it is connected, and the weight of each edge. This dictionary is called
+it is connected and the weight of each edge. This dictionary is called
 ``neighbors``. The listing below shows the code for the ``Vertex``
 class. The constructor simply initializes the ``key``, which will
 typically be a string, and the ``neighbors`` dictionary. The
-``set_neighbor`` method is used add a connection from this vertex to
+``set_neighbor`` method is used to add a connection from this vertex to
 another. The ``get_neighbors`` method returns all of the vertices in
 the adjacency list, as represented by the ``neighbors`` instance
 variable. The ``get_neighbor`` method returns the weight of the edge from
@@ -37,6 +39,9 @@ this vertex to the vertex passed as a parameter.
 
         def set_neighbor(self, other, weight=0):
             self.neighbors[other] = weight
+
+        def __repr__(self):
+            return f"Vertex({self.key})"
 
         def __str__(self):
             return (
@@ -109,12 +114,7 @@ at the end of this session against :ref:`Figure 2 <fig_dgsimple>`.
     >>> for i in range(6):
     ...     g.set_vertex(i)
     >>> g.vertices
-    {0: <__main__.Vertex object at 0x101ef1b70>,
-    1: <__main__.Vertex object at 0x103853518>,
-    2: <__main__.Vertex object at 0x103859ac8>,
-    3: <__main__.Vertex object at 0x103859b00>,
-    4: <__main__.Vertex object at 0x103859b38>,
-    5: <__main__.Vertex object at 0x103859b70>}
+    {0: Vertex(0), 1: Vertex(1), 2: Vertex(2), 3: Vertex(3), 4: Vertex(4), 5: Vertex(5)}
     >>> g.add_edge(0, 1, 5)
     >>> g.add_edge(0, 5, 2)
     >>> g.add_edge(1, 2, 4)
@@ -126,14 +126,14 @@ at the end of this session against :ref:`Figure 2 <fig_dgsimple>`.
     >>> g.add_edge(5, 2, 1)
     >>> for v in g:
     ...     for w in v.get_neighbors():
-    ...         print("( {} , {} )".format(v.get_key(), w.get_key()))
+    ...         print("f({v.get_key()}, {w.get_key()})")
     ...
-    ( 0 , 1 )
-    ( 0 , 5 )
-    ( 1 , 2 )
-    ( 2 , 3 )
-    ( 3 , 4 )
-    ( 3 , 5 )
-    ( 4 , 0 )
-    ( 5 , 4 )
-    ( 5 , 2 )
+    (0, 1)
+    (0, 5)
+    (1, 2)
+    (2, 3)
+    (3, 4)
+    (3, 5)
+    (4, 0)
+    (5, 4)
+    (5, 2)

@@ -5,12 +5,12 @@
 Shortest Path Problems
 ----------------------
 
-When you surf the web, send an email, or log in to a laboratory computer
-from another location on campus a lot of work is going on behind the
+When you surf the Web, send an email, or log in to a laboratory computer
+from another location on campus, a lot of work is going on behind the
 scenes to get the information on your computer transferred to another
 computer. The in-depth study of how information flows from one computer
-to another over the Internet is the primary topic for a class in
-computer networking. However, we will talk about how the Internet works
+to another over the internet is the primary topic for a class in
+computer networking. However, we will talk about how the internet works
 just enough to understand another very important graph algorithm.
 
 .. _fig_inet:
@@ -23,19 +23,29 @@ just enough to understand another very important graph algorithm.
 
 
 :ref:`Figure 1 <fig_inet>` shows you a high-level overview of how communication
-on the Internet works. When you use your browser to request a web page
+on the internet works. When you use your browser to request a web page
 from a server, the request must travel over your local area network and
-out onto the Internet through a router. The request travels over the
-Internet and eventually arrives at a router for the local area network
+out onto the internet through a router. The request travels over the
+internet and eventually arrives at a router for the local area network
 where the server is located. The web page you requested then travels
 back through the same routers to get to your browser. Inside the cloud
-labelled “Internet” in :ref:`Figure 1 <fig_inet>` are additional routers. The job
+labeled “Internet” in :ref:`Figure 1 <fig_inet>` are additional routers. The job
 of all of these routers is to work together to get your information from
 place to place. You can see there are many routers for yourself if your
 computer supports the ``traceroute`` command. The text below shows
-the output of the ``traceroute`` command which illustrates that there
+the output of the ``traceroute`` command, which illustrates that there
 are 13 routers between the web server at Luther College and the mail
 server at the University of Minnesota.
+
+Each router on the internet is connected to one or more other routers.
+If you run the ``traceroute`` command at different times of the day,
+you are likely to see that your information flows through different
+routers at different times. This is because there is a cost associated
+with each connection between a pair of routers that depends on the
+volume of traffic, the time of day, and many other factors. By this time
+it will not surprise you to learn that we can represent the network of
+routers as a graph with weighted edges.
+
 
 ::
 
@@ -57,14 +67,14 @@ server at the University of Minnesota.
          Routers from One Host to the Next over the Internet      
 
 
-Each router on the Internet is connected to one or more other routers.
-So if you run the ``traceroute`` command at different times of the day,
-you are likely to see that your information flows through different
-routers at different times. This is because there is a cost associated
-with each connection between a pair of routers that depends on the
-volume of traffic, the time of day, and many other factors. By this time
-it will not surprise you to learn that we can represent the network of
-routers as a graph with weighted edges.
+:ref:`Figure 2 <fig_network>` shows a small example of a weighted graph that
+represents the interconnection of routers in the internet. The problem
+that we want to solve is to find the **shortest path**, one with the smallest total weight
+along which to route any given message. This problem should sound
+familiar because it is similar to the problem we solved using a breadth
+first search, except that here we are concerned with the total weight of
+the path rather than the number of hops in the path. It should be noted
+that if all the weights are equal, the problem is the same.
 
 .. _fig_network:
 
@@ -74,14 +84,3 @@ routers as a graph with weighted edges.
 
    Figure 2: Connections and Weights between Routers in the Internet
           
-
-
-:ref:`Figure 2 <fig_network>` shows a small example of a weighted graph that
-represents the interconnection of routers in the Internet. The problem
-that we want to solve is to find the path with the smallest total weight
-along which to route any given message. This problem should sound
-familiar because it is similar to the problem we solved using a breadth
-first search, except that here we are concerned with the total weight of
-the path rather than the number of hops in the path. It should be noted
-that if all the weights are equal, the problem is the same.
-

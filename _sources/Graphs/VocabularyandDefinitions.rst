@@ -5,18 +5,18 @@
 Vocabulary and Definitions
 --------------------------
 
-Now that we have looked at some examples of graphs, we will more
+Now that we have looked at an graph, we will more
 formally define a graph and its components. We already know some of
 these terms from our discussion of trees.
 
 Vertex
-    A vertex (also called a “node”) is a fundamental part of a graph. It
-    can have a name, which we will call the “key.” A vertex may also
+    A **vertex** (also called a *node*) is a fundamental part of a graph. It
+    can have a name, which we will call the *key*. A vertex may also
     have additional information. We will call this additional
-    information the “value” or the “payload.”
+    information the *value* or the *payload*.
 
 Edge
-    An edge (also called an “arc”) is another fundamental part of a
+    An **edge** (also called an *arc*) is another fundamental part of a
     graph. An edge connects two vertices to show that there is a
     relationship between them. Edges may be one-way or two-way. If the
     edges in a graph are all one-way, we say that the graph is a
@@ -25,12 +25,13 @@ Edge
     before others.
 
 Weight
-    Edges may be weighted to show that there is a cost to go from one
-    vertex to another. For example in a graph of roads that connect one
+    Edges may be **weighted** to show that there is a cost to go from one
+    vertex to another, which we call **edge cost**.
+    For example, in a graph of roads that connect one
     city to another, the weight on the edge might represent the distance
     between the two cities.
 
-With those definitions in hand we can formally define a graph. A graph
+With those definitions in hand, we can formally define a graph. A graph
 can be represented by :math:`G` where :math:`G =(V,E)`. For the
 graph :math:`G`, :math:`V` is a set of vertices and :math:`E` is a
 set of edges. Each edge is a tuple :math:`(v, w)` where
@@ -68,7 +69,7 @@ The example graph in :ref:`Figure 2 <fig_dgsimple>` helps illustrate two other
 key graph terms:
 
 Path
-    A path in a graph is a sequence of vertices that are connected by
+    A **path** in a graph is a sequence of vertices that are connected by
     edges. Formally we would define a path as
     :math:`w_1, w_2, ..., w_n` such that
     :math:`(w_i, w_{i+1}) \in E` for all :math:`1 \le i \le n-1`.
@@ -80,7 +81,7 @@ Path
     :math:`\left\{(v_3, v_4, 7), (v_4, v_0, 1), (v_0, v_1, 5) \right\}`.
 
 Cycle
-    A cycle in a directed graph is a path that starts and ends at the
+    A **cycle** in a directed graph is a path that starts and ends at the
     same vertex. For example, in :ref:`Figure 2 <fig_dgsimple>` the path
     :math:`(v_5, v_2, v_3, v_5)` is a cycle. A graph with no cycles is called
     an **acyclic graph**. A directed graph with no cycles is called a
