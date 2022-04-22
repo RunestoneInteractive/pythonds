@@ -4,3 +4,4 @@ sphinx_settings.json
 .vscode
 __pycache__
 .history/*
+.venv/

@@ -16,7 +16,7 @@ In order to answer this question, we need to remember that there is an
 important difference between a program and the underlying algorithm that
 the program is representing. As we stated in Chapter 1, an algorithm is
 a generic, step-by-step list of instructions for solving a problem. It
-is a method for solving any instance of the problem such that given a
+is a method for solving any instance of the problem so that given a
 particular input, the algorithm produces the desired result. A program,
 on the other hand, is an algorithm that has been encoded into some
 programming language. There may be many programs for the same algorithm,
@@ -49,7 +49,7 @@ strange, but upon further inspection you can see that this function is
 essentially doing the same thing as the previous one. The reason this is
 not obvious is poor coding. We did not use good identifier names to
 assist with readability, and we used an extra assignment statement
-during the accumulation step that was not really necessary.
+that was not really necessary during the accumulation step.
 
 .. _lst_sum2:
 
@@ -96,12 +96,12 @@ variations.
 
 As an alternative to space requirements, we can analyze and compare
 algorithms based on the amount of time they require to execute. This
-measure is sometimes referred to as the “execution time” or “running
-time” of the algorithm. One way we can measure the execution time for
-the function ``sum_of_n`` is to do a benchmark analysis. This means that
+measure is sometimes referred to as the *execution time* or *running
+time* of the algorithm. One way we can measure the execution time for
+the function ``sum_of_n`` is to do a **benchmark analysis**. This means that
 we will track the actual time required for the program to compute its
 result. In Python, we can benchmark a function by noting the starting
-time and ending time with respect to the system we are using. In the
+time and ending time within the system we are using. In the
 ``time`` module there is a function called ``time`` that will return the
 current system clock time in seconds since some arbitrary starting
 point. By calling this function twice, at the beginning and at the end,
@@ -131,7 +131,7 @@ and then computing the difference, we can get an exact number of seconds
 :ref:`Listing 1 <lst_sum11>` shows the original ``sum_of_n`` function with the timing
 calls embedded before and after the summation. The function returns a
 tuple consisting of the result and the amount of time (in seconds)
-required for the calculation. If we perform 5 invocations of the
+required for the calculation. If we perform five invocations of the
 function, each computing the sum of the first 10,000 integers, we get
 the following:
 
@@ -181,7 +181,7 @@ consistent, averaging about 10 times more seconds. For ``n`` equal to
     >>>
 
 In this case, the average again turns out to be about 10 times the
-previous.
+previous experiment.
 
 Now consider :ref:`ActiveCode 3 <lst_sum3>`, which shows a different means of solving
 the summation problem. This function, ``sum_of_n_3``, takes advantage of a
@@ -221,8 +221,8 @@ But what does this benchmark really tell us? Intuitively, we can see
 that the iterative solutions seem to be doing more work since some
 program steps are being repeated. This is likely the reason it is taking
 longer. Also, the time required for the iterative solution seems to
-increase as we increase the value of ``n``. However, there is a problem.
-If we ran the same function on a different computer or used a different
+increase as we increase the value of ``n``. However, if we ran the same
+function on a different computer or used a different
 programming language, we would likely get different results. It could
 take even longer to perform ``sum_of_n_3`` if the computer were older.
 
