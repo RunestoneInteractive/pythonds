@@ -5,15 +5,15 @@
 Summary
 -------
 
-In this chapter we have looked at the graph abstract data type, and some
-implementations of a graph. A graph enables us to solve many problems
+In this chapter we have looked at the graph abstract data type and some
+implementations of a graph. A graph enables us to solve many problems--
 provided we can transform the original problem into something that can
 be represented by a graph. In particular, we have seen that graphs are
-useful to solve problems in the following general areas.
+useful to solve problems in the following general areas:
 
 -  Breadth first search for finding the unweighted shortest path.
 
--  Dijkstra’s algorithm for weighted shortest path.
+-  Dijkstra’s algorithm for the weighted shortest path.
 
 -  Depth first search for graph exploration.
 

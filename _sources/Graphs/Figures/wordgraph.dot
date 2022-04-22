@@ -1,0 +1,24 @@
+graph ladder {
+  node [shape = none]  
+  fool [shape=box];
+  fool -- pool;
+  fool -- foul;
+  fool -- cool[len=2];
+  fool -- foil;
+  pool -- poll;
+  pool -- cool;
+  poll -- pole;
+  poll -- pall;
+  pall -- pale;
+  pole -- pale;
+  pale -- sale;
+  pale -- page;
+  sage [shape = box];
+  sage -- sale;
+  page -- sage;
+  pall -- fall;
+  fall -- fail;
+  foul -- foil;
+  foil -- fail;
+  pole -- pope;
+}
