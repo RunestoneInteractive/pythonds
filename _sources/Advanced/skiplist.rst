@@ -2,10 +2,10 @@ Dictionaries Revisited: Skip Lists
 ==================================
 
 One of the most versatile collections available in Python is the
-**dictionary**. Dictionaries, often referred to as **maps**, store a
+dictionary. Dictionaries, often referred to as *maps*, store a
 collection of key-value pairs. The key, which must be unique, is
 assigned an association with a particular data value. Given a key, it is
-possible to ask the map for the corresponding, associated data value.
+possible to ask the map for the corresponding associated data value.
 The abilities to put a key-value pair into the map and then look up a
 data value associated with a given key are the fundamental operations
 that all maps must provide.
@@ -42,7 +42,7 @@ key. The map operations are given below:
 -  ``get(key)`` searches for the key in the map and returns the
    associated value. It needs the key and returns a value.
 
-It should be noted that there is a number of other possible operations
+It should be noted that there are a number of other possible operations
 that we could add to the map abstract data type. We will explore these
 in the exercises.
 
@@ -54,7 +54,7 @@ idea. In Chapter `[sorting-and-searching] <#sorting-and-searching>`__ we
 considered the hash table as a means of providing map behavior. Given a
 set of keys and a hash function, we could place the keys in a collection
 that allowed us to search and retrieve the associated data value. Our
-analysis showed that this technique could potentially yield a
+analysis showed that this technique could potentially yield an
 :math:`O(1)` search. However, performance degraded due to issues such as
 table size, collisions, and collision resolution strategy.
 
@@ -70,11 +70,11 @@ The problem we would like to address here is to come up with an
 implementation that has the advantages of an efficient search without
 the drawbacks described above. One such possibility is called a **skip
 list**. Figure `2 <#fig_initskiplist>`__ shows a possible skip list for
-the collection of key-value pairs shown above (the reason for saying
+the collection of key-value pairs shown in Figure `1 <#fig_mappic>`__ (the reason for saying
 “possible” will become apparent later). As you can see, a skip list is
 basically a two-dimensional linked list where the links all go forward
-(to the right) or down. The **head** of the list can be seen in the
-upper-left corner. Note that this is the only entry point into the skip
+(to the right) or down. The *head* of the list can be seen in the
+upper left corner. Note that this is the only entry point into the skip
 list structure.
 
 .. figure:: Figures/initskiplist.png
@@ -141,9 +141,9 @@ the key. Each linked list is given a name, commonly referred to as its
 consists of the entire collection of nodes. Every key-value pair must be
 present in the level-0 linked list. However, as we move up to higher
 levels, we see that the number of nodes decreases. This is one of the
-important characteristics of a skip list and will lead to our efficient
+important characteristics of a skip list and will lead to an efficient
 search. Again, it can be seen that the number of nodes at each level is
-directly related to the heights of the towers.
+directly related to the height of the towers.
 
 .. figure:: Figures/vocabskiplist3.png
    :alt: Each Horizontal Group of Data Nodes Is a Level
@@ -154,14 +154,10 @@ directly related to the heights of the towers.
 
 Classes for the two types of nodes described above can easily be
 constructed in the same fashion as for simple linked lists in the
-previous section. A header node (see
-Listing `[lst_headnode] <#lst_headnode>`__) consists of two references,
+previous section. A header node consists of two references,
 ``next`` and ``down``, both of which are initialized to ``None`` in the
-constructor. A data node (see
-Listing `[lst_datanode] <#lst_datanode>`__) has four fields, two for the
-key and value and then two additional for the references ``next`` and
-``down``. Again, the references are initialized to ``None`` and wrapped
-into ``properties`` for data manipulation.
+constructor (see
+Listing `[lst_headnode] <#lst_headnode>`__).
 
 ::
 
@@ -174,17 +170,24 @@ into ``properties`` for data manipulation.
        def next(self):
            return self._next
 
-       @property
-       def down(self):
-           return self._down
-
        @next.setter
        def next(self, value):
            self._next = value
 
+       @property
+       def down(self):
+           return self._down
+
        @down.setter
        def down(self, value):
            self._down = value
+
+
+A data node has four fields: two for the
+key and value, and two additional for the references ``next`` and
+``down``. Again, the references are initialized to ``None`` and wrapped
+into ``properties`` for data manipulation (see Listing `[lst_datanode] <#lst_datanode>`__).
+
 
 ::
 
@@ -203,21 +206,21 @@ into ``properties`` for data manipulation.
        def data(self):
            return self._data
 
-       @property
-       def next(self):
-           return self._next
-
-       @property
-       def down(self):
-           return self._down
-
        @data.setter
        def data(self, value):
            self._data = value
 
+       @property
+       def next(self):
+           return self._next
+
        @next.setter
        def next(self, value):
            self._next = value
+
+       @property
+       def down(self):
+           return self._down
 
        @down.setter
        def down(self, value):
@@ -225,7 +228,7 @@ into ``properties`` for data manipulation.
 
 The constructor for the entire skip list is shown in
 Listing `[lst_constructor] <#lst_constructor>`__. When a skip list is
-created there are no data and therefore no header nodes. The head of the
+created, there are no data and therefore, no header nodes. The head of the
 skip list is set to ``None``. As key-value pairs are added to the
 structure, the list head refers to the first header node which in turn
 provides access to a linked list of data nodes as well as access to
@@ -247,21 +250,21 @@ process as it proceeds through the skip list looking for the key 77. The
 nodes marked by stars represent those that are considered during the
 search process.
 
-As we search for 77, we begin at the head of the skip list. The first
-header node refers to the data node holding 31. Since 31 is less than
-77, we move forward. Now since there is no next data node from 31 at
-that level (level 3), we must drop down to level 2. This time, when we
-look to the right, we see a data node with the key 77. Our search is
-successful and the word “of” is returned. It is important to note that
-our first comparison, data node 31, allowed us to “skip” over 17 and 26.
-Likewise, from 31 we were able to go directly to 77, bypassing 54.
-
 .. figure:: Figures/searchskiplist.png
    :alt: Searching for the Key 77
    :name: fig_searchskip
    :width: 5in
 
    Searching for the Key 77
+
+As we search for 77, we begin at the head of the skip list. The first
+header node refers to the data node holding 31. Since 31 is less than
+77, we move forward. Now since there is no next data node from 31 at
+that level (level 3), we must drop down to level 2. This time, when we
+look to the right, we see a data node with the key 77. Our search is
+successful and the word *of* is returned. It is important to note that
+our first comparison, data node 31, allowed us to skip over 17 and 26.
+Likewise, from 31 we were able to go directly to 77, bypassing 54.
 
 Listing `[lst_skiplistsearchcode] <#lst_skiplistsearchcode>`__ shows the
 Python implementation of the ``search`` method. The search starts at the
@@ -278,22 +281,19 @@ and we can return its value (lines
 
 ::
 
-   def search(self, key):
-       current = self._head
-
-       while current:
-           if current.next is None:  |\label{check1:lst_skiplistsearchcode}|
-               current = current.down  |\label{down1:lst_skiplistsearchcode}|
-           else:
-               if current.next.key == key:  |\label{check2:lst_skiplistsearchcode}|
-                   return current.next.data  |\label{found:lst_skiplistsearchcode}|
-               else:
-                   if key < current.next.key:  |\label{check3:lst_skiplistsearchcode}|
-                       current = current.down  |\label{down2:lst_skiplistsearchcode}|
-                   else:
-                       current = current.next  |\label{next1:lst_skiplistsearchcode}|
-
-       return None
+    def search(self, key):
+        current = self._head
+        while current:
+            if current.next is None:
+                current = current.down
+            else:
+                if current.next.key == key:
+                    return current.next.data  # found
+                if key < current.next.key:
+                    current = current.down
+                else:
+                    current = current.next
+        return None
 
 Since each level is an ordered linked list, a key mismatch provides us
 with very useful information. If the key we are looking for is less than
@@ -339,10 +339,10 @@ proceeds through the skip list.
 
    Searching for the Key 65
 
-As we proceed using the same searching strategy as in the previous
+As we proceed using the same search strategy as in the previous
 section, we find that 65 is greater than 31. Since there are no more
 nodes on level 3, we drop to level 2. Here we find 77, which is greater
-than 65. Again, we drop, this time to level 1. Now, the next node is 54,
+than 65. Again, we drop, this time to level 1. Now the next node is 54,
 which is less than 65. Continuing to the right, we hit 77, which again
 causes us to drop down until eventually we hit the ``None`` at the base
 of the tower.
@@ -354,7 +354,7 @@ list of key-value pairs. We also need to build a tower for the new
 entry, and this is where the skip list gets very interesting. How high
 should the tower be? The height of the tower for the new entry will not
 be predetermined but instead will be completely probabilistic. In
-essence, we will “flip a coin” to decide whether to add another level to
+essence, we will flip a coin to decide whether to add another level to
 the tower. Each time the coin comes up heads, we will add one more level
 to the current tower.
 
@@ -365,49 +365,20 @@ to the current tower.
    Adding the Data Node and Tower for 65
 
 It is easy to use a random number generator to simulate a coin flip.
-Listing `[lst_coinflip] <#lst_coinflip>`__ shows a method that simply
-returns either 0 or 1 using the ``randrange`` function from the Python
-``random`` module. If the value of ``flip`` returns 1, we will interpret
-it to be “heads.”
+We can use ``randrange`` from the ``random`` module and interpret 1 as heads.
 
-::
-
-   from random import randrange
-   def flip():
-       return randrange(2)
-
-Listing `[lst_addcode1] <#lst_addcode1>`__ shows the first part of the
-``insert`` method. You will note immediately in line
-`[check1:lst_addcode1] <#check1:lst_addcode1>`__ that we need to check
+Listing `[lst_insert] <#lst_insert>`__ shows the
+``insert`` method. You will note immediately in line 2 that we need to check
 to see if this is the first node being added to the skip list. This is
 the same question we asked for simple linked lists. If we are adding to
 the head of the list, a new header node as well as data node must be
-created. The iteration in lines
-`[loop1:lst_addcode1] <#loop1:lst_addcode1>`__–`[loop2:lst_addcode1] <#loop2:lst_addcode1>`__
-continues as long as the ``flip`` method returns a 1 (the coin toss
+created. The iteration in lines 7--14
+continues as long as the ``randrange`` function returns a 1 (the coin toss
 returns heads). Each time a new level is added to the tower, a new data
 node and a new header node are created.
 
-::
-
-   def insert(self, key, value):
-       if self._head is None:  |\label{check1:lst_addcode1}|
-           self._head = HeaderNode()
-           temp = DataNode(key, value)
-           self._head.next = temp
-           top = temp
-           while flip() == 1:  |\label{loop1:lst_addcode1}|
-               newhead = HeaderNode()
-               temp = DataNode(key, value)
-               temp.down = top
-               newhead.next = temp
-               newhead.down = self._head
-               self._head = newhead
-               top = temp  |\label{loop2:lst_addcode1}|
-       else:
-
 In the case of a non-empty skip list
-(Listing `[addcode2] <#addcode2>`__), we need to search for the insert
+(line 15), we need to search for the insert
 position as described above. Since we have no way of knowing how many
 data nodes will be added to the tower, we need to save the insert points
 for every level that we enter as part of the search process. These
@@ -418,28 +389,7 @@ show the insert points that would be stacked in the example. These
 points represent only those places where we dropped down during the
 search.
 
-::
-
-   tower = Stack()
-               current = self._head
-               while current:
-                   if current.next is None:
-                       tower.push(current)
-                       current = current.down
-                   else:
-                       if current.next.key > key:
-                           tower.push(current)
-                           current = current.down
-                       else:
-                           current = current.next
-
-               lowest_level = tower.pop()
-               temp = DataNode(key, value)
-               temp.next = lowest_level.next
-               lowest_level.next = temp
-               top = temp
-
-Again, in Listing `[lst_addcode3] <#lst_addcode3>`__, we flip our coin
+Starting at line 34, we flip our coin
 to determine the number of levels for the tower. This time we pop the
 insert stack to get the next higher insertion point as the tower grows.
 Only after the stack becomes empty will we need to return to creating
@@ -448,22 +398,56 @@ for you to trace.
 
 ::
 
-   while flip() == 1:
-                   if tower.is_empty():
-                       newhead = HeaderNode()
-                       temp = DataNode(key, value)
-                       temp.down = top
-                       newhead.next = temp
-                       newhead.down = self._head
-                       self._head = newhead
-                       top = temp
-                   else:
-                       next_level = tower.pop()
-                       temp = DataNode(key, value)
-                       temp.down = top
-                       temp.next = next_level.next
-                       next_level.next = temp
-                       top = temp
+    def insert(self, key, value):
+        if self._head is None:
+            self._head = HeaderNode()
+            temp = DataNode(key, value)
+            self._head.next = temp
+            top = temp
+            while randrange(2) == 1:
+                newhead = HeaderNode()
+                temp = DataNode(key, value)
+                temp.down = top
+                newhead.next = temp
+                newhead.down = self._head
+                self._head = newhead
+                top = temp
+        else:
+            tower = Stack()
+            current = self._head
+            while current:
+                if current.next is None:
+                    tower.push(current)
+                    current = current.down
+                else:
+                    if current.next.key > key:
+                        tower.push(current)
+                        current = current.down
+                    else:
+                        current = current.next
+
+            lowest_level = tower.pop()
+            temp = DataNode(key, value)
+            temp.next = lowest_level.next
+            lowest_level.next = temp
+            top = temp
+            while randrange(2) == 1:
+                if tower.is_empty():
+                    newhead = HeaderNode()
+                    temp = DataNode(key, value)
+                    temp.down = top
+                    newhead.next = temp
+                    newhead.down = self._head
+                    self._head = newhead
+                    top = temp
+                else:
+                    next_level = tower.pop()
+                    temp = DataNode(key, value)
+                    temp.down = top
+                    temp.next = next_level.next
+                    next_level.next = temp
+                    top = temp
+
 
 We should make one final note about the structure of the skip list. We
 had mentioned earlier that there are many possible skip lists for a set
@@ -510,17 +494,17 @@ scope of this text, we can make a strong informal argument.
 
 Assume that we are building a skip list for :math:`n` keys. We know that
 each tower starts off with a height of 1. As we add data nodes to the
-tower, assuming the probability of getting “heads” is
+tower, assuming the probability of getting heads is
 :math:`\frac{1}{2}`, we can say that :math:`\frac{n}{2}` of the keys
 have towers of height 2. As we flip the coin again, :math:`\frac{n}{4}`
 of the keys have a tower of height 3. This corresponds to the
 probability of flipping two heads in a row. Continuing this argument
 shows :math:`\frac{n}{8}` keys have a tower of height 4 and so on. This
 means that we expect the height of the tallest tower to be
-:math:`\log_{2}(n) + 1`. Using our “Big-O” notation, we would say that
+:math:`\log_{2}(n) + 1`. Using our Big-O notation, we would say that
 the height of the skip list is :math:`O(\log (n))`.
 
-To analyze the ``search`` method recall that there are two scans that
+To analyze the ``search`` method, recall that there are two scans that
 need to be considered as we look for a given key. The first is the down
 direction. The previous result suggests that in the worst case we will
 expect to consider :math:`O(\log (n))` levels to find a key. In
@@ -530,7 +514,7 @@ occurs. Either we find a data node with a key that is greater than the
 key we are looking for or we find the end of a level. If we are
 currently looking at some data node, the probability that one of those
 two events will happen in the next link is :math:`\frac{1}{2}`. This
-means that after looking at 2 links, we would expect to drop to the next
+means that after looking at two links, we would expect to drop to the next
 lower level (we expect to get heads after two coin flips). In any case,
 the number of nodes that we need to look at on any given level is
 constant. The entire result then becomes :math:`O(\log (n))`. Since
