@@ -7,14 +7,14 @@ Summary
 
 -  Linear data structures maintain their data in an ordered fashion.
 
--  Stacks are simple data structures that maintain a LIFO, last-in
-   first-out, ordering.
+-  Stacks are simple data structures that maintain a LIFO (last in,
+   first out) ordering.
 
 -  The fundamental operations for a stack are ``push``, ``pop``, and
    ``is_empty``.
 
--  Queues are simple data structures that maintain a FIFO, first-in
-   first-out, ordering.
+-  Queues are simple data structures that maintain a FIFO (first in,
+   first out) ordering.
 
 -  The fundamental operations for a queue are ``enqueue``, ``dequeue``,
    and ``is_empty``.

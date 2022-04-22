@@ -5,10 +5,10 @@
 Implementing a Stack in Python
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now that we have clearly defined the stack as an abstract data type we
+Now that we have clearly defined the stack as an abstract data type, we
 will turn our attention to using Python to implement the stack. Recall
-that when we give an abstract data type a physical implementation we
-refer to the implementation as a data structure.
+that when we give an abstract data type a physical implementation, we
+refer to the implementation as a *data structure*.
 
 As we described in Chapter 1, in Python, as in any object-oriented
 programming language, the implementation of choice for an abstract data
@@ -69,13 +69,16 @@ definition of the class.  We must create a ``Stack`` object and then use it.
 :ref:`ActiveCode 2 <lst_stackcode1>` shows the ``Stack`` class in
 action as we perform the sequence of operations from
 :ref:`Table 1 <tbl_stackops>`.  Notice that the definition of the ``Stack`` class is
-imported from the ``pythonds3`` module.
+imported from the ``pythonds3`` module  that is included with the materials for this book
+or can be downloaded from the `Python Package Index <https://pypi.org/>`_.
 
 .. note::
     The ``pythonds3`` module contains implementations of all data structures discussed in this book.
     It is structured according to the sections: basic, trees, and graphs.
-    The module can be downloaded from `GitHub <https://github.com/yasinovskyy/pythonds3>`_
-    or installed from the command line using ``pip install pythonds3``.
+    The module can be downloaded from `GitHub <https://github.com/psads/pythonds3>`_
+    or installed from the command line as follows:
+    
+    ``python3 -m pip install -U pythonds3``
 
 
 .. activecode:: stack_ex_1
@@ -140,12 +143,12 @@ This ability to change the physical implementation of an abstract data
 type while maintaining the logical characteristics is an example of
 abstraction at work. However, even though the stack will work either
 way, if we consider the performance of the two implementations, there is
-definitely a difference. Recall that the ``append`` and ``pop()``
-operations were both O(1). This means that the first implementation will
-perform push and pop in constant time no matter how many items are on
+definitely a difference. Recall that the ``append()`` and ``pop()``
+operations were both :math:`O(1)`. This means that the first implementation will
+perform ``push`` and ``pop`` in constant time no matter how many items are on
 the stack. The performance of the second implementation suffers in that
-the ``insert(0)`` and ``pop(0)`` operations will both require O(n) for a
-stack of size n. Clearly, even though the implementations are logically
+the ``insert(0)`` and ``pop(0)`` operations will both require :math:`O(n)` for a
+stack of size ``n``. Clearly, even though the implementations are logically
 equivalent, they would have very different timings when performing
 benchmark testing.
 

@@ -2,7 +2,7 @@
     This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 
 
-Palindrome-Checker
+Palindrome Checker
 ~~~~~~~~~~~~~~~~~~
 
 An interesting problem that can be easily solved using the deque data
@@ -27,7 +27,7 @@ the last character (see :ref:`Figure 2 <fig_palindrome>`).
    Figure 2: A Deque
 
 
-Since we can remove both of them directly, we can compare them and
+Since we can remove both of the front and rear characters directly, we can compare them and
 continue only if they match. If we can keep matching first and the last
 items, we will eventually either run out of characters or be left with a
 deque of size 1 depending on whether the length of the original string

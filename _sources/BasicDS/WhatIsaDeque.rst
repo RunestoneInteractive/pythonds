@@ -2,8 +2,8 @@
     This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 
 
-What Is a Deque?
-~~~~~~~~~~~~~~~~
+Deques
+~~~~~~
 
 A **deque**, also known as a double-ended queue, is an ordered
 collection of items similar to the queue. It has two ends, a front and a

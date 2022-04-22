@@ -5,7 +5,7 @@
 Discussion Questions
 --------------------
 
-#. Convert the following values to binary using “divide by 2.” Show the
+#. Convert the following values to binary using the Divide by 2 algorithm. Show the
    stack of remainders.
 
    -  17
@@ -17,11 +17,11 @@ Discussion Questions
 #. Convert the following infix expressions to prefix (use full
    parentheses):
 
-   -  (A+B)\*(C+D)\*(E+F)
+   -  (A + B) · ( C + D) · (E + F)
 
-   -  A+((B+C)\*(D+E))
+   -  A + ((B + C) · (D + E))
 
-   -  A\*B\*C\*D+E+F
+   -  A · B · C · D + E + F
 
 #. Convert the above infix expressions to postfix (use full
    parentheses).
@@ -32,13 +32,13 @@ Discussion Questions
 #. Evaluate the following postfix expressions. Show the stack as each
    operand and operator is processed.
 
-   -  2 3 \* 4 +
+   -  2 3 · 4 +
 
    -  1 2 + 3 + 4 + 5 +
 
-   -  1 2 3 4 5 \* + \* +
+   -  1 2 3 4 5 · + · +
 
-#. The alternative implementation of the ``Queue`` ADT is to use a list
+#. The alternative implementation of the queue ADT is to use a list
    such that the rear of the queue is at the end of the list. What would
    this mean for Big-O performance?
 
@@ -50,5 +50,5 @@ Discussion Questions
    be removed is in the last node.
 
 #. Explain how the ``remove`` method works when the item is in the
-   *only* node in the linked list.
+   only node in the linked list.
 
