@@ -22,7 +22,7 @@ Summary
 -  A merge sort is :math:`O(n \log{n})`, but requires additional space
    for the merging process.
 
--  A quick sort is :math:`O(n \log{n})`, but may degrade to
+-  A quicksort is :math:`O(n \log{n})`, but may degrade to
    :math:`O(n^{2})` if the split points are not near the middle of the
    list. It does not require additional space.
 

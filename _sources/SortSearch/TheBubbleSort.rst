@@ -8,7 +8,7 @@ The Bubble Sort
 The **bubble sort** makes multiple passes through a list. It compares
 adjacent items and exchanges those that are out of order. Each pass
 through the list places the next largest value in its proper place. In
-essence, each item “bubbles” up to the location where it belongs.
+essence, each item bubbles up to the location where it belongs.
 
 :ref:`Figure 1 <fig_bubblepass>` shows the first pass of a bubble sort. The shaded
 items are being compared to see if they are out of order. If there are
@@ -32,11 +32,11 @@ place, the total number of passes necessary will be :math:`n-1`. After
 completing the :math:`n-1` passes, the smallest item must be in the
 correct position with no further processing required. :ref:`ActiveCode 1 <lst_bubble>`
 shows the complete ``bubble_sort`` function. It takes the list as a
-parameter, and modifies it by exchanging items as necessary.
+parameter and modifies it by exchanging items as necessary.
 
-The exchange operation, sometimes called a “swap,” is slightly different
+The exchange operation, sometimes called a *swap*, is slightly different
 in Python than in most other programming languages. Typically, swapping
-two elements in a list requires a temporary storage location (an
+two elements in a list requires a temporary variable (an
 additional memory location). A code fragment such as
 
 ::
@@ -53,8 +53,8 @@ statement ``a, b = b, a`` will result in two assignment statements being
 done at the same time (see :ref:`Figure 2 <fig_pythonswap>`). Using simultaneous
 assignment, the exchange operation can be done in one statement.
 
-Lines 5-7 in :ref:`ActiveCode 1 <lst_bubble>` perform the exchange of the :math:`i` and
-:math:`(i+1)`-th items using the three–step procedure described
+Lines 5--7 in :ref:`ActiveCode 1 <lst_bubble>` perform the exchange of the :math:`i` and
+:math:`(i+1)`-th items using the three-step procedure described
 earlier. Note that we could also have used the simultaneous assignment
 to swap the items.
 
@@ -114,12 +114,12 @@ The following animation shows ``bubble_sort`` in action.
                     
 
 To analyze the bubble sort, we should note that regardless of how the
-items are arranged in the initial list, :math:`n-1` passes will be
+items are arranged in the initial list, :math:`n - 1` passes will be
 made to sort a list of size :math:`n`. :ref:`Table 1 <tbl_bubbleanalysis>` shows the number
 of comparisons for each pass. The total number of comparisons is the sum
-of the first :math:`n-1` integers. Recall that the sum of the first
+of the first :math:`n - 1` integers. Recall that the sum of the first
 :math:`n` integers is :math:`\frac{1}{2}n^{2} + \frac{1}{2}n`. The sum of
-the first :math:`n-1` integers is
+the first :math:`n - 1` integers is
 :math:`\frac{1}{2}n^{2} + \frac{1}{2}n - n`, which is
 :math:`\frac{1}{2}n^{2} - \frac{1}{2}n`. This is still
 :math:`O(n^{2})` comparisons. In the best case, if the list is already
