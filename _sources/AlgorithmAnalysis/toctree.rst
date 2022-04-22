@@ -1,8 +1,8 @@
-Analysis
-::::::::
+Algorithm Analysis
+::::::::::::::::::
 
 .. toctree::
-    :caption: Analysis
+    :caption: Algorithm Analysis
     :maxdepth: 2
 
     Objectives.rst

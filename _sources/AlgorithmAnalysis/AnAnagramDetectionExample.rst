@@ -7,21 +7,21 @@ An Anagram Detection Example
 
 A good example problem for showing algorithms with different orders of
 magnitude is the classic anagram detection problem for strings. One
-string is an anagram of another if the second is simply a rearrangement
-of the first. For example, ``"heart"`` and ``"earth"`` are anagrams. The
-strings ``"python"`` and ``"typhon"`` are anagrams as well. For the sake
+string is an *anagram* of another if the second is simply a rearrangement
+of the first. For example, ``heart`` and ``earth`` are anagrams. The
+strings ``python`` and ``typhon`` are anagrams as well. For the sake
 of simplicity, we will assume that the two strings in question are of
 equal length and that they are made up of symbols from the set of 26
 lowercase alphabetic characters. Our goal is to write a boolean function
 that will take two strings and return whether they are anagrams.
 
-Solution 1: Checking Off
-^^^^^^^^^^^^^^^^^^^^^^^^
+Solution 1: Anagram Detection Checking Off
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Our first solution to the anagram problem will check the lengths of the
 strings and then to see that each character in the first string actually
-occurs in the second. If it is possible to “checkoff” each character, then
-the two strings must be anagrams. Checking off a character will be
+occurs in the second. If it is possible to check off each character, then
+the two strings must be anagrams. **Checking off** a character will be
 accomplished by replacing it with the special Python value ``None``.
 However, since strings in Python are immutable, the first step in the
 process will be to convert the second string to a list. Each character
@@ -49,12 +49,10 @@ and if found, checked off by replacement. :ref:`ActiveCode 1 <lst_anagramSolutio
                     found = True
                 else:
                     pos_2 = pos_2 + 1
-
             if found:
                 a_list[pos_2] = None
             else:
                 still_ok = False
-
             pos_1 = pos_1 + 1
 
         return still_ok
@@ -80,13 +78,13 @@ As :math:`n` gets large, the :math:`n^{2}` term will dominate the
 :math:`n` term and the :math:`\frac {1}{2}` can be ignored.
 Therefore, this solution is :math:`O(n^{2})`.
 
-Solution 2: Sort and Compare
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Anagram Detection Solution 2: Sort and Compare
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Another solution to the anagram problem will make use of the fact that
 even though ``s1`` and ``s2`` are different, they are anagrams only if
-they consist of exactly the same characters. So, if we begin by sorting
-each string alphabetically, from a to z, we will end up with the same
+they consist of exactly the same characters. So if we begin by sorting
+each string alphabetically from a to z, we will end up with the same
 string if the original two strings are anagrams. :ref:`ActiveCode 2 <lst_ana2>` shows
 this solution. Again, in Python we can use the built-in ``sort`` method
 on lists by simply converting each string to a list at the start.
@@ -123,18 +121,18 @@ At first glance you may be tempted to think that this algorithm is
 :math:`O(n)`, since there is one simple iteration to compare the *n*
 characters after the sorting process. However, the two calls to the
 Python ``sort`` method are not without their own cost. As we will see in
-a later chapter, sorting is typically either :math:`O(n^{2})` or
+Chapter 5, sorting is typically either :math:`O(n^{2})` or
 :math:`O(n\log n)`, so the sorting operations dominate the iteration.
 In the end, this algorithm will have the same order of magnitude as that
 of the sorting process.
 
-Solution 3: Brute Force
-^^^^^^^^^^^^^^^^^^^^^^^
+Anagram Detection Solution 3: Brute Force
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A **brute force** technique for solving a problem typically tries to
 exhaust all possibilities. For the anagram detection problem, we can
 simply generate a list of all possible strings using the characters from
-``s1`` and then see if ``s2`` occurs. However, there is a difficulty
+``s1`` and then see if ``s2`` occurs. However, there is a problem
 with this approach. When generating all possible strings from ``s1``,
 there are *n* possible first characters, :math:`n - 1` possible
 characters for the second position, :math:`n - 2` for the third, and so
@@ -150,8 +148,8 @@ If we processed one possibility every second, it would still take us
 77,146,816,596 years to go through the entire list. This is probably not
 going to be a good solution.
 
-Solution 4: Count and Compare
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Anagram Detection Solution 4: Count and Compare
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Our final solution to the anagram problem takes advantage of the fact
 that any two anagrams will have the same number of a’s, the same number

@@ -8,10 +8,10 @@ Programming Exercises
 
 
 
-#. Devise an experiment to verify that the list index operator is
-   :math:`O(1)`
+#. Devise an experiment to verify that the ``list index`` operator is
+   :math:`O(1)`.
 
-#. Devise an experiment to verify that get item and set item are
+#. Devise an experiment to verify that ``get item`` and ``set item`` are
    :math:`O(1)` for dictionaries.
 
 #. Devise an experiment that compares the performance of the ``del``

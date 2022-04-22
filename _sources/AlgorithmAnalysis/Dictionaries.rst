@@ -19,24 +19,24 @@ The efficiency of all dictionary operations is summarized in
 :ref:`Table 3 <tbl_dictbigo>`. One important side note on dictionary performance
 is that the efficiencies we provide in the table are for average
 performance. In some rare cases the ``contains``, ``get item``, and ``set item``
-operations can degenerate into :math:`O(n)` performance but we will
-get into that in a later chapter when we talk about the different ways
+operations can degenerate into :math:`O(n)` performance, but we will
+get into that in Chapter 8 when we talk about the different ways
 that a dictionary could be implemented.
 
 .. _tbl_dictbigo:
 
 .. table:: **Table 3: Big-O Efficiency of Python Dictionary Operations**
 
-    ================== ==================
-             operation   Big-O Efficiency
-    ================== ==================
-                  copy               O(n)
-              get item               O(1)
-              set item               O(1)
-           delete item               O(1)
-         contains (in)               O(1)
-             iteration               O(n)
-    ================== ==================
+    ====================== ==================
+                 Operation   Big-O Efficiency
+    ====================== ==================
+                  ``copy``               O(n)
+              ``get item``               O(1)
+              ``set item``               O(1)
+           ``delete item``               O(1)
+         ``contains (in)``               O(1)
+             ``iteration``               O(n)
+    ====================== ==================
 
 
 
@@ -44,10 +44,10 @@ For our last performance experiment we will compare the performance of
 the contains operation between lists and dictionaries. In the process we
 will confirm that the contains operator for lists is :math:`O(n)` and
 the contains operator for dictionaries is :math:`O(1)`. The experiment
-we will use to compare the two is simple. We’ll make a list with a range
-of numbers in it. Then we will pick numbers at random and check to see
+we will use to compare the two is simple: we’ll make a list with a range
+of numbers in it, then we will pick numbers at random and check to see
 if the numbers are in the list. If our performance tables are correct,
-the bigger the list the longer it should take to determine if any one
+the bigger the list, the longer it should take to determine if any one
 number is contained in the list.
 
 We will repeat the same experiment for a dictionary that contains
@@ -90,12 +90,12 @@ dictionary.
 faster. For the smallest list size of 10,000 elements a dictionary is
 89.4 times faster than a list. For the largest list size of 990,000
 elements the dictionary is 11,603 times faster! You can also see that
-the time it takes for the contains operator on the list grows linearly
-with the size of the list. This verifies the assertion that the contains
+the time it takes for the ``contains`` operator on the list grows linearly
+with the size of the list. This verifies the assertion that the ``contains``
 operator on a list is :math:`O(n)`. It can also be seen that the time
-for the contains operator on a dictionary is constant even as the
-dictionary size grows. In fact for a dictionary size of 10,000 the
-contains operation took 0.004 milliseconds and for the dictionary size
+for the ``contains`` operator on a dictionary is constant even as the
+dictionary size grows. In fact, for a dictionary size of 10,000 the
+``contains`` operation took 0.004 milliseconds, and for the dictionary size
 of 990,000 it also took 0.004 milliseconds.
 
 .. _fig_listvdict:
@@ -107,7 +107,7 @@ of 990,000 it also took 0.004 milliseconds.
 Since Python is an evolving language, there are always changes going on
 behind the scenes. The latest information on the performance of Python
 data structures can be found on the Python website. As of this writing
-the Python wiki has a nice time complexity page that can be found at the
+the Python wiki has a nice **time complexity** page that can be found at the
 `Time Complexity Wiki <http://wiki.python.org/moin/TimeComplexity>`_.
 
 
