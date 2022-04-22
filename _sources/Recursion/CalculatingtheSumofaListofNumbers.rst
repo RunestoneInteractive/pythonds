@@ -58,9 +58,9 @@ sequence of simplifications to compute a final sum.
 
 
 How can we take this idea and turn it into a Python program? First,
-let’s restate the sum problem in terms of Python lists. We might say the
+let’s restate the sum problem in terms of Python lists. We might say
 the sum of the list ``num_list`` is the sum of the first element of the
-list (``num_list[0]``), and the sum of the numbers in the rest of the
+list (``num_list[0]``) and the sum of the numbers in the rest of the
 list (``num_list[1:]``). To state it in a functional form:
 
 .. math::
