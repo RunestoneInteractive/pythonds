@@ -19,7 +19,7 @@ question depends on how the keys are added to the tree. If the keys are
 added in a random order, the height of the tree is going to be around
 :math:`\log_2{n}` where :math:`n` is the number of nodes in the
 tree. This is because if the keys are randomly distributed, about half
-of them will be less than the root and half will be greater than the
+of them will be less than the root and about half will be greater than the
 root. Remember that in a binary tree there is one node at the root, two
 nodes in the next level, and four at the next. The number of nodes at
 any particular level is :math:`2^d` where :math:`d` is the depth of
@@ -32,7 +32,7 @@ subtree as the right subtree. In a balanced binary tree, the worst-case
 performance of ``put`` is :math:`O(\log_2{n})`, where :math:`n` is
 the number of nodes in the tree. Notice that this is the inverse
 relationship to the calculation in the previous paragraph. So
-:math:`\log_2{n}` gives us the height of the tree, and represents the
+:math:`\log_2{n}` gives us the height of the tree and represents the
 maximum number of comparisons that ``put`` will need to do as it
 searches for the proper place to insert a new node.
 
@@ -55,8 +55,9 @@ the ``put`` method is limited by the height of the tree, you can
 probably guess that other methods, ``get``, ``in``, and ``del``, are limited
 as well. Since ``get`` searches the tree to find the key, in the worst
 case the tree is searched all the way to the bottom and no key is found.
-At first glance ``del`` might seem more complicated, since it may need
+At first glance ``del`` might seem more complicated since it may need
 to search for the successor before the deletion operation can complete.
 But remember that the worst-case scenario to find the successor is also
 just the height of the tree which means that you would simply double the
-work. Since doubling is a constant factor it does not change worst case
+work. Since doubling is a constant factor, it does not change worst case analysis
+of :math:`O(n)` for an unbalanced tree.

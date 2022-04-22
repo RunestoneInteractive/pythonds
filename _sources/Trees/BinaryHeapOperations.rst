@@ -8,25 +8,25 @@ Binary Heap Operations
 The basic operations we will implement for our binary heap are as
 follows:
 
--  ``BinaryHeap()`` creates a new, empty, binary heap.
+-  ``BinaryHeap()`` creates a new empty binary heap.
 
 -  ``insert(k)`` adds a new item to the heap.
 
 -  ``get_min()`` returns the item with the minimum key value, leaving
-   item in the heap.
+   the item in the heap.
 
 -  ``delete()`` returns the item with the minimum key value, removing
    the item from the heap.
 
--  ``is_empty()`` returns true if the heap is empty, false otherwise.
+-  ``is_empty()`` returns ``True`` if the heap is empty, ``False`` otherwise.
 
 -  ``size()`` returns the number of items in the heap.
 
 -  ``heapify(list)`` builds a new heap from a list of keys.
 
 :ref:`ActiveCode 1 <lst_heap1>` demonstrates the use of some of the binary
-heap methods.  Notice that no matter the order that we add items to the heap, the smallest
-is removed each time.  We will now turn our attention to creating an implementation for this idea.
+heap methods.  Notice that no matter what order we add items to the heap, the smallest
+is removed each time.
 
 .. _lst_heap1:
 

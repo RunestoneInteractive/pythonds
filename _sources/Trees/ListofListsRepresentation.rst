@@ -81,7 +81,7 @@ working with a tree.
 The ``make_binary_tree`` function simply constructs a list with a root node
 and two empty sublists for the children. To add a left subtree to the
 root of a tree, we need to insert a new list into the second position of
-the root list. We must be careful. If the list already has something in
+the root list. We must be careful, however. If the list already has something in
 the second position, we need to keep track of it and push it down the
 tree as the left child of the list we are adding. :ref:`Listing 1 <lst_linsleft>`
 shows the Python code for inserting a left child.
@@ -121,9 +121,9 @@ in :ref:`Listing 2 <lst_linsright>`.
             root.insert(2, [new_child, [], []])
         return root
 
-To round out this set of tree-making functions(see :ref:`Listing 3 <lst_treeacc>`), let’s write a couple of
+To round out this set of tree-making functions, let’s write a couple of
 access functions for getting and setting the root value, as well as
-getting the left or right subtrees.
+getting the left or right subtrees. These functions can be seen in :ref:`Listing 3 <lst_treeacc>`.
 
 .. _lst_treeacc:
 
@@ -147,9 +147,9 @@ getting the left or right subtrees.
     def get_right_child(root):
         return root[2]
 
-:ref:`ActiveCode 2 <lst_bintreetry>` exercises the tree
+:ref:`ActiveCode 2 <lst_bintreetry>` makes use of the tree
 functions we have just written. You should try it
-out for yourself. One of the exercises asks you to draw the tree
+out for yourself. One of the exercises at the end of this chapter asks you to draw the tree
 structure resulting from this set of calls.
 
 .. _lst_bintreetry:
