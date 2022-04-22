@@ -26,12 +26,6 @@ Programming Exercises
    two queue implementations. What can you learn from such an
    experiment?
 
-#. It is possible to implement a queue such that both enqueue and
-   dequeue have :math:`O(1)` performance *on average*. In this case it
-   means that most of the time enqueue and dequeue will be
-   :math:`O(1)` except in one particular circumstance where dequeue
-   will be :math:`O(n)`. Design such solution and discuss its tradeoffs, if any.
-
 #. Modify the hot potato simulation to allow for a randomly chosen
    counting value so that each pass is not predictable from the previous
    one.
@@ -147,3 +141,4 @@ Programming Exercises
 
 #. Create an implementation of a queue that would have an average performance of
    :math:`O(1)` for ``enqueue`` and ``dequeue`` operations.
+

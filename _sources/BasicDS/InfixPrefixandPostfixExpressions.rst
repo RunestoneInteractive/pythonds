@@ -507,7 +507,7 @@ this as an exercise at the end of the chapter.
 
    .. fillintheblank:: postfix3
 
-      Modify the ``infix_to_postfix`` function so that it can convert the following expression:  ``5 * 3 ** (4 - 2)``. Run the function on the expression and paste the answer here:
+      Modify the ``infix_to_postfix`` function so that it can convert the following expression:  ``5 * 3 ^ (4 - 2)``. Run the function on the expression and paste the answer here:
 
       |blank|
 
