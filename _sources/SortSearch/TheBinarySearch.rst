@@ -14,11 +14,11 @@ examining the middle item. If that item is the one we are searching for,
 we are done. If it is not the correct item, we can use the ordered
 nature of the list to eliminate half of the remaining items. If the item
 we are searching for is greater than the middle item, we know that the
-entire lower half of the list as well as the middle item can be
+entire first (left) half of the list as well as the middle item can be
 eliminated from further consideration. The item, if it is in the list,
-must be in the upper half.
+must be in the second (right) half.
 
-We can then repeat the process with the upper half. Start at the middle
+We can then repeat the process with the left half. Start at the middle
 item and compare it against what we are looking for. Again, we either
 find it or split the list in half, therefore eliminating another large
 part of our possible search space. :ref:`Figure 3 <fig_binsearch>` shows how this
@@ -61,7 +61,7 @@ in :ref:`CodeLens 3 <lst_binarysearchpy>`.
     print(binary_search(test_list, 13))
 
 Before we move on to the analysis, we should note that this algorithm is
-a great example of a divide and conquer strategy. Divide and conquer
+a great example of a *divide and conquer* strategy. Divide and conquer
 means that we divide the problem into smaller pieces, solve the smaller
 pieces in some way, and then reassemble the whole problem to get the
 result. When we perform a binary search of a list, we first check the
@@ -80,18 +80,13 @@ shows this recursive version.
     def binary_search_rec(a_list, item):
         if len(a_list) == 0:
             return False
+        midpoint = len(a_list) // 2
+        if a_list[midpoint] == item:
+            return True
+        elif item < a_list[midpoint]:
+            return binary_search_rec(a_list[:midpoint], item)
         else:
-            midpoint = len(a_list) // 2
-            if a_list[midpoint] == item:
-                return True
-            elif item < a_list[midpoint]:
-                return binary_search_rec(
-                    a_list[:midpoint], item
-                )
-            else:
-                return binary_search_rec(
-                    a_list[midpoint + 1 :], item
-                )
+            return binary_search_rec(a_list[midpoint + 1 :], item)
 
 
     test_list = [0, 1, 2, 8, 13, 17, 19, 32, 42]
@@ -142,11 +137,11 @@ solution shown above, the recursive call,
 
 ``binary_search_rec(a_list[:midpoint], item)``
 
-uses the slice operator to create the left half of the list that is then
+uses slicing operator to create the left half of the list that is then
 passed to the next invocation (similarly for the right half as well).
-The analysis that we did above assumed that the slice operator takes
-constant time. However, we know that the slice operator in Python is
-actually :math:`O(k)`. This means that the binary search using slice will not
+The analysis that we did above assumed that slicing takes
+constant time. However, we know that in Python it is
+actually :math:`O(k)`. This means that the binary search using slicing will not
 perform in strict logarithmic time. Luckily this can be remedied by
 passing the list along with the starting and ending indices. The indices
 can be calculated as we did in :ref:`Listing 3 <lst_binarysearchpy>`. We leave this

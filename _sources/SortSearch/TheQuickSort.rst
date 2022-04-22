@@ -2,21 +2,21 @@
     This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 
 
-The Quick Sort
-~~~~~~~~~~~~~~
+The Quicksort
+~~~~~~~~~~~~~
 
-The **quick sort** uses divide and conquer to gain the same advantages
+The **quicksort** uses divide and conquer to gain the same advantages
 as the merge sort, while not using additional storage. As a trade-off,
 however, it is possible that the list may not be divided in half. When
 this happens, we will see that performance is diminished.
 
-A quick sort first selects a value, which is called the **pivot value**.
+A quicksort first selects a value, which is called the **pivot value**.
 Although there are many different ways to choose the pivot value, we
 will simply use the first item in the list. The role of the pivot value
 is to assist with splitting the list. The actual position where the
 pivot value belongs in the final sorted list, commonly called the
 **split point**, will be used to divide the list for subsequent calls to
-the quick sort.
+the quicksort.
 
 :ref:`Figure 12 <fig_splitvalue>` shows that 54 will serve as our first pivot value.
 Since we have looked at this example a few times already, we know that
@@ -31,7 +31,7 @@ either less than or greater than the pivot value.
 .. figure:: Figures/firstsplit.png
    :align: center
 
-   Figure 12: The First Pivot Value for a Quick Sort
+   Figure 12: The First Pivot Value for a Quicksort
 
 
 
@@ -65,7 +65,7 @@ value can be exchanged with the contents of the split point and the
 pivot value is now in place (:ref:`Figure 14 <fig_partitionB>`). In addition, all the
 items to the left of the split point are less than the pivot value, and
 all the items to the right of the split point are greater than the pivot
-value. The list can now be divided at the split point and the quick sort
+value. The list can now be divided at the split point and the quicksort
 can be invoked recursively on the two halves.
 
 .. _fig_partitionB:
@@ -85,7 +85,7 @@ implements the process described earlier.
 
 
 .. activecode:: lst_quick
-    :caption: Quick Sort
+    :caption: Quicksort
 
     def quick_sort(a_list):
         quick_sort_helper(a_list, 0, len(a_list) - 1)
@@ -137,7 +137,7 @@ implements the process described earlier.
 .. For more detail, CodeLens 7 lets you step through the algorithm.
 ..
 .. .. codelens:: quicktrace
-..     :caption: Tracing the Quick Sort
+..     :caption: Tracing the Quicksort
 ..
 ..     def quick_sort(a_list):
 ..         quick_sort_helper(a_list, 0, len(a_list) - 1)
@@ -243,7 +243,7 @@ pivot value selection as an exercise.
        :answer_d: Insertion Sort
        :correct: c
        :feedback_a: Shell sort is about ``n^1.5``
-       :feedback_b: Quick sort can be O(n log n), but if the pivot points are not well chosen and the list is just so, it can be O(n^2).
+       :feedback_b: Quicksort can be O(n log n), but if the pivot points are not well chosen and the list is just so, it can be O(n^2).
        :feedback_c: Merge Sort is the only guaranteed O(n log n) even in the worst case.  The cost is that merge sort uses more memory.
        :feedback_d: Insertion sort is ``O(n^2)``
 

@@ -10,12 +10,12 @@ they have a linear or sequential relationship. Each data item is stored
 in a position relative to the others. In Python lists, these relative
 positions are the index values of the individual items. Since these
 index values are ordered, it is possible for us to visit them in
-sequence. This process gives rise to our first searching technique, the
+sequence. This process gives rise to our first search technique, the
 **sequential search**.
 
 :ref:`Figure 1 <fig_seqsearch>` shows how this search works. Starting at the first
 item in the list, we simply move from item to item, following the
-underlying sequential ordering until we either find what we are looking
+underlying sequential order until we either find what we are looking
 for or run out of items. If we run out of items, we have discovered that
 the item we were searching for was not present.
 
@@ -29,8 +29,8 @@ the item we were searching for was not present.
 
 
 The Python implementation for this algorithm is shown in
-:ref:`CodeLens 1 <lst_seqsearchpython>`. The function needs the list and the item we
-are looking for and returns a boolean value as to whether it is present.
+:ref:`CodeLens 1 <lst_seqsearchpython>`. The function needs two items--the list and the item we
+are looking for--and returns a Boolean value as to whether it is present.
 
 
 .. _lst_seqsearchpython:
@@ -44,8 +44,7 @@ are looking for and returns a boolean value as to whether it is present.
         while pos < len(a_list):
             if a_list[pos] == item:
                 return True
-            else:
-                pos = pos + 1
+            pos = pos + 1
 
         return False
 
@@ -67,7 +66,7 @@ have been placed randomly into the list. In other words, the probability
 that the item we are looking for is in any particular position is
 exactly the same for each position of the list.
 
-If the item is not in the list, the only way to know it is to compare it
+If the item is not in the list, the only way to know that is to compare it
 against every item present. If there are :math:`n` items, then the
 sequential search requires :math:`n` comparisons to discover that the
 item is not there. In the case where the item is in the list, the
@@ -75,13 +74,13 @@ analysis is not so straightforward. There are actually three different
 scenarios that can occur. In the best case we will find the item in the
 first place we look, at the beginning of the list. We will need only one
 comparison. In the worst case, we will not discover the item until the
-very last comparison, the `nth` comparison.
+very last comparison, the *n*-th comparison.
 
 What about the average case? On average, we will find the item about
-halfway into the list; that is, we will compare against
+half way into the list; that is, we will compare against
 :math:`\frac{n}{2}` items. Recall, however, that as :math:`n` gets large,
 the coefficients, no matter what they are, become insignificant in our
-approximation, so the complexity of the sequential search, is
+approximation, so the complexity of the sequential search is
 :math:`O(n)`. :ref:`Table 1 <tbl_seqsearchtable>` summarizes these results.
 
 .. _tbl_seqsearchtable:
@@ -104,7 +103,7 @@ placed so that there is no relative order between the items. What would
 happen to the sequential search if the items were ordered in some way?
 Would we be able to gain any efficiency in our search technique?
 
-Assume that the list of items was constructed so that the items were in
+Assume that the list of items was constructed so that the items are in
 ascending order, from low to high. If the item we are looking for is
 present in the list, the chance of it being in any one of the :math:`n`
 positions is still the same as before. We will still have the same
@@ -135,14 +134,13 @@ sequential search function.
 
     def ordered_sequential_search(a_list, item):
         pos = 0
+
         while pos < len(a_list):
             if a_list[pos] == item:
                 return True
-            else:
-                if a_list[pos] > item:
-                    return False
-                else:
-                    pos = pos + 1
+            if a_list[pos] > item:
+                return False
+            pos = pos + 1
 
         return False
 

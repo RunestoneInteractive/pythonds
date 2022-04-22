@@ -1,8 +1,8 @@
-Sorting and Searching
+Searching and Sorting
 :::::::::::::::::::::
 
 .. toctree::
-    :caption: Sorting and Searching
+    :caption: Searching and Sorting
     :maxdepth: 2
 
     Objectives.rst

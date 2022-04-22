@@ -7,7 +7,7 @@ The Insertion Sort
 
 The **insertion sort**, although still :math:`O(n^{2})`, works in a
 slightly different way. It always maintains a sorted sublist in the
-lower positions of the list. Each new item is then “inserted” back into
+lower positions of the list. Each new item is then inserted back into
 the previous sublist such that the sorted sublist is one item larger.
 :ref:`Figure 4 <fig_insertionsort>` shows the insertion sorting process. The shaded
 items represent the ordered sublists as the algorithm makes each pass.
@@ -28,8 +28,8 @@ that are greater to the right. When we reach a smaller item or the end
 of the sublist, the current item can be inserted.
 
 :ref:`Figure 5 <fig_insertionpass>` shows the fifth pass in detail. At this point in
-the algorithm, a sorted sublist of five items consisting of 17, 26, 54,
-77, and 93 exists. We want to insert 31 back into the already sorted
+the algorithm, here is a sorted sublist of five items: 17, 26, 54,
+77, and 93. We want to insert 31 back into the already sorted
 items. The first comparison against 93 causes 93 to be shifted to the
 right. 77 and 54 are also shifted. When the item 26 is encountered, the
 shifting process stops and 31 is placed in the open position. Now we

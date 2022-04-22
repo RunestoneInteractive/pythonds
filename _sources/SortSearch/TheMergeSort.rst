@@ -93,7 +93,7 @@ function (lines 11–29) is responsible for merging the two smaller sorted
 lists into a larger sorted list. Notice that the merge operation places
 the items back into the original list (``a_list``) one at a time by
 repeatedly taking the smallest item from the sorted lists. Note that the
-statement in line 13 (``left_half[i] <= right_half[j]``) ensures that the algorithm is
+condition in line 13 (``left_half[i] <= right_half[j]``) ensures that the algorithm is
 stable. A **stable algorithm** maintains the order of duplicate items in
 a list and is preferred in most cases.
 
@@ -102,8 +102,8 @@ The ``merge_sort`` function has been augmented with a ``print`` statement
 each invocation. There is also a ``print`` statement (line 30) to show
 the merging process. The transcript shows the result of executing the
 function on our example list. Note that the list with 44, 55, and 20
-will not divide evenly. The first split gives [44] and the second gives
-[55, 20]. It is easy to see how the splitting process eventually yields a
+will not divide evenly. The first split gives ``[44]`` and the second gives
+``[55, 20]``. It is easy to see how the splitting process eventually yields a
 list that can be immediately merged with other sorted lists.
 
 
@@ -130,9 +130,7 @@ list that can be immediately merged with other sorted lists.
 ..             merge_sort(left_half)
 ..             merge_sort(right_half)
 ..
-..             i=0
-..             j=0
-..             k=0
+..             i, j, k = 0, 0, 0
 ..             while i<len(left_half) and j<len(right_half):
 ..                 if left_half[i]<=right_half[j]:
 ..                     a_list[k]=left_half[i]
