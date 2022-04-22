@@ -113,8 +113,8 @@ action as we perform the sequence of operations from
 
 You can see many similarities to Python code already described for
 stacks and queues. You are also likely to observe that in this
-implementation adding and removing items from the front is O(1) whereas
-adding and removing from the rear is O(n). This is to be expected given
+implementation adding and removing items from the front is :math:`O(1)` whereas
+adding and removing from the rear is :math:`O(n)`. This is to be expected given
 the common operations that appear for adding and removing items. Again,
 the important thing is to be certain that we know where the front and
 rear are assigned in the implementation.

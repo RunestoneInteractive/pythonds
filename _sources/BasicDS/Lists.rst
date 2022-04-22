@@ -14,7 +14,7 @@ list must be implemented by the programmer.
 
 A **list** is a collection of items where each item holds a relative
 position with respect to the others. More specifically, we will refer to
-this type of list as an unordered list. We can consider the list as
+this type of list as an *unordered list*. We can consider the list as
 having a first item, a second item, a third item, and so on. We can also
 refer to the beginning of the list (the first item) or the end of the
 list (the last item). For simplicity we will assume that lists cannot

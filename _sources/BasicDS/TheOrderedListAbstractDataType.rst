@@ -5,7 +5,7 @@
 The Ordered List Abstract Data Type
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We will now consider a type of list known as an ordered list. For
+We will now consider a type of list known as an *ordered list*. For
 example, if the list of integers shown above were an ordered list
 (ascending order), then it could be written as 17, 26, 31, 54, 77, and
 93. Since 17 is the smallest item, it occupies the first position in the
@@ -26,7 +26,7 @@ are the same as those of the unordered list.
    is not already in the list.
 
 -  ``remove(item)`` removes the item from the list. It needs the item
-   and modifies the list. Raise an error if the item is not present in the list.
+   and modifies the list. It will raise an error if the item is not present in the list.
 
 -  ``search(item)`` searches for the item in the list. It needs the item
    and returns a boolean value.
@@ -37,12 +37,12 @@ are the same as those of the unordered list.
 -  ``size()`` returns the number of items in the list. It needs no
    parameters and returns an integer.
 
--  ``index(item)`` returns the position of item in the list. It needs
+-  ``index(item)`` returns the position of an item in the list. It needs
    the item and returns the index. Assume the item is in the list.
 
 -  ``pop()`` removes and returns the last item in the list. It needs
    nothing and returns an item. Assume the list has at least one item.
 
--  ``pop(pos)`` removes and returns the item at position pos. It needs
+-  ``pop(pos)`` removes and returns the item at position ``pos``. It needs
    the position and returns the item. Assume the item is in the list.
 

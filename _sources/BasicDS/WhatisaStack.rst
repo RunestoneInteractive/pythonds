@@ -2,20 +2,20 @@
     This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 
 
-What is a Stack?
-~~~~~~~~~~~~~~~~
+Stacks
+------
 
-A **stack** (sometimes called a “push-down stack”) is an ordered
+A **stack** (sometimes called a *push-down stack*) is an ordered
 collection of items where the addition of new items and the removal of
 existing items always takes place at the same end. This end is commonly
-referred to as the “top.” The end opposite the top is known as the
-“base.”
+referred to as the *top*. The end opposite the top is known as the
+*base*.
 
 The base of the stack is significant since items stored in the stack
 that are closer to the base represent those that have been in the stack
 the longest. The most recently added item is the one that is in position
 to be removed first. This ordering principle is sometimes called
-**LIFO**, **last-in first-out**. It provides an ordering based on length
+**LIFO**, or last in, first out. It provides an ordering based on length
 of time in the collection. Newer items are near the top, while older
 items are near the base.
 
@@ -25,7 +25,7 @@ top, uncovering a new tray or plate for the next customer in line.
 Imagine a stack of books on a desk (:ref:`Figure 1 <fig_bookstack>`). The only
 book whose cover is visible is the one on top. To access others in the
 stack, we need to remove the ones that are sitting on top of them.
-:ref:`Figure 2 <fig_objectstack>` shows another stack. This one contains a number
+:ref:`Figure 2 <fig_objectstack>` shows another stack that contains a number
 of primitive Python data objects.
 
 .. _fig_bookstack:
@@ -42,10 +42,10 @@ of primitive Python data objects.
    :align: center
    :scale: 50 %
 
-   Figure 2: A Stack of Primitive Python Objects
+   Figure 2: A Stack of Primitive Python Data Objects
 
-One of the most useful ideas related to stacks comes from the simple
-observation of items as they are added and then removed. Assume you
+One of the most useful properties of stacks can be observed 
+as items are added and then removed. Assume you
 start out with a clean desktop. Now place books one at a time on top of
 each other. You are constructing a stack. Consider what happens when you
 begin removing books. The order that they are removed is exactly the
