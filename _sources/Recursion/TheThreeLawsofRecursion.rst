@@ -5,7 +5,7 @@
 The Three Laws of Recursion
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Like the robots of Asimov, all recursive algorithms must obey three
+Like robots in Asimov's stories, all recursive algorithms must obey three
 important laws:
 
 #. A recursive algorithm must have a **base case**.
@@ -13,7 +13,7 @@ important laws:
 #. A recursive algorithm must change its state and move toward the base
    case.
 
-#. A recursive algorithm must call itself, recursively.
+#. A recursive algorithm must call itself recursively.
 
 Let’s look at each one of these laws in more detail and see how it was
 used in the ``list_sum`` algorithm. First, a base case is the condition

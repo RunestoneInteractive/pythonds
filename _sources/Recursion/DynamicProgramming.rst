@@ -10,7 +10,7 @@ for example, find the shortest path between two points, find the line
 that best fits a set of points, or find the smallest set of objects that
 satisfies some criteria. There are many strategies that computer
 scientists use to solve these problems. One of the goals of this book is
-to expose you to several different problem solving strategies. **Dynamic
+to expose you to several different problem-solving strategies. **Dynamic
 programming** is one strategy for these types of optimization problems.
 
 A classic example of an optimization problem involves making change
@@ -89,16 +89,16 @@ where we satisfy the base case condition immediately.
 
 ::
 
-   def make_change_1(coin_value_list, change):
-      min_coins = change
-      if change in coin_value_list:
-         return 1
-      else:
-         for i in [c for c in coin_value_list if c <= change]:
-               num_coins = 1 + make_change_1(coin_value_list, change - i)
-               if num_coins < min_coins:
-                  min_coins = num_coins
-      return min_coins
+    def make_change_1(coin_denoms, change):
+        if change in coin_denoms:
+            return 1
+        min_coins = float("inf")
+        for i in [c for c in coin_denoms if c <= change]:
+            num_coins = 1 + make_change_1(
+                coin_denoms, change - i
+            )
+            min_coins = min(num_coins, min_coins)
+        return min_coins
 
 
    print(make_change_1([1, 5, 10, 25], 63))
@@ -119,7 +119,7 @@ the node indicates the amount of change for which we are computing the
 number of coins. The label on the arrow indicates the coin that we just
 used. By following the graph we can see the combination of coins that
 got us to any point in the graph. The main problem is that we are
-re-doing too many calculations. For example, the graph shows that the
+redoing too many calculations. For example, the graph shows that the
 algorithm would recalculate the optimal number of coins to make change
 for 15 cents at least three times. Each of these computations to find
 the optimal number of coins for 15 cents itself takes 52 function calls.
@@ -178,12 +178,12 @@ feels like a bit of a hack.  Also, if we look at the ``known_results`` lists
 we can see that there are some holes in the table. In fact the term for
 what we have done is not dynamic programming but rather we have improved
 the performance of our program by using a technique known as
-“memoization,” or more commonly called “caching.”
+*memoization*, or more commonly called *caching*.
 
 A truly dynamic programming algorithm will take a more systematic
 approach to the problem. Our dynamic programming solution is going to
 start with making change for one cent and systematically work its way up
-to the amount of change we require. This guarantees us that at each step
+to the amount of change we require. This guarantees that at each step
 of the algorithm we already know the minimum number of coins needed to
 make change for any smaller amount.
 
@@ -196,7 +196,7 @@ get interesting. Now we have two options to consider, five pennies or
 one nickel. How do we decide which is best? We consult the table and see
 that the number of coins needed to make change for four cents is four,
 plus one more penny to make five, equals five coins. Or we can look at
-zero cents plus one more nickel to make five cents equals 1 coin. Since
+zero cents plus one more nickel to make five cents equals one coin. Since
 the minimum of one and five is one we store 1 in the table. Fast forward
 again to the end of the table and consider 11 cents. :ref:`Figure 5 <fig_eleven>`
 shows the three options that we have to consider:
@@ -233,7 +233,7 @@ minimum number of coins for 11 cents.
 change-making problem. ``make_change_3`` takes three parameters: a list
 of valid coin values, the amount of change we want to make, and a list
 of the minimum number of coins needed to make each value. When the
-function is done ``min_coins`` will contain the solution for all values
+function is done, ``min_coins`` will contain the solution for all values
 from 0 to the value of ``change``.
 
 .. _lst_dpchange:
@@ -252,9 +252,9 @@ from 0 to the value of ``change``.
       return min_coins[change]
 
 Note that ``make_change_3`` is not a recursive function, even though we
-started with a recursive solution to this problem. It is important to
-realize that just because you can write a recursive solution to a
-problem does not mean it is the best or most efficient solution. The
+started with a recursive solution to this problem. It is 
+important to realize that a recursive solution to a problem will not 
+necessarily be the most efficient solution. The
 bulk of the work in this function is done by the loop that starts on
 line 4. In this loop we consider using all possible coins to
 make change for the amount specified by ``cents``. Like we did for the
@@ -271,7 +271,8 @@ entry in the table that tells us the last coin we added to make that
 amount. We can keep tracing back through the table until we get to the
 beginning.
 
-:ref:`ActiveCode 2 <lst_dpremember>` shows the ``make_change_3`` algorithm
+:ref:`ActiveCode 2 <lst_dpremember>` shows ``make_change_4``, based on
+the ``make_change_3`` algorithm but
 modified to keep track of the coins used, along with a function
 ``print_coins`` that walks backward through the table to print out the
 value of each coin used.

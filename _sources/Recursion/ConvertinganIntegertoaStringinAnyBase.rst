@@ -84,7 +84,7 @@ case, we stop recursing and simply return the string from the
 second and third laws–by making the recursive call and by reducing the
 problem size–using division.
 
-Let’s trace the algorithm again; this time we will convert the number 10
+Let’s trace the algorithm shown in Listing 4.3 again; this time we will convert the number 10
 to its base 2 string representation (``"1010"``).
 
 .. _fig_tostr2:

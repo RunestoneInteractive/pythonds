@@ -2,8 +2,8 @@
     This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 
 
-Introduction: Visualizing Recursion
-===================================
+Visualizing Recursion
+=====================
 
 
 In the previous section we looked at some problems that were easy to
@@ -19,30 +19,30 @@ The tool we will use for our illustrations is Python’s turtle graphics
 module called ``turtle``. The ``turtle`` module is standard with all
 versions of Python and is very easy to use. The metaphor is quite
 simple. You can create a turtle and the turtle can move forward,
-backward, turn left, turn right, etc. The turtle can have its tail up or
-down. When the turtle’s tail is down and the turtle moves it draws a
-line as it moves. To increase the artistic value of the turtle you can
+move backward, turn left, turn right, etc. The turtle can have its tail up or
+down. When the turtle’s tail is down and the turtle moves, it draws a
+line as it moves. To increase the artistic value of the turtle, you can
 change the width of the tail as well as the color of the ink the tail is
 dipped in.
 
-Here is a simple example to illustrate some turtle graphics basics. We
-will use the turtle module to draw a spiral recursively.
+Here is a simple example to illustrate some ``turtle`` graphics basics. We
+will use the ``turtle`` module to draw a spiral recursively.
 :ref:`ActiveCode 1 <lst_turt1>` shows how it is done. After importing the ``turtle``
 module we create a turtle. When the turtle is created it also creates a
 window for itself to draw in. Next we define the ``draw_spiral`` function.
 The base case for this simple function is when the length of the line we
 want to draw, as given by the ``len`` parameter, is reduced to zero or
-less. If the length of the line is longer than zero we instruct the
+less. If the length of the line is longer than zero, we instruct the
 turtle to go forward by ``len`` units and then turn right 90 degrees.
-The recursive step is when we call draw_spiral again with a reduced
+The recursive step is when we call ``draw_spiral`` again with a reduced
 length. At the end of :ref:`ActiveCode 1 <lst_turt1>` you will notice that we call
-the function ``my_win.exitonclick()``, this is a handy little method of
+the function ``my_win.exitonclick()``. This is a handy little method of
 the window that puts the turtle into a wait mode until you click inside
 the window, after which the program cleans up and exits.
 
 
 .. activecode:: lst_turt1
-    :caption: Drawing a Recursive Spriral using turtle
+    :caption: Drawing a Recursive Spiral using ``turtle``
     :nocodelens:
 
 
@@ -62,25 +62,25 @@ the window, after which the program cleans up and exits.
     my_win.exitonclick()
 
 That is really about all the turtle graphics you need to know in order
-to make some pretty impressive drawings. For our next program we are
-going to draw a fractal tree. Fractals come from a branch of
-mathematics, and have much in common with recursion. The definition of a
-fractal is that when you look at it the fractal has the same basic shape
-no matter how much you magnify it. Some examples from nature are the
+to make some pretty impressive drawings. For our next program we
+will turn to fractals. Fractals come from a branch of
+mathematics, and have much in common with recursion. By definition,
+a **fractal** has the same basic shape no matter how much you magnify it.
+Some examples from nature are the
 coastlines of continents, snowflakes, mountains, and even trees or
-shrubs. The fractal nature of many of these natural phenomenon makes it
+shrubs. The fractal nature of many of these natural phenomena makes it
 possible for programmers to generate very realistic looking scenery for
-computer generated movies. In our next example we will generate a
+computer-generated movies. In our next example we will generate a
 fractal tree.
 
 To understand how this is going to work it is helpful to think of how we
 might describe a tree using a fractal vocabulary. Remember that we said
 above that a fractal is something that looks the same at all different
-levels of magnification. If we translate this to trees and shrubs we
+levels of magnification. If we translate this to trees and shrubs, we
 might say that even a small twig has the same shape and characteristics
-as a whole tree. Using this idea we could say that a *tree* is a trunk,
-with a smaller *tree* going off to the right and another smaller *tree*
-going off to the left. If you think of this definition recursively it
+as a whole tree. Using this idea we could say that a tree is a trunk,
+with a smaller tree going off to the right and another smaller tree
+going off to the left. If you think of this definition recursively, it
 means that we will apply the recursive definition of a tree to both of
 the smaller left and right trees.
 
@@ -92,7 +92,7 @@ after the turtle turns to the right by 20 degrees; this is the right
 tree mentioned above. Then in line 7 the turtle makes another recursive
 call, but this time after turning left by 40 degrees. The reason the
 turtle must turn left by 40 degrees is that it needs to undo the
-original 20 degree turn to the right and then do an additional 20 degree
+original 20-degree turn to the right and then do an additional 20-degree
 turn to the left in order to draw the left tree. Also notice that each
 time we make a recursive call to ``tree`` we subtract some amount from
 the ``branch_len`` parameter; this is to make sure that the recursive
@@ -189,7 +189,7 @@ to the smallest twig on the left.
 
 This simple tree program is just a starting point for you, and you will
 notice that the tree does not look particularly realistic because nature
-is just not as symmetric as a computer program. The exercises at the end
+is just not as symmetrical as a computer program. The exercises at the end
 of the chapter will give you some ideas for how to explore some
 interesting options to make your tree look more realistic.
 

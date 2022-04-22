@@ -7,12 +7,12 @@ Recursion
 
     Objectives.rst
     WhatIsRecursion.rst
-    pythondsCalculatingtheSumofaListofNumbers.rst
+    CalculatingtheSumofaListofNumbers.rst
     TheThreeLawsofRecursion.rst
-    pythondsConvertinganIntegertoaStringinAnyBase.rst
+    ConvertinganIntegertoaStringinAnyBase.rst
     StackFramesImplementingRecursion.rst
-    pythondsintro-VisualizingRecursion.rst
-    pythondsSierpinskiTriangle.rst
+    VisualizingRecursion.rst
+    SierpinskiTriangle.rst
     ComplexRecursiveProblems.rst
     TowerofHanoi.rst
     ExploringaMaze.rst
