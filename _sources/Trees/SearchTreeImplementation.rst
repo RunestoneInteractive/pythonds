@@ -5,11 +5,11 @@
 Search Tree Implementation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A binary search tree relies on the property that
+A binary search tree (BST) relies on the property that
 keys that are less than the parent are found in the left subtree, and
 keys that are greater than the parent are found in the right subtree. We
-will call this the **bst property**. As we implement the ``Map`` interface
-as described above, the bst property will guide our implementation.
+will call this the **BST property**. As we implement the ``Map`` interface
+as described above, the BST property will guide our implementation.
 :ref:`Figure 1 <fig_simpleBST>` illustrates this property of a binary search
 tree, showing the keys without any associated values. Notice that the
 property holds for each parent and child. All of the keys in the left
@@ -41,7 +41,7 @@ greater than 14, so it becomes the right child of 14.
 
 To implement the binary search tree, we will use the nodes and
 references approach similar to the one we used to implement the linked
-list, and the expression tree. However, because we must be able create
+list and the expression tree. However, because we must be able create
 and work with a binary search tree that is empty, our implementation
 will use two classes. The first class we will call ``BinarySearchTree``,
 and the second class we will call ``TreeNode``. The ``BinarySearchTree``
@@ -53,7 +53,7 @@ the ``BinarySearchTree`` class that takes the root as a parameter. In
 the case where the tree is empty or we want to delete the key at the
 root of the tree, we must take special action. The code for the
 ``BinarySearchTree`` class constructor along with a few other
-miscellaneous functions is shown in :ref:`Listing 1 <lst_bst1>`.
+miscellaneous methods is shown in :ref:`Listing 1 <lst_bst1>`.
 
 .. _lst_bst1:
 
@@ -69,19 +69,16 @@ miscellaneous functions is shown in :ref:`Listing 1 <lst_bst1>`.
         def __len__(self):
             return self.size
 
-        def size(self):
-            return self.size
-
         def __iter__(self):
             return self.root.__iter__()
 
 
-The ``TreeNode`` class provides many helper functions that make the work
+The ``TreeNode`` class provides many helper methods that make the work
 done in the ``BinarySearchTree`` class methods much easier. The
-constructor for a ``TreeNode``, along with these helper functions, is
+constructor for a ``TreeNode``, along with these helper methods, is
 shown in :ref:`Listing 2 <lst_bst2>`. As you can see in the listing many of
-these helper functions help to classify a node according to its own
-position as a child, (left or right) and the kind of children the node
+these helper methods help to classify a node according to its own
+position as a child (left or right) and the kind of children the node
 has.
 The ``TreeNode`` class will also explicitly keep track
 of the parent as an attribute of each node. You will see why this is
@@ -91,10 +88,10 @@ Another interesting aspect of the implementation of ``TreeNode`` in
 :ref:`Listing 2 <lst_bst2>` is that we use Python’s optional parameters.
 Optional parameters make it easy for us to create a ``TreeNode`` under
 several different circumstances. Sometimes we will want to construct a
-new ``TreeNode`` that already has both a ``parent`` and a ``child``.
-With an existing parent and child, we can pass parent and child as
+new ``TreeNode`` that already has both a parent and a child (e.g. left) and
+in that case we can pass ``parent`` and ``left_child`` as
 parameters. At other times we will just create a ``TreeNode`` with the
-key value pair, and we will not pass any parameters for ``parent`` or
+key-value pair, and we will not pass any parameters for ``parent`` or
 ``child``. In this case, the default values of the optional parameters
 are used.
 
@@ -124,7 +121,7 @@ are used.
         def is_leaf(self):
             return not (self.right_child or self.left_child)
 
-        def has_a_child(self):
+        def has_any_child(self):
             return self.right_child or self.left_child
 
         def has_children(self):
@@ -141,14 +138,14 @@ are used.
                 self.right_child.parent = self
 
 
-Now that we have the ``BinarySearchTree`` shell and the ``TreeNode`` it
+Now that we have the ``BinarySearchTree`` shell and the ``TreeNode``, it
 is time to write the ``put`` method that will allow us to build our
 binary search tree. The ``put`` method is a method of the
 ``BinarySearchTree`` class. This method will check to see if the tree
-already has a root. If there is not a root then ``put`` will create a
+already has a root. If there is not a root, then ``put`` will create a
 new ``TreeNode`` and install it as the root of the tree. If a root node
-is already in place then ``put`` calls the private, recursive, helper
-function ``_put`` to search the tree according to the following
+is already in place, then ``put`` calls the private recursive helper
+method ``_put`` to search the tree according to the following
 algorithm:
 
 -  Starting at the root of the tree, search the binary tree comparing
@@ -156,19 +153,19 @@ algorithm:
    than the current node, search the left subtree. If the new key is
    greater than the current node, search the right subtree.
 
--  When there is no left (or right) child to search, we have found the
+-  When there is no left or right child to search, we have found the
    position in the tree where the new node should be installed.
 
 -  To add a node to the tree, create a new ``TreeNode`` object and
    insert the object at the point discovered in the previous step.
 
 :ref:`Listing 3 <lst_bst3>` shows the Python code for inserting a new node in
-the tree. The ``_put`` function is written recursively following the
+the tree. The ``_put`` method is written recursively following the
 steps outlined above. Notice that when a new child is inserted into the
 tree, the ``current_node`` is passed to the new tree as the parent.
 
-One important problem with our implementation of insert is that
-duplicate keys are not handled properly. As our tree is implemented a
+One important problem with our implementation of insertion is that
+duplicate keys are not handled properly. As our tree is implemented, a
 duplicate key will create a new node with the same key value in the
 right subtree of the node having the original key. The result of this is
 that the node with the new key will never be found during a search. A
@@ -251,25 +248,16 @@ until it gets to a non-matching leaf node or finds a matching key. When
 a matching key is found, the value stored in the payload of the node is
 returned.
 
-:ref:`Listing 5 <lst_bst5>` shows the code for ``get``, ``_get`` and
-``__getitem__``. The search code in the ``_get`` method uses the same
+:ref:`Listing 5 <lst_bst5>` shows the code for ``get`` and ``_get``.
+The search code in the ``_get`` method uses the same
 logic for choosing the left or right child as the ``_put`` method. Notice
 that the ``_get`` method returns a ``TreeNode`` to ``get``, this allows
 ``_get`` to be used as a flexible helper method for other
 ``BinarySearchTree`` methods that may need to make use of other data
 from the ``TreeNode`` besides the payload.
 
-By implementing the ``__getitem__`` method we can write a Python
-statement that looks just like we are accessing a dictionary, when in
-fact we are using a binary search tree, for example
-``z = my_zip_tree["Fargo"]``.  As you can see, all the ``__getitem__`` method does is call
-``get``.
-
 
 .. _lst_bst5:
-
-
-
 
 **Listing 5**
 
@@ -292,14 +280,12 @@ fact we are using a binary search tree, for example
         else:
             return self._get(key, current_node.right_child)
 
-    def __getitem__(self, key):
-        return self.get(key)
 
-Using ``get``, we can implement the ``in`` operation by writing a
-``__contains__`` method for the ``BinarySearchTree``. The
-``__contains__`` method will simply call ``get`` and return ``True``
-if ``get`` returns a value, or ``False`` if it returns ``None``. The
-code for ``__contains__`` is shown in :ref:`Listing 6 <lst_bst6>`.
+By implementing the ``__getitem__`` method we can write a Python
+statement that looks just like we are accessing a dictionary, when in
+fact we are using a binary search tree, for example
+``z = my_zip_tree["Fargo"]``.  As you can see in :ref:`Listing 6 <lst_bst6>`,
+all the ``__getitem__`` method does is call ``get``.
 
 .. _lst_bst6:
 
@@ -307,19 +293,30 @@ code for ``__contains__`` is shown in :ref:`Listing 6 <lst_bst6>`.
 
 ::
 
+    def __getitem__(self, key):
+        return self.get(key)
+
+Using ``get``, we can implement the ``in`` operation by writing a
+``__contains__`` method for the ``BinarySearchTree``. The
+``__contains__`` method will simply call ``get`` and return ``True``
+if ``get`` returns a value, or ``False`` if it returns ``None``. The
+code for ``__contains__`` is shown in :ref:`Listing 7 <lst_bst7>`.
+
+.. _lst_bst7:
+
+**Listing 7**
+
+::
+
     def __contains__(self, key):
         return bool(self._get(key, self.root))
 
 Recall that ``__contains__`` overloads the ``in`` operator and allows us
-to write statements such as:
+to write statements such as ``"Northfield" in my_zip_tree``.
 
-::
-
-	if "Northfield" in my_zip_tree:
-	    print("oom ya ya")
-
-Finally, we turn our attention to the most challenging method in the
-binary search tree, the deletion of a key (see :ref:`Listing 7 <lst_bst7>`). The first task is to find the
+Finally, we turn our attention to the most challenging operation on the
+binary search tree, the deletion of a key (see :ref:`Listing 8 <lst_bst8>`).
+The first task is to find the
 node to delete by searching the tree. If the tree has more than one node
 we search using the ``_get`` method to find the ``TreeNode`` that needs
 to be removed. If the tree only has a single node, that means we are
@@ -327,9 +324,9 @@ removing the root of the tree, but we still must check to make sure the
 key of the root matches the key that is to be deleted. In either case if
 the key is not found the ``del`` operator raises an error.
 
-.. _lst_bst7:
+.. _lst_bst8:
 
-**Listing 7**
+**Listing 8**
 
 ::
 
@@ -347,8 +344,6 @@ the key is not found the ``del`` operator raises an error.
         else:
             raise KeyError("Error, key not in tree")
 
-    def __delitem__(self, key):
-        self.delete(key)
 
 Once we’ve found the node containing the key we want to delete, there
 are three cases that we must consider:
@@ -359,14 +354,35 @@ are three cases that we must consider:
 
 #. The node to be deleted has two children (see :ref:`Figure 5 <fig_bstdel3>`).
 
-The first case is straightforward (see :ref:`Listing 8 <lst_bst8>`). If the current node has no children
+.. _fig_bstdel1:
+
+.. figure:: Figures/bstdel1.png
+   :align: center
+
+   Figure 3: Deleting Node 16, a Node without Children
+
+.. _fig_bstdel2:
+
+.. figure:: Figures/bstdel2.png
+   :align: center
+
+   Figure 4: Deleting Node 25, a Node That Has a Single Child
+
+.. _fig_bstdel3:
+
+.. figure:: Figures/bstdel3.png
+    :align: center
+
+    Figure 5: Deleting Node 5, a Node with Two Children
+
+The first case is straightforward. If the current node has no children,
 all we need to do is delete the node and remove the reference to this
-node in the parent. The code for this case is shown in here.
+node in the parent. The code for this case is shown in :ref:`Listing 9 <lst_bst9>`.
 
 
-.. _lst_bst8:
+.. _lst_bst9:
 
-**Listing 8**
+**Listing 9**
 
 
 ::
@@ -378,27 +394,20 @@ node in the parent. The code for this case is shown in here.
             current_node.parent.right_child = None
 
 
-.. _fig_bstdel1:
-
-.. figure:: Figures/bstdel1.png
-   :align: center
-
-   Figure 3: Deleting Node 16, a Node without Children
-
-The second case is only slightly more complicated (see :ref:`Listing 9 <lst_bst9>`). If a node has only a
+The second case is only slightly more complicated. If a node has only a
 single child, then we can simply promote the child to take the place of
-its parent. The code for this case is shown in the next listing. As
-you look at this code you will see that there are six cases to consider.
+its parent. The code for this case is shown in :ref:`Listing 10 <lst_bst10>`. As
+you look at this code, you will see that there are six cases to consider.
 Since the cases are symmetric with respect to either having a left or
-right child we will just discuss the case where the current node has a
+right child, we will just discuss the case where the current node has a
 left child. The decision proceeds as follows:
 
-#. If the current node is a left child then we only need to update the
+#. If the current node is a left child, then we only need to update the
    parent reference of the left child to point to the parent of the
    current node, and then update the left child reference of the parent
    to point to the current node’s left child.
 
-#. If the current node is a right child then we only need to update the
+#. If the current node is a right child, then we only need to update the
    parent reference of the left child to point to the parent of the
    current node, and then update the right child reference of the parent
    to point to the current node’s left child.
@@ -408,9 +417,9 @@ left child. The decision proceeds as follows:
    ``right_child`` data by calling the ``replace_value`` method on the
    root.
 
-.. _lst_bst9:
+.. _lst_bst10:
 
-**Listing 9**
+**Listing 10**
 
 ::
 
@@ -444,14 +453,7 @@ left child. The decision proceeds as follows:
                     current_node.right_child.right_child,
                 )
 
-.. _fig_bstdel2:
-
-.. figure:: Figures/bstdel2.png
-   :align: center
-
-   Figure 4: Deleting Node 25, a Node That Has a Single Child
-
-The third case is the most difficult case to handle (see :ref:`Listing 10 <lst_bst10>`). If a node has two
+The third case is the most difficult case to handle. If a node has two
 children, then it is unlikely that we can simply promote one of them to
 take the node’s place. We can, however, search the tree for a node that
 can be used to replace the one scheduled for deletion. What we need is a
@@ -462,26 +464,19 @@ node that has the next-largest key in the tree. We call this node the
 The successor is guaranteed to have no more than one child, so we know
 how to remove it using the two cases for deletion that we have already
 implemented. Once the successor has been removed, we simply put it in
-the tree in place of the node to be deleted.
+the tree in place of the node to be deleted. The code 
+to handle the third case is shown in :ref:`Listing 11 <lst_bst11>`.
 
-.. _fig_bstdel3:
-
-.. figure:: Figures/bstdel3.png
-    :align: center
-
-    Figure 5: Deleting Node 5, a Node with Two Children
-
-The code to handle the third case is shown in the next listing.
 Notice that we make use of the helper methods ``find_successor`` and
-``find_min`` to find the successor. To remove the successor, we make use
-of the method ``splice_out``. The reason we use ``splice_out`` is that it
+``splice_out`` to find and remove the successor.
+The reason we use ``splice_out`` is that it
 goes directly to the node we want to splice out and makes the right
 changes. We could call ``delete`` recursively, but then we would waste
-time re-searching for the key node.
+time searching again for the key node.
 
-.. _lst_bst10:
+.. _lst_bst11:
 
-**Listing 10**
+**Listing 11**
 
 ::
 
@@ -491,7 +486,7 @@ time re-searching for the key node.
         current_node.key = successor.key
         current_node.value = successor.value
 
-The code to find the successor is shown below (see :ref:`Listing 11 <lst_bst11>`) and as
+The code to find the successor is shown below (see :ref:`Listing 12 <lst_bst12>`) and as
 you can see is a method of the ``TreeNode`` class. This code makes use
 of the same properties of binary search trees that cause an inorder
 traversal to print out the nodes in the tree from smallest to largest.
@@ -513,14 +508,14 @@ has other uses that we will explore in the exercises at the end of this
 chapter.
 
 The ``find_min`` method is called to find the minimum key in a subtree.
-You should convince yourself that the minimum valued key in any binary
+You should convince yourself that the minimum value key in any binary
 search tree is the leftmost child of the tree. Therefore the ``find_min``
 method simply follows the ``left_child`` references in each node of the
 subtree until it reaches a node that does not have a left child.
 
-.. _lst_bst11:
+.. _lst_bst12:
 
-**Listing 11**
+**Listing 12**
 
 
 ::
@@ -551,7 +546,7 @@ subtree until it reaches a node that does not have a left child.
                 self.parent.left_child = None
             else:
                 self.parent.right_child = None
-        elif self.has_a_child():
+        elif self.has_any_child():
             if self.left_child:
                 if self.is_left_child():
                     self.parent.left_child = self.left_child
@@ -566,12 +561,27 @@ subtree until it reaches a node that does not have a left child.
                 self.right_child.parent = self.parent
 
 
+We can implement the ``del`` operator by
+writing a ``__delete__`` method for the
+``BinarySearchTree`` as shown in :ref:`Listing 13 <lst_bst13>`.
+It is a wrapper method that allows us to remove a key from the map
+by writing ``del my_zip_tree["NYC"]``.
+
+.. _lst_bst13:
+
+**Listing 13**
+
+::
+
+    def __delitem__(self, key):
+        self.delete(key)
+
 We need to look at one last interface method for the binary search tree.
 Suppose that we would like to simply iterate over all the keys in the
 tree in order. This is definitely something we have done with
 dictionaries, so why not trees? You already know how to traverse a
 binary tree in order, using the ``inorder`` traversal algorithm.
-However, writing an iterator requires a bit more work, since an iterator
+However, writing an iterator requires a bit more work since an iterator
 should return only one node each time the iterator is called.
 
 Python provides us with a very powerful function to use when creating an
@@ -580,13 +590,13 @@ iterator. The function is called ``yield``. ``yield`` is similar to
 also takes the additional step of freezing the state of the function so
 that the next time the function is called it continues executing from
 the exact point it left off earlier. Functions that create objects that
-can be iterated are called generator functions.
+can be iterated are called *generator functions*.
 
 The code for an ``inorder`` iterator of a binary tree is shown in the next
 listing. Look at this code carefully; at first glance you
 might think that the code is not recursive. However, remember that
-``__iter__`` overrides the ``for x in`` operation for iteration, so it
-really is recursive! Because it is recursive over ``TreeNode`` instances
+``__iter__`` overrides the ``for ... in`` operation for iteration, so it
+really is recursive! Because it is recursive over ``TreeNode`` instances,
 the ``__iter__`` method is defined in the ``TreeNode`` class.
 
 ::
@@ -626,7 +636,7 @@ full version of the ``BinarySearchTree`` and ``TreeNode`` classes.
         def is_leaf(self):
             return not (self.right_child or self.left_child)
 
-        def has_a_child(self):
+        def has_any_child(self):
             return self.right_child or self.left_child
 
         def has_children(self):
@@ -668,7 +678,7 @@ full version of the ``BinarySearchTree`` and ``TreeNode`` classes.
                     self.parent.left_child = None
                 else:
                     self.parent.right_child = None
-            elif self.has_a_child():
+            elif self.has_any_child():
                 if self.left_child:
                     if self.is_left_child():
                         self.parent.left_child = self.left_child
