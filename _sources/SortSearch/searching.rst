@@ -9,8 +9,8 @@ We will now turn our attention to some of the most common problems that
 arise in computing, those of searching and sorting. In this section we
 will study searching. We will return to sorting later in the chapter.
 Searching is the algorithmic process of finding a particular item in a
-collection of items. A search typically answers either ``True`` or
-``False`` as to whether the item is present. On occasion it may be
+collection of items. A search typically returns either ``True`` or
+``False`` when queried on whether an item is present. On occasion a search may be
 modified to return where the item is found. For our purposes here, we
 will simply concern ourselves with the question of membership.
 

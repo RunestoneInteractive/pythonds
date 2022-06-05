@@ -5,17 +5,18 @@
 Key Terms
 ---------
 
-============= ===================== ==================== 
-     AVL tree           binary heap   binary search tree 
-  binary tree      child / children complete binary tree 
-         edge   heap order property               height 
-  ``inorder``             leaf node                level 
-          map          min/max heap                 node 
-       parent                  path        ``postorder`` 
- ``preorder``        priority queue                 root 
-     rotation               sibling            successor 
-      subtree                  tree 
-============= ===================== ==================== 
+==================== ==================== ====================
+AVL tree             height               postorder traversal
+balance factor       inorder traversal    preorder traversal
+binary heap          leaf node            priority queue
+binary search tree   level                root 
+binary tree          map                  rotation
+BST property         min/max heap         sibling
+child / children     node                 subtree
+complete binary tree parent               successor 
+edge                 parse tree           tree
+heap order property  path                 tree traversal
+==================== ==================== ====================
 
 .. _tree_discuss:
 

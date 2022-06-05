@@ -4,3 +4,6 @@ sphinx_settings.json
 .vscode
 __pycache__
 .history/*
+.venv/
+.DS_Store
+build_info

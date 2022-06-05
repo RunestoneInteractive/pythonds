@@ -5,29 +5,31 @@
 The Graph Abstract Data Type
 ----------------------------
 
-The graph abstract data type (ADT) is defined as follows:
+The graph abstract data type is defined as a collection of vertices
+and edges. Vertices may be either connected to each other or isolated. Edges join
+two vertices and may be weighted.
 
--  ``Graph()`` creates a new, empty graph.
+-  ``Graph()`` creates a new empty graph.
 
--  ``addVertex(vert)`` adds an instance of ``Vertex`` to the graph.
+-  ``add_vertex(vert)`` adds an instance of ``Vertex`` to the graph.
 
--  ``addEdge(fromVert, toVert)`` Adds a new, directed edge to the graph
+-  ``add_edge(from_vert, to_vert)`` adds a new directed edge to the graph
    that connects two vertices.
 
--  ``addEdge(fromVert, toVert, weight)`` Adds a new, weighted, directed
+-  ``add_edge(from_vert, to_vert, weight)`` adds a new weighted directed
    edge to the graph that connects two vertices.
 
--  ``getVertex(vertKey)`` finds the vertex in the graph named
-   ``vertKey``.
+-  ``get_vertex(vert_key)`` finds the vertex in the graph named
+   ``vert_key``.
 
--  ``getVertices()`` returns the list of all vertices in the graph.
+-  ``get_vertices()`` returns the list of all vertices in the graph.
 
 -  ``in`` returns ``True`` for a statement of the form
-   ``vertex in graph``, if the given vertex is in the graph, ``False``
+   ``vertex in graph`` if the given vertex is in the graph, ``False``
    otherwise.
 
-Beginning with the formal definition for a graph there are several ways
-we can implement the graph ADT in Python. We will see that there are
+Now that we have looked at the definition for the graph ADT,
+there are several ways we can implement it in Python. We will see that there are
 trade-offs in using different representations to implement the ADT
 described above. There are two well-known implementations of a graph,
 the **adjacency matrix** and the **adjacency list**. We will explain

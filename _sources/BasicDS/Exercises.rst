@@ -19,18 +19,16 @@ Programming Exercises
 #. Turn your direct infix evaluator from the previous problem into a
    calculator.
 
-#. Implement the ``Queue`` ADT, using a list such that the rear of the
+#. Implement the queue ADT, using a list such that the rear of the
    queue is at the end of the list.
 
 #. Design and implement an experiment to do benchmark comparisons of the
    two queue implementations. What can you learn from such an
    experiment?
 
-#. It is possible to implement a queue such that both enqueue and
-   dequeue have :math:`O(1)` performance *on average*. In this case it
-   means that most of the time enqueue and dequeue will be
-   :math:`O(1)` except in one particular circumstance where dequeue
-   will be :math:`O(n)`. Create an implementation of a queue that would have an average performance of :math:`O(1)` for enqueue and dequeue operations.
+#. Modify the hot potato simulation to allow for a randomly chosen
+   counting value so that each pass is not predictable from the previous
+   one.
 
 #. Consider a real life situation. Formulate a question and then design
    a simulation that can help to answer it. Possible situations include:
@@ -45,10 +43,6 @@ Programming Exercises
 
    Be sure to state any assumptions that you make and provide any
    probabilistic data that must be considered as part of the scenario.
-
-#. Modify the Hot Potato simulation to allow for a randomly chosen
-   counting value so that each pass is not predictable from the previous
-   one.
 
 #. Implement a radix sorting machine. A radix sort for base 10 integers
    is a mechanical sorting technique that utilizes a collection of bins,
@@ -65,7 +59,7 @@ Programming Exercises
    processed, the main bin contains the values in order.
 
 #. Another example of the parentheses matching problem comes from
-   hypertext markup language (HTML). In HTML, tags exist in both opening
+   HyperText Markup Language (HTML). In HTML, tags exist in both opening
    and closing forms and must be balanced to properly describe a web
    document. This very simple HTML document:
 
@@ -87,7 +81,7 @@ Programming Exercises
    in the language. Write a program that can check an HTML document for
    proper opening and closing tags.
 
-#. Extend the program from Listing 2.15 to handle palindromes with
+#. Extend the program from Listing 3.15 to handle palindromes with
    spaces. For example, I PREFER PI is a palindrome that reads the same
    forward and backward if you ignore the blank characters.
 
@@ -103,23 +97,23 @@ Programming Exercises
 #. Modify the list classes to allow duplicates. Which methods will be
    impacted by this change?
 
-#. Implement the ``__str__`` method in the UnorderedList class. What
+#. Implement the ``__str__`` method in the ``UnorderedList`` class. What
    would be a good string representation for a list?
 
-#. Implement ``__str__`` method so that lists are displayed the
+#. Implement the ``__str__`` method so that lists are displayed the
    Python way (with square brackets).
 
-#. Implement the remaining operations defined in the UnorderedList ADT
-   (append, index, pop, insert).
+#. Implement the remaining operations defined in the unordered list ADT
+   (``append``, ``index``, ``pop``, ``insert``).
 
-#. Implement a slice method for the ``UnorderedList`` class. It should
+#. Implement a ``slice`` method for the ``UnorderedList`` class. It should
    take two parameters, ``start`` and ``stop``, and return a copy of the
    list starting at the ``start`` position and going up to but not
    including the ``stop`` position.
 
-#. Implement the remaining operations defined in the OrderedList ADT.
+#. Implement the remaining operations defined in the ordered list ADT.
 
-#. Consider the relationship between Unordered and Ordered lists. Is it
+#. Consider the relationship between unordered and ordered lists. Is it
    possible that inheritance could be used to build a more efficient
    implementation? Implement this inheritance hierarchy.
 
@@ -133,14 +127,18 @@ Programming Exercises
    of a Python list with a list implemented as a linked list.
 
 #. Design and implement an experiment that will compare the performance
-   of the Python list based stack and queue with the linked list
+   of the Python list-based stack and queue with the linked list
    implementation.
 
-#. The linked list implementation given above is called a singly linked
-   list because each node has a single reference to the next node in
-   sequence. An alternative implementation is known as a doubly linked
-   list. In this implementation, each node has a reference to the next
-   node (commonly called next) as well as a reference to the preceding
-   node (commonly called back). The head reference also contains two
+#. The linked list implementation given above is called a *singly linked
+   list* because each node has a single reference to the next node in the
+   sequence. An alternative implementation is known as a *doubly linked
+   list*. In this implementation, each node has a reference to the next
+   node (commonly called *next*) as well as a reference to the preceding
+   node (commonly called *back*). The head reference also contains two
    references, one to the first node in the linked list and one to the
    last. Code this implementation in Python.
+
+#. Create an implementation of a queue that would have an average performance of
+   :math:`O(1)` for ``enqueue`` and ``dequeue`` operations.
+

@@ -7,35 +7,34 @@ Tree Traversals
 
 Now that we have examined the basic functionality of our
 tree data structure, it is time to look at some additional usage
-patterns for trees. These usage patterns can be divided into the three
-ways that we access the nodes of the tree. There are three commonly used
-patterns to visit all the nodes in a tree. The difference between these
+patterns for trees. These usage patterns can be divided into three commonly
+used patterns to visit all the nodes in a tree. The difference between these
 patterns is the order in which each node is visited. We call this
-visitation of the nodes a “traversal.” The three traversals we will look
+visitation of the nodes a **tree traversal**. The three traversals we will look
 at are called **preorder**, **inorder**, and **postorder**. Let’s start
 out by defining these three traversals more carefully, then look at some
 examples where these patterns are useful.
 
-preorder
+Preorder
     In a preorder traversal, we visit the root node first, then
     recursively do a preorder traversal of the left subtree, followed by
     a recursive preorder traversal of the right subtree.
 
-inorder
+Inorder
     In an inorder traversal, we recursively do an inorder traversal on
     the left subtree, visit the root node, and finally do a recursive
     inorder traversal of the right subtree.
 
-postorder
+Postorder
     In a postorder traversal, we recursively do a postorder traversal of
     the left subtree and the right subtree followed by a visit to the
     root node.
 
 Let’s look at some examples that illustrate each of these three kinds of
-traversals. First let’s look at the preorder traversal. As an example of
-a tree to traverse, we will represent this book as a tree. The book is
+traversals. First let’s look at the preorder traversal using a book
+as an example tree. The book is
 the root of the tree, and each chapter is a child of the root. Each
-section within a chapter is a child of the chapter, and each subsection
+section within a chapter is a child of the chapter, each subsection
 is a child of its section, and so on. :ref:`Figure 5 <fig_booktree>` shows a
 limited version of a book with only two chapters. Note that the
 traversal algorithm works for trees with any number of children, but we
@@ -64,10 +63,8 @@ return to Chapter 1. Then we return to the Book node and follow the same
 procedure for Chapter 2.
 
 The code for writing tree traversals is surprisingly elegant, largely
-because the traversals are written recursively. :ref:`Listing 2 <lst_preorder1>`
-shows the Python code for a preorder traversal of a binary tree.
-
-You may wonder, what is the best way to write an algorithm like preorder
+because the traversals are written recursively. You may wonder, 
+what is the best way to write an algorithm like preorder
 traversal? Should it be a function that simply uses a tree as a data
 structure, or should it be a method of the tree data structure itself?
 :ref:`Listing 2 <lst_preorder1>` shows a version of the preorder traversal
@@ -85,15 +82,15 @@ then the function returns without taking any action.
 
     def preorder(tree):
         if tree:
-            print(tree.get_root_val())
-            preorder(tree.get_left_child())
-            preorder(tree.get_right_child())
+            print(tree.key)
+            preorder(tree.left_child)
+            preorder(tree.right_child)
 
 
 We can also implement ``preorder`` as a method of the ``BinaryTree``
 class. The code for implementing ``preorder`` as an internal method is
 shown in :ref:`Listing 3 <lst_preorder2>`. Notice what happens when we move the
-code from internal to external. In general, we just replace ``tree``
+code from external to internal. In general, we just replace ``tree``
 with ``self``. However, we also need to modify the base case. The
 internal method must check for the existence of the left and the right
 children *before* making the recursive call to ``preorder``.
@@ -135,16 +132,16 @@ we move the call to print to the end of the function.
 
     def postorder(tree):
         if tree:
-            postorder(tree.get_left_child())
-            postorder(tree.get_right_child())
-            print(tree.get_root_val())
+            postorder(tree.left_child)
+            postorder(tree.right_child)
+            print(tree.key)
 
 
 
 We have already seen a common use for the postorder traversal, namely
-evaluating a parse tree. Look back at :ref:`Listing 1 <lst_eval>` again. What
-we are doing is evaluating the left subtree, evaluating the right
-subtree, and combining them in the root through the function call to an
+evaluating a parse tree. Look back at :ref:`Listing 1 <lst_eval>` again.
+The algorithm evaluates the left subtree, evaluates the right subtree, 
+and combines them in the root through the function call to an
 operator. Assume that our binary tree is going to store only expression
 tree data. Let’s rewrite the evaluation function, but model it even more
 closely on the ``postorder`` code in :ref:`Listing 4 <lst_postorder1>` (see :ref:`Listing 5 <lst_postordereval>`).
@@ -165,12 +162,11 @@ closely on the ``postorder`` code in :ref:`Listing 4 <lst_postorder1>` (see :ref
         result_1 = None
         result_2 = None
         if tree:
-            result_1 = postordereval(tree.get_left_child())
-            result_2 = postordereval(tree.get_right_child())
+            result_1 = postordereval(tree.left_child)
+            result_2 = postordereval(tree.right_child)
             if result_1 and result_2:
-                return operators[tree.get_root_val()](result_1, result_2)
-            else:
-                return tree.get_root_val()
+                return operators[tree.key](result_1, result_2)
+            return tree.key
                 
 
 .. highlight:: python
@@ -179,8 +175,8 @@ closely on the ``postorder`` code in :ref:`Listing 4 <lst_postorder1>` (see :ref
 Notice that the form in :ref:`Listing 4 <lst_postorder1>` is the same as the form
 in :ref:`Listing 5 <lst_postordereval>`, except that instead of printing the key at
 the end of the function, we return it. This allows us to save the values
-returned from the recursive calls in lines 6 and 7. We
-then use these saved values along with the operator on line 9.
+returned from the recursive calls in lines 11 and 12. We
+then use these saved values along with the operator on line 14.
 
 The final traversal we will look at in this section is the inorder
 traversal. In the inorder traversal we visit the left subtree, followed
@@ -198,13 +194,13 @@ function with respect to the two recursive function calls.
 
     def inorder(tree):
         if tree:
-            inorder(tree.get_left_child())
-            print(tree.get_root_val())
-            inorder(tree.get_right_child())
+            inorder(tree.left_child)
+            print(tree.key)
+            inorder(tree.right_child)
 
 
-If we perform a simple inorder traversal of a parse tree we get our
-original expression back, without any parentheses. Let’s modify the
+If we perform a simple inorder traversal of a parse tree, we get our
+original expression back without any parentheses. Let’s modify the
 basic inorder algorithm to allow us to recover the fully parenthesized
 version of the expression. The only modifications we will make to the
 basic template are as follows: print a left parenthesis *before* the
@@ -221,9 +217,9 @@ shown in :ref:`Listing 7 <lst_printexp>`.
     def print_exp(tree):
         result = ""
         if tree:
-            result = "(" + print_exp(tree.get_left_child())
-            result = result + str(tree.get_root_val())
-            result = result + print_exp(tree.get_right_child()) + ")"
+            result = "(" + print_exp(tree.left_child)
+            result = result + str(tree.key)
+            result = result + print_exp(tree.right_child) + ")"
         return result
 
 

@@ -6,12 +6,12 @@ Objectives
 
 -  To be able to implement a linked list.
 
--  To understand The RSA algorithm for public key encryption using some
+-  To understand the RSA algorithm for public key encryption using some
    recursive mathematical functions.
 
 -  To understand the expected behavior of a skip list as an alternative
    implementation for dictionaries.
 
--  To understand OctTrees and their use in image processing.
+-  To understand octrees and their use in image processing.
 
 -  To understand string-matching as a graph problem.

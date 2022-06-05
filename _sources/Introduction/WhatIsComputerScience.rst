@@ -53,9 +53,9 @@ transporting you from one location to another. These functions are
 sometimes also referred to as the **interface**.
 
 On the other hand, the mechanic who must repair your car takes a
-very different point of view. They not only knows how to drive but must
+very different point of view. They not only know how to drive but must
 know all of the details necessary to carry out all the functions that we
-take for granted. They needs to understand how the engine works, how the
+take for granted. They need to understand how the engine works, how the
 transmission shifts gears, how temperature is controlled, and so on.
 This is known as the physical perspective, the details that take place
 “under the hood.”
@@ -86,7 +86,6 @@ perform computations such as
     >>> import math
     >>> math.sqrt(16)
     4.0
-    >>>
 
 This is an example of **procedural abstraction**. We do not necessarily
 know how the square root is being calculated, but we know what the
@@ -94,7 +93,7 @@ function is called and how to use it. If we perform the import
 correctly, we can assume that the function will provide us with the
 correct results. We know that someone implemented a solution to the
 square root problem, but we only need to know how to use it. This is
-sometimes referred to as a “black box” view of a process. We simply
+sometimes referred to as a *black box* view of a process. We simply
 describe the interface: the name of the function, what is needed (the
 parameters), and what will be returned. The details are hidden inside
 (see :ref:`Figure 1 <fig_procabstraction>`).

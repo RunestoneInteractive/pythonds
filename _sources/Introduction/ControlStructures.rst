@@ -20,8 +20,7 @@ as long as a condition evaluates to ``True``. For example,
     >>> while counter <= 5:
     ...     print("Hello, world")
     ...     counter = counter + 1
-
-
+    ... 
     Hello, world
     Hello, world
     Hello, world
@@ -83,7 +82,6 @@ over a range of values. The statement
     4
     9
     16
-    >>>
 
 will perform the ``print`` function five times. The ``range`` function
 will return a range object representing the sequence 0, 1, 2, 3, 4 and each
@@ -122,7 +120,6 @@ statement.
     ...   print(math.sqrt(n))
     ... 
     4.0
-    >>> 
 
 In this example, the object referred to by ``n`` is checked to see if it
 is less than zero. If it is, a message is printed stating that it is
@@ -177,7 +174,6 @@ conditions fail.
     ...     print("D")
     ... else:
     ...     print("F")
-    >>> 
 
 Python also has a single-way selection construct, the ``if`` statement.
 With this statement, if the condition is true, an action is performed.
@@ -227,7 +223,6 @@ like to create a list of the first 10 perfect squares, we could use a
     ... 
     >>> sq_list
     [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
-    >>> 
 
 Using a list comprehension, we can do this in one step as
 
@@ -236,7 +231,6 @@ Using a list comprehension, we can do this in one step as
     >>> sq_list=[x * x for x in range(1, 11)]
     >>> sq_list
     [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
-    >>>
 
 The variable ``x`` takes on the values 1 through 10 as specified by the
 ``for`` construct. The value of ``x * x`` is then computed and added to
@@ -251,7 +245,6 @@ certain items get added. For example,
     >>> sq_list=[x * x for x in range(1,11) if x % 2 != 0]
     >>> sq_list
     [1, 9, 25, 49, 81]
-    >>>
 
 This list comprehension constructs a list that contains the
 squares of only the odd numbers in the range from 1 to 10. Any sequence that
@@ -262,7 +255,6 @@ a new list.
 
     >>>[ch.upper() for ch in 'comprehension' if ch not in 'aeiou']
     ['C', 'M', 'P', 'R', 'H', 'N', 'S', 'N']
-    >>>
 
 .. admonition:: Self Check
 

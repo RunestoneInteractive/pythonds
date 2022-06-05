@@ -6,13 +6,12 @@ Nodes and References
 ~~~~~~~~~~~~~~~~~~~~
 
 Our second method to represent a tree uses nodes and references. In this
-case we will define a class that has attributes for the root value, as
-well as the left and right subtrees. Since this representation more
+case we will define a class that has attributes for the root value as
+well as the left and right subtrees. Using nodes and references,
+we might think of the tree as being structured like the one shown in :ref:`Figure 2 <fig_treerec>`.
+Since this representation more
 closely follows the object-oriented programming paradigm, we will
 continue to use this representation for the remainder of the chapter.
-
-Using nodes and references, we might think of the tree as being
-structured like the one shown in :ref:`Figure 2 <fig_treerec>`.
 
 .. _fig_treerec:
 
@@ -27,7 +26,7 @@ references approach as shown in :ref:`Listing 4 <lst_nar>`. The important thing
 to remember about this representation is that the attributes ``left_child``
 and ``right_child`` will become references to other instances of the
 ``BinaryTree`` class. For example, when we insert a new left child into
-the tree we create another instance of ``BinaryTree`` and modify
+the tree, we create another instance of ``BinaryTree`` and modify
 ``self.left_child`` in the root to reference the new tree.
 
 .. _lst_nar:
@@ -44,12 +43,12 @@ the tree we create another instance of ``BinaryTree`` and modify
         
 
 Notice that in :ref:`Listing 4 <lst_nar>`, the constructor function expects to
-get some kind of object to store in the root. Just like you can store
+get some kind of object to store in the root. Just as you can store
 any object you like in a list, the root object of a tree can be a
 reference to any object. For our early examples, we will store the name
 of the node as the root value. Using nodes and references to represent
 the tree in :ref:`Figure 2 <fig_treerec>`, we would create six instances of the
-BinaryTree class.
+``BinaryTree`` class.
 
 Next let’s look at the functions we need to build the tree beyond the
 root node. To add a left child to the tree, we will create a new binary
@@ -105,8 +104,8 @@ the root and an existing right child. The insertion code is shown in
             self.right_child = new_child
 
 To round out the definition for a simple binary tree data structure, we
-will write accessor methods (see :ref:`Listing 7 <lst_naracc>`) for the left and right children, as well as
-the root values.
+will write accessor methods for the left and right children and for
+the root values (see :ref:`Listing 7 <lst_naracc>`) .
 
 .. _lst_naracc:
 

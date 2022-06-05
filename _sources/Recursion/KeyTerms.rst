@@ -6,7 +6,8 @@ Key Terms
 ---------
 
 ============================= ========================== ======================= 
-                    base case                    decrypt     dynamic programming
-                    recursion             recursive call             stack frame
+                    base case              greedy method             stack frame
+          dynamic programming                  recursion
+                      fractal             recursive call
 ============================= ========================== ======================= 
 

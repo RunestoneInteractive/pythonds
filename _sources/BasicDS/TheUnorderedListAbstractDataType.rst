@@ -34,13 +34,13 @@ others. Some possible unordered list operations are given below.
 -  ``index(item)`` returns the position of item in the list. It needs
    the item and returns the index. Assume the item is in the list.
 
--  ``insert(pos, item)`` adds a new item to the list at position pos. It
+-  ``insert(pos, item)`` adds a new item to the list at position ``pos``. It
    needs the item and returns nothing. Assume the item is not already in
    the list and there are enough existing items to have position pos.
 
 -  ``pop()`` removes and returns the last item in the list. It needs
    nothing and returns an item. Assume the list has at least one item.
 
--  ``pop(pos)`` removes and returns the item at position pos. It needs
+-  ``pop(pos)`` removes and returns the item at position ``pos``. It needs
    the position and returns the item. Assume the item is in the list.
 

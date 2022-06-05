@@ -13,7 +13,7 @@ Objectives
 
 -  To understand the idea of hashing as a search technique.
 
--  To introduce the map abstract data type.
+-  To understand the map abstract data type.
 
 -  To implement the map abstract data type using hashing.
 

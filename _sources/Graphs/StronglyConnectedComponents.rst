@@ -8,7 +8,7 @@ Strongly Connected Components
 For the remainder of this chapter we will turn our attention to some
 extremely large graphs. The graphs we will use to study some additional
 algorithms are the graphs produced by the connections between hosts on
-the Internet and the links between web pages. We will begin with web
+the internet and the links between web pages. We will begin with web
 pages.
 
 Search engines like Google and Bing exploit the fact that the pages on
@@ -18,7 +18,7 @@ on the page as edges connecting one vertex to another.
 :ref:`Figure 30 <fig_cshome>` shows a very small part of the graph produced by
 following the links from one page to the next, beginning at Luther
 College’s Computer Science home page. Of course, this graph could be
-huge, so we have limited it to web sites that are no more than 10 links
+huge, so we have limited it to websites that are no more than 10 links
 away from the CS home page.
 
 .. _fig_cshome:
@@ -32,22 +32,21 @@ away from the CS home page.
 
 If you study the graph in :ref:`Figure 30 <fig_cshome>` you might make some
 interesting observations. First you might notice that many of the other
-web sites on the graph are other Luther College web sites. Second, you
+websites on the graph are other Luther College websites. Second, you
 might notice that there are several links to other colleges in Iowa.
 Third, you might notice that there are several links to other liberal
 arts colleges. You might conclude from this that there is some
-underlying structure to the web that clusters together web sites that
+underlying structure to the Web that clusters together websites that
 are similar on some level.
 
 One graph algorithm that can help find clusters of highly interconnected
-vertices in a graph is called the strongly connected components
-algorithm (**SCC**). We formally define a **strongly connected
-component**, :math:`C`, of a graph :math:`G`, as the largest subset
+vertices in a graph is called the **strongly connected components**
+algorithm, or **SCC**. We formally define a strongly connected
+component, :math:`C`, of a graph :math:`G`, as the largest subset
 of vertices :math:`C \subset V` such that for every pair of vertices
 :math:`v, w \in C` we have a path from :math:`v` to :math:`w` and
 a path from :math:`w` to :math:`v`. :ref:`Figure 27 <fig_scc1>` shows a simple
-graph with three strongly connected components. The strongly connected
-components are identified by the different shaded areas.
+graph with three strongly connected components that are identified by the different shaded areas.
 
 .. _fig_scc1:
         
@@ -57,7 +56,7 @@ components are identified by the different shaded areas.
    Figure 31: A Directed Graph with Three Strongly Connected Components
 
 
-Once the strongly connected components have been identified we can show
+Once the strongly connected components have been identified, we can show
 a simplified view of the graph by combining all the vertices in one
 strongly connected component into a single larger vertex. The simplified
 version of the graph in :ref:`Figure 31 <fig_scc1>` is shown in :ref:`Figure 32 <fig_scc2>`.
@@ -71,12 +70,12 @@ version of the graph in :ref:`Figure 31 <fig_scc1>` is shown in :ref:`Figure 32
 
 
 Once again we will see that we can create a very powerful and efficient
-algorithm by making use of a depth first search. Before we tackle the
+algorithm by making use of a depth-first search. Before we tackle the
 main SCC algorithm we must look at one other definition. The
 transposition of a graph :math:`G` is defined as the graph
 :math:`G^T` where all the edges in the graph have been reversed. That
 is, if there is a directed edge from node A to node B in the original
-graph then :math:`G^T` will contain and edge from node B to node A.
+graph, then :math:`G^T` will contain an edge from node B to node A.
 :ref:`Figure 33 <fig_tpa>` and :ref:`Figure 34 <fig_tpb>` show a simple graph and its transposition.
 
 
@@ -96,7 +95,7 @@ graph then :math:`G^T` will contain and edge from node B to node A.
 .. figure:: Figures/transpose2.png
    :align: center
 
-   Figure 34: Its Transpose :math:`G^T`
+   Figure 34: Its Transposition :math:`G^T`
 
 
 Look at the figures again. Notice that the graph in
@@ -107,22 +106,22 @@ components.
 We can now describe the algorithm to compute the strongly connected
 components for a graph.
 
-#. Call ``dfs`` for the graph :math:`G` to compute the finish times
+#. Call ``dfs`` for the graph :math:`G` to compute the closing times
    for each vertex.
 
 #. Compute :math:`G^T`.
 
 #. Call ``dfs`` for the graph :math:`G^T` but in the main loop of DFS
-   explore each vertex in decreasing order of finish time.
+   explore each vertex in decreasing order of closing time.
 
 #. Each tree in the forest computed in step 3 is a strongly connected
-   component. Output the vertex ids for each vertex in each tree in the
+   component. Output the vertex IDs for each vertex in each tree in the
    forest to identify the component.
 
 Let's trace the operation of the steps described above on the example
 graph in :ref:`Figure 31 <fig_scc1>`. :ref:`Figure 35 <fig_sccalga>` shows the starting and
-finishing times computed for the original graph by the DFS algorithm.
-:ref:`Figure 36 <fig_sccalgb>` shows the starting and finishing times computed by
+closing times computed for the original graph by the DFS algorithm.
+:ref:`Figure 36 <fig_sccalgb>` shows the starting and closing times computed by
 running DFS on the transposed graph.
 
  
@@ -145,8 +144,8 @@ running DFS on the transposed graph.
 
 
 Finally, :ref:`Figure 37 <fig_sccforest>` shows the forest of three trees produced
-in step 3 of the strongly connected component algorithm. You will notice
-that we do not provide you with the Python code for the SCC algorithm,
+in step 3 of the strongly connected components algorithm. You will notice
+that we do not provide you with the Python code for the SCC algorithm;
 we leave writing this program as an exercise.
 
           

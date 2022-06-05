@@ -36,9 +36,9 @@ Discussion Questions
            +--------+------+--------+
            | 5      | 6    | 13     |
            +--------+------+--------+
-3. Ignoring the weights, perform a breadth first search on the graph
-   from the previous question.
 
+3. Ignoring the weights, perform a breadth-first search on the graph
+   drawn for question 1 or 2.
 
 .. activecode:: breadthfirst
    :coach:
@@ -54,21 +54,22 @@ Discussion Questions
    :feedback_c: O(1) would suggest that the function is constant. Since there are multiple for loops intertwined, it is not in constant time.
    :feedback_d: O(n<sup>3</sup>) would suggest that there are three consecutively nested for loops. There are only two.
    
-   4. What is the Big-O running time of the ``buildGraph`` function?
+4. What is the Big-O running time of the ``build_graph`` function?
 
 .. shortanswer:: BigO
 
-   5. Derive the Big-O running time for the topological sort algorithm.
+5. Derive the Big-O running time for the topological sort algorithm.
 
 .. shortanswer:: BigOTwo
 
-   6. Derive the Big-O running time for the strongly connected components
+6. Derive the Big-O running time for the strongly connected components
    algorithm.
 
-7. Show each step in applying Dijkstra’s algorithm to the graph shown above.
+7. Show each step in applying Dijkstra’s algorithm to the graph
+   drawn for question 1 or 2.
 
-8. Using Prim’s algorithm, find the minimum weight spanning tree for the
-   graph shown above.
+8. Using Prim’s algorithm, find the minimum weight spanning tree for the graph
+   drawn for question 1 or 2.
 
 .. activecode:: primsalg
    :coach:
@@ -76,13 +77,16 @@ Discussion Questions
 9. Draw a dependency graph illustrating the steps needed to send an
    email. Perform a topological sort on your graph.
 
-10. Derive an expression for the base of the exponent used in expressing the 
+10. Express branching factor :math:`k` as a function of the board size :math:`n`.
+
+
+11. Derive an expression for the base of the exponent used in expressing the 
     running time of the knights tour.
     
 .. shortanswer:: DFS
 
-   11. Explain why the general DFS algorithm is not suitable for solving 
-    the knights tour problem.
+12. Explain why the general DFS algorithm is not suitable for solving 
+    the knight's tour problem.
 
 .. mchoice:: question1_2
    :answer_a: O(1)
@@ -94,7 +98,7 @@ Discussion Questions
    :feedback_b: O(n<sup>3</sup>) suggests that there are three consecutively nested loops. If you look at the example algorithm, it is obvious that there are not three nested loops.
    :feedback_c: O(n) is linear time. The time it takes for this program to run doesn't grow linearly.
    :feedback_d: Correct. Since you are not only comparing the weight of a branch but also if the branch has already been connected to, this would make the Big-O of the algorithm O(n<sup>2</sup>)
-   
-   12. What is the Big-O running time for Prim’s minimum 
+
+13. What is the Big-O running time for Prim’s minimum 
     spanning tree algorithm?
 

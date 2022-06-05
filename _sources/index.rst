@@ -31,7 +31,6 @@ There is a wonderful `collection of YouTube videos <https://www.youtube.com/user
    :maxdepth: 3
 
    Introduction/toctree.rst
-   ProperClasses/toctree.rst
    AlgorithmAnalysis/toctree.rst
    BasicDS/toctree.rst
    Recursion/toctree.rst

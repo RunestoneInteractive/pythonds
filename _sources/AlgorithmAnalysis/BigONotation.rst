@@ -15,14 +15,14 @@ Deciding on an appropriate basic unit of computation can be a
 complicated problem and will depend on how the algorithm is implemented.
 
 A good basic unit of computation for comparing the summation algorithms
-shown earlier might be to count the number of assignment statements
+shown earlier might be the number of assignment statements
 performed to compute the sum. In the function ``sum_of_n``, the number of
 assignment statements is 1 (:math:`the\_sum = 0`)
 plus the value of *n* (the number of times we perform
-:math:`the\_sum = the\_sum + i`). We can denote this by a function, call it T,
+:math:`the\_sum = the\_sum + i`). We can denote this by a function, call it :math:`T`,
 where :math:`T(n) = 1 + n`. The parameter *n* is often referred to as
-the “size of the problem,” and we can read this as “T(n) is the time
-it takes to solve a problem of size n, namely 1 + n steps.”
+the “size of the problem,” and we can read this as “:math:`T(n)` is the time
+it takes to solve a problem of size :math:`n`, namely :math:`1 + n` steps.”
 
 In the summation functions given above, it makes sense to use the number
 of terms in the summation to denote the size of the problem. We can then
@@ -41,13 +41,13 @@ the :math:`T(n)` function tends to overpower the rest. This dominant
 term is what, in the end, is used for comparison. The **order of
 magnitude** function describes the part of :math:`T(n)` that increases
 the fastest as the value of *n* increases. Order of magnitude is often
-called **Big-O** notation (for “order”) and written as
-:math:`O(f(n))`. It provides a useful approximation to the actual
+called **Big-O notation** (for *order*) and written as
+:math:`O(f(n))`. It provides a useful approximation of the actual
 number of steps in the computation. The function :math:`f(n)` provides
 a simple representation of the dominant part of the original
 :math:`T(n)`.
 
-In the above example, :math:`T(n) = 1 + n`. As *n* gets large, the
+In the above example, :math:`T(n) = 1 + n`. As *n* gets larger, the
 constant 1 will become less and less significant to the final result. If
 we are looking for an approximation for :math:`T(n)`, then we can drop
 the 1 and simply say that the running time is :math:`O(n)`. It is
@@ -70,13 +70,13 @@ magnitude :math:`f(n) = n^{2}`, or simply that it is :math:`O(n^{2})`.
 Although we do not see this in the summation example, sometimes the
 performance of an algorithm depends on the exact values of the data
 rather than simply the size of the problem. For these kinds of
-algorithms we need to characterize their performance in terms of best
-case, **worst case**, or **average case** performance. The worst case
+algorithms we need to characterize their performance in terms of **best case**,
+**worst case**, or **average case** performance. The worst case
 performance refers to a particular data set where the algorithm performs
-especially poorly. Whereas a different data set for the exact same
-algorithm might have extraordinarily good performance. However, in most
-cases the algorithm performs somewhere in between these two extremes
-(average case). It is important for a computer scientist to understand
+especially poorly, whereas a different data set for
+the exact same algorithm might have extraordinarily good (best case) performance.
+However, in most cases the algorithm performs somewhere in between these
+two extremes (average case performance). It is important for a computer scientist to understand
 these distinctions so they are not misled by one particular case.
 
 

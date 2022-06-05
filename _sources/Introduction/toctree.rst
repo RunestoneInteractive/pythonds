@@ -19,5 +19,4 @@ Introduction
     ObjectOrientedProgramminginPythonDefiningClasses.rst
     Summary.rst
     KeyTerms.rst
-    DiscussionQuestions.rst
     Exercises.rst
