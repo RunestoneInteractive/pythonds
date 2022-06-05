@@ -20,11 +20,11 @@ Built-in Atomic Data Types
 
 We will begin our review by considering the atomic data types. Python
 has two main built-in numeric classes that implement the integer and
-floating point data types. These Python classes are called ``int`` and
+floating-point data types. These Python classes are called ``int`` and
 ``float``. The standard arithmetic operators, +, -, \*, /, and \*\*
 (exponentiation), can be used with parentheses forcing the order of
 operations away from normal operator precedence. Other very useful
-operations are the remainder (modulo) operator (%) and integer division (//).
+operators are the remainder (modulo) operator (%) and integer division (//).
 Note that when two integers are divided, the result is a floating
 point. The integer division operator returns the integer portion of the
 quotient by truncating any fractional part.
@@ -62,7 +62,6 @@ Boolean operators, ``and``, ``or``, and ``not``.
     False
     >>> True and True
     True
-    >>>
 
 Boolean data objects are also used as results for comparison operators
 such as equality (==) and greater than (:math:`>`). In addition,
@@ -96,6 +95,8 @@ and logical operators with examples shown in the session that follows.
     print(5 == 10)
     print(10 > 5)
     print((5 >= 1) and (5 <= 10))
+    print((1 < 5) or (10 < 1))
+    print(1 < 5 < 10)
 
 Identifiers are used in programming languages as names. In Python,
 identifiers start with a letter or an underscore (_), are case
@@ -120,7 +121,6 @@ following session:
     >>> the_sum = True
     >>> the_sum
     True
-    >>>
 
 The assignment statement ``the_sum = 0`` creates a variable called
 ``the_sum`` and lets it hold the reference to the data object ``0`` (see
@@ -172,7 +172,6 @@ The following fragment shows a variety of Python data objects in a list.
     >>> my_list = [1, 3, True, 6.5]
     >>> my_list
     [1, 3, True, 6.5]
-    >>>
 
 Note that when Python evaluates a list, the list itself is returned.
 However, in order to remember the list for later processing, its
@@ -203,7 +202,7 @@ Note that the indices for lists (sequences) start counting with 0. The
 slice operation my_list[1:3] returns a list of items starting with the
 item indexed by 1 up to---but not including---the item indexed by 3.
 
-Sometimes, you will want to initialize a list. This can quickly be
+Sometimes you will want to initialize a list. This can quickly be
 accomplished by using repetition. For example,
 
 ::
@@ -211,7 +210,6 @@ accomplished by using repetition. For example,
     >>> my_list = [0] * 6
     >>> my_list
     [0, 0, 0, 0, 0, 0]
-    >>>
 
 One very important aside relating to the repetition operator is that the
 result is a repetition of references to the data objects in the
@@ -295,7 +293,6 @@ simple data objects such as integers can invoke methods in this way.
 
     >>> (54).__add__(21)
     75
-    >>>
 
 In this fragment we are asking the integer object ``54`` to execute its
 ``add`` method (called ``__add__`` in Python) and passing it ``21`` as
@@ -323,7 +320,6 @@ illustrated below.
     [5, 7, 9]
     >>> list(range(10, 1, -1))
     [10, 9, 8, 7, 6, 5, 4, 3, 2]
-    >>>
 
 The range object represents a sequence of integers. By default, it will
 start with 0. If you provide more parameters, it will start and end at
@@ -349,7 +345,6 @@ by using quotation marks (either single or double).
     'DavidDavid'
     >>> len(my_name)
     5
-    >>>
 
 Since strings are sequences, all of the sequence operations described
 above work as you would expect. In addition, strings have a number of
@@ -389,7 +384,6 @@ whitespace characters such as tab, newline, and space.
     2
     >>> my_name.split("v")
     ['Da', 'id']
-    >>>
 
 A major difference between lists and strings is that lists can be
 modified while strings cannot. This is referred to as **mutability**.
@@ -410,7 +404,6 @@ item in a list by using indexing and assignment. With a string that change is no
     Traceback (most recent call last):
     File "<stdin>", line 1, in <module>
     TypeError: 'str' object does not support item assignment
-    >>>
 
 **Tuples** are very similar to lists in that they are heterogeneous
 sequences of data. The difference is that a tuple is immutable, like a
@@ -431,7 +424,6 @@ described above. For example,
     (2, True, 4.96, 2, True, 4.96, 2, True, 4.96)
     >>> my_tuple[0:2]
     (2, True)
-    >>>
 
 However, if you try to change an item in a tuple, you will get an error.
 Note that the error message provides the location and reason for the
@@ -443,7 +435,6 @@ problem.
     Traceback (most recent call last):
     File "<stdin>", line 1, in <module>
     TypeError: 'tuple' object does not support item assignment
-    >>>
 
 A **set** is an unordered collection of zero or more immutable Python data
 objects. Sets do not allow duplicates and are written as comma-delimited
@@ -458,7 +449,6 @@ a variable as below.
     >>> my_set = {3, 6, "cat", 4.5, False}
     >>> my_set
     {False, 3, 4.5, 6, 'cat'}
-    >>> 
 
 Even though sets are not considered to be sequential, they do support a
 few of the familiar operations presented earlier. :ref:`Table 5 <tab_setops>` reviews
@@ -490,7 +480,6 @@ these operations and the following session gives examples of their use.
     True
     >>> "dog" in my_set
     False
-    >>> 
 
 Sets support a number of methods that should be familiar to those who
 have worked with them in a mathematics setting. :ref:`Table 6 <tab_setmethods>`
@@ -550,7 +539,6 @@ that can be used as well.
     >>> my_set.clear()
     >>> my_set
     set()
-    >>> 
 
 Our final Python collection is an unordered structure called a
 **dictionary**. Dictionaries are collections of associated pairs of
@@ -563,7 +551,6 @@ comma-delimited key:value pairs enclosed in curly braces. For example,
     >>> capitals = {"Iowa": "Des Moines", "Wisconsin": "Madison"}
     >>> capitals
     {'Iowa': 'Des Moines', 'Wisconsin': 'Madison'}
-    >>> 
 
 We can manipulate a dictionary by accessing a value via its key or by
 adding another key-value pair. The syntax for access looks much like a
@@ -586,7 +573,7 @@ It is important to note that prior to Python 3.6 dictionaries were maintained in
 particular order with respect to the keys. The first pair added
 (``"Utah":`` ``"Salt Lake City"``) would be placed first in the dictionary and
 the second pair added (``"California":`` ``"Sacramento"``) would be placed
-last. The placement of a key is dependent on the idea of “hashing,”
+last. The placement of a key is dependent on the idea of *hashing*,
 which will be explained in more detail in Chapter 5.
 Dictionaries do maintain the order since Python 3.6, so in the example above the pairs appear in the dictionary in the order they were added.
 We also show the length function performing the same role as with other collections.
@@ -646,7 +633,6 @@ specify a return value instead.
     >>> phone_ext.get("kent")
     >>> phone_ext.get("kent", "NO ENTRY")
     'NO ENTRY'
-    >>>
 
 
 .. note::

@@ -51,7 +51,6 @@ this example,
 ::
 
     class Fraction:
-
        # the methods go here
 
 
@@ -117,7 +116,6 @@ a ``Fraction`` object.
     >>> my_fraction = Fraction(3, 5)
     >>> print(my_fraction)
     <__main__.Fraction object at 0x103203eb8>
-    >>> 
 
 The ``Fraction`` object, ``my_fraction``, does not know how to respond to this
 request to print. The ``print`` function requires that the object
@@ -152,7 +150,6 @@ in order to do its job.
     3/5
     >>> print(my_fraction)
     <__main__.Fraction object at 0x40bce9ac>
-    >>>
 
 In Python, all classes have a set of standard methods that are provided
 but may not work properly. One of these, ``__str__``, is the method to
@@ -192,7 +189,6 @@ various ways that this function is used.
     '3/5'
     >>> str(my_fraction)
     '3/5'
-    >>>
 
 We can override many other methods for our new ``Fraction`` class. Some
 of the most important of these are the basic arithmetic operations. We
@@ -208,7 +204,6 @@ to add two fractions, we get the following:
     Traceback (most recent call last):
     File "<stdin>", line 1, in <module>
     TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'
-    >>> 
 
 If you look closely at the error, you see that the problem is that the
 ``+`` operator does not understand the ``Fraction`` operands.
@@ -253,10 +248,8 @@ addition, and then printing our result.
 
     >>> f1 = Fraction(1, 4)
     >>> f2 = Fraction(1, 2)
-    >>> f3 = f1 + f2
-    >>> print(f3)
+    >>> print(f1 + f2)
     6/8
-    >>>
 
 The addition method works as we desire, but one thing could be better.
 Note that :math:`6/8` is the correct result
@@ -328,10 +321,8 @@ Our ``Fraction`` object now has two very useful methods as depicted in :ref:`Fig
 
     >>> f1 = Fraction(1, 4)
     >>> f2 = Fraction(1, 2)
-    >>> f3 = f1 + f2
-    >>> print(f3)
+    >>> print(f1 + f2)
     3/4
-    >>>
 
 An additional group of methods that we need to
 include in our example ``Fraction`` class will allow two fractions to
@@ -447,7 +438,7 @@ relationships to one another. We call a relationship structure such as
 this an **inheritance hierarchy**. For example, the list is a *child* of
 the sequential collection. In this case, we call the list the child and
 the *sequence* the parent (or *subclass list* and *superclass sequence*). This
-is often referred to as an **Is-a relationship** (the list **Is-a**
+is often referred to as an **Is-a relationship** (the list Is-a
 sequential collection). This implies that lists inherit important
 characteristics from sequences, namely the ordering of the underlying
 data and operations such as concatenation, repetition, and indexing.
@@ -517,7 +508,7 @@ shows an example with values.
 .. figure:: Figures/circuit1.png
    :align: center
 
-   Figure 10: Circuit
+   Figure 10: A Circuit
 
 In order to implement a circuit, we will first build a representation
 for logic gates. Logic gates are easily organized into a class
@@ -754,7 +745,7 @@ that have Has-a relationships (with no inheritance).
 :ref:`Listing 12 <lst_Connectorclass>` shows the ``Connector`` class. The two gate
 instances within each connector object will be referred to as the
 ``from_gate`` and the ``to_gate``, recognizing that data values will
-“flow” from the output of one gate into an input line of the next. The
+flow from the output of one gate into an input line of the next. The
 call to ``set_next_pin`` is very important for making connections (see
 :ref:`Listing 13 <lst_setpin>`). We need to add this method to our gate classes so
 that each ``to_gate`` can choose the proper input line for the
@@ -779,12 +770,6 @@ connection.
         def get_to(self):
             return self.to_gate
 
-In the ``BinaryGate`` class, for gates with two possible input lines,
-the connector must be connected to only one line. If both of them are
-available, we will choose ``pin_a`` by default. If ``pin_a`` is already
-connected, then we will choose ``pin_b``. It is not possible to connect
-to a gate with no available input lines.
-
 .. _lst_setpin:
 
 **Listing 13**
@@ -799,6 +784,13 @@ to a gate with no available input lines.
                 self.pin_b = source
             else:
                 raise RuntimeError("Error: NO EMPTY PINS")
+
+
+In the ``BinaryGate`` class, for gates with two possible input lines,
+the connector must be connected to only one line. If both of them are
+available, we will choose ``pin_a`` by default. If ``pin_a`` is already
+connected, then we will choose ``pin_b``. It is not possible to connect
+to a gate with no available input lines.
 
 Now it is possible to get input from two places: externally, as before,
 and from the output of a gate that is connected to that input line. This

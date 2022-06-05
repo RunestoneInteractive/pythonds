@@ -26,7 +26,7 @@ techniques that allow us to compare and contrast solutions based solely
 on their own characteristics, not the characteristics of the program or
 computer used to implement them.
 
-In the worst case scenario, we may have a problem that is intractable,
+In the worst-case scenario, we may have a problem that is intractable,
 meaning that there is no algorithm that can solve the problem in a
 realistic amount of time. It is important to be able to distinguish
 between those problems that have solutions, those that do not, and those

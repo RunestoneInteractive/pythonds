@@ -7,21 +7,22 @@ Key Terms
 
 .. table::
 
-    =========================== ============================= ========================
-       abstract data type (ADT)                   abstraction                algorithm
-                          class                    computable         data abstraction
-                 data structure                     data type            deep equality
-                     dictionary                 encapsulation                exception
-                format operator             formatted strings                 f-string
-             Has-a relationship    implementation-independent       information hiding
-                    inheritance         inheritance hierarchy                interface        
-              Is-a relationship                          list       list comprehension         
-                         method               method override               mutability              
-                         object        procedural abstraction              programming              
-                         prompt                      ``self``         shallow equality          
-                     simulation                        string                 subclass          
-                     superclass                   truth table                    tuple                     
-    =========================== ============================= ========================
+    ========================== ============================ ========================
+    abstract data type (ADT)   formatted strings            override
+    abstraction                Has-a relationship           procedural abstraction
+    algorithm                  implementation-independent   programming
+    class                      information hiding           prompt
+    computable                 inheritance                  ``self``
+    data abstraction           inheritance hierarchy        set
+    data structure             interface                    shallow equality
+    data type                  Is-a relationship            simulation
+    deep equality              list                         string
+    dictionary                 list comprehension           subclass
+    encapsulation              method                       superclass
+    exception                  mutability                   truth table
+    f-string                   object                       tuple
+    format operator
+    ========================== ============================ ========================
 
 
 
