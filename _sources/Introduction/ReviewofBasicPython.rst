@@ -9,8 +9,8 @@ In this section, we will review the programming language Python and also
 provide some more detailed examples of the ideas from the previous
 section. If you are new to Python or find that you need more information
 about any of the topics presented, we recommend that you consult a resource such as
-`The Python Language Reference <https://docs.python.org/3/reference/>`_,
-`The Python Tutorial <https://docs.python.org/3/tutorial/>`_, or other document
+`"The Python Language Reference" <https://docs.python.org/3/reference/>`_,
+`"The Python Tutorial" <https://docs.python.org/3/tutorial/>`_, or other documents
 available at `https://docs.python.org/ <https://docs.python.org/>`_.
 Our goal
 here is to reacquaint you with the language and also reinforce some of
@@ -27,7 +27,6 @@ and then evaluates the Python construct that you provide. For example,
 
     >>> print("Algorithms and Data Structures")
     Algorithms and Data Structures
-    >>>
 
 shows the prompt, the ``print`` function, the result, and the next
 prompt.

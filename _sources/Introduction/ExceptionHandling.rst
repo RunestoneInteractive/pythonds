@@ -18,7 +18,6 @@ forget the colon.
         for i in range(10)
                         ^
     SyntaxError: invalid syntax
-    >>> 
 
 In this case, the Python interpreter has found that it cannot complete
 the processing of this instruction since it does not conform to the
@@ -42,8 +41,8 @@ allow the programmer to have some type of intervention if they so
 choose. In addition, programmers can create their own exceptions if they
 detect a situation in the program execution that warrants it.
 
-When an exception occurs, we say that it has been “raised.” You can
-“handle” the exception that has been raised by using a ``try``
+When an exception occurs, we say that it has been *raised*. You can
+*handle* the exception that has been raised by using a ``try``
 statement. For example, consider the following session that asks the
 user for an integer and then calls the square root function from the
 math library. If the user enters a value that is greater than or equal
@@ -60,7 +59,6 @@ exception.
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     ValueError: math domain error
-    >>> 
 
 We can handle this exception by calling the ``print`` function from within a
 ``try`` block. A corresponding ``except`` block “catches” the exception
@@ -79,7 +77,6 @@ occurs. For example:
     Bad value for the square root function
     Using the absolute value instead
     4.795831523312719
-    >>> 
 
 will catch the fact that an exception is raised by ``sqrt`` and will
 instead print the messages back to the user and use the absolute value
@@ -105,7 +102,6 @@ termination is something explicitly created by the programmer.
     Traceback (most recent call last):
       File "<stdin>", line 2, in <module>
     RuntimeError: You can't use a negative number
-    >>> 
 
 There are many kinds of exceptions that can be raised in addition to the
 ``RuntimeError`` shown above. See the Python reference manual for a list

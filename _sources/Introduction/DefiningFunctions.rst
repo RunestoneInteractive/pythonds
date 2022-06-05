@@ -22,7 +22,6 @@ value you pass into it.
     9
     >>> square(square(3))
     81
-    >>>
 
 The syntax for this function definition includes the name, ``square``,
 and a parenthesized list of formal parameters. For this function, ``n``
@@ -36,7 +35,7 @@ passed to another invocation.
 
 We could implement our own square root function by using a well-known
 technique called Newton's method or the Newton–Raphson method,
-named after Isaac Newton and Joseph Raphson. Newton–Raphson method for approximating
+named after Isaac Newton and Joseph Raphson. The Newton–Raphson method for approximating
 square roots performs an iterative computation that converges on the
 correct value. The equation
 :math:`newguess = \frac {1}{2} * (oldguess + \frac {n}{oldguess})`
@@ -73,7 +72,6 @@ marker. Any characters that follow the ``#`` on a line are ignored.
     3.0
     >>> square_root(4563)
     67.54998149518622
-    >>> 
 
 .. admonition:: Self Check
 

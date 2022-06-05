@@ -34,8 +34,8 @@ that is provided.
 .. activecode::  strstuff
     :caption: The input Function Returns a String
 
-    a_name = input("Please enter your name ")
-    print("Your name in all capitals is",a_name.upper(),
+    a_name = input("Please enter your name: ")
+    print("Your name in all capitals is", a_name.upper(),
           "and has length", len(a_name))
 
 It is important to note that the value returned from the ``input``
@@ -57,7 +57,6 @@ that it can be used in further arithmetic processing.
     >>> diameter = 2 * radius
     >>> diameter
     20.0
-    >>> 
 
 String Formatting
 ^^^^^^^^^^^^^^^^^
@@ -182,7 +181,6 @@ modifier to specify the name of the key.
     >>> itemdict = {"item": "banana", "cost": 24}
     >>> print("The %(item)s costs %(cost)7.1f cents" % itemdict)
     The banana costs    24.0 cents
-    >>>
 
 In addition to format strings that use format characters and format
 modifiers, Python strings also include a ``format`` method that can be
@@ -196,13 +194,27 @@ library reference manual.
     The banana costs 24 cents
     >>> print("The {:s} costs {:d} cents".format(item, price))
     The banana costs 24 cents
-    >>> 
 
 Python 3.6 introduced **f-strings**, a way to use proper variable names
 instead of placeholders. Formatting conversion symbols can still be used
 inside an f-string, but the alignment symbols are different from those used with placeholders
 (see :ref:`Table 11 <tab_fstraast>`). We are going to use this formatting
 method for the rest of the text.
+
+.. _tab_fstraast:
+
+.. table:: **Table 11: f-string Formatting Options**
+
+    ========================= ============= ==================================================================================================
+                 **Modifier**   **Example**                                                                                    **Description**
+    ========================= ============= ==================================================================================================
+                       number      ``:20d``                                                               Put the value in a field width of 20
+                        ``<``     ``:<20d``                                          Put the value in a field 20 characters wide, left-aligned
+                        ``>``     ``:>20d``                                         Put the value in a field 20 characters wide, right-aligned
+                        ``^``     ``:^20d``                                        Put the value in a field 20 characters wide, center-aligned
+                        ``0``     ``:020d``                           Put the value in a field 20 characters wide, fill in with leading zeros.
+                        ``.``    ``:20.2f``   Put the value in a field 20 characters wide with 2 characters to the right of the decimal point.
+    ========================= ============= ==================================================================================================
 
 ::
 
@@ -221,22 +233,5 @@ method for the rest of the text.
     ... f"Price:{'$':.>4}{itemdict['price']:5.2f}")
     Item:....banana
     Price:...$24.00
-    >>> 
-
-.. _tab_fstraast:
-
-.. table:: **Table 11: f-string Formatting Options**
-
-    ========================= ============= ==================================================================================================
-                 **Modifier**   **Example**                                                                                    **Description**
-    ========================= ============= ==================================================================================================
-                       number      ``:20d``                                                               Put the value in a field width of 20
-                        ``<``     ``:<20d``                                          Put the value in a field 20 characters wide, left-aligned
-                        ``>``     ``:>20d``                                         Put the value in a field 20 characters wide, right-aligned
-                        ``^``     ``:^20d``                                        Put the value in a field 20 characters wide, center-aligned
-                        ``0``     ``:020d``                           Put the value in a field 20 characters wide, fill in with leading zeros.
-                        ``.``    ``:20.2f``   Put the value in a field 20 characters wide with 2 characters to the right of the decimal point.
-    ========================= ============= ==================================================================================================
-
 
 More about these features can be found in the Python library reference manual.
