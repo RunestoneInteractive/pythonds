@@ -273,9 +273,9 @@ Analysis of Linked Lists
 
 To analyze the complexity of the linked list operations, we need to
 consider whether they require traversal. Consider a linked list that has
-*n* nodes. The ``is_empty`` method is :math:`O(1)` since it requires
+:math:`n` nodes. The ``is_empty`` method is :math:`O(1)` since it requires
 one step to check the head reference for ``None``. ``size``, on the
-other hand, will always require *n* steps since there is no way to know
+other hand, will always require :math:`n` steps since there is no way to know
 how many nodes are in the linked list without traversing from head to
 end. Therefore, ``size`` is :math:`O(n)`. Adding an item to an
 unordered list will always be :math:`O(1)` since we simply place the new node at

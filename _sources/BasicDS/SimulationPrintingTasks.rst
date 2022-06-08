@@ -8,7 +8,7 @@ Queue Simulation: Printing Tasks
 A more interesting simulation allows us to study the behavior of the
 printing queue described earlier in this section. Recall that as
 students send printing tasks to the shared printer, the tasks are placed
-in a queue to be processed in a first-come, first-served manner. Many
+in a queue to be processed in a first come, first served manner. Many
 questions arise with this configuration. The most important of these
 might be whether the printer is capable of handling a certain amount of
 work. If it cannot, students will be waiting too long for printing and

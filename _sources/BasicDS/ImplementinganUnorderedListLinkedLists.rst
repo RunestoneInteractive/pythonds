@@ -161,7 +161,7 @@ the list does not refer to anything. Eventually, the example list given
 earlier will be represented by a linked list as shown in
 :ref:`Figure 6 <fig_linkedlist>`. The head of the list refers to the first node
 which contains the first item of the list. In turn, that node holds a
-reference to the next node (the next item) and so on. It is very
+reference to the next node (the next item), and so on. It is very
 important to note that the list class itself does not contain any node
 objects. Instead it contains a single reference to only the first node
 in the linked structure.
