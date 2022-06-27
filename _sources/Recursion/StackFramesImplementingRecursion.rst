@@ -9,7 +9,7 @@ Suppose that instead of concatenating the result of the recursive call
 to ``to_str`` with the string from ``convert_string``, we modified our
 algorithm to push the strings onto a stack instead of making the recursive
 call. The code for this modified algorithm is shown in
-:ref:`ActiveCode 1 <lst_recstack>`.
+:ref:`ActiveCode 4.6.1 <lst_recstack>`.
 
 
 .. activecode:: lst_recstack
@@ -38,31 +38,31 @@ call. The code for this modified algorithm is shown in
 
 Each time we make a call to ``to_str``, we push a character on the stack.
 Returning to the previous example we can see that after the fourth call
-to ``to_str`` the stack would look like :ref:`Figure 5 <fig_recstack>`. Notice
+to ``to_str`` the stack would look like :ref:`Figure 4.5 <fig_recstack>`. Notice
 that now we can simply pop the characters off the stack and concatenate
 them into the final result, ``"1010"``.
 
 .. _fig_recstack:
+ 
+**Figure 4.5:** Strings Placed on the Stack During Conversion
 
 .. figure:: Figures/recstack.png
    :align: center
-
-   Figure 5: Strings Placed on the Stack During Conversion
 
 
 The previous example gives us some insight into how Python implements a
 recursive function call. When a function is called in Python, a **stack
 frame** is allocated to handle the local variables of the function. When
 the function returns, the return value is left on top of the stack for
-the calling function to access. :ref:`Figure 6 <fig_callstack>` illustrates the
+the calling function to access. :ref:`Figure 4.6 <fig_callstack>` illustrates the
 call stack after the return statement on line 4.
 
 .. _fig_callstack:
 
+**Figure 4.6:** Call Stack Generated from ``to_str(10, 2)``
+
 .. figure:: Figures/callstack.png
    :align: center
-
-   Figure 6: Call Stack Generated from ``to_str(10, 2)``
 
 
 Notice that the call to ``to_str(2 // 2, 2)`` defined in Listing 4.4 leaves a return value of
@@ -70,7 +70,7 @@ Notice that the call to ``to_str(2 // 2, 2)`` defined in Listing 4.4 leaves a re
 function call (``to_str(1, 2)``) in the expression ``"1" + convert_string[2 % 2]``,
 which will leave the string ``"10"`` on the top of the stack.
 In this way, the Python call stack takes the place of the
-stack we used explicitly in :ref:`Listing 4 <lst_recstack>`. In our list summing
+stack we used explicitly in :ref:`ActiveCode 4.6.1 <lst_recstack>`. In our list summing
 example, you can think of the return value on the stack taking the place
 of an accumulator variable.
 

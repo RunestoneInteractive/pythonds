@@ -15,15 +15,16 @@ Greek myth about Theseus, who was sent into a maze to kill the Minotaur.
 Theseus used a ball of thread to help him find his way back out again
 once he had finished off the beast. In our problem we will assume that
 our turtle is dropped down somewhere into the middle of the maze and
-must find its way out. Look at :ref:`Figure 2 <fig_mazescreen>` to get an idea of
+must find its way out. Look at :ref:`Figure 4.12 <fig_mazescreen>` to get an idea of
 where we are going in this section.
 
 .. _fig_mazescreen:
 
+**Figure 4.12:** The Finished Maze Search Program
+
 .. figure:: Figures/maze.png
    :align: center
-
-   Figure 2: The Finished Maze Search Program
+   :width: 480px
 
 
 To make it easier for us we will assume that our maze is divided up into
@@ -82,7 +83,28 @@ consider:
 #. We have explored a square unsuccessfully in all four directions.
 
 For our program to work we will need to have a way to represent the
-maze. To make this even more interesting we are going to use the turtle
+maze. :ref:`Figure 4.13 <fig_exmaze>` is an example of a maze data file.
+
+.. _fig_exmaze:
+
+**Figure 4.13:** An Example Maze Data File
+
+::
+    
+      ++++++++++++++++++++++
+      +   +   ++ ++     +   
+      + +   +       +++ + ++
+      + + +  ++  ++++   + ++
+      +++ ++++++    +++ +  +
+      +          ++  ++    +
+      +++++ ++++++   +++++ +
+      +     +   +++++++  + +
+      + +++++++      S +   +
+      +                + +++
+      ++++++++++++++++++ +++
+
+
+To make this even more interesting we are going to use the ``turtle``
 module to draw and explore our maze so we can watch this algorithm in
 action. The ``Maze`` object will provide the following methods for us to use
 in writing our search algorithm:
@@ -99,21 +121,206 @@ in writing our search algorithm:
 -  ``is_exit`` Checks to see if the current position is an exit from the
    maze.
 
+
 The ``Maze`` class also overloads the index operator ``[]`` so that our
 algorithm can easily access the status of any particular square.
 
+:ref:`Listing 4.11 <lst_maze_globals>` includes the global constants used by the ``Maze`` class methods
+(Listings :ref:`4.12 <lst_maze_init>`--:ref:`4.15 <lst_maze_aux>`) and the ``search_from`` function (:ref:`Listing 4.16 <lst_maze_search>`).
+
+.. _lst_maze_globals:
+
+**Listing 4.11:** The Maze Program Global Constants
+
+.. highlight:: python
+    :linenothreshold: 10
+    
+::
+
+    START = "S"
+    OBSTACLE = "+"
+    TRIED = "."
+    DEAD_END = "-"
+    PART_OF_PATH = "O"
+
+
+The ``__init__`` method takes the name of a file as its
+only parameter. This file is a text file that represents a maze by using
+“+” characters for walls, spaces for open squares, and the letter “S” to
+indicate the starting position.
+
+.. _lst_maze_init:
+
+**Listing 4.12:** The Maze Class Constructor
+
+.. highlight:: python
+    :linenothreshold: 500
+
+::
+
+    class Maze:
+        def __init__(self, maze_filename):
+            with open(maze_filename, "r") as maze_file:
+                self.maze_list = [
+                    [ch for ch in line.rstrip("\n")]
+                    for line in maze_file.readlines()
+                ]
+            self.rows_in_maze = len(self.maze_list)
+            self.columns_in_maze = len(self.maze_list[0])
+            for row_idx, row in enumerate(self.maze_list):
+                if START in row:
+                    self.start_row = row_idx
+                    self.start_col = row.index(START)
+                    break
+
+            self.x_translate = -self.columns_in_maze / 2
+            self.y_translate = self.rows_in_maze / 2
+            self.t = turtle.Turtle()
+            self.t.shape("turtle")
+            self.wn = turtle.Screen()
+            self.wn.setworldcoordinates(
+                -(self.columns_in_maze - 1) / 2 - 0.5,
+                -(self.rows_in_maze - 1) / 2 - 0.5,
+                (self.columns_in_maze - 1) / 2 + 0.5,
+                (self.rows_in_maze - 1) / 2 + 0.5,
+            )
+
+The internal representation of the maze is a list of
+lists. Each row of the ``maze_list`` instance variable is also a list.
+This secondary list contains one character per square using the
+characters described above. For the data file in :ref:`Figure 13 <fig_exmaze>` the
+internal representation looks like the following:
+
+
+.. highlight:: python
+    :linenothreshold: 500
+
+::
+
+    [  ['+', '+', '+', '+', '+', ..., '+', '+', '+', '+', '+']
+       ['+', ' ', ' ', ' ', '+', ..., ' ', '+', ' ', ' ', ' ']
+       ['+', ' ', '+', ' ', ' ', ..., ' ', '+', ' ', '+', '+']
+       ['+', ' ', '+', ' ', '+', ..., ' ', '+', ' ', '+', '+']
+       ['+', '+', '+', ' ', '+', ..., ' ', '+', ' ', ' ', '+']
+       ['+', ' ', ' ', ' ', ' ', ..., ' ', ' ', ' ', ' ', '+']
+       ['+', '+', '+', '+', '+', ..., '+', '+', '+', ' ', '+']
+       ['+', ' ', ' ', ' ', ' ', ..., ' ', ' ', '+', ' ', '+']
+       ['+', ' ', '+', '+', '+', ..., '+', ' ', ' ', ' ', '+']
+       ['+', ' ', ' ', ' ', ' ', ..., '+', ' ', '+', '+', '+']
+       ['+', '+', '+', '+', '+', ..., '+', ' ', '+', '+', '+'] ]
+
+The ``draw_maze`` method uses this internal representation to draw the
+initial view of the maze on the screen (:ref:`Figure 4.12 <fig_mazescreen>`).
+
+.. _lst_maze_draw:
+
+**Listing 4.13:** The Maze Class Drawing Methods
+
+::
+
+        def draw_maze(self):
+            self.t.speed(10)
+            self.wn.tracer(0)
+            for y in range(self.rows_in_maze):
+                for x in range(self.columns_in_maze):
+                    if self.maze_list[y][x] == OBSTACLE:
+                        self.draw_centered_box(
+                            x + self.x_translate, -y + self.y_translate, "orange"
+                        )
+            self.t.color("black")
+            self.t.fillcolor("blue")
+            self.wn.update()
+            self.wn.tracer(1)
+
+        def draw_centered_box(self, x, y, color):
+            self.t.up()
+            self.t.goto(x - 0.5, y - 0.5)
+            self.t.color(color)
+            self.t.fillcolor(color)
+            self.t.setheading(90)
+            self.t.down()
+            self.t.begin_fill()
+            for i in range(4):
+                self.t.forward(1)
+                self.t.right(90)
+            self.t.end_fill()
+
+The ``update_position`` method, as shown in :ref:`Listing 4.14 <lst_maze_update>` uses the
+same internal representation to see if the turtle has run into a wall.
+It also updates the internal representation with a “.” or “-” to
+indicate that the turtle has visited a particular square or if the
+square is part of a dead end. In addition, the ``update_position`` method
+uses two helper methods, ``move_turtle`` and ``drop_bread_crumb``, to
+update the view on the screen.
+
+.. _lst_maze_update:
+
+**Listing 4.14:** The Maze Class Moving Methods
+
+::
+
+        def update_position(self, row, col, val=None):
+            if val:
+                self.maze_list[row][col] = val
+            self.move_turtle(col, row)
+
+            if val == PART_OF_PATH:
+                color = "green"
+            elif val == OBSTACLE:
+                color = "red"
+            elif val == TRIED:
+                color = "black"
+            elif val == DEAD_END:
+                color = "red"
+            else:
+                color = None
+
+            if color:
+                self.drop_bread_crumb(color)
+
+        def move_turtle(self, x, y):
+            self.t.up()
+            self.t.setheading(self.t.towards(x + self.x_translate, -y + self.y_translate))
+            self.t.goto(x + self.x_translate, -y + self.y_translate)
+
+        def drop_bread_crumb(self, color):
+            self.t.dot(10, color)
+
+Finally, the ``is_exit`` method uses the current position of the turtle
+to test for an exit condition. An exit condition occurs whenever the turtle
+has navigated to the edge of the maze, either row zero or column zero,
+or the far-right column or the bottom row.
+
+.. _lst_maze_aux:
+
+**Listing 4.15:** The Maze Class Auxiliary Methods
+
+::
+
+        def is_exit(self, row, col):
+            return (
+                row == 0
+                or row == self.rows_in_maze - 1
+                or col == 0
+                or col == self.columns_in_maze - 1
+            )
+
+        def __getitem__(self, idx):
+            return self.maze_list[idx]
+
+
 Let’s examine the code for the search function which we call
-``search_from``. The code is shown in :ref:`Listing 3 <lst_mazesearch>`. Notice
+``search_from``. The code is shown in :ref:`Listing 4.16 <lst_maze_search>`. Notice
 that this function takes three parameters: a ``Maze`` object, the starting
 row, and the starting column. This is important because as a recursive
 function the search logically starts again with each recursive call.
 
-.. _lst_mazesearch:
+.. _lst_maze_search:
+
+**Listing 4.16:** The Maze Search Function
 
 .. highlight:: python
     :linenothreshold: 5
-    
-**Listing 3**
 
 ::
 
@@ -168,192 +375,7 @@ finally east. If all four recursive calls return ``False`` then we have
 found a dead end. You should download or type in the whole program and
 experiment with it by changing the order of these calls.
 
-The code for the ``Maze`` class is shown in :ref:`Listing 4 <lst_maze>`, :ref:`Listing 5 <lst_maze1>`, and :ref:`Listing 6 <lst_maze2>`. 
-The ``__init__`` method takes the name of a file as its
-only parameter. This file is a text file that represents a maze by using
-“+” characters for walls, spaces for open squares, and the letter “S” to
-indicate the starting position. :ref:`Figure 3 <fig_exmaze>` is an example of a
-maze data file. The internal representation of the maze is a list of
-lists. Each row of the ``maze_list`` instance variable is also a list.
-This secondary list contains one character per square using the
-characters described above. For the data file in :ref:`Figure 3 <fig_exmaze>` the
-internal representation looks like the following:
-
-.. highlight:: python
-    :linenothreshold: 500
-
-::
-
-    [ ['+','+','+','+',...,'+','+','+','+','+','+','+'],
-      ['+',' ',' ',' ',...,' ',' ',' ','+',' ',' ',' '],
-      ['+',' ','+',' ',...,'+','+',' ','+',' ','+','+'],
-      ['+',' ','+',' ',...,' ',' ',' ','+',' ','+','+'],
-      ['+','+','+',' ',...,'+','+',' ','+',' ',' ','+'],
-      ['+',' ',' ',' ',...,'+','+',' ',' ',' ',' ','+'],
-      ['+','+','+','+',...,'+','+','+','+','+',' ','+'],
-      ['+',' ',' ',' ',...,'+','+',' ',' ','+',' ','+'],
-      ['+',' ','+','+',...,' ',' ','+',' ',' ',' ','+'],
-      ['+',' ',' ',' ',...,' ',' ','+',' ','+','+','+'],
-      ['+','+','+','+',...,'+','+','+',' ','+','+','+']]
-
-The ``draw_maze`` method uses this internal representation to draw the
-initial view of the maze on the screen.
-
-.. _fig_exmaze:
-
-
-Figure 3: An Example Maze Data File
-
-::
-    
-      ++++++++++++++++++++++
-      +   +   ++ ++     +   
-      + +   +       +++ + ++
-      + + +  ++  ++++   + ++
-      +++ ++++++    +++ +  +
-      +          ++  ++    +
-      +++++ ++++++   +++++ +
-      +     +   +++++++  + +
-      + +++++++      S +   +
-      +                + +++
-      ++++++++++++++++++ +++
-
-
-The ``update_position`` method, as shown in :ref:`Listing 5 <lst_maze1>` uses the
-same internal representation to see if the turtle has run into a wall.
-It also updates the internal representation with a “.” or “-” to
-indicate that the turtle has visited a particular square or if the
-square is part of a dead end. In addition, the ``update_position`` method
-uses two helper methods, ``move_turtle`` and ``drop_bread_crumb``, to
-update the view on the screen.
-
-Finally, the ``is_exit`` method uses the current position of the turtle
-to test for an exit condition. An exit condition is whenever the turtle
-has navigated to the edge of the maze, either row zero or column zero,
-or the far-right column or the bottom row.
-
-.. _lst_maze:
-
-**Listing 4**
-
-.. highlight:: python
-    :linenothreshold: 500
-
-::
-
-    class Maze:
-        def __init__(self, maze_filename):
-            rows_in_maze = 0
-            columns_in_maze = 0
-            self.maze_list = []
-            maze_file = open(maze_filename, "r")
-            rows_in_maze = 0
-            for line in maze_file:
-                row_list = []
-                col = 0
-                for ch in line[:-1]:
-                    row_list.append(ch)
-                    if ch == "S":
-                        self.start_row = rows_in_maze
-                        self.start_col = col
-                    col = col + 1
-                rows_in_maze = rows_in_maze + 1
-                self.maze_list.append(row_list)
-                columns_in_maze = len(row_list)
-
-            self.rows_in_maze = rows_in_maze
-            self.columns_in_maze = columns_in_maze
-            self.x_translate = -columns_in_maze / 2
-            self.y_translate = rows_in_maze / 2
-            self.t = turtle.Turtle()
-            self.t.shape("turtle")
-            self.wn = turtle.Screen()
-            self.wn.setworldcoordinates(
-                -(columns_in_maze - 1) / 2 - 0.5,
-                -(rows_in_maze - 1) / 2 - 0.5,
-                (columns_in_maze - 1) / 2 + 0.5,
-                (rows_in_maze - 1) / 2 + 0.5,
-            )
-
-.. _lst_maze1:
-
-**Listing 5**
-
-::
-
-        def draw_maze(self):
-            self.t.speed(10)
-            self.wn.tracer(0)
-            for y in range(self.rows_in_maze):
-                for x in range(self.columns_in_maze):
-                    if self.maze_list[y][x] == OBSTACLE:
-                        self.draw_centered_box(
-                            x + self.x_translate, -y + self.y_translate, "orange"
-                        )
-            self.t.color("black")
-            self.t.fillcolor("blue")
-            self.wn.update()
-            self.wn.tracer(1)
-
-        def draw_centered_box(self, x, y, color):
-            self.t.up()
-            self.t.goto(x - 0.5, y - 0.5)
-            self.t.color(color)
-            self.t.fillcolor(color)
-            self.t.setheading(90)
-            self.t.down()
-            self.t.begin_fill()
-            for i in range(4):
-                self.t.forward(1)
-                self.t.right(90)
-            self.t.end_fill()
-
-        def move_turtle(self, x, y):
-            self.t.up()
-            self.t.setheading(self.t.towards(x + self.x_translate, -y + self.y_translate))
-            self.t.goto(x + self.x_translate, -y + self.y_translate)
-
-        def drop_bread_crumb(self, color):
-            self.t.dot(10, color)
-
-        def update_position(self, row, col, val=None):
-            if val:
-                self.maze_list[row][col] = val
-            self.move_turtle(col, row)
-
-            if val == PART_OF_PATH:
-                color = "green"
-            elif val == OBSTACLE:
-                color = "red"
-            elif val == TRIED:
-                color = "black"
-            elif val == DEAD_END:
-                color = "red"
-            else:
-                color = None
-
-            if color:
-                self.drop_bread_crumb(color)
-
-.. _lst_maze2:
-
-**Listing 6**
-
-::
-
-        def is_exit(self, row, col):
-            return (
-                row == 0
-                or row == self.rows_in_maze - 1
-                or col == 0
-                or col == self.columns_in_maze - 1
-            )
-
-        def __getitem__(self, idx):
-            return self.maze_list[idx]
-
-
-The complete program is shown in ActiveCode 1.  This program uses the data file ``maze2.txt`` shown below.
+The complete program is shown in :ref:`ActiveCode 4.11.1 <completemaze>`.  This program uses the data file ``maze2.txt`` shown below.
 Note that it is a much more simple example file in that the exit is very close to the starting position of the turtle.
 
 .. raw:: html
@@ -379,44 +401,38 @@ Note that it is a much more simple example file in that the exit is very close t
 
     import turtle
 
-    PART_OF_PATH = "O"
-    TRIED = "."
+    START = "S"
     OBSTACLE = "+"
+    TRIED = "."
     DEAD_END = "-"
+    PART_OF_PATH = "O"
 
 
     class Maze:
         def __init__(self, maze_filename):
-            rows_in_maze = 0
-            columns_in_maze = 0
-            self.maze_list = []
-            maze_file = open(maze_filename, "r")
-            rows_in_maze = 0
-            for line in maze_file:
-                row_list = []
-                col = 0
-                for ch in line[:-1]:
-                    row_list.append(ch)
-                    if ch == "S":
-                        self.start_row = rows_in_maze
-                        self.start_col = col
-                    col = col + 1
-                rows_in_maze = rows_in_maze + 1
-                self.maze_list.append(row_list)
-                columns_in_maze = len(row_list)
+            with open(maze_filename, "r") as maze_file:
+                self.maze_list = [
+                    [ch for ch in line.rstrip("\n")]
+                    for line in maze_file.readlines()
+                ]
+            self.rows_in_maze = len(self.maze_list)
+            self.columns_in_maze = len(self.maze_list[0])
+            for row_idx, row in enumerate(self.maze_list):
+                if START in row:
+                    self.start_row = row_idx
+                    self.start_col = row.index(START)
+                    break
 
-            self.rows_in_maze = rows_in_maze
-            self.columns_in_maze = columns_in_maze
-            self.x_translate = -columns_in_maze / 2
-            self.y_translate = rows_in_maze / 2
+            self.x_translate = -self.columns_in_maze / 2
+            self.y_translate = self.rows_in_maze / 2
             self.t = turtle.Turtle()
             self.t.shape("turtle")
             self.wn = turtle.Screen()
             self.wn.setworldcoordinates(
-                -(columns_in_maze - 1) / 2 - 0.5,
-                -(rows_in_maze - 1) / 2 - 0.5,
-                (columns_in_maze - 1) / 2 + 0.5,
-                (rows_in_maze - 1) / 2 + 0.5,
+                -(self.columns_in_maze - 1) / 2 - 0.5,
+                -(self.rows_in_maze - 1) / 2 - 0.5,
+                (self.columns_in_maze - 1) / 2 + 0.5,
+                (self.rows_in_maze - 1) / 2 + 0.5,
             )
 
         def draw_maze(self):
