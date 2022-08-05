@@ -61,7 +61,7 @@ in :ref:`CodeLens 3 <lst_binarysearchpy>`.
     print(binary_search(test_list, 13))
 
 Before we move on to the analysis, we should note that this algorithm is
-a great example of a *divide and conquer* strategy. Divide and conquer
+a great example of a divide and conquer strategy. *Divide and conquer*
 means that we divide the problem into smaller pieces, solve the smaller
 pieces in some way, and then reassemble the whole problem to get the
 result. When we perform a binary search of a list, we first check the
@@ -133,7 +133,7 @@ logarithmic with respect to the number of items in the list. Therefore,
 the binary search is :math:`O(\log{n})`.
 
 One additional analysis issue needs to be addressed. In the recursive
-solution shown above, the recursive call,
+solution shown above, the recursive call
 
 ``binary_search_rec(a_list[:midpoint], item)``
 
