@@ -38,7 +38,7 @@ searches for the proper place to insert a new node.
 
 Unfortunately it is possible to construct a search tree that has height
 :math:`n` simply by inserting the keys in sorted order! An example of
-such a tree is shown in :ref:`Figure 6 <fig_skewedtree_analysis>`. In this case the
+this is shown in :ref:`Figure 6 <fig_skewedtree_analysis>`. In this case the
 performance of the ``put`` method is :math:`O(n)`.
 
 .. _fig_skewedtree_analysis:
@@ -59,5 +59,5 @@ At first glance ``del`` might seem more complicated since it may need
 to search for the successor before the deletion operation can complete.
 But remember that the worst-case scenario to find the successor is also
 just the height of the tree which means that you would simply double the
-work. Since doubling is a constant factor, it does not change worst case analysis
+work. Since doubling is a constant factor, it does not change worst-case analysis
 of :math:`O(n)` for an unbalanced tree.
