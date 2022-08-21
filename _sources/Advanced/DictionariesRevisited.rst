@@ -2,7 +2,7 @@ Dictionaries Revisited: Skip Lists
 ==================================
 
 One of the most versatile collections available in Python is the
-dictionary. Dictionaries, often referred to as *maps*, store a
+**dictionary**. Dictionaries, often referred to as **maps**, store a
 collection of key-value pairs. The key, which must be unique, is
 assigned an association with a particular data value. Given a key, it is
 possible to ask the map for the corresponding associated data value.
@@ -129,7 +129,7 @@ can be seen in Figure `6 <#fig_headernode>`__.
 
 The columns of data nodes are known as **towers**. Towers are linked
 together by the ``down`` reference in the data node. We can see that
-each tower corresponds to a particular key-value pair and towers can
+each tower corresponds to a particular key-value pair, and towers can
 have different heights. We will explain how the height of the tower is
 determined later when we consider how to add data to the skip list.
 
@@ -228,7 +228,7 @@ into ``properties`` for data manipulation (see Listing `[lst_datanode] <#lst_da
 
 The constructor for the entire skip list is shown in
 Listing `[lst_constructor] <#lst_constructor>`__. When a skip list is
-created, there are no data and therefore, no header nodes. The head of the
+created, there are no data and therefore no header nodes. The head of the
 skip list is set to ``None``. As key-value pairs are added to the
 structure, the list head refers to the first header node which in turn
 provides access to a linked list of data nodes as well as access to

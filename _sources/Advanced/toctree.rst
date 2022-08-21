@@ -4,12 +4,13 @@ Advanced Topics
 
 .. toctree::
 
-    advintro.rst
-    pylists.rst
-    skiplist.rst
-    octtree.rst
-    rsa.rst
-    stringgraph.rst
-    summary.rst
-    exercises.rst
+    Objectives.rst
+    PythonListsRevisited.rst
+    RecursionRevisited.rst
+    DictionariesRevisited.rst
+    TreesRevisited.rst
+    GraphsRevisited.rst
+    Summary.rst
+    KeyTerms.rst
+    Exercises.rst
 

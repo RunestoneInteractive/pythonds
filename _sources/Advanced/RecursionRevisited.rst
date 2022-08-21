@@ -71,7 +71,7 @@ Even if you keep the number ``k`` from everyone except the person you
 are sending the message to, this simple form of encryption is not going
 to stop anyone from stealing your secrets for very long. In the
 remainder of this section, we will build up to a much more secure form
-of encryption, the RSA public key encryption algorithm.
+of encryption, the RSA **public key encryption** algorithm.
 
 Modular Arithmetic Theorems
 ---------------------------
@@ -322,10 +322,10 @@ RSA Algorithm
 -------------
 
 Now we have all the tools we need to write the RSA encryption algorithm.
-The RSA algorithm is perhaps the easiest to understand of all the
-public-key encryption algorithms. Public-key cryptography was invented
+The **RSA algorithm** is perhaps the easiest to understand of all the
+public key encryption algorithms. Public key cryptography was invented
 by Whitfield Diffie and Martin Hellman and independently by Ralph
-Merkle. The major contribution of public-key cryptography was the idea
+Merkle. The major contribution of public key cryptography was the idea
 that keys could come in pairs: an encryption key to convert the
 plaintext message to ciphertext, and a decryption key to convert the
 ciphertext back to plaintext. The keys only work one way so that a
@@ -344,7 +344,7 @@ To generate the two keys, choose two large prime numbers :math:`p` and
 
 The next step is to randomly choose the encryption key :math:`e` such
 that :math:`e` and :math:`(p - 1) \times (q - 1)` are relatively prime;
-that is the
+that is
 
 .. math:: gcd(e, (p - 1) \times (q-1)) = 1
 
@@ -523,9 +523,9 @@ encrypt, and decrypt as we did in the example above.
 
 The last thing to look at is the two helper functions that break our
 string into chunks and merge chunks into a string (Listing `[lst_chunk] <#lst_chunk>`__).
-These functions make use of Python ``bytearray`` objects which allow us to store
+These functions make use of Python ``bytearray`` objects, which allow us to store
 any string as a sequence of bytes.  This makes it very convenient for
-us to convert a string to a sequence of hexadecimal digits, and allows
+us to convert a string to a sequence of hexadecimal digits and allows
 us to convert a sequence of hexadecimal digits back to a string.
 
 
