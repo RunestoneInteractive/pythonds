@@ -8,7 +8,7 @@ Implementing Breadth-First Search
 With the graph constructed we can now turn our attention to the
 algorithm we will use to find the shortest solution to the word ladder
 problem. The graph algorithm we are going to use is called the
-**breadth-first search** (**BFS**) and it is one of
+**breadth-first search** (**BFS**), and it is one of
 the easiest algorithms for searching a graph. It also serves as a
 prototype for several other important graph algorithms that we will
 study later.
@@ -63,7 +63,7 @@ a crucial point as we will see, to decide which vertex to explore next.
             current.color = "black"
 
 
-In addition the BFS algorithm uses an extended version of the ``Vertex``
+The BFS algorithm uses an extended version of the ``Vertex``
 class that adds three new instance variables:
 ``distance``, ``previous``, and ``color``. Each of these instance variables also
 has the appropriate getter and setter methods. The code for this

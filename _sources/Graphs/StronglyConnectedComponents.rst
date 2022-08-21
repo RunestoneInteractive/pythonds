@@ -95,7 +95,7 @@ graph, then :math:`G^T` will contain an edge from node B to node A.
 .. figure:: Figures/transpose2.png
    :align: center
 
-   Figure 34: Its Transposition :math:`G^T`
+   Figure 34: The Transposition of :math:`G`, :math:`G^T`
 
 
 Look at the figures again. Notice that the graph in
@@ -130,7 +130,7 @@ running DFS on the transposed graph.
 .. figure:: Figures/scc1a.png
    :align: center
    
-   Figure 35: Finishing times for the original graph :math:`G`     
+   Figure 35: Finishing Times for the Original Graph :math:`G`     
 
 
      
@@ -139,7 +139,7 @@ running DFS on the transposed graph.
 .. figure:: Figures/scc1b.png
    :align: center
    
-   Figure 36: Finishing times for :math:`G^T`
+   Figure 36: Finishing Times for :math:`G^T`
     
 
 
