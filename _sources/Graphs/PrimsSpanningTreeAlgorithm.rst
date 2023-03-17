@@ -80,7 +80,7 @@ that are interested see a copy of the message.
 
 The algorithm we will use to solve this problem is called Prim’s
 algorithm. Prim’s algorithm belongs to a family of algorithms called the
-“greedy algorithms” because at each step it will choose the cheapest
+*greedy algorithms* because at each step it will choose the cheapest
 next step. In this case the cheapest next step is to follow the edge
 with the lowest weight.
 

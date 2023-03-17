@@ -1,8 +1,8 @@
-Graphs and Graph Algorithms
-:::::::::::::::::::::::::::
+Graphs and Graphing Algorithms
+::::::::::::::::::::::::::::::
 
 .. toctree::
-    :caption: Graphs and Graph Algorithms
+    :caption: Graphs and Graphing Algorithms
     :maxdepth: 2
 
     Objectives.rst
@@ -29,5 +29,4 @@ Graphs and Graph Algorithms
     PrimsSpanningTreeAlgorithm.rst
     Summary.rst
     KeyTerms.rst
-    DiscussionQuestions.rst
     Exercises.rst
