@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<section xml:id="basic-ds_objectives">
+  <title>Objectives</title>
+  <p>
+    <ul>
+      <li>
+        <p>To understand the abstract data types stack, queue, deque, and list.</p>
+      </li>
+      <li>
+        <p>To be able to implement the ADTs stack, queue, and deque using Python
+                    lists.</p>
+      </li>
+      <li>
+        <p>To understand the performance of the implementations of basic linear
+                    data structures.</p>
+      </li>
+      <li>
+        <p>To understand prefix, infix, and postfix expression formats.</p>
+      </li>
+      <li>
+        <p>To use stacks to evaluate postfix expressions.</p>
+      </li>
+      <li>
+        <p>To use stacks to convert expressions from infix to postfix.</p>
+      </li>
+      <li>
+        <p>To use queues for basic timing simulations.</p>
+      </li>
+      <li>
+        <p>To be able to recognize problem properties where stacks, queues, and
+                    deques are appropriate data structures.</p>
+      </li>
+      <li>
+        <p>To be able to implement the abstract data type list as a linked list
+                    using the node and reference pattern.</p>
+      </li>
+      <li>
+        <p>To be able to compare the performance of our linked list
+                    implementation with Python's list implementation.</p>
+      </li>
+    </ul>
+  </p>
+</section>

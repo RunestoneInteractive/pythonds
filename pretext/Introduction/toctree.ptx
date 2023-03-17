@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+  <title>Introduction</title>
+  <xi:include href="./Objectives.ptx"/>
+  <xi:include href="./GettingStarted.ptx"/>
+  <xi:include href="./WhatIsComputerScience.ptx"/>
+  <xi:include href="./WhatIsProgramming.ptx"/>
+  <xi:include href="./WhyStudyDataStructuresandAbstractDataTypes.ptx"/>
+  <xi:include href="./WhyStudyAlgorithms.ptx"/>
+  <xi:include href="./ReviewofBasicPython.ptx"/>
+  <xi:include href="./GettingStartedwithData.ptx"/>
+  <xi:include href="./InputandOutput.ptx"/>
+  <xi:include href="./ControlStructures.ptx"/>
+  <xi:include href="./ExceptionHandling.ptx"/>
+  <xi:include href="./DefiningFunctions.ptx"/>
+  <xi:include href="./ObjectOrientedProgramminginPythonDefiningClasses.ptx"/>
+  <xi:include href="./Summary.ptx"/>
+  <xi:include href="./KeyTerms.ptx"/>
+  <xi:include href="./Exercises.ptx"/>
+</chapter>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<section xml:id="recursion_stack-frames-implementing-recursion">
+  <title>Stack Frames: Implementing Recursion</title>
+  <p>Suppose that instead of concatenating the result of the recursive call
+            to <c>to_str</c> with the string from <c>convert_string</c>, we modified our
+            algorithm to push the strings onto a stack instead of making the recursive
+            call. The code for this modified algorithm is shown in
+            <xref ref="lst-recstack"/>.</p>
+  <program xml:id="lst_recstack" interactive="activecode" language="python">
+    <input>
+from pythonds3.basic import Stack
+
+
+def to_str(n, base):
+    r_stack = Stack()
+    convert_string = "0123456789ABCDEF"
+    while n &gt; 0:
+        if n &lt; base:
+            r_stack.push(convert_string[n])
+        else:
+            r_stack.push(convert_string[n % base])
+        n = n // base
+    res = ""
+    while not r_stack.is_empty():
+        res = res + str(r_stack.pop())
+    return res
+
+
+print(to_str(1453, 16))
+        </input>
+  </program>
+  <p>Each time we make a call to <c>to_str</c>, we push a character on the stack.
+            Returning to the previous example we can see that after the fourth call
+            to <c>to_str</c> the stack would look like <xref ref="fig-recstack"/>. Notice
+            that now we can simply pop the characters off the stack and concatenate
+            them into the final result, <c>"1010"</c>.</p>
+  <p xml:id="recursion_fig-recstack" names="fig_recstack"><term>Figure 4.5:</term> Strings Placed on the Stack During Conversion</p>
+  <figure align="center">
+    <image source="Recursion/Figures/recstack.png" width="50%"/>
+  </figure>
+  <p>The previous example gives us some insight into how Python implements a
+            recursive function call. When a function is called in Python, a <term>stack
+                frame</term> is allocated to handle the local variables of the function. When
+            the function returns, the return value is left on top of the stack for
+            the calling function to access. <xref ref="fig-callstack"/> illustrates the
+            call stack after the return statement on line 4.</p>
+  <p xml:id="recursion_fig-callstack" names="fig_callstack"><term>Figure 4.6:</term> Call Stack Generated from <c>to_str(10, 2)</c></p>
+  <figure align="center">
+    <image source="Recursion/Figures/callstack.png" width="50%"/>
+  </figure>
+  <p>Notice that the call to <c>to_str(2 // 2, 2)</c> defined in Listing 4.4 leaves a return value of
+            <c>"1"</c> on the stack. This return value is then used in place of the
+            function call (<c>to_str(1, 2)</c>) in the expression <c>"1" + convert_string[2 % 2]</c>,
+            which will leave the string <c>"10"</c> on the top of the stack.
+            In this way, the Python call stack takes the place of the
+            stack we used explicitly in <xref ref="lst-recstack"/>. In our list summing
+            example, you can think of the return value on the stack taking the place
+            of an accumulator variable.</p>
+  <p>The stack frames also provide a scope for the variables used by the
+            function. Even though we are calling the same function over and over,
+            each call creates a new scope for the variables that are local to the
+            function.</p>
+</section>

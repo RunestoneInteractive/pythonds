@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<section xml:id="introduction_input-and-output">
+  <title>Input and Output</title>
+  <p>We often have a need to interact with users,
+            either to get data or to provide some sort of result. Most programs
+            today use a dialog box as a way of asking the user to provide some type
+            of input. While Python does have a way to create dialog boxes, there is
+            a much simpler function that we can use. Python provides us with a
+            function that allows us to ask a user to enter some data and returns a
+            reference to the data in the form of a string. The function is called
+            <c>input</c>.</p>
+  <p>Python's function <c>input</c> takes a single parameter that is a string. This
+            string is often called the <term>prompt</term> because it contains some helpful
+            text prompting the user to enter something. For example, you might call
+            input as follows:</p>
+  <pre>a_name = input("Please enter your name: ")</pre>
+  <p>Now whatever the user types after the prompt will be stored in the
+            <c>a_name</c> variable. Using the <c>input</c> function, we can easily write
+            instructions that will prompt the user to enter data and then
+            incorporate that data into further processing. For example, in the
+            following two statements, the first asks the user for their name and the
+            second prints the result of some simple processing based on the string
+            that is provided.</p>
+  <program xml:id="strstuff" interactive="activecode" language="python">
+    <input>
+a_name = input("Please enter your name: ")
+print("Your name in all capitals is", a_name.upper(),
+      "and has length", len(a_name))
+        </input>
+  </program>
+  <p>It is important to note that the value returned from the <c>input</c>
+            function will be a string representing the exact characters that were
+            entered after the prompt. If you want this string interpreted as another
+            type, you must provide the type conversion explicitly. In the statements
+            below, the string that is entered by the user is converted to a float so
+            that it can be used in further arithmetic processing.</p>
+  <pre>&gt;&gt;&gt; s_radius = input("Please enter the radius of the circle ")
+Please enter the radius of the circle 10
+&gt;&gt;&gt; s_radius
+'10'
+&gt;&gt;&gt; radius = float(s_radius)
+&gt;&gt;&gt; radius
+10.0
+&gt;&gt;&gt; diameter = 2 * radius
+&gt;&gt;&gt; diameter
+20.0</pre>
+  <subsection xml:id="introduction_string-formatting">
+    <title>String Formatting</title>
+    <p>We have already seen that the <c>print</c>
+                function provides a very simple way to output values from a Python
+                program. <c>print</c> takes zero or more parameters and displays them using
+                a single blank as the default separator. It is possible to change the
+                separator character by setting the <c>sep</c> argument. In addition, each
+                print ends with a newline character by default. This behavior can be
+                changed by setting the <c>end</c> argument. These variations are shown in
+                the following session:</p>
+    <pre>&gt;&gt;&gt; print("Hello")
+Hello
+&gt;&gt;&gt; print("Hello", "World")
+Hello World
+&gt;&gt;&gt; print("Hello", "World", sep="***")
+Hello***World
+&gt;&gt;&gt; print("Hello", "World", end="***")
+Hello World***&gt;&gt;&gt;</pre>
+    <p>It is often useful to have more control over the look of your output.
+                Fortunately, Python provides us with an alternative called <term>formatted
+                    strings</term>. A formatted string is a template in which words or spaces
+                that will remain constant are combined with placeholders for variables
+                that will be inserted into the string. For example, the statement</p>
+    <pre>&gt;&gt;&gt; print(a_name, "is", age, "years old.")</pre>
+    <p>contains the words <c>is</c> and <c>years old</c>, but the name and the age
+                will change depending on the variable values at the time of execution.
+                Using a formatted string, we write the previous statement as</p>
+    <pre>&gt;&gt;&gt; print("%s is %d years old." % (a_name, age))</pre>
+    <p>This simple example illustrates a new string expression. The <c>%</c>
+                operator is a string operator called the <term>format operator</term>. The left
+                side of the expression holds the template or format string, and the
+                right side holds a collection of values that will be substituted into
+                the format string. Note that the number of values in the collection on
+                the right side corresponds with the number of <c>%</c> characters in the
+                format string. Values are taken&#x2014;in order, left to right&#x2014;from the
+                collection and inserted into the format string.</p>
+    <p>Let's look at both sides of this formatting expression in more detail.
+                The format string may contain one or more conversion specifications. A
+                conversion character tells the format operator what type of value is
+                going to be inserted into that position in the string. In the example
+                above, the <c>%s</c> specifies a string, while the <c>%d</c> specifies an
+                integer. Other possible type specifications include <c>i</c>, <c>u</c>, <c>f</c>,
+                <c>e</c>, <c>g</c>, <c>c</c>, or <c>%</c>. <xref ref="introduction_tab-fmta"/> summarizes all of the
+                various type specifications.</p>
+    <table xml:id="introduction_id1">
+      <tabular>
+        <title>
+          <term>Table 9: String Formatting Conversion Characters</term>
+        </title>
+        <row header="yes">
+          <cell>
+            <term>Character</term>
+          </cell>
+          <cell>
+            <term>Output Format</term>
+          </cell>
+        </row>
+        <row>
+          <cell><c>d</c>, <c>i</c></cell>
+          <cell>
+                                Integer
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>u</c>
+          </cell>
+          <cell>
+                                Unsigned integer
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>f</c>
+          </cell>
+          <cell>
+                                Floating point as m.ddddd
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>e</c>
+          </cell>
+          <cell>
+                                Floating point as m.ddddde+/-xx
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>E</c>
+          </cell>
+          <cell>
+                                Floating point as m.dddddE+/-xx
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>g</c>
+          </cell>
+          <cell>
+                                Use <c>%e</c> for exponents less than <math>-4</math> or greater than <math>+5</math>, otherwise use <c>%f</c>
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>c</c>
+          </cell>
+          <cell>
+                                Single character
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>s</c>
+          </cell>
+          <cell>
+                                String, or any Python data object that can be converted to a string by using the <c>str</c> function
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>%</c>
+          </cell>
+          <cell>
+                                Insert a literal <c>%</c> character
+                            </cell>
+        </row>
+      </tabular>
+    </table>
+    <p>In addition to the format character, you can also include a format
+                modifier between the <c>%</c> and the format character. Format modifiers may
+                be used to left-justify or right-justify the value with a specified
+                field width. Modifiers can also be used to specify the field width along
+                with a number of digits after the decimal point. <xref ref="introduction_introduction_tab-fmtaddsa"/>
+                explains these format modifiers.</p>
+    <table xml:id="introduction_id2">
+      <tabular>
+        <title>
+          <term>Table 10: Additional formatting options</term>
+        </title>
+        <row header="yes">
+          <cell>
+            <term>Modifier</term>
+          </cell>
+          <cell>
+            <term>Example</term>
+          </cell>
+          <cell>
+            <term>Description</term>
+          </cell>
+        </row>
+        <row>
+          <cell>
+                                number
+                            </cell>
+          <cell>
+            <c>%20d</c>
+          </cell>
+          <cell>
+                                Put the value in a field width of 20
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>-</c>
+          </cell>
+          <cell>
+            <c>%-20d</c>
+          </cell>
+          <cell>
+                                Put the value in a field 20 characters wide, left-justified
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>+</c>
+          </cell>
+          <cell>
+            <c>%+20d</c>
+          </cell>
+          <cell>
+                                Put the value in a field 20 characters wide, right-justified
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>0</c>
+          </cell>
+          <cell>
+            <c>%020d</c>
+          </cell>
+          <cell>
+                                Put the value in a field 20 characters wide, fill in with leading zeros
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>.</c>
+          </cell>
+          <cell>
+            <c>%20.2f</c>
+          </cell>
+          <cell>
+                                Put the value in a field 20 characters wide with 2 characters to the right of the decimal point
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>(name)</c>
+          </cell>
+          <cell>
+            <c>%(name)d</c>
+          </cell>
+          <cell>
+                                Get the value from the supplied dictionary using <c>name</c> as the key
+                            </cell>
+        </row>
+      </tabular>
+    </table>
+    <p>As mentioned, the right side of the format operator is a collection of values that
+                will be inserted into the format string. The collection will be either a
+                tuple or a dictionary. If the collection is a tuple, the values are
+                inserted in order of position. That is, the first element in the tuple
+                corresponds to the first format character in the format string. If the
+                collection is a dictionary, the values are inserted according to their
+                keys. In this case all format characters must use the <c>(name)</c>
+                modifier to specify the name of the key.</p>
+    <pre>&gt;&gt;&gt; price = 24
+&gt;&gt;&gt; item = "banana"
+&gt;&gt;&gt; print("The %s costs %d cents" % (item, price))
+The banana costs 24 cents
+&gt;&gt;&gt; print("The %+10s costs %5.2f cents" % (item, price))
+The     banana costs 24.00 cents
+&gt;&gt;&gt; print("The %+10s costs %10.2f cents" % (item, price))
+The     banana costs      24.00 cents
+&gt;&gt;&gt; itemdict = {"item": "banana", "cost": 24}
+&gt;&gt;&gt; print("The %(item)s costs %(cost)7.1f cents" % itemdict)
+The banana costs    24.0 cents</pre>
+    <p>In addition to format strings that use format characters and format
+                modifiers, Python strings also include a <c>format</c> method that can be
+                used in conjunction with a new <c>Formatter</c> class to implement complex
+                string formatting. More about these features can be found in the Python
+                library reference manual.</p>
+    <pre>&gt;&gt;&gt; print("The {} costs {} cents".format(item, price))
+The banana costs 24 cents
+&gt;&gt;&gt; print("The {:s} costs {:d} cents".format(item, price))
+The banana costs 24 cents</pre>
+    <p>Python 3.6 introduced <term>f-strings</term>, a way to use proper variable names
+                instead of placeholders. Formatting conversion symbols can still be used
+                inside an f-string, but the alignment symbols are different from those used with placeholders
+                (see <xref ref="introduction_tab-fstraast"/>). We are going to use this formatting
+                method for the rest of the text.</p>
+    <table xml:id="introduction_id3">
+      <tabular>
+        <title>
+          <term>Table 11: f-string Formatting Options</term>
+        </title>
+        <row header="yes">
+          <cell>
+            <term>Modifier</term>
+          </cell>
+          <cell>
+            <term>Example</term>
+          </cell>
+          <cell>
+            <term>Description</term>
+          </cell>
+        </row>
+        <row>
+          <cell>
+                                number
+                            </cell>
+          <cell>
+            <c>:20d</c>
+          </cell>
+          <cell>
+                                Put the value in a field width of 20
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>&lt;</c>
+          </cell>
+          <cell>
+            <c>:&lt;20d</c>
+          </cell>
+          <cell>
+                                Put the value in a field 20 characters wide, left-aligned
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>&gt;</c>
+          </cell>
+          <cell>
+            <c>:&gt;20d</c>
+          </cell>
+          <cell>
+                                Put the value in a field 20 characters wide, right-aligned
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>^</c>
+          </cell>
+          <cell>
+            <c>:^20d</c>
+          </cell>
+          <cell>
+                                Put the value in a field 20 characters wide, center-aligned
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>0</c>
+          </cell>
+          <cell>
+            <c>:020d</c>
+          </cell>
+          <cell>
+                                Put the value in a field 20 characters wide, fill in with leading zeros.
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>.</c>
+          </cell>
+          <cell>
+            <c>:20.2f</c>
+          </cell>
+          <cell>
+                                Put the value in a field 20 characters wide with 2 characters to the right of the decimal point.
+                            </cell>
+        </row>
+      </tabular>
+    </table>
+    <pre>&gt;&gt;&gt; print(f"The {item:10} costs {price:10.2f} cents")
+The banana     costs      24.00 cents
+&gt;&gt;&gt; print(f"The {item:&lt;10} costs {price:&lt;10.2f} cents")
+The banana     costs 24.00      cents
+&gt;&gt;&gt; print(f"The {item:^10} costs {price:^10.2f} cents")
+The   banana   costs   24.00    cents
+&gt;&gt;&gt; print(f"The {item:&gt;10} costs {price:&gt;10.2f} cents")
+The     banana costs      24.00 cents
+&gt;&gt;&gt; print(f"The {item:&gt;10} costs {price:&gt;010.2f} cents")
+The     banana costs 0000024.00 cents
+&gt;&gt;&gt; itemdict = {"item": "banana", "price": 24}
+&gt;&gt;&gt; print(f"Item:{itemdict['item']:.&gt;10}\n" +
+... f"Price:{'$':.&gt;4}{itemdict['price']:5.2f}")
+Item:....banana
+Price:...$24.00</pre>
+    <p>More about these features can be found in the Python library reference manual.</p>
+  </subsection>
+</section>

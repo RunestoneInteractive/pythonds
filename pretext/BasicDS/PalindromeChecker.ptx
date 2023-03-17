@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<section xml:id="basic-ds_palindrome-checker">
+  <title>Palindrome Checker</title>
+  <p>An interesting problem that can be easily solved using the deque data
+            structure is the classic palindrome problem. A <term>palindrome</term> is a
+            string that reads the same forward and backward, for example, <em>radar</em>,
+            <em>toot</em>, and <em>madam</em>. We would like to construct an algorithm to input a
+            string of characters and check whether it is a palindrome.</p>
+  <p>The solution to this problem will use a deque to store the characters of
+            the string. We will process the string from left to right and add each
+            character to the rear of the deque. At this point, the deque will be
+            acting very much like an ordinary queue. However, we can now make use of
+            the dual functionality of the deque. The front of the deque will hold
+            the first character of the string and the rear of the deque will hold
+            the last character (see <xref ref="fig-palindrome"/>).</p>
+  <figure align="center" xml:id="114_id1fig-palindrome">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: A Deque</caption>
+    <image source="BasicDS/Figures/palindromesetup.png" width="50%"/>
+  </figure>
+  <p>Since we can remove both of the front and rear characters directly, we can compare them and
+            continue only if they match. If we can keep matching first and the last
+            items, we will eventually either run out of characters or be left with a
+            deque of size 1 depending on whether the length of the original string
+            was even or odd. In either case, the string must be a palindrome. The
+            complete function for palindrome-checking appears in
+            <xref ref="lst-palchecker"/>.</p>
+  <program xml:id="palchecker" interactive="activecode" language="python">
+    <input>
+from pythonds3.basic import Deque
+
+
+def pal_checker(a_string):
+    char_deque = Deque()
+
+    for ch in a_string:
+        char_deque.add_rear(ch)
+
+    while char_deque.size() &gt; 1:
+        first = char_deque.remove_front()
+        last = char_deque.remove_rear()
+        if first != last:
+            return False
+
+    return True
+
+print(pal_checker("lsdkjfskf"))
+print(pal_checker("radar"))
+        </input>
+  </program>
+</section>

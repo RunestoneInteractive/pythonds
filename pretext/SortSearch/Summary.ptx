@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<section xml:id="sort-search_summary">
+  <title>Summary</title>
+  <p>
+    <ul>
+      <li>
+        <p>A sequential search is <math>O(n)</math> for ordered and unordered
+                    lists.</p>
+      </li>
+      <li>
+        <p>A binary search of an ordered list is <math>O(\log{n})</math> in the
+                    worst case.</p>
+      </li>
+      <li>
+        <p>Hash tables can provide constant time searching.</p>
+      </li>
+      <li>
+        <p>A bubble sort, a selection sort, and an insertion sort are
+                    <math>O(n^{2})</math> algorithms.</p>
+      </li>
+      <li>
+        <p>A Shell sort improves on the insertion sort by sorting incremental
+                    sublists. It falls between <math>O(n)</math> and <math>O(n^{2})</math>.</p>
+      </li>
+      <li>
+        <p>A merge sort is <math>O(n \log{n})</math>, but requires additional space
+                    for the merging process.</p>
+      </li>
+      <li>
+        <p>A quicksort is <math>O(n \log{n})</math>, but may degrade to
+                    <math>O(n^{2})</math> if the split points are not near the middle of the
+                    list. It does not require additional space.</p>
+      </li>
+    </ul>
+  </p>
+</section>

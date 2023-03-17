@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<section xml:id="advanced_objectives">
+  <title>Objectives</title>
+  <p>
+    <ul>
+      <li>
+        <p>To further explore and expand a number of the ideas presented
+                    earlier.</p>
+      </li>
+      <li>
+        <p>To be able to implement a linked list.</p>
+      </li>
+      <li>
+        <p>To understand the RSA algorithm for public key encryption using some
+                    recursive mathematical functions.</p>
+      </li>
+      <li>
+        <p>To understand the expected behavior of a skip list as an alternative
+                    implementation for dictionaries.</p>
+      </li>
+      <li>
+        <p>To understand octrees and their use in image processing.</p>
+      </li>
+      <li>
+        <p>To understand string-matching as a graph problem.</p>
+      </li>
+    </ul>
+  </p>
+</section>

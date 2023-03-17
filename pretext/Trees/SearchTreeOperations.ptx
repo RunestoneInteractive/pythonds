@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<section xml:id="trees_search-tree-operations">
+  <title>Search Tree Operations</title>
+  <p>Before we look at the implementation, let's review the interface
+            provided by the map ADT. You will notice that this interface is very
+            similar to the Python dictionary.</p>
+  <p>
+    <ul>
+      <li>
+        <p><c>Map()</c> creates a new empty map.</p>
+      </li>
+      <li>
+        <p><c>put(key, val)</c> adds a new key&#x2013;value pair to the map. If the key is
+                    already in the map, it replaces the old value with the new value.</p>
+      </li>
+      <li>
+        <p><c>get(key)</c> takes a key and returns the matching value stored in the map or
+                    <c>None</c> otherwise.</p>
+      </li>
+      <li>
+        <p><c>del</c> deletes the key&#x2013;value pair from the map using a statement of
+                    the form <c>del map[key]</c>.</p>
+      </li>
+      <li>
+        <p><c>size()</c> returns the number of key&#x2013;value pairs stored in the map.</p>
+      </li>
+      <li>
+        <p><c>in</c> return <c>True</c> for a statement of the form <c>key in map</c> if
+                    the given key is in the map, <c>False</c> otherwise.</p>
+      </li>
+    </ul>
+  </p>
+</section>

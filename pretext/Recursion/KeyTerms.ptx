@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<section xml:id="recursion_key-terms">
+  <title>Key Terms</title>
+  <table>
+    <tabular>
+      <row>
+        <cell>
+                            base case
+                        </cell>
+        <cell>
+                            greedy method
+                        </cell>
+        <cell>
+                            stack frame
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            dynamic programming
+                        </cell>
+        <cell>
+                            recursion
+                        </cell>
+        <cell>
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            fractal
+                        </cell>
+        <cell>
+                            recursive call
+                        </cell>
+        <cell>
+                        </cell>
+      </row>
+    </tabular>
+  </table>
+</section>

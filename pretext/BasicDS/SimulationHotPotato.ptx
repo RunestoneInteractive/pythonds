@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<section xml:id="basic-ds_queue-simulation-hot-potato">
+  <title>Queue Simulation: Hot Potato</title>
+  <p>One of the typical applications for showing a queue in action is to
+            simulate a real situation that requires data to be managed in a FIFO
+            manner. To begin, let's consider the children's game hot potato. In this
+            game (see <xref ref="fig-quhotpotato"/>) children line up in a circle and
+            pass an item from neighbor to neighbor as fast as they can. At a certain
+            point in the game, the action is stopped and the child who has the item
+            (the potato) is removed from the circle. Play continues until only one
+            child is left.</p>
+  <figure align="center" xml:id="122_id1fig-quhotpotato">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: A Six-Person Game of Hot Potato</caption>
+    <image source="BasicDS/Figures/hotpotato.png" width="50%"/>
+  </figure>
+  <p>This game is a modern-day equivalent of the famous Josephus problem.
+            Based on a legend about the famous first-century historian Flavius
+            Josephus, the story is told that in the Jewish revolt against Rome,
+            Josephus and 39 of his comrades held out against the Romans in a cave.
+            With defeat imminent, they decided that they would rather die than be
+            slaves to the Romans. They arranged themselves in a circle. One man was
+            designated as number one, and proceeding clockwise they killed every
+            seventh man. Josephus, according to the legend, was among other things
+            an accomplished mathematician. He instantly figured out where he ought
+            to sit in order to be the last to go. When the time came, instead of
+            killing himself, he joined the Roman side. You can find many different
+            versions of this story. Some count every third man and some allow the
+            last man to escape on a horse. In any case, the idea is the same.</p>
+  <p>We will implement a general <term>simulation</term> of Hot Potato. Our program
+            will input a list of names and a constant, call it <q>num,</q> to be used for
+            counting. It will return the name of the last person remaining after
+            repetitive counting by <c>num</c>. What happens at that point is up to you.</p>
+  <p>To simulate the circle, we will use a queue (see
+            <xref ref="fig-qupotatoqueue"/>). Assume that the child holding the potato will
+            be at the front of the queue. Upon passing the potato, the simulation
+            will simply dequeue and then immediately enqueue that child, putting them
+            at the end of the line. They will then wait until all the others have
+            been at the front before it will be their turn again. After <c>num</c>
+            dequeue/enqueue operations, the child at the front will be removed
+            permanently and another cycle will begin. This process will continue
+            until only one name remains (the size of the queue is 1).</p>
+  <figure align="center" xml:id="122_id2fig-qupotatoqueue">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: A Queue Implementation of Hot Potato</caption>
+    <image source="BasicDS/Figures/namequeue.png" width="50%"/>
+  </figure>
+  <p>The program is shown in <xref ref="lst-josephussim"/>. A call to the
+            <c>hot_potato</c> function using 7 as the counting constant returns <c>'Susan'</c>.</p>
+  <program xml:id="qujosephussim" interactive="activecode" language="python">
+    <input>
+from pythonds3.basic import Queue
+
+
+def hot_potato(name_list, num):
+    sim_queue = Queue()
+    for name in name_list:
+        sim_queue.enqueue(name)
+
+    while sim_queue.size() &gt; 1:
+        for i in range(num):
+            sim_queue.enqueue(sim_queue.dequeue())
+
+        sim_queue.dequeue()
+
+    return sim_queue.dequeue()
+
+
+print(hot_potato(["Bill", "David", "Susan", "Jane", "Kent", "Brad"], 7))
+        </input>
+  </program>
+  <p>Note that in this example the value of the counting constant is greater
+            than the number of names in the list. This is not a problem since the
+            queue acts like a circle and counting continues back at the beginning
+            until the value is reached. Also, notice that the list is loaded into
+            the queue such that the first name on the list will be at the front of
+            the queue. <c>'Bill'</c> in this case is the first item in the list and
+            therefore moves to the front of the queue. A variation of this
+            implementation, described in the exercises, allows for a random counter.</p>
+</section>

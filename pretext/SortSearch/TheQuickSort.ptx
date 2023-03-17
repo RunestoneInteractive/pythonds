@@ -1,0 +1,313 @@
+<?xml version="1.0"?>
+<section xml:id="sort-search_the-quicksort">
+  <title>The Quicksort</title>
+  <p>The <term>quicksort</term> uses divide and conquer to gain the same advantages
+            as the merge sort, while not using additional storage. As a trade-off,
+            however, it is possible that the list may not be divided in half. When
+            this happens, we will see that performance is diminished.</p>
+  <p>A quicksort first selects a value, which is called the <term>pivot value</term>.
+            Although there are many different ways to choose the pivot value, we
+            will simply use the first item in the list. The role of the pivot value
+            is to assist with splitting the list. The actual position where the
+            pivot value belongs in the final sorted list, commonly called the
+            <term>split point</term>, will be used to divide the list for subsequent calls to
+            the quicksort.</p>
+  <p><xref ref="fig-splitvalue"/> shows that 54 will serve as our first pivot value.
+            Since we have looked at this example a few times already, we know that
+            54 will eventually end up in the position currently holding 31. The
+            <term>partition</term> process will happen next. It will find the split point and
+            at the same time move other items to the appropriate side of the list,
+            either less than or greater than the pivot value.</p>
+  <figure align="center" xml:id="15_id1fig-splitvalue">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 12: The First Pivot Value for a Quicksort</caption>
+    <image source="SortSearch/Figures/firstsplit.png" width="50%"/>
+  </figure>
+  <p>Partitioning begins by locating two position markers&#x2014;let's call them
+            <c>left_mark</c> and <c>right_mark</c>&#x2014;at the beginning and end of the remaining
+            items in the list (positions 1 and 8 in <xref ref="fig-partitiona"/>). The goal
+            of the partition process is to move items that are on the wrong side
+            with respect to the pivot value while also converging on the split
+            point. <xref ref="fig-partitiona"/> shows this process as we locate the position
+            of 54.</p>
+  <figure align="center" xml:id="15_id2fig-partitiona">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 13: Finding the Split Point for 54</caption>
+    <image source="SortSearch/Figures/partitionA.png" width="50%"/>
+  </figure>
+  <p>We begin by incrementing <c>left_mark</c> until we locate a value that is
+            greater than the pivot value. We then decrement <c>right_mark</c> until we
+            find a value that is less than the pivot value. At this point we have
+            discovered two items that are out of place with respect to the eventual
+            split point. For our example, this occurs at 93 and 20. Now we can
+            exchange these two items and then repeat the process again.</p>
+  <p>At the point where <c>right_mark</c> becomes less than <c>left_mark</c>, we
+            stop. The position of <c>right_mark</c> is now the split point. The pivot
+            value can be exchanged with the contents of the split point and the
+            pivot value is now in place (<xref ref="fig-partitionb"/>). In addition, all the
+            items to the left of the split point are less than the pivot value, and
+            all the items to the right of the split point are greater than the pivot
+            value. The list can now be divided at the split point and the quicksort
+            can be invoked recursively on the two halves.</p>
+  <figure align="center" xml:id="id3">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 14: Completing the Partition Process to Find the Split Point for 54</caption>
+    <image source="SortSearch/Figures/partitionB.png" width="50%"/>
+  </figure>
+  <p>The <c>quick_sort</c> function shown in <xref ref="lst-quick"/> invokes a recursive
+            function, <c>quick_sort_helper</c>. <c>quick_sort_helper</c> begins with the same
+            base case as the merge sort. If the length of the list is less than or
+            equal to one, it is already sorted. If it is greater, then it can be
+            partitioned and recursively sorted. The <c>partition</c> function
+            implements the process described earlier.</p>
+  <program xml:id="lst_quick" interactive="activecode" language="python">
+    <input>
+def quick_sort(a_list):
+    quick_sort_helper(a_list, 0, len(a_list) - 1)
+
+
+def quick_sort_helper(a_list, first, last):
+    if first &lt; last:
+        split = partition(a_list, first, last)
+        quick_sort_helper(a_list, first, split - 1)
+        quick_sort_helper(a_list, split + 1, last)
+
+
+def partition(a_list, first, last):
+    pivot_val = a_list[first]
+    left_mark = first + 1
+    right_mark = last
+    done = False
+
+    while not done:
+        while left_mark &lt;= right_mark and a_list[left_mark] &lt;= pivot_val:
+            left_mark = left_mark + 1
+        while left_mark &lt;= right_mark and a_list[right_mark] &gt;= pivot_val:
+            right_mark = right_mark - 1
+        if right_mark &lt; left_mark:
+            done = True
+        else:
+            a_list[left_mark], a_list[right_mark] = (
+                a_list[right_mark],
+                a_list[left_mark],
+            )
+    a_list[first], a_list[right_mark] = a_list[right_mark], a_list[first]
+
+    return right_mark
+
+
+a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+quick_sort(a_list)
+print(a_list)
+        </input>
+  </program>
+  <raw format="html" xml:space="preserve">&lt;script src="../_static/sortmodels.js"&gt;&lt;/script&gt;
+&lt;script src="../_static/sortviewers.js"&gt;&lt;/script&gt;
+
+&lt;div id="quick_anim" class=""&gt;
+&lt;canvas id="quick_anim_canvas" width="400" height="400" style="border:4px solid blue"&gt;&lt;/canvas&gt;
+&lt;br /&gt;
+&lt;button onclick="quick_anim_anim = quick_anim_init('quick_anim')"&gt;Initialize&lt;/button&gt;
+&lt;button onclick="quick_anim_anim.run('quick_anim_anim')"&gt;Run&lt;/button&gt;
+&lt;button onclick="quick_anim_anim.stop()"&gt;Stop&lt;/button&gt; &lt;/br&gt;
+&lt;button onclick="quick_anim_anim.begin()"&gt;Beginning&lt;/button&gt;
+&lt;button onclick="quick_anim_anim.forward()"&gt;Step Forward&lt;/button&gt;
+&lt;button onclick="quick_anim_anim.backward()"&gt;Step Backward&lt;/button&gt;
+&lt;button onclick="quick_anim_anim.end()"&gt;End&lt;/button&gt;
+
+&lt;script&gt;
+quick_anim_init = function(divid)
+{
+   var a = new Animator(new QuickSortModel(), new BarViewer(), divid)
+   a.init()
+   return a
+}
+&lt;/script&gt;
+
+&lt;/div&gt;
+</raw>
+  <!--For more detail, CodeLens 7 lets you step through the algorithm.-->
+  <!---->
+  <!--.. codelens:: quicktrace-->
+  <!--:caption: Tracing the Quicksort-->
+  <!---->
+  <!--def quick_sort(a_list):-->
+  <!--quick_sort_helper(a_list, 0, len(a_list) - 1)-->
+  <!---->
+  <!---->
+  <!--def quick_sort_helper(a_list, first, last):-->
+  <!--if first < last:-->
+  <!--split = partition(a_list, first, last)-->
+  <!--quick_sort_helper(a_list, first, split - 1)-->
+  <!--quick_sort_helper(a_list, split + 1, last)-->
+  <!---->
+  <!---->
+  <!--def partition(a_list, first, last):-->
+  <!--pivot_val = a_list[first]-->
+  <!--left_mark = first + 1-->
+  <!--right_mark = last-->
+  <!--done = False-->
+  <!---->
+  <!--while not done:-->
+  <!--while left_mark <= right_mark and a_list[left_mark] <= pivot_val:-->
+  <!--left_mark = left_mark + 1-->
+  <!--while left_mark <= right_mark and a_list[right_mark] >= pivot_val:-->
+  <!--right_mark = right_mark - 1-->
+  <!--if right_mark < left_mark:-->
+  <!--done = True-->
+  <!--else:-->
+  <!--a_list[left_mark], a_list[right_mark] = (-->
+  <!--a_list[right_mark],-->
+  <!--a_list[left_mark],-->
+  <!--)-->
+  <!--a_list[first], a_list[right_mark] = a_list[right_mark], a_list[first]-->
+  <!---->
+  <!--return right_mark-->
+  <!---->
+  <!---->
+  <!--a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]-->
+  <!--quick_sort(a_list)-->
+  <!--print(a_list)-->
+  <p>To analyze the <c>quick_sort</c> function, note that for a list of length
+            <math>n</math>, if the partition always occurs in the middle of the list, there
+            will again be <math>\log{n}</math> divisions. In order to find the split
+            point, each of the <math>n</math> items needs to be checked against the pivot
+            value. The result is <math>n\log{n}</math>. In addition, there is no need
+            for additional memory as in the merge sort process.</p>
+  <p>Unfortunately, in the worst case, the split points may not be in the
+            middle and can be very skewed to the left or the right, leaving a very
+            uneven division. In this case, sorting a list of <math>n</math> items divides into
+            sorting a list of 0 items and a list of <math>n - 1</math> items. Then
+            sorting a list of <math>n - 1</math> divides into a list of size 0 and a list
+            of size <math>n - 2</math>, and so on. The result is an <math>O(n^{2})</math>
+            sort with all of the overhead that recursion requires.</p>
+  <p>We mentioned earlier that there are different ways to choose the pivot
+            value. In particular, we can attempt to alleviate some of the potential
+            for an uneven division by using a technique called <term>median of three</term>.
+            To choose the pivot value, we will consider the first, the middle, and
+            the last element in the list. In our example, those are 54, 77, and 20.
+            Now pick the median value, in our case 54, and use it for the pivot
+            value (of course, that was the pivot value we used originally). The idea
+            is that in the case where the first item in the list does not belong
+            toward the middle of the list, the median of three will choose a better
+            <q>middle</q> value. This will be particularly useful when the original list
+            is somewhat sorted to begin with. We leave the implementation of this
+            pivot value selection as an exercise.</p>
+  <note>
+    <title>Self Check</title>
+    <exercise label="question_sort_7">
+      <statement>
+        <p>Q-3: Given the following list of numbers [14, 17, 13, 15, 19, 10, 3, 16, 9, 12] which answer shows the contents of the list after the second partitioning according to the quicksort algorithm?</p>
+      </statement>
+      <choices>
+        <choice>
+          <statement>
+            <p>[9, 3, 10, 13, 12]</p>
+          </statement>
+          <feedback>
+            <p>It's important to remember that quicksort works on the entire list and sorts it in place.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>[9, 3, 10, 13, 12, 14]</p>
+          </statement>
+          <feedback>
+            <p>Remember quicksort works on the entire list and sorts it in place.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>[9, 3, 10, 13, 12, 14, 17, 16, 15, 19]</p>
+          </statement>
+          <feedback>
+            <p>The first partitioning works on the entire list, and the second partitioning works on the left partition not the right.</p>
+          </feedback>
+        </choice>
+        <choice correct="yes">
+          <statement>
+            <p>[9, 3, 10, 13, 12, 14, 19, 16, 15, 17]</p>
+          </statement>
+          <feedback>
+            <p>The first partitioning works on the entire list, and the second partitioning works on the left partition.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+    <exercise label="question_sort_8">
+      <statement>
+        <p>Q-4: Given the following list of numbers [1, 20, 11, 5, 2, 9, 16, 14, 13, 19] what would be the first pivot value using the median of 3 method?</p>
+      </statement>
+      <choices>
+        <choice>
+          <statement>
+            <p>1</p>
+          </statement>
+          <feedback>
+            <p>The three numbers used in selecting the pivot are 1, 9, 19.  1 is not the median, and would be a very bad choice for the pivot since it is the smallest number in the list.</p>
+          </feedback>
+        </choice>
+        <choice correct="yes">
+          <statement>
+            <p>9</p>
+          </statement>
+          <feedback>
+            <p>Good job.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>16</p>
+          </statement>
+          <feedback>
+            <p>although 16 would be the median of 1, 16, 19 the middle is at len(list) // 2.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>19</p>
+          </statement>
+          <feedback>
+            <p>the three numbers used in selecting the pivot are 1, 9, 19.  9 is the median.  19 would be a bad choice since it is almost the largest.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+    <exercise label="question_sort_9">
+      <statement>
+        <p>Q-5: Which of the following sort algorithms are guaranteed to be O(n log n) even in the worst case?</p>
+      </statement>
+      <choices>
+        <choice>
+          <statement>
+            <p>Shell Sort</p>
+          </statement>
+          <feedback>
+            <p>Shell sort is about ``n^1.5``</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>Quick Sort</p>
+          </statement>
+          <feedback>
+            <p>Quicksort can be O(n log n), but if the pivot points are not well chosen and the list is just so, it can be O(n^2).</p>
+          </feedback>
+        </choice>
+        <choice correct="yes">
+          <statement>
+            <p>Merge Sort</p>
+          </statement>
+          <feedback>
+            <p>Merge Sort is the only guaranteed O(n log n) even in the worst case.  The cost is that merge sort uses more memory.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>Insertion Sort</p>
+          </statement>
+          <feedback>
+            <p>Insertion sort is ``O(n^2)``</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+  </note>
+</section>

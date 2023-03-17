@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<section xml:id="basic-ds_implementing-a-deque-in-python">
+  <title>Implementing a Deque in Python</title>
+  <p>As we have done in previous sections, we will create a new class for the
+            implementation of the abstract data type deque. Again, the Python list
+            will provide a very nice set of methods upon which to build the details
+            of the deque. Our implementation (<xref ref="lst-dequecode"/>) will assume that
+            the rear of the deque is at position 0 in the list.</p>
+  <p>
+    <term>Listing 1</term>
+  </p>
+  <program language="python">
+    <input>
+class Deque:
+    """Deque implementation as a list"""
+
+    def __init__(self):
+        """Create new deque"""
+        self._items = []
+
+    def is_empty(self):
+        """Check if the deque is empty"""
+        return not bool(self._items)
+
+    def add_front(self, item):
+        """Add an item to the front of the deque"""
+        self._items.append(item)
+
+    def add_rear(self, item):
+        """Add an item to the rear of the deque"""
+        self._items.insert(0, item)
+
+    def remove_front(self):
+        """Remove an item from the front of the deque"""
+        return self._items.pop()
+
+    def remove_rear(self):
+        """Remove an item from the rear of the deque"""
+        return self._items.pop(0)
+
+    def size(self):
+        """Get the number of items in the deque"""
+        return len(self._items)
+</input>
+  </program>
+  <p>In <c>remove_front</c> we use the <c>pop</c> method to remove the last element
+            from the list. However, in <c>remove_rear</c>, the <c>pop(0)</c> method must
+            remove the first element of the list. Likewise, we need to use the
+            <c>insert</c> method (line 12) in <c>add_rear</c> since the <c>append</c> method
+            assumes the addition of a new element to the end of the list.</p>
+  <p>CodeLens 1 shows the <c>Deque</c> class in
+            action as we perform the sequence of operations from
+            <xref ref="basic-ds_the-deque-abstract-data-type"/>.</p>
+  <program xml:id="deqtest" interactive="codelens" language="python">
+    <input>
+class Deque:
+    """Queue implementation as a list"""
+
+    def __init__(self):
+        """Create new deque"""
+        self._items = []
+
+    def is_empty(self):
+        """Check if the deque is empty"""
+        return not bool(self._items)
+
+    def add_front(self, item):
+        """Add an item to the front of the deque"""
+        self._items.append(item)
+
+    def add_rear(self, item):
+        """Add an item to the rear of the deque"""
+        self._items.insert(0, item)
+
+    def remove_front(self):
+        """Remove an item from the front of the deque"""
+        return self._items.pop()
+
+    def remove_rear(self):
+        """Remove an item from the rear of the deque"""
+        return self._items.pop(0)
+
+    def size(self):
+        """Get the number of items in the deque"""
+        return len(self._items)
+
+d=Deque()
+print(d.is_empty())
+d.add_rear(4)
+d.add_rear('dog')
+d.add_front('cat')
+d.add_front(True)
+print(d.size())
+print(d.is_empty())
+d.add_rear(8.4)
+print(d.remove_rear())
+print(d.remove_front())
+    </input>
+  </program>
+  <p>You can see many similarities to Python code already described for
+            stacks and queues. You are also likely to observe that in this
+            implementation adding and removing items from the front is <math>O(1)</math> whereas
+            adding and removing from the rear is <math>O(n)</math>. This is to be expected given
+            the common operations that appear for adding and removing items. Again,
+            the important thing is to be certain that we know where the front and
+            rear are assigned in the implementation.</p>
+</section>

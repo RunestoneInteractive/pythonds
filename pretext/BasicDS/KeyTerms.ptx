@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<section xml:id="basic-ds_key-terms">
+  <title>Key Terms</title>
+  <table>
+    <tabular>
+      <row>
+        <cell>
+                            balanced parentheses
+                        </cell>
+        <cell>
+                            last in, first out (LIFO)
+                        </cell>
+        <cell>
+                            postfix
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            data field
+                        </cell>
+        <cell>
+                            linear data structure
+                        </cell>
+        <cell>
+                            precedence
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            deque
+                        </cell>
+        <cell>
+                            linked list
+                        </cell>
+        <cell>
+                            prefix
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            first in, first out (FIFO)
+                        </cell>
+        <cell>
+                            linked list traversal
+                        </cell>
+        <cell>
+                            queue
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            fully parenthesized
+                        </cell>
+        <cell>
+                            list
+                        </cell>
+        <cell>
+                            simulation
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            head
+                        </cell>
+        <cell>
+                            node
+                        </cell>
+        <cell>
+                            stack
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            infix
+                        </cell>
+        <cell>
+                            palindrome
+                        </cell>
+        <cell>
+                        </cell>
+      </row>
+    </tabular>
+  </table>
+</section>

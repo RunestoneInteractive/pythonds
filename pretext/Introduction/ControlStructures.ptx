@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<section xml:id="introduction_control-structures">
+  <title>Control Structures</title>
+  <p>As we noted earlier, algorithms require two important control
+            structures: iteration and selection. Both of these are supported by
+            Python in various forms. The programmer can choose the statement that is
+            most useful for the given circumstance.</p>
+  <p>For iteration, Python provides a standard <c>while</c> statement and a very
+            powerful <c>for</c> statement. The while statement repeats a body of code
+            as long as a condition evaluates to <c>True</c>. For example,</p>
+  <pre>&gt;&gt;&gt; counter = 1
+&gt;&gt;&gt; while counter &lt;= 5:
+...     print("Hello, world")
+...     counter = counter + 1
+...
+Hello, world
+Hello, world
+Hello, world
+Hello, world
+Hello, world</pre>
+  <p>prints out the phrase <c>Hello, world</c> five times. The condition on the
+            <c>while</c> statement is evaluated at the start of each repetition. If the
+            condition evaluates to <c>True</c>, the body of the statement will execute. It is
+            easy to see the structure of a Python <c>while</c> statement due to the
+            mandatory indentation pattern that the language enforces.</p>
+  <p>The <c>while</c> statement is a very general-purpose iterative structure
+            that we will use in a number of different algorithms. In many cases, a
+            compound condition will control the iteration. A fragment such as</p>
+  <pre>while counter &lt;= 10 and not done:
+...</pre>
+  <p>would cause the body of the statement to be executed only in the case
+            where both parts of the condition are satisfied. The value of the
+            variable <c>counter</c> would need to be less than or equal to 10, and the
+            value of the variable <c>done</c> would need to be <c>False</c> (<c>not False</c>
+            is <c>True</c>) so that <c>True and True</c> results in <c>True</c>.</p>
+  <p>Even though this type of construct is very useful in a wide variety of
+            situations, another iterative structure, the <c>for</c> statement, can be
+            used in conjunction with many of the Python collections. The <c>for</c>
+            statement can be used to iterate over the members of a collection, so
+            long as the collection is a sequence. So, for example,</p>
+  <pre>&gt;&gt;&gt; for item in [1, 3, 6, 2, 5]:
+...    print(item)
+...
+1
+3
+6
+2
+5</pre>
+  <p>assigns the variable <c>item</c> to be each successive value in the list
+            [1, 3, 6, 2, 5]. The body of the iteration is then executed. This works for
+            any collection that is a sequence (lists, tuples, and strings).</p>
+  <p>A common use of the <c>for</c> statement is to implement definite iteration
+            over a range of values. The statement</p>
+  <pre>&gt;&gt;&gt; for item in range(5):
+...    print(item ** 2)
+...
+0
+1
+4
+9
+16</pre>
+  <p>will perform the <c>print</c> function five times. The <c>range</c> function
+            will return a range object representing the sequence 0, 1, 2, 3, 4 and each
+            value will be assigned to the variable <c>item</c>. This value is then
+            squared and printed.</p>
+  <p>Another useful version of this iteration structure is used to
+            process each character of a string. The following code fragment iterates
+            over a list of strings and for each string processes each character by
+            appending it to a list. The result is a list of all the letters in all
+            of the words.</p>
+  <program xml:id="intro_8" interactive="activecode" language="python">
+    <input>
+word_list = ["cat", "dog", "rabbit"]
+letter_list = [ ]
+for a_word in word_list:
+    for a_letter in a_word:
+        letter_list.append(a_letter)
+print(letter_list)
+        </input>
+  </program>
+  <p>Selection statements allow programmers to ask questions and then, based
+            on the result, perform different actions. Most programming languages
+            provide two versions of this useful construct: the <c>if...else</c> and the
+            <c>if</c>. A simple example of a binary selection uses the <c>if...else</c>
+            statement.</p>
+  <pre>&gt;&gt;&gt; import math
+&gt;&gt;&gt; n = 16
+&gt;&gt;&gt; if n &lt; 0:
+...   print("Sorry, value is negative")
+... else:
+...   print(math.sqrt(n))
+...
+4.0</pre>
+  <p>In this example, the object referred to by <c>n</c> is checked to see if it
+            is less than zero. If it is, a message is printed stating that it is
+            negative. If it is not, the statement performs the <c>else</c> clause and
+            computes the square root.</p>
+  <p>Selection constructs, as with any control construct, can be nested so
+            that the result of one question helps decide whether to ask the next.
+            For example, assume that <c>score</c> is a variable holding a reference to
+            a score for a computer science test.</p>
+  <pre>&gt;&gt;&gt; if score &gt;= 90:
+...     print("A")
+... else:
+...     if score &gt;= 80:
+...         print("B")
+...     else:
+...         if score &gt;= 70:
+...             print("C")
+...         else:
+...             if score &gt;= 60:
+...                 print("D")
+...             else:
+...                 print("F")</pre>
+  <p>This fragment will classify a value called <c>score</c> by printing the
+            letter grade earned. If the score is greater than or equal to 90, the
+            statement will print <c>A</c>. If it is not (<c>else</c>), the next question
+            is asked. If the score is greater than or equal to 80, then it must be
+            between 80 and 89 since the answer to the first question was false. In
+            this case print <c>B</c> is printed. You can see that the Python
+            indentation pattern helps to make sense of the association between
+            <c>if</c> and <c>else</c> without requiring any additional syntactic elements.</p>
+  <p>An alternative syntax for this type of nested selection uses the
+            <c>elif</c> keyword. The <c>else</c> and the next <c>if</c> are combined so as to
+            eliminate the need for additional nesting levels. Note that the final
+            <c>else</c> is still necessary to provide the default case if all other
+            conditions fail.</p>
+  <pre>&gt;&gt;&gt; if score &gt;= 90:
+...     print("A")
+... elif score &gt;= 80:
+...     print("B")
+... elif score &gt;= 70:
+...     print("C")
+... elif score &gt;= 60:
+...     print("D")
+... else:
+...     print("F")</pre>
+  <p>Python also has a single-way selection construct, the <c>if</c> statement.
+            With this statement, if the condition is true, an action is performed.
+            In the case where the condition is false, processing simply continues on
+            to the next statement after the <c>if</c>. For example, the following
+            fragment will first check to see if the value of a variable <c>n</c> is
+            negative. If it is, then it is modified by the absolute value function.
+            Regardless, the next action is to compute the square root.</p>
+  <pre>if n &lt; 0:
+   n = abs(n)
+print(math.sqrt(n))</pre>
+  <note>
+    <title>Self Check</title>
+    <p>Test your understanding of what we have covered so far by trying the following
+                exercise.  Modify the code from Activecode 8 so that the final list only contains
+                a single copy of each letter.</p>
+    <program xml:id="self_check_1" interactive="activecode" language="python">
+      <input>
+# the answer is: ['c', 'a', 't', 'd', 'o', 'g', 'r', 'b', 'i']
+        </input>
+    </program>
+  </note>
+  <video xml:id="list_unique" youtube="vJ_KDaJZ4f4" width="auto"/>
+  <p>Returning to lists, there is an alternative method for creating a list
+            that uses iteration and selection constructs known as a <term>list
+                comprehension</term>. A list comprehension allows you to easily create a list
+            based on some processing or selection criteria. For example, if we would
+            like to create a list of the first 10 perfect squares, we could use a
+            <c>for</c> statement:</p>
+  <pre>&gt;&gt;&gt; sq_list = []
+&gt;&gt;&gt; for x in range(1, 11):
+...     sq_list.append(x * x)
+...
+&gt;&gt;&gt; sq_list
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</pre>
+  <p>Using a list comprehension, we can do this in one step as</p>
+  <pre>&gt;&gt;&gt; sq_list=[x * x for x in range(1, 11)]
+&gt;&gt;&gt; sq_list
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</pre>
+  <p>The variable <c>x</c> takes on the values 1 through 10 as specified by the
+            <c>for</c> construct. The value of <c>x * x</c> is then computed and added to
+            the list that is being constructed.</p>
+  <p>The general syntax for a list
+            comprehension also allows a selection criteria to be added so that only
+            certain items get added. For example,</p>
+  <pre>&gt;&gt;&gt; sq_list=[x * x for x in range(1,11) if x % 2 != 0]
+&gt;&gt;&gt; sq_list
+[1, 9, 25, 49, 81]</pre>
+  <p>This list comprehension constructs a list that contains the
+            squares of only the odd numbers in the range from 1 to 10. Any sequence that
+            supports iteration can be used within a list comprehension to construct
+            a new list.</p>
+  <pre>&gt;&gt;&gt;[ch.upper() for ch in 'comprehension' if ch not in 'aeiou']
+['C', 'M', 'P', 'R', 'H', 'N', 'S', 'N']</pre>
+  <note>
+    <title>Self Check</title>
+    <p>Test your understanding of list comprehensions by redoing Activecode 1
+                using list comprehensions.  For an extra challenge, see if you can figure out
+                how to remove the duplicates.</p>
+    <program xml:id="self_check_2" interactive="activecode" language="python">
+      <input>
+# the answer is: ['c', 'a', 't', 'd', 'o', 'g', 'r', 'a', 'b', 'b', 'i', 't']
+        </input>
+    </program>
+  </note>
+  <video xml:id="listcomp" youtube="pcrcYy9UlVM" width="auto"/>
+</section>

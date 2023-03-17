@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<section xml:id="trees_search-tree-analysis">
+  <title>Search Tree Analysis</title>
+  <p>With the implementation of a binary search tree now complete, we will do
+            a quick analysis of the methods we have implemented. Let's first look at
+            the <c>put</c> method. The limiting factor on its performance is the height
+            of the binary tree. Recall from the vocabulary section that the height
+            of a tree is the number of edges between the root and the deepest leaf
+            node. The height is the limiting factor because when we are searching
+            for the appropriate place to insert a node into the tree, we will need
+            to do at most one comparison at each level of the tree.</p>
+  <p>What is the height of a binary tree likely to be? The answer to this
+            question depends on how the keys are added to the tree. If the keys are
+            added in a random order, the height of the tree is going to be around
+            <math>\log_2{n}</math> where <math>n</math> is the number of nodes in the
+            tree. This is because if the keys are randomly distributed, about half
+            of them will be less than the root and about half will be greater than the
+            root. Remember that in a binary tree there is one node at the root, two
+            nodes in the next level, and four at the next. The number of nodes at
+            any particular level is <math>2^d</math> where <math>d</math> is the depth of
+            the level. The total number of nodes in a perfectly balanced binary tree
+            is <math>2^{h+1}-1</math>, where <math>h</math> represents the height of the
+            tree.</p>
+  <p>A perfectly balanced tree has the same number of nodes in the left
+            subtree as the right subtree. In a balanced binary tree, the worst-case
+            performance of <c>put</c> is <math>O(\log_2{n})</math>, where <math>n</math> is
+            the number of nodes in the tree. Notice that this is the inverse
+            relationship to the calculation in the previous paragraph. So
+            <math>\log_2{n}</math> gives us the height of the tree and represents the
+            maximum number of comparisons that <c>put</c> will need to do as it
+            searches for the proper place to insert a new node.</p>
+  <p>Unfortunately it is possible to construct a search tree that has height
+            <math>n</math> simply by inserting the keys in sorted order! An example of
+            this is shown in <xref ref="fig-skewedtree-analysis"/>. In this case the
+            performance of the <c>put</c> method is <math>O(n)</math>.</p>
+  <figure align="center" xml:id="12_id1fig-skewedtree-analysis">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: A skewed binary search tree would give poor performance</caption>
+    <image source="Trees/Figures/skewedTree.png" width="50%"/>
+  </figure>
+  <p>Now that you understand that the performance of
+            the <c>put</c> method is limited by the height of the tree, you can
+            probably guess that other methods, <c>get</c>, <c>in</c>, and <c>del</c>, are limited
+            as well. Since <c>get</c> searches the tree to find the key, in the worst
+            case the tree is searched all the way to the bottom and no key is found.
+            At first glance <c>del</c> might seem more complicated since it may need
+            to search for the successor before the deletion operation can complete.
+            But remember that the worst-case scenario to find the successor is also
+            just the height of the tree which means that you would simply double the
+            work. Since doubling is a constant factor, it does not change worst-case analysis
+            of <math>O(n)</math> for an unbalanced tree.</p>
+</section>

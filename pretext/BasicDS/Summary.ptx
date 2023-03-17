@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<section xml:id="basic-ds_summary">
+  <title>Summary</title>
+  <p>
+    <ul>
+      <li>
+        <p>Linear data structures maintain their data in an ordered fashion.</p>
+      </li>
+      <li>
+        <p>Stacks are simple data structures that maintain a LIFO (last in,
+                    first out) ordering.</p>
+      </li>
+      <li>
+        <p>The fundamental operations for a stack are <c>push</c>, <c>pop</c>, and
+                    <c>is_empty</c>.</p>
+      </li>
+      <li>
+        <p>Queues are simple data structures that maintain a FIFO (first in,
+                    first out) ordering.</p>
+      </li>
+      <li>
+        <p>The fundamental operations for a queue are <c>enqueue</c>, <c>dequeue</c>,
+                    and <c>is_empty</c>.</p>
+      </li>
+      <li>
+        <p>Prefix, infix, and postfix are all ways to write expressions.</p>
+      </li>
+      <li>
+        <p>Stacks are very useful for designing algorithms to evaluate and
+                    translate expressions.</p>
+      </li>
+      <li>
+        <p>Stacks can provide a reversal characteristic.</p>
+      </li>
+      <li>
+        <p>Queues can assist in the construction of timing simulations.</p>
+      </li>
+      <li>
+        <p>Simulations use random number generators to create a real-life
+                    situation and allow us to answer <q>what if</q> types of questions.</p>
+      </li>
+      <li>
+        <p>Deques are data structures that allow hybrid behavior like that of
+                    stacks and queues.</p>
+      </li>
+      <li>
+        <p>The fundamental operations for a deque are <c>add_front</c>, <c>add_rear</c>,
+                    <c>remove_front</c>, <c>remove_rear</c>, and <c>is_empty</c>.</p>
+      </li>
+      <li>
+        <p>Lists are collections of items where each item holds a relative
+                    position.</p>
+      </li>
+      <li>
+        <p>A linked list implementation maintains logical order without
+                    requiring physical storage requirements.</p>
+      </li>
+      <li>
+        <p>Modification to the head of the linked list is a special case.</p>
+      </li>
+    </ul>
+  </p>
+</section>

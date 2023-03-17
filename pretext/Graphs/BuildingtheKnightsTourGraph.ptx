@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<section xml:id="graphs_building-the-knights-tour-graph">
+  <title>Building the Knight's Tour Graph</title>
+  <p>To represent the knight's tour problem as a graph we will use the
+            following two ideas: each square on the chessboard can be represented as
+            a node in the graph and each legal move by the knight can be represented as
+            an edge in the graph. <xref ref="fig-knightmoves"/> illustrates the legal
+            moves by a knight and the corresponding edges in a graph.</p>
+  <figure align="center" xml:id="185_id1fig-knightmoves">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: Legal Moves for a Knight on Square 12 and the Corresponding Graph</caption>
+    <image source="Graphs/Figures/knightmoves.png" width="50%"/>
+  </figure>
+  <p>To build the full graph for an <em>n</em>-by-<em>n</em> board, we can use the Python
+            function shown in <xref ref="lst-knighttour1"/>. The <c>knight_graph</c> function
+            makes one pass over the entire board. At each square on the board the
+            <c>knight_graph</c> function calls a helper, <c>gen_legal_moves</c>, to create a
+            list of legal moves for that position on the board. All legal moves are
+            then converted into edges in the graph. Each location on the board is converted into a
+            linear vertex number similar to the vertex numbers shown
+            in <xref ref="fig-knightmoves"/>.</p>
+  <p xml:id="graphs_lst-knighttour1" names="lst_knighttour1">
+    <term>Listing 1</term>
+  </p>
+  <pre>from pythonds3.graphs import Graph
+
+
+def knight_graph(board_size):
+    kt_graph = Graph()
+    for row in range(board_size):
+        for col in range(board_size):
+            node_id = row * board_size + col
+            new_positions = gen_legal_moves(row, col, board_size)
+            for row2, col2 in new_positions:
+                other_node_id = row2 * board_size + col2
+                kt_graph.add_edge(node_id, other_node_id)
+    return kt_graph</pre>
+  <p>The <c>gen_legal_moves</c> function (<xref ref="lst-knighttour2"/>) takes
+            the position of the knight on the board and generates each of the eight possible moves,
+            making sure those moves are still within the board.</p>
+  <p xml:id="graphs_lst-knighttour2" names="lst_knighttour2">
+    <term>Listing 2</term>
+  </p>
+  <pre>def gen_legal_moves(row, col, board_size):
+    new_moves = []
+    move_offsets = [
+        (-1, -2),  # left-down-down
+        (-1, 2),   # left-up-up
+        (-2, -1),  # left-left-down
+        (-2, 1),   # left-left-up
+        (1, -2),   # right-down-down
+        (1, 2),    # right-up-up
+        (2, -1),   # right-right-down
+        (2, 1),    # right-right-up
+    ]
+    for r_off, c_off in move_offsets:
+        if 0 &lt;= row + r_off &lt; board_size and 0 &lt;= col + c_off &lt; board_size:
+            new_moves.append((row + r_off, col + c_off))
+    return new_moves</pre>
+  <p><xref ref="fig-bigknight"/> shows the complete graph of possible moves on an
+            <math>8 \times 8</math> board. There are exactly 336 edges in the graph. Notice
+            that the vertices corresponding to the edges of the board have fewer
+            connections (legal moves) than the vertices in the middle of the board.
+            Once again we can see how sparse the graph is. If the graph was fully
+            connected there would be 4,096 edges. Since there are only 336 edges,
+            the adjacency matrix would be only 8.2 percent full.</p>
+  <figure align="center" xml:id="185_id2fig-bigknight">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: All Legal Moves for a Knight on an <math>8 \times 8</math> Chessboard</caption>
+    <image source="Graphs/Figures/bigknight.png" width="50%"/>
+  </figure>
+</section>

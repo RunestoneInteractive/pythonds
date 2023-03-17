@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<section xml:id="advanced_summary">
+  <title>Summary</title>
+  <p>
+    <ul>
+      <li>
+        <p>Maps (dictionaries) are associative memory organization structures.</p>
+      </li>
+      <li>
+        <p>Skip lists are linked lists that provide expected <math>O(\log(n))</math>
+                    searches.</p>
+      </li>
+      <li>
+        <p>An octree provides an efficient way to reduce the number of
+                    colors used to represent an image.</p>
+      </li>
+      <li>
+        <p>Text-based pattern matching is a very common problem in many
+                    application areas.</p>
+      </li>
+      <li>
+        <p>Simple pattern matching is inefficient.</p>
+      </li>
+      <li>
+        <p>DFA graphs are easy to use but complex to build.</p>
+      </li>
+      <li>
+        <p>KMP graphs are easy to use and easy to build.</p>
+      </li>
+    </ul>
+  </p>
+</section>

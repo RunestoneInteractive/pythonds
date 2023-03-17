@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<section xml:id="trees_summary-of-map-adt-implementations">
+  <title>Summary of Map ADT Implementations</title>
+  <p>Over the past two chapters we have looked at several data structures
+            that can be used to implement the map abstract data type: a binary
+            search on a list, a hash table, a binary search tree, and a balanced
+            binary search tree. To conclude this section, let's summarize the
+            performance of each data structure for the key operations defined by the
+            map ADT (see <xref ref="trees_tbl-compare"/>).</p>
+  <table xml:id="trees_id1">
+    <tabular>
+      <title>
+        <term>Table 1: Comparing the Performance of Different Map Implementations</term>
+      </title>
+      <row header="yes">
+        <cell>
+                            operation
+                        </cell>
+        <cell>
+                            Sorted List
+                        </cell>
+        <cell>
+                            Hash Table
+                        </cell>
+        <cell>
+                            Binary Search Tree
+                        </cell>
+        <cell>
+                            AVL Tree
+                        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>put</c>
+        </cell>
+        <cell>
+          <math>O(n)</math>
+        </cell>
+        <cell>
+          <math>O(1)</math>
+        </cell>
+        <cell>
+          <math>O(n)</math>
+        </cell>
+        <cell>
+          <math>O(\log_2{n})</math>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>get</c>
+        </cell>
+        <cell>
+          <math>O(\log_2{n})</math>
+        </cell>
+        <cell>
+          <math>O(1)</math>
+        </cell>
+        <cell>
+          <math>O(n)</math>
+        </cell>
+        <cell>
+          <math>O(\log_2{n})</math>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>in</c>
+        </cell>
+        <cell>
+          <math>O(\log_2{n})</math>
+        </cell>
+        <cell>
+          <math>O(1)</math>
+        </cell>
+        <cell>
+          <math>O(n)</math>
+        </cell>
+        <cell>
+          <math>O(\log_2{n})</math>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>del</c>
+        </cell>
+        <cell>
+          <math>O(n)</math>
+        </cell>
+        <cell>
+          <math>O(1)</math>
+        </cell>
+        <cell>
+          <math>O(n)</math>
+        </cell>
+        <cell>
+          <math>O(\log_2{n})</math>
+        </cell>
+      </row>
+    </tabular>
+  </table>
+</section>

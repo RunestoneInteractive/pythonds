@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<section xml:id="introduction_review-of-basic-python">
+  <title>Review of Basic Python</title>
+  <p>In this section, we will review the programming language Python and also
+            provide some more detailed examples of the ideas from the previous
+            section. If you are new to Python or find that you need more information
+            about any of the topics presented, we recommend that you consult a resource such as
+            <url href="https://docs.python.org/3/reference/" visual="https://docs.python.org/3/reference/"><q>The Python Language Reference</q></url>,
+            <url href="https://docs.python.org/3/tutorial/" visual="https://docs.python.org/3/tutorial/"><q>The Python Tutorial</q></url>, or other documents
+            available at <url href="https://docs.python.org/" visual="https://docs.python.org/">https://docs.python.org/</url>.
+            Our goal
+            here is to reacquaint you with the language and also reinforce some of
+            the concepts that will be central to later chapters.</p>
+  <p>Python is a modern, easy-to-learn, object-oriented programming language.
+            It has a powerful set of built-in data types and easy-to-use control
+            constructs. Since Python is an interpreted language, it is most easily
+            reviewed by simply looking at and describing interactive sessions. You
+            should recall that the interpreter displays the familiar <c>&gt;&gt;&gt;</c> prompt
+            and then evaluates the Python construct that you provide. For example,</p>
+  <pre>&gt;&gt;&gt; print("Algorithms and Data Structures")
+Algorithms and Data Structures</pre>
+  <p>shows the prompt, the <c>print</c> function, the result, and the next
+            prompt.</p>
+</section>

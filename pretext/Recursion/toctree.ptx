@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+  <title>Recursion</title>
+  <xi:include href="./Objectives.ptx"/>
+  <xi:include href="./WhatIsRecursion.ptx"/>
+  <xi:include href="./CalculatingtheSumofaListofNumbers.ptx"/>
+  <xi:include href="./TheThreeLawsofRecursion.ptx"/>
+  <xi:include href="./ConvertinganIntegertoaStringinAnyBase.ptx"/>
+  <xi:include href="./StackFramesImplementingRecursion.ptx"/>
+  <xi:include href="./VisualizingRecursion.ptx"/>
+  <xi:include href="./SierpinskiTriangle.ptx"/>
+  <xi:include href="./ComplexRecursiveProblems.ptx"/>
+  <xi:include href="./TowerofHanoi.ptx"/>
+  <xi:include href="./ExploringaMaze.ptx"/>
+  <xi:include href="./DynamicProgramming.ptx"/>
+  <xi:include href="./Summary.ptx"/>
+  <xi:include href="./KeyTerms.ptx"/>
+  <xi:include href="./Exercises.ptx"/>
+</chapter>

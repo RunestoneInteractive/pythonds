@@ -1,0 +1,246 @@
+<?xml version="1.0"?>
+<section xml:id="basic-ds_implementing-an-ordered-list">
+  <title>Implementing an Ordered List</title>
+  <p>In order to implement the ordered list, we must remember that the
+            relative positions of the items are based on some underlying
+            characteristic. The ordered list of integers given above (17, 26, 31,
+            54, 77, and 93) can be represented by a linked structure as shown in
+            <xref ref="fig-orderlinked"/>. Again, the node and link structure is ideal
+            for representing the relative positioning of the items.</p>
+  <figure align="center" xml:id="105_id1fig-orderlinked">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 15: An Ordered Linked List</caption>
+    <image source="BasicDS/Figures/orderlinkedlist.png" width="50%"/>
+  </figure>
+  <p>To implement the <c>OrderedList</c> class, we will use the same technique
+            as seen previously with unordered lists. Once again, an empty list will
+            be denoted by a <c>head</c> reference to <c>None</c> (see
+            <xref ref="lst-orderlist"/>).</p>
+  <p xml:id="basic-ds_lst-orderlist" names="lst_orderlist">
+    <term>Listing 8</term>
+  </p>
+  <pre>class OrderedList:
+    def __init__(self):
+        self.head = None</pre>
+  <p>As we consider the operations for the ordered list, we should note that
+            the <c>is_empty</c> and <c>size</c> methods can be implemented the same as
+            with unordered lists since they deal only with the number of nodes in
+            the list without regard to the actual item values. Likewise, the
+            <c>remove</c> method will work just fine since we still need to find the
+            item and then link around the node to remove it. The two remaining
+            methods, <c>search</c> and <c>add</c>, will require some modification.</p>
+  <p>The search of an unordered linked list required that we traverse the
+            nodes one at a time until we either find the item we are looking for or
+            run out of nodes (<c>None</c>). It turns out that the same approach would
+            work with the ordered list and no changes are necessary if the item
+            is in the list. However, in the case where the
+            item is not in the list, we can take advantage of the ordering to stop
+            the search as soon as possible.</p>
+  <p>For example, <xref ref="fig-stopearly"/> shows the ordered linked list as a
+            search is looking for the value 45. As we traverse, starting at the head
+            of the list, we first compare against 17. Since 17 is not the item we
+            are looking for, we move to the next node, in this case 26. Again, this
+            is not what we want, so we move on to 31 and then on to 54. Now, at this
+            point, something is different. Since 54 is not the item we are looking
+            for, our former strategy would be to move forward. However, due to the
+            fact that this is an ordered list, that will not be necessary. Once the
+            value in the node becomes greater than the item we are searching for,
+            the search can stop and return <c>False</c>. There is no way the item could
+            exist further out in the linked list.</p>
+  <figure align="center" xml:id="105_id2fig-stopearly">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 16: Searching an Ordered Linked List</caption>
+    <image source="BasicDS/Figures/orderedsearch.png" width="50%"/>
+  </figure>
+  <p><xref ref="lst-ordersearch"/> shows the complete <c>search</c> method. It is
+            easy to incorporate the new condition discussed above by adding another check (line 6).
+            We can continue to look forward in the list (line 3). If any node is ever discovered that
+            contains data greater than the item we are looking for, we will immediately return <c>False</c>. The remaining lines are identical to
+            the unordered list search.</p>
+  <p xml:id="basic-ds_lst-ordersearch" names="lst_ordersearch">
+    <term>Listing 9</term>
+  </p>
+  <pre>def search(self,item):
+    current = self.head
+    while current is not None:
+        if current.data == item:
+            return True
+        if current.data &gt; item:
+            return False
+        current = current.next
+
+    return False</pre>
+  <p>The most significant method modification will take place in <c>add</c>.
+            Recall that for unordered lists, the <c>add</c> method could simply place a
+            new node at the head of the list. It was the easiest point of access.
+            Unfortunately, this will no longer work with ordered lists. It is now
+            necessary that we discover the specific place where a new item belongs
+            in the existing ordered list.</p>
+  <p>Assume we have the ordered list consisting of 17, 26, 54, 77, and 93 and
+            we want to add the value 31. The <c>add</c> method must decide that the new
+            item belongs between 26 and 54. <xref ref="fig-orderinsert"/> shows the setup
+            that we need. As we explained earlier, we need to traverse the linked
+            list looking for the place where the new node will be added. We know we
+            have found that place when either we run out of nodes (<c>current</c>
+            becomes <c>None</c>) or the value of the current node becomes greater than
+            the item we wish to add. In our example, seeing the value 54 causes us
+            to stop.</p>
+  <figure align="center" xml:id="id3">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 17: Adding an Item to an Ordered Linked List</caption>
+    <image source="BasicDS/Figures/linkedlistinsert.png" width="50%"/>
+  </figure>
+  <p>As we saw with unordered lists, it is necessary to have an additional
+            reference, again called <c>previous</c>, since <c>current</c> will not provide
+            access to the node that must be modified. <xref ref="lst-orderadd"/> shows
+            the complete <c>add</c> method. Lines 3&#x2013;4 set up the two external
+            references and lines 8&#x2013;9 again allow <c>previous</c> to follow one node
+            behind <c>current</c> every time through the iteration. The condition (line
+            7) allows the iteration to continue as long as there are more nodes and
+            the value in the current node is not larger than the item. In either
+            case, when the iteration fails, we have found the location for the new
+            node.</p>
+  <p>The remainder of the method completes the two-step process shown in
+            <xref ref="fig-orderinsert"/>. Once a new node has been created for the item,
+            the only remaining question is whether the new node will be added at the
+            beginning of the linked list or some place in the middle. Again,
+            <c>previous is None</c> (line 11) can be used to provide the answer.</p>
+  <p xml:id="basic-ds_lst-orderadd" names="lst_orderadd">
+    <term>Listing 10</term>
+  </p>
+  <pre>def add(self, item):
+    """Add a new node"""
+    current = self.head
+    previous = None
+    temp = Node(item)
+
+    while current is not None and current.data &lt; item:
+        previous = current
+        current = current.next
+
+    if previous is None:
+        temp.next = self.head
+        self.head = temp
+    else:
+        temp.next = current
+        previous.next = temp</pre>
+  <p>The <c>OrderedList</c> class with methods discussed thus far can be found
+            in ActiveCode 1.
+            We leave the remaining methods as exercises. You should carefully
+            consider whether the unordered implementations will work given that the
+            list is now ordered.</p>
+  <program xml:id="orderedlistclass" interactive="activecode" language="python">
+    <input>
+class Node:
+    """A node of a linked list"""
+
+    def __init__(self, node_data):
+        self._data = node_data
+        self._next = None
+
+    def get_data(self):
+        """Get node data"""
+        return self._data
+
+    def set_data(self, node_data):
+        """Set node data"""
+        self._data = node_data
+
+    data = property(get_data, set_data)
+
+    def get_next(self):
+        """Get next node"""
+        return self._next
+
+    def set_next(self, node_next):
+        """Set next node"""
+        self._next = node_next
+
+    next = property(get_next, set_next)
+
+    def __str__(self):
+        """String"""
+        return str(self._data)
+
+
+class OrderedList:
+    """Ordered linked list implementation"""
+    def __init__(self):
+        self.head = None
+
+    def search(self, item):
+        """Search for a node with a specific value"""
+        current = self.head
+        while current is not None:
+            if current.data == item:
+                return True
+            if current.data &gt; item:
+                return False
+            current = current.next
+
+        return False
+
+    def add(self, item):
+        """Add a new node"""
+        current = self.head
+        previous = None
+        temp = Node(item)
+
+        while current is not None and current.data &lt; item:
+            previous = current
+            current = current.next
+
+        if previous is None:
+            temp.next = self.head
+            self.head = temp
+        else:
+            temp.next = current
+            previous.next = temp
+
+    def is_empty(self):
+        """Is the list empty"""
+        return self.head == None
+
+    def size(self):
+        """Size of the list"""
+        current = self.head
+        count = 0
+        while current is not None:
+            count = count + 1
+            current = current.next
+
+        return count
+
+
+my_list = OrderedList()
+my_list.add(31)
+my_list.add(77)
+my_list.add(17)
+my_list.add(93)
+my_list.add(26)
+my_list.add(54)
+
+print(my_list.size())
+print(my_list.search(93))
+print(my_list.search(100))
+        </input>
+  </program>
+  <subsection xml:id="basic-ds_analysis-of-linked-lists">
+    <title>Analysis of Linked Lists</title>
+    <p>To analyze the complexity of the linked list operations, we need to
+                consider whether they require traversal. Consider a linked list that has
+                <math>n</math> nodes. The <c>is_empty</c> method is <math>O(1)</math> since it requires
+                one step to check the head reference for <c>None</c>. <c>size</c>, on the
+                other hand, will always require <math>n</math> steps since there is no way to know
+                how many nodes are in the linked list without traversing from head to
+                end. Therefore, <c>size</c> is <math>O(n)</math>. Adding an item to an
+                unordered list will always be <math>O(1)</math> since we simply place the new node at
+                the head of the linked list. However, <c>search</c> and <c>remove</c>, as well
+                as <c>add</c> for an ordered list, all require the traversal process.
+                Although on average they may need to traverse only half of the nodes,
+                these methods are all <math>O(n)</math> since in the worst case each will
+                process every node in the list.</p>
+    <p>You may also have noticed that the performance of this implementation
+                differs from the actual performance given earlier for Python lists. This
+                suggests that linked lists are not the way Python lists are implemented.
+                The actual implementation of a Python list is based on the notion of an array.
+                We discuss this in more detail in the last chapter.</p>
+  </subsection>
+</section>

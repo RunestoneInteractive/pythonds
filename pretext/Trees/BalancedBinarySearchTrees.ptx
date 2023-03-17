@@ -1,0 +1,31 @@
+<section xml:id="trees_balanced-binary-search-trees">
+        <title>Balanced Binary Search Trees</title>
+        <p>In the previous section we looked at building a binary search tree. As
+            we learned, the performance of the binary search tree can degrade to
+            <math>O(n)</math> for operations like <c>get</c> and <c>put</c> when the tree
+            becomes unbalanced. In this section we will look at a special kind of
+            binary search tree that automatically makes sure that the tree remains
+            balanced at all times. This tree is called an <term>AVL tree</term> and is named
+            for its inventors: G.M. Adelson-Velskii and E.M. Landis.</p>
+        <p>An AVL tree implements the Map abstract data type just like a regular
+            binary search tree; the only difference is in how the tree performs. To
+            implement our AVL tree we need to keep track of a <term>balance factor</term> for
+            each node in the tree. We do this by looking at the heights of the left
+            and right subtrees for each node. More formally, we define the balance
+            factor for a node as the difference between the height of the left
+            subtree and the height of the right subtree.</p>
+        <math_block docname="Trees/BalancedBinarySearchTrees" label="True" nowrap="False" number="True" xml:space="preserve">balance\_factor = height(left\_subtree) - height(right\_subtree)</math_block>
+        <p>Using the definition for balance factor given above, we say that a
+            subtree is left-heavy if the balance factor is greater than zero. If the
+            balance factor is less than zero, then the subtree is right-heavy. If the
+            balance factor is zero, then the tree is perfectly in balance. For
+            purposes of implementing an AVL tree and gaining the benefit of having
+            a balanced tree, we will define a tree to be in balance if the balance
+            factor is -1, 0, or 1. Once the balance factor of a node in a tree is
+            outside this range we will need to have a procedure to bring the tree
+            back into balance. <xref ref="fig-unbal"/> shows an example of an unbalanced
+            right-heavy tree and the balance factors of each node.</p>
+
+        <figure align="center" xml:id="16_id1fig-unbal"><caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: An Unbalanced Right-Heavy Tree with Balance Factors</caption><image source="Trees/Figures/unbalanced.png" width="50%"/></figure>
+    </section>
+

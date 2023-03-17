@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<section xml:id="algorithm-analysis_big-o-notation">
+  <title>Big O Notation</title>
+  <p>When trying to characterize an algorithm's efficiency in terms of
+            execution time, independent of any particular program or computer, it is
+            important to quantify the number of operations or steps that the
+            algorithm will require. If each of these steps is considered to be a
+            basic unit of computation, then the execution time for an algorithm can
+            be expressed as the number of steps required to solve the problem.
+            Deciding on an appropriate basic unit of computation can be a
+            complicated problem and will depend on how the algorithm is implemented.</p>
+  <p>A good basic unit of computation for comparing the summation algorithms
+            shown earlier might be the number of assignment statements
+            performed to compute the sum. In the function <c>sum_of_n</c>, the number of
+            assignment statements is 1 (<math>the\_sum = 0</math>)
+            plus the value of <em>n</em> (the number of times we perform
+            <math>the\_sum = the\_sum + i</math>). We can denote this by a function, call it <math>T</math>,
+            where <math>T(n) = 1 + n</math>. The parameter <em>n</em> is often referred to as
+            the <q>size of the problem,</q> and we can read this as <q><math>T(n)</math> is the time
+            it takes to solve a problem of size <math>n</math>, namely <math>1 + n</math> steps.</q></p>
+  <p>In the summation functions given above, it makes sense to use the number
+            of terms in the summation to denote the size of the problem. We can then
+            say that the sum of the first 100,000 integers is a bigger instance of
+            the summation problem than the sum of the first 1,000. Because of this,
+            it might seem reasonable that the time required to solve the larger case
+            would be greater than for the smaller case. Our goal then is to show how
+            the algorithm's execution time changes with respect to the size of the
+            problem.</p>
+  <p>Computer scientists prefer to take this analysis technique one step
+            further. It turns out that the exact number of operations is not as
+            important as determining the most dominant part of the <math>T(n)</math>
+            function. In other words, as the problem gets larger, some portion of
+            the <math>T(n)</math> function tends to overpower the rest. This dominant
+            term is what, in the end, is used for comparison. The <term>order of
+                magnitude</term> function describes the part of <math>T(n)</math> that increases
+            the fastest as the value of <em>n</em> increases. Order of magnitude is often
+            called <term>Big O notation</term> (for <em>order</em>) and written as
+            <math>O(f(n))</math>. It provides a useful approximation of the actual
+            number of steps in the computation. The function <math>f(n)</math> provides
+            a simple representation of the dominant part of the original
+            <math>T(n)</math>.</p>
+  <p>In the above example, <math>T(n) = 1 + n</math>. As <em>n</em> gets larger, the
+            constant 1 will become less and less significant to the final result. If
+            we are looking for an approximation for <math>T(n)</math>, then we can drop
+            the 1 and simply say that the running time is <math>O(n)</math>. It is
+            important to note that the 1 is certainly significant for
+            <math>T(n)</math>. However, as <em>n</em> gets large, our approximation will be
+            just as accurate without it.</p>
+  <p>As another example, suppose that for some algorithm, the exact number of
+            steps is <math>T(n)=5n^{2} + 27n + 1005</math>. When <em>n</em> is small, say 1 or 2,
+            the constant 1005 seems to be the dominant part of the function.
+            However, as <em>n</em> gets larger, the <math>n^{2}</math> term becomes the most
+            important. In fact, when <em>n</em> is really large, the other two terms become
+            insignificant in the role that they play in determining the final
+            result. Again, to approximate <math>T(n)</math> as <em>n</em> gets large, we can
+            ignore the other terms and focus on <math>5n^{2}</math>. In addition, the
+            coefficient <math>5</math> becomes insignificant as <em>n</em> gets large. We
+            would say then that the function <math>T(n)</math> has an order of
+            magnitude <math>f(n) = n^{2}</math>, or simply that it is <math>O(n^{2})</math>.</p>
+  <p>Although we do not see this in the summation example, sometimes the
+            performance of an algorithm depends on the exact values of the data
+            rather than simply the size of the problem. For these kinds of
+            algorithms we need to characterize their performance in terms of <term>best-case</term>,
+            <term>worst-case</term>, or <term>average-case</term> performance. The worst-case
+            performance refers to a particular data set where the algorithm performs
+            especially poorly, whereas a different data set for
+            the exact same algorithm might have extraordinarily good (best-case) performance.
+            However, in most cases the algorithm performs somewhere in between these
+            two extremes (average-case performance). It is important for a computer scientist to understand
+            these distinctions so they are not misled by one particular case.</p>
+  <p>A number of very common order of magnitude functions will come up over
+            and over as you study algorithms. These are shown in <xref ref="algorithm-analysis_algorithm-analysis_tbl-fntable"/>. In
+            order to decide which of these functions is the dominant part of any
+            <math>T(n)</math> function, we must see how they compare with one another
+            as <em>n</em> gets large.</p>
+  <table xml:id="algorithm-analysis_id1">
+    <tabular>
+      <title>
+        <term>Table 1: Common Functions for Big O</term>
+      </title>
+      <row header="yes">
+        <cell>
+          <term>f(n)</term>
+        </cell>
+        <cell>
+          <term>Name</term>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <math>1</math>
+        </cell>
+        <cell>
+          <term>Constant</term>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <math>\log n</math>
+        </cell>
+        <cell>
+          <term>Logarithmic</term>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <math>n</math>
+        </cell>
+        <cell>
+          <term>Linear</term>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <math>n\log n</math>
+        </cell>
+        <cell>
+          <term>Log linear</term>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <math>n^{2}</math>
+        </cell>
+        <cell>
+          <term>Quadratic</term>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <math>n^{3}</math>
+        </cell>
+        <cell>
+          <term>Cubic</term>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <math>2^{n}</math>
+        </cell>
+        <cell>
+          <term>Exponential</term>
+        </cell>
+      </row>
+    </tabular>
+  </table>
+  <p><xref ref="fig-graphfigure"/> shows graphs of the common
+            functions from <xref ref="algorithm-analysis_algorithm-analysis_tbl-fntable"/>. Notice that when <em>n</em> is small, the
+            functions are not very well defined with respect to one another. It is
+            hard to tell which is dominant. However, as <em>n</em> grows, there is a
+            definite relationship and it is easy to see how they compare with one
+            another.</p>
+  <figure align="" xml:id="11_id2fig-graphfigure">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: Plot of Common Big O Functions</caption>
+    <image source="AlgorithmAnalysis/Figures/newplot.png" width="50%"/>
+  </figure>
+  <p>As a final example, suppose that we have the fragment of Python code
+            shown in <xref ref="lst-dummycode"/>. Although this program does not really do
+            anything, it is instructive to see how we can take actual code and
+            analyze performance.</p>
+  <p xml:id="algorithm-analysis_lst-dummycode" names="lst_dummycode">
+    <term>Listing 2</term>
+  </p>
+  <pre>a = 5
+b = 6
+c = 10
+for i in range(n):
+    for j in range(n):
+        x = i * i
+        y = j * j
+        z = i * j
+for k in range(n):
+    w = a * k + 45
+    v = b * b
+d = 33</pre>
+  <p>The number of assignment operations is the sum of four terms. The first
+            term is the constant 3, representing the three assignment statements at
+            the start of the fragment. The second term is <math>3n^{2}</math>, since
+            there are three statements that are performed <math>n^{2}</math> times due
+            to the nested iteration. The third term is <math>2n</math>, two statements
+            iterated <em>n</em> times. Finally, the fourth term is the constant 1,
+            representing the final assignment statement. This gives us
+            <math>T(n) = 3 + 3n^{2} + 2n + 1 = 3n^{2} + 2n + 4</math>. By looking at the exponents,
+            we can easily see that the <math>n^{2}</math> term will be dominant and
+            therefore this fragment of code is <math>O(n^{2})</math>. Note that all of
+            the other terms as well as the coefficient on the dominant term can be
+            ignored as <em>n</em> grows larger.</p>
+  <figure align="" xml:id="id3">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Comparing <math>T(n)</math> with Common Big O Functions</caption>
+    <image source="AlgorithmAnalysis/Figures/newplot2.png" width="50%"/>
+  </figure>
+  <p><xref ref="fig-graphfigure2"/> shows a few of the common Big O functions as they
+            compare with the <math>T(n)</math> function discussed above. Note that
+            <math>T(n)</math> is initially larger than the cubic function. However, as
+            n grows, the cubic function quickly overtakes <math>T(n)</math>. It is easy
+            to see that <math>T(n)</math> then follows the quadratic function as
+            <math>n</math> continues to grow.</p>
+  <note>
+    <title>Self Check</title>
+    <p>Write two Python functions to find the minimum number in a list.  The first function should compare each number to every other number on the list. <math>O(n^2)</math>.  The second function should be linear <math>O(n)</math>.</p>
+  </note>
+  <video xml:id="findMinVid" youtube="p0COF_m6H1c" width="auto"/>
+</section>

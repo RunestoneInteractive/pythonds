@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<section xml:id="graphs_building-the-word-ladder-graph">
+  <title>Building the Word Ladder Graph</title>
+  <p>Our first problem is to figure out how to turn a large collection of
+            words into a graph. What we would like is to have an edge from one word
+            to another if the two words are only different by a single letter. If we
+            can create such a graph, then any path from one word to another is a
+            solution to the word ladder puzzle. <xref ref="fig-wordladder"/> shows a
+            small graph of some words that solve the FOOL to SAGE word ladder
+            problem. Notice that the graph is an undirected graph and that the edges
+            are unweighted.</p>
+  <figure align="center" xml:id="190_id1fig-wordladder">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: A Small Word Ladder Graph</caption>
+    <image source="Graphs/Figures/wordgraph.png" width="50%"/>
+  </figure>
+  <p>We could use several different approaches to create the graph we need to
+            solve this problem. Let's start with the assumption that we have a list
+            of words that are all the same length. As a starting point, we can
+            create a vertex in the graph for every word in the list. To figure out
+            how to connect the words, we could compare each word in the list with
+            every other. When we compare we are looking to see how many letters are
+            different. If the two words in question are different by only one
+            letter, we can create an edge between them in the graph. For a small set
+            of words that approach would work fine; however, let's suppose we have a
+            list of 5,110 words. Roughly speaking, comparing one word to every other
+            word on the list is an <math>O(n^2)</math> algorithm. For 5,110 words,
+            <math>n^2</math> is more than 26&#xA0;million comparisons.</p>
+  <p>We can do much better by using the approach shown in <xref ref="fig-wordbucket"/>.
+            Suppose that we have a number of buckets, each labeled with a four-letter word,
+            except that one of the letters on the label has been replaced by an underscore.
+            As we process a list of words, we compare each word with each bucket
+            using the underscore (_) as a wildcard. Every time we find a matching bucket
+            we put the word in that bucket, so that both POPE and POPS would both go
+            into the POP_ bucket. Once we have all the words in the appropriate buckets,
+            we know that all the words in each bucket must be connected.</p>
+  <figure align="center" xml:id="190_id2fig-wordbucket">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Word Buckets for Words That Differ by One Letter</caption>
+    <image source="Graphs/Figures/wordbuckets.png" width="50%"/>
+  </figure>
+  <p>In Python, we can implement the scheme we have just described by using a
+            dictionary. The labels on the buckets we have just described are the
+            keys in our dictionary. The value stored for each key is a list of
+            words. Once we have the dictionary built, we can create the graph. We
+            start our graph by creating a vertex for each word in the graph. Then we
+            create edges between all the vertices we find for words found under the
+            same key in the dictionary. <xref ref="lst-wordbucket1"/> shows the Python
+            code required to build the graph.</p>
+  <p xml:id="graphs_lst-wordbucket1" names="lst_wordbucket1">
+    <term>Listing 1</term>
+  </p>
+  <pre>from pythonds3.graphs import Graph
+
+
+def build_graph(filename):
+    buckets = {}
+    the_graph = Graph()
+    with open(filename, "r", encoding="utf8") as file_in:
+        all_words = file_in.readlines()
+    # create buckets of words that differ by 1 letter
+    for line in all_words:
+        word = line.strip()
+        for i, _ in enumerate(word):
+            bucket = f"{word[:i]}_{word[i + 1 :]}"
+            buckets.setdefault(bucket, set()).add(word)
+
+    # add edges between different words in the same bucket
+    for similar_words in buckets.values():
+        for word1 in similar_words:
+            for word2 in similar_words - {word1}:
+                the_graph.add_edge(word1, word2)
+    return the_graph</pre>
+  <p>Since this is our first real-world graph problem, you might be wondering
+            how sparse the graph is. The list of four-letter words we have for this
+            problem is 5,110 words long. If we were to use an adjacency matrix, the
+            matrix would have <math>5,110 \cdot 5,110</math> = 26,112,100 cells. The graph
+            constructed by the <c>build_graph</c> function has exactly 53,286 edges, so
+            the matrix would have only 0.20% of the cells filled! That is a very
+            sparse matrix indeed.</p>
+</section>

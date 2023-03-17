@@ -1,0 +1,643 @@
+<?xml version="1.0"?>
+<section xml:id="advanced_recursion-revisited">
+  <title>Recursion Revisited</title>
+  <p>One of the most common uses of numerical computing today is in the field
+            of cryptography. Each time you check your bank account, sign on to a
+            secure website to purchase something, or sign on to your computer, you
+            are using cryptography. In a general sense, <em>cryptography</em> is
+            concerned with encrypting and decrypting information that you do not
+            want other people to see. In this section we will look at some functions
+            that are used in everyday cryptographic programming. In practice there
+            may be faster ways to implement these functions, but each of them has an
+            interesting recursive implementation.</p>
+  <p>The algorithms in this section make use of Python's modulo operator (%).
+            Remember that <math>a \% b</math> is what is left over after <math>a</math> is
+            divided by <math>b</math>, for example <math>10 \% 7 = 3</math>. When we compute
+            the result of any mathematical expression modulo 10, the only possible
+            results are 0&#x2013;9.</p>
+  <p>One of the earliest forms of cryptography used only simple modular
+            arithmetic. Take the string <c>"uryybjbeyq"</c>, for example. Can you guess
+            what message is encrypted? Listing&#xA0;<url href="#lst_enc" visual="#lst_enc">[lst_enc]</url> shows you
+            the function that produced the message. Look at the listing and see if
+            you can figure it out.</p>
+  <pre>def encrypt(m):
+    s = "abcdefghijklmnopqrstuvwxyz"
+    n = ""
+    for i in m:
+        j = (s.find(i) + 13) % 26
+        n = n + s[j]
+    return n</pre>
+  <p>The <c>encrypt</c> function illustrates a form of encryption known as the
+            Caesar Cipher. It also goes by the name ROT13, which is a bit more
+            descriptive. <c>encrypt</c> simply takes each letter in the message and
+            adds 13 to its ordinal position in the alphabet. If the position goes
+            past the end of the alphabet, it wraps around. This wraparound function
+            is easily accomplished using the modulo operator. In addition, since
+            there are 26 letters in the alphabet, this function is symmetric. The
+            symmetry allows us to use the function to encrypt and decrypt the same
+            message. If you pass the string <c>"uryybjbeyg"</c> to the <c>encrypt</c>
+            function, it returns <c>"helloworld"</c>.</p>
+  <p>Rotations by amounts other than 13 are possible; however, they are not
+            symmetric with respect to encrypting and decrypting. Asymmetry would
+            require us to write a separate decryption algorithm that subtracts the
+            amount to rotate. In that case, we could generalize both the <c>encrypt</c>
+            and <c>decrypt</c> functions to take the amount of rotation as a parameter.
+            In cryptographic terms, the rotation parameter is called the <em>key</em> and
+            would be the number of positions to rotate. Given the message and the
+            key, the encryption and decryption algorithms can do their jobs.
+            Listing&#xA0;<url href="#lst_dec_key" visual="#lst_dec_key">[lst_dec_key]</url> shows the decryption algorithm
+            that takes the amount of rotation as a parameter. As an exercise you
+            should be able to modify Listing&#xA0;<url href="#lst_enc" visual="#lst_enc">[lst_enc]</url> to accept a
+            parameter that specifies a key.</p>
+  <pre>def decrypt(m, k):
+    s = "abcdefghijklmnopqrstuvwxyz"
+    n = ""
+    for i in m:
+        j = (s.find(i) + 26 - k) % 26
+        n = n + s[j]
+    return n</pre>
+  <p>Even if you keep the number <c>k</c> from everyone except the person you
+            are sending the message to, this simple form of encryption is not going
+            to stop anyone from stealing your secrets for very long. In the
+            remainder of this section, we will build up to a much more secure form
+            of encryption, the RSA <term>public key encryption</term> algorithm.</p>
+  <subsection xml:id="advanced_modular-arithmetic-theorems">
+    <title>Modular Arithmetic Theorems</title>
+    <p>If two numbers, <math>a</math> and <math>b</math>, give the same remainder when
+                divided by <math>n</math>, we say that <math>a</math> and <math>b</math> are <q>congruent
+                modulo <math>n</math>.</q> In shorthand we write <math>a \equiv~b~\pmod{n}</math>.
+                The algorithms in this section make use of three important theorems:</p>
+    <p>
+      <ol label="1">
+        <li>
+          <p>If <math>a \equiv b \pmod{n}</math> then
+                        <math>\forall c, a + c \equiv b + c \pmod{n}</math>.</p>
+        </li>
+        <li>
+          <p>If <math>a \equiv b \pmod{n}</math> then
+                        <math>\forall c, ac \equiv bc \pmod{n}</math>.</p>
+        </li>
+        <li>
+          <p>If <math>a \equiv b \pmod{n}</math> then
+                        <math>\forall p, p &gt; 0, a^p \equiv b^p \pmod{n}</math>.</p>
+        </li>
+      </ol>
+    </p>
+  </subsection>
+  <subsection xml:id="advanced_modular-exponentiation">
+    <title>Modular Exponentiation</title>
+    <p>Suppose we wanted to know the last digit of <math>3^{1,254,906}</math>. Not
+                only is that a large computation problem, but using Python's
+                arbitrary-precision integers the number has 598,743 digits! All we want to know
+                is the value of the rightmost digit. There are really two problems here.
+                First, how do we compute <math>x^n</math> efficiently? Second, how can we
+                compute <math>x^n \pmod{p}</math> without first calculating all 598,743
+                digits and then looking at the last one?</p>
+    <p>The answer to the second question is easy, given the third theorem from
+                above.</p>
+    <p>
+      <ol label="1">
+        <li>
+          <p>Initialize result to 1.</p>
+        </li>
+        <li>
+          <p>Repeat <math>n</math> times:</p>
+          <p>
+            <ol label="1">
+              <li>
+                <p>Multiply result by <math>x</math>.</p>
+              </li>
+              <li>
+                <p>Apply modulo operation to result.</p>
+              </li>
+            </ol>
+          </p>
+        </li>
+      </ol>
+    </p>
+    <p>The above approach makes the computation simpler because we are keeping
+                the result smaller rather than following it out to its full precision.
+                However, we can do even better using a recursive approach.</p>
+    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">x^n =
+   \begin{cases}
+   (x \cdot x)^{ n/2 } &amp; \text{if :math:`n` is even} \\
+   (x \cdot x^{n-1}) = x \cdot (x \cdot x)^{\lfloor n/2 \rfloor} &amp; \text{if :math:`n` is odd}
+   \end{cases}
+   \label{eqn:pow}</math_block>
+    <p>Remember that for a floating point number <math>n</math> the floor operation,
+                <math>\lfloor n \rfloor</math>, results in the largest integer smaller than
+                <math>n</math>. Python's integer division operator returns the floor of the
+                result of the division, so we do not need to do anything special in our
+                code to achieve the results we want. The above equation gives us a very
+                nice recursive definition for computing <math>x^n</math>. All we need now is
+                a base case. Recall that for any number <math>x</math>, <math>x^0 = 1</math>.
+                Since we are reducing the size of our exponent in each recursive call,
+                checking for the condition <math>n = 0</math> is a good base case.</p>
+    <pre>def modexp(x, n, p):
+    if n == 0:
+        return 1
+    t = (x * x) % p
+    tmp = modexp(t, n // 2, p)
+    if n % 2 != 0:
+        tmp = (tmp * x) % p
+    return tmp</pre>
+    <p>Notice that in the above equation both the even and odd cases include a
+                factor of <math>(x \cdot x)^{\lfloor n/2 \rfloor}</math>, so we compute that
+                unconditionally and store it in the variable <c>tmp</c>. Also note that
+                since we are computing modulo <c>p</c> we still apply the modulo operator
+                at each step of the calculation. The solution in
+                Listing&#xA0;<url href="#lst_pow" visual="#lst_pow">[lst_pow]</url> keeps the result size small and uses
+                many fewer multiplications than a purely iterative approach.</p>
+  </subsection>
+  <subsection xml:id="advanced_the-greatest-common-divisor-and-multiplicative-inverses">
+    <title>The Greatest Common Divisor and Multiplicative Inverses</title>
+    <p>A <em>multiplicative inverse</em> of a positive integer <math>x</math> modulo
+                <math>m</math> is any number <math>a</math> such that
+                <math>ax \equiv 1 \pmod{m}</math>. For example, let <math>x = 3</math>,
+                <math>m = 7</math>, and <math>a = 5</math>; <math>3 \times 5 = 15</math> and
+                <math>15\ \%\ 7 = 1</math>, so 5 is a multiplicative inverse of 3 modulo 7.</p>
+    <p>The idea of multiplicative inverses in the world of modulo arithmetic
+                may seem very confusing at first. How did we select 5 in the previous
+                example? Is 5 the only multiplicative inverse of 3 modulo 7? Do all
+                numbers <math>a</math> have a multiplicative inverse for any given <math>m</math>?</p>
+    <p>Let's look at an example that may shed some light on the first question:
+                how did we select 5 as the multiplicative inverse of 3 modulo 7? Look
+                at the following Python session:</p>
+    <pre>&gt;&gt;&gt; for i in range(1, 40):
+...    if (3 * i) % 7 == 1:
+...        print i
+...
+5
+12
+19
+26
+33</pre>
+    <p>This little experiment tells us that there are many multiplicative
+                inverses (modulo 7) for <math>x=3</math> and <math>m = 7</math>, namely
+                <math>5, 12, 19, 26, 33</math>, and so on. Do you notice anything interesting
+                about the sequence? Each number in the sequence is two less than a
+                multiple of seven.</p>
+    <p>Do all pairs of numbers <math>x</math> and <math>m</math> have a multiplicative
+                inverse? Let's look at another example. Consider <math>x=4</math> and
+                <math>m=8</math>. Plugging 4 and 8 into the loop in the previous example
+                gives us no output. If we take out the conditional and print out the
+                results of <math>(4 \cdot i)\ \%\ 8</math>, we get the sequence <math>(0, 4, 0, 4, 0, 4\dots</math>).
+                Here we have a case where the remainder alternates between 0 and 4
+                repeatedly. Clearly the result is never going to be 1. How can we know
+                that ahead of time?</p>
+    <p>The answer is that a number <math>x</math> has a multiplicative inverse,
+                modulo <math>m</math>, if and only if <math>m</math> and <math>x</math> are relatively
+                prime. Two numbers are relatively prime if <math>gcd(m,x) = 1</math>. Recall
+                that the greatest common divisor (GCD) is the largest integer that
+                divides both numbers. The next question is how can we compute the
+                greatest common divisor for a pair of numbers?</p>
+    <p>Given two numbers <math>a</math> and <math>b</math> we can find the GCD by
+                repeatedly subtracting <math>b</math> from <math>a</math> until <math>a &lt; b</math>.
+                When <math>a &lt; b</math>, we switch roles for <math>a</math> and <math>b</math>. At some
+                point <math>a - b</math> becomes 0, so we swap <math>a</math> and <math>b</math> one
+                more time. At that point we have <math>gcd(a, 0) = a</math>. This algorithm
+                was first described more than 2,000 years ago and is called Euclid's
+                algorithm.</p>
+    <p>In terms of recursive algorithm design, Euclid's algorithm is very
+                straightforward. The base case is when <math>b = 0</math>. There are two
+                possibilities for a recursive call: when <math>a &lt; b</math>, we swap
+                <math>a</math> and <math>b</math> and make a recursive call. Otherwise, we can
+                make a recursive call passing <math>a - b</math> in place of <math>a</math>.
+                Euclid's algorithm is shown in Listing&#xA0;<url href="#lst_gcd1" visual="#lst_gcd1">[lst_gcd1]</url>.</p>
+    <pre>def gcd(a, b):
+    if b == 0:
+        return a
+    elif a &lt; b:
+        return gcd(b, a)
+    return gcd(a - b, b)</pre>
+    <p>Although Euclid's algorithm is quite easy to understand and program, it
+                is not as efficient as we would like, particularly if <math>a &gt;&gt; b</math>.
+                Once again, modular arithmetic comes to our rescue. Notice that the
+                result of the last subtraction (when <math>a - b &lt; b</math>) is really the
+                same as the remainder of <math>a</math> divided by <math>b</math>. With that in
+                mind, we can cut out all of the subtractions and combine the swap of
+                <math>a</math> and <math>b</math> in one recursive call. A revised algorithm is
+                shown in Listing&#xA0;<url href="#lst_gcd2" visual="#lst_gcd2">[lst_gcd2]</url>.</p>
+    <pre>def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)</pre>
+    <p>Now that we have a way to know whether two numbers <math>x</math> and
+                <math>m</math> will have a multiplicative inverse, our next task is to write
+                an efficient algorithm to compute the inverse. Suppose that for any pair
+                of numbers <math>x</math> and <math>y</math> we could compute both
+                <math>gcd(x,y)</math> and a pair of integers <math>a</math> and <math>b</math> such
+                that <math>d = gcd(x, y) = ax + by</math>. For example,
+                <math>1 = gcd(3, 7) = -2 \times 3 + 1 \times 7</math>, so here <math>a = -2</math>
+                and <math>b = 1</math> are possible values for <math>a</math> and <math>b</math>.
+                Rather than any numbers <math>x</math> and <math>y</math>, let's use <math>m</math> and
+                <math>x</math> from our previous examples. Now we have
+                <math>1 = gcd(m, x) = am + bx</math>. From the discussion at the beginning of
+                this section we know that <math>bx = 1 \mod{m}</math>, so <math>b</math> is a
+                multiplicative inverse of <math>x</math> modulo <math>m</math>.</p>
+    <p>We have reduced the problem of computing inverses to the problem of
+                finding integers <math>a</math> and <math>b</math> that satisfy the equation
+                <math>d = gcd(x, y) = ax + by</math>. Since we started this problem with the
+                GCD algorithm, we can finish it with an extension of this algorithm
+                as well. We will take two numbers <math>x &gt;= y</math> and return a tuple
+                <math>(d, a, b)</math> such that <math>d = gcd(x, y)</math> and
+                <math>d = ax + by</math>. The extension to Euclid's algorithm is shown in
+                Listing&#xA0;<url href="#lst_gcd3" visual="#lst_gcd3">[lst_gcd3]</url>.</p>
+    <pre>def ext_gcd(x, y):
+    if y == 0:
+        return (x, 1, 0)
+    else:
+        (d, a, b) = ext_gcd(y, x % y)
+        return (d, b, a - (x // y) * b)  |\label{line:gcd3_return}|</pre>
+    <p>Notice that when we get the base case <math>y = 0</math>, we return
+                <math>d = x</math> just like the original Euclid's algorithm. However, we
+                return two additional values <math>a =1</math> and <math>b = 0</math>. Together
+                these three values satisfy the equation <math>d = ax + by</math>. If
+                <math>y &gt; 0</math>, then we recursively compute values <math>(d, a, b)</math> such
+                that <math>d = gcd(y, x \mod{y})</math> and <math>d = ay + b(x \mod{y})</math>.
+                As with the original algorithm, <math>d = gcd(x, y)</math>. But what about
+                the other two values, <math>a</math> and <math>b</math>? We know that <math>a</math>
+                and <math>b</math> must be integers, so let's call them <math>A</math> and
+                <math>B</math>. Further, we know that <math>d = Ax + By</math>. To figure out what
+                <math>A</math> and <math>B</math> should be, let's rearrange the equation as
+                follows:</p>
+    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">\begin{aligned}
+d = &amp; ay + b(x \mod{y}) \\
+  = &amp; ay + b(x - \lfloor x / y \rfloor y) \\
+  = &amp; bx + (a - \lfloor x / y \rfloor b)y\end{aligned}</math_block>
+    <p>Note the substitution made in the second line,
+                <math>x \mod{y} = x - \lfloor x / y \rfloor</math>. This is legal because
+                this is how we would normally calculate the remainder of x / y
+                (<math>x \mod{y}</math>). Looking at the rearranged equation, we can see that
+                <math>A = b</math> and <math>B = a - \lfloor x / y \rfloor b</math>. Notice that
+                this is exactly what line <url href="#line:gcd3_return" visual="#line:gcd3_return">[line:gcd3_return]</url>
+                does! To check this, note that at each return step in the algorithm the
+                return values satisfy the equation <math>d = ax + by</math>.
+                To understand how our extended GCD algorithm works, let's start with an
+                example: let <math>x = 25</math> and <math>y = 9</math>. Figure&#xA0;<url href="#fig_gcd" visual="#fig_gcd">1</url>
+                illustrates the call and return values for the recursive function.</p>
+    <figure align="" xml:id="fig-gcd">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Call Tree for Extended GCD Algorithm</caption>
+      <image source="Advanced/Figures/gcd-call.png" width="50%" alt="Call Tree for Extended GCD Algorithm" height="4.5in"/>
+    </figure>
+  </subsection>
+  <subsection xml:id="advanced_rsa-algorithm">
+    <title>RSA Algorithm</title>
+    <p>Now we have all the tools we need to write the RSA encryption algorithm.
+                The <term>RSA algorithm</term> is perhaps the easiest to understand of all the
+                public key encryption algorithms. Public key cryptography was invented
+                by Whitfield Diffie and Martin Hellman and independently by Ralph
+                Merkle. The major contribution of public key cryptography was the idea
+                that keys could come in pairs: an encryption key to convert the
+                plaintext message to ciphertext, and a decryption key to convert the
+                ciphertext back to plaintext. The keys only work one way so that a
+                message encrypted with the private key can only be decrypted with the
+                public key, and vice versa.</p>
+    <p>RSA gets its security from the difficulty of factoring large numbers.
+                The public and private keys are derived from a pair of large (100&#x2013;200
+                digit) prime numbers. Since long integers are native to Python, this is
+                a fun and easy algorithm to implement.</p>
+    <p>To generate the two keys, choose two large prime numbers <math>p</math> and
+                <math>q</math>. Then compute the product</p>
+    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">n = p \times q
+
+</math_block>
+    <p>The next step is to randomly choose the encryption key <math>e</math> such
+                that <math>e</math> and <math>(p - 1) \times (q - 1)</math> are relatively prime;
+                that is</p>
+    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">gcd(e, (p - 1) \times (q-1)) = 1
+
+</math_block>
+    <p>Finally, the decryption key <math>d</math> is simply the multiplicative
+                inverse of <math>e</math> modulo <math>(p - 1) \times (q - 1)</math>. For this we
+                can use our extended version of Euclid's algorithm.</p>
+    <p>The numbers <math>e</math> and <math>n</math> taken together are the public key.
+                The number <math>d</math> is the private key. Once we have computed
+                <math>n, e</math>, and <math>d</math>, the original primes <math>p</math> and <math>q</math>
+                are no longer needed. However, they should not be revealed.</p>
+    <p>To encrypt a message we simply use the equation
+                <math>c = m^e \pmod{n}</math>. To decrypt the message we use
+                <math>m = c^d \pmod{n}</math>.</p>
+    <p>It is easy to see that this works when you remember that <math>d</math> is
+                the multiplicative inverse of <math>e \pmod{n}</math>.</p>
+    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">\begin{aligned}
+   c^d &amp; = (m^e)^d  \pmod{n} \\
+       &amp; = m^{ed}   \pmod{n} \\
+       &amp; = m^1  \pmod{n} \\
+       &amp; = m \pmod{n} \end{aligned}</math_block>
+    <p>Before we turn all these equations into Python code, we need to talk
+                about a couple of other details. First, how do we take a text message
+                like <q>hello world</q> and turn it into a number? The easiest way is to
+                simply use the ASCII values associated with each character and
+                concatenate all the numbers together. However, since the decimal
+                versions of the numbers of the ASCII values vary in the number of digits
+                needed to represent them, we will use the hexadecimal numbers where we
+                know very reliably that two hexadecimal digits represent a single byte
+                or character.</p>
+    <table>
+      <tabular>
+        <row>
+          <cell>
+                                h
+                            </cell>
+          <cell>
+                                e
+                            </cell>
+          <cell>
+                                l
+                            </cell>
+          <cell>
+                                l
+                            </cell>
+          <cell>
+                                o
+                            </cell>
+          <cell>
+                            </cell>
+          <cell>
+                                w
+                            </cell>
+          <cell>
+                                o
+                            </cell>
+          <cell>
+                                r
+                            </cell>
+          <cell>
+                                l
+                            </cell>
+          <cell>
+                                d
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                104
+                            </cell>
+          <cell>
+                                101
+                            </cell>
+          <cell>
+                                108
+                            </cell>
+          <cell>
+                                108
+                            </cell>
+          <cell>
+                                111
+                            </cell>
+          <cell>
+                                32
+                            </cell>
+          <cell>
+                                119
+                            </cell>
+          <cell>
+                                111
+                            </cell>
+          <cell>
+                                114
+                            </cell>
+          <cell>
+                                108
+                            </cell>
+          <cell>
+                                100
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                68
+                            </cell>
+          <cell>
+                                65
+                            </cell>
+          <cell>
+                                6c
+                            </cell>
+          <cell>
+                                6c
+                            </cell>
+          <cell>
+                                6f
+                            </cell>
+          <cell>
+                                20
+                            </cell>
+          <cell>
+                                77
+                            </cell>
+          <cell>
+                                6f
+                            </cell>
+          <cell>
+                                72
+                            </cell>
+          <cell>
+                                6c
+                            </cell>
+          <cell>
+                                64
+                            </cell>
+        </row>
+      </tabular>
+    </table>
+    <p>Putting all the hexadecimal digits together we could convert that large
+                hex number into a decimal integer:</p>
+    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">m =
+126207244316550804821666916</math_block>
+    <p>Python can handle this large number just fine. However, there are two
+                reasons that real programs using RSA encryption break the message up
+                into smaller chunks and encrypt each chunk. The first reason is
+                performance. Even a relatively short email message, say 1k of text, will
+                generate a number with 2,000 to 3,000 digits! If we raise that to a
+                power of <math>d</math> which has 10 digits, we are talking about a very long number
+                indeed.</p>
+    <p>The second reason for breaking the message into chunks is the
+                restriction that <math>m \le n</math>. We must be sure that the message has a
+                unique representation modulo <math>n</math>. With binary data, choose the
+                largest power of two that is less than <math>n</math>. For example, let's choose
+                <math>p</math> and <math>q</math> to be 5563 and 8191. So
+                <math>n = 5563 \times 8191 = 45,566,533</math>. To keep the integer value of
+                our chunks less than <math>m</math>, we will divide up our word into chunks
+                that use less than the number of bytes needed to represent <math>n</math>.
+                This is easy to find in Python using the integer method <c>bit_length</c>.
+                Given the number of bits needed to represent a number, we can divide by eight
+                to find the number of bytes. Since each character in the message can be
+                represented by a single byte, this division tells us the number of bytes
+                we can put in each chunk. Conveniently, this lets us simply break the
+                message up into chunks of <math>n</math> characters and convert the hexadecimal
+                representation of each chunk into an integer. For this example we can
+                represent <math>45,566,533</math> using 26 bits. Using integer division and
+                dividing by eight tells us that we should break our message into chunks
+                of three characters.</p>
+    <p>The characters <q>h,</q> <q>e,</q> and <q>l</q> have the hexadecimal values of <math>68</math>,
+                <math>65</math>, and <math>6c</math>, respectively. Concatenating those together gives us <math>68656c</math> and
+                converting that to a decimal gives us <math>6841708</math>.</p>
+    <table>
+      <tabular>
+        <row>
+          <cell>
+                                :math:`
+                                    m_1 = 6841708`
+                            </cell>
+          <cell>
+                                :math:`
+                                    m_2 = 7106336`
+                            </cell>
+          <cell>
+                                :math:`
+                                    m_3 = 7827314`
+                            </cell>
+          <cell>
+                                :math
+                                    :<title_reference>m_4 = 27748</title_reference>
+                            </cell>
+        </row>
+      </tabular>
+    </table>
+    <p>Note that breaking the message into chunks can be very tricky, in particular
+                when the result of applying the RSA transformation to a chunk produces a
+                number that is less than seven digits long. In this case we need to be
+                careful to add a leading zero to the result when we glue our
+                chunks back together again. You can see how this might happen in
+                <math>m_1</math> and <math>m_4</math> above.</p>
+    <p>Now let's choose a value for <math>e</math>. We can select values randomly
+                and use the GCD algorithm to test them against
+                <math>(p - 1) \times (q - 1) = 45552780</math>. Remember that we are looking
+                for an <math>e</math> that is relatively prime to 45,552,780. The number
+                1,471 will work nicely for this example.</p>
+    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">\begin{aligned}
+d &amp; = ext\_gcd(45552780, 1471) \\
+  &amp; = -11705609  \\
+  &amp; = 45552780-11705609  \\
+  &amp; = 33847171\end{aligned}</math_block>
+    <p>Let's use this information to encrypt the first chunk of our message:</p>
+    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">c = 6841708^{1471} \pmod{45566533} = 16310024
+
+</math_block>
+    <p>To check our work, let's decrypt <math>c</math> to make sure we recover the
+                original value:</p>
+    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">m = 16310024^{33847171} \pmod{45566533} = 6841708
+
+</math_block>
+    <p>The remaining chunks of the message can be encrypted using the same
+                procedure and sent all together as the encrypted message.</p>
+    <p>Finally, let's look at three Python functions.</p>
+    <p>
+      <ul>
+        <li>
+          <p><c>gen_keys</c> creates a public and private key, given <math>p</math> and <math>q</math>.</p>
+        </li>
+        <li>
+          <p><c>encrypt</c> takes a message, the public key, and <math>n</math> and returns
+                        an encrypted version of the message.</p>
+        </li>
+        <li>
+          <p><c>decrypt</c> takes the encrypted message, the private key, and <math>n</math> and
+                        returns the original message.</p>
+        </li>
+      </ul>
+    </p>
+    <pre>def gen_keys(p, q):
+    n = p * q
+    m = (p - 1) * (q - 1)
+    e = int(random.random() * n)
+    while gcd(m, e) != 1:
+        e = int(random.random() * n)
+    d, a, b = ext_gcd(m, e)
+    if b &lt; 0:
+        d = m + b
+    else:
+        d = b
+    return (e, d, n)
+
+def encrypt(msg, e, n):
+    chunk_size = n.bit_length() // 8
+    all_chunks = str_to_chunks(msg, chunk_size)
+    return [
+        modexp(msg_chunk, e, n)
+        for msg_chunk in all_chunks
+    ]
+
+def decrypt(cipher_chunks, d, n):
+    chunk_size = n.bit_length() // 8
+    plain_chunks = [
+        modexp(cipher_chunk, d, n)
+        for cipher_chunk in cipher_chunks
+    ]
+    return chunks_to_str(plain_chunks, chunk_size)</pre>
+    <p>Here is a session that uses these functions to create public and private keys,
+                encrypt, and decrypt as we did in the example above.</p>
+    <pre>&gt;&gt;&gt; msg = "Python"
+&gt;&gt;&gt; e, d, n = gen_keys(5563, 8191)
+&gt;&gt;&gt; print(e, d, n)
+2646697 33043453 45566533
+&gt;&gt;&gt; c = encrypt(msg, e, n)
+&gt;&gt;&gt; print(c)
+[22810070, 18852325, 34390906, 22805081]
+&gt;&gt;&gt; m = decrypt(c, d, n)
+&gt;&gt;&gt; print(m)
+Python
+&gt;&gt;&gt;</pre>
+    <p>The last thing to look at is the two helper functions that break our
+                string into chunks and merge chunks into a string (Listing&#xA0;<url href="#lst_chunk" visual="#lst_chunk">[lst_chunk]</url>).
+                These functions make use of Python <c>bytearray</c> objects, which allow us to store
+                any string as a sequence of bytes.  This makes it very convenient for
+                us to convert a string to a sequence of hexadecimal digits and allows
+                us to convert a sequence of hexadecimal digits back to a string.</p>
+    <pre>def str_to_chunks(msg, chunk_size):
+    msg_bytes = bytes(msg, "utf-8")
+    hex_str = "".join([f"{b:02x}" for b in msg_bytes])
+    num_chunks = len(hex_str) // chunk_size
+    chunk_list = []
+    for i in range(
+        0, num_chunks * chunk_size + 1, chunk_size
+    ):
+        chunk_list.append(hex_str[i : i + chunk_size])
+    chunk_list = [
+        eval("0x" + x) for x in chunk_list if x
+    ]
+    return chunk_list
+
+
+def chunks_to_str(chunk_list, chunk_size):
+    hex_list = []
+    for chunk in chunk_list:
+        hex_str = hex(chunk)[2:]
+        clen = len(hex_str)
+        hex_list.append(
+            "0" * ((chunk_size - clen) % 2) + hex_str
+        )
+
+    hstring = "".join(hex_list)
+    msg_array = bytearray.fromhex(hstring)
+    return msg_array.decode("utf-8")</pre>
+    <p>In Listing&#xA0;<url href="#lst_chunk" visual="#lst_chunk">[lst_chunk]</url> we see the procedure for turning
+                a string into a list of chunks. One important thing to note is that we
+                must always make sure that our hexadecimal number corresponds to a
+                character that is exactly two digits long. This means that sometimes we
+                may need to add a leading zero. We can do this easily by using the
+                string formatting expression <c>f"{b:02x}"</c>. This expression creates a
+                string that is exactly two characters long, with a leading zero
+                at the beginning if necessary. Once we have created a single long
+                hexadecimal string out of the entire message, we can then break up that
+                long string into <c>num_chunks</c> chunks of hexadecimal numbers. This is
+                what is happening in the <c>for</c> loop (starting on line&#xA0;6). Finally, we can transform each
+                hexadecimal number into an integer using the <c>eval</c> function and the
+                list comprehension.</p>
+    <p>Transforming the decrypted chunks back to a string is as easy as
+                creating a single long hex string and turning that hexadecimal string
+                into a <c>bytearray</c>. The <c>bytearray</c> has a built-in <c>decode</c>
+                function to turn the <c>bytearray</c> into a string. The only tricky part
+                of this procedure is that after the transformation process the number
+                represented by the chunk may end up significantly smaller than the
+                original. If this is the case we may need to add a leading zero to make
+                sure that all of the chunks are the same length when we concatenate
+                them back together again. The extra zeros are prepended to any chunk by
+                using the string repetition operator in the expression
+                <c>"0" * ((chunk_size) - clen) % 2)</c> where <c>chunk_size</c> represents the
+                number of digits that should be present in the string and <c>clen</c>
+                represents the actual number.</p>
+  </subsection>
+</section>

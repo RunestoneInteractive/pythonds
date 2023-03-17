@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<section xml:id="sort-search_the-bubble-sort">
+  <title>The Bubble Sort</title>
+  <p>The <term>bubble sort</term> makes multiple passes through a list. It compares
+            adjacent items and exchanges those that are out of order. Each pass
+            through the list places the next largest value in its proper place. In
+            essence, each item bubbles up to the location where it belongs.</p>
+  <p><xref ref="fig-bubblepass"/> shows the first pass of a bubble sort. The shaded
+            items are being compared to see if they are out of order. If there are
+            <math>n</math> items in the list, then there are <math>n-1</math> pairs of items that
+            need to be compared on the first pass. It is important to note that once
+            the largest value in the list is part of a pair, it will continually be
+            moved along until the pass is complete.</p>
+  <figure align="center" xml:id="15_id1fig-bubblepass">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: Bubble Sort: The First Pass</caption>
+    <image source="SortSearch/Figures/bubblepass.png" width="50%"/>
+  </figure>
+  <p>At the start of the second pass, the largest value is now in place.
+            There are <math>n-1</math> items left to sort, meaning that there will be
+            <math>n-2</math> pairs. Since each pass places the next largest value in
+            place, the total number of passes necessary will be <math>n-1</math>. After
+            completing the <math>n-1</math> passes, the smallest item must be in the
+            correct position with no further processing required. <xref ref="lst-bubble"/>
+            shows the complete <c>bubble_sort</c> function. It takes the list as a
+            parameter and modifies it by exchanging items as necessary.</p>
+  <p>The exchange operation, sometimes called a <em>swap</em>, is slightly different
+            in Python than in most other programming languages. Typically, swapping
+            two elements in a list requires a temporary variable (an
+            additional memory location). A code fragment such as</p>
+  <pre>temp = a_list[i]
+a_list[i] = a_list[j]
+a_list[j] = temp</pre>
+  <p>will exchange the <math>i</math>-th and <math>j</math>-th items in the list. Without the
+            temporary storage, one of the values would be overwritten.</p>
+  <p>In Python, it is possible to perform simultaneous assignment. The
+            statement <c>a, b = b, a</c> will result in two assignment statements being
+            done at the same time (see <xref ref="fig-pythonswap"/>). Using simultaneous
+            assignment, the exchange operation can be done in one statement.</p>
+  <p>Lines 5&#x2013;7 in <xref ref="lst-bubble"/> perform the exchange of the <math>i</math> and
+            <math>(i+1)</math>-th items using the three-step procedure described
+            earlier. Note that we could also have used the simultaneous assignment
+            to swap the items.</p>
+  <figure align="center" xml:id="15_id2fig-pythonswap">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Exchanging Two Values in Python</caption>
+    <image source="SortSearch/Figures/swap.png" width="50%"/>
+  </figure>
+  <p>The following activecode example shows the complete <c>bubble_sort</c> function working on the list
+            shown above.</p>
+  <program xml:id="lst_bubble" interactive="activecode" language="python">
+    <input>
+def bubble_sort(a_list):
+    for i in range(len(a_list) - 1, 0, -1):
+        for j in range(i):
+            if a_list[j] &gt; a_list[j + 1]:
+                temp = a_list[j]
+                a_list[j] = a_list[j + 1]
+                a_list[j + 1] = temp
+
+
+a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+bubble_sort(a_list)
+print(a_list)
+        </input>
+  </program>
+  <p>The following animation shows <c>bubble_sort</c> in action.</p>
+  <raw format="html" xml:space="preserve">&lt;script src="../_static/sortmodels.js"&gt;&lt;/script&gt;
+&lt;script src="../_static/sortviewers.js"&gt;&lt;/script&gt;
+
+&lt;div id="bubble_anim" class=""&gt;
+&lt;canvas id="bubble_anim_canvas" width="400" height="400" style="border:4px solid blue"&gt;&lt;/canvas&gt;
+&lt;br /&gt;
+&lt;button onclick="bubble_anim_anim = bubble_anim_init('bubble_anim')"&gt;Initialize&lt;/button&gt;
+&lt;button onclick="bubble_anim_anim.run('bubble_anim_anim')"&gt;Run&lt;/button&gt;
+&lt;button onclick="bubble_anim_anim.stop()"&gt;Stop&lt;/button&gt; &lt;/br&gt;
+&lt;button onclick="bubble_anim_anim.begin()"&gt;Beginning&lt;/button&gt;
+&lt;button onclick="bubble_anim_anim.forward()"&gt;Step Forward&lt;/button&gt;
+&lt;button onclick="bubble_anim_anim.backward()"&gt;Step Backward&lt;/button&gt;
+&lt;button onclick="bubble_anim_anim.end()"&gt;End&lt;/button&gt;
+
+&lt;script&gt;
+bubble_anim_init = function(divid)
+{
+   var a = new Animator(new BubbleSortModel(), new BarViewer(), divid)
+   a.init()
+   return a
+}
+&lt;/script&gt;
+
+&lt;/div&gt;
+</raw>
+  <!--For more detail, CodeLens 1 allows you to step through the algorithm.-->
+  <!---->
+  <!--.. codelens:: bubbletrace-->
+  <!--:caption: Tracing the Bubble Sort-->
+  <!---->
+  <!--def bubble_sort(a_list):-->
+  <!--for i in range(len(a_list) - 1, 0, -1):-->
+  <!--for j in range(i):-->
+  <!--if a_list[j] > a_list[j + 1]:-->
+  <!--temp = a_list[j]-->
+  <!--a_list[j] = a_list[j + 1]-->
+  <!--a_list[j + 1] = temp-->
+  <!---->
+  <!---->
+  <!--a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]-->
+  <!--bubble_sort(a_list)-->
+  <!--print(a_list)-->
+  <p>To analyze the bubble sort, we should note that regardless of how the
+            items are arranged in the initial list, <math>n - 1</math> passes will be
+            made to sort a list of size <math>n</math>. <xref ref="sort-search_tbl-bubbleanalysis"/> shows the number
+            of comparisons for each pass. The total number of comparisons is the sum
+            of the first <math>n - 1</math> integers. Recall that the sum of the first
+            <math>n</math> integers is <math>\frac{1}{2}n^{2} + \frac{1}{2}n</math>. The sum of
+            the first <math>n - 1</math> integers is
+            <math>\frac{1}{2}n^{2} + \frac{1}{2}n - n</math>, which is
+            <math>\frac{1}{2}n^{2} - \frac{1}{2}n</math>. This is still
+            <math>O(n^{2})</math> comparisons. In the best case, if the list is already
+            ordered, no exchanges will be made. However, in the worst case, every
+            comparison will cause an exchange. On average, we exchange half of the
+            time.</p>
+  <table xml:id="sort-search_id3">
+    <tabular>
+      <title>
+        <term>Table 1: Comparisons for Each Pass of Bubble Sort</term>
+      </title>
+      <row header="yes">
+        <cell>
+          <term>Pass</term>
+        </cell>
+        <cell>
+          <term>Comparisons</term>
+        </cell>
+      </row>
+      <row>
+        <cell>
+                            1
+                        </cell>
+        <cell>
+          <math>n-1</math>
+        </cell>
+      </row>
+      <row>
+        <cell>
+                            2
+                        </cell>
+        <cell>
+          <math>n-2</math>
+        </cell>
+      </row>
+      <row>
+        <cell>
+                            3
+                        </cell>
+        <cell>
+          <math>n-3</math>
+        </cell>
+      </row>
+      <row>
+        <cell>
+                            &#x2026;
+                        </cell>
+        <cell>
+                            &#x2026;
+                        </cell>
+      </row>
+      <row>
+        <cell>
+          <math>n-1</math>
+        </cell>
+        <cell>
+          <math>1</math>
+        </cell>
+      </row>
+    </tabular>
+  </table>
+  <p>A bubble sort is often considered the most inefficient sorting method
+            since it must exchange items before the final location is known. These
+            <q>wasted</q> exchange operations are very costly. However, because the
+            bubble sort makes passes through the entire unsorted portion of the
+            list, it has the capability to do something most sorting algorithms
+            cannot. In particular, if during a pass there are no exchanges, then we
+            know that the list must be sorted. A bubble sort can be modified to stop
+            early if it finds that the list has become sorted. This means that for
+            lists that require just a few passes, a bubble sort may have an
+            advantage in that it will recognize the sorted list and stop.
+            <xref ref="lst-shortbubble"/> shows this modification, which is often referred
+            to as the <term>short bubble</term>.</p>
+  <program xml:id="lst_shortbubble" interactive="activecode" language="python">
+    <input>
+def bubble_sort_short(a_list):
+    for i in range(len(a_list) - 1, 0, -1):
+        exchanges = False
+        for j in range(i):
+            if a_list[j] &gt; a_list[j + 1]:
+                exchanges = True
+                a_list[j], a_list[j + 1] = a_list[j + 1], a_list[j]
+        if not exchanges:
+            break
+
+
+a_list = [20, 30, 40, 90, 50, 60, 70, 80, 100, 110]
+bubble_sort_short(a_list)
+print(a_list)
+        </input>
+  </program>
+  <!--Finally, here is ``bubble_sort_short`` in CodeLens (CodeLens 2)..-->
+  <!---->
+  <!--.. codelens:: shortbubbletrace-->
+  <!--:caption: Tracing the Short Bubble Sort-->
+  <!---->
+  <!--def bubble_sort_short(a_list):-->
+  <!--for i in range(len(a_list) - 1, 0, -1):-->
+  <!--exchanges = False-->
+  <!--for j in range(i):-->
+  <!--if a_list[j] > a_list[j + 1]:-->
+  <!--exchanges = True-->
+  <!--a_list[j], a_list[j + 1] = a_list[j + 1], a_list[j]-->
+  <!--if not exchanges:-->
+  <!--break-->
+  <!---->
+  <!---->
+  <!--a_list = [20, 30, 40, 90, 50, 60, 70, 80, 100, 110]-->
+  <!--bubble_sort_short(a_list)-->
+  <!--print(a_list)-->
+  <note>
+    <title>Self Check</title>
+    <exercise label="question_sort_1">
+      <statement>
+        <p>Q-4: Suppose you have the following list of numbers to sort: &lt;br&gt;
+                [19, 1, 9, 7, 3, 10, 13, 15, 8, 12] which list represents the partially sorted list after three complete passes of bubble sort?</p>
+      </statement>
+      <choices>
+        <choice>
+          <statement>
+            <p>[1, 9, 19, 7, 3, 10, 13, 15, 8, 12]</p>
+          </statement>
+          <feedback>
+            <p>This answer represents three swaps.  A pass means that you continue swapping all the way to the end of the list.</p>
+          </feedback>
+        </choice>
+        <choice correct="yes">
+          <statement>
+            <p>[1, 3, 7, 9, 10, 8, 12, 13, 15, 19]</p>
+          </statement>
+          <feedback>
+            <p>Very Good</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>[1, 7, 3, 9, 10, 13, 8, 12, 15, 19]</p>
+          </statement>
+          <feedback>
+            <p>A bubble sort contines to swap numbers up to index position passnum.  But remember that passnum starts at the length of the list - 1.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>[1, 9, 19, 7, 3, 10, 13, 15, 8, 12]</p>
+          </statement>
+          <feedback>
+            <p>You have been doing an insertion sort, not a bubble sort.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+  </note>
+</section>

@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<section xml:id="recursion_glossary">
+  <title>Glossary</title>
+  <glossary sorted="False">
+    <gi>
+      <title>base case</title>
+      <p>A branch of the conditional statement in a recursive function that does
+                            not give rise to further recursive calls.</p>
+    </gi>
+    <gi>
+      <title>data structure</title>
+      <p>An organization of data for the purpose of making it easier to use.</p>
+    </gi>
+    <gi>
+      <title>exception</title>
+      <p>An error that occurs at runtime.</p>
+    </gi>
+    <gi>
+      <title>handle an exception</title>
+      <p>To prevent an exception from terminating a program by wrapping
+                            the block of code in a <c>try</c> / <c>except</c> construct.</p>
+    </gi>
+    <gi>
+      <title>immutable data type</title>
+      <p>A data type which cannot be modified.  Assignments to elements or
+                            slices of immutable types cause a runtime error.</p>
+    </gi>
+    <gi>
+      <title>infinite recursion</title>
+      <p>A function that calls itself recursively without ever reaching the base
+                            case. Eventually, an infinite recursion causes a runtime error.</p>
+    </gi>
+    <gi>
+      <title>mutable data type</title>
+      <p>A data type which can be modified. All mutable types are compound
+                            types.  Lists and dictionaries (see next chapter) are mutable data
+                            types; strings and tuples are not.</p>
+    </gi>
+    <gi>
+      <title>raise</title>
+      <p>To cause an exception by using the <c>raise</c> statement.</p>
+    </gi>
+    <gi>
+      <title>recursion</title>
+      <p>The process of calling the function that is already executing.</p>
+    </gi>
+    <gi>
+      <title>recursive call</title>
+      <p>The statement that calls an already executing function.  Recursion can
+                            even be indirect &#x2014; function <title_reference>f</title_reference> can call <title_reference>g</title_reference> which calls <title_reference>h</title_reference>,
+                            and <title_reference>h</title_reference> could make a call back to <title_reference>f</title_reference>.</p>
+    </gi>
+    <gi>
+      <title>recursive definition</title>
+      <p>A definition which defines something in terms of itself. To be useful
+                            it must include <em>base cases</em> which are not recursive. In this way it
+                            differs from a <em>circular definition</em>.  Recursive definitions often
+                            provide an elegant way to express complex data structures.</p>
+    </gi>
+    <gi>
+      <title>tuple</title>
+      <p>A data type that contains a sequence of elements of any type, like a
+                            list, but is immutable. Tuples can be used wherever an immutable type
+                            is required, such as a key in a dictionary (see next chapter).</p>
+    </gi>
+    <gi>
+      <title>tuple assignment</title>
+      <p>An assignment to all of the elements in a tuple using a single
+                            assignment statement. Tuple assignment occurs in parallel rather than
+                            in sequence, making it useful for swapping values.</p>
+    </gi>
+  </glossary>
+</section>

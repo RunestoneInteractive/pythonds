@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<section xml:id="basic-ds_the-stack-abstract-data-type">
+  <title>The Stack Abstract Data Type</title>
+  <p>The stack abstract data type is defined by the following structure and
+            operations. A stack is structured, as described above, as an ordered
+            collection of items where items are added to and removed from the end
+            called the <em>top</em>. Stacks are ordered LIFO. The stack operations are
+            given below.</p>
+  <p>
+    <ul>
+      <li>
+        <p><c>Stack()</c> creates a new stack that is empty. It needs no parameters
+                    and returns an empty stack.</p>
+      </li>
+      <li>
+        <p><c>push(item)</c> adds a new item to the top of the stack. It needs the
+                    item and returns nothing.</p>
+      </li>
+      <li>
+        <p><c>pop()</c> removes the top item from the stack. It needs no parameters
+                    and returns the item. The stack is modified.</p>
+      </li>
+      <li>
+        <p><c>peek()</c> returns the top item from the stack but does not remove
+                    it. It needs no parameters. The stack is not modified.</p>
+      </li>
+      <li>
+        <p><c>is_empty()</c> tests to see whether the stack is empty. It needs no
+                    parameters and returns a boolean value.</p>
+      </li>
+      <li>
+        <p><c>size()</c> returns the number of items on the stack. It needs no
+                    parameters and returns an integer.</p>
+      </li>
+    </ul>
+  </p>
+  <p>For example, if <c>s</c> is a stack that has been created and starts out
+            empty, then <xref ref="basic-ds_tbl-stackops"/> shows the results of a sequence of
+            stack operations. Under Stack Contents, the top item is listed at the
+            far right.</p>
+  <table xml:id="basic-ds_id1">
+    <tabular>
+      <title>
+        <term>Table 1: Sample Stack Operations</term>
+      </title>
+      <row header="yes">
+        <cell>
+          <term>Stack Operation</term>
+        </cell>
+        <cell>
+          <term>Stack Contents</term>
+        </cell>
+        <cell>
+          <term>Return Value</term>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>s.is_empty()</c>
+        </cell>
+        <cell>
+          <c>[]</c>
+        </cell>
+        <cell>
+          <c>True</c>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>s.push(4)</c>
+        </cell>
+        <cell>
+          <c>[4]</c>
+        </cell>
+        <cell>
+                        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>s.push('dog')</c>
+        </cell>
+        <cell>
+          <c>[4, 'dog']</c>
+        </cell>
+        <cell>
+                        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>s.peek()</c>
+        </cell>
+        <cell>
+          <c>[4, 'dog']</c>
+        </cell>
+        <cell>
+          <c>'dog'</c>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>s.push(True)</c>
+        </cell>
+        <cell>
+          <c>[4, 'dog', True]</c>
+        </cell>
+        <cell>
+                        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>s.size()</c>
+        </cell>
+        <cell>
+          <c>[4, 'dog', True]</c>
+        </cell>
+        <cell>
+          <c>3</c>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>s.is_empty()</c>
+        </cell>
+        <cell>
+          <c>[4, 'dog', True]</c>
+        </cell>
+        <cell>
+          <c>False</c>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>s.push(8.4)</c>
+        </cell>
+        <cell>
+          <c>[4, 'dog', True, 8.4]</c>
+        </cell>
+        <cell>
+                        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>s.pop()</c>
+        </cell>
+        <cell>
+          <c>[4, 'dog', True]</c>
+        </cell>
+        <cell>
+          <c>8.4</c>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>s.pop()</c>
+        </cell>
+        <cell>
+          <c>[4, 'dog']</c>
+        </cell>
+        <cell>
+          <c>True</c>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>s.size()</c>
+        </cell>
+        <cell>
+          <c>[4, 'dog']</c>
+        </cell>
+        <cell>
+          <c>2</c>
+        </cell>
+      </row>
+    </tabular>
+  </table>
+</section>

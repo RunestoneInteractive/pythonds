@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<section xml:id="basic-ds_simple-balanced-parentheses">
+  <title>Simple Balanced Parentheses</title>
+  <p>We now turn our attention to using stacks to solve real computer science
+            problems. You have no doubt written arithmetic expressions such as</p>
+  <p>
+    <math>(5 + 6) * (7 + 8) / (4 + 3)</math>
+  </p>
+  <p>where parentheses are used to order the performance of operations. You
+            may also have some experience programming in a language such as Lisp
+            with constructs like</p>
+  <pre>(defun square(n)
+     (* n n))</pre>
+  <p>This defines a function called <c>square</c> that will return the square of
+            its argument <c>n</c>. Lisp is notorious for using lots and lots of
+            parentheses.</p>
+  <p>In both of these examples, parentheses must appear in a balanced
+            fashion. <term>Balanced parentheses</term> means that each opening symbol has a
+            corresponding closing symbol and the pairs of parentheses are properly
+            nested. Consider the following correctly balanced strings of
+            parentheses:</p>
+  <pre>(()()()())
+
+(((())))
+
+(()((())()))</pre>
+  <p>Compare those with the following, which are not balanced:</p>
+  <pre>((((((())
+
+()))
+
+(()()(()</pre>
+  <p>The ability to differentiate between parentheses that are correctly
+            balanced and those that are unbalanced is an important part of
+            recognizing many programming language structures.</p>
+  <p>The challenge then is to write an algorithm that will read a string of
+            parentheses from left to right and decide whether the symbols are
+            balanced. To solve this problem we need to make an important
+            observation. As you process symbols from left to right, the most recent
+            opening parenthesis must match the next closing symbol (see
+            <xref ref="fig-parmatch"/>). Also, the first opening symbol processed may have to
+            wait until the very last symbol for its match. Closing symbols match
+            opening symbols in the reverse order of their appearance; they match
+            from the inside out. This is a clue that stacks can be used to solve the
+            problem.</p>
+  <figure align="center" xml:id="121_id1fig-parmatch">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Matching Parentheses</caption>
+    <image source="BasicDS/Figures/simpleparcheck.png" width="50%"/>
+  </figure>
+  <p>Once you agree that a stack is the appropriate data structure for
+            keeping the parentheses, the statement of the algorithm is
+            straightforward. Starting with an empty stack, process the parenthesis
+            strings from left to right. If a symbol is an opening parenthesis, push
+            it on the stack as a signal that a corresponding closing symbol needs to
+            appear later. If, on the other hand, a symbol is a closing parenthesis,
+            pop the stack. As long as it is possible to pop the stack to match every
+            closing symbol, the parentheses remain balanced. If at any time there is
+            no opening symbol on the stack to match a closing symbol, the string is
+            not balanced properly. At the end of the string, when all symbols have
+            been processed, the stack should be empty. The Python code to implement
+            this algorithm is shown in <xref ref="lst-parcheck1"/>.</p>
+  <program xml:id="parcheck1" interactive="activecode" language="python">
+    <input>
+from pythonds3.basic import Stack
+
+
+def par_checker(symbol_string):
+    s = Stack()
+    for symbol in symbol_string:
+        if symbol == "(":
+            s.push(symbol)
+        else:
+            if s.is_empty():
+                return False
+            else:
+                s.pop()
+
+    return s.is_empty()
+
+
+print(par_checker("((()))"))  # expected True
+print(par_checker("((()()))"))  # expected True
+print(par_checker("(()"))  # expected False
+print(par_checker(")("))  # expected False
+        </input>
+  </program>
+  <p>This function, <c>par_checker</c>, assumes that a <c>Stack</c> class is
+            available and returns a Boolean result as to whether the string of
+            parentheses is balanced. If the current symbol is <c>(</c>,
+            then it is pushed on the stack (lines 7&#x2013;8).
+            Note also in line 13 that <c>pop</c> simply removes a symbol from the stack.
+            The returned value is not used since we know it must be an opening symbol seen earlier.
+            If the stack becomes empty before we reach the end of the <c>symbol_string</c>,
+            then there are too many closing parentheses and the string is not balanced,
+            so we immediately return <c>False</c> (line 11).
+            At the end (line 15), the string represents a correctly balanced sequence of parentheses as long as the stack has been completely cleaned off.</p>
+</section>

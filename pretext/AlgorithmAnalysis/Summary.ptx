@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<section xml:id="algorithm-analysis_summary">
+  <title>Summary</title>
+  <p>
+    <ul>
+      <li>
+        <p>Algorithm analysis is an implementation-independent way of measuring
+                    an algorithm.</p>
+      </li>
+      <li>
+        <p>Big O notation allows algorithms to be classified by their dominant
+                    process with respect to the size of the problem.</p>
+      </li>
+    </ul>
+  </p>
+</section>

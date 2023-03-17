@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<section xml:id="algorithm-analysis_objectives">
+  <title>Objectives</title>
+  <p>
+    <ul>
+      <li>
+        <p>To understand why algorithm analysis is important.</p>
+      </li>
+      <li>
+        <p>To be able to use Big O to describe execution time.</p>
+      </li>
+      <li>
+        <p>To understand the Big O execution time of common operations on
+                    Python lists and dictionaries.</p>
+      </li>
+      <li>
+        <p>To understand how the implementation of Python data impacts algorithm
+                    analysis.</p>
+      </li>
+      <li>
+        <p>To understand how to benchmark simple Python programs.</p>
+      </li>
+    </ul>
+  </p>
+</section>

@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<section xml:id="basic-ds_implementing-a-stack-in-python">
+  <title>Implementing a Stack in Python</title>
+  <p>Now that we have clearly defined the stack as an abstract data type, we
+            will turn our attention to using Python to implement the stack. Recall
+            that when we give an abstract data type a physical implementation, we
+            refer to the implementation as a <em>data structure</em>.</p>
+  <p>As we described in Chapter 1, in Python, as in any object-oriented
+            programming language, the implementation of choice for an abstract data
+            type such as a stack is the creation of a new class. The stack
+            operations are implemented as methods. Further, to implement a stack,
+            which is a collection of elements, it makes sense to utilize the power
+            and simplicity of the primitive collections provided by Python. We will
+            use a list.</p>
+  <p>Recall that the list class in Python provides an ordered collection
+            mechanism and a set of methods. For example, if we have the list
+            [2, 5, 3, 6, 7, 4], we need only to decide which end of the list will be
+            considered the top of the stack and which will be the base. Once that
+            decision is made, the operations can be implemented using the list
+            methods such as <c>append</c> and <c>pop</c>.</p>
+  <p>The following stack implementation (<xref ref="lst-stackcode1"/>) assumes that
+            the end of the list will hold the top element of the stack. As the stack
+            grows (as <c>push</c> operations occur), new items will be added on the end
+            of the list. <c>pop</c> operations will manipulate that same end.</p>
+  <program xml:id="stack_1ac" interactive="activecode" language="python">
+    <input>
+class Stack:
+    """Stack implementation as a list"""
+
+    def __init__(self):
+        """Create new stack"""
+        self._items = []
+
+    def is_empty(self):
+        """Check if the stack is empty"""
+        return not bool(self._items)
+
+    def push(self, item):
+        """Add an item to the stack"""
+        self._items.append(item)
+
+    def pop(self):
+        """Remove an item from the stack"""
+        return self._items.pop()
+
+    def peek(self):
+        """Get the value of the top item in the stack"""
+        return self._items[-1]
+
+    def size(self):
+        """Get the number of items in the stack"""
+        return len(self._items)
+        </input>
+  </program>
+  <p>Remember that nothing happens when we click the <c>run</c> button other than the
+            definition of the class.  We must create a <c>Stack</c> object and then use it.
+            <xref ref="lst-stackcode1"/> shows the <c>Stack</c> class in
+            action as we perform the sequence of operations from
+            <xref ref="basic-ds_the-stack-abstract-data-type"/>.  Notice that the definition of the <c>Stack</c> class is
+            imported from the <c>pythonds3</c> module  that is included with the materials for this book
+            or can be downloaded from the <url href="https://pypi.org/" visual="https://pypi.org/">Python Package Index</url>.</p>
+  <note>
+    <p>The <c>pythonds3</c> module contains implementations of all data structures discussed in this book.
+                It is structured according to the sections: basic, trees, and graphs.
+                The module can be downloaded from <url href="https://github.com/psads/pythonds3" visual="https://github.com/psads/pythonds3">GitHub</url>
+                or installed from the command line as follows:</p>
+    <p>
+      <c>python3 -m pip install -U pythonds3</c>
+    </p>
+  </note>
+  <program xml:id="stack_ex_1" interactive="activecode" language="python">
+    <input>
+from pythonds3.basic import Stack
+
+s = Stack()
+
+print(s.is_empty())
+s.push(4)
+s.push("dog")
+print(s.peek())
+s.push(True)
+print(s.size())
+print(s.is_empty())
+s.push(8.4)
+print(s.pop())
+print(s.pop())
+print(s.size())
+        </input>
+  </program>
+  <p>It is important to note that we could have chosen to implement the stack
+            using a list where the top is at the beginning instead of at the end. In
+            this case, the previous <c>pop</c> and <c>append</c> methods would no longer
+            work and we would have to index position 0 (the first item in the list)
+            explicitly using <c>pop</c> and <c>insert</c>. The implementation is shown in
+            <xref ref="lst-stackcode2"/>.</p>
+  <program xml:id="stack_cl_1" interactive="codelens" language="python">
+    <input>
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        return self.items == []
+
+    def push(self, item):
+        self.items.insert(0, item)
+
+    def pop(self):
+        return self.items.pop(0)
+
+    def peek(self):
+        return self.items[0]
+
+    def size(self):
+        return len(self.items)
+
+s = Stack()
+s.push("hello")
+s.push("true")
+print(s.pop())
+    </input>
+  </program>
+  <p>This ability to change the physical implementation of an abstract data
+            type while maintaining the logical characteristics is an example of
+            abstraction at work. However, even though the stack will work either
+            way, if we consider the performance of the two implementations, there is
+            definitely a difference. Recall that the <c>append()</c> and <c>pop()</c>
+            operations were both <math>O(1)</math>. This means that the first implementation will
+            perform <c>push</c> and <c>pop</c> in constant time no matter how many items are on
+            the stack. The performance of the second implementation suffers in that
+            the <c>insert(0)</c> and <c>pop(0)</c> operations will both require <math>O(n)</math> for a
+            stack of size <c>n</c>. Clearly, even though the implementations are logically
+            equivalent, they would have very different timings when performing
+            benchmark testing.</p>
+  <note>
+    <title>Self Check</title>
+    <exercise label="stack_1">
+      <statement>
+        <p>Q-4: Given the following sequence of stack operations, what is the top item on the stack when the sequence is complete?</p>
+        <program language="python">
+          <input>
+m = Stack()
+m.push("x")
+m.push("y")
+m.pop()
+m.push("z")
+m.peek()
+</input>
+        </program>
+      </statement>
+      <choices>
+        <choice>
+          <statement>
+            <p>"x"</p>
+          </statement>
+          <feedback>
+            <p>Remember that a stack is built from the bottom up.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>"y"</p>
+          </statement>
+          <feedback>
+            <p>Remember that a stack is built from the bottom up.</p>
+          </feedback>
+        </choice>
+        <choice correct="yes">
+          <statement>
+            <p>"z"</p>
+          </statement>
+          <feedback>
+            <p>Good job.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>The stack is empty</p>
+          </statement>
+          <feedback>
+            <p>Remember that a stack is built from the bottom up.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+    <exercise label="stack_2">
+      <statement>
+        <p>Q-5: Given the following sequence of stack operations, what is the top item on the stack when the sequence is complete?</p>
+        <program language="python">
+          <input>
+m = Stack()
+m.push("x")
+m.push("y")
+m.push("z")
+while not m.is_empty():
+   m.pop()
+   m.pop()
+</input>
+        </program>
+      </statement>
+      <choices>
+        <choice>
+          <statement>
+            <p>"x"</p>
+          </statement>
+          <feedback>
+            <p>You may want to check out the docs for isEmpty</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>the stack is empty</p>
+          </statement>
+          <feedback>
+            <p>There is an odd number of things on the stack but each time through the loop 2 things are popped.</p>
+          </feedback>
+        </choice>
+        <choice correct="yes">
+          <statement>
+            <p>an error will occur</p>
+          </statement>
+          <feedback>
+            <p>Good Job.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>"z"</p>
+          </statement>
+          <feedback>
+            <p>You may want to check out the docs for isEmpty</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+    <p>Write a function <title_reference>rev_string(my_str)</title_reference> that uses a stack to reverse the
+                characters in a string.</p>
+    <program xml:id="stack_stringrev" interactive="activecode" language="python">
+      <input>
+from test import testEqual
+from pythonds3.basic import Stack
+
+def rev_string(my_str):
+    # your code here
+
+testEqual(rev_string("apple"), "elppa")
+testEqual(rev_string("x"), "x")
+testEqual(rev_string("1234567890"), "0987654321")
+        </input>
+    </program>
+  </note>
+  <video xml:id="stack1_video" youtube="fZtLSM7k_54" width="auto"/>
+</section>

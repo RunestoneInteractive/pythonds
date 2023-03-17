@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<section xml:id="sort-search_the-shell-sort">
+  <title>The Shell Sort</title>
+  <p>The <term>Shell sort</term>, sometimes called the <em>diminishing increment sort</em>,
+            improves on the insertion sort by breaking the original list into a
+            number of smaller sublists, each of which is sorted using an insertion
+            sort. The unique way that these sublists are chosen is the key to the
+            Shell sort. Instead of breaking the list into sublists of contiguous
+            items, the Shell sort uses an increment <math>i</math>, sometimes called the
+            <term>gap</term>, to create a sublist by choosing all items that are <math>i</math> items
+            apart.</p>
+  <p>This can be seen in <xref ref="fig-incrementsa"/>. This list has nine items. If
+            we use an increment of three, there are three sublists, each of which
+            can be sorted by an insertion sort. After completing these sorts, we get
+            the list shown in <xref ref="fig-incrementsb"/>. Although
+            the list shown in <xref ref="fig-incrementsb"/> is not completely sorted,
+            something very interesting has happened. By sorting
+            the sublists, we have moved the items closer to where they actually
+            belong.</p>
+  <figure align="center" xml:id="19_id1fig-incrementsa">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: A Shell Sort with Increments of Three</caption>
+    <image source="SortSearch/Figures/shellsortA.png" width="50%"/>
+  </figure>
+  <figure align="center" xml:id="19_id2fig-incrementsb">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 7: A Shell Sort after Sorting Each Sublist</caption>
+    <image source="SortSearch/Figures/shellsortB.png" width="50%"/>
+  </figure>
+  <p><xref ref="fig-incrementsc"/> shows a final insertion sort using an increment of
+            one&#x2014;in other words, a standard insertion sort. Note that by performing
+            the earlier sublist sorts, we have now reduced the total number of
+            shifting operations necessary to put the list in its final order. For
+            this case, we need only four more shifts to complete the process.</p>
+  <figure align="center" xml:id="id3">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 8: ShellSort: A Final Insertion Sort with Increment of 1</caption>
+    <image source="SortSearch/Figures/shellsortC.png" width="50%"/>
+  </figure>
+  <figure align="center" xml:id="id4">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 9: Initial Sublists for a Shell Sort</caption>
+    <image source="SortSearch/Figures/shellsortD.png" width="50%"/>
+  </figure>
+  <p>We said earlier that the way in which the increments are chosen is the
+            unique feature of the Shell sort. The function shown in <xref ref="lst-shell"/>
+            uses a different set of increments. In this case, we begin with
+            <math>\frac {n}{2}</math> sublists. On the next pass,
+            <math>\frac {n}{4}</math> sublists are sorted. Eventually, a single list is
+            sorted with the basic insertion sort. <xref ref="fig-incrementsd"/> shows the
+            first sublists for our example using this increment.</p>
+  <p>The following invocation of the <c>shell_sort</c> function shows the
+            partially sorted lists after each increment, with the final sort being
+            an insertion sort with an increment of one.</p>
+  <program xml:id="lst_shellSort" interactive="activecode" language="python">
+    <input>
+def shell_sort(a_list):
+    sublist_count = len(a_list) // 2
+    while sublist_count &gt; 0:
+        for pos_start in range(sublist_count):
+            gap_insertion_sort(a_list, pos_start, sublist_count)
+        print("After increments of size", sublist_count, "the list is", a_list)
+        sublist_count = sublist_count // 2
+
+
+def gap_insertion_sort(a_list, start, gap):
+    for i in range(start + gap, len(a_list), gap):
+        cur_val = a_list[i]
+        cur_pos = i
+        while cur_pos &gt;= gap and a_list[cur_pos - gap] &gt; cur_val:
+            a_list[cur_pos] = a_list[cur_pos - gap]
+            cur_pos = cur_pos - gap
+        a_list[cur_pos] = cur_val
+
+
+a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+shell_sort(a_list)
+print(a_list)
+        </input>
+  </program>
+  <raw format="html" xml:space="preserve">&lt;script src="../_static/sortmodels.js"&gt;&lt;/script&gt;
+&lt;script src="../_static/sortviewers.js"&gt;&lt;/script&gt;
+
+&lt;div id="shell_anim" class=""&gt;
+&lt;canvas id="shell_anim_canvas" width="400" height="400" style="border:4px solid blue"&gt;&lt;/canvas&gt;
+&lt;br /&gt;
+&lt;button onclick="shell_anim_anim = shell_anim_init('shell_anim')"&gt;Initialize&lt;/button&gt;
+&lt;button onclick="shell_anim_anim.run('shell_anim_anim')"&gt;Run&lt;/button&gt;
+&lt;button onclick="shell_anim_anim.stop()"&gt;Stop&lt;/button&gt; &lt;/br&gt;
+&lt;button onclick="shell_anim_anim.begin()"&gt;Beginning&lt;/button&gt;
+&lt;button onclick="shell_anim_anim.forward()"&gt;Step Forward&lt;/button&gt;
+&lt;button onclick="shell_anim_anim.backward()"&gt;Step Backward&lt;/button&gt;
+&lt;button onclick="shell_anim_anim.end()"&gt;End&lt;/button&gt;
+
+&lt;script&gt;
+shell_anim_init = function(divid)
+{
+   var a = new Animator(new ShellSortModel(), new BarViewer(), divid)
+   a.init()
+   return a
+}
+&lt;/script&gt;
+
+&lt;/div&gt;
+</raw>
+  <!--For more detail, CodeLens 5 allows you to step through the algorithm.-->
+  <!---->
+  <!---->
+  <!--.. codelens:: shellSorttrace-->
+  <!--:caption: Tracing the Shell Sort-->
+  <!---->
+  <!--def shell_sort(a_list):-->
+  <!--sublist_count = len(a_list) // 2-->
+  <!--while sublist_count > 0:-->
+  <!--for pos_start in range(sublist_count):-->
+  <!--gap_insertion_sort(a_list, pos_start, sublist_count)-->
+  <!--print("After increments of size", sublist_count, "the list is", a_list)-->
+  <!--sublist_count = sublist_count // 2-->
+  <!---->
+  <!---->
+  <!--def gap_insertion_sort(a_list, start, gap):-->
+  <!--for i in range(start + gap, len(a_list), gap):-->
+  <!--cur_val = a_list[i]-->
+  <!--cur_pos = i-->
+  <!--while cur_pos >= gap and a_list[cur_pos - gap] > cur_val:-->
+  <!--a_list[cur_pos] = a_list[cur_pos - gap]-->
+  <!--cur_pos = cur_pos - gap-->
+  <!--a_list[cur_pos] = cur_val-->
+  <!---->
+  <!---->
+  <!--a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]-->
+  <!--shell_sort(a_list)-->
+  <!--print(alist)-->
+  <p>At first glance you may think that a Shell sort cannot be better than an
+            insertion sort since it does a complete insertion sort as the last
+            step. It turns out, however, that this final insertion sort does not
+            need to do very many comparisons (or shifts) since the list has been
+            presorted by earlier incremental insertion sorts, as described above.
+            In other words, each pass produces a list that is <q>more sorted</q> than the
+            previous one. This makes the final pass very efficient.</p>
+  <p>Although a general analysis of the Shell sort is well beyond the scope
+            of this text, we can say that it tends to fall somewhere between
+            <math>O(n)</math> and <math>O(n^{2})</math>, based on the behavior described
+            above. For the increments shown in <xref ref="lst-shell"/>, the performance is
+            <math>O(n^{2})</math>. By changing the increment, for example using
+            <math>2^{k}-1</math> (1, 3, 7, 15, 31, and so on), a Shell sort can perform
+            at <math>O(n^{\frac {3}{2}})</math>.</p>
+  <note>
+    <title>Self Check</title>
+    <exercise label="question_sort_4">
+      <statement>
+        <p>Q-3: Given the following list of numbers:  [5, 16, 20, 12, 3, 8, 9, 17, 19, 7]
+                Which answer illustrates the contents of the list after all swapping is complete for a gap size of 3?</p>
+      </statement>
+      <choices>
+        <choice correct="yes">
+          <statement>
+            <p>[5, 3, 8, 7, 16, 19, 9, 17, 20, 12]</p>
+          </statement>
+          <feedback>
+            <p>Each group of numbers represented by index positions 3 apart are sorted correctly.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>[3, 7, 5, 8, 9, 12, 19, 16, 20, 17]</p>
+          </statement>
+          <feedback>
+            <p>This solution is for a gap size of two.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>[3, 5, 7, 8, 9, 12, 16, 17, 19, 20]</p>
+          </statement>
+          <feedback>
+            <p>This is list completely sorted, you have gone too far.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>[5, 16, 20, 3, 8, 12, 9, 17, 20, 7]</p>
+          </statement>
+          <feedback>
+            <p>The gap size of three indicates that the group represented by every third number e.g. 0, 3, 6, 9  and 1, 4, 7 and 2, 5, 8 are sorted not groups of 3.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+  </note>
+</section>

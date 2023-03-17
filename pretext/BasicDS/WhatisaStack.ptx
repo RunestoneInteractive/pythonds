@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<section xml:id="basic-ds_stacks">
+  <title>Stacks</title>
+  <p>A <term>stack</term> (sometimes called a <em>push-down stack</em>) is an ordered
+            collection of items where the addition of new items and the removal of
+            existing items always takes place at the same end. This end is commonly
+            referred to as the <em>top</em>. The end opposite the top is known as the
+            <em>base</em>.</p>
+  <p>The base of the stack is significant since items stored in the stack
+            that are closer to the base represent those that have been in the stack
+            the longest. The most recently added item is the one that is in position
+            to be removed first. This ordering principle is sometimes called
+            <term>LIFO</term>, or <term>last in, first out</term>. It provides an ordering based on length
+            of time in the collection. Newer items are near the top, while older
+            items are near the base.</p>
+  <p>Many examples of stacks occur in everyday situations. Almost any
+            cafeteria has a stack of trays or plates where you take the one at the
+            top, uncovering a new tray or plate for the next customer in line.
+            Imagine a stack of books on a desk (<xref ref="fig-bookstack"/>). The only
+            book whose cover is visible is the one on top. To access others in the
+            stack, we need to remove the ones that are sitting on top of them.
+            <xref ref="fig-objectstack"/> shows another stack that contains a number
+            of primitive Python data objects.</p>
+  <figure align="center" xml:id="117_id1fig-bookstack">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: A Stack of Books</caption>
+    <image source="BasicDS/Figures/bookstack2.png" width="50%"/>
+  </figure>
+  <figure align="center" xml:id="117_id2fig-objectstack">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: A Stack of Primitive Python Data Objects</caption>
+    <image source="BasicDS/Figures/primitive.png" width="50%"/>
+  </figure>
+  <p>One of the most useful properties of stacks can be observed
+            as items are added and then removed. Assume you
+            start out with a clean desktop. Now place books one at a time on top of
+            each other. You are constructing a stack. Consider what happens when you
+            begin removing books. The order that they are removed is exactly the
+            reverse of the order that they were placed. Stacks are fundamentally
+            important, as they can be used to reverse the order of items. The order
+            of insertion is the reverse of the order of removal.
+            <xref ref="fig-reversal"/> shows the Python data object stack as it was
+            created and then again as items are removed. Note the order of the
+            objects.</p>
+  <figure align="center" xml:id="id3">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: The Reversal Property of Stacks</caption>
+    <image source="BasicDS/Figures/simplereversal.png" width="50%"/>
+  </figure>
+  <p>Considering this reversal property, you can perhaps think of examples of
+            stacks that occur as you use your computer. For example, every web
+            browser has a Back button. As you navigate from web page to web page,
+            those pages are placed on a stack (actually it is the URLs that are
+            going on the stack). The current page that you are viewing is on the top
+            and the first page you looked at is at the base. If you click on the
+            Back button, you begin to move in reverse order through the pages.</p>
+</section>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<section xml:id="graphs_an-adjacency-list">
+  <title>An Adjacency List</title>
+  <p>A more space-efficient way to implement a sparsely connected graph is to
+            use an adjacency list. In an adjacency list implementation, we keep a
+            master list of all the vertices in the <c>Graph</c> object, and each vertex
+            object in the graph maintains a list of the other vertices that it is
+            connected to. In our implementation of the <c>Vertex</c> class we will use
+            a dictionary rather than a list, where the dictionary keys are the
+            vertices and the values are the weights. <xref ref="fig-adjlist"/>
+            illustrates the adjacency list representation for the graph in
+            <xref ref="graphs_vocabularyand-definitions"/>.</p>
+  <figure align="center" xml:id="179_id1fig-adjlist">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: An Adjacency List Representation of a Graph</caption>
+    <image source="Graphs/Figures/adjlist.png" width="50%"/>
+  </figure>
+  <p>The advantage of the adjacency list implementation is that it allows us
+            to compactly represent a sparse graph. The adjacency list also allows us
+            to easily find all the links that are directly connected to a particular
+            vertex.</p>
+</section>

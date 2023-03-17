@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<section xml:id="trees_implementation">
+  <title>Implementation</title>
+  <p>Keeping in mind the definitions from the previous section,
+            we can use the following functions to create and manipulate a binary tree:</p>
+  <p>
+    <ul>
+      <li>
+        <p><c>BinaryTree()</c> creates a new instance of a binary tree.</p>
+      </li>
+      <li>
+        <p><c>get_root_val()</c> returns the object stored in the current node.</p>
+      </li>
+      <li>
+        <p><c>set_root_val(val)</c> stores the object in parameter <c>val</c> in the current node.</p>
+      </li>
+      <li>
+        <p><c>get_left_child()</c> returns the binary tree corresponding to the left child of the current node.</p>
+      </li>
+      <li>
+        <p><c>get_right_child()</c> returns the binary tree corresponding to the right child of the current node.</p>
+      </li>
+      <li>
+        <p><c>insert_left(val)</c> creates a new binary tree and installs it as the left child of the current node.</p>
+      </li>
+      <li>
+        <p><c>insert_right(val)</c> creates a new binary tree and installs it as the right child of the current node.</p>
+      </li>
+    </ul>
+  </p>
+  <p>The key decision in implementing a tree is choosing a good internal storage technique.
+            Python allows us two very interesting possibilities, and we will examine both
+            before choosing one.  We call them <em>list of lists</em> and <em>nodes and references</em>.</p>
+</section>

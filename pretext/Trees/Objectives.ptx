@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<section xml:id="trees_objectives">
+  <title>Objectives</title>
+  <p>
+    <ul>
+      <li>
+        <p>To understand what a tree data structure is and how it is used.</p>
+      </li>
+      <li>
+        <p>To see how trees can be used to implement a map data structure.</p>
+      </li>
+      <li>
+        <p>To implement trees using a list.</p>
+      </li>
+      <li>
+        <p>To implement trees using classes and references.</p>
+      </li>
+      <li>
+        <p>To implement trees as a recursive data structure.</p>
+      </li>
+      <li>
+        <p>To implement a priority queue using a heap.</p>
+      </li>
+    </ul>
+  </p>
+</section>

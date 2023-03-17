@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<section xml:id="graphs_topological-sorting">
+  <title>Topological Sorting</title>
+  <p>To demonstrate that computer scientists can turn just about anything
+            into a graph problem, let's consider the difficult problem of stirring
+            up a batch of pancakes. The recipe is really quite simple: 1 egg, 1 cup
+            of pancake mix, 1 tablespoon oil, and <math>3 \over 4</math> cup of milk.
+            To make pancakes you must heat the griddle, mix all the ingredients
+            together, and spoon the mix onto a hot griddle. When the pancakes start
+            to bubble you turn them over and let them cook until they are golden
+            brown on the bottom. Before you eat your pancakes you are going to want
+            to heat up some syrup. <xref ref="fig-pancakes"/> illustrates this process as
+            a dependency graph.</p>
+  <figure align="center" xml:id="177_id1fig-pancakes">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 27: The Steps for Making Pancakes</caption>
+    <image source="Graphs/Figures/pancakes.png" width="50%"/>
+  </figure>
+  <p>The difficult thing about making pancakes is knowing what to do first.
+            As you can see from <xref ref="fig-pancakes"/> you might start by heating the
+            griddle or by adding any of the ingredients to the pancake mix. To help
+            us decide the precise order in which we should do each of the steps
+            required to make our pancakes, we turn to a graph algorithm called the
+            <term>topological sort</term>.</p>
+  <p>A topological sort takes a directed acyclic graph and produces a linear
+            ordering of all its vertices such that if the graph <math>G</math> contains
+            an edge <math>(v, w)</math> then the vertex <math>v</math> comes before the
+            vertex <math>w</math> in the ordering. Directed acyclic graphs are used in
+            many applications to indicate the precedence of events. Making pancakes
+            is just one example; other examples include software project schedules,
+            precedence charts for optimizing database queries, and multiplying
+            matrices.</p>
+  <p>The topological sort is a simple but useful adaptation of a depth-first
+            search. The algorithm for the topological sort is as follows:</p>
+  <p>
+    <ol label="1">
+      <li>
+        <p>Call <c>dfs(g)</c> for some graph <c>g</c>. The main reason we want to call
+                    depth-first search is to compute the closing times for each of the
+                    vertices.</p>
+      </li>
+      <li>
+        <p>Store the vertices in a list in decreasing order of the closing time.</p>
+      </li>
+      <li>
+        <p>Return the ordered list as the result of the topological sort.</p>
+      </li>
+    </ol>
+  </p>
+  <p><xref ref="fig-pancakesdfs"/> shows the depth-first forest constructed by
+            <c>dfs</c> on the pancake-making graph shown in <xref ref="fig-pancakes"/>.</p>
+  <figure align="center" xml:id="177_id2fig-pancakesdfs">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 28: Result of Depth-First Search on the Pancake Graph</caption>
+    <image source="Graphs/Figures/pancakesDFS.png" width="50%"/>
+  </figure>
+  <p>Finally, <xref ref="fig-pancakests"/> shows the results of applying the
+            topological sort algorithm to our graph. Now all the ambiguity has been
+            removed and we know exactly the order in which to perform the pancake-making steps.</p>
+  <figure align="center" xml:id="id3">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 29: Result of Topological Sort on Directed Acyclic Graph</caption>
+    <image source="Graphs/Figures/pancakesTS.png" width="50%"/>
+  </figure>
+</section>

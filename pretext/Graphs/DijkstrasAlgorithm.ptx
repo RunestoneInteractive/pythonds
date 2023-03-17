@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<section xml:id="graphs_dijkstras-algorithm">
+  <title>Dijkstra's Algorithm</title>
+  <p>The algorithm we are going to use to determine the shortest path is
+            called Dijkstra's algorithm. Dijkstra's algorithm is an iterative
+            algorithm that provides us with the shortest path from one particular
+            starting node to all other nodes in the graph. Again this is similar to
+            the results of a breadth-first search.</p>
+  <p>To keep track of the total cost from the start node to each destination,
+            we will make use of the <c>distance</c> instance variable in the <c>Vertex</c> class.
+            The <c>distance</c> instance variable will contain the current total weight of
+            the smallest weight path from the start to the vertex in question. The
+            algorithm iterates once for every vertex in the graph; however, the
+            order that it iterates over the vertices is controlled by a priority
+            queue. The value that is used to determine the order of the objects in
+            the priority queue is <c>distance</c>. When a vertex is first created, <c>distance</c>
+            is set to a very large number. Theoretically you would set <c>distance</c> to
+            infinity, but in practice we just set it to a number that is larger than
+            any real distance we would have in the problem we are trying to solve.</p>
+  <p>The code for Dijkstra's algorithm is shown in <xref ref="lst-shortpath"/>. When the algorithm finishes, the distances are set
+            correctly as are the predecessor links for each vertex in the graph.</p>
+  <p xml:id="graphs_lst-shortpath" names="lst_shortpath">
+    <term>Listing 1</term>
+  </p>
+  <pre>from pythonds3.graphs import PriorityQueue
+
+def dijkstra(graph, start):
+   pq = PriorityQueue()
+   start.distance = 0
+   pq.heapify([(v.distance, v) for v in graph])
+   while pq:
+      distance, current_v = pq.delete()
+      for next_v in current_v.get_neighbors():
+            new_distance = current_v.distance + current_v.get_neighbor(next_v)
+            if new_distance &lt; next_v.distance:
+               next_v.distance = new_distance
+               next_v.previous = current_v
+               pq.change_priority(next_v, new_distance)</pre>
+  <p>Dijkstra's algorithm uses a priority queue. You may recall that a
+            priority queue is based on the heap that we implemented in Chapter 6.
+            There are a couple of differences between that
+            simple implementation and the implementation we
+            use for Dijkstra's algorithm, however. First, the <c>PriorityQueue</c> class stores
+            tuples of (priority, key) pairs. This is an important point,
+            because Dijkstra's algorithm requires the key in the priority queue to match
+            the key of the vertex in the graph.
+            The priority is used for deciding the position of the key
+            in the priority queue. In this implementation we
+            use the distance to the vertex as the priority because as we will see
+            when we are exploring the next vertex, we always want to explore the
+            vertex that has the smallest distance. The second difference is the
+            addition of the <c>change_priority</c> method. As you can see in line 17,
+            this method is used when the distance to a vertex that
+            is already in the queue is reduced,
+            and thus the vertex is moved toward the front of the queue.</p>
+  <p>Let's walk through an application of Dijkstra's algorithm one vertex at
+            a time using the following sequence of figures as our guide. We begin with the vertex
+            <math>u</math>. The three vertices adjacent to <math>u</math> are
+            <math>v, w,</math> and <math>x</math>. Since the initial distances to
+            <math>v, w,</math> and <math>x</math> are all initialized to <c>sys.maxsize</c>,
+            the new costs to get to them through the start node are all their direct
+            costs. So we update the costs to each of these three nodes. We also set
+            the predecessor for each node to <math>u</math> and we add each node to the
+            priority queue. We use the distance as the key for the priority queue.
+            The state of the algorithm is shown in <xref ref="fig-dija"/>.</p>
+  <p>In the next iteration of the <c>while</c> loop we examine the vertices that
+            are adjacent to <math>x</math>. The vertex <math>x</math> is next because it
+            has the lowest overall cost and therefore bubbled its way to the
+            beginning of the priority queue. At <math>x</math> we look at its neighbors
+            <math>u, v, w,</math> and <math>y</math>. For each neighboring vertex we check to
+            see if the distance to that vertex through <math>x</math> is smaller than
+            the previously known distance. Obviously this is the case for
+            <math>y</math> since its distance was <c>sys.maxsize</c>. It is not the case
+            for <math>u</math> or <math>v</math> since their distances are 0 and 2
+            respectively. However, we now learn that the distance to <math>w</math> is
+            smaller if we go through <math>x</math> than from <math>u</math> directly to
+            <math>w</math>. Since that is the case we update <math>w</math> with a new
+            distance and change the predecessor for <math>w</math> from <math>u</math> to
+            <math>x</math>. See <xref ref="fig-dijb"/> for the state of all the vertices.</p>
+  <p>The next step is to look at the vertices neighboring <math>v</math> (see <xref ref="fig-dijc"/>). This
+            step results in no changes to the graph, so we move on to node
+            <math>y</math>. At node <math>y</math> (see <xref ref="fig-dijd"/>) we discover that it is cheaper to get
+            to both <math>w</math> and <math>z</math>, so we adjust the distances and
+            predecessor links accordingly. Finally we check nodes <math>w</math> and
+            <math>z</math> (see <xref ref="fig-dije"/> and <xref ref="fig-dijf"/>). However, no additional changes are found and so the
+            priority queue is empty and Dijkstra's algorithm exits.</p>
+  <figure align="center" xml:id="189_id1fig-dija">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: Tracing Dijkstra's Algorithm</caption>
+    <image source="Graphs/Figures/dijkstraa.png" width="50%"/>
+  </figure>
+  <figure align="center" xml:id="189_id2fig-dijb">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Tracing Dijkstra's Algorithm</caption>
+    <image source="Graphs/Figures/dijkstrab.png" width="50%"/>
+  </figure>
+  <figure align="center" xml:id="id3">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: Tracing Dijkstra's Algorithm</caption>
+    <image source="Graphs/Figures/dijkstrac.png" width="50%"/>
+  </figure>
+  <figure align="center" xml:id="id4">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: Tracing Dijkstra's Algorithm</caption>
+    <image source="Graphs/Figures/dijkstrad.png" width="50%"/>
+  </figure>
+  <figure align="center" xml:id="id5">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 7: Tracing Dijkstra's Algorithm</caption>
+    <image source="Graphs/Figures/dijkstrae.png" width="50%"/>
+  </figure>
+  <figure align="center" xml:id="id6">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 8: Tracing Dijkstra's Algorithm</caption>
+    <image source="Graphs/Figures/dijkstraf.png" width="50%"/>
+  </figure>
+  <p>It is important to note that Dijkstra's algorithm works only when the
+            weights are all positive. You should convince yourself that if you
+            introduced a negative weight on one of the edges of the graph
+            in <xref ref="graphs_shortest-path-problems"/>, the algorithm would never exit.</p>
+  <p>We will note that to route messages through the internet, other
+            algorithms are used for finding the shortest path. One of the problems
+            with using Dijkstra's algorithm on the internet is that you must have a
+            complete representation of the graph in order for the algorithm to run.
+            The implication of this is that every router has a complete map of all
+            the routers in the internet. In practice this is not the case and other
+            variations of the algorithm allow each router to discover the graph as
+            they go. One such algorithm that you may want to read about is called
+            the <em>distance vector</em> routing algorithm.</p>
+</section>

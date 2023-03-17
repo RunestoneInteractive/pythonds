@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pretext xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+  <xi:include href="./bookinfo.ptx"/>
+  <book xml:id="pythonds" permid="pyt">
+    <title>Problem Solving with Algorithms and Data Structures using Python</title>
+    <subtitle>The PreTeXt Interactive Edition</subtitle>
+    <xi:include href="./Introduction/toctree.ptx"/>
+    <xi:include href="./AlgorithmAnalysis/toctree.ptx"/>
+    <xi:include href="./BasicDS/toctree.ptx"/>
+    <xi:include href="./Recursion/toctree.ptx"/>
+    <xi:include href="./SortSearch/toctree.ptx"/>
+    <xi:include href="./Trees/toctree.ptx"/>
+    <xi:include href="./Graphs/toctree.ptx"/>
+    <xi:include href="./Advanced/toctree.ptx"/>
+    <backmatter>
+      <index>
+        <index-list/>
+      </index>
+    </backmatter>
+  </book>
+</pretext>

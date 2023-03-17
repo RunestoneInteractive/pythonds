@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<section xml:id="trees_key-terms">
+  <title>Key Terms</title>
+  <table>
+    <tabular>
+      <row>
+        <cell>
+                            AVL tree
+                        </cell>
+        <cell>
+                            height
+                        </cell>
+        <cell>
+                            postorder traversal
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            balance factor
+                        </cell>
+        <cell>
+                            inorder traversal
+                        </cell>
+        <cell>
+                            preorder traversal
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            binary heap
+                        </cell>
+        <cell>
+                            leaf node
+                        </cell>
+        <cell>
+                            priority queue
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            binary search tree
+                        </cell>
+        <cell>
+                            level
+                        </cell>
+        <cell>
+                            root
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            binary tree
+                        </cell>
+        <cell>
+                            map
+                        </cell>
+        <cell>
+                            rotation
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            BST property
+                        </cell>
+        <cell>
+                            min/max heap
+                        </cell>
+        <cell>
+                            sibling
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            child / children
+                        </cell>
+        <cell>
+                            node
+                        </cell>
+        <cell>
+                            subtree
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            complete binary tree
+                        </cell>
+        <cell>
+                            parent
+                        </cell>
+        <cell>
+                            successor
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            edge
+                        </cell>
+        <cell>
+                            parse tree
+                        </cell>
+        <cell>
+                            tree
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            heap order property
+                        </cell>
+        <cell>
+                            path
+                        </cell>
+        <cell>
+                            tree traversal
+                        </cell>
+      </row>
+    </tabular>
+  </table>
+</section>

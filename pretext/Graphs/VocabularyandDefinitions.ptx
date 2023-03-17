@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<section xml:id="graphs_vocabulary-and-definitions">
+  <title>Vocabulary and Definitions</title>
+  <p>Now that we have looked at an graph, we will more
+            formally define a graph and its components. We already know some of
+            these terms from our discussion of trees.</p>
+  <dl>
+    <li>
+      <title>Vertex</title>
+      <p>A <term>vertex</term> (also called a <em>node</em>) is a fundamental part of a graph. It
+                        can have a name, which we will call the <em>key</em>. A vertex may also
+                        have additional information. We will call this additional
+                        information the <em>value</em> or the <em>payload</em>.</p>
+    </li>
+    <li>
+      <title>Edge</title>
+      <p>An <term>edge</term> (also called an <em>arc</em>) is another fundamental part of a
+                        graph. An edge connects two vertices to show that there is a
+                        relationship between them. Edges may be one-way or two-way. If the
+                        edges in a graph are all one-way, we say that the graph is a
+                        <term>directed graph</term>, or a <term>digraph</term>. The class prerequisites graph
+                        shown above is clearly a digraph since you must take some classes
+                        before others.</p>
+    </li>
+    <li>
+      <title>Weight</title>
+      <p>Edges may be <term>weighted</term> to show that there is a cost to go from one
+                        vertex to another, which we call <term>edge cost</term>.
+                        For example, in a graph of roads that connect one
+                        city to another, the weight on the edge might represent the distance
+                        between the two cities.</p>
+    </li>
+  </dl>
+  <p>With those definitions in hand, we can formally define a graph. A graph
+            can be represented by <math>G</math> where <math>G =(V,E)</math>. For the
+            graph <math>G</math>, <math>V</math> is a set of vertices and <math>E</math> is a
+            set of edges. Each edge is a tuple <math>(v, w)</math> where
+            <math>v, w \in V</math>. We can add a third component to the edge tuple to
+            represent a weight. A subgraph <math>s</math> is a set of edges <math>e</math>
+            and vertices <math>v</math> such that <math>e \subset E</math> and
+            <math>v \subset V</math>.</p>
+  <p><xref ref="fig-dgsimple"/> shows another example of a simple weighted
+            digraph. Formally we can represent this graph as the set of six
+            vertices:</p>
+  <math_block docname="Graphs/VocabularyandDefinitions" label="True" nowrap="False" number="True" xml:space="preserve">V = \left\{ v_0, v_1, v_2, v_3, v_4, v_5 \right\}</math_block>
+  <p>and the set of nine edges:</p>
+  <math_block docname="Graphs/VocabularyandDefinitions" label="True" nowrap="False" number="True" xml:space="preserve">E = \left\{ \begin{array}{l}(v_0, v_1, 5), (v_1, v_2, 4), (v_2, v_3, 9), \\
+                             (v_3, v_4, 7), (v_4, v_0, 1), (v_0, v_5, 2), \\
+                             (v_5, v_4, 8), (v_3, v_5, 3), (v_5, v_2, 1)
+             \end{array} \right\}</math_block>
+  <figure align="center" xml:id="188_id1fig-dgsimple">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: A Simple Example of a Directed Graph</caption>
+    <image source="Graphs/Figures/digraph.png" width="50%"/>
+  </figure>
+  <p>The example graph in <xref ref="fig-dgsimple"/> helps illustrate two other
+            key graph terms:</p>
+  <dl>
+    <li>
+      <title>Path</title>
+      <p>A <term>path</term> in a graph is a sequence of vertices that are connected by
+                        edges. Formally we would define a path as
+                        <math>w_1, w_2, ..., w_n</math> such that
+                        <math>(w_i, w_{i+1}) \in E</math> for all <math>1 \le i \le n-1</math>.
+                        The unweighted path length is the number of edges in the path,
+                        specifically <math>n-1</math>. The weighted path length is the sum of
+                        the weights of all the edges in the path. For example in
+                        <xref ref="fig-dgsimple"/> the path from <math>v_3</math> to <math>v_1</math> is
+                        the sequence of vertices <math>(v_3, v_4, v_0, v_1)</math>. The edges are
+                        <math>\left\{(v_3, v_4, 7), (v_4, v_0, 1), (v_0, v_1, 5) \right\}</math>.</p>
+    </li>
+    <li>
+      <title>Cycle</title>
+      <p>A <term>cycle</term> in a directed graph is a path that starts and ends at the
+                        same vertex. For example, in <xref ref="fig-dgsimple"/> the path
+                        <math>(v_5, v_2, v_3, v_5)</math> is a cycle. A graph with no cycles is called
+                        an <term>acyclic graph</term>. A directed graph with no cycles is called a
+                        <term>directed acyclic graph</term> or a <term>DAG</term>. We will see that we can
+                        solve several important problems if the problem can be represented
+                        as a DAG.</p>
+    </li>
+  </dl>
+</section>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+  <title>Algorithm Analysis</title>
+  <xi:include href="./Objectives.ptx"/>
+  <xi:include href="./WhatIsAlgorithmAnalysis.ptx"/>
+  <xi:include href="./BigONotation.ptx"/>
+  <xi:include href="./AnAnagramDetectionExample.ptx"/>
+  <xi:include href="./PerformanceofPythonDataStructures.ptx"/>
+  <xi:include href="./Lists.ptx"/>
+  <xi:include href="./Dictionaries.ptx"/>
+  <xi:include href="./Summary.ptx"/>
+  <xi:include href="./KeyTerms.ptx"/>
+  <xi:include href="./Exercises.ptx"/>
+</chapter>

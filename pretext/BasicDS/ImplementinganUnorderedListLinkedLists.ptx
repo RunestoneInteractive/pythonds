@@ -1,0 +1,701 @@
+<?xml version="1.0"?>
+<section xml:id="basic-ds_implementing-an-unordered-list-linked-lists">
+  <title>Implementing an Unordered List: Linked Lists</title>
+  <p>In order to implement an unordered list, we will construct what is
+            commonly known as a <term>linked list</term>. Recall that we need to be sure that
+            we can maintain the relative positioning of the items. However, there is
+            no requirement that we maintain that positioning in contiguous memory.
+            For example, consider the collection of items shown in
+            <xref ref="fig-idea"/>. It appears that these values have been placed
+            randomly. If we can maintain some explicit information in each item,
+            namely the location of the next item (see <xref ref="fig-idea2"/>), then the
+            relative position of each item can be expressed by simply following the
+            link from one item to the next.</p>
+  <figure align="center" xml:id="103_id1fig-idea">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: Items Not Constrained in Their Physical Placement</caption>
+    <image source="BasicDS/Figures/idea.png" width="50%"/>
+  </figure>
+  <figure align="center" xml:id="103_id2fig-idea2">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Relative Positions Maintained by Explicit Links</caption>
+    <image source="BasicDS/Figures/idea2.png" width="50%"/>
+  </figure>
+  <p>It is important to note that the location of the first item of the list
+            must be explicitly specified. Once we know where the first item is, the
+            first item can tell us where the second is, and so on. The external
+            reference is often referred to as the <term>head</term> of the list. Similarly,
+            the last item needs to know that there is no next item.</p>
+  <subsection xml:id="basic-ds_the-node-class">
+    <title>The <c>Node</c> Class</title>
+    <p>The basic building block for the linked list implementation is the
+                <term>node</term>. Each node object must hold at least two pieces of information.
+                First, the node must contain the list item itself. We will call this the
+                <term>data field</term> of the node. In addition, each node must hold a reference
+                to the next node. <xref ref="lst-nodeclass"/> shows the Python
+                implementation. To construct a node, you need to supply the initial data
+                value for the node. Evaluating the assignment statement below will yield
+                a <c>Node</c> object containing the value <c>93</c> (see <xref ref="fig-node"/>). You
+                should note that we will typically represent a node object as shown in
+                <xref ref="fig-node2"/>. Hidden fields <c>_data</c> and <c>_next</c> of the <c>Node</c> class
+                are turned into properties and can be accessed as <c>data</c> and <c>next</c> respectively.</p>
+    <p xml:id="basic-ds_lst-nodeclass" names="lst_nodeclass">
+      <term>Listing 1</term>
+    </p>
+    <program language="python">
+      <input>
+class Node:
+    """A node of a linked list"""
+
+    def __init__(self, node_data):
+        self._data = node_data
+        self._next = None
+
+    def get_data(self):
+        """Get node data"""
+        return self._data
+
+    def set_data(self, node_data):
+        """Set node data"""
+        self._data = node_data
+
+    data = property(get_data, set_data)
+
+    def get_next(self):
+        """Get next node"""
+        return self._next
+
+    def set_next(self, node_next):
+        """Set next node"""
+        self._next = node_next
+
+    next = property(get_next, set_next)
+
+    def __str__(self):
+        """String"""
+        return str(self._data)
+</input>
+    </program>
+    <p>We create <c>Node</c> objects in the usual way.</p>
+    <pre>&gt;&gt;&gt; temp = Node(93)
+&gt;&gt;&gt; temp.data
+93</pre>
+    <p>The special Python reference value <c>None</c> will play an important role
+                in the <c>Node</c> class and later in the linked list itself. A reference
+                to <c>None</c> will denote the fact that there is no next node. Note in the
+                constructor that a node is initially created with <c>next</c> set to
+                <c>None</c>. Since this is sometimes referred to as <q>grounding the node,</q>
+                we will use the standard ground symbol to denote a reference that is
+                referring to <c>None</c>. It is always a good idea to explicitly assign
+                <c>None</c> to your initial next reference values.</p>
+    <figure align="center" xml:id="id3">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: A Node Object Contains the Item and a Reference to the Next Node</caption>
+      <image source="BasicDS/Figures/node.png" width="50%"/>
+    </figure>
+    <figure align="center" xml:id="id4">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: A Typical Representation for a Node</caption>
+      <image source="BasicDS/Figures/node2.png" width="50%"/>
+    </figure>
+  </subsection>
+  <subsection xml:id="basic-ds_the-unorderedlist-class">
+    <title>The <c>UnorderedList</c> Class</title>
+    <p>As we suggested above, the unordered list will be built from a
+                collection of nodes, each linked to the next by explicit references. As
+                long as we know where to find the first node (containing the first
+                item), each item after that can be found by successively following the
+                next links. With this in mind, the <c>UnorderedList</c> class must maintain
+                a reference to the first node. <xref ref="lst-listclass"/> shows the
+                constructor. Note that each list object will maintain a single reference
+                to the head of the list.</p>
+    <p xml:id="basic-ds_lst-listclass" names="lst_listclass">
+      <term>Listing 2</term>
+    </p>
+    <program language="python">
+      <input>
+class UnorderedList:
+
+    def __init__(self):
+        self.head = None
+</input>
+    </program>
+    <p>Initially when we construct a list, there are no items. The assignment
+                statement</p>
+    <pre>&gt;&gt;&gt; my_list = UnorderedList()</pre>
+    <p>creates the linked list representation shown in
+                <xref ref="fig-initlinkedlist"/>. As we discussed in the <c>Node</c> class, the
+                special reference <c>None</c> will again be used to state that the head of
+                the list does not refer to anything. Eventually, the example list given
+                earlier will be represented by a linked list as shown in
+                <xref ref="fig-linkedlist"/>. The head of the list refers to the first node
+                which contains the first item of the list. In turn, that node holds a
+                reference to the next node (the next item), and so on. It is very
+                important to note that the list class itself does not contain any node
+                objects. Instead it contains a single reference to only the first node
+                in the linked structure.</p>
+    <figure align="center" xml:id="id5">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: An Empty List</caption>
+      <image source="BasicDS/Figures/initlinkedlist.png" width="50%"/>
+    </figure>
+    <figure align="center" xml:id="id6">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: A Linked List of Integers</caption>
+      <image source="BasicDS/Figures/linkedlist.png" width="50%"/>
+    </figure>
+    <p>The <c>is_empty</c> method, shown in <xref ref="lst-isempty"/>, simply checks to
+                see if the head of the list is a reference to <c>None</c>. The result of
+                the boolean expression <c>self.head == None</c> will only be true if there
+                are no nodes in the linked list. Since a new list is empty, the
+                constructor and the check for empty must be consistent with one another.
+                This shows the advantage to using the reference <c>None</c> to denote the
+                end of the linked structure. In Python, <c>None</c> can be compared to
+                any reference. Two references are equal if they both refer to the same
+                object. We will use this often in our remaining methods.</p>
+    <p xml:id="basic-ds_lst-isempty" names="lst_isempty">
+      <term>Listing 3</term>
+    </p>
+    <pre>def is_empty(self):
+    return self.head == None</pre>
+    <p>So how do we get items into our list? We need to implement the <c>add</c>
+                method. However, before we can do that, we need to address the important
+                question of where in the linked list to place the new item. Since this
+                list is unordered, the specific location of the new item with respect to
+                the other items already in the list is not important. The new item can
+                go anywhere. With that in mind, it makes sense to place the new item in
+                the easiest location possible.</p>
+    <p>Recall that the linked list structure provides us with only one entry
+                point, the head of the list. All of the other nodes can only be reached
+                by accessing the first node and then following <c>next</c> links. This
+                means that the easiest place to add the new node is right at the head,
+                or beginning, of the list. In other words, we will make the new item the
+                first item of the list and the existing items will need to be linked to
+                this new first item so that they follow.</p>
+    <p>The linked list shown in <xref ref="fig-linkedlist"/> was built by calling
+                the <c>add</c> method a number of times.</p>
+    <pre>&gt;&gt;&gt; my_list.add(31)
+&gt;&gt;&gt; my_list.add(77)
+&gt;&gt;&gt; my_list.add(17)
+&gt;&gt;&gt; my_list.add(93)
+&gt;&gt;&gt; my_list.add(26)
+&gt;&gt;&gt; my_list.add(54)</pre>
+    <p>Note that since <c>31</c> is the first item added to the list, it will
+                eventually be the last node on the linked list as every other item is
+                added ahead of it. Also, since <c>54</c> is the last item added, it will become
+                the data value in the first node of the linked list.</p>
+    <p>The <c>add</c> method is shown in <xref ref="lst-add"/>. Each item of the list
+                must reside in a node object. Line 2 creates a new node and places the
+                item as its data. Now we must complete the process by linking the new
+                node into the existing structure. This requires two steps as shown in
+                <xref ref="fig-addtohead"/>. Step 1 (line 3) changes the <c>next</c> reference
+                of the new node to refer to the old first node of the list. Now that the
+                rest of the list has been properly attached to the new node, we can
+                modify the head of the list to refer to the new node. The assignment
+                statement in line 4 sets the head of the list.</p>
+    <p xml:id="basic-ds_lst-add" names="lst_add">
+      <term>Listing 4</term>
+    </p>
+    <program language="python">
+      <input>
+def add(self, item):
+    temp = Node(item)
+    temp.set_next(self.head)
+    self.head = temp
+</input>
+    </program>
+    <figure align="center" xml:id="id7">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 7: Adding a New Node is a Two-Step Process</caption>
+      <image source="BasicDS/Figures/addtohead.png" width="50%"/>
+    </figure>
+    <p>The order of the two steps described above is very important. What
+                happens if the order of line 3 and line 4 is reversed? If the
+                modification of the head of the list happens first, the result can be
+                seen in <xref ref="fig-wrongorder"/>. Since the head was the only external
+                reference to the list nodes, all of the original nodes are lost and can
+                no longer be accessed.</p>
+    <figure align="center" xml:id="id8">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 8: Result of Reversing the Order of the Two Steps</caption>
+      <image source="BasicDS/Figures/wrongorder.png" width="50%"/>
+    </figure>
+    <p>The next methods that we will implement&#x2013;<c>size</c>, <c>search</c>, and
+                <c>remove</c>&#x2013;are all based on a technique known as <term>linked list
+                    traversal</term>. <em>Traversal</em> refers to the process of systematically visiting
+                each node. To do this we use an external reference that starts at the
+                first node in the list. As we visit each node, we move the reference to
+                the next node by <q>traversing</q> the next reference.</p>
+    <p>To implement the <c>size</c> method, we need to traverse the linked list
+                and keep a count of the number of nodes that occurred.
+                <xref ref="lst-length"/> shows the Python code for counting the number of
+                nodes in the list. The external reference is called <c>current</c> and is
+                initialized to the head of the list in line 2. At the start of the
+                process we have not seen any nodes so the count is set to <math>0</math>.
+                Lines 4&#x2013;6 actually implement the traversal. As long as the current
+                reference has not seen the end of the list (<c>None</c>), we move current
+                along to the next node via the assignment statement in line 6. Again,
+                the ability to compare a reference to <c>None</c> is very useful. Every
+                time current moves to a new node, we add <math>1</math> to <c>count</c>.
+                Finally, <c>count</c> gets returned after the iteration stops.
+                <xref ref="fig-traversal"/> shows this process as it proceeds down the list.</p>
+    <p xml:id="basic-ds_lst-length" names="lst_length">
+      <term>Listing 5</term>
+    </p>
+    <program language="python">
+      <input>
+def size(self):
+    current = self.head
+    count = 0
+    while current is not None:
+        count = count + 1
+        current = current.next
+
+    return count
+</input>
+    </program>
+    <figure align="center" xml:id="id9">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 9: Traversing the Linked List from the Head to the End</caption>
+      <image source="BasicDS/Figures/traversal.png" width="50%"/>
+    </figure>
+    <p>Searching for a value in a linked list implementation of an unordered
+                list also uses the traversal technique. As we visit each node in the
+                linked list we will ask whether the data stored there matches the item
+                we are looking for. In this case, however, we may not have to traverse
+                all the way to the end of the list. In fact, if we do get to the end of
+                the list, that means that the item we are looking for must not be
+                present. Also, if we do find the item, there is no need to continue.</p>
+    <p><xref ref="lst-search"/> shows the implementation for the <c>search</c> method.
+                As in the <c>size</c> method, the traversal is initialized to start at
+                the head of the list (line 2). We continue to iterate over the list as long as there are
+                more nodes to visit. The question in line 4 asks whether
+                the data item is present in the current node. If so, we return <c>True</c> immediately.</p>
+    <p xml:id="basic-ds_lst-search" names="lst_search">
+      <term>Listing 6</term>
+    </p>
+    <program language="python">
+      <input>
+def search(self, item):
+    current = self.head
+    while current is not None:
+        if current.data == item:
+            return True
+        current = current.next
+
+    return False
+</input>
+    </program>
+    <p>As an example, consider invoking the <c>search</c> method looking for the
+                item 17.</p>
+    <program language="python">
+      <input>
+&gt;&gt;&gt; my_list.search(17)
+True
+</input>
+    </program>
+    <p>Since <c>17</c> is in the list, the traversal process needs to move only to the
+                node containing <c>17</c>. At that point, the condition in line 4 becomes <c>True</c> and
+                we return the result of the search.
+                This process can be seen in <xref ref="fig-searchpic"/>.</p>
+    <figure align="center" xml:id="id10">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 10: Successful Search for the Value 17</caption>
+      <image source="BasicDS/Figures/search.png" width="50%"/>
+    </figure>
+    <p>The <c>remove</c> method requires two logical steps. First, we need to
+                traverse the list looking for the item we want to remove. Once we find
+                the item, we must remove it. If the item is not in the list, our method
+                should raise a <c>ValueError</c>.</p>
+    <p>The first step is very similar to <c>search</c>. Starting with an external
+                reference set to the head of the list, we traverse the links until we
+                discover the item we are looking for.</p>
+    <p>When the item is found and we break out of the loop, <c>current</c> will be a reference to the
+                node containing the item to be removed. But how do we remove it? One
+                possibility would be to replace the value of the item with some marker
+                that suggests that the item is no longer present. The problem with this
+                approach is the number of nodes will no longer match the number of
+                items. It would be much better to remove the item by removing the entire
+                node.</p>
+    <p>In order to remove the node containing the item, we need to modify the
+                link in the previous node so that it refers to the node that comes after
+                <c>current</c>. Unfortunately, there is no way to go backward in the linked
+                list. Since <c>current</c> refers to the node ahead of the node where we
+                would like to make the change, it is too late to make the necessary
+                modification.</p>
+    <p>The solution to this dilemma is to use two external references as we
+                traverse down the linked list. <c>current</c> will behave just as it did
+                before, marking the current location of the traversal. The new reference,
+                which we will call <c>previous</c>, will always travel one node behind
+                <c>current</c>. That way, when <c>current</c> stops at the node to be removed,
+                <c>previous</c> will refer to the proper place in the linked list
+                for the modification.</p>
+    <p><xref ref="lst-remove"/> shows the complete <c>remove</c> method. Lines 2&#x2013;3
+                assign initial values to the two references. Note that <c>current</c>
+                starts out at the list head as in the other traversal examples.
+                <c>previous</c>, however, is assumed to always travel one node behind
+                <c>current</c>. For this reason, <c>previous</c> starts out with a value of
+                <c>None</c> since there is no node before the head (see
+                <xref ref="fig-removeinit"/>).</p>
+    <p>In lines 6&#x2013;7 we ask whether the item stored in the current node is the
+                item we wish to remove. If so, we break out of the loop. If we
+                do not find the item, <c>previous</c> and <c>current</c> must both be moved
+                one node ahead. Again, the order of these two statements is crucial.
+                <c>previous</c> must first be moved one node ahead to the location of
+                <c>current</c>. At that point, <c>current</c> can be moved. This process is
+                often referred to as <em>inchworming</em>, as <c>previous</c> must catch up to
+                <c>current</c> before <c>current</c> moves ahead. <xref ref="fig-prevcurr"/> shows
+                the movement of <c>previous</c> and <c>current</c> as they progress down the
+                list looking for the node containing the value 17.</p>
+    <p xml:id="basic-ds_lst-remove" names="lst_remove">
+      <term>Listing 7</term>
+    </p>
+    <program language="python">
+      <input>
+def remove(self, item):
+    current = self.head
+    previous = None
+
+    while current is not None:
+        if current.data == item:
+            break
+        previous = current
+        current = current.next
+
+    if current is None:
+        raise ValueError("{} is not in the list".format(item))
+    if previous is None:
+        self.head = current.next
+    else:
+        previous.next = current.next
+</input>
+    </program>
+    <figure align="center" xml:id="id11">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 11: Initial Values for the <literal>previous</literal> and <literal>current</literal> References</caption>
+      <image source="BasicDS/Figures/removeinit.png" width="50%"/>
+    </figure>
+    <figure align="center" xml:id="id12">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 12: <literal>previous</literal> and <literal>current</literal> Move Down the List</caption>
+      <image source="BasicDS/Figures/prevcurr.png" width="50%"/>
+    </figure>
+    <p>Once the searching step of the <c>remove</c> has been completed, we need to
+                remove the node from the linked list. <xref ref="fig-removepic1"/> shows the
+                link that must be modified. However, there is a special case that needs
+                to be addressed. If the item to be removed happens to be the first item
+                in the list, then <c>current</c> will reference the first node in the
+                linked list. This also means that <c>previous</c> will be <c>None</c>. We said
+                earlier that <c>previous</c> would be referring to the node whose next
+                reference needs to be modified in order to complete the removal. In this
+                case, it is not <c>previous</c> but rather the head of the list that needs
+                to be changed (see <xref ref="fig-removehead"/>). Another special case occurs if
+                the item is not in the list. In that case <c>current is None</c> evaluates to <c>True</c>
+                and an error is raised.</p>
+    <figure align="center" xml:id="id13">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 13: Removing an Item from the Middle of the List</caption>
+      <image source="BasicDS/Figures/remove.png" width="50%"/>
+    </figure>
+    <figure align="center" xml:id="id14">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 14: Removing the First Node from the List</caption>
+      <image source="BasicDS/Figures/remove2.png" width="50%"/>
+    </figure>
+    <p>Line 13 allows us to check whether we are dealing with the special case
+                described above. If <c>previous</c> did not move, it will still have the
+                value <c>None</c> when the loop breaks. In that case,
+                the head of the list is modified to refer to the node after
+                the current node (line 14), in effect removing the first node from the linked
+                list. However, if <c>previous</c> is not <c>None</c>, the node to be removed is
+                somewhere down the linked list structure. In this case the <c>previous</c>
+                reference is providing us with the node whose next reference must be
+                changed. Line 16 modifies the <c>next</c> property of the <c>previous</c> to
+                accomplish the removal. Note that in both cases the destination of the
+                reference change is <c>current.next</c>. One question that often
+                arises is whether the two cases shown here will also handle the
+                situation where the item to be removed is in the last node of the linked
+                list. We leave that for you to consider.</p>
+    <p>You can try out the <c>UnorderedList</c> class in ActiveCode 1.</p>
+    <program xml:id="unorderedlistcomplete" interactive="activecode" language="python">
+      <input>
+class Node:
+    """A node of a linked list"""
+
+    def __init__(self, node_data):
+        self._data = node_data
+        self._next = None
+
+    def get_data(self):
+        """Get node data"""
+        return self._data
+
+    def set_data(self, node_data):
+        """Set node data"""
+        self._data = node_data
+
+    data = property(get_data, set_data)
+
+    def get_next(self):
+        """Get next node"""
+        return self._next
+
+    def set_next(self, node_next):
+        """Set next node"""
+        self._next = node_next
+
+    next = property(get_next, set_next)
+
+    def __str__(self):
+        """String"""
+        return str(self._data)
+
+
+class UnorderedList:
+    def __init__(self):
+        self.head = None
+
+    def is_empty(self):
+        return self.head == None
+
+    def add(self, item):
+        temp = Node(item)
+        temp.set_next(self.head)
+        self.head = temp
+
+    def size(self):
+        current = self.head
+        count = 0
+        while current is not None:
+            count = count + 1
+            current = current.next
+
+        return count
+
+    def search(self, item):
+        current = self.head
+        while current is not None:
+            if current.data == item:
+                return True
+            current = current.next
+
+        return False
+
+    def remove(self, item):
+        current = self.head
+        previous = None
+
+        while current is not None:
+            if current.data == item:
+                break
+            previous = current
+            current = current.next
+
+        if current is None:
+            raise ValueError("{} is not in the list".format(item))
+        if previous is None:
+            self.head = current.next
+        else:
+            previous.next = current.next
+
+
+my_list = UnorderedList()
+
+my_list.add(31)
+my_list.add(77)
+my_list.add(17)
+my_list.add(93)
+my_list.add(26)
+my_list.add(54)
+
+print(my_list.size())
+print(my_list.search(93))
+print(my_list.search(100))
+
+my_list.add(100)
+print(my_list.search(100))
+print(my_list.size())
+
+my_list.remove(54)
+print(my_list.size())
+my_list.remove(93)
+print(my_list.size())
+my_list.remove(31)
+print(my_list.size())
+print(my_list.search(93))
+
+try:
+    my_list.remove(27)
+except ValueError as ve:
+    print(ve)
+        </input>
+    </program>
+    <p>The remaining methods <c>append</c>, <c>insert</c>, <c>index</c>, and <c>pop</c> are
+                left as exercises. Remember that each of these must take into account
+                whether the change is taking place at the head of the list or someplace
+                else. Also, <c>insert</c>, <c>index</c>, and <c>pop</c> require that we name the
+                positions of the list. We will assume that position names are integers
+                starting with 0.</p>
+    <note>
+      <title>Self Check</title>
+      <p>Part I:  Implement the append method for UnorderedList.  What is the time complexity of the method you created?</p>
+      <program xml:id="self_check_list1" interactive="activecode" language="python">
+        <input>
+class Node:
+    """A node of a linked list"""
+
+    def __init__(self, node_data):
+        self._data = node_data
+        self._next = None
+
+    def get_data(self):
+        """Get node data"""
+        return self._data
+
+    def set_data(self, node_data):
+        """Set node data"""
+        self._data = node_data
+
+    data = property(get_data, set_data)
+
+    def get_next(self):
+        """Get next node"""
+        return self._next
+
+    def set_next(self, node_next):
+        """Set next node"""
+        self._next = node_next
+
+    next = property(get_next, set_next)
+
+    def __str__(self):
+        """String"""
+        return str(self._data)
+
+
+class UnorderedList:
+    def __init__(self):
+        self.head = None
+
+    def is_empty(self):
+        return self.head == None
+
+    def add(self, item):
+        temp = Node(item)
+        temp.set_next(self.head)
+        self.head = temp
+
+    def size(self):
+        current = self.head
+        count = 0
+        while current is not None:
+            count = count + 1
+            current = current.next
+
+        return count
+
+    def search(self, item):
+        current = self.head
+        while current is not None:
+            if current.data == item:
+                return True
+            current = current.next
+
+        return False
+
+    def remove(self, item):
+        current = self.head
+        previous = None
+
+        while current is not None:
+            if current.data == item:
+                break
+            previous = current
+            current = current.next
+
+        if current is None:
+            raise ValueError("{} is not in the list".format(item))
+        if previous is None:
+            self.head = current.next
+        else:
+            previous.next = current.next
+
+
+my_list = UnorderedList()
+        </input>
+      </program>
+      <p>Part II:  In the previous problem, you most likely created an append method that was <math>O(n)</math>  If you add an instance variable to the UnorderedList class you can create an append method that is <math>O(1)</math>.  Modify your append method to be <math>O(1)</math>  Be Careful!  To really do this correctly you will need to consider a couple of special cases that may require you to make a modification to the add method as well.</p>
+      <program xml:id="self_check_list2" interactive="activecode" language="python">
+        <input>
+class Node:
+    """A node of a linked list"""
+
+    def __init__(self, node_data):
+        self._data = node_data
+        self._next = None
+
+    def get_data(self):
+        """Get node data"""
+        return self._data
+
+    def set_data(self, node_data):
+        """Set node data"""
+        self._data = node_data
+
+    data = property(get_data, set_data)
+
+    def get_next(self):
+        """Get next node"""
+        return self._next
+
+    def set_next(self, node_next):
+        """Set next node"""
+        self._next = node_next
+
+    next = property(get_next, set_next)
+
+    def __str__(self):
+        """String"""
+        return str(self._data)
+
+
+class UnorderedList:
+    def __init__(self):
+        self.head = None
+
+    def is_empty(self):
+        return self.head == None
+
+    def add(self, item):
+        temp = Node(item)
+        temp.set_next(self.head)
+        self.head = temp
+
+    def size(self):
+        current = self.head
+        count = 0
+        while current is not None:
+            count = count + 1
+            current = current.next
+
+        return count
+
+    def search(self, item):
+        current = self.head
+        while current is not None:
+            if current.data == item:
+                return True
+            current = current.next
+
+        return False
+
+    def remove(self, item):
+        current = self.head
+        previous = None
+
+        while current is not None:
+            if current.data == item:
+                break
+            previous = current
+            current = current.next
+
+        if current is None:
+            raise ValueError("{} is not in the list".format(item))
+        if previous is None:
+            self.head = current.next
+        else:
+            previous.next = current.next
+
+
+my_list = UnorderedList()
+        </input>
+      </program>
+    </note>
+  </subsection>
+</section>

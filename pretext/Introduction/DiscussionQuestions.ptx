@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<section xml:id="introduction_discussion-questions">
+  <title>Discussion Questions</title>
+  <p>
+    <ol label="1">
+      <li>
+        <p>Construct a class hierarchy for people on a college campus. Include
+                    faculty, staff, and students. What do they have in common? What
+                    distinguishes them from one another?</p>
+      </li>
+      <li>
+        <p>Construct a class hierarchy for bank accounts.</p>
+      </li>
+      <li>
+        <p>Construct a class hierarchy for different types of computers.</p>
+      </li>
+      <li>
+        <p>Using the classes provided in the chapter, interactively construct a
+                    circuit and test it.</p>
+      </li>
+    </ol>
+  </p>
+</section>

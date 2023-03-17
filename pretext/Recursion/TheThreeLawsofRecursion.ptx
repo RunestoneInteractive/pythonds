@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<section xml:id="recursion_the-three-laws-of-recursion">
+  <title>The Three Laws of Recursion</title>
+  <p>Like robots in Asimov's stories, all recursive algorithms must obey three
+            important laws:</p>
+  <p>
+    <ol label="1">
+      <li>
+        <p>A recursive algorithm must have a <term>base case</term>.</p>
+      </li>
+      <li>
+        <p>A recursive algorithm must change its state and move toward the base
+                    case.</p>
+      </li>
+      <li>
+        <p>A recursive algorithm must call itself recursively.</p>
+      </li>
+    </ol>
+  </p>
+  <p>Let's look at each one of these laws in more detail and see how it was
+            used in the <c>list_sum</c> algorithm. First, a base case is the condition
+            that allows the algorithm to stop recursing. A base case is typically a
+            problem that is small enough to solve directly. In the <c>list_sum</c>
+            algorithm the base case is a list of length 1.</p>
+  <p>To obey the second law, we must arrange for a change of state that moves
+            the algorithm toward the base case. A change of state means that some
+            data that the algorithm is using is modified. Usually the data that
+            represents our problem gets smaller in some way. In the <c>list_sum</c>
+            algorithm our primary data structure is a list, so we must focus our
+            state-changing efforts on the list. Since the base case is a list of
+            length 1, a natural progression toward the base case is to shorten the
+            list. This is exactly what happens on line 5 of <xref ref="recursion_calculatingthe-sumofa-listof-numbers"/> when we call <c>list_sum</c> with a shorter list.</p>
+  <p>The final law is that the algorithm must call itself. This is the very
+            definition of recursion. Recursion is a confusing concept to many
+            beginning programmers. As a novice programmer, you have learned that
+            functions are good because you can take a large problem and break it up
+            into smaller problems. The smaller problems can be solved by writing a
+            function to solve each problem. When we talk about recursion it may seem
+            that we are talking ourselves in circles. We have a problem to solve
+            with a function, but that function solves the problem by calling itself!
+            But the logic is not circular at all; the logic of recursion is an
+            elegant expression of solving a problem by breaking it down into a
+            smaller and easier problems.</p>
+  <p>In the remainder of this chapter we will look at more examples of
+            recursion. In each case we will focus on designing a solution to a
+            problem by using the three laws of recursion.</p>
+  <note>
+    <title>Self Check</title>
+    <exercise label="question_recsimp_1">
+      <statement>
+        <p>Q-1: How many recursive calls are made when computing the sum of the list [2, 4, 6, 8, 10]?</p>
+      </statement>
+      <choices>
+        <choice>
+          <statement>
+            <p>6</p>
+          </statement>
+          <feedback>
+            <p>There are only five numbers on the list, the number of recursive calls will not be greater than the size of the list.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>5</p>
+          </statement>
+          <feedback>
+            <p>The initial call to list_sum is not a recursive call.</p>
+          </feedback>
+        </choice>
+        <choice correct="yes">
+          <statement>
+            <p>4</p>
+          </statement>
+          <feedback>
+            <p>the first recursive call passes the list [4, 6, 8, 10], the second [6, 8, 10] and so on until [10].</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>3</p>
+          </statement>
+          <feedback>
+            <p>This would not be enough calls to cover all the numbers on the list</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+    <exercise label="question_recsimp_2">
+      <statement>
+        <p>Q-2: Suppose you are going to write a recusive function to calculate the factorial of a number.  fact(n) returns n * n-1 * n-2 * &#x2026; Where the factorial of zero is defined to be 1.  What would be the most appropriate base case?</p>
+      </statement>
+      <choices>
+        <choice>
+          <statement>
+            <p>n == 0</p>
+          </statement>
+          <feedback>
+            <p>Although this would work there are better and slightly more efficient choices. since fact(1) and fact(0) are the same.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>n == 1</p>
+          </statement>
+          <feedback>
+            <p>A good choice, but what happens if you call fact(0)?</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>n &gt;= 0</p>
+          </statement>
+          <feedback>
+            <p>This basecase would be true for all numbers greater than zero so fact of any positive number would be 1.</p>
+          </feedback>
+        </choice>
+        <choice correct="yes">
+          <statement>
+            <p>n &lt;= 1</p>
+          </statement>
+          <feedback>
+            <p>Good, this is the most efficient, and even keeps your program from crashing if you try to compute the factorial of a negative number.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+  </note>
+</section>

@@ -1,0 +1,291 @@
+<?xml version="1.0"?>
+<section xml:id="sort-search_the-sequential-search">
+  <title>The Sequential Search</title>
+  <p>When data items are stored in a collection such as a list, we say that
+            they have a linear or sequential relationship. Each data item is stored
+            in a position relative to the others. In Python lists, these relative
+            positions are the index values of the individual items. Since these
+            index values are ordered, it is possible for us to visit them in
+            sequence. This process gives rise to our first search technique, the
+            <term>sequential search</term>.</p>
+  <p><xref ref="fig-seqsearch"/>  shows that if we start
+            at the first item in the list and move from item to item,
+            we follow the underlying sequential order until we either find what
+            we are looking for or run out of items, which would mean the item
+            we were searching for was not present.</p>
+  <figure align="center" xml:id="11_id1fig-seqsearch">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: Sequential Search of a List of Integers</caption>
+    <image source="SortSearch/Figures/seqsearch.png" width="50%"/>
+  </figure>
+  <p>The Python implementation for this algorithm is shown in
+            <xref ref="lst-seqsearchpython"/>. The function needs two items&#x2013;the list and the item we
+            are looking for&#x2013;and returns a Boolean value as to whether it is present.</p>
+  <program xml:id="search1" interactive="codelens" language="python">
+    <input>
+def sequential_search(a_list, item):
+    pos = 0
+
+    while pos &lt; len(a_list):
+        if a_list[pos] == item:
+            return True
+        pos = pos + 1
+
+    return False
+
+
+test_list = [1, 2, 32, 8, 17, 19, 42, 13, 0]
+print(sequential_search(test_list, 3))
+print(sequential_search(test_list, 13))
+    </input>
+  </program>
+  <subsection xml:id="sort-search_analysis-of-sequential-search">
+    <title>Analysis of Sequential Search</title>
+    <p>To analyze searching algorithms, we need to decide on a basic unit of
+                computation. Recall that this is typically the common step that must be
+                repeated in order to solve the problem. For searching, it makes sense to
+                count the number of comparisons performed. Each comparison may or may
+                not discover the item we are looking for. In addition, we make another
+                assumption here. The list of items is not ordered in any way. The items
+                have been placed randomly into the list. In other words, the probability
+                that the item we are looking for is in any particular position is
+                exactly the same for each position of the list.</p>
+    <p>If the item is not in the list, the only way to know that is to compare it
+                against every item present. If there are <math>n</math> items, then the
+                sequential search requires <math>n</math> comparisons to discover that the
+                item is not there. In the case where the item is in the list, the
+                analysis is not so straightforward. There are actually three different
+                scenarios that can occur. In the best case we will find the item in the
+                first place we look, at the beginning of the list. We will need only one
+                comparison. In the worst case, we will not discover the item until the
+                very last comparison, the <em>n</em>-th comparison.</p>
+    <p>What about the average case? On average, we will find the item about
+                half way into the list; that is, we will compare against
+                <math>\frac{n}{2}</math> items. Recall, however, that as <math>n</math> gets large,
+                the coefficients, no matter what they are, become insignificant in our
+                approximation, so the complexity of the sequential search is
+                <math>O(n)</math>. <xref ref="sort-search_tbl-seqsearchtable"/> summarizes these results.</p>
+    <table xml:id="sort-search_id2">
+      <tabular>
+        <title>
+          <term>Table 1: Comparisons Used in a Sequential Search of an Unordered List</term>
+        </title>
+        <row header="yes">
+          <cell>
+            <term>Case</term>
+          </cell>
+          <cell>
+            <term>Best Case</term>
+          </cell>
+          <cell>
+            <term>Worst Case</term>
+          </cell>
+          <cell>
+            <term>Average Case</term>
+          </cell>
+        </row>
+        <row>
+          <cell>
+                                item is present
+                            </cell>
+          <cell>
+            <math>1</math>
+          </cell>
+          <cell>
+            <math>n</math>
+          </cell>
+          <cell>
+            <math>\frac{n}{2}</math>
+          </cell>
+        </row>
+        <row>
+          <cell>
+                                item is not present
+                            </cell>
+          <cell>
+            <math>n</math>
+          </cell>
+          <cell>
+            <math>n</math>
+          </cell>
+          <cell>
+            <math>n</math>
+          </cell>
+        </row>
+      </tabular>
+    </table>
+    <p>We assumed earlier that the items in our collection had been randomly
+                placed so that there is no relative order between the items. What would
+                happen to the sequential search if the items were ordered in some way?
+                Would we be able to gain any efficiency in our search technique?</p>
+    <p>Assume that the list of items was constructed so that the items are in
+                ascending order, from low to high. If the item we are looking for is
+                present in the list, the chance of it being in any one of the <math>n</math>
+                positions is still the same as before. We will still have the same
+                number of comparisons to find the item. However, if the item is not
+                present there is a slight advantage. <xref ref="fig-seqsearch2"/> shows this
+                process as the algorithm looks for the item 50. Notice that items are
+                still compared in sequence until 54. At this point, however, we know
+                something extra. Not only is 54 not the item we are looking for, but no
+                other elements beyond 54 can work either since the list is sorted. In
+                this case, the algorithm does not have to continue looking through all
+                of the items to report that the item was not found. It can stop
+                immediately. <xref ref="lst-seqsearchpython2"/> shows this variation of the
+                sequential search function.</p>
+    <figure align="center" xml:id="id3">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Sequential Search of an Ordered List of Integers</caption>
+      <image source="SortSearch/Figures/seqsearch2.png" width="50%"/>
+    </figure>
+    <program xml:id="search2" interactive="codelens" language="python">
+      <input>
+def ordered_sequential_search(a_list, item):
+    pos = 0
+
+    while pos &lt; len(a_list):
+        if a_list[pos] == item:
+            return True
+        if a_list[pos] &gt; item:
+            return False
+        pos = pos + 1
+
+    return False
+
+
+test_list = [0, 1, 2, 8, 13, 17, 19, 32, 42]
+print(ordered_sequential_search(test_list, 3))
+print(ordered_sequential_search(test_list, 13))
+    </input>
+    </program>
+    <p><xref ref="sort-search_sort-search_tbl-seqsearchtable2"/> summarizes these results. Note that in the best
+                case we might discover that the item is not in the list by looking at
+                only one item. On average, we will know after looking through only
+                <math>\frac {n}{2}</math> items. However, this technique is still
+                <math>O(n)</math>. In summary, a sequential search is improved by ordering
+                the list only in the case where we do not find the item.</p>
+    <table xml:id="sort-search_id4">
+      <tabular>
+        <title>
+          <term>Table 2: Comparisons Used in Sequential Search of an Ordered List</term>
+        </title>
+        <row header="yes">
+          <cell>
+                            </cell>
+          <cell>
+                            </cell>
+          <cell>
+                            </cell>
+          <cell>
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                item is present
+                            </cell>
+          <cell>
+            <math>1</math>
+          </cell>
+          <cell>
+            <math>n</math>
+          </cell>
+          <cell>
+            <math>\frac{n}{2}</math>
+          </cell>
+        </row>
+        <row>
+          <cell>
+                                item not present
+                            </cell>
+          <cell>
+            <math>1</math>
+          </cell>
+          <cell>
+            <math>n</math>
+          </cell>
+          <cell>
+            <math>\frac{n}{2}</math>
+          </cell>
+        </row>
+      </tabular>
+    </table>
+    <note>
+      <title>Self Check</title>
+      <exercise label="question_SRCH_1">
+        <statement>
+          <p>Q-3: Suppose you are doing a sequential search of the list [15, 18, 2, 19, 18, 0, 8, 14, 19, 14].  How many comparisons would you need to do in order to find the key 18?</p>
+        </statement>
+        <choices>
+          <choice>
+            <statement>
+              <p>5</p>
+            </statement>
+            <feedback>
+              <p>Five comparisons would get the second 18 in the list.</p>
+            </feedback>
+          </choice>
+          <choice>
+            <statement>
+              <p>10</p>
+            </statement>
+            <feedback>
+              <p>You do not need to search the entire list, only until you find the key you are looking for.</p>
+            </feedback>
+          </choice>
+          <choice>
+            <statement>
+              <p>4</p>
+            </statement>
+            <feedback>
+              <p>No, remember in a sequential search you start at the beginning and check each key until you find what you are looking for or exhaust the list.</p>
+            </feedback>
+          </choice>
+          <choice correct="yes">
+            <statement>
+              <p>2</p>
+            </statement>
+            <feedback>
+              <p>In this case only 2 comparisons were needed to find the key.</p>
+            </feedback>
+          </choice>
+        </choices>
+      </exercise>
+      <exercise label="question_SRCH_2">
+        <statement>
+          <p>Q-4: Suppose you are doing a sequential search of the ordered list [3, 5, 6, 8, 11, 12, 14, 15, 17, 18].  How many comparisons would you need to do in order to find the key 13?</p>
+        </statement>
+        <choices>
+          <choice>
+            <statement>
+              <p>10</p>
+            </statement>
+            <feedback>
+              <p>You do not need to search the entire list, since it is ordered you can stop searching when you have compared with a value larger than the key.</p>
+            </feedback>
+          </choice>
+          <choice>
+            <statement>
+              <p>5</p>
+            </statement>
+            <feedback>
+              <p>Since 11 is less than the key value 13 you need to keep searching.</p>
+            </feedback>
+          </choice>
+          <choice correct="yes">
+            <statement>
+              <p>7</p>
+            </statement>
+            <feedback>
+              <p>Since 14 is greater than the key value 13 you can stop.</p>
+            </feedback>
+          </choice>
+          <choice>
+            <statement>
+              <p>6</p>
+            </statement>
+            <feedback>
+              <p>Because 12 is less than the key value 13 you need to keep going.</p>
+            </feedback>
+          </choice>
+        </choices>
+      </exercise>
+    </note>
+  </subsection>
+</section>

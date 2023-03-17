@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+  <title>Trees and Tree Algorithms</title>
+  <xi:include href="./Objectives.ptx"/>
+  <xi:include href="./ExamplesofTrees.ptx"/>
+  <xi:include href="./VocabularyandDefinitions.ptx"/>
+  <xi:include href="./Implementation.ptx"/>
+  <xi:include href="./ListofListsRepresentation.ptx"/>
+  <xi:include href="./NodesandReferences.ptx"/>
+  <xi:include href="./ParseTree.ptx"/>
+  <xi:include href="./TreeTraversals.ptx"/>
+  <xi:include href="./PriorityQueueswithBinaryHeaps.ptx"/>
+  <xi:include href="./BinaryHeapOperations.ptx"/>
+  <xi:include href="./BinaryHeapImplementation.ptx"/>
+  <xi:include href="./BinarySearchTrees.ptx"/>
+  <xi:include href="./SearchTreeOperations.ptx"/>
+  <xi:include href="./SearchTreeImplementation.ptx"/>
+  <xi:include href="./SearchTreeAnalysis.ptx"/>
+  <xi:include href="./BalancedBinarySearchTrees.ptx"/>
+  <xi:include href="./AVLTreePerformance.ptx"/>
+  <xi:include href="./AVLTreeImplementation.ptx"/>
+  <xi:include href="./SummaryofMapADTImplementations.ptx"/>
+  <xi:include href="./Summary.ptx"/>
+  <xi:include href="./KeyTerms.ptx"/>
+  <xi:include href="./Exercises.ptx"/>
+</chapter>

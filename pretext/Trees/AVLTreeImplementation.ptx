@@ -1,0 +1,332 @@
+<?xml version="1.0"?>
+<section xml:id="trees_avl-tree-implementation">
+  <title>AVL Tree Implementation</title>
+  <p>Now that we have demonstrated that keeping an AVL tree in balance is
+            going to be a big performance improvement, let's look at how we will
+            augment the procedure to insert a new key into the tree. Since all new
+            keys are inserted into the tree as leaf nodes and we know that the
+            balance factor for a new leaf is zero, there are no new requirements for
+            the node that has just been inserted. But once the new leaf is added, we must
+            update the balance factor of its parent. How this new leaf affects the
+            parent's balance factor depends on whether the leaf node is a left child
+            or a right child. If the new node is a right child, the balance factor of
+            the parent will be reduced by one. If the new node is a left child, then
+            the balance factor of the parent will be increased by one. This rule
+            can be applied recursively to the grandparent of the new node, and
+            possibly to every ancestor, all the way up to the root of the tree. Since
+            this is a recursive procedure, let's examine the two base cases for
+            updating balance factors:</p>
+  <p>
+    <ul>
+      <li>
+        <p>The recursive call has reached the root of the tree.</p>
+      </li>
+      <li>
+        <p>The balance factor of the parent has been adjusted to zero. You
+                    should convince yourself that once a subtree has a balance factor of
+                    zero, then the balance of its ancestor nodes does not change.</p>
+      </li>
+    </ul>
+  </p>
+  <p>We will implement the AVL tree as a subclass of <c>BinarySearchTree</c>. To
+            begin, we will override the <c>_put</c> method and write a new
+            <c>update_balance</c> helper method. These methods are shown in
+            <xref ref="lst-updbal"/>. You will notice that the definition for <c>_put</c> is
+            exactly the same as in simple binary search trees except for the addition of
+            the calls to <c>update_balance</c> on lines&#xA0;9 and&#xA0;17.</p>
+  <p>
+    <term>Listing 1</term>
+  </p>
+  <program language="python">
+    <input>
+def _put(self, key, value, current_node):
+    if key &lt; current_node.key:
+        if current_node.left_child:
+            self._put(key, value, current_node.left_child)
+        else:
+            current_node.left_child = AVLTreeNode(
+                key, value, 0, parent=current_node
+            )
+            self.update_balance(current_node.left_child)
+    else:
+        if current_node.right_child:
+            self._put(key, value, current_node.right_child)
+        else:
+            current_node.right_child = AVLTreeNode(
+                key, value, 0, parent=current_node
+            )
+            self.update_balance(current_node.right_child)
+
+def update_balance(self, node):
+    if node.balance_factor &gt; 1 or node.balance_factor &lt; -1:
+        self.rebalance(node)
+        return
+    if node.parent:
+        if node.is_left_child():
+            node.parent.balance_factor += 1
+        elif node.is_right_child():
+            node.parent.balance_factor -= 1
+
+        if node.parent.balance_factor != 0:
+            self.update_balance(node.parent)
+</input>
+  </program>
+  <p>The new <c>update_balance</c> method is where most of the work is done. This
+            implements the recursive procedure we just described. It first checks to see if the current node is out
+            of balance enough to require rebalancing (line&#xA0;20). If that
+            is the case then the rebalancing is done and no further updating to
+            parents is required. If the current node does not require rebalancing
+            then the balance factor of the parent is adjusted. If the balance factor
+            of the parent is nonzero then the algorithm continues to work its way
+            up the tree toward the root by recursively calling <c>update_balance</c> on
+            the parent.</p>
+  <p>When a rebalancing of the tree is necessary, how do we do it? Efficient
+            rebalancing is the key to making the AVL Tree work well without
+            sacrificing performance. In order to bring an AVL Tree back into balance,
+            we will perform one or more <term>rotations</term> on the tree.</p>
+  <p>To understand what a rotation is, let's look at a very simple example.
+            Consider the tree in the left half of <xref ref="fig-unbalsimple"/>. This tree
+            is out of balance with a balance factor of -2. To bring this tree into
+            balance we will use a left rotation around the subtree rooted at node A.</p>
+  <figure align="center" xml:id="18_id1fig-unbalsimple">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: Transforming an Unbalanced Tree Using a Left Rotation</caption>
+    <image source="Trees/Figures/simpleunbalanced.png" width="50%"/>
+  </figure>
+  <p>To perform a left rotation we essentially do the following:</p>
+  <p>
+    <ol label="1">
+      <li>
+        <p>Promote the right child (B) to be the root of the subtree.</p>
+      </li>
+      <li>
+        <p>Move the old root (A) to be the left child of the new root.</p>
+      </li>
+      <li>
+        <p>If new root (B) already has a left child, then make it the right child
+                    of the new left child (A). Note: since the new root (B) was the right
+                    child of A, the right child of A is guaranteed to be empty at this
+                    point. This allows us to add a new node as the right child without
+                    any further consideration.</p>
+      </li>
+    </ol>
+  </p>
+  <p>While this procedure is fairly easy in concept, the details of the code
+            are a bit tricky since we need to move things around in just the right
+            order so that all properties of a binary search tree are preserved.
+            Furthermore, we need to make sure to update all of the parent pointers
+            appropriately.</p>
+  <p>Let's look at a slightly more complicated tree to illustrate the right
+            rotation. The left side of <xref ref="fig-rightrot1"/> shows a tree that is
+            left-heavy and with a balance factor of 2 at the root.</p>
+  <figure align="center" xml:id="18_id2fig-rightrot1">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Transforming an Unbalanced Tree Using a Right Rotation</caption>
+    <image source="Trees/Figures/rightrotate1.png" width="50%"/>
+  </figure>
+  <p>To perform a right rotation we essentially do the following:</p>
+  <p>
+    <ol label="1">
+      <li>
+        <p>Promote the left child (C) to be the root of the subtree.</p>
+      </li>
+      <li>
+        <p>Move the old root (E) to be the right child of the new root.</p>
+      </li>
+      <li>
+        <p>If the new root (C) already has a right child (D) then make it the
+                    left child of the new right child (E). Note: since the new root (C)
+                    was the left child of E, the left child of E is guaranteed to be
+                    empty at this point. This allows us to add a new node as the left
+                    child without any further consideration.</p>
+      </li>
+    </ol>
+  </p>
+  <p>Now that you have seen the rotations and have the basic idea of how a
+            rotation works let us look at the code. <xref ref="lst-bothrotations"/> shows the
+            code for the left rotation (the
+            <c>rotate_right</c> method is symmetrical to <c>rotate_left</c> so we will leave
+            it to you to study the code for <c>rotate_right</c>). In line&#xA0;2
+            we create a temporary variable to keep track of the new root of the
+            subtree. As we said before, the new root is the right child of the
+            previous root. Now that a reference to the right child has been stored
+            in this temporary variable, we replace the right child of the old root
+            with the left child of the new.</p>
+  <p>The next step is to adjust the parent pointers of the two nodes. If
+            <c>new_root</c> has a left child then the new parent of the left child
+            becomes the old root. The parent of the new root is set to the parent of
+            the old root. If the old root was the root of the entire tree then we
+            must set the root of the tree to point to this new root. Otherwise, if
+            the old root is a left child then we change the parent of the left child
+            to point to the new root; otherwise we change the parent of the right
+            child to point to the new root. (lines&#xA0;10-13).
+            Finally we set the parent of the old root to be the new root. This is a
+            lot of complicated bookkeeping, so we encourage you to trace through
+            this function while looking at <xref ref="fig-unbalsimple"/>.</p>
+  <p xml:id="trees_lst-bothrotations" names="lst_bothrotations">
+    <term>Listing 2</term>
+  </p>
+  <program language="python">
+    <input>
+def rotate_left(self, rotation_root):
+    new_root = rotation_root.right_child
+    rotation_root.right_child = new_root.left_child
+    if new_root.left_child:
+        new_root.left_child.parent = rotation_root
+    new_root.parent = rotation_root.parent
+    if rotation_root.is_root():
+        self._root = new_root
+    else:
+        if rotation_root.is_left_child():
+            rotation_root.parent.left_child = new_root
+        else:
+            rotation_root.parent.right_child = new_root
+    new_root.left_child = rotation_root
+    rotation_root.parent = new_root
+    rotation_root.balance_factor = (
+        rotation_root.balance_factor + 1 - min(new_root.balance_factor, 0)
+    )
+    new_root.balance_factor = (
+        new_root.balance_factor + 1 + max(rotation_root.balance_factor, 0)
+    )
+</input>
+  </program>
+  <p>Finally, lines&#xA0;16-21 require some explanation. In
+            these lines we update the balance factors of the old and the new
+            root. Since all the other moves involve moving entire subtrees, the
+            balance factors of all other nodes are unaffected by the rotation. But
+            how can we update the balance factors without completely recalculating
+            the heights of the new subtrees? <xref ref="fig-bfderive"/> and the
+            following derivation should convince you that these lines are correct.</p>
+  <figure align="center" xml:id="id3">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: A Left Rotation</caption>
+    <image source="Trees/Figures/bfderive.png" width="50%"/>
+  </figure>
+  <p><xref ref="fig-bfderive"/> shows a left rotation. B and D are the pivotal
+            nodes and A, C, E are their subtrees. Let <math>h_x</math> denote the
+            height of a particular subtree rooted at node <math>x</math>. By definition
+            we know the following:</p>
+  <math_block docname="Trees/AVLTreeImplementation" label="True" nowrap="False" number="True" xml:space="preserve">new\_bal(B) = h_A - h_C \\
+old\_bal(B) = h_A - h_D</math_block>
+  <p>But we know that the old height of D can also be given by <math>1 + max(h_C, h_E)</math>,
+            that is, the height of D is one more than the maximum
+            height of its two children. Remember that <math>h_C</math> and
+            <math>h_E</math> have not changed. So, let us substitute that in to the
+            second equation, which gives us</p>
+  <p>
+    <math>old\_bal(B) = h_A - (1 + max(h_C,h_E))</math>
+  </p>
+  <p>and then subtract the two equations. The following steps
+            do the subtraction and use some algebra to simplify the equation for
+            <math>new\_bal(B)</math>.</p>
+  <math_block docname="Trees/AVLTreeImplementation" label="True" nowrap="False" number="True" xml:space="preserve">new\_bal(B) - old\_bal(B) = h_A - h_C - (h_A - (1 + max(h_C,h_E))) \\
+new\_bal(B) - old\_bal(B) = h_A - h_C - h_A + (1 + max(h_C,h_E)) \\
+new\_bal(B) - old\_bal(B) = h_A  - h_A + 1 + max(h_C,h_E) - h_C  \\
+new\_bal(B) - old\_bal(B) =  1 + max(h_C,h_E) - h_C</math_block>
+  <p>Next we will move <math>old\_bal(B)</math> to the right-hand side of the
+            equation and make use of the fact that
+            <math>max(a,b)-c = max(a-c, b-c)</math>.</p>
+  <math_block docname="Trees/AVLTreeImplementation" label="True" nowrap="False" number="True" xml:space="preserve">new\_bal(B) = old\_bal(B) + 1 + max(h_C - h_C ,h_E - h_C) \\</math_block>
+  <p>But <math>h_E - h_C</math> is the same as <math>-old\_bal(D)</math>. So we can
+            use another identity that says <math>max(-a,-b) = -min(a,b)</math>. So we
+            can finish our derivation of <math>new\_bal(B)</math> with the following
+            steps:</p>
+  <math_block docname="Trees/AVLTreeImplementation" label="True" nowrap="False" number="True" xml:space="preserve">new\_bal(B) = old\_bal(B) + 1 + max(0 , -old\_bal(D)) \\
+new\_bal(B) = old\_bal(B) + 1 - min(0 , old\_bal(D)) \\</math_block>
+  <p>Now we have all of the parts in terms that we readily know. If we
+            remember that B is <c>rotation_root</c> and D is <c>new_root</c> then we can see this
+            corresponds exactly to the statement on lines&#xA0;16-18 in
+            <xref ref="lst-bothrotations"/>, or:</p>
+  <program language="python">
+    <input>
+rotation_root.balance_factor = (
+    rotation_root.balance_factor + 1 - min(new_root.balance_factor, 0)
+)
+</input>
+  </program>
+  <p>A similar derivation gives us the equation for the updated node D as
+            well as the balance factors after a right rotation. We leave these as
+            an exercise for you.</p>
+  <p>Now you might think that we are done. We know how to do our left and
+            right rotations, and we know when we should do a left or right rotation.
+            But take a look at <xref ref="fig-hardrotate"/>. Since node A has a balance
+            factor of -2 we should do a left rotation. But what happens when we do
+            the left rotation around A?</p>
+  <figure align="center" xml:id="id4">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: An Unbalanced Tree that is More Difficult to Balance</caption>
+    <image source="Trees/Figures/hardunbalanced.png" width="50%"/>
+  </figure>
+  <p><xref ref="fig-badrotate"/> shows us that after the left rotation we are now
+            out of balance the other way. If we do a right rotation to correct the
+            situation we are right back where we started.</p>
+  <figure align="center" xml:id="id5">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 7: After a Left Rotation the Tree is Out of Balance in the Other Direction</caption>
+    <image source="Trees/Figures/badrotate.png" width="50%"/>
+  </figure>
+  <p>To correct this problem we must use the following set of rules:</p>
+  <p>
+    <ol label="1">
+      <li>
+        <p>If a subtree needs a left rotation to bring it into balance, first
+                    check the balance factor of the right child. If the right child is
+                    left-heavy, then do a right rotation on right child followed by the
+                    original left rotation.</p>
+      </li>
+      <li>
+        <p>If a subtree needs a right rotation to bring it into balance, first
+                    check the balance factor of the left child. If the left child is
+                    right-heavy, then do a left rotation on the left child followed by
+                    the original right rotation.</p>
+      </li>
+    </ol>
+  </p>
+  <p><xref ref="fig-rotatelr"/> shows how these rules solve the dilemma we
+            encountered in <xref ref="fig-hardrotate"/> and <xref ref="fig-badrotate"/>. Starting
+            with a right rotation around node C puts the tree in a position where
+            the left rotation around A brings the entire subtree back into balance.</p>
+  <figure align="center" xml:id="id6">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 8: A Right Rotation Followed by a Left Rotation</caption>
+    <image source="Trees/Figures/rotatelr.png" width="50%"/>
+  </figure>
+  <p>The code that implements these rules can be found in our <c>rebalance</c>
+            method, which is shown in <xref ref="lst-rebalance"/>. Rule number 1 from
+            above is implemented by the <c>if</c> statement starting on line&#xA0;2.
+            Rule number 2 is implemented by the <c>elif</c> statement starting on
+            line 8.</p>
+  <p xml:id="trees_lst-rebalance" names="lst_rebalance">
+    <term>Listing 3</term>
+  </p>
+  <program language="python">
+    <input>
+def rebalance(self, node):
+    if node.balance_factor &lt; 0:
+        if node.right_child.balance_factor &gt; 0:
+            self.rotate_right(node.right_child)
+            self.rotate_left(node)
+        else:
+            self.rotate_left(node)
+    elif node.balance_factor &gt; 0:
+        if node.left_child.balance_factor &lt; 0:
+            self.rotate_left(node.left_child)
+            self.rotate_right(node)
+        else:
+            self.rotate_right(node)
+</input>
+  </program>
+  <p>The <xref ref="trees_key-terms"/> provide you the opportunity to rebalance a tree
+            that requires a left rotation followed by a right. In addition the
+            discussion questions provide you with the opportunity to rebalance some
+            trees that are a little more complex than the tree in
+            <xref ref="fig-rotatelr"/>.</p>
+  <p>By keeping the tree in balance at all times, we can ensure that the
+            <c>get</c> method will run in order <math>O(log_2(n))</math> time. But the
+            question is at what cost to our <c>put</c> method? Let us break this down
+            into the operations performed by <c>put</c>. Since a new node is inserted
+            as a leaf, updating the balance factors of all the parents will require
+            a maximum of <math>log_2(n)</math> operations, one for each level of the
+            tree. If a subtree is found to be out of balance, a maximum of two
+            rotations are required to bring the tree back into balance. But each of
+            the rotations works in <math>O(1)</math> time, so even our <c>put</c>
+            operation remains <math>O(log_2(n))</math>.</p>
+  <p>At this point we have implemented a functional AVL tree, unless you need
+            the ability to delete a node. We leave the deletion of the node and
+            subsequent updating and rebalancing as an exercise for you.</p>
+</section>

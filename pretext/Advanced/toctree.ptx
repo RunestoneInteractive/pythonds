@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+  <title>Advanced Topics</title>
+  <xi:include href="./Objectives.ptx"/>
+  <xi:include href="./PythonListsRevisited.ptx"/>
+  <xi:include href="./RecursionRevisited.ptx"/>
+  <xi:include href="./DictionariesRevisited.ptx"/>
+  <xi:include href="./TreesRevisited.ptx"/>
+  <xi:include href="./GraphsRevisited.ptx"/>
+  <xi:include href="./Summary.ptx"/>
+  <xi:include href="./KeyTerms.ptx"/>
+  <xi:include href="./Exercises.ptx"/>
+</chapter>

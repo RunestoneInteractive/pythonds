@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<section xml:id="trees_binary-heap-operations">
+  <title>Binary Heap Operations</title>
+  <p>The basic operations we will implement for our binary heap are as
+            follows:</p>
+  <p>
+    <ul>
+      <li>
+        <p><c>BinaryHeap()</c> creates a new empty binary heap.</p>
+      </li>
+      <li>
+        <p><c>insert(k)</c> adds a new item to the heap.</p>
+      </li>
+      <li>
+        <p><c>get_min()</c> returns the item with the minimum key value, leaving
+                    the item in the heap.</p>
+      </li>
+      <li>
+        <p><c>delete()</c> returns the item with the minimum key value, removing
+                    the item from the heap.</p>
+      </li>
+      <li>
+        <p><c>is_empty()</c> returns <c>True</c> if the heap is empty, <c>False</c> otherwise.</p>
+      </li>
+      <li>
+        <p><c>size()</c> returns the number of items in the heap.</p>
+      </li>
+      <li>
+        <p><c>heapify(list)</c> builds a new heap from a list of keys.</p>
+      </li>
+    </ul>
+  </p>
+  <p><xref ref="lst-heap1"/> demonstrates the use of some of the binary
+            heap methods.  Notice that no matter what order we add items to the heap, the smallest
+            is removed each time.</p>
+  <program xml:id="heap1" interactive="activecode" language="python">
+    <input>
+from pythonds3.trees import BinaryHeap
+
+my_heap = BinaryHeap()
+my_heap.insert(5)
+my_heap.insert(7)
+my_heap.insert(3)
+my_heap.insert(11)
+
+print(my_heap.delete())
+print(my_heap.delete())
+print(my_heap.delete())
+print(my_heap.delete())
+        </input>
+  </program>
+</section>

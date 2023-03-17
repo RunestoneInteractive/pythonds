@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<section xml:id="basic-ds_the-queue-abstract-data-type">
+  <title>The Queue Abstract Data Type</title>
+  <p>The queue abstract data type is defined by the following structure and
+            operations. A queue is structured, as described above, as an ordered
+            collection of items which are added at one end, called the <em>rear</em>, and
+            removed from the other end, called the <em>front</em>. Queues maintain a FIFO
+            ordering property. The queue operations are given below.</p>
+  <p>
+    <ul>
+      <li>
+        <p><c>Queue()</c> creates a new queue that is empty. It needs no parameters
+                    and returns an empty queue.</p>
+      </li>
+      <li>
+        <p><c>enqueue(item)</c> adds a new item to the rear of the queue. It needs
+                    the item and returns nothing.</p>
+      </li>
+      <li>
+        <p><c>dequeue()</c> removes the front item from the queue. It needs no
+                    parameters and returns the item. The queue is modified.</p>
+      </li>
+      <li>
+        <p><c>is_empty()</c> tests to see whether the queue is empty. It needs no
+                    parameters and returns a boolean value.</p>
+      </li>
+      <li>
+        <p><c>size()</c> returns the number of items in the queue. It needs no
+                    parameters and returns an integer.</p>
+      </li>
+    </ul>
+  </p>
+  <p>As an example, if we assume that <c>q</c> is a queue that has been created
+            and is currently empty, then <xref ref="basic-ds_tbl-queueoperations"/> shows the
+            results of a sequence of queue operations. The queue contents are shown
+            such that the front is on the right. The first item enqueued was <c>4</c> so it
+            is the first item returned by <c>dequeue</c>.</p>
+  <table xml:id="basic-ds_id1">
+    <tabular>
+      <title>
+        <term>Table 5: Example Queue Operations</term>
+      </title>
+      <row header="yes">
+        <cell>
+          <term>Queue Operation</term>
+        </cell>
+        <cell>
+          <term>Queue Contents</term>
+        </cell>
+        <cell>
+          <term>Return Value</term>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>q.is_empty()</c>
+        </cell>
+        <cell>
+          <c>[]</c>
+        </cell>
+        <cell>
+          <c>True</c>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>q.enqueue(4)</c>
+        </cell>
+        <cell>
+          <c>[4]</c>
+        </cell>
+        <cell>
+                        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>q.enqueue("dog")</c>
+        </cell>
+        <cell>
+          <c>['dog',4]</c>
+        </cell>
+        <cell>
+                        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>q.enqueue(True)</c>
+        </cell>
+        <cell>
+          <c>[True, 'dog', 4]</c>
+        </cell>
+        <cell>
+                        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>q.size()</c>
+        </cell>
+        <cell>
+          <c>[True, 'dog', 4]</c>
+        </cell>
+        <cell>
+          <c>3</c>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>q.is_empty()</c>
+        </cell>
+        <cell>
+          <c>[True, 'dog', 4]</c>
+        </cell>
+        <cell>
+          <c>False</c>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>q.enqueue(8.4)</c>
+        </cell>
+        <cell>
+          <c>[8.4,True, 'dog', 4]</c>
+        </cell>
+        <cell>
+                        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>q.dequeue()</c>
+        </cell>
+        <cell>
+          <c>[8.4, True, 'dog']</c>
+        </cell>
+        <cell>
+          <c>4</c>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>q.dequeue()</c>
+        </cell>
+        <cell>
+          <c>[8.4, True]</c>
+        </cell>
+        <cell>
+          <c>'dog'</c>
+        </cell>
+      </row>
+      <row>
+        <cell>
+          <c>q.size()</c>
+        </cell>
+        <cell>
+          <c>[8.4, True]</c>
+        </cell>
+        <cell>
+          <c>2</c>
+        </cell>
+      </row>
+    </tabular>
+  </table>
+</section>

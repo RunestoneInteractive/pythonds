@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+  <title>Basic Data Structures</title>
+  <xi:include href="./Objectives.ptx"/>
+  <xi:include href="./WhatAreLinearStructures.ptx"/>
+  <xi:include href="./WhatisaStack.ptx"/>
+  <xi:include href="./TheStackAbstractDataType.ptx"/>
+  <xi:include href="./ImplementingaStackinPython.ptx"/>
+  <xi:include href="./SimpleBalancedParentheses.ptx"/>
+  <xi:include href="./BalancedSymbolsAGeneralCase.ptx"/>
+  <xi:include href="./ConvertingDecimalNumberstoBinaryNumbers.ptx"/>
+  <xi:include href="./InfixPrefixandPostfixExpressions.ptx"/>
+  <xi:include href="./WhatIsaQueue.ptx"/>
+  <xi:include href="./TheQueueAbstractDataType.ptx"/>
+  <xi:include href="./ImplementingaQueueinPython.ptx"/>
+  <xi:include href="./SimulationHotPotato.ptx"/>
+  <xi:include href="./SimulationPrintingTasks.ptx"/>
+  <xi:include href="./WhatIsaDeque.ptx"/>
+  <xi:include href="./TheDequeAbstractDataType.ptx"/>
+  <xi:include href="./ImplementingaDequeinPython.ptx"/>
+  <xi:include href="./PalindromeChecker.ptx"/>
+  <xi:include href="./Lists.ptx"/>
+  <xi:include href="./TheUnorderedListAbstractDataType.ptx"/>
+  <xi:include href="./ImplementinganUnorderedListLinkedLists.ptx"/>
+  <xi:include href="./TheOrderedListAbstractDataType.ptx"/>
+  <xi:include href="./ImplementinganOrderedList.ptx"/>
+  <xi:include href="./Summary.ptx"/>
+  <xi:include href="./KeyTerms.ptx"/>
+  <xi:include href="./Exercises.ptx"/>
+</chapter>

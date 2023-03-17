@@ -1,0 +1,1158 @@
+<?xml version="1.0"?>
+<section xml:id="introduction_getting-started-with-data">
+  <title>Getting Started with Data</title>
+  <p>We stated above that Python supports the object-oriented programming
+            paradigm. This means that Python considers data to be the focal point of
+            the problem-solving process. In Python, as well as in any other
+            object-oriented programming language, we define a <term>class</term> to be a
+            description of what the data look like (the state) and what the data can
+            do (the behavior). Classes are analogous to abstract data types because
+            a user of a class only sees the state and behavior of a data item. Data
+            items are called <term>objects</term> in the object-oriented paradigm. An object
+            is an instance of a class.</p>
+  <subsection xml:id="introduction_built-in-atomic-data-types">
+    <title>Built-in Atomic Data Types</title>
+    <p>We will begin our review by considering the atomic data types. Python
+                has two main built-in numeric classes that implement the integer and
+                floating-point data types. These Python classes are called <c>int</c> and
+                <c>float</c>. The standard arithmetic operators, +, -, *, /, and **
+                (exponentiation), can be used with parentheses forcing the order of
+                operations away from normal operator precedence. Other very useful
+                operators are the remainder (modulo) operator (%) and integer division (//).
+                Note that when two integers are divided, the result is a floating
+                point. The integer division operator returns the integer portion of the
+                quotient by truncating any fractional part.</p>
+    <program xml:id="intro_1" interactive="activecode" language="python">
+      <input>
+print(2 + 3 * 4)
+print((2 + 3) * 4)
+print(2 ** 10)
+print(6 / 3)
+print(7 / 3)
+print(7 // 3)
+print(7 % 3)
+print(3 / 6)
+print(3 // 6)
+print(3 % 6)
+print(2 ** 100)
+        </input>
+    </program>
+    <p>The Boolean data type, implemented as the Python <c>bool</c> class, will be
+                quite useful for representing truth values. The possible state values
+                for a Boolean object are <c>True</c> and <c>False</c> with the standard
+                Boolean operators, <c>and</c>, <c>or</c>, and <c>not</c>.</p>
+    <pre>&gt;&gt;&gt; True
+True
+&gt;&gt;&gt; False
+False
+&gt;&gt;&gt; False or True
+True
+&gt;&gt;&gt; not (False or True)
+False
+&gt;&gt;&gt; True and True
+True</pre>
+    <p>Boolean data objects are also used as results for comparison operators
+                such as equality (==) and greater than (<math>&gt;</math>). In addition,
+                relational operators and logical operators can be combined together to
+                form complex logical questions. <xref ref="introduction_tab-relational"/> shows the relational
+                and logical operators with examples shown in the session that follows.</p>
+    <table xml:id="introduction_id1">
+      <tabular>
+        <title>
+          <term>Table 1: Relational and Logical Operators</term>
+        </title>
+        <row header="yes">
+          <cell>
+            <term>Operation Name</term>
+          </cell>
+          <cell>
+            <term>Operator</term>
+          </cell>
+          <cell>
+            <term>Explanation</term>
+          </cell>
+        </row>
+        <row>
+          <cell>
+                                less than
+                            </cell>
+          <cell>
+            <math>&lt;</math>
+          </cell>
+          <cell>
+                                Less than operator
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                greater than
+                            </cell>
+          <cell>
+            <math>&gt;</math>
+          </cell>
+          <cell>
+                                Greater than operator
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                less than or equal
+                            </cell>
+          <cell>
+            <math>&lt;=</math>
+          </cell>
+          <cell>
+                                Less than or equal to operator
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                greater than or equal
+                            </cell>
+          <cell>
+            <math>&gt;=</math>
+          </cell>
+          <cell>
+                                Greater than or equal to operator
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                equal
+                            </cell>
+          <cell>
+            <math>==</math>
+          </cell>
+          <cell>
+                                Equality operator
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                not equal
+                            </cell>
+          <cell>
+            <math>!=</math>
+          </cell>
+          <cell>
+                                Not equal operator
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                logical and
+                            </cell>
+          <cell>
+            <math>and</math>
+          </cell>
+          <cell>
+                                Both operands True for result to be True
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                logical or
+                            </cell>
+          <cell>
+            <math>or</math>
+          </cell>
+          <cell>
+                                One or the other operand is True for the result to be True
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                logical not
+                            </cell>
+          <cell>
+            <math>not</math>
+          </cell>
+          <cell>
+                                Negates the truth value, False becomes True, True becomes False
+                            </cell>
+        </row>
+      </tabular>
+    </table>
+    <program xml:id="intro_2" interactive="activecode" language="python">
+      <input>
+print(5 == 10)
+print(10 &gt; 5)
+print((5 &gt;= 1) and (5 &lt;= 10))
+print((1 &lt; 5) or (10 &lt; 1))
+print(1 &lt; 5 &lt; 10)
+        </input>
+    </program>
+    <p>Identifiers are used in programming languages as names. In Python,
+                identifiers start with a letter or an underscore (_), are case
+                sensitive, and can be of any length. Remember that it is always a good
+                idea to use names that convey meaning so that your program code is
+                easier to read and understand.</p>
+    <p>A Python variable is created when a name is used for the first time on
+                the left-hand side of an assignment statement. Assignment statements
+                provide a way to associate a name with a value. The variable will hold a
+                reference to a piece of data but not the data itself. Consider the
+                following session:</p>
+    <pre>&gt;&gt;&gt; the_sum = 0
+&gt;&gt;&gt; the_sum
+0
+&gt;&gt;&gt; the_sum = the_sum + 1
+&gt;&gt;&gt; the_sum
+1
+&gt;&gt;&gt; the_sum = True
+&gt;&gt;&gt; the_sum
+True</pre>
+    <p>The assignment statement <c>the_sum = 0</c> creates a variable called
+                <c>the_sum</c> and lets it hold the reference to the data object <c>0</c> (see
+                <xref ref="fig-assignment1"/>). In general, the right-hand side of the assignment
+                statement is evaluated and a reference to the resulting data object is
+                assigned to the name on the left-hand side. At this point in our
+                example, the type of the variable is integer as that is the type of the
+                data currently being referred to by <c>the_sum</c>. If the type of the data
+                changes (see <xref ref="fig-assignment2"/>), as shown above with the Boolean
+                value <c>True</c>, so does the type of the variable (<c>the_sum</c> is now of
+                the type Boolean). The assignment statement changes the reference being
+                held by the variable. This is a dynamic characteristic of Python. The
+                same variable can refer to many different types of data.</p>
+    <figure align="center" xml:id="15_id2fig-assignment1">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: Variables Hold References to Data Objects</caption>
+      <image source="Introduction/Figures/assignment1.png" width="50%"/>
+    </figure>
+    <figure align="center" xml:id="id3">
+      <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Assignment Changes the Reference</caption>
+      <image source="Introduction/Figures/assignment2.png" width="50%"/>
+    </figure>
+  </subsection>
+  <subsection xml:id="introduction_built-in-collection-data-types">
+    <title>Built-in Collection Data Types</title>
+    <p>In addition to the numeric and Boolean classes, Python has a number of
+                very powerful built-in collection classes. Lists, strings, and tuples
+                are ordered collections that are very similar in general structure but
+                have specific differences that must be understood for them to be used
+                properly. Sets and dictionaries are unordered collections.</p>
+    <p>A <term>list</term> is an ordered collection of zero or more references to Python
+                data objects. Lists are written as comma-delimited values enclosed in
+                square brackets. The empty list is simply <c>[ ]</c>. Lists are
+                heterogeneous, meaning that the data objects need not all be from the
+                same class and the collection can be assigned to a variable as below.
+                The following fragment shows a variety of Python data objects in a list.</p>
+    <pre>&gt;&gt;&gt; [1, 3, True, 6.5]
+[1, 3, True, 6.5]
+&gt;&gt;&gt; my_list = [1, 3, True, 6.5]
+&gt;&gt;&gt; my_list
+[1, 3, True, 6.5]</pre>
+    <p>Note that when Python evaluates a list, the list itself is returned.
+                However, in order to remember the list for later processing, its
+                reference needs to be assigned to a variable.</p>
+    <p>Since lists are considered to be sequentially ordered, they support a
+                number of operations that can be applied to any Python sequence.
+                <xref ref="introduction_tab-sequence"/> reviews these operations and the following session
+                gives examples of their use.</p>
+    <table xml:id="introduction_id4">
+      <tabular>
+        <title>
+          <term>Table 2: Operations on Any Sequence in Python</term>
+        </title>
+        <row header="yes">
+          <cell>
+            <term>Operation Name</term>
+          </cell>
+          <cell>
+            <term>Operator</term>
+          </cell>
+          <cell>
+            <term>Explanation</term>
+          </cell>
+        </row>
+        <row>
+          <cell>
+                                indexing
+                            </cell>
+          <cell>
+                                [ ]
+                            </cell>
+          <cell>
+                                Access an element of a sequence
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                concatenation
+                            </cell>
+          <cell>
+                                +
+                            </cell>
+          <cell>
+                                Combine sequences together
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                repetition
+                            </cell>
+          <cell>
+                                *
+                            </cell>
+          <cell>
+                                Concatenate a repeated number of times
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                membership
+                            </cell>
+          <cell>
+                                in
+                            </cell>
+          <cell>
+                                Ask whether an item is in a sequence
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                length
+                            </cell>
+          <cell>
+                                len
+                            </cell>
+          <cell>
+                                Ask the number of items in the sequence
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                slicing
+                            </cell>
+          <cell>
+                                [ : ]
+                            </cell>
+          <cell>
+                                Extract a part of a sequence
+                            </cell>
+        </row>
+      </tabular>
+    </table>
+    <p>Note that the indices for lists (sequences) start counting with 0. The
+                slice operation my_list[1:3] returns a list of items starting with the
+                item indexed by 1 up to&#x2014;but not including&#x2014;the item indexed by 3.</p>
+    <p>Sometimes you will want to initialize a list. This can quickly be
+                accomplished by using repetition. For example,</p>
+    <pre>&gt;&gt;&gt; my_list = [0] * 6
+&gt;&gt;&gt; my_list
+[0, 0, 0, 0, 0, 0]</pre>
+    <p>One very important aside relating to the repetition operator is that the
+                result is a repetition of references to the data objects in the
+                sequence. This can best be seen by considering the following session:</p>
+    <program xml:id="intro_3" interactive="activecode" language="python">
+      <input>
+my_list = [1, 2, 3, 4]
+big_list = [my_list] * 3
+print(big_list)
+my_list[2] = 45
+print(big_list)
+        </input>
+    </program>
+    <p>The variable <c>big_list</c> holds a collection of three references to the
+                original list called <c>my_list</c>. Note that a change to one element of
+                <c>my_list</c> shows up in all three occurrences in <c>big_list</c>.</p>
+    <p>Lists support a number of methods that will be used to build data
+                structures. <xref ref="introduction_tab-listmethods"/> provides a summary. Examples of their
+                use follow.</p>
+    <table xml:id="introduction_id5">
+      <tabular>
+        <title>
+          <term>Table 3: Methods Provided by Lists in Python</term>
+        </title>
+        <row header="yes">
+          <cell>
+            <term>Method Name</term>
+          </cell>
+          <cell>
+            <term>Use</term>
+          </cell>
+          <cell>
+            <term>Explanation</term>
+          </cell>
+        </row>
+        <row>
+          <cell>
+            <c>append</c>
+          </cell>
+          <cell>
+            <c>a_list.append(item)</c>
+          </cell>
+          <cell>
+                                Adds a new item to the end of a list
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>insert</c>
+          </cell>
+          <cell>
+            <c>a_list.insert(i,item)</c>
+          </cell>
+          <cell>
+                                Inserts an item at the ith position in a list
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>pop</c>
+          </cell>
+          <cell>
+            <c>a_list.pop()</c>
+          </cell>
+          <cell>
+                                Removes and returns the last item in a list
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>pop</c>
+          </cell>
+          <cell>
+            <c>a_list.pop(i)</c>
+          </cell>
+          <cell>
+                                Removes and returns the ith item in a list
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>sort</c>
+          </cell>
+          <cell>
+            <c>a_list.sort()</c>
+          </cell>
+          <cell>
+                                Sorts a list in place
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>reverse</c>
+          </cell>
+          <cell>
+            <c>a_list.reverse()</c>
+          </cell>
+          <cell>
+                                Modifies a list to be in reverse order
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>del</c>
+          </cell>
+          <cell>
+            <c>del a_list[i]</c>
+          </cell>
+          <cell>
+                                Deletes the item in the ith position
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>index</c>
+          </cell>
+          <cell>
+            <c>a_list.index(item)</c>
+          </cell>
+          <cell>
+                                Returns the index of the first occurrence of <c>item</c>
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>count</c>
+          </cell>
+          <cell>
+            <c>a_list.count(item)</c>
+          </cell>
+          <cell>
+                                Returns the number of occurrences of <c>item</c>
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>remove</c>
+          </cell>
+          <cell>
+            <c>a_list.remove(item)</c>
+          </cell>
+          <cell>
+                                Removes the first occurrence of <c>item</c>
+                            </cell>
+        </row>
+      </tabular>
+    </table>
+    <program xml:id="intro_5" interactive="activecode" language="python">
+      <input>
+my_list = [1024, 3, True, 6.5]
+my_list.append(False)
+print(my_list)
+my_list.insert(2,4.5)
+print(my_list)
+print(my_list.pop())
+print(my_list)
+print(my_list.pop(1))
+print(my_list)
+my_list.pop(2)
+print(my_list)
+my_list.sort()
+print(my_list)
+my_list.reverse()
+print(my_list)
+print(my_list.count(6.5))
+print(my_list.index(4.5))
+my_list.remove(6.5)
+print(my_list)
+del my_list[0]
+print(my_list)
+        </input>
+    </program>
+    <p>You can see that some of the methods, such as <c>pop</c>, return a value
+                and also modify the list. Others, such as <c>reverse</c>, simply modify the
+                list with no return value. <c>pop</c> will default to the end of the list
+                but can also remove and return a specific item. The index range starting
+                from 0 is again used for these methods. You should also notice the
+                familiar <q>dot</q> notation for asking an object to invoke a method.
+                <c>my_list.append(False)</c> can be read as <q>ask the object <c>my_list</c> to
+                perform its <c>append</c> method and send it the value <c>False</c>.</q> Even
+                simple data objects such as integers can invoke methods in this way.</p>
+    <pre>&gt;&gt;&gt; (54).__add__(21)
+75</pre>
+    <p>In this fragment we are asking the integer object <c>54</c> to execute its
+                <c>add</c> method (called <c>__add__</c> in Python) and passing it <c>21</c> as
+                the value to add. The result is the sum, <c>75</c>. Of course, we usually
+                write this as <c>54+21</c>. We will say much more about these methods later
+                in this section.</p>
+    <p>One common Python function that is often discussed in conjunction with
+                lists is the <c>range</c> function. <c>range</c> produces a range object that
+                represents a sequence of values. By using the <c>list</c> function, it is
+                possible to see the value of the range object as a list. This is
+                illustrated below.</p>
+    <pre>&gt;&gt;&gt; range(10)
+range(0, 10)
+&gt;&gt;&gt; list(range(10))
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+&gt;&gt;&gt; range(5, 10)
+range(5, 10)
+&gt;&gt;&gt; list(range(5, 10))
+[5, 6, 7, 8, 9]
+&gt;&gt;&gt; list(range(5, 10, 2))
+[5, 7, 9]
+&gt;&gt;&gt; list(range(10, 1, -1))
+[10, 9, 8, 7, 6, 5, 4, 3, 2]</pre>
+    <p>The range object represents a sequence of integers. By default, it will
+                start with 0. If you provide more parameters, it will start and end at
+                particular points and can even skip items. In our first example,
+                <c>range(10)</c>, the sequence starts with 0 and goes up to but does not
+                include 10. In our second example, <c>range(5, 10)</c> starts at 5 and goes
+                up to but does not include 10. <c>range(5, 10, 2)</c> performs similarly but
+                skips by twos (again, 10 is not included).</p>
+    <p><term>Strings</term> are sequential collections of zero or more letters, numbers,
+                and other symbols. We call these letters, numbers, and other symbols
+                <em>characters</em>. Literal string values are differentiated from identifiers
+                by using quotation marks (either single or double).</p>
+    <pre>&gt;&gt;&gt; "David"
+'David'
+&gt;&gt;&gt; my_name = "David"
+&gt;&gt;&gt; my_name[3]
+'i'
+&gt;&gt;&gt; my_name * 2
+'DavidDavid'
+&gt;&gt;&gt; len(my_name)
+5</pre>
+    <p>Since strings are sequences, all of the sequence operations described
+                above work as you would expect. In addition, strings have a number of
+                methods, some of which are shown in <xref ref="introduction_tab-stringmethods"/>.</p>
+    <table xml:id="introduction_id6">
+      <tabular>
+        <title>
+          <term>Table 4: Methods Provided by Strings in Python</term>
+        </title>
+        <row header="yes">
+          <cell>
+            <term>Method Name</term>
+          </cell>
+          <cell>
+            <term>Use</term>
+          </cell>
+          <cell>
+            <term>Explanation</term>
+          </cell>
+        </row>
+        <row>
+          <cell>
+            <c>center</c>
+          </cell>
+          <cell>
+            <c>a_string.center(w)</c>
+          </cell>
+          <cell>
+                                Returns a string centered in a field of size <c>w</c>
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>count</c>
+          </cell>
+          <cell>
+            <c>a_string.count(item)</c>
+          </cell>
+          <cell>
+                                Returns the number of occurrences of <c>item</c> in the string
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>ljust</c>
+          </cell>
+          <cell>
+            <c>a_string.ljust(w)</c>
+          </cell>
+          <cell>
+                                Returns a string left-justified in a field of size <c>w</c>
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>lower</c>
+          </cell>
+          <cell>
+            <c>a_string.lower()</c>
+          </cell>
+          <cell>
+                                Returns a string in all lowercase
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>rjust</c>
+          </cell>
+          <cell>
+            <c>a_string.rjust(w)</c>
+          </cell>
+          <cell>
+                                Returns a string right-justified in a field of size <c>w</c>
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>find</c>
+          </cell>
+          <cell>
+            <c>a_string.find(item)</c>
+          </cell>
+          <cell>
+                                Returns the index of the first occurrence of <c>item</c>
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>split</c>
+          </cell>
+          <cell>
+            <c>a_string.split(s_char)</c>
+          </cell>
+          <cell>
+                                Splits a string into substrings at <c>s_char</c>
+                            </cell>
+        </row>
+      </tabular>
+    </table>
+    <p>Of these, <c>split</c> will be very useful for processing data. <c>split</c>
+                will take a string and return a list of strings using the split
+                character as a division point. In the example below, <q>v</q> is the division
+                point. If no division is specified, the split method looks for
+                whitespace characters such as tab, newline, and space.</p>
+    <pre>&gt;&gt;&gt; my_name
+'David'
+&gt;&gt;&gt; my_name.upper()
+'DAVID'
+&gt;&gt;&gt; my_name.center(10)
+'  David   '
+&gt;&gt;&gt; my_name.find("v")
+2
+&gt;&gt;&gt; my_name.split("v")
+['Da', 'id']</pre>
+    <p>A major difference between lists and strings is that lists can be
+                modified while strings cannot. This is referred to as <term>mutability</term>.
+                Lists are mutable; strings are immutable. For example, you can change an
+                item in a list by using indexing and assignment. With a string that change is not allowed, as shown below.</p>
+    <pre>&gt;&gt;&gt; my_list
+[1, 3, True, 6.5]
+&gt;&gt;&gt; my_list[0] = 2 ** 10
+&gt;&gt;&gt; my_list
+[1024, 3, True, 6.5]
+&gt;&gt;&gt;
+&gt;&gt;&gt; my_name
+'David'
+&gt;&gt;&gt; my_name[0] = "X"
+Traceback (most recent call last):
+File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+TypeError: 'str' object does not support item assignment</pre>
+    <p><term>Tuples</term> are very similar to lists in that they are heterogeneous
+                sequences of data. The difference is that a tuple is immutable, like a
+                string. A tuple cannot be changed. Tuples are written as comma-delimited
+                values enclosed in parentheses. As sequences, they can use any operation
+                described above. For example,</p>
+    <pre>&gt;&gt;&gt; my_tuple = (2, True, 4.96)
+&gt;&gt;&gt; my_tuple
+(2, True, 4.96)
+&gt;&gt;&gt; len(my_tuple)
+3
+&gt;&gt;&gt; my_tuple[0]
+2
+&gt;&gt;&gt; my_tuple * 3
+(2, True, 4.96, 2, True, 4.96, 2, True, 4.96)
+&gt;&gt;&gt; my_tuple[0:2]
+(2, True)</pre>
+    <p>However, if you try to change an item in a tuple, you will get an error.
+                Note that the error message provides the location and reason for the
+                problem.</p>
+    <pre>&gt;&gt;&gt; my_tuple[1] = False
+Traceback (most recent call last):
+File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+TypeError: 'tuple' object does not support item assignment</pre>
+    <p>A <term>set</term> is an unordered collection of zero or more immutable Python data
+                objects. Sets do not allow duplicates and are written as comma-delimited
+                values enclosed in curly braces. The empty set is represented by
+                <c>set()</c>. Sets are heterogeneous, and the collection can be assigned to
+                a variable as below.</p>
+    <pre>&gt;&gt;&gt; {3, 6, "cat", 4.5, False}
+{False, 3, 4.5, 6, 'cat'}
+&gt;&gt;&gt; my_set = {3, 6, "cat", 4.5, False}
+&gt;&gt;&gt; my_set
+{False, 3, 4.5, 6, 'cat'}</pre>
+    <p>Even though sets are not considered to be sequential, they do support a
+                few of the familiar operations presented earlier. <xref ref="introduction_tab-setops"/> reviews
+                these operations and the following session gives examples of their use.</p>
+    <table xml:id="introduction_id7">
+      <tabular>
+        <title>
+          <term>Table 5: Operations on a Set in Python</term>
+        </title>
+        <row header="yes">
+          <cell>
+            <term>Operation Name</term>
+          </cell>
+          <cell>
+            <term>Operator</term>
+          </cell>
+          <cell>
+            <term>Explanation</term>
+          </cell>
+        </row>
+        <row>
+          <cell>
+                                membership
+                            </cell>
+          <cell>
+            <c>in</c>
+          </cell>
+          <cell>
+                                Set membership
+                            </cell>
+        </row>
+        <row>
+          <cell>
+                                length
+                            </cell>
+          <cell>
+            <c>len</c>
+          </cell>
+          <cell>
+                                Returns the cardinality of the set
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>|</c>
+          </cell>
+          <cell>
+            <c>a_set | other_set</c>
+          </cell>
+          <cell>
+                                Returns a new set with all elements from both sets
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>&amp;</c>
+          </cell>
+          <cell>
+            <c>a_set &amp; other_set</c>
+          </cell>
+          <cell>
+                                Returns a new set with only those elements common to both sets
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>-</c>
+          </cell>
+          <cell>
+            <c>a_set - other_set</c>
+          </cell>
+          <cell>
+                                Returns a new set with all items from the first set not in the second
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>&lt;=</c>
+          </cell>
+          <cell>
+            <c>a_set &lt;= other_set</c>
+          </cell>
+          <cell>
+                                Asks whether all elements of  the first set are in the second
+                            </cell>
+        </row>
+      </tabular>
+    </table>
+    <pre>&gt;&gt;&gt; my_set
+{False, 3, 4.5, 6, 'cat'}
+&gt;&gt;&gt; len(my_set)
+5
+&gt;&gt;&gt; False in my_set
+True
+&gt;&gt;&gt; "dog" in my_set
+False</pre>
+    <p>Sets support a number of methods that should be familiar to those who
+                have worked with them in a mathematics setting. <xref ref="introduction_tab-setmethods"/>
+                provides a summary. Examples of their use follow. Note that <c>union</c>,
+                <c>intersection</c>, <c>issubset</c>, and <c>difference</c> all have operators
+                that can be used as well.</p>
+    <table xml:id="introduction_id8">
+      <tabular>
+        <title>
+          <term>Table 6: Methods Provided by Sets in Python</term>
+        </title>
+        <row header="yes">
+          <cell>
+            <term>Method Name</term>
+          </cell>
+          <cell>
+            <term>Use</term>
+          </cell>
+          <cell>
+            <term>Explanation</term>
+          </cell>
+        </row>
+        <row>
+          <cell>
+            <c>union</c>
+          </cell>
+          <cell>
+            <c>a_set.union(other_set)</c>
+          </cell>
+          <cell>
+                                Returns a new set with all elements from both sets
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>intersection</c>
+          </cell>
+          <cell>
+            <c>a_set.intersection(other_set)</c>
+          </cell>
+          <cell>
+                                Returns a new set with only those elements common to both sets
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>difference</c>
+          </cell>
+          <cell>
+            <c>a_set.difference(other_set)</c>
+          </cell>
+          <cell>
+                                Returns a new set with all items from the first set not in the second
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>issubset</c>
+          </cell>
+          <cell>
+            <c>a_set.issubset(othe_rset)</c>
+          </cell>
+          <cell>
+                                Asks whether all elements of one set are in the other
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>add</c>
+          </cell>
+          <cell>
+            <c>a_set.add(item)</c>
+          </cell>
+          <cell>
+                                Adds item to the set
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>remove</c>
+          </cell>
+          <cell>
+            <c>a_set.remove(item)</c>
+          </cell>
+          <cell>
+                                Removes item from the set
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>pop</c>
+          </cell>
+          <cell>
+            <c>a_set.pop()</c>
+          </cell>
+          <cell>
+                                Removes an arbitrary element from the set
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>clear</c>
+          </cell>
+          <cell>
+            <c>a_set.clear()</c>
+          </cell>
+          <cell>
+                                Removes all elements from the set
+                            </cell>
+        </row>
+      </tabular>
+    </table>
+    <pre>&gt;&gt;&gt; my_set
+{False, 3, 4.5, 6, 'cat'}
+&gt;&gt;&gt; your_set = {99, 3, 100}
+&gt;&gt;&gt; my_set.union(your_set)
+{False, 3, 4.5, 'cat', 6, 99, 100}
+&gt;&gt;&gt; my_set | your_set
+{False, 3, 4.5, 'cat', 6, 99, 100}
+&gt;&gt;&gt; my_set.intersection(your_set)
+{3}
+&gt;&gt;&gt; my_set &amp; your_set
+{3}
+&gt;&gt;&gt; my_set.difference(your_set)
+{False, 'cat', 4.5, 6}
+&gt;&gt;&gt; my_set - your_set
+{False, 'cat', 4.5, 6}
+&gt;&gt;&gt; {3, 100}.issubset(your_set)
+True
+&gt;&gt;&gt; {3, 100} &lt;= your_set
+True
+&gt;&gt;&gt; my_set.add("house")
+&gt;&gt;&gt; my_set
+{False, 'house', 3, 4.5, 6, 'cat'}
+&gt;&gt;&gt; my_set.remove(4.5)
+&gt;&gt;&gt; my_set
+{False, 'house', 3, 6, 'cat'}
+&gt;&gt;&gt; my_set.pop()
+False
+&gt;&gt;&gt; my_set
+{'house', 3, 6, 'cat'}
+&gt;&gt;&gt; my_set.clear()
+&gt;&gt;&gt; my_set
+set()</pre>
+    <p>Our final Python collection is an unordered structure called a
+                <term>dictionary</term>. Dictionaries are collections of associated pairs of
+                items where each pair consists of a key and a value. This key-value pair
+                is typically written as key:value. Dictionaries are written as
+                comma-delimited key:value pairs enclosed in curly braces. For example,</p>
+    <pre>&gt;&gt;&gt; capitals = {"Iowa": "Des Moines", "Wisconsin": "Madison"}
+&gt;&gt;&gt; capitals
+{'Iowa': 'Des Moines', 'Wisconsin': 'Madison'}</pre>
+    <p>We can manipulate a dictionary by accessing a value via its key or by
+                adding another key-value pair. The syntax for access looks much like a
+                sequence access except that instead of using the index of the item, we
+                use the key value. To add a new value is similar.</p>
+    <program xml:id="intro_7" interactive="activecode" language="python">
+      <input>
+capitals = {"Iowa": "Des Moines", "Wisconsin": "Madison"}
+print(capitals["Iowa"])
+capitals["Utah"] = "Salt Lake City"
+print(capitals)
+capitals["California"] = "Sacramento"
+print(len(capitals))
+for k in capitals:
+    print(capitals[k],"is the capital of", k)
+        </input>
+    </program>
+    <p>It is important to note that prior to Python 3.6 dictionaries were maintained in no
+                particular order with respect to the keys. The first pair added
+                (<c>"Utah":</c> <c>"Salt Lake City"</c>) would be placed first in the dictionary and
+                the second pair added (<c>"California":</c> <c>"Sacramento"</c>) would be placed
+                last. The placement of a key is dependent on the idea of <em>hashing</em>,
+                which will be explained in more detail in Chapter 5.
+                Dictionaries do maintain the order since Python 3.6, so in the example above the pairs appear in the dictionary in the order they were added.
+                We also show the length function performing the same role as with other collections.</p>
+    <p>Dictionaries have both methods and operators. <xref ref="introduction_tab-dictopers"/> and
+                <xref ref="introduction_tab-dictmethods"/> describe them, and the session shows them in action. The
+                <c>keys</c>, <c>values</c>, and <c>items</c> methods all return objects that
+                contain the values of interest. You can use the <c>list</c> function to
+                convert them to lists. You will also see that there are two variations
+                on the <c>get</c> method. If the key is not present in the dictionary,
+                <c>get</c> will return <c>None</c>. However, a second, optional parameter can
+                specify a return value instead.</p>
+    <table xml:id="introduction_id9">
+      <tabular>
+        <title>
+          <term>Table 7: Operators Provided by Dictionaries in Python</term>
+        </title>
+        <row header="yes">
+          <cell>
+            <term>Operator</term>
+          </cell>
+          <cell>
+            <term>Use</term>
+          </cell>
+          <cell>
+            <term>Explanation</term>
+          </cell>
+        </row>
+        <row>
+          <cell>
+            <c>[]</c>
+          </cell>
+          <cell>
+            <c>a_dict[k]</c>
+          </cell>
+          <cell>
+                                Returns the value associated with <c>k</c>, otherwise its an error
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>in</c>
+          </cell>
+          <cell>
+            <c>key in a_dict</c>
+          </cell>
+          <cell>
+                                Returns <c>True</c> if key is in the   dictionary, <c>False</c> otherwise
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>del</c>
+          </cell>
+          <cell>
+                                del <c>a_dict[key]</c>
+                            </cell>
+          <cell>
+                                Removes the entry from the dictionary
+                            </cell>
+        </row>
+      </tabular>
+    </table>
+    <table xml:id="introduction_id10">
+      <tabular>
+        <title>
+          <term>Table 8: Methods Provided by Dictionaries in Python</term>
+        </title>
+        <row header="yes">
+          <cell>
+            <term>Method Name</term>
+          </cell>
+          <cell>
+            <term>Use</term>
+          </cell>
+          <cell>
+            <term>Explanation</term>
+          </cell>
+        </row>
+        <row>
+          <cell>
+            <c>keys</c>
+          </cell>
+          <cell>
+            <c>a_dict.keys()</c>
+          </cell>
+          <cell>
+                                Returns the keys of the dictionary in a dict_keys object
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>values</c>
+          </cell>
+          <cell>
+            <c>a_dict.values()</c>
+          </cell>
+          <cell>
+                                Returns the values of the dictionary in a dict_values object
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>items</c>
+          </cell>
+          <cell>
+            <c>a_dict.items()</c>
+          </cell>
+          <cell>
+                                Returns the key-value pairs in a dict_items object
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>get</c>
+          </cell>
+          <cell>
+            <c>a_dict.get(k)</c>
+          </cell>
+          <cell>
+                                Returns the value associated with <c>k</c>, <c>None</c> otherwise
+                            </cell>
+        </row>
+        <row>
+          <cell>
+            <c>get</c>
+          </cell>
+          <cell>
+            <c>a_dict.get(k, alt)</c>
+          </cell>
+          <cell>
+                                Returns the value associated with <c>k</c>, <c>alt</c> otherwise
+                            </cell>
+        </row>
+      </tabular>
+    </table>
+    <pre>&gt;&gt;&gt; phone_ext={"david": 1410, "brad": 1137, "roman": 1171}
+&gt;&gt;&gt; phone_ext
+{'david': 1410, 'brad': 1137, 'roman': 1171}
+&gt;&gt;&gt; phone_ext.keys()
+dict_keys(['david', 'brad', 'roman'])
+&gt;&gt;&gt; list(phone_ext.keys())
+['david', 'brad', 'roman']
+&gt;&gt;&gt; phone_ext.values()
+dict_values([1410, 1137, 1171])
+&gt;&gt;&gt; list(phone_ext.values())
+[1410, 1137, 1171]
+&gt;&gt;&gt; phone_ext.items()
+dict_items([('david', 1410), ('brad', 1137), ('roman', 1171)])
+&gt;&gt;&gt; list(phone_ext.items())
+[('david', 1410), ('brad', 1137), ('roman', 1171)]
+&gt;&gt;&gt; phone_ext.get("kent")
+&gt;&gt;&gt; phone_ext.get("kent", "NO ENTRY")
+'NO ENTRY'</pre>
+    <note>
+      <p>This workspace is provided for your convenience.  You can use this activecode window to try out anything you like.</p>
+      <program xml:id="scratch_01_01" interactive="activecode" language="python">
+        <input>
+
+
+        </input>
+      </program>
+    </note>
+  </subsection>
+</section>

@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<section xml:id="graphs_strongly-connected-components">
+  <title>Strongly Connected Components</title>
+  <p>For the remainder of this chapter we will turn our attention to some
+            extremely large graphs. The graphs we will use to study some additional
+            algorithms are the graphs produced by the connections between hosts on
+            the internet and the links between web pages. We will begin with web
+            pages.</p>
+  <p>Search engines like Google and Bing exploit the fact that the pages on
+            the web form a very large directed graph. To transform the World Wide
+            Web into a graph, we will treat a page as a vertex, and the hyperlinks
+            on the page as edges connecting one vertex to another.
+            <xref ref="fig-cshome"/> shows a very small part of the graph produced by
+            following the links from one page to the next, beginning at Luther
+            College's Computer Science home page. Of course, this graph could be
+            huge, so we have limited it to websites that are no more than 10 links
+            away from the CS home page.</p>
+  <figure align="center" xml:id="194_id1fig-cshome">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 30: The Graph Produced by Links from the Luther Computer Science Home Page</caption>
+    <image source="Graphs/Figures/cshome.png" width="50%"/>
+  </figure>
+  <p>If you study the graph in <xref ref="fig-cshome"/> you might make some
+            interesting observations. First you might notice that many of the other
+            websites on the graph are other Luther College websites. Second, you
+            might notice that there are several links to other colleges in Iowa.
+            Third, you might notice that there are several links to other liberal
+            arts colleges. You might conclude from this that there is some
+            underlying structure to the Web that clusters together websites that
+            are similar on some level.</p>
+  <p>One graph algorithm that can help find clusters of highly interconnected
+            vertices in a graph is called the <term>strongly connected components</term>
+            algorithm, or <term>SCC</term>. We formally define a strongly connected
+            component, <math>C</math>, of a graph <math>G</math>, as the largest subset
+            of vertices <math>C \subset V</math> such that for every pair of vertices
+            <math>v, w \in C</math> we have a path from <math>v</math> to <math>w</math> and
+            a path from <math>w</math> to <math>v</math>. <xref ref="fig-scc1"/> shows a simple
+            graph with three strongly connected components that are identified by the different shaded areas.</p>
+  <figure align="center" xml:id="194_id2fig-scc1">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 31: A Directed Graph with Three Strongly Connected Components</caption>
+    <image source="Graphs/Figures/scc1.png" width="50%"/>
+  </figure>
+  <p>Once the strongly connected components have been identified, we can show
+            a simplified view of the graph by combining all the vertices in one
+            strongly connected component into a single larger vertex. The simplified
+            version of the graph in <xref ref="fig-scc1"/> is shown in <xref ref="fig-scc2"/>.</p>
+  <figure align="center" xml:id="id3">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 32: The Reduced Graph</caption>
+    <image source="Graphs/Figures/scc2.png" width="50%"/>
+  </figure>
+  <p>Once again we will see that we can create a very powerful and efficient
+            algorithm by making use of a depth-first search. Before we tackle the
+            main SCC algorithm we must look at one other definition. The
+            transposition of a graph <math>G</math> is defined as the graph
+            <math>G^T</math> where all the edges in the graph have been reversed. That
+            is, if there is a directed edge from node A to node B in the original
+            graph, then <math>G^T</math> will contain an edge from node B to node A.
+            <xref ref="fig-tpa"/> and <xref ref="fig-tpb"/> show a simple graph and its transposition.</p>
+  <figure align="center" xml:id="id4">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 33: A Graph <math>G</math></caption>
+    <image source="Graphs/Figures/transpose1.png" width="50%"/>
+  </figure>
+  <figure align="center" xml:id="id5">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 34: The Transposition of <math>G</math>, <math>G^T</math></caption>
+    <image source="Graphs/Figures/transpose2.png" width="50%"/>
+  </figure>
+  <p>Look at the figures again. Notice that the graph in
+            <xref ref="fig-tpa"/> has two strongly connected components. Now look at
+            <xref ref="fig-tpb"/>. Notice that it has the same two strongly connected
+            components.</p>
+  <p>We can now describe the algorithm to compute the strongly connected
+            components for a graph.</p>
+  <p>
+    <ol label="1">
+      <li>
+        <p>Call <c>dfs</c> for the graph <math>G</math> to compute the closing times
+                    for each vertex.</p>
+      </li>
+      <li>
+        <p>Compute <math>G^T</math>.</p>
+      </li>
+      <li>
+        <p>Call <c>dfs</c> for the graph <math>G^T</math> but in the main loop of DFS
+                    explore each vertex in decreasing order of closing time.</p>
+      </li>
+      <li>
+        <p>Each tree in the forest computed in step 3 is a strongly connected
+                    component. Output the vertex IDs for each vertex in each tree in the
+                    forest to identify the component.</p>
+      </li>
+    </ol>
+  </p>
+  <p>Let's trace the operation of the steps described above on the example
+            graph in <xref ref="fig-scc1"/>. <xref ref="fig-sccalga"/> shows the starting and
+            closing times computed for the original graph by the DFS algorithm.
+            <xref ref="fig-sccalgb"/> shows the starting and closing times computed by
+            running DFS on the transposed graph.</p>
+  <figure align="center" xml:id="id6">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 35: Finishing Times for the Original Graph <math>G</math></caption>
+    <image source="Graphs/Figures/scc1a.png" width="50%"/>
+  </figure>
+  <figure align="center" xml:id="id7">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 36: Finishing Times for <math>G^T</math></caption>
+    <image source="Graphs/Figures/scc1b.png" width="50%"/>
+  </figure>
+  <p>Finally, <xref ref="fig-sccforest"/> shows the forest of three trees produced
+            in step 3 of the strongly connected components algorithm. You will notice
+            that we do not provide you with the Python code for the SCC algorithm;
+            we leave writing this program as an exercise.</p>
+  <figure align="center" xml:id="id8">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 37: Strongly Connected Components</caption>
+    <image source="Graphs/Figures/sccforest.png" width="50%"/>
+  </figure>
+</section>

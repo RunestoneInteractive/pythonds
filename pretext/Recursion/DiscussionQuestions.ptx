@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<section xml:id="recursion_discussion-questions">
+  <title>Discussion Questions</title>
+  <p>
+    <ol label="1">
+      <li>
+        <p>Draw a call stack for the Tower of Hanoi problem. Assume that you
+                    start with a stack of three disks.</p>
+      </li>
+      <li>
+        <p>Using the recursive rules as described, draw a
+                    Sierpinski triangle using paper and pencil.</p>
+      </li>
+      <li>
+        <p>Using the dynamic programming algorithm for making change, find the
+                    smallest number of coins that you can use to make 33 cents in change.
+                    In addition to the usual coins assume that you have an 8 cent coin.</p>
+      </li>
+    </ol>
+  </p>
+</section>

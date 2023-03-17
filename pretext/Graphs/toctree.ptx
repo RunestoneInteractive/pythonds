@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+  <title>Graphs and Graphing Algorithms</title>
+  <xi:include href="./Objectives.ptx"/>
+  <xi:include href="./VocabularyandDefinitions.ptx"/>
+  <xi:include href="./TheGraphAbstractDataType.ptx"/>
+  <xi:include href="./AnAdjacencyMatrix.ptx"/>
+  <xi:include href="./AnAdjacencyList.ptx"/>
+  <xi:include href="./Implementation.ptx"/>
+  <xi:include href="./TheWordLadderProblem.ptx"/>
+  <xi:include href="./BuildingtheWordLadderGraph.ptx"/>
+  <xi:include href="./ImplementingBreadthFirstSearch.ptx"/>
+  <xi:include href="./BreadthFirstSearchAnalysis.ptx"/>
+  <xi:include href="./TheKnightsTourProblem.ptx"/>
+  <xi:include href="./BuildingtheKnightsTourGraph.ptx"/>
+  <xi:include href="./ImplementingKnightsTour.ptx"/>
+  <xi:include href="./KnightsTourAnalysis.ptx"/>
+  <xi:include href="./GeneralDepthFirstSearch.ptx"/>
+  <xi:include href="./DepthFirstSearchAnalysis.ptx"/>
+  <xi:include href="./TopologicalSorting.ptx"/>
+  <xi:include href="./StronglyConnectedComponents.ptx"/>
+  <xi:include href="./ShortestPathProblems.ptx"/>
+  <xi:include href="./DijkstrasAlgorithm.ptx"/>
+  <xi:include href="./AnalysisofDijkstrasAlgorithm.ptx"/>
+  <xi:include href="./PrimsSpanningTreeAlgorithm.ptx"/>
+  <xi:include href="./Summary.ptx"/>
+  <xi:include href="./KeyTerms.ptx"/>
+  <xi:include href="./Exercises.ptx"/>
+</chapter>

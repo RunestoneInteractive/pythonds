@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<section xml:id="trees_examples-of-trees">
+  <title>Examples of Trees</title>
+  <p>Now that we have studied linear data structures like
+            stacks and queues and have some experience with recursion, we will look
+            at a common data structure called the <term>tree</term>. Trees are used in many
+            areas of computer science, including operating systems, graphics,
+            database systems, and computer networking. Tree data structures have
+            many things in common with their botanical cousins. A tree data
+            structure has a root, branches, and leaves. The difference between a
+            tree in nature and a tree in computer science is that a tree data
+            structure has its root at the top and its leaves on the bottom.</p>
+  <p>Before we begin our study of tree data structures, let's look at a few
+            common examples. Our first example of a tree is a classification tree
+            from biology. <xref ref="fig-biotree"/> shows an example of the biological
+            classification of some animals. From this simple example, we can learn
+            about several properties of trees. The first property this example
+            demonstrates is that trees are hierarchical. By hierarchical, we mean
+            that trees are structured in layers with the more general things near
+            the top and the more specific things near the bottom. The top of the
+            hierarchy is the kingdom, the next layer of the tree (the <q>children</q> of
+            the layer above) is the phylum, then the class, and so on. However, no
+            matter how deep we go in the classification tree, all the organisms are
+            still animals.</p>
+  <figure align="center" xml:id="13_id1fig-biotree">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: Taxonomy of Some Common Animals Shown as a Tree</caption>
+    <image source="Trees/Figures/biology.png" width="50%" alt="image"/>
+  </figure>
+  <p>Notice that you can start at the top of the tree and follow a path made
+            of circles and arrows all the way to the bottom. At each level of the
+            tree we might ask ourselves a question and then follow the path that
+            agrees with our answer. For example we might ask, <q>Is this animal a
+            chordate or an arthropod?</q> If the answer is <q>chordate,</q> then we follow
+            that path and ask, <q>Is this chordate a mammal?</q> If not, we are stuck
+            (but only in this simplified example). When we are at the mammal level
+            we ask, <q>Is this mammal a primate or a carnivore?</q> We can keep following
+            paths until we get to the very bottom of the tree where we have the
+            common name.</p>
+  <p>A second property of trees is that all of the children of one node are
+            independent of the children of another node. For example, the genus
+            <em>Thermobia</em> has a children <em>domestica</em>. The genus <em>Musca</em> also has a
+            child named <em>domestica</em>, but it is a different node and is independent of
+            the <em>domestica</em> child of <em>Thermobia</em>. This means that we can change the node
+            that is the child of <em>Musca</em> without affecting the child of <em>Thermobia</em>.</p>
+  <p>A third property is that each leaf node is unique. We can specify a path
+            from the root of the tree to a leaf that uniquely identifies each
+            species in the animal kingdom, for example Animalia
+            <math>\rightarrow</math> Chordata <math>\rightarrow</math> Mammalia
+            <math>\rightarrow</math> Carnivora <math>\rightarrow</math> Felidae
+            <math>\rightarrow</math> <em>Felis</em> <math>\rightarrow</math> <em>catus</em>.</p>
+  <p>Another example of a tree structure that you probably use every day is a
+            file system. In a file system, directories, or folders, are structured
+            as a tree. <xref ref="fig-filetree"/> illustrates a small part of a Unix file
+            system hierarchy.</p>
+  <figure align="center" xml:id="13_id2fig-filetree">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: A Small Part of the Unix File System Hierarchy</caption>
+    <image source="Trees/Figures/directory.png" width="50%" alt="image"/>
+  </figure>
+  <p>Like the biological classification tree, the file system tree enables
+            you to follow a path from the root to any directory. That path will
+            uniquely identify that subdirectory (and all
+            the files in it). Another important property of trees, derived from
+            their hierarchical nature, is that you can move entire sections of a
+            tree (called a subtree) to a different position in the tree without
+            affecting the lower levels of the hierarchy. For example, we could take
+            the entire subtree staring with /etc/, detach etc/ from the root and
+            reattach it under usr/. This would change the unique pathname to httpd
+            from /etc/httpd to /usr/etc/httpd, but would not affect the contents or
+            any children of the httpd directory.</p>
+  <p>A final example of a tree is a web page. The code that precedes
+            <xref ref="fig-html"/> is an example of a simple web page using HTML;
+            <xref ref="fig-html"/> shows the tree
+            that corresponds to each of the HTML tags used to create the page.</p>
+  <pre>&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset=utf-8" /&gt;
+    &lt;title&gt;simple&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;A simple web page&lt;/h1&gt;
+&lt;ul&gt;
+    &lt;li&gt;List item one&lt;/li&gt;
+    &lt;li&gt;List item two&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href="https://www.luther.edu"&gt;Luther College&lt;/a&gt;&lt;h2&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+  <figure align="center" xml:id="id3">
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: A Tree Corresponding to the Markup Elements of a Web Page</caption>
+    <image source="Trees/Figures/htmltree.png" width="50%" alt="image"/>
+  </figure>
+  <p>The HTML source code and the tree accompanying the source illustrate
+            another hierarchy. Notice that each level of the tree corresponds to a
+            level of nesting inside the HTML tags. The first tag in the source is
+            <c>&lt;html&gt;</c> and the last is <c>&lt;/html&gt;</c>. All the rest of the tags in the
+            page are inside the pair. If you check, you will see that this nesting
+            property is true at all levels of the tree.</p>
+</section>
