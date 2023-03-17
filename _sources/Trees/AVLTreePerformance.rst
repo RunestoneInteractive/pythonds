@@ -60,7 +60,7 @@ the equation for :math:`N_h` as:
 
 .. math::
 
-   N_h = F_{h+1} - 1, h \ge 1
+   N_h = F_{h+3} - 1, h \ge 1
 
 
 By replacing the Fibonacci reference with its golden ratio approximation
