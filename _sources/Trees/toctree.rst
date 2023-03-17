@@ -8,6 +8,7 @@ Trees and Tree Algorithms
     Objectives.rst
     ExamplesofTrees.rst
     VocabularyandDefinitions.rst
+    Implementation.rst
     ListofListsRepresentation.rst
     NodesandReferences.rst
     ParseTree.rst
@@ -25,5 +26,4 @@ Trees and Tree Algorithms
     SummaryofMapADTImplementations.rst
     Summary.rst
     KeyTerms.rst
-    DiscussionQuestions.rst
     Exercises.rst

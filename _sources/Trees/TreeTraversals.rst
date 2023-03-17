@@ -11,22 +11,22 @@ patterns for trees. These usage patterns can be divided into three commonly
 used patterns to visit all the nodes in a tree. The difference between these
 patterns is the order in which each node is visited. We call this
 visitation of the nodes a **tree traversal**. The three traversals we will look
-at are called **preorder**, **inorder**, and **postorder**. Let’s start
+at are called preorder, inorder, and postorder. Let’s start
 out by defining these three traversals more carefully, then look at some
 examples where these patterns are useful.
 
 Preorder
-    In a preorder traversal, we visit the root node first, then
+    In a **preorder traversal**, we visit the root node first, then
     recursively do a preorder traversal of the left subtree, followed by
     a recursive preorder traversal of the right subtree.
 
 Inorder
-    In an inorder traversal, we recursively do an inorder traversal on
+    In an **inorder traversal**, we recursively do an inorder traversal on
     the left subtree, visit the root node, and finally do a recursive
     inorder traversal of the right subtree.
 
 Postorder
-    In a postorder traversal, we recursively do a postorder traversal of
+    In a **postorder traversal**, we recursively do a postorder traversal of
     the left subtree and the right subtree followed by a visit to the
     root node.
 
@@ -142,9 +142,11 @@ We have already seen a common use for the postorder traversal, namely
 evaluating a parse tree. Look back at :ref:`Listing 1 <lst_eval>` again.
 The algorithm evaluates the left subtree, evaluates the right subtree, 
 and combines them in the root through the function call to an
-operator. Assume that our binary tree is going to store only expression
-tree data. Let’s rewrite the evaluation function, but model it even more
-closely on the ``postorder`` code in :ref:`Listing 4 <lst_postorder1>` (see :ref:`Listing 5 <lst_postordereval>`).
+operator.
+Assuming our binary tree is going to store only expression tree data,
+rewrite the evaluation function, but model it even more closely on
+the postorder code in :ref:`Listing 4 <lst_postorder1>`.
+
 
 .. _lst_postordereval:
 

@@ -405,21 +405,20 @@ unordered collection of associations between a key and a data value. The
 keys in a map are all unique so that there is a one-to-one relationship
 between a key and a value. The operations are given below.
 
--  ``Map()`` Creates a new, empty map. It returns an empty map
-   collection.
+-  ``Map()`` creates a new empty map.
 
--  ``put(key, val)`` Adds a new key-value pair to the map. If the key is
-   already in the map, replaces the old value with the new value.
+-  ``put(key, val)`` adds a new key--value pair to the map. If the key is
+   already in the map, it replaces the old value with the new value.
 
--  ``get(key)`` Given a key, returns the value stored in the map or
+-  ``get(key)`` takes a key and returns the matching value stored in the map or
    ``None`` otherwise.
 
--  ``del`` Deletes the key-value pair from the map using a statement of
+-  ``del`` deletes the key--value pair from the map using a statement of
    the form ``del map[key]``.
 
--  ``len()`` Returns the number of key-value pairs stored in the map.
+-  ``size()`` returns the number of key--value pairs stored in the map.
 
--  ``in`` Returns ``True`` for a statement of the form ``key in map``, if
+-  ``in`` return ``True`` for a statement of the form ``key in map`` if
    the given key is in the map, ``False`` otherwise.
 
 One of the great benefits of a dictionary is the fact that given a key,
@@ -454,7 +453,8 @@ can be as efficient as possible.
             self.data = [None] * self.size
 
 
-As seen in :ref:`Listing 3 <lst_hashtablecodestore>`, ``hash_function`` implements the simple remainder method. The collision
+As seen in :ref:`Listing 3 <lst_hashtablecodestore>`, ``hash_function`` implements
+the simple remainder method. The collision
 resolution technique is linear probing with a “plus 1” rehash value.
 The ``put`` function (see :ref:`Listing 3 <lst_hashtablecodestore>`) assumes that
 there will eventually be an empty slot unless the key is already present
@@ -509,7 +509,7 @@ be present.
 
 The final methods of the ``HashTable`` class provide additional
 dictionary functionality. We overload the ``__getitem__`` and
-``__setitem__`` methods to allow access using``[]``. This means that
+``__setitem__`` methods to allow access using ``[]``. This means that
 once a ``HashTable`` has been created, the familiar index operator will
 be available. We leave the remaining methods as exercises.
 
@@ -670,7 +670,7 @@ The complete hash table example can be found in ActiveCode 1.
 Analysis of Hashing
 ^^^^^^^^^^^^^^^^^^^
 
-We stated earlier that in the best case hashing would provide a
+We stated earlier that in the best case hashing would provide an
 :math:`O(1)`, constant time search technique. However, due to
 collisions, the number of comparisons is typically not so simple. Even
 though a complete analysis of hashing is beyond the scope of this text,

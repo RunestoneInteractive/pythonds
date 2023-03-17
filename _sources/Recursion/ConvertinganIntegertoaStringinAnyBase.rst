@@ -50,30 +50,31 @@ we will use integer division plus remainder to get results of 7 and 6
 respectively. Finally, we have reduced the problem to converting 7,
 which we can do easily since it satisfies the base case condition of
 :math:`n < base`, where :math:`base = 10`. The series of operations
-we have just performed is illustrated in :ref:`Figure 3 <fig_tostr>`. Notice that
+we have just performed is illustrated in :ref:`Figure 4.3 <fig_tostr>`. Notice that
 the numbers we want to remember are in the remainder boxes along the
 right side of the diagram.
 
 .. _fig_tostr:
 
+**Figure 4.3:** Converting an Integer to a String in Base 10
+
 .. figure:: Figures/toStr.png
    :align: center
    :alt: image
 
-   Figure 3: Converting an Integer to a String in Base 10
 
-:ref:`ActiveCode 1 <lst_rectostr>` shows the Python code that implements the algorithm
+:ref:`ActiveCode 4.5.1 <lst_rectostr>` shows the Python code that implements the algorithm
 outlined above for any base between 2 and 16.
 
 .. activecode:: lst_rectostr
     :caption: Recursively Converting from Integer to String
 
     def to_str(n, base):
-       convert_string = "0123456789ABCDEF"
-       if n < base:
-          return convert_string[n]
-       else:
-          return to_str(n // base, base) + convert_string[n % base]
+        convert_string = "0123456789ABCDEF"
+        if n < base:
+            return convert_string[n]
+        else:
+            return to_str(n // base, base) + convert_string[n % base]
 
     print(to_str(1453, 16))
 
@@ -84,18 +85,19 @@ case, we stop recursing and simply return the string from the
 second and third laws–by making the recursive call and by reducing the
 problem size–using division.
 
-Let’s trace the algorithm shown in Listing 4.3 again; this time we will convert the number 10
+Let’s trace the algorithm shown in :ref:`ActiveCode 4.5.1 <lst_rectostr>` again; this time we will convert the number 10
 to its base 2 string representation (``"1010"``).
 
 .. _fig_tostr2:
+
+**Figure 4.4:** Converting the Number 10 to its Base 2 String Representation
 
 .. figure:: Figures/toStrBase2.png
    :align: center
    :alt: image
 
-   Figure 4: Converting the Number 10 to its Base 2 String Representation
 
-:ref:`Figure 4 <fig_tostr2>` shows that we get the results we are looking for,
+:ref:`Figure 4.4 <fig_tostr2>` shows that we get the results we are looking for,
 but it looks like the digits are in the wrong order. The algorithm works
 correctly because we make the recursive call first on line
 6, then we add the string representation of the remainder.

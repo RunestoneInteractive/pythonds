@@ -19,6 +19,4 @@ Recursion
     DynamicProgramming.rst
     Summary.rst
     KeyTerms.rst
-    DiscussionQuestions.rst
-    Glossary.rst
     Exercises.rst

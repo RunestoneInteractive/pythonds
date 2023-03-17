@@ -30,5 +30,4 @@ Basic Data Structures
     ImplementinganOrderedList.rst
     Summary.rst
     KeyTerms.rst
-    DiscussionQuestions.rst
     Exercises.rst

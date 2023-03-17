@@ -29,10 +29,10 @@ are the same as those of the unordered list.
    and modifies the list. It will raise an error if the item is not present in the list.
 
 -  ``search(item)`` searches for the item in the list. It needs the item
-   and returns a boolean value.
+   and returns a Boolean value.
 
 -  ``is_empty()`` tests to see whether the list is empty. It needs no
-   parameters and returns a boolean value.
+   parameters and returns a Boolean value.
 
 -  ``size()`` returns the number of items in the list. It needs no
    parameters and returns an integer.

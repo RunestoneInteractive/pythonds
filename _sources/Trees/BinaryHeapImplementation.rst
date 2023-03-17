@@ -58,7 +58,7 @@ tree that has the heap order property.
    :align: center
    :alt: image
 
-   Figure 2: A Complete Binary Tree, along with its List Representation
+   Figure 2: A Complete Binary Tree, along with Its List Representation
 
 
 Heap Operations
@@ -270,8 +270,8 @@ that we check the next set of children farther down in the tree to
 ensure that it is pushed as low as it can go. In this case it results in
 a second swap with 3. Now that 9 has been moved to the lowest level of
 the tree, no further swapping can be done. It is useful to compare the
-list representation of this series of swaps as shown in
-:ref:`Figure 4 <fig_buildheap>` with the tree representation.
+list representation of this series of swaps with the tree representation
+shown in :ref:`Figure 4 <fig_buildheap>`
 
 ::
 

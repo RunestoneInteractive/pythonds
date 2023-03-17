@@ -19,5 +19,4 @@ Searching and Sorting
     TheQuickSort.rst
     Summary.rst
     KeyTerms.rst
-    DiscussionQuestions.rst
     Exercises.rst

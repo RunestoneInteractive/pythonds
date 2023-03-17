@@ -44,7 +44,7 @@ Parent
 Sibling
     Nodes in the tree that are children of the same parent are said to
     be **siblings**. The nodes etc/ and usr/ are siblings in the file system
-    tree.
+    tree shown in :ref:`Figure 2 <fig_filetree>`.
 
 Subtree
     A **subtree** is a set of nodes and edges comprised of a parent and all

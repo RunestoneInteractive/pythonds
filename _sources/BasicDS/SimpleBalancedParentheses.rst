@@ -112,9 +112,9 @@ this algorithm is shown in :ref:`ActiveCode 1 <lst_parcheck1>`.
 
 
 This function, ``par_checker``, assumes that a ``Stack`` class is
-available and returns a boolean result as to whether the string of
+available and returns a Boolean result as to whether the string of
 parentheses is balanced. If the current symbol is ``(``,
-then it is pushed on the stack (lines 7-8).
+then it is pushed on the stack (lines 7--8).
 Note also in line 13 that ``pop`` simply removes a symbol from the stack.
 The returned value is not used since we know it must be an opening symbol seen earlier.
 If the stack becomes empty before we reach the end of the ``symbol_string``,

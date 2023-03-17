@@ -82,7 +82,7 @@ you to follow a path from the root to any directory. That path will
 uniquely identify that subdirectory (and all
 the files in it). Another important property of trees, derived from
 their hierarchical nature, is that you can move entire sections of a
-tree (called a **subtree**) to a different position in the tree without
+tree (called a subtree) to a different position in the tree without
 affecting the lower levels of the hierarchy. For example, we could take
 the entire subtree staring with /etc/, detach etc/ from the root and
 reattach it under usr/. This would change the unique pathname to httpd

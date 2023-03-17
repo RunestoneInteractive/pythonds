@@ -28,7 +28,7 @@ represents our problem gets smaller in some way. In the ``list_sum``
 algorithm our primary data structure is a list, so we must focus our
 state-changing efforts on the list. Since the base case is a list of
 length 1, a natural progression toward the base case is to shorten the
-list. This is exactly what happens on line 5 of :ref:`ActiveCode 2 <lst_recsum>` when we call ``list_sum`` with a shorter list.
+list. This is exactly what happens on line 5 of :ref:`ActiveCode 4.3.2 <lst_recsum>` when we call ``list_sum`` with a shorter list.
 
 The final law is that the algorithm must call itself. This is the very
 definition of recursion. Recursion is a confusing concept to many

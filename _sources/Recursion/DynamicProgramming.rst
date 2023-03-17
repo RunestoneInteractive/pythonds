@@ -66,7 +66,7 @@ following:
 
 
 The algorithm for doing what we have just described is shown in
-:ref:`Listing 7 <lst_change1>`. In line 3 we are checking our base case;
+:ref:`Listing 17 <lst_change1>`. In line 3 we are checking our base case;
 that is, we are trying to make change in the exact amount of one of our
 coins. If we do not have a coin equal to the amount of change, we make
 recursive calls for each different coin value less than the amount of
@@ -85,7 +85,7 @@ where we satisfy the base case condition immediately.
 .. highlight:: python
     :linenothreshold: 5
 
-**Listing 7**
+**Listing 17:** Recursive Version of Coin Optimization Problem
 
 ::
 
@@ -107,10 +107,10 @@ where we satisfy the base case condition immediately.
 .. highlight:: python
     :linenothreshold: 500
 
-The trouble with the algorithm in :ref:`Listing 7 <lst_change1>` is that it is
+The trouble with the algorithm in :ref:`Listing 17 <lst_change1>` is that it is
 extremely inefficient. In fact, it takes 67,716,925 recursive calls to
 find the optimal solution to the 4 coins, 63 cents problem! To
-understand the fatal flaw in our approach look at :ref:`Figure 5 <fig_c1ct>`,
+understand the fatal flaw in our approach look at :ref:`Figure 14 <fig_c1ct>`,
 which illustrates a small fraction of the 377 function calls needed to
 find the optimal set of coins to make change for 26 cents.
 
@@ -133,7 +133,7 @@ results.
    :width: 100%
    :alt: image
 
-   Figure 3: Call Tree for Listing 7
+   Figure 14: Call Tree for Listing 17
 
 The key to cutting down on the amount of work we do is to remember some
 of the past results so we can avoid recomputing results we already know.
@@ -188,7 +188,7 @@ of the algorithm we already know the minimum number of coins needed to
 make change for any smaller amount.
 
 Let’s look at how we would fill in a table of minimum coins to use in
-making change for 11 cents. :ref:`Figure 4 <fig_dpcoins>` illustrates the
+making change for 11 cents. :ref:`Figure 15 <fig_dpcoins>` illustrates the
 process. We start with one cent. The only solution possible is one coin
 (a penny). The next row shows the minimum for one cent and two cents.
 Again, the only solution is two pennies. The fifth row is where things
@@ -198,7 +198,7 @@ that the number of coins needed to make change for four cents is four,
 plus one more penny to make five, equals five coins. Or we can look at
 zero cents plus one more nickel to make five cents equals one coin. Since
 the minimum of one and five is one we store 1 in the table. Fast forward
-again to the end of the table and consider 11 cents. :ref:`Figure 5 <fig_eleven>`
+again to the end of the table and consider 11 cents. :ref:`Figure 16 <fig_eleven>`
 shows the three options that we have to consider:
 
 #. A penny plus the minimum number of coins to make change for
@@ -215,21 +215,23 @@ minimum number of coins for 11 cents.
 
 .. _fig_dpcoins:
 
+**Figure 15:** Minimum Number of Coins Needed to Make Change
+
 .. figure:: Figures/changeTable.png
    :align: center
    :alt: image
 
-   Figure 4: Minimum Number of Coins Needed to Make Change
 
 .. _fig_eleven:
+   
+**Figure 16:** Three Options to Consider for the Minimum Number of Coins for Eleven Cents
 
 .. figure:: Figures/elevenCents.png
    :align: center
    :alt: image
 
-   Figure 5: Three Options to Consider for the Minimum Number of Coins for Eleven Cents
 
-:ref:`Listing 8 <lst_dpchange>` is a dynamic programming algorithm to solve our
+:ref:`Listing 19 <lst_dpchange>` is a dynamic programming algorithm to solve our
 change-making problem. ``make_change_3`` takes three parameters: a list
 of valid coin values, the amount of change we want to make, and a list
 of the minimum number of coins needed to make each value. When the
@@ -238,7 +240,7 @@ from 0 to the value of ``change``.
 
 .. _lst_dpchange:
 
-**Listing 8**
+**Listing 19:** Dynamic Programming Solution
 
 ::
 

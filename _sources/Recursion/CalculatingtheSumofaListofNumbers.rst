@@ -9,7 +9,7 @@ We will begin our investigation with a simple problem that you already
 know how to solve without using recursion. Suppose that you want to
 calculate the sum of a list of numbers such as:
 :math:`[1, 3, 5, 7, 9]`. An iterative function that computes the sum
-is shown in :ref:`ActiveCode 1 <lst_itsum>`. The function uses an accumulator variable
+is shown in :ref:`ActiveCode 4.3.1 <lst_itsum>`. The function uses an accumulator variable
 (``the_sum``) to compute a running total of all the numbers in the list
 by starting with :math:`0` and adding each number in the list.
 
@@ -34,6 +34,7 @@ the list as a fully parenthesized expression. Such an expression looks
 like this: 
 
 .. math::
+
     ((((1 + 3) + 5) + 7) + 9)
     
 We can also parenthesize
@@ -65,7 +66,7 @@ list (``num_list[1:]``). To state it in a functional form:
 
 .. math::
 
-      list\_sum(num\_list) = first(num\_list) + list\_sum(rest(num\_list))
+    list\_sum(num\_list) = first(num\_list) + list\_sum(rest(num\_list))
     \label{eqn:list_sum}
 
 
@@ -73,16 +74,16 @@ list (``num_list[1:]``). To state it in a functional form:
 In this equation :math:`first(num\_list)` returns the first element of
 the list and :math:`rest(num\_list)` returns a list of everything but
 the first element. This is easily expressed in Python as shown in
-:ref:`ActiveCode 2 <lst_recsum>`.
+:ref:`ActiveCode 4.3.2 <lst_recsum>`.
 
 
 .. activecode:: lst_recsum
     :caption: Recursive Summation
 
     def list_sum(num_list):
-       if len(num_list) == 1:
+        if len(num_list) == 1:
             return num_list[0]
-       else:
+        else:
             return num_list[0] + list_sum(num_list[1:])
 
     print(list_sum([1, 3, 5, 7, 9]))
@@ -94,7 +95,7 @@ Second, on line 5 our function calls itself! This is the
 reason that we call the ``list_sum`` algorithm recursive. A recursive
 function is a function that calls itself.
 
-:ref:`Figure 1 <fig_recsumin>` shows the series of **recursive calls** that are
+:ref:`Figure 4.1 <fig_recsumin>` shows the series of **recursive calls** that are
 needed to sum the list :math:`[1, 3, 5, 7, 9]`. You should think of
 this series of calls as a series of simplifications. Each time we make a
 recursive call we are solving a smaller problem, until we reach the
@@ -102,24 +103,25 @@ point where the problem cannot get any smaller.
 
 .. _fig_recsumin:
 
+**Figure 4.1:** Series of Recursive Calls Adding a List of Numbers
+
 .. figure:: Figures/sumlistIn.png
    :align: center
    :alt: image
 
 
-   Figure 1: Series of Recursive Calls Adding a List of Numbers
-
 When we reach the point where the problem is as simple as it can get, we
 begin to piece together the solutions of each of the small problems
-until the initial problem is solved. :ref:`Figure 2 <fig_recsumout>` shows the
+until the initial problem is solved. :ref:`Figure 4.2 <fig_recsumout>` shows the
 additions that are performed as ``list_sum`` works its way backward
 through the series of calls. When ``list_sum`` returns from the topmost
 problem, we have the solution to the whole problem.
 
 .. _fig_recsumout:
 
+**Figure 4.2:** Series of Recursive Returns from Adding a List of Numbers
+
 .. figure:: Figures/sumlistOut.png
    :align: center
    :alt: image
 
-   Figure2: Series of Recursive Returns from Adding a List of Numbers
