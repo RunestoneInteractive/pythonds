@@ -11,7 +11,7 @@ The designers of Python had many choices to make when they implemented
 the list data structure. Each of these choices could have an impact on
 how fast list operations perform. To help them make the right choices
 they looked at the ways that people would most commonly use the list
-data structure and they optimized their implementation of a list so that
+data structure, and they optimized their implementation of a list so that
 the most common operations were very fast. Of course they also tried to
 make the less common operations fast, but when a trade-off had to be made
 the performance of a less common operation was often sacrificed in favor
@@ -116,10 +116,10 @@ uncluttered by any stray variables you may have created that may
 interfere with your function’s performance in some unforeseen way.
 
 From the experiment above it is clear that the ``append`` operation at 0.31
-milliseconds is much faster than *concatenation* at 6.54 milliseconds.
+milliseconds is much faster than concatenation at 6.54 milliseconds.
 We also show the times for two additional methods
 for creating a list: using the list constructor with a call to ``range``
-and a *list comprehension*. It is interesting to note that the list
+and a list comprehension. It is interesting to note that the list
 comprehension is twice as fast as a ``for`` loop with an ``append``
 operation.
 
@@ -134,7 +134,7 @@ could test the time it takes to call an empty function and subtract that
 from the numbers above.
 
 Now that we have seen how performance can be measured concretely, you can
-look at :ref:`Table 2 <tbl_listbigo>` to see the Big-O efficiency of all the
+look at :ref:`Table 2 <tbl_listbigo>` to see the Big O efficiency of all the
 basic list operations. After thinking carefully about
 :ref:`Table 2 <tbl_listbigo>`, you may be wondering about the two different times
 for ``pop``. When ``pop`` is called on the end of the list it takes
@@ -151,10 +151,10 @@ was a good one.
 
 .. _tbl_listbigo:
 
-.. table:: **Table 2: Big-O Efficiency of Python List Operators**
+.. table:: **Table 2: Big O Efficiency of Python List Operators**
 
     ====================== ==================
-                 Operation   Big-O Efficiency
+                 Operation   Big O Efficiency
     ====================== ==================
               ``index []``               O(1)
       ``index assignment``               O(1)

@@ -19,7 +19,7 @@ Solution 1: Anagram Detection Checking Off
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Our first solution to the anagram problem will check the lengths of the
-strings and then to see that each character in the first string actually
+strings and then check to see that each character in the first string actually
 occurs in the second. If it is possible to check off each character, then
 the two strings must be anagrams. **Checking off** a character will be
 accomplished by replacing it with the special Python value ``None``.
@@ -137,7 +137,8 @@ with this approach. When generating all possible strings from ``s1``,
 there are *n* possible first characters, :math:`n - 1` possible
 characters for the second position, :math:`n - 2` for the third, and so
 on. The total number of candidate strings is
-:math:`n * (n - 1) * (n - 2) * ... * 3 * 2 * 1`, which is :math:`n!`. Although some
+:math:`n \cdot (n - 1) \cdot (n - 2) \cdot ... \cdot 3 \cdot 2 \cdot 1`,
+which is :math:`n!`. Although some
 of the strings may be duplicates, the program cannot know this ahead of
 time and so it will still generate :math:`n!` different strings.
 
@@ -229,7 +230,7 @@ problem.
        :feedback_c: log n typically is indicated when the problem is iteratvely made smaller
        :feedback_d: In an example like this you want to count the nested loops. especially the loops that are dependent on the same variable, in this case, n.
 
-       Given the following code fragment, what is its Big-O running time?
+       Given the following code fragment, what is its Big O running time?
 
        .. code-block:: python
 
@@ -249,7 +250,7 @@ problem.
        :feedback_c: log n typically is indicated when the problem is iteratvely made smaller
        :feedback_a: Even though there are two loops they are not nested.  You might think of this as O(2n) but we can ignore the constant 2.
 
-       Given the following code fragment what is its Big-O running time?
+       Given the following code fragment what is its Big O running time?
 
        .. code-block:: python
 
@@ -271,7 +272,7 @@ problem.
        :feedback_d: Check again, is this a nested loop?
        :feedback_c: The value of i is cut in half each time through the loop so it will only take log n iterations.
 
-       Given the following code fragment what is its Big-O running time?
+       Given the following code fragment what is its Big O running time?
 
        .. code-block:: python
 

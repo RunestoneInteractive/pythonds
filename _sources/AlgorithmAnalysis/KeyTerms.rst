@@ -6,9 +6,9 @@ Key Terms
 ---------
 
 ========================= ==================== ====================
-             average case   benchmark analysis       Big-O notation 
-              brute force         checking off             constant
-                    cubic          exponential               linear
-               log linear          logarithmic   order of magnitude
-                quadratic      time complexity           worst case
+             average case             constant          logarithmic
+       benchmark analysis                cubic   order of magnitude
+           Big O notation          exponential            quadratic
+              brute force               linear      time complexity
+             checking off           log linear           worst case
 ========================= ==================== ====================

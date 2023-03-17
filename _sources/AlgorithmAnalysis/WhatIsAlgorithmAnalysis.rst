@@ -228,7 +228,7 @@ take even longer to perform ``sum_of_n_3`` if the computer were older.
 
 We need a better way to characterize these algorithms with respect to
 execution time. The benchmark technique computes the actual time to
-execute. It does not really provide us with a useful measurement,
+execute. It does not really provide us with a useful measurement
 because it is dependent on a particular machine, program, time of day,
 compiler, and programming language. Instead, we would like to have a
 characterization that is independent of the program or computer being
