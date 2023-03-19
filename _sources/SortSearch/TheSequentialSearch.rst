@@ -13,11 +13,11 @@ index values are ordered, it is possible for us to visit them in
 sequence. This process gives rise to our first search technique, the
 **sequential search**.
 
-:ref:`Figure 1 <fig_seqsearch>` shows how this search works. Starting at the first
-item in the list, we simply move from item to item, following the
-underlying sequential order until we either find what we are looking
-for or run out of items. If we run out of items, we have discovered that
-the item we were searching for was not present.
+:ref:`Figure 1 <fig_seqsearch>`  shows that if we start 
+at the first item in the list and move from item to item,
+we follow the underlying sequential order until we either find what
+we are looking for or run out of items, which would mean the item
+we were searching for was not present.
 
 
 .. _fig_seqsearch:

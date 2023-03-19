@@ -14,7 +14,7 @@ has more than one item, we split the list and recursively invoke a merge
 sort on both halves. Once the two halves are sorted, the fundamental
 operation, called a **merge**, is performed. Merging is the process of
 taking two smaller sorted lists and combining them together into a
-single, sorted, new list. :ref:`Figure 10 <fig_mergesortA>` shows our familiar example
+single sorted new list. :ref:`Figure 10 <fig_mergesortA>` shows our familiar example
 list as it is being split by ``merge_sort``. :ref:`Figure 11 <fig_mergesortB>` shows
 the simple lists, now sorted, as they are merged back together.
 

@@ -59,7 +59,7 @@ until only one name remains (the size of the queue is 1).
    Figure 3: A Queue Implementation of Hot Potato
 
 The program is shown in :ref:`ActiveCode 1 <lst_josephussim>`. A call to the
-``hot_potato`` function using 7 as the counting constant returns ``Susan``.
+``hot_potato`` function using 7 as the counting constant returns ``'Susan'``.
 
 .. _lst_josephussim:
 
@@ -92,7 +92,7 @@ than the number of names in the list. This is not a problem since the
 queue acts like a circle and counting continues back at the beginning
 until the value is reached. Also, notice that the list is loaded into
 the queue such that the first name on the list will be at the front of
-the queue. ``Bill`` in this case is the first item in the list and
+the queue. ``'Bill'`` in this case is the first item in the list and
 therefore moves to the front of the queue. A variation of this
 implementation, described in the exercises, allows for a random counter.
 

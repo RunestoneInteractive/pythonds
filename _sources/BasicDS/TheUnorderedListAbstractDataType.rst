@@ -19,10 +19,10 @@ others. Some possible unordered list operations are given below.
    and modifies the list. Raise an error if the item is not present in the list.
 
 -  ``search(item)`` searches for the item in the list. It needs the item
-   and returns a boolean value.
+   and returns a Boolean value.
 
 -  ``is_empty()`` tests to see whether the list is empty. It needs no
-   parameters and returns a boolean value.
+   parameters and returns a Boolean value.
 
 -  ``size()`` returns the number of items in the list. It needs no
    parameters and returns an integer.
@@ -36,7 +36,7 @@ others. Some possible unordered list operations are given below.
 
 -  ``insert(pos, item)`` adds a new item to the list at position ``pos``. It
    needs the item and returns nothing. Assume the item is not already in
-   the list and there are enough existing items to have position pos.
+   the list and there are enough existing items to have position ``pos``.
 
 -  ``pop()`` removes and returns the last item in the list. It needs
    nothing and returns an item. Assume the list has at least one item.

@@ -7,7 +7,7 @@ Sierpinski Triangle
 
 
 Another fractal that exhibits the property of self-similarity is the
-Sierpinski triangle. An example is shown in :ref:`Figure 3 <fig_sierpinski>`. The
+Sierpinski triangle. An example is shown in :ref:`Figure 4.9 <fig_sierpinski>`. The
 Sierpinski triangle illustrates a three-way recursive algorithm. The
 procedure for drawing a Sierpinski triangle by hand is simple. Start
 with a single large triangle. Divide this large triangle into four new
@@ -22,11 +22,12 @@ drawing the Sierpinski triangle yourself, using the method described.
 
 .. _fig_sierpinski:
 
+**Figure 4.9:** The Sierpinski Triangle
+
 .. figure:: Figures/sierpinski.png
      :align: center
      :width: 480px
 
-     Figure 3: The Sierpinski Triangle
 
 Since we can continue to apply the algorithm indefinitely, what is the
 base case? We will see that the base case is set arbitrarily as the
@@ -34,8 +35,8 @@ number of times we want to divide the triangle into pieces. Sometimes we
 call this number the *degree* of the fractal. Each time we make a
 recursive call, we subtract 1 from the degree until we reach 0. When we
 reach a degree of 0, we stop making recursive calls. The code that
-generated the Sierpinski Triangle in :ref:`Figure 3 <fig_sierpinski>` is shown in
-:ref:`ActiveCode 1 <lst_st>`.
+generated the Sierpinski Triangle in :ref:`Figure 4.9 <fig_sierpinski>` is shown in
+:ref:`ActiveCode 4.8.1 <lst_st>`.
 
 
 .. activecode:: lst_st
@@ -94,7 +95,7 @@ generated the Sierpinski Triangle in :ref:`Figure 3 <fig_sierpinski>` is shown i
 
 
 
-The program in :ref:`ActiveCode 1 <lst_st>` follows the ideas outlined above. The
+The program in :ref:`ActiveCode 4.8.1 <lst_st>` follows the ideas outlined above. The
 first thing ``sierpinski`` does is draw the outer triangle. Next, there
 are three recursive calls, one for each of the new corner triangles we
 get when we connect the midpoints. Once again we make use of the
@@ -114,23 +115,24 @@ Finally, it fills in the lower-right corner, working its way toward the
 smallest triangle in the lower right.
 
 Sometimes it is helpful to think of a recursive algorithm in terms of a
-diagram of function calls. :ref:`Figure 4 <fig_stcalltree>` shows that the recursive
+diagram of function calls. :ref:`Figure 4.10 <fig_stcalltree>` shows that the recursive
 calls are always made going to the left. The active functions are
 outlined in black, and the inactive function calls are in gray. The
-farther you go toward the bottom of :ref:`Figure 4 <fig_stcalltree>`, the smaller the
+farther you go toward the bottom of :ref:`Figure 4.10 <fig_stcalltree>`, the smaller the
 triangles. The function finishes drawing one level at a time; once it is
 finished with the bottom left it moves to the bottom middle, and so on.
 
 
 .. _fig_stcalltree:
 
+**Figure 4.10:** Building a Sierpinski Triangle
+
 .. figure:: Figures/stCallTree.png
     :align: center   
-   
-    Figure 4: Building a Sierpinski Triangle
+
 
 The ``sierpinski`` function relies heavily on the ``get_mid`` function.
 ``get_mid`` takes as arguments two endpoints and returns the point
-halfway between them. In addition, :ref:`ActiveCode 1 <lst_st>` has a function that
+halfway between them. In addition, :ref:`ActiveCode 4.8.1 <lst_st>` has a function that
 draws a filled triangle using the ``begin_fill`` and ``end_fill`` turtle
 methods.

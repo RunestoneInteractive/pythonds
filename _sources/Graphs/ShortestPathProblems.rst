@@ -5,7 +5,7 @@
 Shortest Path Problems
 ----------------------
 
-When you surf the Web, send an email, or log in to a laboratory computer
+When you surf the web, send an email, or log in to a laboratory computer
 from another location on campus, a lot of work is going on behind the
 scenes to get the information on your computer transferred to another
 computer. The in-depth study of how information flows from one computer
@@ -71,8 +71,8 @@ routers as a graph with weighted edges.
 represents the interconnection of routers in the internet. The problem
 that we want to solve is to find the **shortest path**, one with the smallest total weight
 along which to route any given message. This problem should sound
-familiar because it is similar to the problem we solved using a breadth
-first search, except that here we are concerned with the total weight of
+familiar because it is similar to the problem we solved using a breadth-first search,
+except that here we are concerned with the total weight of
 the path rather than the number of hops in the path. It should be noted
 that if all the weights are equal, the problem is the same.
 

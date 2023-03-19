@@ -1,5 +1,5 @@
-Discussion Questions
-====================
+Exercises
+=========
 
 #. Where do skip lists get their name?
 
@@ -28,9 +28,6 @@ Discussion Questions
 
 #. Create a KMP graph for the pattern ATCCAT.
 
-Programming Exercises
-=====================
-
 #. Implement the following methods for the ``ArrayList`` class and then
    analyze their performance.
 
@@ -54,7 +51,7 @@ Programming Exercises
 #. Implement the ``delete`` method for a skip list. You can assume that
    the key is present.
 
-#. Implement methods for skip list that will allow the map to perform
+#. Implement methods for a skip list that will allow the map to perform
    the following operations:
 
    -  ``__contains__()`` will return a boolean result as to whether a

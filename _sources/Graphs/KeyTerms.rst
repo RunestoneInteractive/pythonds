@@ -13,10 +13,9 @@ adjacent                     parenthesis property
 breadth-first forest         path
 breadth-first search (BFS)   shortest path
 cycle                        spanning tree
-cyclic graph                 strongly connected components (SCC)
-depth-first forest           topological sort
-depth-first search (DFS)     uncontrolled flooding
-digraph                      vertex
-directed acyclic graph (DAG) weight
-directed graph
+depth-first forest           strongly connected components (SCC)
+depth-first search (DFS)     topological sort
+digraph                      uncontrolled flooding
+directed acyclic graph (DAG) vertex
+directed graph               weight
 ============================ ===================================

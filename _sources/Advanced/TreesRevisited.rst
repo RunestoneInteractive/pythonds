@@ -3,7 +3,7 @@ Trees Revisited: Quantizing Images
 
 Next to text, digital images are the most common element found on the
 internet. However, the internet would feel much slower if every
-advertisement sized image required 196,560 bytes of memory. Instead, a
+advertisement-sized image required 196,560 bytes of memory. Instead, a
 banner ad image requires only 14,246, just 7.2% of what it could take.
 Where do these numbers come from? How is such a phenomenal savings
 achieved? The answers to these questions are the topic of this section.
@@ -45,7 +45,7 @@ where the tuples consist of three numbers between 0 and 255, one for
 each of the red, green, and blue components. In other languages, such as
 C++ and Java, an image could be represented as a two-dimensional array.
 The list of lists representation of the first two rows of the image in
-Figure `1 <#fig_smallimage>`__ are shown below:
+Figure `1 <#fig_smallimage>`__ is shown below:
 
 ::
 
@@ -151,7 +151,7 @@ detail is lost in the quantized picture. The grass has lost nearly all
 its detail and is uniformly green, and the skin tones have been reduced
 to two shades of tan.
 
-An Improved Quantization Algorithm Using octrees
+An Improved Quantization Algorithm Using Octrees
 -------------------------------------------------
 
 The problem with the simple method of quantization just described is

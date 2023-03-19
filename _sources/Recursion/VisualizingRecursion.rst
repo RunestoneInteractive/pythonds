@@ -27,7 +27,7 @@ dipped in.
 
 Here is a simple example to illustrate some ``turtle`` graphics basics. We
 will use the ``turtle`` module to draw a spiral recursively.
-:ref:`ActiveCode 1 <lst_turt1>` shows how it is done. After importing the ``turtle``
+:ref:`ActiveCode 4.7.1 <lst_turt1>` shows how it is done. After importing the ``turtle``
 module we create a turtle. When the turtle is created it also creates a
 window for itself to draw in. Next we define the ``draw_spiral`` function.
 The base case for this simple function is when the length of the line we
@@ -35,7 +35,7 @@ want to draw, as given by the ``len`` parameter, is reduced to zero or
 less. If the length of the line is longer than zero, we instruct the
 turtle to go forward by ``len`` units and then turn right 90 degrees.
 The recursive step is when we call ``draw_spiral`` again with a reduced
-length. At the end of :ref:`ActiveCode 1 <lst_turt1>` you will notice that we call
+length. At the end of :ref:`ActiveCode 4.7.1 <lst_turt1>` you will notice that we call
 the function ``my_win.exitonclick()``. This is a handy little method of
 the window that puts the turtle into a wait mode until you click inside
 the window, after which the program cleans up and exits.
@@ -84,7 +84,7 @@ going off to the left. If you think of this definition recursively, it
 means that we will apply the recursive definition of a tree to both of
 the smaller left and right trees.
 
-Let's translate this idea to some Python code. :ref:`Listing 1 <lst_fractree>`
+Let's translate this idea to some Python code. :ref:`Listing 4.6 <lst_fractree>`
 shows how we can use our turtle to generate a fractal tree. Let's look at
 the code a bit more closely. You will see that on lines 5 and 7 we are
 making a recursive call. On line 5 we make the recursive call right
@@ -102,7 +102,7 @@ getting too small.
 
 .. _lst_fractree:
 
-**Listing 1**
+**Listing 4.6:** Fractal Tree Code
 
 .. highlight:: python
     :linenothreshold: 5
@@ -118,12 +118,9 @@ getting too small.
             tree(branch_len - 15, t)
             t.right(20)
             t.backward(branch_len)
-            
-            
-.. highlight:: python
-    :linenothreshold: 500
 
-The complete program for this tree example is shown in :ref:`ActiveCode 2 <lst_complete_tree>`.  Before you run
+
+The complete program for this tree example is shown in :ref:`ActiveCode 4.7.2 <lst_complete_tree>`.  Before you run
 the code think about how you expect to see the tree take shape. Look at
 the recursive calls and think about how this tree will unfold. Will it
 be drawn symmetrically with the right and left halves of the tree taking
@@ -163,10 +160,10 @@ shape simultaneously? Will it be drawn right side first then left side?
 
 Notice how each branch point on the tree corresponds to a recursive
 call, and notice how the tree is drawn to the right all the way down to
-its shortest twig. You can see this in :ref:`Figure 1 <fig_tree1>`. Now, notice
+its shortest twig. You can see this in :ref:`Figure 4.7 <fig_tree1>`. Now, notice
 how the program works its way back up the trunk until the entire right
 side of the tree is drawn. You can see the right half of the tree in
-:ref:`Figure 2 <fig_tree2>`. Then the left side of the tree is drawn, but not by
+:ref:`Figure 4.8 <fig_tree2>`. Then the left side of the tree is drawn, but not by
 going as far out to the left as possible. Rather, once again the entire
 right side of the left tree is drawn until we finally make our way out
 to the smallest twig on the left.
@@ -174,17 +171,18 @@ to the smallest twig on the left.
 
 .. _fig_tree1:
 
+**Figure 4.7:** The Beginning of a Fractal Tree
+   
 .. figure:: Figures/tree1.png
    :align: center
 
-   Figure 1: The Beginning of a Fractal Tree
-   
+
 .. _fig_tree2:
+
+**Figure 8:** The First Half of the Tree
 
 .. figure:: Figures/tree2.png
    :align: center
-
-   Figure 2: The First Half of the Tree
 
 
 This simple tree program is just a starting point for you, and you will

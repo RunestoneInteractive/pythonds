@@ -6,8 +6,8 @@ information is still an important area of study. Of particular interest
 here is the problem of finding patterns, often referred to as
 **substrings**, that exist in long strings of characters. The task is to
 perform some type of search that can identify at least the first
-occurrence of the pattern. We can also consider an extension of 
-this problem and finding all such occurrences.
+occurrence of the pattern.
+We can also consider an extension of this problem to find all such occurrences.
 
 Python includes a built-in substring method called ``find`` that returns
 the location of the first occurrence of a pattern in a given string. For

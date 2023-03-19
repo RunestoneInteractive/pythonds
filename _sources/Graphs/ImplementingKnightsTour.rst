@@ -89,7 +89,7 @@ alphabetical order. We begin by calling ``knight_tour(0, path, A, 6)``.
 .. figure:: Figures/ktdfsa.png
    :align: center
 
-   Figure 3: Start with node A
+   Figure 3: Start with Node A
 
 
 .. _fig_ktb:
@@ -107,7 +107,7 @@ alphabetical order. We begin by calling ``knight_tour(0, path, A, 6)``.
 .. figure:: Figures/ktdfsc.png
    :align: center
 
-   Figure 5: Node C is a dead end
+   Figure 5: Node C is a Dead End
 
 
 .. _fig_ktd:

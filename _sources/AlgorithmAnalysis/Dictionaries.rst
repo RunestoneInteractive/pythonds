@@ -25,10 +25,10 @@ that a dictionary could be implemented.
 
 .. _tbl_dictbigo:
 
-.. table:: **Table 3: Big-O Efficiency of Python Dictionary Operations**
+.. table:: **Table 3: Big O Efficiency of Python Dictionary Operations**
 
     ====================== ==================
-                 Operation   Big-O Efficiency
+                 Operation   Big O Efficiency
     ====================== ==================
                   ``copy``               O(n)
               ``get item``               O(1)

@@ -23,7 +23,7 @@ tower of 64 disks is :math:`2^{64}-1 = 18,446,744,073,709,551,615`. At
 a rate of one move per second, that is :math:`584,942,417,355` years! Clearly
 there is more to this puzzle than meets the eye.
 
-:ref:`Figure 1 <fig_hanoi>` shows an example of a configuration of disks in the
+:ref:`Figure 4.11 <fig_hanoi>` shows an example of a configuration of disks in the
 middle of a move from the first peg to the third. Notice that, as the
 rules specify, the disks on each peg are stacked so that smaller disks
 are always on top of the larger disks. If you have not tried to solve
@@ -32,12 +32,12 @@ and poles—a pile of books or pieces of paper will work.
 
 .. _fig_hanoi:
 
+**Figure 4.11:** An Example Arrangement of Disks for the Tower of Hanoi
+
 .. figure:: Figures/hanoi.png
    :align: center
    :alt: image
 
-   
-   Figure 1: An Example Arrangement of Disks for the Tower of Hanoi
 
 How do we go about solving this problem recursively? How would you go
 about solving this problem at all? What is our base case? Let’s think
@@ -79,7 +79,7 @@ Tower of Hanoi puzzle.
 
 .. _lst_hanoi:
 
-**Listing 1**
+**Listing 4.9:** Python Code for the Tower of Hanoi
 
 .. highlight:: python
     :linenothreshold: 2
@@ -109,21 +109,21 @@ The important thing to remember about handling the base
 case this way is that simply returning from ``move_tower`` is what
 finally allows the ``move_disk`` function to be called.
 
-The function ``move_disk``, shown in :ref:`Listing 2 <lst_movedisk>`, is very
+The function ``move_disk``, shown in :ref:`Listing 4.10 <lst_movedisk>`, is very
 simple. All it does is print out that it is moving a disk from one pole
 to another. If you type in and run the ``move_tower`` program you can see
 that it gives you a very efficient solution to the puzzle.
 
 .. _lst_movedisk:
 
-**Listing 2**
+**Listing 4.10:** Python Code to Move One Disk
 
 ::
 
     def move_disk(from_pole, to_pole):
         print(f"moving disk from {from_pole} to {to_pole}")
         
-The program in ActiveCode 1 provides the entire solution for three disks.
+The program in :ref:`ActiveCode 4.10.1 <hanoi>` provides the entire solution for three disks.
         
 .. activecode:: hanoi
     :caption: Solving Tower of Hanoi Recursively

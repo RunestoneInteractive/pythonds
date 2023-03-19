@@ -2,7 +2,7 @@
     This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 
 
-Big-O Notation
+Big O Notation
 ~~~~~~~~~~~~~~
 
 When trying to characterize an algorithm’s efficiency in terms of
@@ -41,7 +41,7 @@ the :math:`T(n)` function tends to overpower the rest. This dominant
 term is what, in the end, is used for comparison. The **order of
 magnitude** function describes the part of :math:`T(n)` that increases
 the fastest as the value of *n* increases. Order of magnitude is often
-called **Big-O notation** (for *order*) and written as
+called **Big O notation** (for *order*) and written as
 :math:`O(f(n))`. It provides a useful approximation of the actual
 number of steps in the computation. The function :math:`f(n)` provides
 a simple representation of the dominant part of the original
@@ -70,13 +70,13 @@ magnitude :math:`f(n) = n^{2}`, or simply that it is :math:`O(n^{2})`.
 Although we do not see this in the summation example, sometimes the
 performance of an algorithm depends on the exact values of the data
 rather than simply the size of the problem. For these kinds of
-algorithms we need to characterize their performance in terms of **best case**,
-**worst case**, or **average case** performance. The worst case
+algorithms we need to characterize their performance in terms of **best-case**,
+**worst-case**, or **average-case** performance. The worst-case
 performance refers to a particular data set where the algorithm performs
 especially poorly, whereas a different data set for
-the exact same algorithm might have extraordinarily good (best case) performance.
+the exact same algorithm might have extraordinarily good (best-case) performance.
 However, in most cases the algorithm performs somewhere in between these
-two extremes (average case performance). It is important for a computer scientist to understand
+two extremes (average-case performance). It is important for a computer scientist to understand
 these distinctions so they are not misled by one particular case.
 
 
@@ -88,19 +88,19 @@ as *n* gets large.
 
 .. _tbl_fntable:
 
-.. table:: **Table 1: Common Functions for Big-O**
+.. table:: **Table 1: Common Functions for Big O**
 
-    ================= =============
-             **f(n)**      **Name**
-    ================= =============
-          :math:`1`      Constant
-     :math:`\log n`   Logarithmic
-          :math:`n`        Linear
-    :math:`n\log n`    Log Linear
-      :math:`n^{2}`     Quadratic
-      :math:`n^{3}`         Cubic
-      :math:`2^{n}`   Exponential
-    ================= =============
+    ================= ===============
+             **f(n)**        **Name**
+    ================= ===============
+          :math:`1`      **Constant**
+     :math:`\log n`   **Logarithmic**
+          :math:`n`        **Linear**
+    :math:`n\log n`    **Log linear**
+      :math:`n^{2}`     **Quadratic**
+      :math:`n^{3}`         **Cubic**
+      :math:`2^{n}`   **Exponential**
+    ================= ===============
 
 
 :ref:`Figure 1 <fig_graphfigure>` shows graphs of the common
@@ -114,7 +114,7 @@ another.
 
 .. figure:: Figures/newplot.png
 
-   Figure 1: Plot of Common Big-O Functions
+   Figure 1: Plot of Common Big O Functions
 
 
 As a final example, suppose that we have the fragment of Python code
@@ -158,10 +158,10 @@ ignored as *n* grows larger.
 
 .. figure:: Figures/newplot2.png
 
-   Figure 2: Comparing :math:`T(n)` with Common Big-O Functions
+   Figure 2: Comparing :math:`T(n)` with Common Big O Functions
 
 
-:ref:`Figure 2 <fig_graphfigure2>` shows a few of the common Big-O functions as they
+:ref:`Figure 2 <fig_graphfigure2>` shows a few of the common Big O functions as they
 compare with the :math:`T(n)` function discussed above. Note that
 :math:`T(n)` is initially larger than the cubic function. However, as
 n grows, the cubic function quickly overtakes :math:`T(n)`. It is easy

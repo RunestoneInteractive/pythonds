@@ -8,9 +8,8 @@ DFA graph                            pixel
 dictionary                           public key encryption
 dithering                            quantization
 DNA string                           RSA algorithm
-greedy method                        skip list
-KMP graph                            substring
-Knuth-Morris-Pratt (KMP)             tower
-level
+KMP graph                            skip list
+Knuth-Morris-Pratt (KMP)             substring
+level                                tower
 ==================================== =====================
 

@@ -5,9 +5,9 @@
 Performance of Python Data Structures
 -------------------------------------
 
-Now that you have a general idea of Big-O notation
+Now that you have a general idea of Big O notation
 and the differences between the different functions, our goal in this
-section is to tell you about the Big-O performance for the operations on
+section is to tell you about the Big O performance for the operations on
 Python lists and dictionaries. We will then show you some timing
 experiments that illustrate the costs and benefits of using certain
 operations on each data structure. It is important for you to understand

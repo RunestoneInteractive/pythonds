@@ -7,7 +7,7 @@ Lists
 
 Throughout the discussion of basic data structures, we have used Python
 lists to implement the abstract data types presented. The list is a
-powerful, yet simple, collection mechanism that provides the programmer
+powerful, yet simple collection mechanism that provides the programmer
 with a wide variety of operations. However, not all programming
 languages include a list collection. In these cases, the notion of a
 list must be implemented by the programmer.

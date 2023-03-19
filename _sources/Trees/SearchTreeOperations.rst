@@ -11,17 +11,17 @@ similar to the Python dictionary.
 
 -  ``Map()`` creates a new empty map.
 
--  ``put(key, val)`` adds a new key-value pair to the map. If the key is
-   already in the map then it replaces the old value with the new value.
+-  ``put(key, val)`` adds a new key--value pair to the map. If the key is
+   already in the map, it replaces the old value with the new value.
 
 -  ``get(key)`` takes a key and returns the matching value stored in the map or
    ``None`` otherwise.
 
--  ``del`` deletes the key-value pair from the map using a statement of
+-  ``del`` deletes the key--value pair from the map using a statement of
    the form ``del map[key]``.
 
--  ``size()`` returns the number of key-value pairs stored in the map.
+-  ``size()`` returns the number of key--value pairs stored in the map.
 
 -  ``in`` return ``True`` for a statement of the form ``key in map`` if
-   the given key is in the map.
+   the given key is in the map, ``False`` otherwise.
 

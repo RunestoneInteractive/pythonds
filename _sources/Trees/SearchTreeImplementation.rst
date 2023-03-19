@@ -467,8 +467,8 @@ implemented. Once the successor has been removed, we simply put it in
 the tree in place of the node to be deleted. The code 
 to handle the third case is shown in :ref:`Listing 11 <lst_bst11>`.
 
-Notice that we make use of the helper methods ``find_successor`` and
-``splice_out`` to find and remove the successor.
+In :ref:`Listing 11 <lst_bst11>` we make use of the helper methods
+``find_successor`` and ``splice_out`` to find and remove the successor.
 The reason we use ``splice_out`` is that it
 goes directly to the node we want to splice out and makes the right
 changes. We could call ``delete`` recursively, but then we would waste
