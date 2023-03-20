@@ -7,7 +7,7 @@
             the previous sublist such that the sorted sublist is one item larger.
             <xref ref="fig-insertionsort"/> shows the insertion sorting process. The shaded
             items represent the ordered sublists as the algorithm makes each pass.</p>
-  <figure align="center" xml:id="16_id1fig-insertionsort">
+  <figure align="center" xml:id="i16_id1fig-insertionsort">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Insertion Sort: Complete</caption>
     <image source="SortSearch/Figures/insertionsort.png" width="50%"/>
   </figure>
@@ -24,7 +24,7 @@
             right. 77 and 54 are also shifted. When the item 26 is encountered, the
             shifting process stops and 31 is placed in the open position. Now we
             have a sorted sublist of six items.</p>
-  <figure align="center" xml:id="16_id2fig-insertionpass">
+  <figure align="center" xml:id="i16_id2fig-insertionpass">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: Insertion Sort: Fifth Pass of the Sort</caption>
     <image source="SortSearch/Figures/insertionpass.png" width="50%"/>
   </figure>

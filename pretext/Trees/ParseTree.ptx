@@ -5,14 +5,14 @@
             complete, we now look at an example of how a tree can be used to solve
             some real problems. In this section we will look at <term>parse trees</term>. Parse
             trees can be used to represent real-world constructions like sentences or mathematical expressions.</p>
-  <figure align="center" xml:id="15_id1fig-nlparse">
+  <figure align="center" xml:id="i15_id1fig-nlparse">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: A Parse Tree for a Simple Sentence</caption>
     <image source="Trees/Figures/nlParse.png" width="50%" alt="image"/>
   </figure>
   <p><xref ref="fig-nlparse"/> shows the hierarchical structure of a simple
             sentence. Representing a sentence as a tree structure allows us to work
             with the individual parts of the sentence by using subtrees.</p>
-  <figure align="center" xml:id="15_id2fig-meparse">
+  <figure align="center" xml:id="i15_id2fig-meparse">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Parse Tree for <math>((7 + 3) \cdot (5 - 2))</math></caption>
     <image source="Trees/Figures/meParse.png" width="50%" alt="image"/>
   </figure>
@@ -32,7 +32,7 @@
             an entire subtree with one node once we have evaluated the expressions
             in the children. Applying this replacement procedure gives us the
             simplified tree shown in <xref ref="fig-mesimple"/>.</p>
-  <figure align="center" xml:id="id3">
+  <figure align="center" xml:id="file_17_id3">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: A Simplified Parse Tree for <math>((7 + 3) \cdot (5 - 2))</math></caption>
     <image source="Trees/Figures/meSimple.png" width="50%" alt="image"/>
   </figure>
@@ -64,7 +64,7 @@
             know that every operator is going to have both a left and a right child.</p>
   <p>Using the information from above we can define four rules as follows:</p>
   <p>
-    <ol label="1">
+    <ol marker="1">
       <li>
         <p>If the current token is a <c>"("</c>, add a new node as the left child
                     of the current node, and descend to the left child.</p>
@@ -114,7 +114,7 @@
   <figure align="center">
     <image source="Trees/Figures/buildExp7.png" width="50%" alt="image"/>
   </figure>
-  <figure align="center" xml:id="id4">
+  <figure align="center" xml:id="file_17_id4">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Tracing Parse Tree Construction</caption>
     <image source="Trees/Figures/buildExp8.png" width="50%" alt="image"/>
   </figure>
@@ -122,7 +122,7 @@
             from the previous paragraph, let's walk through the example step by
             step:</p>
   <p>
-    <ol label="a">
+    <ol marker="a">
       <li>
         <p>Create an empty tree.</p>
       </li>

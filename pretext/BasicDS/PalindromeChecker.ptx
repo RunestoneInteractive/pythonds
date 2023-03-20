@@ -13,7 +13,7 @@
             the dual functionality of the deque. The front of the deque will hold
             the first character of the string and the rear of the deque will hold
             the last character (see <xref ref="fig-palindrome"/>).</p>
-  <figure align="center" xml:id="114_id1fig-palindrome">
+  <figure align="center" xml:id="i114_id1fig-palindrome">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: A Deque</caption>
     <image source="BasicDS/Figures/palindromesetup.png" width="50%"/>
   </figure>

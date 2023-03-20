@@ -326,7 +326,7 @@ for i in range(1_000_000, 100_000_001, 1_000_000):
             also increases while the time for <c>pop</c> stays very flat. This is
             exactly what we would expect to see for an <math>O(n)</math> and
             <math>O(1)</math> algorithm.</p>
-  <figure align="" xml:id="15_id2fig-poptest">
+  <figure align="" xml:id="i15_id2fig-poptest">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: Comparing the Performance of <literal>pop</literal> and <literal>pop(0)</literal></caption>
     <image source="AlgorithmAnalysis/Figures/poptime.png" width="50%"/>
   </figure>

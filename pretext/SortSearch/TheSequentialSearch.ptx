@@ -13,7 +13,7 @@
             we follow the underlying sequential order until we either find what
             we are looking for or run out of items, which would mean the item
             we were searching for was not present.</p>
-  <figure align="center" xml:id="11_id1fig-seqsearch">
+  <figure align="center" xml:id="i11_id1fig-seqsearch">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: Sequential Search of a List of Integers</caption>
     <image source="SortSearch/Figures/seqsearch.png" width="50%"/>
   </figure>
@@ -131,7 +131,7 @@ print(sequential_search(test_list, 13))
                 of the items to report that the item was not found. It can stop
                 immediately. <xref ref="lst-seqsearchpython2"/> shows this variation of the
                 sequential search function.</p>
-    <figure align="center" xml:id="id3">
+    <figure align="center" xml:id="file_94_id3">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Sequential Search of an Ordered List of Integers</caption>
       <image source="SortSearch/Figures/seqsearch2.png" width="50%"/>
     </figure>

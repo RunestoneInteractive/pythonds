@@ -9,7 +9,7 @@
             small graph of some words that solve the FOOL to SAGE word ladder
             problem. Notice that the graph is an undirected graph and that the edges
             are unweighted.</p>
-  <figure align="center" xml:id="190_id1fig-wordladder">
+  <figure align="center" xml:id="i190_id1fig-wordladder">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: A Small Word Ladder Graph</caption>
     <image source="Graphs/Figures/wordgraph.png" width="50%"/>
   </figure>
@@ -33,7 +33,7 @@
             we put the word in that bucket, so that both POPE and POPS would both go
             into the POP_ bucket. Once we have all the words in the appropriate buckets,
             we know that all the words in each bucket must be connected.</p>
-  <figure align="center" xml:id="190_id2fig-wordbucket">
+  <figure align="center" xml:id="i190_id2fig-wordbucket">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Word Buckets for Words That Differ by One Letter</caption>
     <image source="Graphs/Figures/wordbuckets.png" width="50%"/>
   </figure>

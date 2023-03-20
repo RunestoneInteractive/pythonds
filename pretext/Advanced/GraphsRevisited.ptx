@@ -260,7 +260,7 @@
                 pattern past itself looking for the longest matching prefix and suffix.
                 The method begins by augmenting the pattern so that the indices on the
                 characters match the vertex labels in the KMP graph. Since the initial
-                state is state 0, we have used the <c><q>0</q></c> symbol as a placeholder. Now the
+                state is state 0, we have used the <c>'0'</c> symbol as a placeholder. Now the
                 characters 1 to <math>m</math> in the augmented pattern correspond directly
                 with the states 1 to <math>m</math> in the graph.</p>
     <p>Line&#xA0;<url href="#lst_mismatchedlinks:line_initdict" visual="#lst_mismatchedlinks:line_initdict">[lst_mismatchedlinks:line_initdict]</url>

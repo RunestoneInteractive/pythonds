@@ -45,7 +45,7 @@
   <p>Here is a high-level outline of how to move a tower of height <math>h</math> from the starting
             pole to the goal pole, using an intermediate pole:</p>
   <p>
-    <ol label="1">
+    <ol marker="1">
       <li>
         <p>Move a tower of height <math>h-1</math> from the starting pole to an intermediate pole via the goal
                     pole.</p>

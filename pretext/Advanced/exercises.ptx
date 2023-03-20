@@ -2,7 +2,7 @@
 <section xml:id="advanced_exercises">
   <title>Exercises</title>
   <p>
-    <ol label="1">
+    <ol marker="1">
       <li>
         <p>Where do skip lists get their name?</p>
       </li>

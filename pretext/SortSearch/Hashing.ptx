@@ -22,7 +22,7 @@
             a list with each element initialized to the special Python value
             <c>None</c>. <xref ref="fig-hashtable1"/> shows a hash table of size <math>m = 11</math>.
             In other words, there are <math>m</math> slots in the table, named 0 through 10.</p>
-  <figure align="center" xml:id="17_id1fig-hashtable1">
+  <figure align="center" xml:id="i17_id1fig-hashtable1">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Hash Table with 11 Empty Slots</caption>
     <image source="SortSearch/Figures/hashtable.png" width="50%"/>
   </figure>
@@ -106,7 +106,7 @@
             is referred to as the <term>load factor</term>, and is commonly denoted by
             <math>\lambda = \frac {number\_of\_items}{table\_size}</math>. For this example,
             <math>\lambda = \frac {6}{11}</math>.</p>
-  <figure align="center" xml:id="id3">
+  <figure align="center" xml:id="file_90_id3">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: Hash Table with Six Items</caption>
     <image source="SortSearch/Figures/hashtable2.png" width="50%"/>
   </figure>
@@ -264,7 +264,7 @@
                 <xref ref="lst-hashfunction1"/> shows a function called <c>hash_str</c> that takes a
                 string and a table size and returns the hash value in the range from 0
                 to <c>table_size</c>-1.</p>
-    <figure align="center" xml:id="id5">
+    <figure align="center" xml:id="file_90_id5">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: Hashing a String Using Ordinal Values</caption>
       <image source="SortSearch/Figures/stringhash.png" width="50%"/>
     </figure>
@@ -278,7 +278,7 @@
                 the position of the character as a weight. <xref ref="fig-stringhash2"/> shows
                 one possible way to use the positional value as a weighting factor. The
                 modification to the <c>hash_str</c> function is left as an exercise.</p>
-    <figure align="center" xml:id="id6">
+    <figure align="center" xml:id="file_90_id6">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 7: Hashing a String Using Ordinal Values with Weighting</caption>
       <image source="SortSearch/Figures/stringhash2.png" width="50%"/>
     </figure>
@@ -321,7 +321,7 @@
                 the next open position. The final value of 20 hashes to slot 9. Since
                 slot 9 is full, we begin to do linear probing. We visit slots 10, 0, 1,
                 and 2, and finally find an empty slot at position 3.</p>
-    <figure align="center" xml:id="id7">
+    <figure align="center" xml:id="file_90_id7">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 8: Collision Resolution with Linear Probing</caption>
       <image source="SortSearch/Figures/linearprobing1.png" width="50%"/>
     </figure>
@@ -342,7 +342,7 @@
                 item 20 above. A cluster of values hashing to 0 had to be skipped to
                 finally find an open position. This cluster is shown in
                 <xref ref="fig-clustering"/>.</p>
-    <figure align="center" xml:id="id8">
+    <figure align="center" xml:id="file_90_id8">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 9: A Cluster of Items for Slot 0</caption>
       <image source="SortSearch/Figures/clustering.png" width="50%"/>
     </figure>
@@ -354,7 +354,7 @@
                 resolution is done with what we will call a <q>plus 3</q> probe. This means that once a
                 collision occurs, we will look at every third slot until we find one
                 that is empty.</p>
-    <figure align="center" xml:id="id9">
+    <figure align="center" xml:id="file_90_id9">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 10: Collision Resolution Using a Plus 3 Probe</caption>
       <image source="SortSearch/Figures/linearprobing2.png" width="50%"/>
     </figure>
@@ -377,7 +377,7 @@
                 quadratic probing uses a skip consisting of successive perfect squares.
                 <xref ref="fig-quadratic"/> shows our example values after they are placed using
                 this technique.</p>
-    <figure align="center" xml:id="id10">
+    <figure align="center" xml:id="file_90_id10">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 11: Collision Resolution with Quadratic Probing</caption>
       <image source="SortSearch/Figures/quadratic.png" width="50%"/>
     </figure>
@@ -389,7 +389,7 @@
                 location, the difficulty of searching for the item in the collection
                 increases. <xref ref="fig-chaining"/> shows the items as they are added to a hash
                 table that uses chaining to resolve collisions.</p>
-    <figure align="center" xml:id="id11">
+    <figure align="center" xml:id="file_90_id11">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 12: Collision Resolution with Chaining</caption>
       <image source="SortSearch/Figures/chaining.png" width="50%"/>
     </figure>

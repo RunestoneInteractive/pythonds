@@ -19,7 +19,7 @@
   <p>Knowing what our base is suggests that the overall algorithm will
             involve three components:</p>
   <p>
-    <ol label="1">
+    <ol marker="1">
       <li>
         <p>Reduce the original number to a series of single-digit numbers.</p>
       </li>

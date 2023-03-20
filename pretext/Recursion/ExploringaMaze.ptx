@@ -24,7 +24,7 @@
             direction. The turtle will require a systematic procedure to find its
             way out of the maze. Here is the procedure:</p>
   <p>
-    <ol label="1">
+    <ol marker="1">
       <li>
         <p>From our starting position we will first try going north one square
                     and then recursively try our procedure from there.</p>
@@ -68,7 +68,7 @@
             previous paragraph. In this algorithm, there are four base cases to
             consider:</p>
   <p>
-    <ol label="1">
+    <ol marker="1">
       <li>
         <p>The turtle has run into a wall. Since the square is occupied by a
                     wall, no further exploration can take place.</p>

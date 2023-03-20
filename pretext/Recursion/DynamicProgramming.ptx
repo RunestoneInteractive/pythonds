@@ -98,7 +98,7 @@ print(make_change_1([1, 5, 10, 25], 63))
             the optimal number of coins for 15 cents itself takes 52 function calls.
             Clearly we are wasting a lot of time and effort recalculating old
             results.</p>
-  <figure align="center" xml:id="19_id1fig-c1ct">
+  <figure align="center" xml:id="i19_id1fig-c1ct">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 14: Call Tree for Listing 17</caption>
     <image source="Recursion/Figures/callTree.png" width="100%%" alt="image"/>
   </figure>
@@ -162,7 +162,7 @@ print(make_change_2([1, 5, 10, 25], 63, [0] * 64))
             again to the end of the table and consider 11 cents. <xref ref="fig-eleven"/>
             shows the three options that we have to consider:</p>
   <p>
-    <ol label="1">
+    <ol marker="1">
       <li>
         <p>A penny plus the minimum number of coins to make change for
                     <math>11-1 = 10</math> cents (1)</p>

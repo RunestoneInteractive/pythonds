@@ -11,7 +11,7 @@
             brown on the bottom. Before you eat your pancakes you are going to want
             to heat up some syrup. <xref ref="fig-pancakes"/> illustrates this process as
             a dependency graph.</p>
-  <figure align="center" xml:id="177_id1fig-pancakes">
+  <figure align="center" xml:id="i177_id1fig-pancakes">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 27: The Steps for Making Pancakes</caption>
     <image source="Graphs/Figures/pancakes.png" width="50%"/>
   </figure>
@@ -32,7 +32,7 @@
   <p>The topological sort is a simple but useful adaptation of a depth-first
             search. The algorithm for the topological sort is as follows:</p>
   <p>
-    <ol label="1">
+    <ol marker="1">
       <li>
         <p>Call <c>dfs(g)</c> for some graph <c>g</c>. The main reason we want to call
                     depth-first search is to compute the closing times for each of the
@@ -48,14 +48,14 @@
   </p>
   <p><xref ref="fig-pancakesdfs"/> shows the depth-first forest constructed by
             <c>dfs</c> on the pancake-making graph shown in <xref ref="fig-pancakes"/>.</p>
-  <figure align="center" xml:id="177_id2fig-pancakesdfs">
+  <figure align="center" xml:id="i177_id2fig-pancakesdfs">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 28: Result of Depth-First Search on the Pancake Graph</caption>
     <image source="Graphs/Figures/pancakesDFS.png" width="50%"/>
   </figure>
   <p>Finally, <xref ref="fig-pancakests"/> shows the results of applying the
             topological sort algorithm to our graph. Now all the ambiguity has been
             removed and we know exactly the order in which to perform the pancake-making steps.</p>
-  <figure align="center" xml:id="id3">
+  <figure align="center" xml:id="file_135_id3">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 29: Result of Topological Sort on Directed Acyclic Graph</caption>
     <image source="Graphs/Figures/pancakesTS.png" width="50%"/>
   </figure>

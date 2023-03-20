@@ -39,7 +39,7 @@
             limited version of a book with only two chapters. Note that the
             traversal algorithm works for trees with any number of children, but we
             will stick with binary trees for now.</p>
-  <figure align="center" xml:id="19_id1fig-booktree">
+  <figure align="center" xml:id="i19_id1fig-booktree">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: Representing a Book as a Tree</caption>
     <image source="Trees/Figures/booktree.png" width="50%" alt="image"/>
   </figure>

@@ -150,7 +150,7 @@
             hard to tell which is dominant. However, as <em>n</em> grows, there is a
             definite relationship and it is easy to see how they compare with one
             another.</p>
-  <figure align="" xml:id="11_id2fig-graphfigure">
+  <figure align="" xml:id="i11_id2fig-graphfigure">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: Plot of Common Big O Functions</caption>
     <image source="AlgorithmAnalysis/Figures/newplot.png" width="50%"/>
   </figure>
@@ -185,7 +185,7 @@ d = 33</pre>
             therefore this fragment of code is <math>O(n^{2})</math>. Note that all of
             the other terms as well as the coefficient on the dominant term can be
             ignored as <em>n</em> grows larger.</p>
-  <figure align="" xml:id="id3">
+  <figure align="" xml:id="file_44_id3">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Comparing <math>T(n)</math> with Common Big O Functions</caption>
     <image source="AlgorithmAnalysis/Figures/newplot2.png" width="50%"/>
   </figure>

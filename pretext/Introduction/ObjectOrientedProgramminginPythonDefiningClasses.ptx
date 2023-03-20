@@ -45,7 +45,7 @@
                 <c>Fraction</c> object, we will need to provide two pieces of data, the
                 numerator and the denominator. In Python, the constructor method is
                 always called __init__ (two underscores before and after <c>init</c>),
-                as shown in <xref ref="lst-pyconstructor"/>.</p>
+                as shown in <xref ref="introduction_lst-pyconstructor"/>.</p>
     <p xml:id="introduction_lst-pyconstructor" names="lst_pyconstructor">
       <term>Listing 2</term>
     </p>
@@ -78,7 +78,7 @@ class Fraction:
     <p>creates an object called <c>my_fraction</c> representing the fraction
                 <math>\frac {3}{5}</math> (three-fifths). <xref ref="fig-fraction1"/> shows this
                 object as it is now implemented.</p>
-    <figure align="center" xml:id="19_id1fig-fraction1">
+    <figure align="center" xml:id="fig-fraction1">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: An Instance of the <literal>Fraction</literal> Class</caption>
       <image source="Introduction/Figures/fraction1.png" width="50%"/>
     </figure>
@@ -97,7 +97,7 @@ class Fraction:
     <p>There are two ways we can solve this problem. One is to define a method
                 called <c>show</c> that will allow the <c>Fraction</c> object to print itself
                 as a string. We can implement this method as shown in
-                <xref ref="lst-showmethod"/>. If we create a <c>Fraction</c> object as before
+                <xref ref="introduction_lst-showmethod"/>. If we create a <c>Fraction</c> object as before
                 we can ask it to show itself (in other words, print itself  in the proper format).
                 Unfortunately, this does not work in general. In order to make
                 printing work properly, we need to tell the <c>Fraction</c> class how to
@@ -250,7 +250,7 @@ def __add__(self, other_fraction):
 </input>
     </program>
     <p>Our <c>Fraction</c> object now has two very useful methods as depicted in <xref ref="fig-fraction2"/>.</p>
-    <figure align="center" xml:id="19_id2fig-fraction2">
+    <figure align="center" xml:id="i19_id2fig-fraction2">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: An Instance of the <literal>Fraction</literal> Class with Two Methods</caption>
       <image source="Introduction/Figures/fraction2.png" width="50%"/>
     </figure>
@@ -266,7 +266,7 @@ def __add__(self, other_fraction):
                 numerators and denominators would not be equal under this
                 implementation. This is called <term>shallow equality</term> (see
                 <xref ref="fig-fraction3"/>).</p>
-    <figure align="center" xml:id="id3">
+    <figure align="center" xml:id="file_72_id3">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 7: Shallow Equality Versus Deep Equality</caption>
       <image source="Introduction/Figures/fraction3.png" width="50%"/>
     </figure>
@@ -365,7 +365,7 @@ print(x == y)
                 sequential collection). This implies that lists inherit important
                 characteristics from sequences, namely the ordering of the underlying
                 data and operations such as concatenation, repetition, and indexing.</p>
-    <figure align="center" xml:id="id4">
+    <figure align="center" xml:id="file_72_id4">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 8: An Inheritance Hierarchy for Python Collections</caption>
       <image source="Introduction/Figures/inheritance1.png" width="50%"/>
     </figure>
@@ -399,7 +399,7 @@ print(x == y)
                 gates is typically represented. Each gate also has a <term>truth table</term> of
                 values showing the input-to-output mapping that is performed by the
                 gate.</p>
-    <figure align="center" xml:id="id5">
+    <figure align="center" xml:id="file_72_id5">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 9: Three Types of Logic Gates</caption>
       <image source="Introduction/Figures/truthtable.png" width="50%"/>
     </figure>
@@ -412,7 +412,7 @@ print(x == y)
                 four input lines (two for each AND gate), the values are processed and a
                 result appears at the output of the NOT gate. <xref ref="fig-circuit1"/> also
                 shows an example with values.</p>
-    <figure align="center" xml:id="id6">
+    <figure align="center" xml:id="file_72_id6">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 10: A Circuit</caption>
       <image source="Introduction/Figures/circuit1.png" width="50%"/>
     </figure>
@@ -424,7 +424,7 @@ print(x == y)
                 output line. The next level of subclasses breaks the logic gates into
                 two families, those that have one input line and those that have two.
                 Below that, the specific logic functions of each appear.</p>
-    <figure align="center" xml:id="id7">
+    <figure align="center" xml:id="file_72_id7">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 11: An Inheritance Hierarchy for Logic Gates</caption>
       <image source="Introduction/Figures/gates.png" width="50%"/>
     </figure>
@@ -607,7 +607,7 @@ Enter pin input for gate G3: 0
                     relationship</term>. Recall earlier that we used the phrase <em>Is-a
                     relationship</em> to say that a child class is related to a parent class,
                 for example <c>UnaryGate</c> Is-a <c>LogicGate</c>.</p>
-    <figure align="center" xml:id="id8">
+    <figure align="center" xml:id="file_72_id8">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 12: A Connector Connects the Output of One Gate to the Input of Another</caption>
       <image source="Introduction/Figures/connector.png" width="50%"/>
     </figure>

@@ -26,7 +26,7 @@
             type is the shell that the user interacts with. The implementation is
             hidden one level deeper. The user is not concerned with the details of
             the implementation.</p>
-  <figure align="center" xml:id="11_id1fig-adt">
+  <figure align="center" xml:id="fig-adt">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Abstract Data Type</caption>
     <image source="Introduction/Figures/adt.png" width="50%"/>
   </figure>

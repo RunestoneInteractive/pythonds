@@ -68,7 +68,7 @@
                 modulo <math>n</math>.</q> In shorthand we write <math>a \equiv~b~\pmod{n}</math>.
                 The algorithms in this section make use of three important theorems:</p>
     <p>
-      <ol label="1">
+      <ol marker="1">
         <li>
           <p>If <math>a \equiv b \pmod{n}</math> then
                         <math>\forall c, a + c \equiv b + c \pmod{n}</math>.</p>
@@ -96,14 +96,14 @@
     <p>The answer to the second question is easy, given the third theorem from
                 above.</p>
     <p>
-      <ol label="1">
+      <ol marker="1">
         <li>
           <p>Initialize result to 1.</p>
         </li>
         <li>
           <p>Repeat <math>n</math> times:</p>
           <p>
-            <ol label="1">
+            <ol marker="1">
               <li>
                 <p>Multiply result by <math>x</math>.</p>
               </li>

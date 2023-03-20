@@ -56,7 +56,7 @@ True</pre>
                 relational operators and logical operators can be combined together to
                 form complex logical questions. <xref ref="introduction_tab-relational"/> shows the relational
                 and logical operators with examples shown in the session that follows.</p>
-    <table xml:id="introduction_id1">
+    <table xml:id="introduction_tab-relational">
       <tabular>
         <title>
           <term>Table 1: Relational and Logical Operators</term>
@@ -213,11 +213,11 @@ True</pre>
                 the type Boolean). The assignment statement changes the reference being
                 held by the variable. This is a dynamic characteristic of Python. The
                 same variable can refer to many different types of data.</p>
-    <figure align="center" xml:id="15_id2fig-assignment1">
+    <figure align="center" xml:id="fig-assignment1">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: Variables Hold References to Data Objects</caption>
       <image source="Introduction/Figures/assignment1.png" width="50%"/>
     </figure>
-    <figure align="center" xml:id="id3">
+    <figure align="center" xml:id="fig-assignment2">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Assignment Changes the Reference</caption>
       <image source="Introduction/Figures/assignment2.png" width="50%"/>
     </figure>
@@ -247,7 +247,7 @@ True</pre>
                 number of operations that can be applied to any Python sequence.
                 <xref ref="introduction_tab-sequence"/> reviews these operations and the following session
                 gives examples of their use.</p>
-    <table xml:id="introduction_id4">
+    <table xml:id="introduction_tab-sequence">
       <tabular>
         <title>
           <term>Table 2: Operations on Any Sequence in Python</term>
@@ -357,7 +357,7 @@ print(big_list)
     <p>Lists support a number of methods that will be used to build data
                 structures. <xref ref="introduction_tab-listmethods"/> provides a summary. Examples of their
                 use follow.</p>
-    <table xml:id="introduction_id5">
+    <table xml:id="introduction_tab-listmethods">
       <tabular>
         <title>
           <term>Table 3: Methods Provided by Lists in Python</term>
@@ -566,7 +566,7 @@ range(5, 10)
     <p>Since strings are sequences, all of the sequence operations described
                 above work as you would expect. In addition, strings have a number of
                 methods, some of which are shown in <xref ref="introduction_tab-stringmethods"/>.</p>
-    <table xml:id="introduction_id6">
+    <table xml:id="introduction_tab-stringmethods">
       <tabular>
         <title>
           <term>Table 4: Methods Provided by Strings in Python</term>
@@ -728,7 +728,7 @@ TypeError: 'tuple' object does not support item assignment</pre>
     <p>Even though sets are not considered to be sequential, they do support a
                 few of the familiar operations presented earlier. <xref ref="introduction_tab-setops"/> reviews
                 these operations and the following session gives examples of their use.</p>
-    <table xml:id="introduction_id7">
+    <table xml:id="introduction_tab-setops">
       <tabular>
         <title>
           <term>Table 5: Operations on a Set in Python</term>
@@ -825,7 +825,7 @@ False</pre>
                 provides a summary. Examples of their use follow. Note that <c>union</c>,
                 <c>intersection</c>, <c>issubset</c>, and <c>difference</c> all have operators
                 that can be used as well.</p>
-    <table xml:id="introduction_id8">
+    <table xml:id="introduction_tab-setmethods">
       <tabular>
         <title>
           <term>Table 6: Methods Provided by Sets in Python</term>
@@ -1003,7 +1003,7 @@ for k in capitals:
                 on the <c>get</c> method. If the key is not present in the dictionary,
                 <c>get</c> will return <c>None</c>. However, a second, optional parameter can
                 specify a return value instead.</p>
-    <table xml:id="introduction_id9">
+    <table xml:id="introduction_tab-dictopers">
       <tabular>
         <title>
           <term>Table 7: Operators Provided by Dictionaries in Python</term>
@@ -1054,7 +1054,7 @@ for k in capitals:
         </row>
       </tabular>
     </table>
-    <table xml:id="introduction_id10">
+    <table xml:id="introduction_tab-dictmethods">
       <tabular>
         <title>
           <term>Table 8: Methods Provided by Dictionaries in Python</term>

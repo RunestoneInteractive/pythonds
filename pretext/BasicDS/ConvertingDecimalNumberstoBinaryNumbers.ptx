@@ -34,7 +34,7 @@
             in the sequence. As shown in <xref ref="fig-decbin"/>, we again see the
             reversal property that signals that a stack is likely to be the
             appropriate data structure for solving the problem.</p>
-  <figure align="center" xml:id="102_id1fig-decbin">
+  <figure align="center" xml:id="i102_id1fig-decbin">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: Decimal-to-Binary Conversion</caption>
     <image source="BasicDS/Figures/dectobin.png" width="50%"/>
   </figure>

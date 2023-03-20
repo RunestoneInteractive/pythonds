@@ -11,7 +11,7 @@
             need to be compared on the first pass. It is important to note that once
             the largest value in the list is part of a pair, it will continually be
             moved along until the pass is complete.</p>
-  <figure align="center" xml:id="15_id1fig-bubblepass">
+  <figure align="center" xml:id="i15_id1fig-bubblepass">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: Bubble Sort: The First Pass</caption>
     <image source="SortSearch/Figures/bubblepass.png" width="50%"/>
   </figure>
@@ -40,7 +40,7 @@ a_list[j] = temp</pre>
             <math>(i+1)</math>-th items using the three-step procedure described
             earlier. Note that we could also have used the simultaneous assignment
             to swap the items.</p>
-  <figure align="center" xml:id="15_id2fig-pythonswap">
+  <figure align="center" xml:id="i15_id2fig-pythonswap">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Exchanging Two Values in Python</caption>
     <image source="SortSearch/Figures/swap.png" width="50%"/>
   </figure>

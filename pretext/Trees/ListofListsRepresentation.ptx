@@ -13,7 +13,7 @@
             another list that represents the right subtree. To illustrate this
             storage technique, let's look at an example. <xref ref="fig-smalltree"/>
             shows a simple tree and the corresponding list implementation.</p>
-  <figure align="center" xml:id="10_id1fig-smalltree">
+  <figure align="center" xml:id="i10_id1fig-smalltree">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: A Small Tree</caption>
     <image source="Trees/Figures/smalltree.png" width="50%"/>
   </figure>

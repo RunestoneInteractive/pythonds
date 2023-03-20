@@ -128,7 +128,7 @@ for i in range(10_000, 1_000_001, 20_000):
             dictionary size grows. In fact, for a dictionary size of 10,000 the
             <c>contains</c> operation took 0.004 milliseconds, and for the dictionary size
             of 990,000 it also took 0.004 milliseconds.</p>
-  <figure align="" xml:id="10_id2fig-listvdict">
+  <figure align="" xml:id="i10_id2fig-listvdict">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Comparing the <literal>in</literal> Operator for Python Lists and Dictionaries</caption>
     <image source="AlgorithmAnalysis/Figures/listvdict.png" width="50%"/>
   </figure>

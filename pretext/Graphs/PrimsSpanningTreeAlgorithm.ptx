@@ -9,7 +9,7 @@
             important for internet radio so that all the listeners that are tuned in
             are getting all the data they need to reconstruct the song they are
             listening to. <xref ref="fig-bcast1"/> illustrates the broadcast problem.</p>
-  <figure align="center" xml:id="187_id1fig-bcast1">
+  <figure align="center" xml:id="i187_id1fig-bcast1">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 9: The Broadcast Problem</caption>
     <image source="Graphs/Figures/bcast1.png" width="50%"/>
   </figure>
@@ -58,7 +58,7 @@
             the message to E, which forwards it to F, which forwards it to G. No
             router sees more than one copy of any message, and all the listeners
             that are interested see a copy of the message.</p>
-  <figure align="center" xml:id="187_id2fig-mst1">
+  <figure align="center" xml:id="i187_id2fig-mst1">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 10: Minimum Spanning Tree for the Broadcast Graph</caption>
     <image source="Graphs/Figures/mst1.png" width="50%"/>
   </figure>
@@ -113,31 +113,31 @@ def prim(graph, start):
             that we have not formally added B or C to the spanning tree yet. A node
             is not considered to be part of the spanning tree until it is removed
             from the priority queue.</p>
-  <figure align="center" xml:id="id3">
+  <figure align="center" xml:id="file_145_id3">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 11: Tracing Prim's Algorithm</caption>
     <image source="Graphs/Figures/prima.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="id4">
+  <figure align="center" xml:id="file_145_id4">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 12: Tracing Prim's Algorithm</caption>
     <image source="Graphs/Figures/primb.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="id5">
+  <figure align="center" xml:id="file_145_id5">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 13: Tracing Prim's Algorithm</caption>
     <image source="Graphs/Figures/primc.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="id6">
+  <figure align="center" xml:id="file_145_id6">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 14: Tracing Prim's Algorithm</caption>
     <image source="Graphs/Figures/primd.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="id7">
+  <figure align="center" xml:id="file_145_id7">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 15: Tracing Prim's Algorithm</caption>
     <image source="Graphs/Figures/prime.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="id8">
+  <figure align="center" xml:id="file_145_id8">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 16: Tracing Prim's Algorithm</caption>
     <image source="Graphs/Figures/primf.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="id9">
+  <figure align="center" xml:id="file_145_id9">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 17: Tracing Prim's Algorithm</caption>
     <image source="Graphs/Figures/primg.png" width="50%"/>
   </figure>

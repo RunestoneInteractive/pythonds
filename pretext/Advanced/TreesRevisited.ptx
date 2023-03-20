@@ -201,11 +201,11 @@ simple_quant("bubbles.jpg")</pre>
                 overview of how we will use an octree to do a better job of
                 selecting a subset of the colors in an image:</p>
     <p>
-      <ol label="1">
+      <ol marker="1">
         <li>
           <p>For each pixel in the image:</p>
           <p>
-            <ol label="1">
+            <ol marker="1">
               <li>
                 <p>Search for the color of this pixel in the octree. The color
                                 will be a leaf node at the eighth level.</p>
@@ -225,7 +225,7 @@ simple_quant("bubbles.jpg")</pre>
           <p>Repeat until the number of leaf nodes is less than or equal to the
                         target number of colors.</p>
           <p>
-            <ol label="1">
+            <ol marker="1">
               <li>
                 <p>Find the deepest leaf node with the smallest number of uses.</p>
               </li>
@@ -500,7 +500,7 @@ def compute_index(self, r, g, b, l):  |\label{lst_otninsert:line_otci}|
         )</pre>
     <p>The <c>find</c> method has three exit conditions:</p>
     <p>
-      <ol label="1">
+      <ol marker="1">
         <li>
           <p>We have reached the maximum level of the tree and so we return the
                         average of the color information stored in this leaf node (see lines&#xA0;17&#x2013;21).</p>

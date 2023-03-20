@@ -67,7 +67,7 @@ def bfs(start):
             examined, its color is checked. If it is white, the vertex is unexplored,
             and four things happen:</p>
   <p>
-    <ol label="1">
+    <ol marker="1">
       <li>
         <p>The new unexplored vertex <c>neighbor</c> is colored gray.</p>
       </li>
@@ -92,7 +92,7 @@ def bfs(start):
             these nodes are added to the queue of new nodes to expand.
             <xref ref="fig-bfs1"/> shows the state of the in-progress tree along with the
             queue after this step.</p>
-  <figure align="center" xml:id="182_id1fig-bfs1">
+  <figure align="center" xml:id="i182_id1fig-bfs1">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: The First Step in the Breadth-First Search</caption>
     <image source="Graphs/Figures/bfs1.png" width="50%"/>
   </figure>
@@ -103,7 +103,7 @@ def bfs(start):
             shorter path to COOL and that COOL is already on the queue for further
             expansion. The only new node added to the queue while examining POOL is
             POLL. The new state of the tree and queue is shown in <xref ref="fig-bfs2"/>.</p>
-  <figure align="center" xml:id="182_id2fig-bfs2">
+  <figure align="center" xml:id="i182_id2fig-bfs2">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: The Second Step in the Breadth-First Search</caption>
     <image source="Graphs/Figures/bfs2.png" width="50%"/>
   </figure>
@@ -112,11 +112,11 @@ def bfs(start):
             neither of the next two nodes adds anything new to the queue or the tree.
             <xref ref="fig-bfs3"/> shows the tree and the queue after expanding all the
             vertices on the second level of the tree.</p>
-  <figure align="center" xml:id="id3">
+  <figure align="center" xml:id="file_140_id3">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: Breadth-First Search Tree After Completing One Level</caption>
     <image source="Graphs/Figures/bfs3.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="id4">
+  <figure align="center" xml:id="file_140_id4">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">FIgure 6: Final Breadth-First Search Tree</caption>
     <image source="Graphs/Figures/bfsDone.png" width="50%"/>
   </figure>

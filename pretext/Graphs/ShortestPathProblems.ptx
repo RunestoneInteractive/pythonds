@@ -8,7 +8,7 @@
             to another over the internet is the primary topic for a class in
             computer networking. However, we will talk about how the internet works
             just enough to understand another very important graph algorithm.</p>
-  <figure align="center" xml:id="175_id1fig-inet">
+  <figure align="center" xml:id="i175_id1fig-inet">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: Overview of Connectivity in the Internet</caption>
     <image source="Graphs/Figures/Internet.png" width="50%"/>
   </figure>
@@ -58,7 +58,7 @@ Routers from One Host to the Next over the Internet</pre>
             except that here we are concerned with the total weight of
             the path rather than the number of hops in the path. It should be noted
             that if all the weights are equal, the problem is the same.</p>
-  <figure align="center" xml:id="175_id2fig-network">
+  <figure align="center" xml:id="i175_id2fig-network">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Connections and Weights between Routers in the Internet</caption>
     <image source="Graphs/Figures/routeGraph.png" width="50%"/>
   </figure>

@@ -7,7 +7,7 @@
             54, 77, and 93) can be represented by a linked structure as shown in
             <xref ref="fig-orderlinked"/>. Again, the node and link structure is ideal
             for representing the relative positioning of the items.</p>
-  <figure align="center" xml:id="105_id1fig-orderlinked">
+  <figure align="center" xml:id="i105_id1fig-orderlinked">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 15: An Ordered Linked List</caption>
     <image source="BasicDS/Figures/orderlinkedlist.png" width="50%"/>
   </figure>
@@ -46,7 +46,7 @@
             value in the node becomes greater than the item we are searching for,
             the search can stop and return <c>False</c>. There is no way the item could
             exist further out in the linked list.</p>
-  <figure align="center" xml:id="105_id2fig-stopearly">
+  <figure align="center" xml:id="i105_id2fig-stopearly">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 16: Searching an Ordered Linked List</caption>
     <image source="BasicDS/Figures/orderedsearch.png" width="50%"/>
   </figure>
@@ -83,7 +83,7 @@
             becomes <c>None</c>) or the value of the current node becomes greater than
             the item we wish to add. In our example, seeing the value 54 causes us
             to stop.</p>
-  <figure align="center" xml:id="id3">
+  <figure align="center" xml:id="file_108_id3">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 17: Adding an Item to an Ordered Linked List</caption>
     <image source="BasicDS/Figures/linkedlistinsert.png" width="50%"/>
   </figure>

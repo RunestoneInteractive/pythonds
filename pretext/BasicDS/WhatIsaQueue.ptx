@@ -26,7 +26,7 @@
             be completed. If you are last in line, you must wait for all the other
             tasks to print ahead of you. We will explore this interesting example in
             more detail later.</p>
-  <figure align="center" xml:id="107_id1fig-qubasicqueue">
+  <figure align="center" xml:id="i107_id1fig-qubasicqueue">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: A Queue of Python Data Objects</caption>
     <image source="BasicDS/Figures/basicqueue.png" width="50%"/>
   </figure>

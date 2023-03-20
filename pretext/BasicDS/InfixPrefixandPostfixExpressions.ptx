@@ -232,7 +232,7 @@
                 operator were also moved to its corresponding right parenthesis position
                 and the matching left parenthesis were removed, the complete postfix
                 expression would result (see <xref ref="fig-moveright"/>).</p>
-    <figure align="center" xml:id="id4">
+    <figure align="center" xml:id="file_116_id4">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: Moving Operators to the Right for Postfix Notation</caption>
       <image source="BasicDS/Figures/moveright.png" width="50%"/>
     </figure>
@@ -240,7 +240,7 @@
                 of the right parenthesis, we move it to the left, we get prefix notation
                 (see <xref ref="fig-moveleft"/>). The position of the parenthesis pair is
                 actually a clue to the final position of the enclosed operator.</p>
-    <figure align="center" xml:id="id5">
+    <figure align="center" xml:id="file_116_id5">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 7: Moving Operators to the Left for Prefix Notation</caption>
       <image source="BasicDS/Figures/moveleft.png" width="50%"/>
     </figure>
@@ -252,7 +252,7 @@
     <p>Here is a more complex expression: (A + B) &#xB7; C - (D - E) &#xB7; (F + G).
                 <xref ref="fig-complexmove"/> shows the conversion to prefix and postfix
                 notations.</p>
-    <figure align="center" xml:id="id6">
+    <figure align="center" xml:id="file_116_id6">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 8: Converting a Complex Expression to Prefix and Postfix Notations</caption>
       <image source="BasicDS/Figures/complexmove.png" width="50%"/>
     </figure>
@@ -303,7 +303,7 @@
                 identifiers A, B, C, and so on. The following steps will produce a
                 string of tokens in postfix order.</p>
     <p>
-      <ol label="1">
+      <ol marker="1">
         <li>
           <p>Create an empty stack called <c>op_stack</c> for keeping operators.
                         Create an empty list for output.</p>
@@ -350,7 +350,7 @@
                 &#xB7; occurs, since multiplication has precedence over addition. At the end
                 of the infix expression the stack is popped twice, removing both
                 operators and placing + as the last operator in the postfix expression.</p>
-    <figure align="center" xml:id="id7">
+    <figure align="center" xml:id="file_116_id7">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 9: Converting A &#xB7; B + C &#xB7; D to Postfix Notation</caption>
       <image source="BasicDS/Figures/intopost.png" width="50%"/>
     </figure>
@@ -438,7 +438,7 @@ print(infix_to_postfix("( A + B ) * C - ( D - E ) * ( F + G )"))
                 on the stack. Pop and return it as the result of the expression.
                 <xref ref="fig-evalpost1"/> shows the stack contents as this entire example
                 expression is being processed.</p>
-    <figure align="center" xml:id="id8">
+    <figure align="center" xml:id="file_116_id8">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 10: Stack Contents During Evaluation</caption>
       <image source="BasicDS/Figures/evalpostfix1.png" width="50%"/>
     </figure>
@@ -452,7 +452,7 @@ print(infix_to_postfix("( A + B ) * C - ( D - E ) * ( F + G )"))
                 Since division is <em>not</em> a commutative operator, in other words
                 <math>15/5</math> is not the same as <math>5/15</math>, we must be sure that
                 the order of the operands is not switched.</p>
-    <figure align="center" xml:id="id9">
+    <figure align="center" xml:id="file_116_id9">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 11: A More Complex Example of Evaluation</caption>
       <image source="BasicDS/Figures/evalpostfix2.png" width="50%"/>
     </figure>
@@ -460,7 +460,7 @@ print(infix_to_postfix("( A + B ) * C - ( D - E ) * ( F + G )"))
                 The operators are &#xB7;, /, +, and - and the operands are assumed to be
                 single-digit integer values. The output will be an integer result.</p>
     <p>
-      <ol label="1">
+      <ol marker="1">
         <li>
           <p>Create an empty stack called <c>operand_stack</c>.</p>
         </li>

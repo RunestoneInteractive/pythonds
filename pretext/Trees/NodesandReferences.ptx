@@ -8,7 +8,7 @@
             Since this representation more
             closely follows the object-oriented programming paradigm, we will
             continue to use this representation for the remainder of the chapter.</p>
-  <figure align="center" xml:id="14_id1fig-treerec">
+  <figure align="center" xml:id="i14_id1fig-treerec">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: A Simple Tree Using a Nodes and References Approach</caption>
     <image source="Trees/Figures/treerecs.png" width="50%" alt="image"/>
   </figure>

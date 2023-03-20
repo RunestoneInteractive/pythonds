@@ -4,7 +4,7 @@
   <p>Like robots in Asimov's stories, all recursive algorithms must obey three
             important laws:</p>
   <p>
-    <ol label="1">
+    <ol marker="1">
       <li>
         <p>A recursive algorithm must have a <term>base case</term>.</p>
       </li>

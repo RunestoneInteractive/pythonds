@@ -10,7 +10,7 @@
             we consider trees of heights 0, 1, 2, and 3, <xref ref="fig-worstavl"/>
             illustrates the most unbalanced left-heavy tree possible under the new
             rules.</p>
-  <figure align="center" xml:id="18_id1fig-worstavl">
+  <figure align="center" xml:id="i18_id1fig-worstavl">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Worst-Case Left-Heavy AVL Trees</caption>
     <image source="Trees/Figures/worstAVL.png" width="50%"/>
   </figure>

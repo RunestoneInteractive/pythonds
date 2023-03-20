@@ -88,7 +88,7 @@ Hello World***&gt;&gt;&gt;</pre>
                 integer. Other possible type specifications include <c>i</c>, <c>u</c>, <c>f</c>,
                 <c>e</c>, <c>g</c>, <c>c</c>, or <c>%</c>. <xref ref="introduction_tab-fmta"/> summarizes all of the
                 various type specifications.</p>
-    <table xml:id="introduction_id1">
+    <table xml:id="introduction_tab-fmta">
       <tabular>
         <title>
           <term>Table 9: String Formatting Conversion Characters</term>
@@ -177,9 +177,9 @@ Hello World***&gt;&gt;&gt;</pre>
                 modifier between the <c>%</c> and the format character. Format modifiers may
                 be used to left-justify or right-justify the value with a specified
                 field width. Modifiers can also be used to specify the field width along
-                with a number of digits after the decimal point. <xref ref="introduction_introduction_tab-fmtaddsa"/>
+                with a number of digits after the decimal point. <xref ref="introduction_tab-fmtaddsa"/>
                 explains these format modifiers.</p>
-    <table xml:id="introduction_id2">
+    <table xml:id="introduction_tab-fmtaddsa">
       <tabular>
         <title>
           <term>Table 10: Additional formatting options</term>
@@ -296,7 +296,7 @@ The banana costs 24 cents</pre>
                 inside an f-string, but the alignment symbols are different from those used with placeholders
                 (see <xref ref="introduction_tab-fstraast"/>). We are going to use this formatting
                 method for the rest of the text.</p>
-    <table xml:id="introduction_id3">
+    <table xml:id="introduction_tab-fstraast">
       <tabular>
         <title>
           <term>Table 11: f-string Formatting Options</term>

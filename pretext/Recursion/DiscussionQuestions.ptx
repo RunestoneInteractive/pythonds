@@ -2,7 +2,7 @@
 <section xml:id="recursion_discussion-questions">
   <title>Discussion Questions</title>
   <p>
-    <ol label="1">
+    <ol marker="1">
       <li>
         <p>Draw a call stack for the Tower of Hanoi problem. Assume that you
                     start with a stack of three disks.</p>

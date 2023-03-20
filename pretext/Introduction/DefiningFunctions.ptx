@@ -33,12 +33,12 @@
             takes a value <math>n</math> and repeatedly guesses the square root by
             making each <math>newguess</math> the <math>oldguess</math> in the subsequent
             iteration. The initial guess used here is <math>\frac {n}{2}</math>.
-            <xref ref="lst-root"/> shows a function definition that accepts a value
+            <xref ref="introduction_lst-root"/> shows a function definition that accepts a value
             <math>n</math> and returns the square root of <math>n</math> after making 20
             guesses. Again, the details of the Newton&#x2013;Raphson method are hidden inside the
             function definition and the user does not have to know anything about
             the implementation to use the function for its intended purpose.
-            <xref ref="lst-root"/> also shows the use of the <c>#</c> character as a comment
+            <xref ref="introduction_lst-root"/> also shows the use of the <c>#</c> character as a comment
             marker. Any characters that follow the <c>#</c> on a line are ignored.</p>
   <p xml:id="introduction_lst-root" names="lst_root">
     <term>Listing 1</term>

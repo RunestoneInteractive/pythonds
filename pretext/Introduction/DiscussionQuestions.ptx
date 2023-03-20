@@ -2,7 +2,7 @@
 <section xml:id="introduction_discussion-questions">
   <title>Discussion Questions</title>
   <p>
-    <ol label="1">
+    <ol marker="1">
       <li>
         <p>Construct a class hierarchy for people on a college campus. Include
                     faculty, staff, and students. What do they have in common? What

@@ -9,7 +9,7 @@
             point in the game, the action is stopped and the child who has the item
             (the potato) is removed from the circle. Play continues until only one
             child is left.</p>
-  <figure align="center" xml:id="122_id1fig-quhotpotato">
+  <figure align="center" xml:id="i122_id1fig-quhotpotato">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: A Six-Person Game of Hot Potato</caption>
     <image source="BasicDS/Figures/hotpotato.png" width="50%"/>
   </figure>
@@ -39,7 +39,7 @@
             dequeue/enqueue operations, the child at the front will be removed
             permanently and another cycle will begin. This process will continue
             until only one name remains (the size of the queue is 1).</p>
-  <figure align="center" xml:id="122_id2fig-qupotatoqueue">
+  <figure align="center" xml:id="i122_id2fig-qupotatoqueue">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: A Queue Implementation of Hot Potato</caption>
     <image source="BasicDS/Figures/namequeue.png" width="50%"/>
   </figure>

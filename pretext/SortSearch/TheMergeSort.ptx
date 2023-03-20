@@ -13,11 +13,11 @@
             single sorted new list. <xref ref="fig-mergesorta"/> shows our familiar example
             list as it is being split by <c>merge_sort</c>. <xref ref="fig-mergesortb"/> shows
             the simple lists, now sorted, as they are merged back together.</p>
-  <figure align="center" xml:id="16_id1fig-mergesorta">
+  <figure align="center" xml:id="i16_id1fig-mergesorta">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 10: Splitting the List in a Merge Sort</caption>
     <image source="SortSearch/Figures/mergesortA.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="16_id2fig-mergesortb">
+  <figure align="center" xml:id="i16_id2fig-mergesortb">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 11: Lists as They Are Merged Together</caption>
     <image source="SortSearch/Figures/mergesortB.png" width="50%"/>
   </figure>

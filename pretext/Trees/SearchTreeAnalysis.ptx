@@ -33,7 +33,7 @@
             <math>n</math> simply by inserting the keys in sorted order! An example of
             this is shown in <xref ref="fig-skewedtree-analysis"/>. In this case the
             performance of the <c>put</c> method is <math>O(n)</math>.</p>
-  <figure align="center" xml:id="12_id1fig-skewedtree-analysis">
+  <figure align="center" xml:id="i12_id1fig-skewedtree-analysis">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: A skewed binary search tree would give poor performance</caption>
     <image source="Trees/Figures/skewedTree.png" width="50%"/>
   </figure>

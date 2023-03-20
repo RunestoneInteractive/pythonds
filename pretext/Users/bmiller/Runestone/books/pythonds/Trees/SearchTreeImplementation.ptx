@@ -10,7 +10,7 @@
             property holds for each parent and child. All of the keys in the left
             subtree are less than the key in the root. All of the keys in the right
             subtree are greater than the root.</p>
-  <figure align="center" xml:id="i146_id1fig-simplebst">
+  <figure align="center" xml:id="i$146_id1fig-simplebst">
     <caption>Figure 1: A Simple Binary Search Tree</caption>
     <image source="Trees/Figures/simpleBST.png" width="50%"/>
   </figure>
@@ -186,7 +186,7 @@ def _put(self, key, value, current_node):
   <p><xref ref="fig-bstput"/> illustrates the process for inserting a new node
             into a binary search tree. The lightly shaded nodes indicate the nodes
             that were visited during the insertion process.</p>
-  <figure align="center" xml:id="i146_id2fig-bstput">
+  <figure align="center" xml:id="i$146_id2fig-bstput">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Inserting a Node with Key = 19</caption>
     <image source="Trees/Figures/bstput.png" width="50%"/>
   </figure>
@@ -337,15 +337,15 @@ def _get(self, key, current_node):
       </li>
     </ol>
   </p>
-  <figure align="center" xml:id="file_22_id3">
+  <figure align="center" xml:id="id3">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: Deleting Node 16, a Node without Children</caption>
     <image source="Trees/Figures/bstdel1.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_22_id4">
+  <figure align="center" xml:id="id4">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Deleting Node 25, a Node That Has a Single Child</caption>
     <image source="Trees/Figures/bstdel2.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_22_id5">
+  <figure align="center" xml:id="id5">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: Deleting Node 5, a Node with Two Children</caption>
     <image source="Trees/Figures/bstdel3.png" width="50%"/>
   </figure>

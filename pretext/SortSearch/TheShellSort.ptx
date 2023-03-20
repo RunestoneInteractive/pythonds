@@ -17,11 +17,11 @@
             something very interesting has happened. By sorting
             the sublists, we have moved the items closer to where they actually
             belong.</p>
-  <figure align="center" xml:id="19_id1fig-incrementsa">
+  <figure align="center" xml:id="i19_id1fig-incrementsa">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: A Shell Sort with Increments of Three</caption>
     <image source="SortSearch/Figures/shellsortA.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="19_id2fig-incrementsb">
+  <figure align="center" xml:id="i19_id2fig-incrementsb">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 7: A Shell Sort after Sorting Each Sublist</caption>
     <image source="SortSearch/Figures/shellsortB.png" width="50%"/>
   </figure>
@@ -30,11 +30,11 @@
             the earlier sublist sorts, we have now reduced the total number of
             shifting operations necessary to put the list in its final order. For
             this case, we need only four more shifts to complete the process.</p>
-  <figure align="center" xml:id="id3">
+  <figure align="center" xml:id="file_102_id3">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 8: ShellSort: A Final Insertion Sort with Increment of 1</caption>
     <image source="SortSearch/Figures/shellsortC.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="id4">
+  <figure align="center" xml:id="file_102_id4">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 9: Initial Sublists for a Shell Sort</caption>
     <image source="SortSearch/Figures/shellsortD.png" width="50%"/>
   </figure>

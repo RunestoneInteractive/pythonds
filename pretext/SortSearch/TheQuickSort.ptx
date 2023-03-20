@@ -18,7 +18,7 @@
             <term>partition</term> process will happen next. It will find the split point and
             at the same time move other items to the appropriate side of the list,
             either less than or greater than the pivot value.</p>
-  <figure align="center" xml:id="15_id1fig-splitvalue">
+  <figure align="center" xml:id="i15_id1fig-splitvalue">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 12: The First Pivot Value for a Quicksort</caption>
     <image source="SortSearch/Figures/firstsplit.png" width="50%"/>
   </figure>
@@ -29,7 +29,7 @@
             with respect to the pivot value while also converging on the split
             point. <xref ref="fig-partitiona"/> shows this process as we locate the position
             of 54.</p>
-  <figure align="center" xml:id="15_id2fig-partitiona">
+  <figure align="center" xml:id="i15_id2fig-partitiona">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 13: Finding the Split Point for 54</caption>
     <image source="SortSearch/Figures/partitionA.png" width="50%"/>
   </figure>
@@ -47,7 +47,7 @@
             all the items to the right of the split point are greater than the pivot
             value. The list can now be divided at the split point and the quicksort
             can be invoked recursively on the two halves.</p>
-  <figure align="center" xml:id="id3">
+  <figure align="center" xml:id="file_98_id3">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 14: Completing the Partition Process to Find the Split Point for 54</caption>
     <image source="SortSearch/Figures/partitionB.png" width="50%"/>
   </figure>

@@ -11,11 +11,11 @@
             namely the location of the next item (see <xref ref="fig-idea2"/>), then the
             relative position of each item can be expressed by simply following the
             link from one item to the next.</p>
-  <figure align="center" xml:id="103_id1fig-idea">
+  <figure align="center" xml:id="i103_id1fig-idea">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: Items Not Constrained in Their Physical Placement</caption>
     <image source="BasicDS/Figures/idea.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="103_id2fig-idea2">
+  <figure align="center" xml:id="i103_id2fig-idea2">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Relative Positions Maintained by Explicit Links</caption>
     <image source="BasicDS/Figures/idea2.png" width="50%"/>
   </figure>
@@ -86,11 +86,11 @@ class Node:
                 we will use the standard ground symbol to denote a reference that is
                 referring to <c>None</c>. It is always a good idea to explicitly assign
                 <c>None</c> to your initial next reference values.</p>
-    <figure align="center" xml:id="id3">
+    <figure align="center" xml:id="file_106_id3">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: A Node Object Contains the Item and a Reference to the Next Node</caption>
       <image source="BasicDS/Figures/node.png" width="50%"/>
     </figure>
-    <figure align="center" xml:id="id4">
+    <figure align="center" xml:id="file_106_id4">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: A Typical Representation for a Node</caption>
       <image source="BasicDS/Figures/node2.png" width="50%"/>
     </figure>
@@ -130,11 +130,11 @@ class UnorderedList:
                 important to note that the list class itself does not contain any node
                 objects. Instead it contains a single reference to only the first node
                 in the linked structure.</p>
-    <figure align="center" xml:id="id5">
+    <figure align="center" xml:id="file_106_id5">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: An Empty List</caption>
       <image source="BasicDS/Figures/initlinkedlist.png" width="50%"/>
     </figure>
-    <figure align="center" xml:id="id6">
+    <figure align="center" xml:id="file_106_id6">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: A Linked List of Integers</caption>
       <image source="BasicDS/Figures/linkedlist.png" width="50%"/>
     </figure>
@@ -198,7 +198,7 @@ def add(self, item):
     self.head = temp
 </input>
     </program>
-    <figure align="center" xml:id="id7">
+    <figure align="center" xml:id="file_106_id7">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 7: Adding a New Node is a Two-Step Process</caption>
       <image source="BasicDS/Figures/addtohead.png" width="50%"/>
     </figure>
@@ -208,7 +208,7 @@ def add(self, item):
                 seen in <xref ref="fig-wrongorder"/>. Since the head was the only external
                 reference to the list nodes, all of the original nodes are lost and can
                 no longer be accessed.</p>
-    <figure align="center" xml:id="id8">
+    <figure align="center" xml:id="file_106_id8">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 8: Result of Reversing the Order of the Two Steps</caption>
       <image source="BasicDS/Figures/wrongorder.png" width="50%"/>
     </figure>
@@ -246,7 +246,7 @@ def size(self):
     return count
 </input>
     </program>
-    <figure align="center" xml:id="id9">
+    <figure align="center" xml:id="file_106_id9">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 9: Traversing the Linked List from the Head to the End</caption>
       <image source="BasicDS/Figures/traversal.png" width="50%"/>
     </figure>
@@ -289,7 +289,7 @@ True
                 node containing <c>17</c>. At that point, the condition in line 4 becomes <c>True</c> and
                 we return the result of the search.
                 This process can be seen in <xref ref="fig-searchpic"/>.</p>
-    <figure align="center" xml:id="id10">
+    <figure align="center" xml:id="file_106_id10">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 10: Successful Search for the Value 17</caption>
       <image source="BasicDS/Figures/search.png" width="50%"/>
     </figure>
@@ -360,11 +360,11 @@ def remove(self, item):
         previous.next = current.next
 </input>
     </program>
-    <figure align="center" xml:id="id11">
+    <figure align="center" xml:id="file_106_id11">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 11: Initial Values for the <literal>previous</literal> and <literal>current</literal> References</caption>
       <image source="BasicDS/Figures/removeinit.png" width="50%"/>
     </figure>
-    <figure align="center" xml:id="id12">
+    <figure align="center" xml:id="file_106_id12">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 12: <literal>previous</literal> and <literal>current</literal> Move Down the List</caption>
       <image source="BasicDS/Figures/prevcurr.png" width="50%"/>
     </figure>
@@ -380,11 +380,11 @@ def remove(self, item):
                 to be changed (see <xref ref="fig-removehead"/>). Another special case occurs if
                 the item is not in the list. In that case <c>current is None</c> evaluates to <c>True</c>
                 and an error is raised.</p>
-    <figure align="center" xml:id="id13">
+    <figure align="center" xml:id="file_106_id13">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 13: Removing an Item from the Middle of the List</caption>
       <image source="BasicDS/Figures/remove.png" width="50%"/>
     </figure>
-    <figure align="center" xml:id="id14">
+    <figure align="center" xml:id="file_106_id14">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 14: Removing the First Node from the List</caption>
       <image source="BasicDS/Figures/remove2.png" width="50%"/>
     </figure>

@@ -26,7 +26,7 @@
             for us is the average amount of time students will wait for their papers
             to be printed. This is equal to the average amount of time a task waits
             in the queue.</p>
-  <figure align="center" xml:id="104_id1fig-qulabsim">
+  <figure align="center" xml:id="i104_id1fig-qulabsim">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Computer Science Laboratory Printing Queue</caption>
     <image source="BasicDS/Figures/simulationsetup.png" width="50%"/>
   </figure>
@@ -54,7 +54,7 @@
     <title>Main Simulation Steps</title>
     <p>Here is the main simulation.</p>
     <p>
-      <ol label="1">
+      <ol marker="1">
         <li>
           <p>Create a queue of print tasks. Each task will be given a timestamp
                         upon its arrival. The queue is empty to start.</p>
