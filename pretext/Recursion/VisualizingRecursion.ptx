@@ -143,12 +143,11 @@ main()
             going as far out to the left as possible. Rather, once again the entire
             right side of the left tree is drawn until we finally make our way out
             to the smallest twig on the left.</p>
-  <p xml:id="recursion_fig-tree1" names="fig_tree1"><term>Figure 4.7:</term> The Beginning of a Fractal Tree</p>
-  <figure align="center">
+  <figure xml:id="recursion_fig-tree1" align="center">
     <image source="Recursion/Figures/tree1.png" width="50%"/>
   </figure>
-  <p xml:id="recursion_fig-tree2" names="fig_tree2"><term>Figure 8:</term> The First Half of the Tree</p>
-  <figure align="center">
+
+  <figure xml:id="recursion_fig-tree2" align="center">
     <image source="Recursion/Figures/tree2.png" width="50%"/>
   </figure>
   <p>This simple tree program is just a starting point for you, and you will

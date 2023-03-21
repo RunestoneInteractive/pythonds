@@ -52,8 +52,7 @@
             we have just performed is illustrated in <xref ref="recursion_fig-tostr"/>. Notice that
             the numbers we want to remember are in the remainder boxes along the
             right side of the diagram.</p>
-  <p xml:id="recursion_fig-tostr" names="fig_tostr"><term>Figure 4.3:</term> Converting an Integer to a String in Base 10</p>
-  <figure align="center">
+  <figure  xml:id="recursion_fig-tostr" align="center">
     <image source="Recursion/Figures/toStr.png" width="50%" alt="image"/>
   </figure>
   <p><xref ref="lst-rectostr"/> shows the Python code that implements the algorithm
