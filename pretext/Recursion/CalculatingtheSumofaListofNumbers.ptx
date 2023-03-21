@@ -67,7 +67,7 @@ print(list_sum([1, 3, 5, 7, 9]))
             Second, on line 5 our function calls itself! This is the
             reason that we call the <c>list_sum</c> algorithm recursive. A recursive
             function is a function that calls itself.</p>
-  <p><xref ref="fig-recsumin"/> shows the series of <term>recursive calls</term> that are
+  <p><xref ref="recursion_fig-recsumin"/> shows the series of <term>recursive calls</term> that are
             needed to sum the list <math>[1, 3, 5, 7, 9]</math>. You should think of
             this series of calls as a series of simplifications. Each time we make a
             recursive call we are solving a smaller problem, until we reach the
@@ -78,7 +78,7 @@ print(list_sum([1, 3, 5, 7, 9]))
   </figure>
   <p>When we reach the point where the problem is as simple as it can get, we
             begin to piece together the solutions of each of the small problems
-            until the initial problem is solved. <xref ref="fig-recsumout"/> shows the
+            until the initial problem is solved. <xref ref="recursion_fig-recsumout"/> shows the
             additions that are performed as <c>list_sum</c> works its way backward
             through the series of calls. When <c>list_sum</c> returns from the topmost
             problem, we have the solution to the whole problem.</p>

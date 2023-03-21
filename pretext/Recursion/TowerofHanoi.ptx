@@ -17,7 +17,7 @@
             tower of 64 disks is <math>2^{64}-1 = 18,446,744,073,709,551,615</math>. At
             a rate of one move per second, that is <math>584,942,417,355</math> years! Clearly
             there is more to this puzzle than meets the eye.</p>
-  <p><xref ref="fig-recursion_hanoi"/> shows an example of a configuration of disks in the
+  <p><xref ref="recursion_fig-recursion_hanoi"/> shows an example of a configuration of disks in the
             middle of a move from the first peg to the third. Notice that, as the
             rules specify, the disks on each peg are stacked so that smaller disks
             are always on top of the larger disks. If you have not tried to solve
@@ -67,7 +67,7 @@
             this case, we need move only a single disk to its final destination. A
             tower of one disk will be our base case. In addition, the steps outlined
             above move us toward the base case by reducing the height of the tower
-            in steps 1 and 3. <xref ref="lst-recursion_hanoi"/> shows the Python code to solve the
+            in steps 1 and 3. <xref ref="recursion_lst-recursion_hanoi"/> shows the Python code to solve the
             Tower of Hanoi puzzle.</p>
   <p xml:id="recursion_lst-recursion_hanoi" names="lst_recursion_hanoi"><term>Listing 4.9:</term> Python Code for the Tower of Hanoi</p>
   <program language="python">
@@ -80,7 +80,7 @@ def move_tower(height, from_pole, to_pole, with_pole):
     move_tower(height - 1, with_pole, to_pole, from_pole)
 </input>
   </program>
-  <p>Notice that the code in <xref ref="lst-recursion_hanoi"/> is almost identical to the
+  <p>Notice that the code in <xref ref="recursion_lst-recursion_hanoi"/> is almost identical to the
             English description. The key to the simplicity of the algorithm is that
             we make two different recursive calls, one on line 4 and a
             second on line 6. On line 4 we move all but the bottom
@@ -92,7 +92,7 @@ def move_tower(height, from_pole, to_pole, with_pole):
             The important thing to remember about handling the base
             case this way is that simply returning from <c>move_tower</c> is what
             finally allows the <c>move_disk</c> function to be called.</p>
-  <p>The function <c>move_disk</c>, shown in <xref ref="lst-movedisk"/>, is very
+  <p>The function <c>move_disk</c>, shown in <xref ref="recursion_lst-movedisk"/>, is very
             simple. All it does is print out that it is moving a disk from one pole
             to another. If you type in and run the <c>move_tower</c> program you can see
             that it gives you a very efficient solution to the puzzle.</p>

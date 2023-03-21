@@ -11,7 +11,7 @@
             Theseus used a ball of thread to help him find his way back out again
             once he had finished off the beast. In our problem we will assume that
             our turtle is dropped down somewhere into the middle of the maze and
-            must find its way out. Look at <xref ref="fig-mazescreen"/> to get an idea of
+            must find its way out. Look at <xref ref="recursion_fig-mazescreen"/> to get an idea of
             where we are going in this section.</p>
   <p xml:id="recursion_fig-mazescreen" names="fig_mazescreen"><term>Figure 4.12:</term> The Finished Maze Search Program</p>
   <figure align="center">
@@ -87,7 +87,7 @@
     </ol>
   </p>
   <p>For our program to work we will need to have a way to represent the
-            maze. <xref ref="fig-exmaze"/> is an example of a maze data file.</p>
+            maze. <xref ref="recursion_fig-exmaze"/> is an example of a maze data file.</p>
   <p xml:id="recursion_fig-exmaze" names="fig_exmaze"><term>Figure 4.13:</term> An Example Maze Data File</p>
   <pre>++++++++++++++++++++++
 +   +   ++ ++     +
@@ -126,8 +126,8 @@
   </p>
   <p>The <c>Maze</c> class also overloads the index operator <c>[]</c> so that our
             algorithm can easily access the status of any particular square.</p>
-  <p><xref ref="lst-maze-globals"/> includes the global constants used by the <c>Maze</c> class methods
-            (Listings <xref ref="lst-maze-init"/>&#x2013;<xref ref="lst-maze-aux"/>) and the <c>search_from</c> function (<xref ref="lst-maze-search"/>).</p>
+  <p><xref ref="recursion_lst-maze-globals"/> includes the global constants used by the <c>Maze</c> class methods
+            (Listings <xref ref="recursion_lst-maze-init"/>&#x2013;<xref ref="recursion_lst-maze-aux"/>) and the <c>search_from</c> function (<xref ref="recursion_lst-maze-search"/>).</p>
   <p xml:id="recursion_lst-maze-globals" names="lst_maze_globals"><term>Listing 4.11:</term> The Maze Program Global Constants</p>
   <program language="python">
     <input>
@@ -176,7 +176,7 @@ class Maze:
   <p>The internal representation of the maze is a list of
             lists. Each row of the <c>maze_list</c> instance variable is also a list.
             This secondary list contains one character per square using the
-            characters described above. For the data file in <xref ref="fig-exmaze"/> the
+            characters described above. For the data file in <xref ref="recursion_fig-exmaze"/> the
             internal representation looks like the following:</p>
   <program language="python">
     <input>
@@ -194,7 +194,7 @@ class Maze:
 </input>
   </program>
   <p>The <c>draw_maze</c> method uses this internal representation to draw the
-            initial view of the maze on the screen (<xref ref="fig-mazescreen"/>).</p>
+            initial view of the maze on the screen (<xref ref="recursion_fig-mazescreen"/>).</p>
   <p xml:id="recursion_lst-maze-draw" names="lst_maze_draw"><term>Listing 4.13:</term> The Maze Class Drawing Methods</p>
   <program language="python">
     <input>
@@ -226,7 +226,7 @@ def draw_centered_box(self, x, y, color):
     self.t.end_fill()
 </input>
   </program>
-  <p>The <c>update_position</c> method, as shown in <xref ref="lst-maze-update"/> uses the
+  <p>The <c>update_position</c> method, as shown in <xref ref="recursion_lst-maze-update"/> uses the
             same internal representation to see if the turtle has run into a wall.
             It also updates the internal representation with a <q>.</q> or <q>-</q> to
             indicate that the turtle has visited a particular square or if the
@@ -284,7 +284,7 @@ def __getitem__(self, idx):
 </input>
   </program>
   <p>Let's examine the code for the search function which we call
-            <c>search_from</c>. The code is shown in <xref ref="lst-maze-search"/>. Notice
+            <c>search_from</c>. The code is shown in <xref ref="recursion_lst-maze-search"/>. Notice
             that this function takes three parameters: a <c>Maze</c> object, the starting
             row, and the starting column. This is important because as a recursive
             function the search logically starts again with each recursive call.</p>

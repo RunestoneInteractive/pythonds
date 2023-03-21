@@ -7,7 +7,7 @@
             performance of key operations. Let us start by thinking about how this
             balance condition changes the worst-case tree. There are two
             possibilities to consider, a left-heavy tree and a right-heavy tree. If
-            we consider trees of heights 0, 1, 2, and 3, <xref ref="fig-worstavl"/>
+            we consider trees of heights 0, 1, 2, and 3, <xref ref="i18_id1fig-worstavl"/>
             illustrates the most unbalanced left-heavy tree possible under the new
             rules.</p>
   <figure align="center" xml:id="i18_id1fig-worstavl">

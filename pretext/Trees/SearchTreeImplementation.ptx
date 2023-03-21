@@ -5,7 +5,7 @@
             keys that are greater than the parent are found in the right subtree. We
             will call this the <term>BST property</term>. As we implement the <c>Map</c> interface
             as described above, the BST property will guide our implementation.
-            <xref ref="fig-simplebst"/> illustrates this property of a binary search
+            <xref ref="i$146_id1fig-simplebst"/> illustrates this property of a binary search
             tree, showing the keys without any associated values. Notice that the
             property holds for each parent and child. All of the keys in the left
             subtree are less than the key in the root. All of the keys in the right
@@ -16,7 +16,7 @@
   </figure>
   <p>Now that you know what a binary search tree is, we will look at how a
             binary search tree is constructed. The search tree in
-            <xref ref="fig-simplebst"/> represents the nodes that exist after we have
+            <xref ref="i$146_id1fig-simplebst"/> represents the nodes that exist after we have
             inserted the following keys in the order shown:
             <math>70, 31, 93, 94, 14, 23, 73</math>. Since 70 was the first key inserted into
             the tree, it is the root. Next, 31 is less than 70, so it becomes the
@@ -41,7 +41,7 @@
             the case where the tree is empty or we want to delete the key at the
             root of the tree, we must take special action. The code for the
             <c>BinarySearchTree</c> class constructor along with a few other
-            miscellaneous methods is shown in <xref ref="lst-bst1"/>.</p>
+            miscellaneous methods is shown in <xref ref="trees_lst-bst1"/>.</p>
   <p xml:id="trees_lst-bst1" names="lst_bst1">
     <term>Listing 1</term>
   </p>
@@ -58,7 +58,7 @@
   <p>The <c>TreeNode</c> class provides many helper methods that make the work
             done in the <c>BinarySearchTree</c> class methods much easier. The
             constructor for a <c>TreeNode</c>, along with these helper methods, is
-            shown in <xref ref="lst-bst2"/>. As you can see in the listing many of
+            shown in <xref ref="trees_lst-bst2"/>. As you can see in the listing many of
             these helper methods help to classify a node according to its own
             position as a child (left or right) and the kind of children the node
             has.
@@ -66,7 +66,7 @@
             of the parent as an attribute of each node. You will see why this is
             important when we discuss the implementation for the <c>del</c> operator.</p>
   <p>Another interesting aspect of the implementation of <c>TreeNode</c> in
-            <xref ref="lst-bst2"/> is that we use Python&#x2019;s optional parameters.
+            <xref ref="trees_lst-bst2"/> is that we use Python&#x2019;s optional parameters.
             Optional parameters make it easy for us to create a <c>TreeNode</c> under
             several different circumstances. Sometimes we will want to construct a
             new <c>TreeNode</c> that already has both a parent and a child (e.g. left) and
@@ -141,7 +141,7 @@
     </ul>
   </p>
 
-  <p><xref ref="lst-bst3"/> shows the Python code for inserting a new node in
+  <p><xref ref="trees_lst-bst3"/> shows the Python code for inserting a new node in
             the tree. The <c>_put</c> method is written recursively following the
             steps outlined above. Notice that when a new child is inserted into the
             tree, the <c>current_node</c> is passed to the new tree as the parent.</p>
@@ -176,14 +176,14 @@ def _put(self, key, value, current_node):
             current_node.right_child = TreeNode(key, value, parent=current_node)</pre>
   <p>With the <c>put</c> method defined, we can easily overload the <c>[]</c>
             operator for assignment by having the <c>__setitem__</c> method call the
-            <c>put</c> method (see <xref ref="lst-bst4"/>). This allows us to write Python statements like
+            <c>put</c> method (see <xref ref="trees_lst-bst4"/>). This allows us to write Python statements like
             <c>my_zip_tree['Plymouth'] = 55446</c>, just like a Python dictionary.</p>
   <p xml:id="trees_lst-bst4" names="lst_bst4">
     <term>Listing 4</term>
   </p>
   <pre>def __setitem__(self, key, value):
     self.put(key, value)</pre>
-  <p><xref ref="fig-bstput"/> illustrates the process for inserting a new node
+  <p><xref ref="i$146_id2fig-bstput"/> illustrates the process for inserting a new node
             into a binary search tree. The lightly shaded nodes indicate the nodes
             that were visited during the insertion process.</p>
   <figure align="center" xml:id="i146_id2fig-bstput">
@@ -249,7 +249,7 @@ def _put(self, key, value, current_node):
             until it gets to a non-matching leaf node or finds a matching key. When
             a matching key is found, the value stored in the payload of the node is
             returned.</p>
-  <p><xref ref="lst-bst5"/> shows the code for <c>get</c> and <c>_get</c>.
+  <p><xref ref="trees_lst-bst5"/> shows the code for <c>get</c> and <c>_get</c>.
             The search code in the <c>_get</c> method uses the same
             logic for choosing the left or right child as the <c>_put</c> method. Notice
             that the <c>_get</c> method returns a <c>TreeNode</c> to <c>get</c>, this allows
@@ -278,7 +278,7 @@ def _get(self, key, current_node):
   <p>By implementing the <c>__getitem__</c> method we can write a Python
             statement that looks just like we are accessing a dictionary, when in
             fact we are using a binary search tree, for example
-            <c>z = my_zip_tree["Fargo"]</c>.  As you can see in <xref ref="lst-bst6"/>,
+            <c>z = my_zip_tree["Fargo"]</c>.  As you can see in <xref ref="trees_lst-bst6"/>,
             all the <c>__getitem__</c> method does is call <c>get</c>.</p>
   <p xml:id="trees_lst-bst6" names="lst_bst6">
     <term>Listing 6</term>
@@ -289,7 +289,7 @@ def _get(self, key, current_node):
             <c>__contains__</c> method for the <c>BinarySearchTree</c>. The
             <c>__contains__</c> method will simply call <c>get</c> and return <c>True</c>
             if <c>get</c> returns a value, or <c>False</c> if it returns <c>None</c>. The
-            code for <c>__contains__</c> is shown in <xref ref="lst-bst7"/>.</p>
+            code for <c>__contains__</c> is shown in <xref ref="trees_lst-bst7"/>.</p>
   <p xml:id="trees_lst-bst7" names="lst_bst7">
     <term>Listing 7</term>
   </p>
@@ -298,7 +298,7 @@ def _get(self, key, current_node):
   <p>Recall that <c>__contains__</c> overloads the <c>in</c> operator and allows us
             to write statements such as <c>"Northfield" in my_zip_tree</c>.</p>
   <p>Finally, we turn our attention to the most challenging operation on the
-            binary search tree, the deletion of a key (see <xref ref="lst-bst8"/>).
+            binary search tree, the deletion of a key (see <xref ref="trees_lst-bst8"/>).
             The first task is to find the
             node to delete by searching the tree. If the tree has more than one node
             we search using the <c>_get</c> method to find the <c>TreeNode</c> that needs
@@ -351,7 +351,7 @@ def _get(self, key, current_node):
   </figure>
   <p>The first case is straightforward. If the current node has no children,
             all we need to do is delete the node and remove the reference to this
-            node in the parent. The code for this case is shown in <xref ref="lst-bst9"/>.</p>
+            node in the parent. The code for this case is shown in <xref ref="trees_lst-bst9"/>.</p>
   <p xml:id="trees_lst-bst9" names="lst_bst9">
     <term>Listing 9</term>
   </p>
@@ -362,7 +362,7 @@ def _get(self, key, current_node):
         current_node.parent.right_child = None</pre>
   <p>The second case is only slightly more complicated. If a node has only a
             single child, then we can simply promote the child to take the place of
-            its parent. The code for this case is shown in <xref ref="lst-bst10"/>. As
+            its parent. The code for this case is shown in <xref ref="trees_lst-bst10"/>. As
             you look at this code, you will see that there are six cases to consider.
             Since the cases are symmetric with respect to either having a left or
             right child, we will just discuss the case where the current node has a
@@ -433,8 +433,8 @@ def _get(self, key, current_node):
             how to remove it using the two cases for deletion that we have already
             implemented. Once the successor has been removed, we simply put it in
             the tree in place of the node to be deleted. The code
-            to handle the third case is shown in <xref ref="lst-bst11"/>.</p>
-  <p>In <xref ref="lst-bst11"/> we make use of the helper methods
+            to handle the third case is shown in <xref ref="trees_lst-bst11"/>.</p>
+  <p>In <xref ref="trees_lst-bst11"/> we make use of the helper methods
             <c>find_successor</c> and <c>splice_out</c> to find and remove the successor.
             The reason we use <c>splice_out</c> is that it
             goes directly to the node we want to splice out and makes the right
@@ -448,7 +448,7 @@ def _get(self, key, current_node):
     successor.splice_out()
     current_node.key = successor.key
     current_node.value = successor.value</pre>
-  <p>The code to find the successor is shown below (see <xref ref="lst-bst12"/>) and as
+  <p>The code to find the successor is shown below (see <xref ref="trees_lst-bst12"/>) and as
             you can see is a method of the <c>TreeNode</c> class. This code makes use
             of the same properties of binary search trees that cause an inorder
             traversal to print out the nodes in the tree from smallest to largest.
@@ -523,7 +523,7 @@ def splice_out(self):
             self.right_child.parent = self.parent</pre>
   <p>We can implement the <c>del</c> operator by
             writing a <c>__delete__</c> method for the
-            <c>BinarySearchTree</c> as shown in <xref ref="lst-bst13"/>.
+            <c>BinarySearchTree</c> as shown in <xref ref="trees_lst-bst13"/>.
             It is a wrapper method that allows us to remove a key from the map
             by writing <c>del my_zip_tree["NYC"]</c>.</p>
   <p xml:id="trees_lst-bst13" names="lst_bst13">

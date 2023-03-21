@@ -5,7 +5,7 @@
             adjacent items and exchanges those that are out of order. Each pass
             through the list places the next largest value in its proper place. In
             essence, each item bubbles up to the location where it belongs.</p>
-  <p><xref ref="fig-bubblepass"/> shows the first pass of a bubble sort. The shaded
+  <p><xref ref="i15_id1fig-bubblepass"/> shows the first pass of a bubble sort. The shaded
             items are being compared to see if they are out of order. If there are
             <math>n</math> items in the list, then there are <math>n-1</math> pairs of items that
             need to be compared on the first pass. It is important to note that once
@@ -34,7 +34,7 @@ a_list[j] = temp</pre>
             temporary storage, one of the values would be overwritten.</p>
   <p>In Python, it is possible to perform simultaneous assignment. The
             statement <c>a, b = b, a</c> will result in two assignment statements being
-            done at the same time (see <xref ref="fig-pythonswap"/>). Using simultaneous
+            done at the same time (see <xref ref="i15_id2fig-pythonswap"/>). Using simultaneous
             assignment, the exchange operation can be done in one statement.</p>
   <p>Lines 5&#x2013;7 in <xref ref="lst-bubble"/> perform the exchange of the <math>i</math> and
             <math>(i+1)</math>-th items using the three-step procedure described

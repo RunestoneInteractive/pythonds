@@ -5,8 +5,8 @@
             Python. In our implementation of the graph abstract data type we will
             create two classes:
             <c>Vertex</c>, which will represent each vertex in the graph
-            (see <xref ref="lst-vertex"/>) and
-            <c>Graph</c>, which holds the master list of vertices (see <xref ref="lst-graph"/>).</p>
+            (see <xref ref="graphs_lst-vertex"/>) and
+            <c>Graph</c>, which holds the master list of vertices (see <xref ref="graphs_lst-graph"/>).</p>
   <p>Each <c>Vertex</c> uses a dictionary to keep track of the vertices to which
             it is connected and the weight of each edge. This dictionary is called
             <c>neighbors</c>. The listing below shows the code for the <c>Vertex</c>

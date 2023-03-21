@@ -93,7 +93,7 @@ item</c> and <c>set item</c> operations on a dictionary are <math>O(1)</math>. A
             whether or not a number is in the dictionary is not only much faster,
             but the time it takes to check should remain constant even as the
             dictionary grows larger.</p>
-  <p><xref ref="lst-listvdict"/> implements this comparison. Notice that we are
+  <p><xref ref="algorithm-analysis_lst-listvdict"/> implements this comparison. Notice that we are
             performing exactly the same operation, <c>number in container</c>. The
             difference is that on line 8 <c>x</c> is a list, and on line 10 <c>x</c> is a
             dictionary.</p>
@@ -116,8 +116,8 @@ for i in range(10_000, 1_000_001, 20_000):
     print(f"{i:&lt;10,}{lst_time:&gt;10.3f}{dict_time:&gt;10.3f}")
 </input>
   </program>
-  <p><xref ref="fig-listvdict"/> summarizes the results of running
-            <xref ref="lst-listvdict"/>. You can see that the dictionary is consistently
+  <p><xref ref="i10_id2fig-listvdict"/> summarizes the results of running
+            <xref ref="algorithm-analysis_lst-listvdict"/>. You can see that the dictionary is consistently
             faster. For the smallest list size of 10,000 elements a dictionary is
             89.4 times faster than a list. For the largest list size of 990,000
             elements the dictionary is 11,603 times faster! You can also see that

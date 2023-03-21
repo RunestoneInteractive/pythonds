@@ -85,7 +85,7 @@ def update_balance(self, node):
             sacrificing performance. In order to bring an AVL Tree back into balance,
             we will perform one or more <term>rotations</term> on the tree.</p>
   <p>To understand what a rotation is, let's look at a very simple example.
-            Consider the tree in the left half of <xref ref="fig-unbalsimple"/>. This tree
+            Consider the tree in the left half of <xref ref="i18_id1fig-unbalsimple"/>. This tree
             is out of balance with a balance factor of -2. To bring this tree into
             balance we will use a left rotation around the subtree rooted at node A.</p>
   <figure align="center" xml:id="i18_id1fig-unbalsimple">
@@ -116,7 +116,7 @@ def update_balance(self, node):
             Furthermore, we need to make sure to update all of the parent pointers
             appropriately.</p>
   <p>Let's look at a slightly more complicated tree to illustrate the right
-            rotation. The left side of <xref ref="fig-rightrot1"/> shows a tree that is
+            rotation. The left side of <xref ref="i18_id2fig-rightrot1"/> shows a tree that is
             left-heavy and with a balance factor of 2 at the root.</p>
   <figure align="center" xml:id="i18_id2fig-rightrot1">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Transforming an Unbalanced Tree Using a Right Rotation</caption>
@@ -141,7 +141,7 @@ def update_balance(self, node):
     </ol>
   </p>
   <p>Now that you have seen the rotations and have the basic idea of how a
-            rotation works let us look at the code. <xref ref="lst-bothrotations"/> shows the
+            rotation works let us look at the code. <xref ref="trees_lst-bothrotations"/> shows the
             code for the left rotation (the
             <c>rotate_right</c> method is symmetrical to <c>rotate_left</c> so we will leave
             it to you to study the code for <c>rotate_right</c>). In line&#xA0;2
@@ -160,7 +160,7 @@ def update_balance(self, node):
             child to point to the new root. (lines&#xA0;10-13).
             Finally we set the parent of the old root to be the new root. This is a
             lot of complicated bookkeeping, so we encourage you to trace through
-            this function while looking at <xref ref="fig-unbalsimple"/>.</p>
+            this function while looking at <xref ref="i18_id1fig-unbalsimple"/>.</p>
   <p xml:id="trees_lst-bothrotations" names="lst_bothrotations">
     <term>Listing 2</term>
   </p>
@@ -234,7 +234,7 @@ new\_bal(B) = old\_bal(B) + 1 - min(0 , old\_bal(D)) \\</math_block>
   <p>Now we have all of the parts in terms that we readily know. If we
             remember that B is <c>rotation_root</c> and D is <c>new_root</c> then we can see this
             corresponds exactly to the statement on lines&#xA0;16-18 in
-            <xref ref="lst-bothrotations"/>, or:</p>
+            <xref ref="trees_lst-bothrotations"/>, or:</p>
   <program language="python">
     <input>
 rotation_root.balance_factor = (
@@ -287,7 +287,7 @@ rotation_root.balance_factor = (
     <image source="Trees/Figures/rotatelr.png" width="50%"/>
   </figure>
   <p>The code that implements these rules can be found in our <c>rebalance</c>
-            method, which is shown in <xref ref="lst-rebalance"/>. Rule number 1 from
+            method, which is shown in <xref ref="trees_lst-rebalance"/>. Rule number 1 from
             above is implemented by the <c>if</c> statement starting on line&#xA0;2.
             Rule number 2 is implemented by the <c>elif</c> statement starting on
             line 8.</p>

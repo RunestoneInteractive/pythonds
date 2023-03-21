@@ -111,7 +111,7 @@ def sum_of_n_2(n):
     return the_sum, end - start
 </input>
   </program>
-  <p><xref ref="lst-sum11"/> shows the original <c>sum_of_n</c> function with the timing
+  <p><xref ref="algorithm-analysis_lst-sum11"/> shows the original <c>sum_of_n</c> function with the timing
             calls embedded before and after the summation. The function returns a
             tuple consisting of the result and the amount of time (in seconds)
             required for the calculation. If we perform five invocations of the

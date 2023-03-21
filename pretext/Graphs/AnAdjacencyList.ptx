@@ -7,7 +7,7 @@
             object in the graph maintains a list of the other vertices that it is
             connected to. In our implementation of the <c>Vertex</c> class we will use
             a dictionary rather than a list, where the dictionary keys are the
-            vertices and the values are the weights. <xref ref="fig-adjlist"/>
+            vertices and the values are the weights. <xref ref="i179_id1fig-adjlist"/>
             illustrates the adjacency list representation for the graph in
             <xref ref="graphs_vocabularyand-definitions"/>.</p>
   <figure align="center" xml:id="i179_id1fig-adjlist">

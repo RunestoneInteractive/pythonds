@@ -12,13 +12,13 @@
             reason for this is that the knight's tour problem as we have implemented
             it so far is an exponential algorithm of size <math>O(k^N)</math>, where <math>N</math>
             is the number of squares on the chess board, and <math>k</math> is a small constant.
-            <xref ref="fig-8array"/> can help us visualize why this is so. The root of
+            <xref ref="i178_id1fig-8array"/> can help us visualize why this is so. The root of
             the tree represents the starting point of the search. From there the
             algorithm generates and checks each of the possible moves the knight can
             make. As we have noted before, the number of moves possible depends on
             the position of the knight on the board. In the corners there are only
             two legal moves, on the squares adjacent to the corners there are three,
-            and in the middle of the board there are eight. <xref ref="fig-nummoves"/>
+            and in the middle of the board there are eight. <xref ref="i178_id2fig-nummoves"/>
             shows the number of moves possible for each position on a board. At the
             next level of the tree there are once again between two and eight possible
             next moves from the position we are currently exploring. The number of
@@ -53,7 +53,7 @@
             you to see if you can express <math>k</math> as a function of the board
             size.</p>
   <p>Luckily there is a way to speed up the <math>8 \times 8</math> case so that it
-            runs in under one second. In the <xref ref="lst-avail"/> we show the code that
+            runs in under one second. In the <xref ref="graphs_lst-avail"/> we show the code that
             speeds up the <c>knight_tour</c>. This function, called <c>order_by_avail</c>,
             will be used in place of the call to <c>u.get_neighbors</c> at line 8 in <xref ref="graphs_implementing-knights-tour"/>.
             The critical line in the

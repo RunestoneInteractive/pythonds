@@ -12,7 +12,7 @@
             structure has its root at the top and its leaves on the bottom.</p>
   <p>Before we begin our study of tree data structures, let's look at a few
             common examples. Our first example of a tree is a classification tree
-            from biology. <xref ref="fig-biotree"/> shows an example of the biological
+            from biology. <xref ref="i13_id1fig-biotree"/> shows an example of the biological
             classification of some animals. From this simple example, we can learn
             about several properties of trees. The first property this example
             demonstrates is that trees are hierarchical. By hierarchical, we mean
@@ -50,7 +50,7 @@
             <math>\rightarrow</math> <em>Felis</em> <math>\rightarrow</math> <em>catus</em>.</p>
   <p>Another example of a tree structure that you probably use every day is a
             file system. In a file system, directories, or folders, are structured
-            as a tree. <xref ref="fig-filetree"/> illustrates a small part of a Unix file
+            as a tree. <xref ref="i13_id2fig-filetree"/> illustrates a small part of a Unix file
             system hierarchy.</p>
   <figure align="center" xml:id="i13_id2fig-filetree">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: A Small Part of the Unix File System Hierarchy</caption>

@@ -7,7 +7,7 @@
             the intersection of row <math>v</math> and column <math>w</math> indicates if
             there is an edge from vertex <math>v</math> to vertex <math>w</math>. When two
             vertices are connected by an edge, we say that they are <term>adjacent</term>.
-            <xref ref="fig-adjmat"/> illustrates the adjacency matrix for the graph in
+            <xref ref="i197_id1fig-adjmat"/> illustrates the adjacency matrix for the graph in
             <xref ref="graphs_vocabularyand-definitions"/>. The value in each cell represents the weight of the
             edge from vertex <math>v</math> to vertex <math>w</math>.</p>
   <figure align="center" xml:id="i197_id1fig-adjmat">
@@ -20,7 +20,7 @@
             we can say that this matrix is <em>sparse</em>. A
             matrix is not a very efficient way to store sparse data. In fact, in
             Python you must go out of your way to even create a matrix structure
-            like the one in <xref ref="fig-adjmat"/>.</p>
+            like the one in <xref ref="i197_id1fig-adjmat"/>.</p>
   <p>The adjacency matrix is a good implementation for a graph when the
             number of edges is large. But what do we mean by large? How many edges
             would be needed to fill the matrix? Since there is one row and one

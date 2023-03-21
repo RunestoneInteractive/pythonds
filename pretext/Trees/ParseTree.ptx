@@ -9,7 +9,7 @@
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: A Parse Tree for a Simple Sentence</caption>
     <image source="Trees/Figures/nlParse.png" width="50%" alt="image"/>
   </figure>
-  <p><xref ref="fig-nlparse"/> shows the hierarchical structure of a simple
+  <p><xref ref="i15_id1fig-nlparse"/> shows the hierarchical structure of a simple
             sentence. Representing a sentence as a tree structure allows us to work
             with the individual parts of the sentence by using subtrees.</p>
   <figure align="center" xml:id="i15_id2fig-meparse">
@@ -18,7 +18,7 @@
   </figure>
   <p>We can also represent a mathematical expression such as
             <math>((7 + 3) \cdot (5 - 2))</math> as a parse tree, as shown in
-            <xref ref="fig-meparse"/>. We have already looked at fully parenthesized
+            <xref ref="i15_id2fig-meparse"/>. We have already looked at fully parenthesized
             expressions, so what do we know about this expression? We know that
             multiplication has a higher precedence than either addition or
             subtraction. Because of the parentheses, we know that before we can do
@@ -230,7 +230,7 @@ pt.postorder()  # defined and explained in the next section
   <p>Now that we have built a parse tree, what can we do with it? As a first
             example, we will write a function to evaluate the parse tree and return
             the numerical result. To write this function, we will make use of the
-            hierarchical nature of the tree. Look back at <xref ref="fig-meparse"/>.
+            hierarchical nature of the tree. Look back at <xref ref="i15_id2fig-meparse"/>.
             Recall that we can replace the original tree with the simplified tree
             shown in <xref ref="fig-mesimple"/>. This suggests that we can write an
             algorithm that evaluates a parse tree by recursively evaluating each
@@ -252,7 +252,7 @@ pt.postorder()  # defined and explained in the next section
             10 and 3. Applying the multiplication operator gives us a final result
             of 30.</p>
   <p>The code for a recursive <c>evaluate</c> function is shown in
-            <xref ref="lst-eval"/>. First, we obtain references to the left and the
+            <xref ref="trees_lst-eval"/>. First, we obtain references to the left and the
             right children of the current node. If both the left and right children
             evaluate to <c>None</c>, then we know that the current node is really a
             leaf node. This check is on line 7. If the current node is not

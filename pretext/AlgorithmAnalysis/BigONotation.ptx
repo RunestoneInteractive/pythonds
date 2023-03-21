@@ -144,7 +144,7 @@
       </row>
     </tabular>
   </table>
-  <p><xref ref="fig-graphfigure"/> shows graphs of the common
+  <p><xref ref="i11_id2fig-graphfigure"/> shows graphs of the common
             functions from <xref ref="algorithm-analysis_algorithm-analysis_tbl-fntable"/>. Notice that when <em>n</em> is small, the
             functions are not very well defined with respect to one another. It is
             hard to tell which is dominant. However, as <em>n</em> grows, there is a
@@ -155,7 +155,7 @@
     <image source="AlgorithmAnalysis/Figures/newplot.png" width="50%"/>
   </figure>
   <p>As a final example, suppose that we have the fragment of Python code
-            shown in <xref ref="lst-dummycode"/>. Although this program does not really do
+            shown in <xref ref="algorithm-analysis_lst-dummycode"/>. Although this program does not really do
             anything, it is instructive to see how we can take actual code and
             analyze performance.</p>
   <p xml:id="algorithm-analysis_lst-dummycode" names="lst_dummycode">

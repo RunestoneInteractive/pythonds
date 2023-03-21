@@ -6,7 +6,7 @@
             simplicity of the list collection to build the internal representation
             of the queue.</p>
   <p>We need to decide which end of the list to use as the rear and which to
-            use as the front. The implementation shown in <xref ref="lst-queuecode"/>
+            use as the front. The implementation shown in <xref ref="basic-ds_lst-queuecode"/>
             assumes that the rear is at position 0 in the list. This allows us to
             use the <c>insert</c> function on lists to add new elements to the rear of
             the queue. The <c>pop</c> operation can be used to remove the front element

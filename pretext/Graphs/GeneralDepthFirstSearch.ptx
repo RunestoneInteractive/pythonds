@@ -18,7 +18,7 @@
             colored black. As we will see after looking at the algorithm, the
             discovery and closing times of the nodes provide some interesting
             properties we can use in later algorithms.</p>
-  <p>The code for our depth-first search is shown in <xref ref="lst-dfsgeneral"/>. Since
+  <p>The code for our depth-first search is shown in <xref ref="graphs_lst-dfsgeneral"/>. Since
             the two functions <c>dfs</c> and its helper <c>dfs_visit</c> use a variable to
             keep track of the time across calls to <c>dfs_visit</c>, we chose to
             implement the code as methods of a class that inherits from the
@@ -137,14 +137,14 @@ class DFSGraph(Graph):
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 25: Constructing the Depth-First Search Tree-21</caption>
     <image source="Graphs/Figures/gendfsl.png" width="50%"/>
   </figure>
-  <p>The search begins at vertex A of the graph (<xref ref="fig-gdfsa"/>). Since all of the vertices
+  <p>The search begins at vertex A of the graph (<xref ref="i192_id1fig-gdfsa"/>). Since all of the vertices
             are white at the beginning of the search the algorithm visits vertex A.
             The first step in visiting a vertex is to set the color to gray, which
             indicates that the vertex is being explored, and the discovery time is
             set to 1. Since vertex A has two adjacent vertices (B, D) each of those
             need to be visited as well. We'll make the arbitrary decision that we
             will visit the adjacent vertices in alphabetical order.</p>
-  <p>Vertex B is visited next (<xref ref="fig-gdfsb"/>), so its color is set to gray and its discovery
+  <p>Vertex B is visited next (<xref ref="i192_id2fig-gdfsb"/>), so its color is set to gray and its discovery
             time is set to 2. Vertex B is also adjacent to two other nodes (C, D) so
             we will follow the alphabetical order and visit node C next.</p>
   <p>Visiting vertex C (<xref ref="fig-gdfsc"/>) brings us to the end of one branch of the tree. After

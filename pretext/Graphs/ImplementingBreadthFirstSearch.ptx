@@ -26,7 +26,7 @@
             colored black, it has no white vertices adjacent to it. A gray node, on
             the other hand, may have some white vertices adjacent to it, indicating
             that there are still additional vertices to explore.</p>
-  <p>The breadth-first search algorithm shown in <xref ref="lst-wordbucket2"/> below uses the
+  <p>The breadth-first search algorithm shown in <xref ref="graphs_lst-wordbucket2"/> below uses the
             adjacency list graph representation we developed earlier. In addition it uses a <c>Queue</c>,
             a crucial point as we will see, to decide which vertex to explore next.</p>
   <p xml:id="graphs_lst-wordbucket2" names="lst_wordbucket2">
@@ -90,7 +90,7 @@ def bfs(start):
             from FOOL we take all nodes that are adjacent to FOOL and add them to
             the tree. The adjacent nodes include POOL, FOIL, FOUL, and COOL. Each of
             these nodes are added to the queue of new nodes to expand.
-            <xref ref="fig-bfs1"/> shows the state of the in-progress tree along with the
+            <xref ref="i182_id1fig-bfs1"/> shows the state of the in-progress tree along with the
             queue after this step.</p>
   <figure align="center" xml:id="i182_id1fig-bfs1">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: The First Step in the Breadth-First Search</caption>
@@ -102,7 +102,7 @@ def bfs(start):
             COOL has already been changed to gray. This indicates that there is a
             shorter path to COOL and that COOL is already on the queue for further
             expansion. The only new node added to the queue while examining POOL is
-            POLL. The new state of the tree and queue is shown in <xref ref="fig-bfs2"/>.</p>
+            POLL. The new state of the tree and queue is shown in <xref ref="i182_id2fig-bfs2"/>.</p>
   <figure align="center" xml:id="i182_id2fig-bfs2">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: The Second Step in the Breadth-First Search</caption>
     <image source="Graphs/Figures/bfs2.png" width="50%"/>
@@ -129,7 +129,7 @@ def bfs(start):
             problems along the way. We can start at any vertex in the breadth-first
             search tree and follow the predecessor arrows back to the root to find
             the shortest word ladder from any word back to FOOL.
-            The function below (<xref ref="lst-wordbucket3"/>) shows
+            The function below (<xref ref="graphs_lst-wordbucket3"/>) shows
             how to follow the predecessor links to print out the word ladder.</p>
   <p xml:id="graphs_lst-wordbucket3" names="lst_wordbucket3">
     <term>Listing 3</term>

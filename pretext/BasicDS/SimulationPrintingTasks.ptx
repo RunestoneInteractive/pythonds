@@ -19,7 +19,7 @@
             could make students wait too long. What page rate should be used?</p>
   <p>We could decide by building a simulation that models the laboratory. We
             will need to construct representations for students, printing tasks, and
-            the printer (<xref ref="fig-qulabsim"/>). As students submit printing tasks,
+            the printer (<xref ref="i104_id1fig-qulabsim"/>). As students submit printing tasks,
             we will add them to a waiting list, a queue of print tasks attached to
             the printer. When the printer completes a task, it will look at the
             queue to see if there are any remaining tasks to process. Of interest
@@ -113,7 +113,7 @@
     <p>To design this simulation we will create classes for the three
                 real-world objects described above: <c>Printer</c>, <c>Task</c>, and
                 <c>PrintQueue</c>.</p>
-    <p>The <c>Printer</c> class (<xref ref="lst-printer"/>) will need to track whether
+    <p>The <c>Printer</c> class (<xref ref="basic-ds_lst-printer"/>) will need to track whether
                 it has a current task. If it does, then it is busy (lines 13&#x2013;17) and the
                 amount of time needed can be computed from the number of pages in the
                 task. The constructor will also allow the pages-per-minute setting to be
@@ -144,7 +144,7 @@ class Printer:
         self.time_remaining = new_task.get_pages() * 60 / self.page_rate
 </input>
     </program>
-    <p>The <c>Task</c> class (<xref ref="lst-task"/>) will represent a single printing
+    <p>The <c>Task</c> class (<xref ref="basic-ds_lst-task"/>) will represent a single printing
                 task. When the task is created, a random number generator will provide a
                 length from 1 to 20 pages. We have chosen to use the <c>randrange</c>
                 function from the <c>random</c> module.</p>
@@ -186,7 +186,7 @@ class Task:
         return current_time - self.timestamp
 </input>
     </program>
-    <p>The main simulation (<xref ref="lst-qumainsim"/>) implements the algorithm
+    <p>The main simulation (<xref ref="basic-ds_lst-qumainsim"/>) implements the algorithm
                 described above. The <c>print_queue</c> object is an instance of our
                 existing queue ADT. A boolean helper function, <c>new_print_task</c>, decides
                 whether a new printing task has been created. We have again chosen to

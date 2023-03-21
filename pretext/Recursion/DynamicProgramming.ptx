@@ -84,7 +84,7 @@ print(make_change_1([1, 5, 10, 25], 63))
   <p>The trouble with the algorithm in <xref ref="lst-change1"/> is that it is
             extremely inefficient. In fact, it takes 67,716,925 recursive calls to
             find the optimal solution to the 4 coins, 63 cents problem! To
-            understand the fatal flaw in our approach look at <xref ref="fig-c1ct"/>,
+            understand the fatal flaw in our approach look at <xref ref="i19_id1fig-c1ct"/>,
             which illustrates a small fraction of the 377 function calls needed to
             find the optimal set of coins to make change for 26 cents.</p>
   <p>Each node in the graph corresponds to a call to <c>make_change_1</c>. The label on
@@ -149,7 +149,7 @@ print(make_change_2([1, 5, 10, 25], 63, [0] * 64))
             of the algorithm we already know the minimum number of coins needed to
             make change for any smaller amount.</p>
   <p>Let's look at how we would fill in a table of minimum coins to use in
-            making change for 11 cents. <xref ref="fig-dpcoins"/> illustrates the
+            making change for 11 cents. <xref ref="recursion_fig-dpcoins"/> illustrates the
             process. We start with one cent. The only solution possible is one coin
             (a penny). The next row shows the minimum for one cent and two cents.
             Again, the only solution is two pennies. The fifth row is where things
@@ -159,7 +159,7 @@ print(make_change_2([1, 5, 10, 25], 63, [0] * 64))
             plus one more penny to make five, equals five coins. Or we can look at
             zero cents plus one more nickel to make five cents equals one coin. Since
             the minimum of one and five is one we store 1 in the table. Fast forward
-            again to the end of the table and consider 11 cents. <xref ref="fig-eleven"/>
+            again to the end of the table and consider 11 cents. <xref ref="recursion_fig-eleven"/>
             shows the three options that we have to consider:</p>
   <p>
     <ol marker="1">
@@ -187,7 +187,7 @@ print(make_change_2([1, 5, 10, 25], 63, [0] * 64))
   <figure align="center">
     <image source="Recursion/Figures/elevenCents.png" width="50%" alt="image"/>
   </figure>
-  <p><xref ref="lst-dpchange"/> is a dynamic programming algorithm to solve our
+  <p><xref ref="recursion_lst-dpchange"/> is a dynamic programming algorithm to solve our
             change-making problem. <c>make_change_3</c> takes three parameters: a list
             of valid coin values, the amount of change we want to make, and a list
             of the minimum number of coins needed to make each value. When the

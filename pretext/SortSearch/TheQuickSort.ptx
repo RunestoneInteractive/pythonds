@@ -12,7 +12,7 @@
             pivot value belongs in the final sorted list, commonly called the
             <term>split point</term>, will be used to divide the list for subsequent calls to
             the quicksort.</p>
-  <p><xref ref="fig-splitvalue"/> shows that 54 will serve as our first pivot value.
+  <p><xref ref="i15_id1fig-splitvalue"/> shows that 54 will serve as our first pivot value.
             Since we have looked at this example a few times already, we know that
             54 will eventually end up in the position currently holding 31. The
             <term>partition</term> process will happen next. It will find the split point and
@@ -24,10 +24,10 @@
   </figure>
   <p>Partitioning begins by locating two position markers&#x2014;let's call them
             <c>left_mark</c> and <c>right_mark</c>&#x2014;at the beginning and end of the remaining
-            items in the list (positions 1 and 8 in <xref ref="fig-partitiona"/>). The goal
+            items in the list (positions 1 and 8 in <xref ref="i15_id2fig-partitiona"/>). The goal
             of the partition process is to move items that are on the wrong side
             with respect to the pivot value while also converging on the split
-            point. <xref ref="fig-partitiona"/> shows this process as we locate the position
+            point. <xref ref="i15_id2fig-partitiona"/> shows this process as we locate the position
             of 54.</p>
   <figure align="center" xml:id="i15_id2fig-partitiona">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 13: Finding the Split Point for 54</caption>

@@ -17,7 +17,7 @@
             is set to a very large number. Theoretically you would set <c>distance</c> to
             infinity, but in practice we just set it to a number that is larger than
             any real distance we would have in the problem we are trying to solve.</p>
-  <p>The code for Dijkstra's algorithm is shown in <xref ref="lst-shortpath"/>. When the algorithm finishes, the distances are set
+  <p>The code for Dijkstra's algorithm is shown in <xref ref="graphs_lst-shortpath"/>. When the algorithm finishes, the distances are set
             correctly as are the predecessor links for each vertex in the graph.</p>
   <p xml:id="graphs_lst-shortpath" names="lst_shortpath">
     <term>Listing 1</term>
@@ -62,7 +62,7 @@ def dijkstra(graph, start):
             costs. So we update the costs to each of these three nodes. We also set
             the predecessor for each node to <math>u</math> and we add each node to the
             priority queue. We use the distance as the key for the priority queue.
-            The state of the algorithm is shown in <xref ref="fig-dija"/>.</p>
+            The state of the algorithm is shown in <xref ref="i189_id1fig-dija"/>.</p>
   <p>In the next iteration of the <c>while</c> loop we examine the vertices that
             are adjacent to <math>x</math>. The vertex <math>x</math> is next because it
             has the lowest overall cost and therefore bubbled its way to the
@@ -76,7 +76,7 @@ def dijkstra(graph, start):
             smaller if we go through <math>x</math> than from <math>u</math> directly to
             <math>w</math>. Since that is the case we update <math>w</math> with a new
             distance and change the predecessor for <math>w</math> from <math>u</math> to
-            <math>x</math>. See <xref ref="fig-dijb"/> for the state of all the vertices.</p>
+            <math>x</math>. See <xref ref="i189_id2fig-dijb"/> for the state of all the vertices.</p>
   <p>The next step is to look at the vertices neighboring <math>v</math> (see <xref ref="fig-dijc"/>). This
             step results in no changes to the graph, so we move on to node
             <math>y</math>. At node <math>y</math> (see <xref ref="fig-dijd"/>) we discover that it is cheaper to get

@@ -4,7 +4,7 @@
   <p>One of the typical applications for showing a queue in action is to
             simulate a real situation that requires data to be managed in a FIFO
             manner. To begin, let's consider the children's game hot potato. In this
-            game (see <xref ref="fig-quhotpotato"/>) children line up in a circle and
+            game (see <xref ref="i122_id1fig-quhotpotato"/>) children line up in a circle and
             pass an item from neighbor to neighbor as fast as they can. At a certain
             point in the game, the action is stopped and the child who has the item
             (the potato) is removed from the circle. Play continues until only one
@@ -31,7 +31,7 @@
             counting. It will return the name of the last person remaining after
             repetitive counting by <c>num</c>. What happens at that point is up to you.</p>
   <p>To simulate the circle, we will use a queue (see
-            <xref ref="fig-qupotatoqueue"/>). Assume that the child holding the potato will
+            <xref ref="i122_id2fig-qupotatoqueue"/>). Assume that the child holding the potato will
             be at the front of the queue. Upon passing the potato, the simulation
             will simply dequeue and then immediately enqueue that child, putting them
             at the end of the line. They will then wait until all the others have

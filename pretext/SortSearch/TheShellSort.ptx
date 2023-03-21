@@ -9,11 +9,11 @@
             items, the Shell sort uses an increment <math>i</math>, sometimes called the
             <term>gap</term>, to create a sublist by choosing all items that are <math>i</math> items
             apart.</p>
-  <p>This can be seen in <xref ref="fig-incrementsa"/>. This list has nine items. If
+  <p>This can be seen in <xref ref="i19_id1fig-incrementsa"/>. This list has nine items. If
             we use an increment of three, there are three sublists, each of which
             can be sorted by an insertion sort. After completing these sorts, we get
-            the list shown in <xref ref="fig-incrementsb"/>. Although
-            the list shown in <xref ref="fig-incrementsb"/> is not completely sorted,
+            the list shown in <xref ref="i19_id2fig-incrementsb"/>. Although
+            the list shown in <xref ref="i19_id2fig-incrementsb"/> is not completely sorted,
             something very interesting has happened. By sorting
             the sublists, we have moved the items closer to where they actually
             belong.</p>

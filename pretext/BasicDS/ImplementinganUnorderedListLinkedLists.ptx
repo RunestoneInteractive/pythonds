@@ -6,9 +6,9 @@
             we can maintain the relative positioning of the items. However, there is
             no requirement that we maintain that positioning in contiguous memory.
             For example, consider the collection of items shown in
-            <xref ref="fig-idea"/>. It appears that these values have been placed
+            <xref ref="i103_id1fig-idea"/>. It appears that these values have been placed
             randomly. If we can maintain some explicit information in each item,
-            namely the location of the next item (see <xref ref="fig-idea2"/>), then the
+            namely the location of the next item (see <xref ref="i103_id2fig-idea2"/>), then the
             relative position of each item can be expressed by simply following the
             link from one item to the next.</p>
   <figure align="center" xml:id="i103_id1fig-idea">
@@ -30,7 +30,7 @@
                 <term>node</term>. Each node object must hold at least two pieces of information.
                 First, the node must contain the list item itself. We will call this the
                 <term>data field</term> of the node. In addition, each node must hold a reference
-                to the next node. <xref ref="lst-nodeclass"/> shows the Python
+                to the next node. <xref ref="basic-ds_lst-nodeclass"/> shows the Python
                 implementation. To construct a node, you need to supply the initial data
                 value for the node. Evaluating the assignment statement below will yield
                 a <c>Node</c> object containing the value <c>93</c> (see <xref ref="fig-node"/>). You
@@ -102,7 +102,7 @@ class Node:
                 long as we know where to find the first node (containing the first
                 item), each item after that can be found by successively following the
                 next links. With this in mind, the <c>UnorderedList</c> class must maintain
-                a reference to the first node. <xref ref="lst-listclass"/> shows the
+                a reference to the first node. <xref ref="basic-ds_lst-listclass"/> shows the
                 constructor. Note that each list object will maintain a single reference
                 to the head of the list.</p>
     <p xml:id="basic-ds_lst-listclass" names="lst_listclass">
@@ -138,7 +138,7 @@ class UnorderedList:
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: A Linked List of Integers</caption>
       <image source="BasicDS/Figures/linkedlist.png" width="50%"/>
     </figure>
-    <p>The <c>is_empty</c> method, shown in <xref ref="lst-isempty"/>, simply checks to
+    <p>The <c>is_empty</c> method, shown in <xref ref="basic-ds_lst-isempty"/>, simply checks to
                 see if the head of the list is a reference to <c>None</c>. The result of
                 the boolean expression <c>self.head == None</c> will only be true if there
                 are no nodes in the linked list. Since a new list is empty, the
@@ -178,7 +178,7 @@ class UnorderedList:
                 eventually be the last node on the linked list as every other item is
                 added ahead of it. Also, since <c>54</c> is the last item added, it will become
                 the data value in the first node of the linked list.</p>
-    <p>The <c>add</c> method is shown in <xref ref="lst-add"/>. Each item of the list
+    <p>The <c>add</c> method is shown in <xref ref="basic-ds_lst-add"/>. Each item of the list
                 must reside in a node object. Line 2 creates a new node and places the
                 item as its data. Now we must complete the process by linking the new
                 node into the existing structure. This requires two steps as shown in
@@ -220,7 +220,7 @@ def add(self, item):
                 the next node by <q>traversing</q> the next reference.</p>
     <p>To implement the <c>size</c> method, we need to traverse the linked list
                 and keep a count of the number of nodes that occurred.
-                <xref ref="lst-length"/> shows the Python code for counting the number of
+                <xref ref="basic-ds_lst-length"/> shows the Python code for counting the number of
                 nodes in the list. The external reference is called <c>current</c> and is
                 initialized to the head of the list in line 2. At the start of the
                 process we have not seen any nodes so the count is set to <math>0</math>.
@@ -257,7 +257,7 @@ def size(self):
                 all the way to the end of the list. In fact, if we do get to the end of
                 the list, that means that the item we are looking for must not be
                 present. Also, if we do find the item, there is no need to continue.</p>
-    <p><xref ref="lst-search"/> shows the implementation for the <c>search</c> method.
+    <p><xref ref="basic-ds_lst-search"/> shows the implementation for the <c>search</c> method.
                 As in the <c>size</c> method, the traversal is initialized to start at
                 the head of the list (line 2). We continue to iterate over the list as long as there are
                 more nodes to visit. The question in line 4 asks whether
@@ -320,7 +320,7 @@ True
                 <c>current</c>. That way, when <c>current</c> stops at the node to be removed,
                 <c>previous</c> will refer to the proper place in the linked list
                 for the modification.</p>
-    <p><xref ref="lst-remove"/> shows the complete <c>remove</c> method. Lines 2&#x2013;3
+    <p><xref ref="basic-ds_lst-remove"/> shows the complete <c>remove</c> method. Lines 2&#x2013;3
                 assign initial values to the two references. Note that <c>current</c>
                 starts out at the list head as in the other traversal examples.
                 <c>previous</c>, however, is assumed to always travel one node behind

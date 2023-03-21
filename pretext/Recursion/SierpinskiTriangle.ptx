@@ -2,7 +2,7 @@
 <section xml:id="recursion_sierpinski-triangle">
   <title>Sierpinski Triangle</title>
   <p>Another fractal that exhibits the property of self-similarity is the
-            Sierpinski triangle. An example is shown in <xref ref="fig-sierpinski"/>. The
+            Sierpinski triangle. An example is shown in <xref ref="recursion_fig-sierpinski"/>. The
             Sierpinski triangle illustrates a three-way recursive algorithm. The
             procedure for drawing a Sierpinski triangle by hand is simple. Start
             with a single large triangle. Divide this large triangle into four new
@@ -23,7 +23,7 @@
             call this number the <em>degree</em> of the fractal. Each time we make a
             recursive call, we subtract 1 from the degree until we reach 0. When we
             reach a degree of 0, we stop making recursive calls. The code that
-            generated the Sierpinski Triangle in <xref ref="fig-sierpinski"/> is shown in
+            generated the Sierpinski Triangle in <xref ref="recursion_fig-sierpinski"/> is shown in
             <xref ref="lst-st"/>.</p>
   <program xml:id="lst_st" interactive="activecode" language="python">
     <input>
@@ -96,10 +96,10 @@ main()
             Finally, it fills in the lower-right corner, working its way toward the
             smallest triangle in the lower right.</p>
   <p>Sometimes it is helpful to think of a recursive algorithm in terms of a
-            diagram of function calls. <xref ref="fig-stcalltree"/> shows that the recursive
+            diagram of function calls. <xref ref="recursion_fig-stcalltree"/> shows that the recursive
             calls are always made going to the left. The active functions are
             outlined in black, and the inactive function calls are in gray. The
-            farther you go toward the bottom of <xref ref="fig-stcalltree"/>, the smaller the
+            farther you go toward the bottom of <xref ref="recursion_fig-stcalltree"/>, the smaller the
             triangles. The function finishes drawing one level at a time; once it is
             finished with the bottom left it moves to the bottom middle, and so on.</p>
   <p xml:id="recursion_fig-stcalltree" names="fig_stcalltree"><term>Figure 4.10:</term> Building a Sierpinski Triangle</p>

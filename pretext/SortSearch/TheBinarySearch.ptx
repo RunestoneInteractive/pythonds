@@ -16,7 +16,7 @@
   <p>We can then repeat the process with the left half. Start at the middle
             item and compare it against what we are looking for. Again, we either
             find it or split the list in half, therefore eliminating another large
-            part of our possible search space. <xref ref="fig-binsearch"/> shows how this
+            part of our possible search space. <xref ref="i13_id1fig-binsearch"/> shows how this
             algorithm can quickly find the value 54. The complete function is shown
             in <xref ref="lst-binarysearchpy"/>.</p>
   <figure align="center" xml:id="i13_id1fig-binsearch">

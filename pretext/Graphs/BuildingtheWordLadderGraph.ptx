@@ -5,7 +5,7 @@
             words into a graph. What we would like is to have an edge from one word
             to another if the two words are only different by a single letter. If we
             can create such a graph, then any path from one word to another is a
-            solution to the word ladder puzzle. <xref ref="fig-wordladder"/> shows a
+            solution to the word ladder puzzle. <xref ref="i190_id1fig-wordladder"/> shows a
             small graph of some words that solve the FOOL to SAGE word ladder
             problem. Notice that the graph is an undirected graph and that the edges
             are unweighted.</p>
@@ -25,7 +25,7 @@
             list of 5,110 words. Roughly speaking, comparing one word to every other
             word on the list is an <math>O(n^2)</math> algorithm. For 5,110 words,
             <math>n^2</math> is more than 26&#xA0;million comparisons.</p>
-  <p>We can do much better by using the approach shown in <xref ref="fig-wordbucket"/>.
+  <p>We can do much better by using the approach shown in <xref ref="i190_id2fig-wordbucket"/>.
             Suppose that we have a number of buckets, each labeled with a four-letter word,
             except that one of the letters on the label has been replaced by an underscore.
             As we process a list of words, we compare each word with each bucket
@@ -43,7 +43,7 @@
             words. Once we have the dictionary built, we can create the graph. We
             start our graph by creating a vertex for each word in the graph. Then we
             create edges between all the vertices we find for words found under the
-            same key in the dictionary. <xref ref="lst-wordbucket1"/> shows the Python
+            same key in the dictionary. <xref ref="graphs_lst-wordbucket1"/> shows the Python
             code required to build the graph.</p>
   <p xml:id="graphs_lst-wordbucket1" names="lst_wordbucket1">
     <term>Listing 1</term>

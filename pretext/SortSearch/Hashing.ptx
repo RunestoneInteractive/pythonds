@@ -20,7 +20,7 @@
             named 1, a slot named 2, and so on. Initially, the hash table contains
             no items so every slot is empty. We can implement a hash table by using
             a list with each element initialized to the special Python value
-            <c>None</c>. <xref ref="fig-hashtable1"/> shows a hash table of size <math>m = 11</math>.
+            <c>None</c>. <xref ref="i17_id1fig-hashtable1"/> shows a hash table of size <math>m = 11</math>.
             In other words, there are <math>m</math> slots in the table, named 0 through 10.</p>
   <figure align="center" xml:id="i17_id1fig-hashtable1">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Hash Table with 11 Empty Slots</caption>
@@ -261,7 +261,7 @@
 116</pre>
     <p>We can then take these three ordinal values, add them up, and use the
                 remainder method to get a hash value (see <xref ref="fig-stringhash"/>).
-                <xref ref="lst-hashfunction1"/> shows a function called <c>hash_str</c> that takes a
+                <xref ref="sort-search_lst-hashfunction1"/> shows a function called <c>hash_str</c> that takes a
                 string and a table size and returns the hash value in the range from 0
                 to <c>table_size</c>-1.</p>
     <figure align="center" xml:id="file_90_id5">
@@ -524,7 +524,7 @@
                 binary search, but it would be even better to use a hash table as
                 described above since looking up an item in a hash table can approach
                 <math>O(1)</math> performance.</p>
-    <p>In <xref ref="lst-hashtablecodeconstructor"/> we use two lists to create a
+    <p>In <xref ref="sort-search_lst-hashtablecodeconstructor"/> we use two lists to create a
                 <c>HashTable</c> class that implements the map abstract data type. One
                 list, called <c>slots</c>, will hold the key items and a parallel list,
                 called <c>data</c>, will hold the data values. When we look up a key, the
@@ -542,10 +542,10 @@
         self.size = 11
         self.slots = [None] * self.size
         self.data = [None] * self.size</pre>
-    <p>As seen in <xref ref="lst-hashtablecodestore"/>, <c>hash_function</c> implements
+    <p>As seen in <xref ref="sort-search_lst-hashtablecodestore"/>, <c>hash_function</c> implements
                 the simple remainder method. The collision
                 resolution technique is linear probing with a <q>plus 1</q> rehash value.
-                The <c>put</c> function (see <xref ref="lst-hashtablecodestore"/>) assumes that
+                The <c>put</c> function (see <xref ref="sort-search_lst-hashtablecodestore"/>) assumes that
                 there will eventually be an empty slot unless the key is already present
                 in the <c>self.slots</c>. It computes the original hash value and if that
                 slot is not empty, iterates the <c>rehash</c> function until an empty slot
@@ -582,7 +582,7 @@ def hash_function(self, key, size):
 
 def rehash(self, old_hash, size):
     return (old_hash + 1) % size</pre>
-    <p>The <c>get</c> function (see <xref ref="lst-hashtablecodesearch"/>)
+    <p>The <c>get</c> function (see <xref ref="sort-search_lst-hashtablecodesearch"/>)
                 begins by computing the initial hash value. If the value is not in the
                 initial slot, <c>rehash</c> is used to locate the next possible position.
                 Notice that line 14 guarantees that the search will terminate by

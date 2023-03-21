@@ -8,7 +8,7 @@
             items. New items can be added at either the front or the rear. Likewise,
             existing items can be removed from either end. In a sense, this hybrid
             linear structure provides all the capabilities of stacks and queues in a
-            single data structure. <xref ref="fig-basicdeque"/> shows a deque of Python
+            single data structure. <xref ref="i116_id1fig-basicdeque"/> shows a deque of Python
             data objects.</p>
   <p>It is important to note that even though the deque can assume many of
             the characteristics of stacks and queues, it does not require the LIFO

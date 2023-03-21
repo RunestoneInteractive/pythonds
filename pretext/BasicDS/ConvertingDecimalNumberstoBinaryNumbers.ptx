@@ -31,7 +31,7 @@
             odd value will have a remainder of 1 and will have the digit 1 in the
             ones place. We think about building our binary number as a sequence of
             digits; the first remainder we compute will actually be the last digit
-            in the sequence. As shown in <xref ref="fig-decbin"/>, we again see the
+            in the sequence. As shown in <xref ref="i102_id1fig-decbin"/>, we again see the
             reversal property that signals that a stack is likely to be the
             appropriate data structure for solving the problem.</p>
   <figure align="center" xml:id="i102_id1fig-decbin">

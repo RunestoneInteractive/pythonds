@@ -5,7 +5,7 @@
             slightly different way. It always maintains a sorted sublist in the
             lower positions of the list. Each new item is then inserted back into
             the previous sublist such that the sorted sublist is one item larger.
-            <xref ref="fig-insertionsort"/> shows the insertion sorting process. The shaded
+            <xref ref="i16_id1fig-insertionsort"/> shows the insertion sorting process. The shaded
             items represent the ordered sublists as the algorithm makes each pass.</p>
   <figure align="center" xml:id="i16_id1fig-insertionsort">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Insertion Sort: Complete</caption>
@@ -17,7 +17,7 @@
             As we look back into the already sorted sublist, we shift those items
             that are greater to the right. When we reach a smaller item or the end
             of the sublist, the current item can be inserted.</p>
-  <p><xref ref="fig-insertionpass"/> shows the fifth pass in detail. At this point in
+  <p><xref ref="i16_id2fig-insertionpass"/> shows the fifth pass in detail. At this point in
             the algorithm, here is a sorted sublist of five items: 17, 26, 54,
             77, and 93. We want to insert 31 back into the already sorted
             items. The first comparison against 93 causes 93 to be shifted to the

@@ -5,7 +5,7 @@
             relative positions of the items are based on some underlying
             characteristic. The ordered list of integers given above (17, 26, 31,
             54, 77, and 93) can be represented by a linked structure as shown in
-            <xref ref="fig-orderlinked"/>. Again, the node and link structure is ideal
+            <xref ref="i105_id1fig-orderlinked"/>. Again, the node and link structure is ideal
             for representing the relative positioning of the items.</p>
   <figure align="center" xml:id="i105_id1fig-orderlinked">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 15: An Ordered Linked List</caption>
@@ -14,7 +14,7 @@
   <p>To implement the <c>OrderedList</c> class, we will use the same technique
             as seen previously with unordered lists. Once again, an empty list will
             be denoted by a <c>head</c> reference to <c>None</c> (see
-            <xref ref="lst-orderlist"/>).</p>
+            <xref ref="basic-ds_lst-orderlist"/>).</p>
   <p xml:id="basic-ds_lst-orderlist" names="lst_orderlist">
     <term>Listing 8</term>
   </p>
@@ -35,7 +35,7 @@
             is in the list. However, in the case where the
             item is not in the list, we can take advantage of the ordering to stop
             the search as soon as possible.</p>
-  <p>For example, <xref ref="fig-stopearly"/> shows the ordered linked list as a
+  <p>For example, <xref ref="i105_id2fig-stopearly"/> shows the ordered linked list as a
             search is looking for the value 45. As we traverse, starting at the head
             of the list, we first compare against 17. Since 17 is not the item we
             are looking for, we move to the next node, in this case 26. Again, this
@@ -50,7 +50,7 @@
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 16: Searching an Ordered Linked List</caption>
     <image source="BasicDS/Figures/orderedsearch.png" width="50%"/>
   </figure>
-  <p><xref ref="lst-ordersearch"/> shows the complete <c>search</c> method. It is
+  <p><xref ref="basic-ds_lst-ordersearch"/> shows the complete <c>search</c> method. It is
             easy to incorporate the new condition discussed above by adding another check (line 6).
             We can continue to look forward in the list (line 3). If any node is ever discovered that
             contains data greater than the item we are looking for, we will immediately return <c>False</c>. The remaining lines are identical to
@@ -89,7 +89,7 @@
   </figure>
   <p>As we saw with unordered lists, it is necessary to have an additional
             reference, again called <c>previous</c>, since <c>current</c> will not provide
-            access to the node that must be modified. <xref ref="lst-orderadd"/> shows
+            access to the node that must be modified. <xref ref="basic-ds_lst-orderadd"/> shows
             the complete <c>add</c> method. Lines 3&#x2013;4 set up the two external
             references and lines 8&#x2013;9 again allow <c>previous</c> to follow one node
             behind <c>current</c> every time through the iteration. The condition (line

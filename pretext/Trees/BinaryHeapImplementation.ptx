@@ -10,7 +10,7 @@
                 root. In our heap implementation we keep the tree balanced by creating a
                 <term>complete binary tree</term>. A complete binary tree is a tree in which each
                 level has all of its nodes. The exception to this is the bottom level of
-                the tree, which we fill in from left to right. <xref ref="fig-comptree"/>
+                the tree, which we fill in from left to right. <xref ref="i19_id1fig-comptree"/>
                 shows an example of a complete binary tree.</p>
     <figure align="center" xml:id="i19_id1fig-comptree">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: A Complete Binary Tree</caption>
@@ -24,7 +24,7 @@
                 position <math>2p + 2</math> in the list. To find the parent of any node in
                 the tree, we can simply use Python's integer division. Given that a node
                 is at position <math>n</math> in the list, the parent is at position
-                <math>(n - 1) // 2</math>. <xref ref="fig-heaporder"/> shows a complete binary tree
+                <math>(n - 1) // 2</math>. <xref ref="i19_id2fig-heaporder"/> shows a complete binary tree
                 and also gives the list representation of the tree.  Note the <math>2p + 1</math> and <math>2p + 2</math> relationship between
                 parent and children. The list
                 representation of the tree, along with the full structure property,
@@ -38,7 +38,7 @@
                 maintaining the heap order property. The <term>heap order property</term> is as
                 follows: in a heap, for every node <math>x</math> with parent <math>p</math>,
                 the key in <math>p</math> is smaller than or equal to the key in
-                <math>x</math>. <xref ref="fig-heaporder"/> also illustrates a complete binary
+                <math>x</math>. <xref ref="i19_id2fig-heaporder"/> also illustrates a complete binary
                 tree that has the heap order property.</p>
     <figure align="center" xml:id="i19_id2fig-heaporder">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: A Complete Binary Tree, along with Its List Representation</caption>
@@ -50,7 +50,7 @@
     <p>We will begin our implementation of a binary heap with the constructor.
                 Since the entire binary heap can be represented by a single list, all
                 the constructor will do is initialize the list.
-                <xref ref="lst-heap1a"/> shows the Python code for the constructor.</p>
+                <xref ref="trees_lst-heap1a"/> shows the Python code for the constructor.</p>
     <p xml:id="trees_lst-heap1a" names="lst_heap1a">
       <term>Listing 1</term>
     </p>
@@ -77,13 +77,13 @@
                 preserving the heap property for any siblings. Of course, if the newly
                 added item is very small, we may still need to swap it up another level.
                 In fact, we may need to keep swapping until we get to the top of the
-                tree. <xref ref="lst-heap2"/> shows the <c>_perc_up</c> method, which
+                tree. <xref ref="trees_lst-heap2"/> shows the <c>_perc_up</c> method, which
                 percolates a new item as far up in the tree as it needs to go to
                 maintain the heap property. We used a leading underscore (<c>_</c>) in
                 the name of the method as it is an internal operation.
                 The parent of the current node
                 can be computed by subtracting 1 from the index of the current node and dividing the result by 2.</p>
-    <p>We are now ready to write the <c>insert</c> method (see <xref ref="lst-heap3"/>). Most of the work in the
+    <p>We are now ready to write the <c>insert</c> method (see <xref ref="trees_lst-heap3"/>). Most of the work in the
                 <c>insert</c> method is really done by <c>_perc_up</c>. Once a new item is
                 appended to the tree, <c>_perc_up</c> takes over and positions the new item
                 properly.</p>
@@ -128,7 +128,7 @@
                 until the node is swapped into a position on the tree where it is
                 already less than both children. The code for percolating a node down
                 the tree is found in the <c>_perc_down</c> and <c>_get_min_child</c> methods in
-                <xref ref="lst-heap4"/>.</p>
+                <xref ref="trees_lst-heap4"/>.</p>
     <p xml:id="trees_lst-heap4" names="lst_heap4">
       <term>Listing 4</term>
     </p>
@@ -150,7 +150,7 @@ def _get_min_child(self, i):
     if self._heap[2 * i + 1] &lt; self._heap[2 * i + 2]:
         return 2 * i + 1
     return 2 * i + 2</pre>
-    <p>The code for the <c>delete</c> operation is in <xref ref="lst-heap5"/>. Note
+    <p>The code for the <c>delete</c> operation is in <xref ref="trees_lst-heap5"/>. Note
                 that once again the hard work is handled by a helper function, in this
                 case <c>_perc_down</c>.</p>
     <p xml:id="trees_lst-heap5" names="lst_heap5">
@@ -173,7 +173,7 @@ def _get_min_child(self, i):
                 room for the new key. Therefore, to insert <math>n</math> keys into the
                 heap would require a total of <math>O(n \log{n})</math> operations.
                 However, if we start with an entire list then we can build the whole
-                heap in <math>O(n)</math> operations. <xref ref="lst-heap6"/> shows the code
+                heap in <math>O(n)</math> operations. <xref ref="trees_lst-heap6"/> shows the code
                 to build the entire heap.</p>
     <p xml:id="trees_lst-heap6" names="lst_heap6">
       <term>Listing 6</term>

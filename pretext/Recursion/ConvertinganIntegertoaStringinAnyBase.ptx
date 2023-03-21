@@ -49,7 +49,7 @@
             respectively. Finally, we have reduced the problem to converting 7,
             which we can do easily since it satisfies the base case condition of
             <math>n &lt; base</math>, where <math>base = 10</math>. The series of operations
-            we have just performed is illustrated in <xref ref="fig-tostr"/>. Notice that
+            we have just performed is illustrated in <xref ref="recursion_fig-tostr"/>. Notice that
             the numbers we want to remember are in the remainder boxes along the
             right side of the diagram.</p>
   <p xml:id="recursion_fig-tostr" names="fig_tostr"><term>Figure 4.3:</term> Converting an Integer to a String in Base 10</p>
@@ -82,7 +82,7 @@ print(to_str(1453, 16))
   <figure align="center">
     <image source="Recursion/Figures/toStrBase2.png" width="50%" alt="image"/>
   </figure>
-  <p><xref ref="fig-tostr2"/> shows that we get the results we are looking for,
+  <p><xref ref="recursion_fig-tostr2"/> shows that we get the results we are looking for,
             but it looks like the digits are in the wrong order. The algorithm works
             correctly because we make the recursive call first on line
             6, then we add the string representation of the remainder.

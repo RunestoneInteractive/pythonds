@@ -71,7 +71,7 @@ my_win.exitonclick()
             going off to the left. If you think of this definition recursively, it
             means that we will apply the recursive definition of a tree to both of
             the smaller left and right trees.</p>
-  <p>Let's translate this idea to some Python code. <xref ref="lst-fractree"/>
+  <p>Let's translate this idea to some Python code. <xref ref="recursion_lst-fractree"/>
             shows how we can use our turtle to generate a fractal tree. Let's look at
             the code a bit more closely. You will see that on lines 5 and 7 we are
             making a recursive call. On line 5 we make the recursive call right
@@ -136,10 +136,10 @@ main()
   </program>
   <p>Notice how each branch point on the tree corresponds to a recursive
             call, and notice how the tree is drawn to the right all the way down to
-            its shortest twig. You can see this in <xref ref="fig-tree1"/>. Now, notice
+            its shortest twig. You can see this in <xref ref="recursion_fig-tree1"/>. Now, notice
             how the program works its way back up the trunk until the entire right
             side of the tree is drawn. You can see the right half of the tree in
-            <xref ref="fig-tree2"/>. Then the left side of the tree is drawn, but not by
+            <xref ref="recursion_fig-tree2"/>. Then the left side of the tree is drawn, but not by
             going as far out to the left as possible. Rather, once again the entire
             right side of the left tree is drawn until we finally make our way out
             to the smallest twig on the left.</p>

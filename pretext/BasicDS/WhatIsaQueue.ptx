@@ -18,7 +18,7 @@
             are very restrictive in that they have only one way in and only one way
             out. There is no jumping in the middle and no leaving before you have
             waited the necessary amount of time to get to the front.</p>
-  <p>Computer science also has common examples of queues. <xref ref="fig-qubasicqueue"/>
+  <p>Computer science also has common examples of queues. <xref ref="i107_id1fig-qubasicqueue"/>
             shows a simple queue of Python data objects. Our computer
             laboratory has 30 computers networked with a single printer. When
             students want to print, their print tasks <q>get in line</q> with all the

@@ -9,7 +9,7 @@
             After the second pass, the next largest is in place. This process
             continues and requires <math>n - 1</math> passes to sort <math>n</math> items, since the
             final item must be in place after the <math>(n - 1)</math>-th pass.</p>
-  <p><xref ref="fig-selectionsort"/> shows the entire sorting process for the selection sort. On each pass,
+  <p><xref ref="i18_id1fig-selectionsort"/> shows the entire sorting process for the selection sort. On each pass,
             the largest remaining item is selected and then placed in its proper
             location. The first pass places 93, the second pass places 77, the third
             places 55, and so on. The function is shown in

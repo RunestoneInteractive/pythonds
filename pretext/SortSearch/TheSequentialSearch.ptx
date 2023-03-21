@@ -8,7 +8,7 @@
             index values are ordered, it is possible for us to visit them in
             sequence. This process gives rise to our first search technique, the
             <term>sequential search</term>.</p>
-  <p><xref ref="fig-seqsearch"/>  shows that if we start
+  <p><xref ref="i11_id1fig-seqsearch"/>  shows that if we start
             at the first item in the list and move from item to item,
             we follow the underlying sequential order until we either find what
             we are looking for or run out of items, which would mean the item

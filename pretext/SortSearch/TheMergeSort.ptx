@@ -10,8 +10,8 @@
             sort on both halves. Once the two halves are sorted, the fundamental
             operation, called a <term>merge</term>, is performed. Merging is the process of
             taking two smaller sorted lists and combining them together into a
-            single sorted new list. <xref ref="fig-mergesorta"/> shows our familiar example
-            list as it is being split by <c>merge_sort</c>. <xref ref="fig-mergesortb"/> shows
+            single sorted new list. <xref ref="i16_id1fig-mergesorta"/> shows our familiar example
+            list as it is being split by <c>merge_sort</c>. <xref ref="i16_id2fig-mergesortb"/> shows
             the simple lists, now sorted, as they are merged back together.</p>
   <figure align="center" xml:id="i16_id1fig-mergesorta">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 10: Splitting the List in a Merge Sort</caption>

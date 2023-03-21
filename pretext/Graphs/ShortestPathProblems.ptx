@@ -12,14 +12,14 @@
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: Overview of Connectivity in the Internet</caption>
     <image source="Graphs/Figures/Internet.png" width="50%"/>
   </figure>
-  <p><xref ref="fig-inet"/> shows you a high-level overview of how communication
+  <p><xref ref="i175_id1fig-inet"/> shows you a high-level overview of how communication
             on the internet works. When you use your browser to request a web page
             from a server, the request must travel over your local area network and
             out onto the internet through a router. The request travels over the
             internet and eventually arrives at a router for the local area network
             where the server is located. The web page you requested then travels
             back through the same routers to get to your browser. Inside the cloud
-            labeled <q>Internet</q> in <xref ref="fig-inet"/> are additional routers. The job
+            labeled <q>Internet</q> in <xref ref="i175_id1fig-inet"/> are additional routers. The job
             of all of these routers is to work together to get your information from
             place to place. You can see there are many routers for yourself if your
             computer supports the <c>traceroute</c> command. The text below shows
@@ -50,7 +50,7 @@
 
 
 Routers from One Host to the Next over the Internet</pre>
-  <p><xref ref="fig-network"/> shows a small example of a weighted graph that
+  <p><xref ref="i175_id2fig-network"/> shows a small example of a weighted graph that
             represents the interconnection of routers in the internet. The problem
             that we want to solve is to find the <term>shortest path</term>, one with the smallest total weight
             along which to route any given message. This problem should sound

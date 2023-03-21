@@ -97,7 +97,7 @@
       </li>
     </ul>
   </p>
-  <p><xref ref="fig-nodeedgetree"/> illustrates a tree that fits definition one.
+  <p><xref ref="i17_id1fig-nodeedgetree"/> illustrates a tree that fits definition one.
             The arrowheads on the edges indicate the direction of the connection.</p>
   <figure align="center" xml:id="i17_id1fig-nodeedgetree">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: A Tree Consisting of a Set of Nodes and Edges</caption>
@@ -106,9 +106,9 @@
   <p><em>Definition Two:</em> A tree is either empty or consists of a root and zero
             or more subtrees, each of which is also a tree. The root of each subtree
             is connected to the root of the parent tree by an edge.
-            <xref ref="fig-recursivetree"/> illustrates this recursive definition of a tree.
+            <xref ref="i17_id2fig-recursivetree"/> illustrates this recursive definition of a tree.
             Using the recursive definition of a tree, we know that the tree in
-            <xref ref="fig-recursivetree"/> has at least four nodes since each of the
+            <xref ref="i17_id2fig-recursivetree"/> has at least four nodes since each of the
             triangles representing a subtree must have a root. It may have many more
             nodes than that, but we do not know unless we look deeper into the tree.</p>
   <figure align="center" xml:id="i17_id2fig-recursivetree">

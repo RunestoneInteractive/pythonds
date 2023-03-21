@@ -125,7 +125,7 @@ def show(self):
                 We will say that this implementation <term>overrides</term> the previous one, or
                 that it redefines the method's behavior.</p>
     <p>To do this, we simply define a method with the name <c>__str__</c> and
-                give it a new implementation as shown in <xref ref="lst-str"/>. This definition
+                give it a new implementation as shown in <xref ref="introduction_lst-str"/>. This definition
                 does not need any other information except the special parameter
                 <c>self</c>. In turn, the method will build a string representation by
                 converting each piece of internal state data to a string and then
@@ -177,7 +177,7 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
                 way to make sure they have the same denominator is to simply use the
                 product of the two denominators as a common denominator so that
                 <math>\frac {a}{b} + \frac {c}{d} = \frac {ad}{bd} + \frac {cb}{bd} = \frac{ad+cb}{bd}</math>.
-                The implementation is shown in <xref ref="lst-addmethod"/>. The addition
+                The implementation is shown in <xref ref="introduction_lst-addmethod"/>. The addition
                 function returns a new <c>Fraction</c> object with the numerator and
                 denominator of the sum. We can use this method by writing a standard
                 arithmetic expression involving fractions, assigning the result of the
@@ -235,7 +235,7 @@ print(gcd(20, 10))
                 denominator by their greatest common divisor. So, for the fraction
                 <math>6/8</math>, the greatest common divisor is 2. Dividing the top and
                 the bottom by 2 creates a new fraction, <math>3/4</math> (see
-                <xref ref="lst-newaddmethod"/>).</p>
+                <xref ref="introduction_lst-newaddmethod"/>).</p>
     <p xml:id="introduction_lst-newaddmethod" names="lst_newaddmethod">
       <term>Listing 6</term>
     </p>
@@ -249,7 +249,7 @@ def __add__(self, other_fraction):
     return Fraction(new_num // common, new_den // common)
 </input>
     </program>
-    <p>Our <c>Fraction</c> object now has two very useful methods as depicted in <xref ref="fig-fraction2"/>.</p>
+    <p>Our <c>Fraction</c> object now has two very useful methods as depicted in <xref ref="i19_id2fig-fraction2"/>.</p>
     <figure align="center" xml:id="i19_id2fig-fraction2">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: An Instance of the <literal>Fraction</literal> Class with Two Methods</caption>
       <image source="Introduction/Figures/fraction2.png" width="50%"/>
@@ -278,7 +278,7 @@ def __add__(self, other_fraction):
                 <c>True</c> if their values are the same, <c>False</c> otherwise.</p>
     <p>In the <c>Fraction</c> class, we can implement the <c>__eq__</c> method by
                 again putting the two fractions in common terms and then comparing the
-                numerators (see <xref ref="lst-cmpmethod"/>). It is important to note that there
+                numerators (see <xref ref="introduction_lst-cmpmethod"/>). It is important to note that there
                 are other relational operators that can be overridden. For example, the
                 <c>__le__</c> method provides the less than or equal functionality.</p>
     <p xml:id="introduction_lst-cmpmethod" names="lst_cmpmethod">
@@ -437,7 +437,7 @@ print(x == y)
                 appropriate logic based on the current input. In order to produce
                 output, the gate needs to know specifically what that logic is. This
                 means calling a method to perform the logic computation. The complete
-                class is shown in <xref ref="lst-logicgateclass"/>.</p>
+                class is shown in <xref ref="introduction_lst-logicgateclass"/>.</p>
     <p xml:id="introduction_lst-logicgateclass" names="lst_logicgateclass">
       <term>Listing 8</term>
     </p>
@@ -476,7 +476,7 @@ class LogicGate:
                 In computer circuit design, these lines
                 are sometimes called <em>pins</em>, so we will use that terminology in our
                 implementation.</p>
-    <p><xref ref="lst-logicgateclass"/> and <xref ref="lst-logicgateclass"/> implement these two
+    <p><xref ref="introduction_lst-logicgateclass"/> and <xref ref="introduction_lst-logicgateclass"/> implement these two
                 classes. The constructors in both of these classes start with an
                 explicit call to the constructor of the parent class using the parent's <c>__init__</c>
                 method. When creating an instance of the <c>BinaryGate</c> class, we
@@ -545,7 +545,7 @@ class UnaryGate(LogicGate):
                 place where we can provide the <c>perform_gate_logic</c> method. For an AND
                 gate, this method first must get the two input values and then only
                 return 1 if both input values are 1. The complete class is shown in
-                <xref ref="lst-andgateclass"/>.</p>
+                <xref ref="introduction_lst-andgateclass"/>.</p>
     <p xml:id="introduction_lst-andgateclass" names="lst_andgateclass">
       <term>Listing 11</term>
     </p>
@@ -617,12 +617,12 @@ Enter pin input for gate G3: 0
                 designing classes, it is very important to distinguish between those
                 that have the Is-a relationship (which requires inheritance) and those
                 that have Has-a relationships (with no inheritance).</p>
-    <p><xref ref="lst-connectorclass"/> shows the <c>Connector</c> class. The two gate
+    <p><xref ref="introduction_lst-connectorclass"/> shows the <c>Connector</c> class. The two gate
                 instances within each connector object will be referred to as the
                 <c>from_gate</c> and the <c>to_gate</c>, recognizing that data values will
                 flow from the output of one gate into an input line of the next. The
                 call to <c>set_next_pin</c> is very important for making connections (see
-                <xref ref="lst-setpin"/>). We need to add this method to our gate classes so
+                <xref ref="introduction_lst-setpin"/>). We need to add this method to our gate classes so
                 that each <c>to_gate</c> can choose the proper input line for the
                 connection.</p>
     <p xml:id="introduction_lst-connectorclass" names="lst_connectorclass">
@@ -667,7 +667,7 @@ def set_next_pin(self, source):
     <p>Now it is possible to get input from two places: externally, as before,
                 and from the output of a gate that is connected to that input line. This
                 requires a change to the <c>get_pin_a</c> and <c>get_pin_b</c> methods (see
-                <xref ref="lst-newgetpin"/>). If the input line is not connected to anything
+                <xref ref="introduction_lst-newgetpin"/>). If the input line is not connected to anything
                 (<c>None</c>), then ask the user externally as before. However, if there is
                 a connection, the connection is accessed and <c>from_gate</c>'s output value
                 is retrieved. This in turn causes that gate to process its logic. This

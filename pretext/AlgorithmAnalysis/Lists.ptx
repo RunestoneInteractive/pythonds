@@ -26,7 +26,7 @@
             list by concatenation, then we'll use <c>append</c> rather than concatenation.
             Next, we'll try creating the list using list comprehension and finally,
             and perhaps the most obvious way, using the range function wrapped by a
-            call to the list constructor. <xref ref="lst-mklist"/> shows the code for
+            call to the list constructor. <xref ref="algorithm-analysis_lst-mklist"/> shows the code for
             making our list four different ways.</p>
   <p xml:id="algorithm-analysis_lst-mklist" names="lst_mklist">
     <term>Listing 3</term>
@@ -276,12 +276,12 @@ list range:              0.07 milliseconds</pre>
             see is that the time required to pop from the end of the list will stay
             constant even as the list grows in size, while the time to pop from the
             beginning of the list will continue to increase as the list grows.</p>
-  <p><xref ref="lst-popmeas"/> shows one attempt to measure the difference
+  <p><xref ref="algorithm-analysis_lst-popmeas"/> shows one attempt to measure the difference
             between the two uses of <c>pop</c>. As you can see from this first example,
             popping from the end takes 0.00014 milliseconds, whereas popping from the
             beginning takes 2.09779 milliseconds. For a list of two million elements
             this is a factor of 15,000.</p>
-  <p>There are a couple of things to notice about <xref ref="lst-popmeas"/>. The
+  <p>There are a couple of things to notice about <xref ref="algorithm-analysis_lst-popmeas"/>. The
             first is the statement <c>from __main__ import x</c>. Although we did not
             define a function, we do want to be able to use the list object x in our
             test. This approach allows us to time just the single <c>pop</c> statement
@@ -308,7 +308,7 @@ pop():     0.00014 milliseconds</pre>
             <c>pop()</c>, it does not validate the claim that <c>pop(0)</c> is
             <math>O(n)</math> while <c>pop()</c> is <math>O(1)</math>. To validate that claim
             we need to look at the performance of both calls over a range of list
-            sizes. <xref ref="lst-poplists"/> implements this test.</p>
+            sizes. <xref ref="algorithm-analysis_lst-poplists"/> implements this test.</p>
   <p xml:id="algorithm-analysis_lst-poplists" names="lst_poplists">
     <term>Listing 5</term>
   </p>
@@ -321,7 +321,7 @@ for i in range(1_000_000, 100_000_001, 1_000_000):
     x = list(range(i))
     pop_end_t = pop_end.timeit(number=1000)
     print(f"{i:&lt;10d}{pop_zero_t:&gt;15.5f}{pop_end_t:&gt;15.5f}")</pre>
-  <p><xref ref="fig-poptest"/> shows the results of our experiment. You can see
+  <p><xref ref="i15_id2fig-poptest"/> shows the results of our experiment. You can see
             that as the list gets longer and longer the time it takes to <c>pop(0)</c>
             also increases while the time for <c>pop</c> stays very flat. This is
             exactly what we would expect to see for an <math>O(n)</math> and

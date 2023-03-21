@@ -4,20 +4,20 @@
   <p>To represent the knight's tour problem as a graph we will use the
             following two ideas: each square on the chessboard can be represented as
             a node in the graph and each legal move by the knight can be represented as
-            an edge in the graph. <xref ref="fig-knightmoves"/> illustrates the legal
+            an edge in the graph. <xref ref="i185_id1fig-knightmoves"/> illustrates the legal
             moves by a knight and the corresponding edges in a graph.</p>
   <figure align="center" xml:id="i185_id1fig-knightmoves">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 1: Legal Moves for a Knight on Square 12 and the Corresponding Graph</caption>
     <image source="Graphs/Figures/knightmoves.png" width="50%"/>
   </figure>
   <p>To build the full graph for an <em>n</em>-by-<em>n</em> board, we can use the Python
-            function shown in <xref ref="lst-knighttour1"/>. The <c>knight_graph</c> function
+            function shown in <xref ref="graphs_lst-knighttour1"/>. The <c>knight_graph</c> function
             makes one pass over the entire board. At each square on the board the
             <c>knight_graph</c> function calls a helper, <c>gen_legal_moves</c>, to create a
             list of legal moves for that position on the board. All legal moves are
             then converted into edges in the graph. Each location on the board is converted into a
             linear vertex number similar to the vertex numbers shown
-            in <xref ref="fig-knightmoves"/>.</p>
+            in <xref ref="i185_id1fig-knightmoves"/>.</p>
   <p xml:id="graphs_lst-knighttour1" names="lst_knighttour1">
     <term>Listing 1</term>
   </p>
@@ -34,7 +34,7 @@ def knight_graph(board_size):
                 other_node_id = row2 * board_size + col2
                 kt_graph.add_edge(node_id, other_node_id)
     return kt_graph</pre>
-  <p>The <c>gen_legal_moves</c> function (<xref ref="lst-knighttour2"/>) takes
+  <p>The <c>gen_legal_moves</c> function (<xref ref="graphs_lst-knighttour2"/>) takes
             the position of the knight on the board and generates each of the eight possible moves,
             making sure those moves are still within the board.</p>
   <p xml:id="graphs_lst-knighttour2" names="lst_knighttour2">
@@ -56,7 +56,7 @@ def knight_graph(board_size):
         if 0 &lt;= row + r_off &lt; board_size and 0 &lt;= col + c_off &lt; board_size:
             new_moves.append((row + r_off, col + c_off))
     return new_moves</pre>
-  <p><xref ref="fig-bigknight"/> shows the complete graph of possible moves on an
+  <p><xref ref="i185_id2fig-bigknight"/> shows the complete graph of possible moves on an
             <math>8 \times 8</math> board. There are exactly 336 edges in the graph. Notice
             that the vertices corresponding to the edges of the board have fewer
             connections (legal moves) than the vertices in the middle of the board.
