@@ -38,7 +38,7 @@
             empty, then <xref ref="basic-ds_tbl-stackops"/> shows the results of a sequence of
             stack operations. Under Stack Contents, the top item is listed at the
             far right.</p>
-  <table xml:id="basic-ds_id1">
+  <table xml:id="basic-ds_tbl-stackops">
     <tabular>
       <title>
         <term>Table 1: Sample Stack Operations</term>

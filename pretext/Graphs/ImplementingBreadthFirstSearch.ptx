@@ -8,12 +8,12 @@
             the easiest algorithms for searching a graph. It also serves as a
             prototype for several other important graph algorithms that we will
             study later.</p>
-  <p>Given a starting vertex <math>s</math> of a graph <math>G</math>, a breadth
+  <p>Given a starting vertex <m>s</m> of a graph <m>G</m>, a breadth
             first search proceeds by exploring edges in the graph to find all the
-            vertices in <math>G</math> for which there is a path from <math>s</math>. The
+            vertices in <m>G</m> for which there is a path from <m>s</m>. The
             remarkable thing about a breadth-first search is that it finds <em>all</em> the
-            vertices that are a distance <math>k</math> from <math>s</math> before it
-            finds <em>any</em> vertices that are a distance <math>k+1</math>. One good way to
+            vertices that are a distance <m>k</m> from <m>s</m> before it
+            finds <em>any</em> vertices that are a distance <m>k+1</m>. One good way to
             visualize what the breadth-first search algorithm does is to imagine
             that it is building a tree, one level of the tree at a time. A breadth
             first search adds all children of the starting vertex before it begins

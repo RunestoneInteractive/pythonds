@@ -18,7 +18,7 @@
             binary search tree is constructed. The search tree in
             <xref ref="i$146_id1fig-simplebst"/> represents the nodes that exist after we have
             inserted the following keys in the order shown:
-            <math>70, 31, 93, 94, 14, 23, 73</math>. Since 70 was the first key inserted into
+            <m>70, 31, 93, 94, 14, 23, 73</m>. Since 70 was the first key inserted into
             the tree, it is the root. Next, 31 is less than 70, so it becomes the
             left child of 70. Next, 93 is greater than 70, so it becomes the right
             child of 70. Now we have two levels of the tree filled, so the next key

@@ -54,11 +54,11 @@
                 set of keys and a hash function, we could place the keys in a collection
                 that allowed us to search and retrieve the associated data value. Our
                 analysis showed that this technique could potentially yield an
-                <math>O(1)</math> search. However, performance degraded due to issues such as
+                <m>O(1)</m> search. However, performance degraded due to issues such as
                 table size, collisions, and collision resolution strategy.</p>
     <p>In Chapter&#xA0;<url href="#trees" visual="#trees">[trees]</url> we considered a binary search tree as a
                 way to store such a collection. In this case the keys were placed in the
-                tree such that searching could be done in <math>O(\log n)</math>. However,
+                tree such that searching could be done in <m>O(\log n)</m>. However,
                 this was only true if the tree was balanced; that is, the left and the
                 right subtrees were all of similar size. Unfortunately, depending on the
                 order of insertion, the keys could end up being skewed to the right or
@@ -411,39 +411,39 @@
     <subsubsection xml:id="advanced_analysis-of-a-skip-list">
       <title>Analysis of a Skip List</title>
       <p>If we had simply stored the key-value pairs in an ordered linked list,
-                    we know that the search method would be <math>O(n)</math>. Can we expect
+                    we know that the search method would be <m>O(n)</m>. Can we expect
                     better performance from the skip list? Recall that the skip list is a
                     probabilistic data structure. This means that the analysis will be
                     dependent upon the probability of some event, in this case, the flip of
                     a coin. Although a rigorous analysis of this structure is beyond the
                     scope of this text, we can make a strong informal argument.</p>
-      <p>Assume that we are building a skip list for <math>n</math> keys. We know that
+      <p>Assume that we are building a skip list for <m>n</m> keys. We know that
                     each tower starts off with a height of 1. As we add data nodes to the
                     tower, assuming the probability of getting heads is
-                    <math>\frac{1}{2}</math>, we can say that <math>\frac{n}{2}</math> of the keys
-                    have towers of height 2. As we flip the coin again, <math>\frac{n}{4}</math>
+                    <m>\frac{1}{2}</m>, we can say that <m>\frac{n}{2}</m> of the keys
+                    have towers of height 2. As we flip the coin again, <m>\frac{n}{4}</m>
                     of the keys have a tower of height 3. This corresponds to the
                     probability of flipping two heads in a row. Continuing this argument
-                    shows <math>\frac{n}{8}</math> keys have a tower of height 4 and so on. This
+                    shows <m>\frac{n}{8}</m> keys have a tower of height 4 and so on. This
                     means that we expect the height of the tallest tower to be
-                    <math>\log_{2}(n) + 1</math>. Using our Big-O notation, we would say that
-                    the height of the skip list is <math>O(\log (n))</math>.</p>
+                    <m>\log_{2}(n) + 1</m>. Using our Big-O notation, we would say that
+                    the height of the skip list is <m>O(\log (n))</m>.</p>
       <p>To analyze the <c>search</c> method, recall that there are two scans that
                     need to be considered as we look for a given key. The first is the down
                     direction. The previous result suggests that in the worst case we will
-                    expect to consider <math>O(\log (n))</math> levels to find a key. In
+                    expect to consider <m>O(\log (n))</m> levels to find a key. In
                     addition, we need to include the number of forward links that need to be
                     scanned on each level. We drop down a level when one of two events
                     occurs. Either we find a data node with a key that is greater than the
                     key we are looking for or we find the end of a level. If we are
                     currently looking at some data node, the probability that one of those
-                    two events will happen in the next link is <math>\frac{1}{2}</math>. This
+                    two events will happen in the next link is <m>\frac{1}{2}</m>. This
                     means that after looking at two links, we would expect to drop to the next
                     lower level (we expect to get heads after two coin flips). In any case,
                     the number of nodes that we need to look at on any given level is
-                    constant. The entire result then becomes <math>O(\log (n))</math>. Since
+                    constant. The entire result then becomes <m>O(\log (n))</m>. Since
                     inserting a new node is dominated by searching for its location, the
-                    <c>insert</c> operation will also have <math>O(\log(n))</math> performance.</p>
+                    <c>insert</c> operation will also have <m>O(\log(n))</m> performance.</p>
     </subsubsection>
   </subsection>
 </section>

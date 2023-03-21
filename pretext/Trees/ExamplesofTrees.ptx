@@ -45,9 +45,9 @@
   <p>A third property is that each leaf node is unique. We can specify a path
             from the root of the tree to a leaf that uniquely identifies each
             species in the animal kingdom, for example Animalia
-            <math>\rightarrow</math> Chordata <math>\rightarrow</math> Mammalia
-            <math>\rightarrow</math> Carnivora <math>\rightarrow</math> Felidae
-            <math>\rightarrow</math> <em>Felis</em> <math>\rightarrow</math> <em>catus</em>.</p>
+            <m>\rightarrow</m> Chordata <m>\rightarrow</m> Mammalia
+            <m>\rightarrow</m> Carnivora <m>\rightarrow</m> Felidae
+            <m>\rightarrow</m> <em>Felis</em> <m>\rightarrow</m> <em>catus</em>.</p>
   <p>Another example of a tree structure that you probably use every day is a
             file system. In a file system, directories, or folders, are structured
             as a tree. <xref ref="i13_id2fig-filetree"/> illustrates a small part of a Unix file

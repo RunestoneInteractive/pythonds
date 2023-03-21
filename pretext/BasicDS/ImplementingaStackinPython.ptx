@@ -125,10 +125,10 @@ print(s.pop())
             abstraction at work. However, even though the stack will work either
             way, if we consider the performance of the two implementations, there is
             definitely a difference. Recall that the <c>append()</c> and <c>pop()</c>
-            operations were both <math>O(1)</math>. This means that the first implementation will
+            operations were both <m>O(1)</m>. This means that the first implementation will
             perform <c>push</c> and <c>pop</c> in constant time no matter how many items are on
             the stack. The performance of the second implementation suffers in that
-            the <c>insert(0)</c> and <c>pop(0)</c> operations will both require <math>O(n)</math> for a
+            the <c>insert(0)</c> and <c>pop(0)</c> operations will both require <m>O(n)</m> for a
             stack of size <c>n</c>. Clearly, even though the implementations are logically
             equivalent, they would have very different timings when performing
             benchmark testing.</p>

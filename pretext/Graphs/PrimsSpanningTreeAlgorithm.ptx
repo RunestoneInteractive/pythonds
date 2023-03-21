@@ -45,9 +45,9 @@
             many more unnecessary messages than our first strategy.</p>
   <p>The solution to this problem lies in the construction of a minimum
             weight <term>spanning tree</term>. Formally we define the minimum spanning tree
-            <math>T</math> for a graph <math>G = (V,E)</math> as follows. <math>T</math> is
-            an acyclic subset of <math>E</math> that connects all the vertices in
-            <math>V</math>. The sum of the weights of the edges in T is minimized.</p>
+            <m>T</m> for a graph <m>G = (V,E)</m> as follows. <m>T</m> is
+            an acyclic subset of <m>E</m> that connects all the vertices in
+            <m>V</m>. The sum of the weights of the edges in T is minimized.</p>
   <p><xref ref="i187_id2fig-mst1"/> shows a simplified version of the broadcast graph and
             highlights the edges that form a minimum spanning tree for the graph.
             Now to solve our broadcast problem, the broadcast host simply sends a

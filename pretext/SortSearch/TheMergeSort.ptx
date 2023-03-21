@@ -153,16 +153,16 @@ merge_anim_init = function(divid)
   <p>In order to analyze the <c>merge_sort</c> function, we need to consider the
             two distinct processes that make up its implementation. First, the list
             is split into halves. We already computed (in a binary search) that we
-            can divide a list in half <math>\log{n}</math> times where <math>n</math> is the
+            can divide a list in half <m>\log{n}</m> times where <m>n</m> is the
             length of the list. The second process is the merge. Each item in the
             list will eventually be processed and placed on the sorted list. So the
-            merge operation which results in a list of size <math>n</math> requires <math>n</math>
-            operations. The result of this analysis is that <math>\log{n}</math> splits,
-            each of which costs <math>n</math> for a total of <math>n\log{n}</math>
-            operations. A merge sort is an <math>O(n\log{n})</math> algorithm.</p>
-  <p>Recall that the slicing operator is <math>O(k)</math> where <math>k</math> is the size
+            merge operation which results in a list of size <m>n</m> requires <m>n</m>
+            operations. The result of this analysis is that <m>\log{n}</m> splits,
+            each of which costs <m>n</m> for a total of <m>n\log{n}</m>
+            operations. A merge sort is an <m>O(n\log{n})</m> algorithm.</p>
+  <p>Recall that the slicing operator is <m>O(k)</m> where <m>k</m> is the size
             of the slice. In order to guarantee that <c>merge_sort</c> will be
-            <math>O(n\log n)</math> we will need to remove the slice operator. Again,
+            <m>O(n\log n)</m> we will need to remove the slice operator. Again,
             this is possible if we simply pass the starting and ending indices along
             with the list when we make the recursive call. We leave this as an
             exercise.</p>

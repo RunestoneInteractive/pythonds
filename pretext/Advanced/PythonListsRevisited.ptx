@@ -22,8 +22,8 @@
             array. The array only supports two operations: indexing and assignment
             to an array index.</p>
   <p>The best way to think about an array is that it is one continuous block
-            of bytes in the computer's memory. This block is divided up into <math>n</math>-byte
-            chunks where <math>n</math> is based on the data type that is stored in the array.
+            of bytes in the computer's memory. This block is divided up into <m>n</m>-byte
+            chunks where <m>n</m> is based on the data type that is stored in the array.
             Figure&#xA0;<url href="#fig_array" visual="#fig_array">1</url> illustrates the idea of an array that is sized
             to hold six floating point values.</p>
   <figure align="" xml:id="fig-array">
@@ -42,8 +42,8 @@
   <p>For example, suppose that our array starts at location <c>0x000040</c>,
             which is 64 in decimal. To calculate the location of the object at
             position 4 in the array we simply do the arithmetic:
-            <math>64 + 4 \cdot 8 = 96</math>. Clearly this kind of calculation is
-            <math>O(1)</math>. Of course this comes with some risks. First, since
+            <m>64 + 4 \cdot 8 = 96</m>. Clearly this kind of calculation is
+            <m>O(1)</m>. Of course this comes with some risks. First, since
             the size of an array is fixed, one cannot just add things on to the end of
             the array indefinitely without some serious consequences. Second, in
             some languages, like C, the bounds of the array are not even checked, so
@@ -77,20 +77,20 @@
   <p>
     <ul>
       <li>
-        <p>Accessing an itema at a specific location is <math>O(1)</math>.</p>
+        <p>Accessing an itema at a specific location is <m>O(1)</m>.</p>
       </li>
       <li>
-        <p>Appending to the list is <math>O(1)</math> on average, but <math>O(n)</math> in
+        <p>Appending to the list is <m>O(1)</m> on average, but <m>O(n)</m> in
                     the worst case.</p>
       </li>
       <li>
-        <p>Popping from the end of the list is <math>O(1)</math>.</p>
+        <p>Popping from the end of the list is <m>O(1)</m>.</p>
       </li>
       <li>
-        <p>Deleting an item from the list is <math>O(n)</math>.</p>
+        <p>Deleting an item from the list is <m>O(n)</m>.</p>
       </li>
       <li>
-        <p>Inserting an item into an arbitrary position is <math>O(n)</math>.</p>
+        <p>Inserting an item into an arbitrary position is <m>O(n)</m>.</p>
       </li>
     </ul>
   </p>
@@ -142,13 +142,13 @@
             the new value is added to the list at <c>last_index</c>, and <c>last_index</c>
             is incremented by one.</p>
   <p>The <c>resize</c> method calculates a new size for the array using
-            <math>2 ^ {size\_exponent}</math>. There are many methods that could be used
+            <m>2 ^ {size\_exponent}</m>. There are many methods that could be used
             for resizing the array. Some implementations double the size of the
             array every time as we do here, some use a multiplier of 1.5, and some
             use powers of two. Python uses a multiplier of 1.125 plus a constant.
             The Python developers designed this strategy as a good tradeoff for
             computers of varying CPU and memory speeds. The Python strategy leads to
-            a sequence of array sizes of <math>0, 4, 8, 16, 24, 32, 40, 52, 64, 76\ldots</math> .
+            a sequence of array sizes of <m>0, 4, 8, 16, 24, 32, 40, 52, 64, 76\ldots</m> .
             Doubling the array size leads to a bit more wasted space at any
             one time, but is much easier to analyze. Once a new array has been
             allocated, the values from the old list must be copied into the new
@@ -161,13 +161,13 @@
             that in Python objects that are no longer referenced are automatically
             cleaned up by the garbage collection algorithm.</p>
   <p>Before we move on let's analyze why this strategy gives us an average
-            <math>O(1)</math> performance for <c>append</c>. The key is to notice that most
-            of the time the cost to append an item <math>c_i</math> is 1. The only time
+            <m>O(1)</m> performance for <c>append</c>. The key is to notice that most
+            of the time the cost to append an item <m>c_i</m> is 1. The only time
             that the operation is more expensive is when <c>last_index</c> is a power
             of 2. When <c>last_index</c> is a power of 2 then the cost to append an
-            item is <math>O(last\_index)</math>. We can summarize the cost to insert the
-            <math>i_{th}</math> item as follows:</p>
-  <math_block docname="Advanced/PythonListsRevisited" label="True" nowrap="False" number="True" xml:space="preserve">c_i =
+            item is <m>O(last\_index)</m>. We can summarize the cost to insert the
+            <m>i_{th}</m> item as follows:</p>
+  <math_block docname="Advanced/PythonListsRevisited"  nowrap="False" number="True" xml:space="preserve">c_i =
 \begin{cases}
   i \text{ if } i \text{ is a power of 2} \\
   1 \text{ otherwise}
@@ -175,31 +175,31 @@
   <p>Since the expensive cost of copying <c>last_index</c> items occurs
             relatively infrequently we spread the cost out, or <em>amortize</em>, the
             cost of insertion over all of the appends. When we do this the cost of
-            any one insertion averages out to <math>O(1)</math>. For example, consider
+            any one insertion averages out to <m>O(1)</m>. For example, consider
             the case where you have already appended four items. Each of these four
             appends costs you just one operation to store in the array that was
             already allocated to hold four items. When the fifth item is added a new
             array of size 8 is allocated and the four old items are copied. But now
             you have room in the array for four additional low cost appends.
             Mathematically we can show this as follows:</p>
-  <math_block docname="Advanced/PythonListsRevisited" label="True" nowrap="False" number="True" xml:space="preserve">\begin{aligned}
+  <math_block docname="Advanced/PythonListsRevisited"  nowrap="False" number="True" xml:space="preserve">\begin{aligned}
   cost_{total} &amp;= n + \sum_{j=0}^{\log_2{n}}{2^j}  \\
             &amp;= n + 2n \\
             &amp;= 3n\end{aligned}</math_block>
   <p>The summation in the previous equation may not be obvious to you, so
-            let's think about that a bit more. The sum goes from zero to <math>\log_2{n}</math>.
+            let's think about that a bit more. The sum goes from zero to <m>\log_2{n}</m>.
             The upper bound on the summation tells us how many times we
-            need to double the size of the array. The term <math>2^j</math> accounts for
+            need to double the size of the array. The term <m>2^j</m> accounts for
             the copies that we need to do when the array is doubled. Since the total
-            cost to append n items is <math>3n</math>, the cost for a single item is
-            <math>3n/n = 3</math>. Because the cost is a constant we say that it is
-            <math>O(1)</math>. This kind of analysis is called <term>amortized analysis</term> and
+            cost to append n items is <m>3n</m>, the cost for a single item is
+            <m>3n/n = 3</m>. Because the cost is a constant we say that it is
+            <m>O(1)</m>. This kind of analysis is called <term>amortized analysis</term> and
             is very useful in analyzing more advanced algorithms.</p>
   <p>Next, let us turn to the index operators.
             Listing&#xA0;<url href="#lst_arrindex" visual="#lst_arrindex">[lst_arrindex]</url> shows our Python
             implementation for index and assignment to an array location. Recall
             that we discussed above that the calculation required to find the memory
-            location of the <math>i_{th}</math> item in an array is a simple <math>O(1)</math>
+            location of the <m>i_{th}</m> item in an array is a simple <m>O(1)</m>
             arithmetic expression. Even languages like C hide that calculation
             behind a nice array index operator, so in this case the C and the Python
             look very much the same. In fact, in Python it is very difficult to get
@@ -245,10 +245,10 @@ def __setitem__(self, idx, val):
         self.my_array[i + 1] = self.my_array[i]
     self.last_index += 1
     self.my_array[idx] = val</pre>
-  <p>The performance of the insert is <math>O(n)</math> since in the worst case we
+  <p>The performance of the insert is <m>O(n)</m> since in the worst case we
             want to insert something at index 0 and we have to shift the entire
             array forward by one. On average we will only need to shift half of the
-            array, but this is still <math>O(n)</math>. You may want to go back to
+            array, but this is still <m>O(n)</m>. You may want to go back to
             Chapter&#xA0;<url href="#basicds" visual="#basicds">[basicds]</url> and remind yourself how all of these
             list operations are done using nodes and references. Neither
             implementation is right or wrong; they just have different performance

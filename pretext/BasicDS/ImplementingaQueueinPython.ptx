@@ -11,7 +11,7 @@
             use the <c>insert</c> function on lists to add new elements to the rear of
             the queue. The <c>pop</c> operation can be used to remove the front element
             (the last element of the list). Recall that this also means that <c>enqueue</c>
-            will be <math>O(n)</math> and <c>dequeue</c> will be <math>O(1)</math>.</p>
+            will be <m>O(n)</m> and <c>dequeue</c> will be <m>O(1)</m>.</p>
   <p xml:id="basic-ds_lst-queuecode" names="lst_queuecode">
     <term>Listing 1</term>
   </p>

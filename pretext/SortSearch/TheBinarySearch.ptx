@@ -3,7 +3,7 @@
   <title>The Binary Search</title>
   <p>It is possible to take greater advantage of the ordered list if we are
             clever with our comparisons. In the sequential search, when we compare
-            against the first item, there are at most <math>n-1</math> more items to
+            against the first item, there are at most <m>n-1</m> more items to
             look through if the first item is not what we are looking for. Instead
             of searching the list in sequence, a <term>binary search</term> will start by
             examining the middle item. If that item is the one we are searching for,
@@ -83,13 +83,13 @@ print(binary_search_rec(test_list, 13))
     <p>To analyze the binary search algorithm, we need to recall that each
                 comparison eliminates about half of the remaining items from
                 consideration. What is the maximum number of comparisons this algorithm
-                will require to check the entire list? If we start with <math>n</math> items, about
-                <math>\frac{n}{2}</math> items will be left after the first comparison.
-                After the second comparison, there will be about <math>\frac{n}{4}</math>.
-                Then <math>\frac{n}{8}</math>, <math>\frac{n}{16}</math>, and so on. How many
+                will require to check the entire list? If we start with <m>n</m> items, about
+                <m>\frac{n}{2}</m> items will be left after the first comparison.
+                After the second comparison, there will be about <m>\frac{n}{4}</m>.
+                Then <m>\frac{n}{8}</m>, <m>\frac{n}{16}</m>, and so on. How many
                 times can we split the list? <xref ref="sort-search_tbl-binaryanalysis"/> helps us to see the
                 answer.</p>
-    <table xml:id="sort-search_id2">
+    <table xml:id="sort-search_tbl-binaryanalysis">
       <tabular>
         <title>
           <term>Table 3: Tabular Analysis for a Binary Search</term>
@@ -107,7 +107,7 @@ print(binary_search_rec(test_list, 13))
                                 1
                             </cell>
           <cell>
-            <math>\frac {n}{2}</math>
+            <m>\frac {n}{2}</m>
           </cell>
         </row>
         <row>
@@ -115,7 +115,7 @@ print(binary_search_rec(test_list, 13))
                                 2
                             </cell>
           <cell>
-            <math>\frac {n}{4}</math>
+            <m>\frac {n}{4}</m>
           </cell>
         </row>
         <row>
@@ -123,7 +123,7 @@ print(binary_search_rec(test_list, 13))
                                 3
                             </cell>
           <cell>
-            <math>\frac {n}{8}</math>
+            <m>\frac {n}{8}</m>
           </cell>
         </row>
         <row>
@@ -135,10 +135,10 @@ print(binary_search_rec(test_list, 13))
         </row>
         <row>
           <cell>
-            <math>i</math>
+            <m>i</m>
           </cell>
           <cell>
-            <math>\frac {n}{2^i}</math>
+            <m>\frac {n}{2^i}</m>
           </cell>
         </row>
       </tabular>
@@ -146,10 +146,10 @@ print(binary_search_rec(test_list, 13))
     <p>When we split the list enough times, we end up with a list that has just
                 one item. Either that is the item we are looking for or it is not.
                 Either way, we are done. The number of comparisons necessary to get to
-                this point is <math>i</math> where <math>\frac {n}{2^i} =1</math>. Solving for <math>i</math>
-                gives us <math>i=\log{n}</math>. The maximum number of comparisons is
+                this point is <m>i</m> where <m>\frac {n}{2^i} =1</m>. Solving for <m>i</m>
+                gives us <m>i=\log{n}</m>. The maximum number of comparisons is
                 logarithmic with respect to the number of items in the list. Therefore,
-                the binary search is <math>O(\log{n})</math>.</p>
+                the binary search is <m>O(\log{n})</m>.</p>
     <p>One additional analysis issue needs to be addressed. In the recursive
                 solution shown above, the recursive call</p>
     <p>
@@ -159,13 +159,13 @@ print(binary_search_rec(test_list, 13))
                 passed to the next invocation (similarly for the right half as well).
                 The analysis that we did above assumed that slicing takes
                 constant time. However, we know that in Python it is
-                actually <math>O(k)</math>. This means that the binary search using slicing will not
+                actually <m>O(k)</m>. This means that the binary search using slicing will not
                 perform in strict logarithmic time. Luckily this can be remedied by
                 passing the list along with the starting and ending indices. The indices
                 can be calculated as we did in <xref ref="lst-binarysearchpy"/>. We leave this
                 implementation as an exercise.</p>
     <p>Even though a binary search is generally better than a sequential
-                search, it is important to note that for small values of <math>n</math>, the
+                search, it is important to note that for small values of <m>n</m>, the
                 additional cost of sorting is probably not worth it. In fact, we should
                 always consider whether it is cost effective to take on the extra work
                 of sorting to gain searching benefits. If we can sort once and then

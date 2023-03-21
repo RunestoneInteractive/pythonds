@@ -59,11 +59,11 @@ print(anagram_solution_1("abcd", "dcda"))  # expected: False
                 list will be visited once to match a character from <c>s1</c>. The number
                 of visits then becomes the sum of the integers from 1 to <em>n</em>. We stated
                 earlier that this can be written as</p>
-    <math_block docname="AlgorithmAnalysis/AnAnagramDetectionExample" label="True" nowrap="False" number="True" xml:space="preserve">\sum_{i=1}^{n} i &amp;= \frac {n(n+1)}{2} \\
+    <math_block docname="AlgorithmAnalysis/AnAnagramDetectionExample"  nowrap="False" number="True" xml:space="preserve">\sum_{i=1}^{n} i &amp;= \frac {n(n+1)}{2} \\
                  &amp;= \frac {1}{2}n^{2} + \frac {1}{2}n</math_block>
-    <p>As <math>n</math> gets large, the <math>n^{2}</math> term will dominate the
-                <math>n</math> term and the <math>\frac {1}{2}</math> can be ignored.
-                Therefore, this solution is <math>O(n^{2})</math>.</p>
+    <p>As <m>n</m> gets large, the <m>n^{2}</m> term will dominate the
+                <m>n</m> term and the <m>\frac {1}{2}</m> can be ignored.
+                Therefore, this solution is <m>O(n^{2})</m>.</p>
   </subsection>
   <subsection xml:id="algorithm-analysis_anagram-detection-solution-2-sort-and-compare">
     <title>Anagram Detection Solution 2: Sort and Compare</title>
@@ -101,11 +101,11 @@ print(anagram_solution_2("abcd", "dcda"))  # expected: False
         </input>
     </program>
     <p>At first glance you may be tempted to think that this algorithm is
-                <math>O(n)</math>, since there is one simple iteration to compare the <em>n</em>
+                <m>O(n)</m>, since there is one simple iteration to compare the <em>n</em>
                 characters after the sorting process. However, the two calls to the
                 Python <c>sort</c> method are not without their own cost. As we will see in
-                Chapter 5, sorting is typically either <math>O(n^{2})</math> or
-                <math>O(n\log n)</math>, so the sorting operations dominate the iteration.
+                Chapter 5, sorting is typically either <m>O(n^{2})</m> or
+                <m>O(n\log n)</m>, so the sorting operations dominate the iteration.
                 In the end, this algorithm will have the same order of magnitude as that
                 of the sorting process.</p>
   </subsection>
@@ -116,16 +116,16 @@ print(anagram_solution_2("abcd", "dcda"))  # expected: False
                 simply generate a list of all possible strings using the characters from
                 <c>s1</c> and then see if <c>s2</c> occurs. However, there is a problem
                 with this approach. When generating all possible strings from <c>s1</c>,
-                there are <em>n</em> possible first characters, <math>n - 1</math> possible
-                characters for the second position, <math>n - 2</math> for the third, and so
+                there are <em>n</em> possible first characters, <m>n - 1</m> possible
+                characters for the second position, <m>n - 2</m> for the third, and so
                 on. The total number of candidate strings is
-                <math>n \cdot (n - 1) \cdot (n - 2) \cdot ... \cdot 3 \cdot 2 \cdot 1</math>,
-                which is <math>n!</math>. Although some
+                <m>n \cdot (n - 1) \cdot (n - 2) \cdot ... \cdot 3 \cdot 2 \cdot 1</m>,
+                which is <m>n!</m>. Although some
                 of the strings may be duplicates, the program cannot know this ahead of
-                time and so it will still generate <math>n!</math> different strings.</p>
-    <p>It turns out that <math>n!</math> grows even faster than <math>2^{n}</math> as
+                time and so it will still generate <m>n!</m> different strings.</p>
+    <p>It turns out that <m>n!</m> grows even faster than <m>2^{n}</m> as
                 <em>n</em> gets large. In fact, if <c>s1</c> were 20 characters long, there would
-                be <math>20! = 2,432,902,008,176,640,000</math> possible candidate strings.
+                be <m>20! = 2,432,902,008,176,640,000</m> possible candidate strings.
                 If we processed one possibility every second, it would still take us
                 77,146,816,596 years to go through the entire list. This is probably not
                 going to be a good solution.</p>
@@ -176,7 +176,7 @@ print(anagram_solution_4("abcd", "dcda"))  # expected: False
                 to count the characters are both based on <em>n</em>. The third iteration,
                 comparing the two lists of counts, always takes 26 steps since there are
                 26 possible characters in the strings. Adding it all up gives us
-                <math>T(n)=2n+26</math> steps. That is <math>O(n)</math>. We have found a
+                <m>T(n)=2n+26</m> steps. That is <m>O(n)</m>. We have found a
                 linear order of magnitude algorithm for solving this problem.</p>
     <p>Before leaving this example, we need to say something about space
                 requirements. Although the last solution was able to run in linear time,

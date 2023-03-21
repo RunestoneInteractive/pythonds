@@ -32,19 +32,19 @@
     </li>
   </dl>
   <p>With those definitions in hand, we can formally define a graph. A graph
-            can be represented by <math>G</math> where <math>G =(V,E)</math>. For the
-            graph <math>G</math>, <math>V</math> is a set of vertices and <math>E</math> is a
-            set of edges. Each edge is a tuple <math>(v, w)</math> where
-            <math>v, w \in V</math>. We can add a third component to the edge tuple to
-            represent a weight. A subgraph <math>s</math> is a set of edges <math>e</math>
-            and vertices <math>v</math> such that <math>e \subset E</math> and
-            <math>v \subset V</math>.</p>
+            can be represented by <m>G</m> where <m>G =(V,E)</m>. For the
+            graph <m>G</m>, <m>V</m> is a set of vertices and <m>E</m> is a
+            set of edges. Each edge is a tuple <m>(v, w)</m> where
+            <m>v, w \in V</m>. We can add a third component to the edge tuple to
+            represent a weight. A subgraph <m>s</m> is a set of edges <m>e</m>
+            and vertices <m>v</m> such that <m>e \subset E</m> and
+            <m>v \subset V</m>.</p>
   <p><xref ref="i188_id1fig-dgsimple"/> shows another example of a simple weighted
             digraph. Formally we can represent this graph as the set of six
             vertices:</p>
-  <math_block docname="Graphs/VocabularyandDefinitions" label="True" nowrap="False" number="True" xml:space="preserve">V = \left\{ v_0, v_1, v_2, v_3, v_4, v_5 \right\}</math_block>
+  <math_block docname="Graphs/VocabularyandDefinitions"  nowrap="False" number="True" xml:space="preserve">V = \left\{ v_0, v_1, v_2, v_3, v_4, v_5 \right\}</math_block>
   <p>and the set of nine edges:</p>
-  <math_block docname="Graphs/VocabularyandDefinitions" label="True" nowrap="False" number="True" xml:space="preserve">E = \left\{ \begin{array}{l}(v_0, v_1, 5), (v_1, v_2, 4), (v_2, v_3, 9), \\
+  <math_block docname="Graphs/VocabularyandDefinitions"  nowrap="False" number="True" xml:space="preserve">E = \left\{ \begin{array}{l}(v_0, v_1, 5), (v_1, v_2, 4), (v_2, v_3, 9), \\
                              (v_3, v_4, 7), (v_4, v_0, 1), (v_0, v_5, 2), \\
                              (v_5, v_4, 8), (v_3, v_5, 3), (v_5, v_2, 1)
              \end{array} \right\}</math_block>
@@ -59,20 +59,20 @@
       <title>Path</title>
       <p>A <term>path</term> in a graph is a sequence of vertices that are connected by
                         edges. Formally we would define a path as
-                        <math>w_1, w_2, ..., w_n</math> such that
-                        <math>(w_i, w_{i+1}) \in E</math> for all <math>1 \le i \le n-1</math>.
+                        <m>w_1, w_2, ..., w_n</m> such that
+                        <m>(w_i, w_{i+1}) \in E</m> for all <m>1 \le i \le n-1</m>.
                         The unweighted path length is the number of edges in the path,
-                        specifically <math>n-1</math>. The weighted path length is the sum of
+                        specifically <m>n-1</m>. The weighted path length is the sum of
                         the weights of all the edges in the path. For example in
-                        <xref ref="i188_id1fig-dgsimple"/> the path from <math>v_3</math> to <math>v_1</math> is
-                        the sequence of vertices <math>(v_3, v_4, v_0, v_1)</math>. The edges are
-                        <math>\left\{(v_3, v_4, 7), (v_4, v_0, 1), (v_0, v_1, 5) \right\}</math>.</p>
+                        <xref ref="i188_id1fig-dgsimple"/> the path from <m>v_3</m> to <m>v_1</m> is
+                        the sequence of vertices <m>(v_3, v_4, v_0, v_1)</m>. The edges are
+                        <m>\left\{(v_3, v_4, 7), (v_4, v_0, 1), (v_0, v_1, 5) \right\}</m>.</p>
     </li>
     <li>
       <title>Cycle</title>
       <p>A <term>cycle</term> in a directed graph is a path that starts and ends at the
                         same vertex. For example, in <xref ref="i188_id1fig-dgsimple"/> the path
-                        <math>(v_5, v_2, v_3, v_5)</math> is a cycle. A graph with no cycles is called
+                        <m>(v_5, v_2, v_3, v_5)</m> is a cycle. A graph with no cycles is called
                         an <term>acyclic graph</term>. A directed graph with no cycles is called a
                         <term>directed acyclic graph</term> or a <term>DAG</term>. We will see that we can
                         solve several important problems if the problem can be represented

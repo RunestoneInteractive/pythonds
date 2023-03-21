@@ -7,7 +7,7 @@
             knowing that a list was ordered, we could search in logarithmic time
             using a binary search. In this section we will attempt to go one step
             further by building a data structure that can be searched in
-            <math>O(1)</math> time. This concept is referred to as <term>hashing</term>.</p>
+            <m>O(1)</m> time. This concept is referred to as <term>hashing</term>.</p>
   <p>In order to do this, we will need to know even more about where the
             items might be when we go to look for them in the collection. If every
             item is where it should be, then the search can use a single comparison
@@ -20,8 +20,8 @@
             named 1, a slot named 2, and so on. Initially, the hash table contains
             no items so every slot is empty. We can implement a hash table by using
             a list with each element initialized to the special Python value
-            <c>None</c>. <xref ref="i17_id1fig-hashtable1"/> shows a hash table of size <math>m = 11</math>.
-            In other words, there are <math>m</math> slots in the table, named 0 through 10.</p>
+            <c>None</c>. <xref ref="i17_id1fig-hashtable1"/> shows a hash table of size <m>m = 11</m>.
+            In other words, there are <m>m</m> slots in the table, named 0 through 10.</p>
   <figure align="center" xml:id="i17_id1fig-hashtable1">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Hash Table with 11 Empty Slots</caption>
     <image source="SortSearch/Figures/hashtable.png" width="50%"/>
@@ -29,15 +29,15 @@
   <p>The mapping between an item and the slot where that item belongs in the
             hash table is called the <term>hash function</term>. The hash function will take
             any item in the collection and return an integer in the range of slot
-            names between 0 and <math>m - 1</math>. Assume that we have the set of integer items
+            names between 0 and <m>m - 1</m>. Assume that we have the set of integer items
             54, 26, 93, 17, 77, and 31. Our first hash function, sometimes referred
             to as the <em>remainder method</em>, simply takes an item and divides it by the
             table size, returning the remainder as its hash value
-            (<math>h(item)=item \% 11</math>). <xref ref="sort-search_sort-search_tbl-hashvalues1"/> gives all of the
+            (<m>h(item)=item \% 11</m>). <xref ref="sort-search_sort-search_tbl-hashvalues1"/> gives all of the
             hash values for our example items. Note that this remainder method
             (modulo) will typically be present in some form in all hash
             functions since the result must be in the range of slot names.</p>
-  <table xml:id="sort-search_id2">
+  <table xml:id="sort-search_tbl-hashvalues1">
     <tabular>
       <title>
         <term>Table 4: Simple Hash Function Using Remainders</term>
@@ -104,22 +104,22 @@
             the hash table at the designated position as shown in
             <xref ref="fig-hashtable2"/>. Note that 6 of the 11 slots are now occupied. This
             is referred to as the <term>load factor</term>, and is commonly denoted by
-            <math>\lambda = \frac {number\_of\_items}{table\_size}</math>. For this example,
-            <math>\lambda = \frac {6}{11}</math>.</p>
+            <m>\lambda = \frac {number\_of\_items}{table\_size}</m>. For this example,
+            <m>\lambda = \frac {6}{11}</m>.</p>
   <figure align="center" xml:id="file_90_id3">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: Hash Table with Six Items</caption>
     <image source="SortSearch/Figures/hashtable2.png" width="50%"/>
   </figure>
   <p>Now when we want to search for an item, we simply use the hash function
             to compute the slot name for the item and then check the hash table to
-            see if it is present. This searching operation is <math>O(1)</math> since
+            see if it is present. This searching operation is <m>O(1)</m> since
             a constant amount of time is required to compute the hash value and then
             index the hash table at that location. If everything is where it should
             be, we have found a constant time search algorithm.</p>
   <p>You can probably already see that this technique is going to work only
             if each item maps to a unique location in the hash table. For example,
             if the item 44 had been the next item in our collection, it would have a
-            hash value of 0 (<math>44\ \%\ 11 = 0</math>). Since 77 also had a hash
+            hash value of 0 (<m>44\ \%\ 11 = 0</m>). Since 77 also had a hash
             value of 0, we would have a problem. According to the hash function, two
             or more items would need to be in the same slot. This is referred to as
             a <term>collision</term> (it may also be called a <em>clash</em>). Clearly, collisions
@@ -151,22 +151,22 @@
                 equal size). These pieces are then added together to give the resulting
                 hash value. For example, if our item was the phone number 436-555-4601,
                 we would take the digits and divide them into groups of 2
-                (43, 65, 55, 46, 01). After the addition, <math>43 + 65 + 55 + 46 + 01</math>, we get
+                (43, 65, 55, 46, 01). After the addition, <m>43 + 65 + 55 + 46 + 01</m>, we get
                 1.   If we assume our hash table has 11 slots, then we need to perform
                 the extra step of dividing by 11 and keeping the remainder. In this case
-                <math>210\ \%\ 11</math> is 1, so the phone number 436-555-4601 hashes to
+                <m>210\ \%\ 11</m> is 1, so the phone number 436-555-4601 hashes to
                 slot 1. Some folding methods go one step further and reverse every other
                 piece before the addition. For the above example, we get
-                <math>43 + 56 + 55 + 64 + 01 = 219</math> which gives <math>219\ \%\ 11 = 10</math>.</p>
+                <m>43 + 56 + 55 + 64 + 01 = 219</m> which gives <m>219\ \%\ 11 = 10</m>.</p>
     <p>Another numerical technique for constructing a hash function is called
                 the <term>mid-square method</term>. We first square the item, and then extract
                 some portion of the resulting digits. For example, if the item were 44,
-                we would first compute <math>44 ^{2} = 1936</math>. By extracting the
+                we would first compute <m>44 ^{2} = 1936</m>. By extracting the
                 middle two digits, 93, and performing the remainder step, we get 5
-                (<math>93\ \%\ 11</math>). <xref ref="sort-search_tbl-hashvalues2"/> shows items under both the
+                (<m>93\ \%\ 11</m>). <xref ref="sort-search_tbl-hashvalues2"/> shows items under both the
                 remainder method and the mid-square method. You should verify that you
                 understand how these values were computed.</p>
-    <table xml:id="sort-search_id4">
+    <table xml:id="sort-search_tbl-hashvalues2">
       <tabular>
         <title>
           <term>Table 5: Comparison of Remainder and Mid-Square Methods</term>
@@ -360,10 +360,10 @@
     </figure>
     <p>The general name for this process of looking for another slot after a
                 collision is <term>rehashing</term>. With simple linear probing, the rehash
-                function is <math>new\_hash = rehash(old\_hash)</math> where
-                <math>rehash(pos) = (pos + 1) \% size</math>. The plus 3 rehash
-                can be defined as <math>rehash(pos) = (pos + 3) \% size</math>. In
-                general, <math>rehash(pos) = (pos + skip) \% size</math>. It is
+                function is <m>new\_hash = rehash(old\_hash)</m> where
+                <m>rehash(pos) = (pos + 1) \% size</m>. The plus 3 rehash
+                can be defined as <m>rehash(pos) = (pos + 3) \% size</m>. In
+                general, <m>rehash(pos) = (pos + skip) \% size</m>. It is
                 important to note that the size of the skip must be such that all the
                 slots in the table will eventually be visited. Otherwise, part of the
                 table will be unused. To ensure this, it is often suggested that the
@@ -372,8 +372,8 @@
     <p>A variation of the linear probing idea is called <term>quadratic probing</term>.
                 Instead of using a constant skip value, we use a rehash function that
                 increments the hash value by 1, 3, 5, 7, 9, and so on. This means that
-                if the first hash value is <math>h</math>, the successive values are <math>h + 1</math>,
-                <math>h + 4</math>, <math>h + 9</math>, <math>h + 16</math>, and so on. In general, the <math>i</math> will be <math>i ^ {2}</math> and <math>rehash(pos) = (h + i ^ {2}) \% size</math>. In other words,
+                if the first hash value is <m>h</m>, the successive values are <m>h + 1</m>,
+                <m>h + 4</m>, <m>h + 9</m>, <m>h + 16</m>, and so on. In general, the <m>i</m> will be <m>i ^ {2}</m> and <m>rehash(pos) = (h + i ^ {2}) \% size</m>. In other words,
                 quadratic probing uses a skip consisting of successive perfect squares.
                 <xref ref="fig-quadratic"/> shows our example values after they are placed using
                 this technique.</p>
@@ -523,7 +523,7 @@
                 supports an efficient search. We could use a list with sequential or
                 binary search, but it would be even better to use a hash table as
                 described above since looking up an item in a hash table can approach
-                <math>O(1)</math> performance.</p>
+                <m>O(1)</m> performance.</p>
     <p>In <xref ref="sort-search_lst-hashtablecodeconstructor"/> we use two lists to create a
                 <c>HashTable</c> class that implements the map abstract data type. One
                 list, called <c>slots</c>, will hold the key items and a parallel list,
@@ -737,16 +737,16 @@ print(h[99])
   <subsection xml:id="sort-search_analysis-of-hashing">
     <title>Analysis of Hashing</title>
     <p>We stated earlier that in the best case hashing would provide an
-                <math>O(1)</math>, constant time search technique. However, due to
+                <m>O(1)</m>, constant time search technique. However, due to
                 collisions, the number of comparisons is typically not so simple. Even
                 though a complete analysis of hashing is beyond the scope of this text,
                 we can state some well-known results that approximate the number of
                 comparisons necessary to search for an item.</p>
     <p>The most important piece of information we need to analyze the use of a
-                hash table is the load factor, <math>\lambda</math>. Conceptually, if
-                <math>\lambda</math> is small, then there is a lower chance of collisions,
+                hash table is the load factor, <m>\lambda</m>. Conceptually, if
+                <m>\lambda</m> is small, then there is a lower chance of collisions,
                 meaning that items are more likely to be in the slots where they belong.
-                If <math>\lambda</math> is large, meaning that the table is filling up,
+                If <m>\lambda</m> is large, meaning that the table is filling up,
                 then there are more and more collisions. This means that collision
                 resolution is more difficult, requiring more comparisons to find an
                 empty slot. With chaining, increased collisions means an increased
@@ -754,11 +754,11 @@ print(h[99])
     <p>As before, we will have a result for both a successful and an
                 unsuccessful search. For a successful search using open addressing with
                 linear probing, the average number of comparisons is approximately
-                <math>\frac{1}{2}\left(1+\frac{1}{1-\lambda}\right)</math> and an
+                <m>\frac{1}{2}\left(1+\frac{1}{1-\lambda}\right)</m> and an
                 unsuccessful search gives
-                <math>\frac{1}{2}\left(1+\left(\frac{1}{1-\lambda}\right)^2\right)</math>
+                <m>\frac{1}{2}\left(1+\left(\frac{1}{1-\lambda}\right)^2\right)</m>
                 If we are using chaining, the average number of comparisons is
-                <math>1 + \frac {\lambda}{2}</math> for the successful case, and simply
-                <math>\lambda</math> comparisons if the search is unsuccessful.</p>
+                <m>1 + \frac {\lambda}{2}</m> for the successful case, and simply
+                <m>\lambda</m> comparisons if the search is unsuccessful.</p>
   </subsection>
 </section>

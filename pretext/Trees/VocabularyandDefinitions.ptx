@@ -28,7 +28,7 @@
       <title>Path</title>
       <p>A <term>path</term> is an ordered list of nodes that are connected by edges, for
                         example,
-                        Mammalia <math>\rightarrow</math> Carnivora <math>\rightarrow</math> Felidae <math>\rightarrow</math> <em>Felis</em> <math>\rightarrow</math> <em>catus</em>
+                        Mammalia <m>\rightarrow</m> Carnivora <m>\rightarrow</m> Felidae <m>\rightarrow</m> <em>Felis</em> <m>\rightarrow</m> <em>catus</em>
                         is a path.</p>
     </li>
     <li>
@@ -61,8 +61,8 @@
     </li>
     <li>
       <title>Level</title>
-      <p>The <term>level</term> of a node <math>n</math> is the number of edges on the path
-                        from the root node to <math>n</math>. For example, the level of the
+      <p>The <term>level</term> of a node <m>n</m> is the number of edges on the path
+                        from the root node to <m>n</m>. For example, the level of the
                         Felis node in <xref ref="trees_examplesof-trees"/> is five. By definition, the level
                         of the root node is zero.</p>
     </li>
@@ -84,9 +84,9 @@
         <p>One node of the tree is designated as the root node.</p>
       </li>
       <li>
-        <p>Every node <math>n</math>, except the root node, is connected by an edge
-                    from exactly one other node <math>p</math>, where <math>p</math> is the
-                    parent of <math>n</math>.</p>
+        <p>Every node <m>n</m>, except the root node, is connected by an edge
+                    from exactly one other node <m>p</m>, where <m>p</m> is the
+                    parent of <m>n</m>.</p>
       </li>
       <li>
         <p>A unique path traverses from the root to each node.</p>

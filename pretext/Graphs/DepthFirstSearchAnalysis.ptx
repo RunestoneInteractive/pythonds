@@ -2,12 +2,12 @@
 <section xml:id="graphs_depth-first-search-analysis">
   <title>Depth-First Search Analysis</title>
   <p>The general running time for depth-first search is as follows. The loops
-            in <c>dfs</c> both run in <math>O(|V|)</math>,
+            in <c>dfs</c> both run in <m>O(|V|)</m>,
             not counting what happens in <c>dfs_visit</c>, since they are executed once
             for each vertex in the graph. In <c>dfs_visit</c> the loop is executed once
             for each edge in the adjacency list of the current vertex.
             Since <c>dfs_visit</c> is only called
             recursively if the vertex is white, the loop will execute a maximum of
-            once for every edge in the graph, or <math>O(|E|)</math>. Therefore, the total time
-            for depth-first search is <math>O(|V| + |E|)</math>.</p>
+            once for every edge in the graph, or <m>O(|E|)</m>. Therefore, the total time
+            for depth-first search is <m>O(|V| + |E|)</m>.</p>
 </section>

@@ -59,7 +59,7 @@
             the operators moved and now appear either before or after their
             respective operands, the order of the operands stayed exactly the same
             relative to one another.</p>
-  <table xml:id="basic-ds_id1">
+  <table xml:id="basic-ds_tbl-example1">
     <tabular>
       <title>
         <term>Table 2: Examples of Infix, Prefix, and Postfix Expressions</term>
@@ -450,7 +450,7 @@ print(infix_to_postfix("( A + B ) * C - ( D - E ) * ( F + G )"))
                 order since postfix changes only the placement of operators. When the
                 operands for the division are popped from the stack, they are reversed.
                 Since division is <em>not</em> a commutative operator, in other words
-                <math>15/5</math> is not the same as <math>5/15</math>, we must be sure that
+                <m>15/5</m> is not the same as <m>5/15</m>, we must be sure that
                 the order of the operands is not switched.</p>
     <figure align="center" xml:id="file_116_id9">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 11: A More Complex Example of Evaluation</caption>

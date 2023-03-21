@@ -41,7 +41,7 @@
             amount minus ten cents, and so on. So the number of coins needed to make
             change for the original amount can be computed according to the
             following:</p>
-  <math_block docname="Recursion/DynamicProgramming" label="True" nowrap="False" number="True" xml:space="preserve">   num\_coins =
+  <math_block docname="Recursion/DynamicProgramming"  nowrap="False" number="True" xml:space="preserve">   num\_coins =
 min
 \begin{cases}
 1 + num\_coins(original\ amount - 1) \\
@@ -165,15 +165,15 @@ print(make_change_2([1, 5, 10, 25], 63, [0] * 64))
     <ol marker="1">
       <li>
         <p>A penny plus the minimum number of coins to make change for
-                    <math>11-1 = 10</math> cents (1)</p>
+                    <m>11-1 = 10</m> cents (1)</p>
       </li>
       <li>
         <p>A nickel plus the minimum number of coins to make change for
-                    <math>11 - 5 = 6</math> cents (2)</p>
+                    <m>11 - 5 = 6</m> cents (2)</p>
       </li>
       <li>
         <p>A dime plus the minimum number of coins to make change for
-                    <math>11 - 10 = 1</math> cent (1)</p>
+                    <m>11 - 10 = 1</m> cent (1)</p>
       </li>
     </ol>
   </p>
@@ -238,7 +238,7 @@ def make_change_3(coin_value_list, change, min_coins):
             position in the list.</p>
   <p>Notice that the coins we print out come directly from the <c>coins_used</c>
             array. For the first call we start at array position 63 and print 21.
-            Then we take <math>63 - 21 = 42</math> and look at the 42nd element of the
+            Then we take <m>63 - 21 = 42</m> and look at the 42nd element of the
             list. Once again we find a 21 stored there. Finally, element 21 of the
             array also contains 21, giving us the three 21 cent pieces.</p>
   <program xml:id="lst_dpremember" interactive="activecode" language="python">

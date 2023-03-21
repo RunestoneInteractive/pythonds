@@ -97,18 +97,18 @@
                 Line&#xA0;<url href="#lst_simplematcher:line_patternended" visual="#lst_simplematcher:line_patternended">[lst_simplematcher:line_patternended]</url>
                 checks to see if every character in the pattern has been processed. If
                 so, a match has been found and we return its starting index.</p>
-    <p>If we assume that the length of the text is <math>n</math> characters and the
-                length of the pattern is <math>m</math> characters, then it is easy to see
-                that the complexity of this approach is <math>O(nm)</math>. For each of the
-                <math>n</math> characters we may have to compare against almost all <math>m</math>
-                of the pattern characters. This is not so bad if the size of <math>n</math>
-                and <math>m</math> are small. However, if we are considering thousands (or
+    <p>If we assume that the length of the text is <m>n</m> characters and the
+                length of the pattern is <m>m</m> characters, then it is easy to see
+                that the complexity of this approach is <m>O(nm)</m>. For each of the
+                <m>n</m> characters we may have to compare against almost all <m>m</m>
+                of the pattern characters. This is not so bad if the size of <m>n</m>
+                and <m>m</m> are small. However, if we are considering thousands (or
                 perhaps millions) of characters in our text in addition a large
                 pattern, it will be necessary to look for a better approach.</p>
   </subsection>
   <subsection xml:id="advanced_using-graphs-finite-state-automata">
     <title>Using Graphs: Finite State Automata</title>
-    <p>It is possible to create an <math>O(n)</math> pattern matcher if we are
+    <p>It is possible to create an <m>O(n)</m> pattern matcher if we are
                 willing to do some preprocessing with the pattern. One approach is to
                 build what is known as a <term>deterministic finite automaton</term>, or <term>DFA</term>,
                 that represents the pattern as a graph. Each vertex of the <term>DFA graph</term>
@@ -154,7 +154,7 @@
       <image source="Advanced/Figures/steptable.png" width="50%" alt="A Trace of the DFA Pattern Matcher" height="2.75in"/>
     </figure>
     <p>Since every character from the text is used once as input to the DFA
-                graph, the complexity of this approach is <math>O(n)</math>. However, we need
+                graph, the complexity of this approach is <m>O(n)</m>. However, we need
                 to take into account the preprocessing step that builds the DFA. There
                 are many well-known algorithms for producing a DFA graph from a pattern.
                 Unfortunately, all of them are quite complex mostly due to the fact that
@@ -261,8 +261,8 @@
                 The method begins by augmenting the pattern so that the indices on the
                 characters match the vertex labels in the KMP graph. Since the initial
                 state is state 0, we have used the <c>'0'</c> symbol as a placeholder. Now the
-                characters 1 to <math>m</math> in the augmented pattern correspond directly
-                with the states 1 to <math>m</math> in the graph.</p>
+                characters 1 to <m>m</m> in the augmented pattern correspond directly
+                with the states 1 to <m>m</m> in the graph.</p>
     <p>Line&#xA0;<url href="#lst_mismatchedlinks:line_initdict" visual="#lst_mismatchedlinks:line_initdict">[lst_mismatchedlinks:line_initdict]</url>
                 creates the first dictionary entry, which is always a transition from
                 vertex 1 back to the initial state where a new character is
@@ -288,7 +288,7 @@
       <image source="Advanced/Figures/steptable2.png" width="50%" alt="A Trace of the KMP Pattern Matcher" height="3in"/>
     </figure>
     <p>As with the DFA graph from the previous section, KMP pattern matching is
-                <math>O(n)</math> since we process each character of the text string.
+                <m>O(n)</m> since we process each character of the text string.
                 However, the KMP graph is much easier to construct and requires much
                 less storage as there are only two transitions from every vertex.</p>
   </subsection>

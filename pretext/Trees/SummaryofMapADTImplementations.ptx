@@ -34,16 +34,16 @@
           <c>put</c>
         </cell>
         <cell>
-          <math>O(n)</math>
+          <m>O(n)</m>
         </cell>
         <cell>
-          <math>O(1)</math>
+          <m>O(1)</m>
         </cell>
         <cell>
-          <math>O(n)</math>
+          <m>O(n)</m>
         </cell>
         <cell>
-          <math>O(\log_2{n})</math>
+          <m>O(\log_2{n})</m>
         </cell>
       </row>
       <row>
@@ -51,16 +51,16 @@
           <c>get</c>
         </cell>
         <cell>
-          <math>O(\log_2{n})</math>
+          <m>O(\log_2{n})</m>
         </cell>
         <cell>
-          <math>O(1)</math>
+          <m>O(1)</m>
         </cell>
         <cell>
-          <math>O(n)</math>
+          <m>O(n)</m>
         </cell>
         <cell>
-          <math>O(\log_2{n})</math>
+          <m>O(\log_2{n})</m>
         </cell>
       </row>
       <row>
@@ -68,16 +68,16 @@
           <c>in</c>
         </cell>
         <cell>
-          <math>O(\log_2{n})</math>
+          <m>O(\log_2{n})</m>
         </cell>
         <cell>
-          <math>O(1)</math>
+          <m>O(1)</m>
         </cell>
         <cell>
-          <math>O(n)</math>
+          <m>O(n)</m>
         </cell>
         <cell>
-          <math>O(\log_2{n})</math>
+          <m>O(\log_2{n})</m>
         </cell>
       </row>
       <row>
@@ -85,16 +85,16 @@
           <c>del</c>
         </cell>
         <cell>
-          <math>O(n)</math>
+          <m>O(n)</m>
         </cell>
         <cell>
-          <math>O(1)</math>
+          <m>O(1)</m>
         </cell>
         <cell>
-          <math>O(n)</math>
+          <m>O(n)</m>
         </cell>
         <cell>
-          <math>O(\log_2{n})</math>
+          <m>O(\log_2{n})</m>
         </cell>
       </row>
     </tabular>

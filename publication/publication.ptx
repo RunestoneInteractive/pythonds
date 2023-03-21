@@ -4,4 +4,7 @@
     <source>
         <directories external="../assets" generated="../generated-assets"/>
     </source>
+    <html>
+    <css style="oscarlevin" colors="blue_red" toc="crc" banner="crc" navbar="crc" shell="crc"/>
+    </html>
 </publication>

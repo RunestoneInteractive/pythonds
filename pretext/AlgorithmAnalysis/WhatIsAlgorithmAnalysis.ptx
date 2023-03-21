@@ -159,7 +159,7 @@ Sum is 500000500000 required  0.1646299 seconds
             previous experiment.</p>
   <p>Now consider <xref ref="lst-sum3"/>, which shows a different means of solving
             the summation problem. This function, <c>sum_of_n_3</c>, takes advantage of a
-            closed equation <math>\sum_{i=1}^{n} i = \frac {(n)(n+1)}{2}</math> to
+            closed equation <m>\sum_{i=1}^{n} i = \frac {(n)(n+1)}{2}</m> to
             compute the sum of the first <c>n</c> integers without iterating.</p>
   <program xml:id="active3" interactive="activecode" language="python">
     <input>

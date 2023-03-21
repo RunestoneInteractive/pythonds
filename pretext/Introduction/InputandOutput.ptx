@@ -144,7 +144,7 @@ Hello World***&gt;&gt;&gt;</pre>
             <c>g</c>
           </cell>
           <cell>
-                                Use <c>%e</c> for exponents less than <math>-4</math> or greater than <math>+5</math>, otherwise use <c>%f</c>
+                                Use <c>%e</c> for exponents less than <m>-4</m> or greater than <m>+5</m>, otherwise use <c>%f</c>
                             </cell>
         </row>
         <row>

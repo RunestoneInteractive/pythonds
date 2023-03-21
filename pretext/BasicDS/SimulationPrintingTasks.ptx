@@ -41,7 +41,7 @@
             this is to consider the ratio of tasks to time. Twenty tasks per hour
             means that on average there will be one task every 180 seconds:</p>
   <p>
-    <math>\frac {20\ tasks}{1\ hour} \times \frac {1\ hour}  {60\ minutes} \times \frac {1\ minute} {60\ seconds}=\frac {1\ task} {180\ seconds}</math>
+    <m>\frac {20\ tasks}{1\ hour} \times \frac {1\ hour}  {60\ minutes} \times \frac {1\ minute} {60\ seconds}=\frac {1\ task} {180\ seconds}</m>
   </p>
   <p>For every second we can simulate the chance that a print task occurs by
             generating a random number between 1 and 180 inclusive. If the number is

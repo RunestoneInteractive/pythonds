@@ -35,7 +35,7 @@
             results of a sequence of queue operations. The queue contents are shown
             such that the front is on the right. The first item enqueued was <c>4</c> so it
             is the first item returned by <c>dequeue</c>.</p>
-  <table xml:id="basic-ds_id1">
+  <table xml:id="basic-ds_tbl-queueoperations">
     <tabular>
       <title>
         <term>Table 5: Example Queue Operations</term>

@@ -55,34 +55,34 @@ def dijkstra(graph, start):
             and thus the vertex is moved toward the front of the queue.</p>
   <p>Let's walk through an application of Dijkstra's algorithm one vertex at
             a time using the following sequence of figures as our guide. We begin with the vertex
-            <math>u</math>. The three vertices adjacent to <math>u</math> are
-            <math>v, w,</math> and <math>x</math>. Since the initial distances to
-            <math>v, w,</math> and <math>x</math> are all initialized to <c>sys.maxsize</c>,
+            <m>u</m>. The three vertices adjacent to <m>u</m> are
+            <m>v, w,</m> and <m>x</m>. Since the initial distances to
+            <m>v, w,</m> and <m>x</m> are all initialized to <c>sys.maxsize</c>,
             the new costs to get to them through the start node are all their direct
             costs. So we update the costs to each of these three nodes. We also set
-            the predecessor for each node to <math>u</math> and we add each node to the
+            the predecessor for each node to <m>u</m> and we add each node to the
             priority queue. We use the distance as the key for the priority queue.
             The state of the algorithm is shown in <xref ref="i189_id1fig-dija"/>.</p>
   <p>In the next iteration of the <c>while</c> loop we examine the vertices that
-            are adjacent to <math>x</math>. The vertex <math>x</math> is next because it
+            are adjacent to <m>x</m>. The vertex <m>x</m> is next because it
             has the lowest overall cost and therefore bubbled its way to the
-            beginning of the priority queue. At <math>x</math> we look at its neighbors
-            <math>u, v, w,</math> and <math>y</math>. For each neighboring vertex we check to
-            see if the distance to that vertex through <math>x</math> is smaller than
+            beginning of the priority queue. At <m>x</m> we look at its neighbors
+            <m>u, v, w,</m> and <m>y</m>. For each neighboring vertex we check to
+            see if the distance to that vertex through <m>x</m> is smaller than
             the previously known distance. Obviously this is the case for
-            <math>y</math> since its distance was <c>sys.maxsize</c>. It is not the case
-            for <math>u</math> or <math>v</math> since their distances are 0 and 2
-            respectively. However, we now learn that the distance to <math>w</math> is
-            smaller if we go through <math>x</math> than from <math>u</math> directly to
-            <math>w</math>. Since that is the case we update <math>w</math> with a new
-            distance and change the predecessor for <math>w</math> from <math>u</math> to
-            <math>x</math>. See <xref ref="i189_id2fig-dijb"/> for the state of all the vertices.</p>
-  <p>The next step is to look at the vertices neighboring <math>v</math> (see <xref ref="fig-dijc"/>). This
+            <m>y</m> since its distance was <c>sys.maxsize</c>. It is not the case
+            for <m>u</m> or <m>v</m> since their distances are 0 and 2
+            respectively. However, we now learn that the distance to <m>w</m> is
+            smaller if we go through <m>x</m> than from <m>u</m> directly to
+            <m>w</m>. Since that is the case we update <m>w</m> with a new
+            distance and change the predecessor for <m>w</m> from <m>u</m> to
+            <m>x</m>. See <xref ref="i189_id2fig-dijb"/> for the state of all the vertices.</p>
+  <p>The next step is to look at the vertices neighboring <m>v</m> (see <xref ref="fig-dijc"/>). This
             step results in no changes to the graph, so we move on to node
-            <math>y</math>. At node <math>y</math> (see <xref ref="fig-dijd"/>) we discover that it is cheaper to get
-            to both <math>w</math> and <math>z</math>, so we adjust the distances and
-            predecessor links accordingly. Finally we check nodes <math>w</math> and
-            <math>z</math> (see <xref ref="fig-dije"/> and <xref ref="fig-dijf"/>). However, no additional changes are found and so the
+            <m>y</m>. At node <m>y</m> (see <xref ref="fig-dijd"/>) we discover that it is cheaper to get
+            to both <m>w</m> and <m>z</m>, so we adjust the distances and
+            predecessor links accordingly. Finally we check nodes <m>w</m> and
+            <m>z</m> (see <xref ref="fig-dije"/> and <xref ref="fig-dijf"/>). However, no additional changes are found and so the
             priority queue is empty and Dijkstra's algorithm exits.</p>
   <figure align="center" xml:id="i189_id1fig-dija">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: Tracing Dijkstra's Algorithm</caption>

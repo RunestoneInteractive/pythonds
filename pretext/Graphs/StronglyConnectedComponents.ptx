@@ -30,10 +30,10 @@
   <p>One graph algorithm that can help find clusters of highly interconnected
             vertices in a graph is called the <term>strongly connected components</term>
             algorithm, or <term>SCC</term>. We formally define a strongly connected
-            component, <math>C</math>, of a graph <math>G</math>, as the largest subset
-            of vertices <math>C \subset V</math> such that for every pair of vertices
-            <math>v, w \in C</math> we have a path from <math>v</math> to <math>w</math> and
-            a path from <math>w</math> to <math>v</math>. <xref ref="i194_id2fig-scc1"/> shows a simple
+            component, <m>C</m>, of a graph <m>G</m>, as the largest subset
+            of vertices <m>C \subset V</m> such that for every pair of vertices
+            <m>v, w \in C</m> we have a path from <m>v</m> to <m>w</m> and
+            a path from <m>w</m> to <m>v</m>. <xref ref="i194_id2fig-scc1"/> shows a simple
             graph with three strongly connected components that are identified by the different shaded areas.</p>
   <figure align="center" xml:id="i194_id2fig-scc1">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 31: A Directed Graph with Three Strongly Connected Components</caption>
@@ -50,17 +50,17 @@
   <p>Once again we will see that we can create a very powerful and efficient
             algorithm by making use of a depth-first search. Before we tackle the
             main SCC algorithm we must look at one other definition. The
-            transposition of a graph <math>G</math> is defined as the graph
-            <math>G^T</math> where all the edges in the graph have been reversed. That
+            transposition of a graph <m>G</m> is defined as the graph
+            <m>G^T</m> where all the edges in the graph have been reversed. That
             is, if there is a directed edge from node A to node B in the original
-            graph, then <math>G^T</math> will contain an edge from node B to node A.
+            graph, then <m>G^T</m> will contain an edge from node B to node A.
             <xref ref="fig-tpa"/> and <xref ref="fig-tpb"/> show a simple graph and its transposition.</p>
   <figure align="center" xml:id="fig-tpa">
-    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 33: A Graph <math>G</math></caption>
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 33: A Graph <m>G</m></caption>
     <image source="Graphs/Figures/transpose1.png" width="50%"/>
   </figure>
   <figure align="center" xml:id="fig-tbp">
-    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 34: The Transposition of <math>G</math>, <math>G^T</math></caption>
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 34: The Transposition of <m>G</m>, <m>G^T</m></caption>
     <image source="Graphs/Figures/transpose2.png" width="50%"/>
   </figure>
   <p>Look at the figures again. Notice that the graph in
@@ -72,14 +72,14 @@
   <p>
     <ol marker="1">
       <li>
-        <p>Call <c>dfs</c> for the graph <math>G</math> to compute the closing times
+        <p>Call <c>dfs</c> for the graph <m>G</m> to compute the closing times
                     for each vertex.</p>
       </li>
       <li>
-        <p>Compute <math>G^T</math>.</p>
+        <p>Compute <m>G^T</m>.</p>
       </li>
       <li>
-        <p>Call <c>dfs</c> for the graph <math>G^T</math> but in the main loop of DFS
+        <p>Call <c>dfs</c> for the graph <m>G^T</m> but in the main loop of DFS
                     explore each vertex in decreasing order of closing time.</p>
       </li>
       <li>
@@ -95,11 +95,11 @@
             <xref ref="fig-sccalgb"/> shows the starting and closing times computed by
             running DFS on the transposed graph.</p>
   <figure align="center" xml:id="file_152_id6">
-    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 35: Finishing Times for the Original Graph <math>G</math></caption>
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 35: Finishing Times for the Original Graph <m>G</m></caption>
     <image source="Graphs/Figures/scc1a.png" width="50%"/>
   </figure>
   <figure align="center" xml:id="file_152_id7">
-    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 36: Finishing Times for <math>G^T</math></caption>
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 36: Finishing Times for <m>G^T</m></caption>
     <image source="Graphs/Figures/scc1b.png" width="50%"/>
   </figure>
   <p>Finally, <xref ref="fig-sccforest"/> shows the forest of three trees produced

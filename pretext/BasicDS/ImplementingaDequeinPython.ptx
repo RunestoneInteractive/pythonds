@@ -99,8 +99,8 @@ print(d.remove_front())
   </program>
   <p>You can see many similarities to Python code already described for
             stacks and queues. You are also likely to observe that in this
-            implementation adding and removing items from the front is <math>O(1)</math> whereas
-            adding and removing from the rear is <math>O(n)</math>. This is to be expected given
+            implementation adding and removing items from the front is <m>O(1)</m> whereas
+            adding and removing from the rear is <m>O(n)</m>. This is to be expected given
             the common operations that appear for adding and removing items. Again,
             the important thing is to be certain that we know where the front and
             rear are assigned in the implementation.</p>

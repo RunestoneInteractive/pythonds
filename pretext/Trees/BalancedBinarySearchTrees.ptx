@@ -2,7 +2,7 @@
         <title>Balanced Binary Search Trees</title>
         <p>In the previous section we looked at building a binary search tree. As
             we learned, the performance of the binary search tree can degrade to
-            <math>O(n)</math> for operations like <c>get</c> and <c>put</c> when the tree
+            <m>O(n)</m> for operations like <c>get</c> and <c>put</c> when the tree
             becomes unbalanced. In this section we will look at a special kind of
             binary search tree that automatically makes sure that the tree remains
             balanced at all times. This tree is called an <term>AVL tree</term> and is named
@@ -14,7 +14,7 @@
             and right subtrees for each node. More formally, we define the balance
             factor for a node as the difference between the height of the left
             subtree and the height of the right subtree.</p>
-        <math_block docname="Trees/BalancedBinarySearchTrees" label="True" nowrap="False" number="True" xml:space="preserve">balance\_factor = height(left\_subtree) - height(right\_subtree)</math_block>
+        <math_block docname="Trees/BalancedBinarySearchTrees"  nowrap="False" number="True" xml:space="preserve">balance\_factor = height(left\_subtree) - height(right\_subtree)</math_block>
         <p>Using the definition for balance factor given above, we say that a
             subtree is left-heavy if the balance factor is greater than zero. If the
             balance factor is less than zero, then the subtree is right-heavy. If the

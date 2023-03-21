@@ -11,8 +11,8 @@
             may be faster ways to implement these functions, but each of them has an
             interesting recursive implementation.</p>
   <p>The algorithms in this section make use of Python's modulo operator (%).
-            Remember that <math>a \% b</math> is what is left over after <math>a</math> is
-            divided by <math>b</math>, for example <math>10 \% 7 = 3</math>. When we compute
+            Remember that <m>a \% b</m> is what is left over after <m>a</m> is
+            divided by <m>b</m>, for example <m>10 \% 7 = 3</m>. When we compute
             the result of any mathematical expression modulo 10, the only possible
             results are 0&#x2013;9.</p>
   <p>One of the earliest forms of cryptography used only simple modular
@@ -63,35 +63,35 @@
             of encryption, the RSA <term>public key encryption</term> algorithm.</p>
   <subsection xml:id="advanced_modular-arithmetic-theorems">
     <title>Modular Arithmetic Theorems</title>
-    <p>If two numbers, <math>a</math> and <math>b</math>, give the same remainder when
-                divided by <math>n</math>, we say that <math>a</math> and <math>b</math> are <q>congruent
-                modulo <math>n</math>.</q> In shorthand we write <math>a \equiv~b~\pmod{n}</math>.
+    <p>If two numbers, <m>a</m> and <m>b</m>, give the same remainder when
+                divided by <m>n</m>, we say that <m>a</m> and <m>b</m> are <q>congruent
+                modulo <m>n</m>.</q> In shorthand we write <m>a \equiv~b~\pmod{n}</m>.
                 The algorithms in this section make use of three important theorems:</p>
     <p>
       <ol marker="1">
         <li>
-          <p>If <math>a \equiv b \pmod{n}</math> then
-                        <math>\forall c, a + c \equiv b + c \pmod{n}</math>.</p>
+          <p>If <m>a \equiv b \pmod{n}</m> then
+                        <m>\forall c, a + c \equiv b + c \pmod{n}</m>.</p>
         </li>
         <li>
-          <p>If <math>a \equiv b \pmod{n}</math> then
-                        <math>\forall c, ac \equiv bc \pmod{n}</math>.</p>
+          <p>If <m>a \equiv b \pmod{n}</m> then
+                        <m>\forall c, ac \equiv bc \pmod{n}</m>.</p>
         </li>
         <li>
-          <p>If <math>a \equiv b \pmod{n}</math> then
-                        <math>\forall p, p &gt; 0, a^p \equiv b^p \pmod{n}</math>.</p>
+          <p>If <m>a \equiv b \pmod{n}</m> then
+                        <m>\forall p, p &gt; 0, a^p \equiv b^p \pmod{n}</m>.</p>
         </li>
       </ol>
     </p>
   </subsection>
   <subsection xml:id="advanced_modular-exponentiation">
     <title>Modular Exponentiation</title>
-    <p>Suppose we wanted to know the last digit of <math>3^{1,254,906}</math>. Not
+    <p>Suppose we wanted to know the last digit of <m>3^{1,254,906}</m>. Not
                 only is that a large computation problem, but using Python's
                 arbitrary-precision integers the number has 598,743 digits! All we want to know
                 is the value of the rightmost digit. There are really two problems here.
-                First, how do we compute <math>x^n</math> efficiently? Second, how can we
-                compute <math>x^n \pmod{p}</math> without first calculating all 598,743
+                First, how do we compute <m>x^n</m> efficiently? Second, how can we
+                compute <m>x^n \pmod{p}</m> without first calculating all 598,743
                 digits and then looking at the last one?</p>
     <p>The answer to the second question is easy, given the third theorem from
                 above.</p>
@@ -101,11 +101,11 @@
           <p>Initialize result to 1.</p>
         </li>
         <li>
-          <p>Repeat <math>n</math> times:</p>
+          <p>Repeat <m>n</m> times:</p>
           <p>
             <ol marker="1">
               <li>
-                <p>Multiply result by <math>x</math>.</p>
+                <p>Multiply result by <m>x</m>.</p>
               </li>
               <li>
                 <p>Apply modulo operation to result.</p>
@@ -118,21 +118,21 @@
     <p>The above approach makes the computation simpler because we are keeping
                 the result smaller rather than following it out to its full precision.
                 However, we can do even better using a recursive approach.</p>
-    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">x^n =
+    <math_block docname="Advanced/RecursionRevisited"  nowrap="False" number="True" xml:space="preserve">x^n =
    \begin{cases}
    (x \cdot x)^{ n/2 } &amp; \text{if :math:`n` is even} \\
    (x \cdot x^{n-1}) = x \cdot (x \cdot x)^{\lfloor n/2 \rfloor} &amp; \text{if :math:`n` is odd}
    \end{cases}
    \label{eqn:pow}</math_block>
-    <p>Remember that for a floating point number <math>n</math> the floor operation,
-                <math>\lfloor n \rfloor</math>, results in the largest integer smaller than
-                <math>n</math>. Python's integer division operator returns the floor of the
+    <p>Remember that for a floating point number <m>n</m> the floor operation,
+                <m>\lfloor n \rfloor</m>, results in the largest integer smaller than
+                <m>n</m>. Python's integer division operator returns the floor of the
                 result of the division, so we do not need to do anything special in our
                 code to achieve the results we want. The above equation gives us a very
-                nice recursive definition for computing <math>x^n</math>. All we need now is
-                a base case. Recall that for any number <math>x</math>, <math>x^0 = 1</math>.
+                nice recursive definition for computing <m>x^n</m>. All we need now is
+                a base case. Recall that for any number <m>x</m>, <m>x^0 = 1</m>.
                 Since we are reducing the size of our exponent in each recursive call,
-                checking for the condition <math>n = 0</math> is a good base case.</p>
+                checking for the condition <m>n = 0</m> is a good base case.</p>
     <pre>def modexp(x, n, p):
     if n == 0:
         return 1
@@ -142,7 +142,7 @@
         tmp = (tmp * x) % p
     return tmp</pre>
     <p>Notice that in the above equation both the even and odd cases include a
-                factor of <math>(x \cdot x)^{\lfloor n/2 \rfloor}</math>, so we compute that
+                factor of <m>(x \cdot x)^{\lfloor n/2 \rfloor}</m>, so we compute that
                 unconditionally and store it in the variable <c>tmp</c>. Also note that
                 since we are computing modulo <c>p</c> we still apply the modulo operator
                 at each step of the calculation. The solution in
@@ -151,15 +151,15 @@
   </subsection>
   <subsection xml:id="advanced_the-greatest-common-divisor-and-multiplicative-inverses">
     <title>The Greatest Common Divisor and Multiplicative Inverses</title>
-    <p>A <em>multiplicative inverse</em> of a positive integer <math>x</math> modulo
-                <math>m</math> is any number <math>a</math> such that
-                <math>ax \equiv 1 \pmod{m}</math>. For example, let <math>x = 3</math>,
-                <math>m = 7</math>, and <math>a = 5</math>; <math>3 \times 5 = 15</math> and
-                <math>15\ \%\ 7 = 1</math>, so 5 is a multiplicative inverse of 3 modulo 7.</p>
+    <p>A <em>multiplicative inverse</em> of a positive integer <m>x</m> modulo
+                <m>m</m> is any number <m>a</m> such that
+                <m>ax \equiv 1 \pmod{m}</m>. For example, let <m>x = 3</m>,
+                <m>m = 7</m>, and <m>a = 5</m>; <m>3 \times 5 = 15</m> and
+                <m>15\ \%\ 7 = 1</m>, so 5 is a multiplicative inverse of 3 modulo 7.</p>
     <p>The idea of multiplicative inverses in the world of modulo arithmetic
                 may seem very confusing at first. How did we select 5 in the previous
                 example? Is 5 the only multiplicative inverse of 3 modulo 7? Do all
-                numbers <math>a</math> have a multiplicative inverse for any given <math>m</math>?</p>
+                numbers <m>a</m> have a multiplicative inverse for any given <m>m</m>?</p>
     <p>Let's look at an example that may shed some light on the first question:
                 how did we select 5 as the multiplicative inverse of 3 modulo 7? Look
                 at the following Python session:</p>
@@ -173,36 +173,36 @@
 26
 33</pre>
     <p>This little experiment tells us that there are many multiplicative
-                inverses (modulo 7) for <math>x=3</math> and <math>m = 7</math>, namely
-                <math>5, 12, 19, 26, 33</math>, and so on. Do you notice anything interesting
+                inverses (modulo 7) for <m>x=3</m> and <m>m = 7</m>, namely
+                <m>5, 12, 19, 26, 33</m>, and so on. Do you notice anything interesting
                 about the sequence? Each number in the sequence is two less than a
                 multiple of seven.</p>
-    <p>Do all pairs of numbers <math>x</math> and <math>m</math> have a multiplicative
-                inverse? Let's look at another example. Consider <math>x=4</math> and
-                <math>m=8</math>. Plugging 4 and 8 into the loop in the previous example
+    <p>Do all pairs of numbers <m>x</m> and <m>m</m> have a multiplicative
+                inverse? Let's look at another example. Consider <m>x=4</m> and
+                <m>m=8</m>. Plugging 4 and 8 into the loop in the previous example
                 gives us no output. If we take out the conditional and print out the
-                results of <math>(4 \cdot i)\ \%\ 8</math>, we get the sequence <math>(0, 4, 0, 4, 0, 4\dots</math>).
+                results of <m>(4 \cdot i)\ \%\ 8</m>, we get the sequence <m>(0, 4, 0, 4, 0, 4\dots</m>).
                 Here we have a case where the remainder alternates between 0 and 4
                 repeatedly. Clearly the result is never going to be 1. How can we know
                 that ahead of time?</p>
-    <p>The answer is that a number <math>x</math> has a multiplicative inverse,
-                modulo <math>m</math>, if and only if <math>m</math> and <math>x</math> are relatively
-                prime. Two numbers are relatively prime if <math>gcd(m,x) = 1</math>. Recall
+    <p>The answer is that a number <m>x</m> has a multiplicative inverse,
+                modulo <m>m</m>, if and only if <m>m</m> and <m>x</m> are relatively
+                prime. Two numbers are relatively prime if <m>gcd(m,x) = 1</m>. Recall
                 that the greatest common divisor (GCD) is the largest integer that
                 divides both numbers. The next question is how can we compute the
                 greatest common divisor for a pair of numbers?</p>
-    <p>Given two numbers <math>a</math> and <math>b</math> we can find the GCD by
-                repeatedly subtracting <math>b</math> from <math>a</math> until <math>a &lt; b</math>.
-                When <math>a &lt; b</math>, we switch roles for <math>a</math> and <math>b</math>. At some
-                point <math>a - b</math> becomes 0, so we swap <math>a</math> and <math>b</math> one
-                more time. At that point we have <math>gcd(a, 0) = a</math>. This algorithm
+    <p>Given two numbers <m>a</m> and <m>b</m> we can find the GCD by
+                repeatedly subtracting <m>b</m> from <m>a</m> until <m>a &lt; b</m>.
+                When <m>a &lt; b</m>, we switch roles for <m>a</m> and <m>b</m>. At some
+                point <m>a - b</m> becomes 0, so we swap <m>a</m> and <m>b</m> one
+                more time. At that point we have <m>gcd(a, 0) = a</m>. This algorithm
                 was first described more than 2,000 years ago and is called Euclid's
                 algorithm.</p>
     <p>In terms of recursive algorithm design, Euclid's algorithm is very
-                straightforward. The base case is when <math>b = 0</math>. There are two
-                possibilities for a recursive call: when <math>a &lt; b</math>, we swap
-                <math>a</math> and <math>b</math> and make a recursive call. Otherwise, we can
-                make a recursive call passing <math>a - b</math> in place of <math>a</math>.
+                straightforward. The base case is when <m>b = 0</m>. There are two
+                possibilities for a recursive call: when <m>a &lt; b</m>, we swap
+                <m>a</m> and <m>b</m> and make a recursive call. Otherwise, we can
+                make a recursive call passing <m>a - b</m> in place of <m>a</m>.
                 Euclid's algorithm is shown in Listing&#xA0;<url href="#lst_gcd1" visual="#lst_gcd1">[lst_gcd1]</url>.</p>
     <pre>def gcd(a, b):
     if b == 0:
@@ -211,37 +211,37 @@
         return gcd(b, a)
     return gcd(a - b, b)</pre>
     <p>Although Euclid's algorithm is quite easy to understand and program, it
-                is not as efficient as we would like, particularly if <math>a &gt;&gt; b</math>.
+                is not as efficient as we would like, particularly if <m>a &gt;&gt; b</m>.
                 Once again, modular arithmetic comes to our rescue. Notice that the
-                result of the last subtraction (when <math>a - b &lt; b</math>) is really the
-                same as the remainder of <math>a</math> divided by <math>b</math>. With that in
+                result of the last subtraction (when <m>a - b &lt; b</m>) is really the
+                same as the remainder of <m>a</m> divided by <m>b</m>. With that in
                 mind, we can cut out all of the subtractions and combine the swap of
-                <math>a</math> and <math>b</math> in one recursive call. A revised algorithm is
+                <m>a</m> and <m>b</m> in one recursive call. A revised algorithm is
                 shown in Listing&#xA0;<url href="#lst_gcd2" visual="#lst_gcd2">[lst_gcd2]</url>.</p>
     <pre>def gcd(a, b):
     if b == 0:
         return a
     return gcd(b, a % b)</pre>
-    <p>Now that we have a way to know whether two numbers <math>x</math> and
-                <math>m</math> will have a multiplicative inverse, our next task is to write
+    <p>Now that we have a way to know whether two numbers <m>x</m> and
+                <m>m</m> will have a multiplicative inverse, our next task is to write
                 an efficient algorithm to compute the inverse. Suppose that for any pair
-                of numbers <math>x</math> and <math>y</math> we could compute both
-                <math>gcd(x,y)</math> and a pair of integers <math>a</math> and <math>b</math> such
-                that <math>d = gcd(x, y) = ax + by</math>. For example,
-                <math>1 = gcd(3, 7) = -2 \times 3 + 1 \times 7</math>, so here <math>a = -2</math>
-                and <math>b = 1</math> are possible values for <math>a</math> and <math>b</math>.
-                Rather than any numbers <math>x</math> and <math>y</math>, let's use <math>m</math> and
-                <math>x</math> from our previous examples. Now we have
-                <math>1 = gcd(m, x) = am + bx</math>. From the discussion at the beginning of
-                this section we know that <math>bx = 1 \mod{m}</math>, so <math>b</math> is a
-                multiplicative inverse of <math>x</math> modulo <math>m</math>.</p>
+                of numbers <m>x</m> and <m>y</m> we could compute both
+                <m>gcd(x,y)</m> and a pair of integers <m>a</m> and <m>b</m> such
+                that <m>d = gcd(x, y) = ax + by</m>. For example,
+                <m>1 = gcd(3, 7) = -2 \times 3 + 1 \times 7</m>, so here <m>a = -2</m>
+                and <m>b = 1</m> are possible values for <m>a</m> and <m>b</m>.
+                Rather than any numbers <m>x</m> and <m>y</m>, let's use <m>m</m> and
+                <m>x</m> from our previous examples. Now we have
+                <m>1 = gcd(m, x) = am + bx</m>. From the discussion at the beginning of
+                this section we know that <m>bx = 1 \mod{m}</m>, so <m>b</m> is a
+                multiplicative inverse of <m>x</m> modulo <m>m</m>.</p>
     <p>We have reduced the problem of computing inverses to the problem of
-                finding integers <math>a</math> and <math>b</math> that satisfy the equation
-                <math>d = gcd(x, y) = ax + by</math>. Since we started this problem with the
+                finding integers <m>a</m> and <m>b</m> that satisfy the equation
+                <m>d = gcd(x, y) = ax + by</m>. Since we started this problem with the
                 GCD algorithm, we can finish it with an extension of this algorithm
-                as well. We will take two numbers <math>x &gt;= y</math> and return a tuple
-                <math>(d, a, b)</math> such that <math>d = gcd(x, y)</math> and
-                <math>d = ax + by</math>. The extension to Euclid's algorithm is shown in
+                as well. We will take two numbers <m>x &gt;= y</m> and return a tuple
+                <m>(d, a, b)</m> such that <m>d = gcd(x, y)</m> and
+                <m>d = ax + by</m>. The extension to Euclid's algorithm is shown in
                 Listing&#xA0;<url href="#lst_gcd3" visual="#lst_gcd3">[lst_gcd3]</url>.</p>
     <pre>def ext_gcd(x, y):
     if y == 0:
@@ -249,32 +249,32 @@
     else:
         (d, a, b) = ext_gcd(y, x % y)
         return (d, b, a - (x // y) * b)  |\label{line:gcd3_return}|</pre>
-    <p>Notice that when we get the base case <math>y = 0</math>, we return
-                <math>d = x</math> just like the original Euclid's algorithm. However, we
-                return two additional values <math>a =1</math> and <math>b = 0</math>. Together
-                these three values satisfy the equation <math>d = ax + by</math>. If
-                <math>y &gt; 0</math>, then we recursively compute values <math>(d, a, b)</math> such
-                that <math>d = gcd(y, x \mod{y})</math> and <math>d = ay + b(x \mod{y})</math>.
-                As with the original algorithm, <math>d = gcd(x, y)</math>. But what about
-                the other two values, <math>a</math> and <math>b</math>? We know that <math>a</math>
-                and <math>b</math> must be integers, so let's call them <math>A</math> and
-                <math>B</math>. Further, we know that <math>d = Ax + By</math>. To figure out what
-                <math>A</math> and <math>B</math> should be, let's rearrange the equation as
+    <p>Notice that when we get the base case <m>y = 0</m>, we return
+                <m>d = x</m> just like the original Euclid's algorithm. However, we
+                return two additional values <m>a =1</m> and <m>b = 0</m>. Together
+                these three values satisfy the equation <m>d = ax + by</m>. If
+                <m>y &gt; 0</m>, then we recursively compute values <m>(d, a, b)</m> such
+                that <m>d = gcd(y, x \mod{y})</m> and <m>d = ay + b(x \mod{y})</m>.
+                As with the original algorithm, <m>d = gcd(x, y)</m>. But what about
+                the other two values, <m>a</m> and <m>b</m>? We know that <m>a</m>
+                and <m>b</m> must be integers, so let's call them <m>A</m> and
+                <m>B</m>. Further, we know that <m>d = Ax + By</m>. To figure out what
+                <m>A</m> and <m>B</m> should be, let's rearrange the equation as
                 follows:</p>
-    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">\begin{aligned}
+    <math_block docname="Advanced/RecursionRevisited"  nowrap="False" number="True" xml:space="preserve">\begin{aligned}
 d = &amp; ay + b(x \mod{y}) \\
   = &amp; ay + b(x - \lfloor x / y \rfloor y) \\
   = &amp; bx + (a - \lfloor x / y \rfloor b)y\end{aligned}</math_block>
     <p>Note the substitution made in the second line,
-                <math>x \mod{y} = x - \lfloor x / y \rfloor</math>. This is legal because
+                <m>x \mod{y} = x - \lfloor x / y \rfloor</m>. This is legal because
                 this is how we would normally calculate the remainder of x / y
-                (<math>x \mod{y}</math>). Looking at the rearranged equation, we can see that
-                <math>A = b</math> and <math>B = a - \lfloor x / y \rfloor b</math>. Notice that
+                (<m>x \mod{y}</m>). Looking at the rearranged equation, we can see that
+                <m>A = b</m> and <m>B = a - \lfloor x / y \rfloor b</m>. Notice that
                 this is exactly what line <url href="#line:gcd3_return" visual="#line:gcd3_return">[line:gcd3_return]</url>
                 does! To check this, note that at each return step in the algorithm the
-                return values satisfy the equation <math>d = ax + by</math>.
+                return values satisfy the equation <m>d = ax + by</m>.
                 To understand how our extended GCD algorithm works, let's start with an
-                example: let <math>x = 25</math> and <math>y = 9</math>. Figure&#xA0;<url href="#fig_gcd" visual="#fig_gcd">1</url>
+                example: let <m>x = 25</m> and <m>y = 9</m>. Figure&#xA0;<url href="#fig_gcd" visual="#fig_gcd">1</url>
                 illustrates the call and return values for the recursive function.</p>
     <figure align="" xml:id="fig-gcd">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Call Tree for Extended GCD Algorithm</caption>
@@ -297,30 +297,30 @@ d = &amp; ay + b(x \mod{y}) \\
                 The public and private keys are derived from a pair of large (100&#x2013;200
                 digit) prime numbers. Since long integers are native to Python, this is
                 a fun and easy algorithm to implement.</p>
-    <p>To generate the two keys, choose two large prime numbers <math>p</math> and
-                <math>q</math>. Then compute the product</p>
-    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">n = p \times q
+    <p>To generate the two keys, choose two large prime numbers <m>p</m> and
+                <m>q</m>. Then compute the product</p>
+    <math_block docname="Advanced/RecursionRevisited"  nowrap="False" number="True" xml:space="preserve">n = p \times q
 
 </math_block>
-    <p>The next step is to randomly choose the encryption key <math>e</math> such
-                that <math>e</math> and <math>(p - 1) \times (q - 1)</math> are relatively prime;
+    <p>The next step is to randomly choose the encryption key <m>e</m> such
+                that <m>e</m> and <m>(p - 1) \times (q - 1)</m> are relatively prime;
                 that is</p>
-    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">gcd(e, (p - 1) \times (q-1)) = 1
+    <math_block docname="Advanced/RecursionRevisited"  nowrap="False" number="True" xml:space="preserve">gcd(e, (p - 1) \times (q-1)) = 1
 
 </math_block>
-    <p>Finally, the decryption key <math>d</math> is simply the multiplicative
-                inverse of <math>e</math> modulo <math>(p - 1) \times (q - 1)</math>. For this we
+    <p>Finally, the decryption key <m>d</m> is simply the multiplicative
+                inverse of <m>e</m> modulo <m>(p - 1) \times (q - 1)</m>. For this we
                 can use our extended version of Euclid's algorithm.</p>
-    <p>The numbers <math>e</math> and <math>n</math> taken together are the public key.
-                The number <math>d</math> is the private key. Once we have computed
-                <math>n, e</math>, and <math>d</math>, the original primes <math>p</math> and <math>q</math>
+    <p>The numbers <m>e</m> and <m>n</m> taken together are the public key.
+                The number <m>d</m> is the private key. Once we have computed
+                <m>n, e</m>, and <m>d</m>, the original primes <m>p</m> and <m>q</m>
                 are no longer needed. However, they should not be revealed.</p>
     <p>To encrypt a message we simply use the equation
-                <math>c = m^e \pmod{n}</math>. To decrypt the message we use
-                <math>m = c^d \pmod{n}</math>.</p>
-    <p>It is easy to see that this works when you remember that <math>d</math> is
-                the multiplicative inverse of <math>e \pmod{n}</math>.</p>
-    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">\begin{aligned}
+                <m>c = m^e \pmod{n}</m>. To decrypt the message we use
+                <m>m = c^d \pmod{n}</m>.</p>
+    <p>It is easy to see that this works when you remember that <m>d</m> is
+                the multiplicative inverse of <m>e \pmod{n}</m>.</p>
+    <math_block docname="Advanced/RecursionRevisited"  nowrap="False" number="True" xml:space="preserve">\begin{aligned}
    c^d &amp; = (m^e)^d  \pmod{n} \\
        &amp; = m^{ed}   \pmod{n} \\
        &amp; = m^1  \pmod{n} \\
@@ -444,36 +444,36 @@ d = &amp; ay + b(x \mod{y}) \\
     </table>
     <p>Putting all the hexadecimal digits together we could convert that large
                 hex number into a decimal integer:</p>
-    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">m =
+    <math_block docname="Advanced/RecursionRevisited"  nowrap="False" number="True" xml:space="preserve">m =
 126207244316550804821666916</math_block>
     <p>Python can handle this large number just fine. However, there are two
                 reasons that real programs using RSA encryption break the message up
                 into smaller chunks and encrypt each chunk. The first reason is
                 performance. Even a relatively short email message, say 1k of text, will
                 generate a number with 2,000 to 3,000 digits! If we raise that to a
-                power of <math>d</math> which has 10 digits, we are talking about a very long number
+                power of <m>d</m> which has 10 digits, we are talking about a very long number
                 indeed.</p>
     <p>The second reason for breaking the message into chunks is the
-                restriction that <math>m \le n</math>. We must be sure that the message has a
-                unique representation modulo <math>n</math>. With binary data, choose the
-                largest power of two that is less than <math>n</math>. For example, let's choose
-                <math>p</math> and <math>q</math> to be 5563 and 8191. So
-                <math>n = 5563 \times 8191 = 45,566,533</math>. To keep the integer value of
-                our chunks less than <math>m</math>, we will divide up our word into chunks
-                that use less than the number of bytes needed to represent <math>n</math>.
+                restriction that <m>m \le n</m>. We must be sure that the message has a
+                unique representation modulo <m>n</m>. With binary data, choose the
+                largest power of two that is less than <m>n</m>. For example, let's choose
+                <m>p</m> and <m>q</m> to be 5563 and 8191. So
+                <m>n = 5563 \times 8191 = 45,566,533</m>. To keep the integer value of
+                our chunks less than <m>m</m>, we will divide up our word into chunks
+                that use less than the number of bytes needed to represent <m>n</m>.
                 This is easy to find in Python using the integer method <c>bit_length</c>.
                 Given the number of bits needed to represent a number, we can divide by eight
                 to find the number of bytes. Since each character in the message can be
                 represented by a single byte, this division tells us the number of bytes
                 we can put in each chunk. Conveniently, this lets us simply break the
-                message up into chunks of <math>n</math> characters and convert the hexadecimal
+                message up into chunks of <m>n</m> characters and convert the hexadecimal
                 representation of each chunk into an integer. For this example we can
-                represent <math>45,566,533</math> using 26 bits. Using integer division and
+                represent <m>45,566,533</m> using 26 bits. Using integer division and
                 dividing by eight tells us that we should break our message into chunks
                 of three characters.</p>
-    <p>The characters <q>h,</q> <q>e,</q> and <q>l</q> have the hexadecimal values of <math>68</math>,
-                <math>65</math>, and <math>6c</math>, respectively. Concatenating those together gives us <math>68656c</math> and
-                converting that to a decimal gives us <math>6841708</math>.</p>
+    <p>The characters <q>h,</q> <q>e,</q> and <q>l</q> have the hexadecimal values of <m>68</m>,
+                <m>65</m>, and <m>6c</m>, respectively. Concatenating those together gives us <m>68656c</m> and
+                converting that to a decimal gives us <m>6841708</m>.</p>
     <table>
       <tabular>
         <row>
@@ -501,24 +501,24 @@ d = &amp; ay + b(x \mod{y}) \\
                 number that is less than seven digits long. In this case we need to be
                 careful to add a leading zero to the result when we glue our
                 chunks back together again. You can see how this might happen in
-                <math>m_1</math> and <math>m_4</math> above.</p>
-    <p>Now let's choose a value for <math>e</math>. We can select values randomly
+                <m>m_1</m> and <m>m_4</m> above.</p>
+    <p>Now let's choose a value for <m>e</m>. We can select values randomly
                 and use the GCD algorithm to test them against
-                <math>(p - 1) \times (q - 1) = 45552780</math>. Remember that we are looking
-                for an <math>e</math> that is relatively prime to 45,552,780. The number
+                <m>(p - 1) \times (q - 1) = 45552780</m>. Remember that we are looking
+                for an <m>e</m> that is relatively prime to 45,552,780. The number
                 1,471 will work nicely for this example.</p>
-    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">\begin{aligned}
+    <math_block docname="Advanced/RecursionRevisited"  nowrap="False" number="True" xml:space="preserve">\begin{aligned}
 d &amp; = ext\_gcd(45552780, 1471) \\
   &amp; = -11705609  \\
   &amp; = 45552780-11705609  \\
   &amp; = 33847171\end{aligned}</math_block>
     <p>Let's use this information to encrypt the first chunk of our message:</p>
-    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">c = 6841708^{1471} \pmod{45566533} = 16310024
+    <math_block docname="Advanced/RecursionRevisited"  nowrap="False" number="True" xml:space="preserve">c = 6841708^{1471} \pmod{45566533} = 16310024
 
 </math_block>
-    <p>To check our work, let's decrypt <math>c</math> to make sure we recover the
+    <p>To check our work, let's decrypt <m>c</m> to make sure we recover the
                 original value:</p>
-    <math_block docname="Advanced/RecursionRevisited" label="True" nowrap="False" number="True" xml:space="preserve">m = 16310024^{33847171} \pmod{45566533} = 6841708
+    <math_block docname="Advanced/RecursionRevisited"  nowrap="False" number="True" xml:space="preserve">m = 16310024^{33847171} \pmod{45566533} = 6841708
 
 </math_block>
     <p>The remaining chunks of the message can be encrypted using the same
@@ -527,14 +527,14 @@ d &amp; = ext\_gcd(45552780, 1471) \\
     <p>
       <ul>
         <li>
-          <p><c>gen_keys</c> creates a public and private key, given <math>p</math> and <math>q</math>.</p>
+          <p><c>gen_keys</c> creates a public and private key, given <m>p</m> and <m>q</m>.</p>
         </li>
         <li>
-          <p><c>encrypt</c> takes a message, the public key, and <math>n</math> and returns
+          <p><c>encrypt</c> takes a message, the public key, and <m>n</m> and returns
                         an encrypted version of the message.</p>
         </li>
         <li>
-          <p><c>decrypt</c> takes the encrypted message, the private key, and <math>n</math> and
+          <p><c>decrypt</c> takes the encrypted message, the private key, and <m>n</m> and
                         returns the original message.</p>
         </li>
       </ul>

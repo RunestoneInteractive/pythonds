@@ -7,8 +7,8 @@
             completing the pass, places it in the proper location. As with a bubble
             sort, after the first pass, the largest item is in the correct place.
             After the second pass, the next largest is in place. This process
-            continues and requires <math>n - 1</math> passes to sort <math>n</math> items, since the
-            final item must be in place after the <math>(n - 1)</math>-th pass.</p>
+            continues and requires <m>n - 1</m> passes to sort <m>n</m> items, since the
+            final item must be in place after the <m>(n - 1)</m>-th pass.</p>
   <p><xref ref="i18_id1fig-selectionsort"/> shows the entire sorting process for the selection sort. On each pass,
             the largest remaining item is selected and then placed in its proper
             location. The first pass places 93, the second pass places 77, the third
@@ -79,7 +79,7 @@ selection_anim_init = function(divid)
   <!--selection_sort(a_list)-->
   <!--print(a_list)-->
   <p>You may see that the selection sort makes the same number of comparisons
-            as the bubble sort and is therefore also <math>O(n^{2})</math>. However,
+            as the bubble sort and is therefore also <m>O(n^{2})</m>. However,
             due to the reduction in the number of exchanges, the selection sort
             typically executes faster in benchmark studies. In fact, for our list,
             the bubble sort makes 20 exchanges, while the selection sort makes only

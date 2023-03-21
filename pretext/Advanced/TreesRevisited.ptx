@@ -44,8 +44,8 @@
       [(255,255,255),(255,255,255),(12,28,255),(255,255,255),
        (255,255,255),(12,28,255),(255,255,255),(255,255,255)],
  ... ]</pre>
-    <p>The color white is represented by the tuple <math>(255, 255, 255)</math>. A bluish
-                color is represented by the tuple <math>(12, 28, 255)</math>. You can obtain the color
+    <p>The color white is represented by the tuple <m>(255, 255, 255)</m>. A bluish
+                color is represented by the tuple <m>(12, 28, 255)</m>. You can obtain the color
                 value for any pixel in the image by simply using list indices, for
                 example:</p>
     <pre>&gt;&gt;&gt; im[3][2]
@@ -58,7 +58,7 @@
                 powerful classes. Using the <c>Image</c> class we can get and set pixels
                 using <c>getpixel((col, row))</c> and <c>putpixel((col, row), color)</c>. Note
                 that the parameters for the image methods are in the traditional
-                <math>x, y</math> order but many people forget and think in terms of row,
+                <m>x, y</m> order but many people forget and think in terms of row,
                 column order.</p>
   </subsection>
   <subsection xml:id="advanced_quantizing-an-image">
@@ -77,14 +77,14 @@
                 three-dimensional space. Each color can be represented by a point in
                 space where the red component is the <em>x</em> axis, the green component is the
                 <em>y</em> axis, and the blue component is the <em>z</em> axis. We can think of the space
-                of all possible colors as a <math>256 \times 256 \times 256</math> cube. The
-                colors closest to the vertex at <math>(0, 0, 0)</math> are going to be black and dark
-                color shades. The colors closest to the vertex at <math>(255, 255, 255)</math> are
-                bright and close to white. The colors closest to <math>(255, 0, 0)</math> are red and
+                of all possible colors as a <m>256 \times 256 \times 256</m> cube. The
+                colors closest to the vertex at <m>(0, 0, 0)</m> are going to be black and dark
+                color shades. The colors closest to the vertex at <m>(255, 255, 255)</m> are
+                bright and close to white. The colors closest to <m>(255, 0, 0)</m> are red and
                 so forth.</p>
     <p>The simplest way to think about quantizing an image is to imagine
-                taking the <math>256 \times 256 \times 256</math> cube and turning it into an
-                <math>8 \times 8 \times 8</math> cube. The overall size of the cube stays the
+                taking the <m>256 \times 256 \times 256</m> cube and turning it into an
+                <m>8 \times 8 \times 8</m> cube. The overall size of the cube stays the
                 same, but now many colors in the old cube are represented by a single
                 color in the new cube. Figure&#xA0;<url href="#fig_colorcube" visual="#fig_colorcube">2</url> shows an example of
                 the quantization just described.</p>
@@ -163,7 +163,7 @@ simple_quant("bubbles.jpg")</pre>
         </li>
         <li>
           <p><c>reduce(n)</c> reduces the size of the octree so that there are
-                        <math>n</math> or fewer leaf nodes.</p>
+                        <m>n</m> or fewer leaf nodes.</p>
         </li>
       </ul>
     </p>
@@ -175,7 +175,7 @@ simple_quant("bubbles.jpg")</pre>
         </li>
         <li>
           <p>The second level of the octree represents a single slice through
-                        each dimension (<math>x</math>, <math>y</math>, and <math>z</math>) that evenly divides the cube into eight
+                        each dimension (<m>x</m>, <m>y</m>, and <m>z</m>) that evenly divides the cube into eight
                         pieces.</p>
         </li>
         <li>
@@ -455,7 +455,7 @@ def compute_index(self, r, g, b, l):  |\label{lst_otninsert:line_otci}|
                 <c>and</c>, and <c>|</c> is logical <c>or</c>. The bitwise <c>or</c> and bitwise
                 <c>and</c> operations work just like the logical operations used in
                 conditionals, except that they work on the individual bits of a number.
-                The shift operation simply moves the bits <math>n</math> places to the right,
+                The shift operation simply moves the bits <m>n</m> places to the right,
                 filling in with zeros on the left and dropping the bits as they go off
                 the right.</p>
     <p>Once we have computed the index appropriate for the current level of the tree,

@@ -12,27 +12,27 @@
   <p>What is the height of a binary tree likely to be? The answer to this
             question depends on how the keys are added to the tree. If the keys are
             added in a random order, the height of the tree is going to be around
-            <math>\log_2{n}</math> where <math>n</math> is the number of nodes in the
+            <m>\log_2{n}</m> where <m>n</m> is the number of nodes in the
             tree. This is because if the keys are randomly distributed, about half
             of them will be less than the root and about half will be greater than the
             root. Remember that in a binary tree there is one node at the root, two
             nodes in the next level, and four at the next. The number of nodes at
-            any particular level is <math>2^d</math> where <math>d</math> is the depth of
+            any particular level is <m>2^d</m> where <m>d</m> is the depth of
             the level. The total number of nodes in a perfectly balanced binary tree
-            is <math>2^{h+1}-1</math>, where <math>h</math> represents the height of the
+            is <m>2^{h+1}-1</m>, where <m>h</m> represents the height of the
             tree.</p>
   <p>A perfectly balanced tree has the same number of nodes in the left
             subtree as the right subtree. In a balanced binary tree, the worst-case
-            performance of <c>put</c> is <math>O(\log_2{n})</math>, where <math>n</math> is
+            performance of <c>put</c> is <m>O(\log_2{n})</m>, where <m>n</m> is
             the number of nodes in the tree. Notice that this is the inverse
             relationship to the calculation in the previous paragraph. So
-            <math>\log_2{n}</math> gives us the height of the tree and represents the
+            <m>\log_2{n}</m> gives us the height of the tree and represents the
             maximum number of comparisons that <c>put</c> will need to do as it
             searches for the proper place to insert a new node.</p>
   <p>Unfortunately it is possible to construct a search tree that has height
-            <math>n</math> simply by inserting the keys in sorted order! An example of
+            <m>n</m> simply by inserting the keys in sorted order! An example of
             this is shown in <xref ref="i12_id1fig-skewedtree-analysis"/>. In this case the
-            performance of the <c>put</c> method is <math>O(n)</math>.</p>
+            performance of the <c>put</c> method is <m>O(n)</m>.</p>
   <figure align="center" xml:id="i12_id1fig-skewedtree-analysis">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: A skewed binary search tree would give poor performance</caption>
     <image source="Trees/Figures/skewedTree.png" width="50%"/>
@@ -47,5 +47,5 @@
             But remember that the worst-case scenario to find the successor is also
             just the height of the tree which means that you would simply double the
             work. Since doubling is a constant factor, it does not change worst-case analysis
-            of <math>O(n)</math> for an unbalanced tree.</p>
+            of <m>O(n)</m> for an unbalanced tree.</p>
 </section>

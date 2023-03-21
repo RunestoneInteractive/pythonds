@@ -19,13 +19,13 @@
     <p>Another interesting property of a complete tree is that we can represent
                 it using a single list. We do not need to use nodes and references or
                 even lists of lists. Because the tree is complete, the left child of a
-                parent (at position <math>p</math>) is the node that is found in position
-                <math>2p + 1</math> in the list. Similarly, the right child of the parent is at
-                position <math>2p + 2</math> in the list. To find the parent of any node in
+                parent (at position <m>p</m>) is the node that is found in position
+                <m>2p + 1</m> in the list. Similarly, the right child of the parent is at
+                position <m>2p + 2</m> in the list. To find the parent of any node in
                 the tree, we can simply use Python's integer division. Given that a node
-                is at position <math>n</math> in the list, the parent is at position
-                <math>(n - 1) // 2</math>. <xref ref="i19_id2fig-heaporder"/> shows a complete binary tree
-                and also gives the list representation of the tree.  Note the <math>2p + 1</math> and <math>2p + 2</math> relationship between
+                is at position <m>n</m> in the list, the parent is at position
+                <m>(n - 1) // 2</m>. <xref ref="i19_id2fig-heaporder"/> shows a complete binary tree
+                and also gives the list representation of the tree.  Note the <m>2p + 1</m> and <m>2p + 2</m> relationship between
                 parent and children. The list
                 representation of the tree, along with the full structure property,
                 allows us to efficiently traverse a complete binary tree using only a
@@ -36,9 +36,9 @@
     <title>The Heap Order Property</title>
     <p>The method that we will use to store items in a heap relies on
                 maintaining the heap order property. The <term>heap order property</term> is as
-                follows: in a heap, for every node <math>x</math> with parent <math>p</math>,
-                the key in <math>p</math> is smaller than or equal to the key in
-                <math>x</math>. <xref ref="i19_id2fig-heaporder"/> also illustrates a complete binary
+                follows: in a heap, for every node <m>x</m> with parent <m>p</m>,
+                the key in <m>p</m> is smaller than or equal to the key in
+                <m>x</m>. <xref ref="i19_id2fig-heaporder"/> also illustrates a complete binary
                 tree that has the heap order property.</p>
     <figure align="center" xml:id="i19_id2fig-heaporder">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: A Complete Binary Tree, along with Its List Representation</caption>
@@ -167,13 +167,13 @@ def _get_min_child(self, i):
                 easily build a heap by inserting each key one at a time. Since you are
                 starting with an empy list, it is sorted and you could use
                 binary search to find the right position to insert the next key at a
-                cost of approximately <math>O(\log{n})</math> operations. However, remember
+                cost of approximately <m>O(\log{n})</m> operations. However, remember
                 that inserting an item in the middle of the list may require
-                <math>O(n)</math> operations to shift the rest of the list over to make
-                room for the new key. Therefore, to insert <math>n</math> keys into the
-                heap would require a total of <math>O(n \log{n})</math> operations.
+                <m>O(n)</m> operations to shift the rest of the list over to make
+                room for the new key. Therefore, to insert <m>n</m> keys into the
+                heap would require a total of <m>O(n \log{n})</m> operations.
                 However, if we start with an entire list then we can build the whole
-                heap in <math>O(n)</math> operations. <xref ref="trees_lst-heap6"/> shows the code
+                heap in <m>O(n)</m> operations. <xref ref="trees_lst-heap6"/> shows the code
                 to build the entire heap.</p>
     <p xml:id="trees_lst-heap6" names="lst_heap6">
       <term>Listing 6</term>
@@ -280,15 +280,15 @@ while not a_heap.is_empty():
     print(a_heap.delete())
         </input>
     </program>
-    <p>The assertion that we can build the heap in <math>O(n)</math> may seem a
+    <p>The assertion that we can build the heap in <m>O(n)</m> may seem a
                 bit mysterious at first, and a proof is beyond the scope of this book.
                 However, the key to understanding that you can build the heap in
-                <math>O(n)</math> is to remember that the <math>\log{n}</math> factor is
+                <m>O(n)</m> is to remember that the <m>\log{n}</m> factor is
                 derived from the height of the tree. For most of the work in
-                <c>heapify</c>, the tree is shorter than <math>\log{n}</math>.</p>
-    <p>Using the fact that you can build a heap from a list in <math>O(n)</math>
+                <c>heapify</c>, the tree is shorter than <m>\log{n}</m>.</p>
+    <p>Using the fact that you can build a heap from a list in <m>O(n)</m>
                 time, you will construct a sorting algorithm that uses a heap and sorts
-                a list in <math>O(n\log{n})</math> as an exercise at the end of this
+                a list in <m>O(n\log{n})</m> as an exercise at the end of this
                 chapter.</p>
   </subsection>
 </section>

@@ -48,7 +48,7 @@
             we will use integer division plus remainder to get results of 7 and 6
             respectively. Finally, we have reduced the problem to converting 7,
             which we can do easily since it satisfies the base case condition of
-            <math>n &lt; base</math>, where <math>base = 10</math>. The series of operations
+            <m>n &lt; base</m>, where <m>base = 10</m>. The series of operations
             we have just performed is illustrated in <xref ref="recursion_fig-tostr"/>. Notice that
             the numbers we want to remember are in the remainder boxes along the
             right side of the diagram.</p>

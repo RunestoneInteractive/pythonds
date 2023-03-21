@@ -5,13 +5,13 @@
             then we will move on to the general version of the depth-first search.
             The topic is performance. In particular, <c>knight_tour</c> is very
             sensitive to the method you use to select the next vertex to visit. For
-            example, on a <math>5 \times 5</math> board you can produce a path in about 1.5
+            example, on a <m>5 \times 5</m> board you can produce a path in about 1.5
             seconds on a reasonably fast computer. But what happens if you try an
-            <math>8 \times 8</math> board? In this case, depending on the speed of your
+            <m>8 \times 8</m> board? In this case, depending on the speed of your
             computer, you may have to wait up to a half hour to get the results! The
             reason for this is that the knight's tour problem as we have implemented
-            it so far is an exponential algorithm of size <math>O(k^N)</math>, where <math>N</math>
-            is the number of squares on the chess board, and <math>k</math> is a small constant.
+            it so far is an exponential algorithm of size <m>O(k^N)</m>, where <m>N</m>
+            is the number of squares on the chess board, and <m>k</m> is a small constant.
             <xref ref="i178_id1fig-8array"/> can help us visualize why this is so. The root of
             the tree represents the starting point of the search. From there the
             algorithm generates and checks each of the possible moves the knight can
@@ -33,26 +33,26 @@
     <image source="Graphs/Figures/moveCount.png" width="50%"/>
   </figure>
   <p>We have already seen that the number of nodes in a binary tree of height
-            <math>N</math> is <math>2^{N+1}-1</math>. For a tree with nodes that may have up to
+            <m>N</m> is <m>2^{N+1}-1</m>. For a tree with nodes that may have up to
             eight children instead of two, the number of nodes is much larger.
             Because the branching factor of each node is variable, we could estimate
             the number of nodes using an average branching factor. The important
             thing to note is that this algorithm is exponential:
-            <math>k^{N+1}-1</math>, where <math>k</math> is the average branching factor
+            <m>k^{N+1}-1</m>, where <m>k</m> is the average branching factor
             for the board. Let's look at how rapidly this grows! For a board that is
-            <math>5 \times 5</math> the tree will be 25 levels deep, or <math>N = 24</math> counting the first level
-            as level 0. The average branching factor is <math>k = 3.8</math> so the
-            number of nodes in the search tree is <math>3.8^{25}-1</math> or
-            <math>3.12 \times 10^{14}</math>. For a <math>6 \times 6</math> board, <math>k = 4.4</math>, there
-            are <math>1.5 \times 10^{23}</math> nodes, and for a regular <math>8 \times 8</math> chess board,
-            <math>k = 5.25</math>, there are <math>1.3 \times 10^{46}</math>. Of course,
+            <m>5 \times 5</m> the tree will be 25 levels deep, or <m>N = 24</m> counting the first level
+            as level 0. The average branching factor is <m>k = 3.8</m> so the
+            number of nodes in the search tree is <m>3.8^{25}-1</m> or
+            <m>3.12 \times 10^{14}</m>. For a <m>6 \times 6</m> board, <m>k = 4.4</m>, there
+            are <m>1.5 \times 10^{23}</m> nodes, and for a regular <m>8 \times 8</m> chess board,
+            <m>k = 5.25</m>, there are <m>1.3 \times 10^{46}</m>. Of course,
             since there are multiple solutions to the problem we won't have to
             explore every single node, but the fractional part of the nodes we do
             have to explore is just a constant multiplier which does not change the
             exponential nature of the problem. We will leave it as an exercise for
-            you to see if you can express <math>k</math> as a function of the board
+            you to see if you can express <m>k</m> as a function of the board
             size.</p>
-  <p>Luckily there is a way to speed up the <math>8 \times 8</math> case so that it
+  <p>Luckily there is a way to speed up the <m>8 \times 8</m> case so that it
             runs in under one second. In the <xref ref="graphs_lst-avail"/> we show the code that
             speeds up the <c>knight_tour</c>. This function, called <c>order_by_avail</c>,
             will be used in place of the call to <c>u.get_neighbors</c> at line 8 in <xref ref="graphs_implementing-knights-tour"/>.

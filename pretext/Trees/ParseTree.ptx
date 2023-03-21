@@ -13,11 +13,11 @@
             sentence. Representing a sentence as a tree structure allows us to work
             with the individual parts of the sentence by using subtrees.</p>
   <figure align="center" xml:id="i15_id2fig-meparse">
-    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Parse Tree for <math>((7 + 3) \cdot (5 - 2))</math></caption>
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Parse Tree for <m>((7 + 3) \cdot (5 - 2))</m></caption>
     <image source="Trees/Figures/meParse.png" width="50%" alt="image"/>
   </figure>
   <p>We can also represent a mathematical expression such as
-            <math>((7 + 3) \cdot (5 - 2))</math> as a parse tree, as shown in
+            <m>((7 + 3) \cdot (5 - 2))</m> as a parse tree, as shown in
             <xref ref="i15_id2fig-meparse"/>. We have already looked at fully parenthesized
             expressions, so what do we know about this expression? We know that
             multiplication has a higher precedence than either addition or
@@ -33,7 +33,7 @@
             in the children. Applying this replacement procedure gives us the
             simplified tree shown in <xref ref="fig-mesimple"/>.</p>
   <figure align="center" xml:id="file_17_id3">
-    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: A Simplified Parse Tree for <math>((7 + 3) \cdot (5 - 2))</math></caption>
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: A Simplified Parse Tree for <m>((7 + 3) \cdot (5 - 2))</m></caption>
     <image source="Trees/Figures/meSimple.png" width="50%" alt="image"/>
   </figure>
   <p>In the rest of this section we are going to examine parse trees in more
@@ -87,7 +87,7 @@
   </p>
   <p>Before writing the Python code, let's look at an example of the rules
             outlined above in action. We will use the expression
-            <math>(3 + (4 * 5))</math>. We will parse this expression into the
+            <m>(3 + (4 * 5))</m>. We will parse this expression into the
             following list of character tokens: <c>["(", "3", "+", "(", "4", "*", "5", ")", ")"]</c>.
             Initially we will start out with a
             parse tree that consists of an empty root node. <xref ref="fig-bldexpstep"/>
@@ -258,9 +258,8 @@ pt.postorder()  # defined and explained in the next section
             leaf node. This check is on line 7. If the current node is not
             a leaf node, look up the operator in the current node and apply it to
             the results from recursively evaluating the left and right children.</p>
-  <p xml:id="trees_lst-eval" names="lst_eval">
-    <term>Listing 1</term>
-  </p>
+  <listing xml:id="trees_lst-eval" names="lst_eval">
+
   <program language="python">
     <input>
 import operator
@@ -284,6 +283,7 @@ def evaluate(parse_tree):
         return parse_tree.root
 </input>
   </program>
+  </listing>
   <p>To implement the arithmetic, we use a dictionary with the keys <c>"+"</c>, <c>"-"</c>, <c>"*"</c>, and
             <c>"/"</c>. The values stored in the dictionary are functions from Python's
             operator module. The operator module provides us with the function
@@ -320,5 +320,5 @@ def evaluate(parse_tree):
             <c>operator.mul(4, 5)</c>. At this point we have evaluated the operands for
             the top level <c>"+"</c> operator and all that is left to do is finish the
             call to <c>operator.add(3, 20)</c>. The result of the evaluation of the
-            entire expression tree for <math>(3 + (4 * 5))</math> is 23.</p>
+            entire expression tree for <m>(3 + (4 * 5))</m> is 23.</p>
 </section>

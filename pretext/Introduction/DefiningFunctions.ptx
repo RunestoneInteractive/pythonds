@@ -29,21 +29,20 @@
             named after Isaac Newton and Joseph Raphson. The Newton&#x2013;Raphson method for approximating
             square roots performs an iterative computation that converges on the
             correct value. The equation
-            <math>newguess = \frac {1}{2} * (oldguess + \frac {n}{oldguess})</math>
-            takes a value <math>n</math> and repeatedly guesses the square root by
-            making each <math>newguess</math> the <math>oldguess</math> in the subsequent
-            iteration. The initial guess used here is <math>\frac {n}{2}</math>.
+            <m>newguess = \frac {1}{2} * (oldguess + \frac {n}{oldguess})</m>
+            takes a value <m>n</m> and repeatedly guesses the square root by
+            making each <m>newguess</m> the <m>oldguess</m> in the subsequent
+            iteration. The initial guess used here is <m>\frac {n}{2}</m>.
             <xref ref="introduction_lst-root"/> shows a function definition that accepts a value
-            <math>n</math> and returns the square root of <math>n</math> after making 20
+            <m>n</m> and returns the square root of <m>n</m> after making 20
             guesses. Again, the details of the Newton&#x2013;Raphson method are hidden inside the
             function definition and the user does not have to know anything about
             the implementation to use the function for its intended purpose.
             <xref ref="introduction_lst-root"/> also shows the use of the <c>#</c> character as a comment
             marker. Any characters that follow the <c>#</c> on a line are ignored.</p>
-  <p xml:id="introduction_lst-root" names="lst_root">
-    <term>Listing 1</term>
-  </p>
-  <program language="python">
+
+<listing xml:id="introduction_lst-root">
+  <program language="python" interactive="activecode">
     <input>
 def square_root(n):
     root = n / 2  # initial guess will be 1/2 of n
@@ -51,12 +50,14 @@ def square_root(n):
         root = (1 / 2) * (root + (n / root))
 
     return root
+
+print(square_root(9))
+print(square_root(4563))
 </input>
   </program>
-  <pre>&gt;&gt;&gt; square_root(9)
-3.0
-&gt;&gt;&gt; square_root(4563)
-67.54998149518622</pre>
+</listing>
+
+
   <note>
     <title>Self Check</title>
     <p>Here's a self check that really covers everything so far.  You may have

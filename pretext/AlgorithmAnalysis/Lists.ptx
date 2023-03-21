@@ -13,11 +13,11 @@
   <p>Two common operations are indexing and assigning to an index position.
             Both of these operations take the same amount of time no matter how
             large the list becomes. When an operation like this is independent of
-            the size of the list, it is <math>O(1)</math>.</p>
+            the size of the list, it is <m>O(1)</m>.</p>
   <p>Another very common programming task is to grow a list. There are two
             ways to create a longer list.  You can use the <c>append</c> method or the
-            concatenation operator. The <c>append</c> method is <math>O(1)</math>. However,
-            the concatenation operator is <math>O(k)</math> where <math>k</math> is the
+            concatenation operator. The <c>append</c> method is <m>O(1)</m>. However,
+            the concatenation operator is <m>O(k)</m> where <m>k</m> is the
             size of the list that is being concatenated. This is important for you
             to know because it can help you make your own programs more efficient by
             choosing the right tool for the job.</p>
@@ -115,16 +115,16 @@ list range:              0.07 milliseconds</pre>
             basic list operations. After thinking carefully about
             <xref ref="algorithm-analysis_algorithm-analysis_algorithm-analysis_tbl-listbigo"/>, you may be wondering about the two different times
             for <c>pop</c>. When <c>pop</c> is called on the end of the list it takes
-            <math>O(1)</math>, but when <c>pop</c> is called on the first element in the list&#x2014;or anywhere in the middle it&#x2014;is <math>O(n)</math>
+            <m>O(1)</m>, but when <c>pop</c> is called on the first element in the list&#x2014;or anywhere in the middle it&#x2014;is <m>O(n)</m>
             The reason for this lies
             in how Python chooses to implement lists. When an item is taken from the
             front of the list, all the other elements in
             the list are shifted one position closer to the beginning. This may seem
             silly to you now, but if you look at <xref ref="algorithm-analysis_algorithm-analysis_algorithm-analysis_tbl-listbigo"/> you will see
             that this implementation also allows the index operation to be
-            <math>O(1)</math>. This is a tradeoff that the Python designers thought
+            <m>O(1)</m>. This is a tradeoff that the Python designers thought
             was a good one.</p>
-  <table xml:id="algorithm-analysis_id1">
+  <table xml:id="algorithm-analysis_tbl-listbigo">
     <tabular>
       <title>
         <term>Table 2: Big O Efficiency of Python List Operators</term>
@@ -289,7 +289,7 @@ list range:              0.07 milliseconds</pre>
             Because the timer repeats a thousand times, it is also important to point out
             that the list is decreasing in size by one each time through the loop. But
             since the initial list is two million elements in size, we only reduce
-            the overall size by <math>0.05\%</math>.</p>
+            the overall size by <m>0.05\%</m>.</p>
   <p xml:id="algorithm-analysis_lst-popmeas" names="lst_popmeas">
     <term>Listing 4</term>
   </p>
@@ -306,7 +306,7 @@ pop(0):    2.09779 milliseconds
 pop():     0.00014 milliseconds</pre>
   <p>While our first test does show that <c>pop(0)</c> is indeed slower than
             <c>pop()</c>, it does not validate the claim that <c>pop(0)</c> is
-            <math>O(n)</math> while <c>pop()</c> is <math>O(1)</math>. To validate that claim
+            <m>O(n)</m> while <c>pop()</c> is <m>O(1)</m>. To validate that claim
             we need to look at the performance of both calls over a range of list
             sizes. <xref ref="algorithm-analysis_lst-poplists"/> implements this test.</p>
   <p xml:id="algorithm-analysis_lst-poplists" names="lst_poplists">
@@ -324,8 +324,8 @@ for i in range(1_000_000, 100_000_001, 1_000_000):
   <p><xref ref="i15_id2fig-poptest"/> shows the results of our experiment. You can see
             that as the list gets longer and longer the time it takes to <c>pop(0)</c>
             also increases while the time for <c>pop</c> stays very flat. This is
-            exactly what we would expect to see for an <math>O(n)</math> and
-            <math>O(1)</math> algorithm.</p>
+            exactly what we would expect to see for an <m>O(n)</m> and
+            <m>O(1)</m> algorithm.</p>
   <figure align="" xml:id="i15_id2fig-poptest">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: Comparing the Performance of <literal>pop</literal> and <literal>pop(0)</literal></caption>
     <image source="AlgorithmAnalysis/Figures/poptime.png" width="50%"/>

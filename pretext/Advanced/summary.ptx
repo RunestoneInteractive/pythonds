@@ -7,7 +7,7 @@
         <p>Maps (dictionaries) are associative memory organization structures.</p>
       </li>
       <li>
-        <p>Skip lists are linked lists that provide expected <math>O(\log(n))</math>
+        <p>Skip lists are linked lists that provide expected <m>O(\log(n))</m>
                     searches.</p>
       </li>
       <li>

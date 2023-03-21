@@ -57,14 +57,14 @@ def knight_graph(board_size):
             new_moves.append((row + r_off, col + c_off))
     return new_moves</pre>
   <p><xref ref="i185_id2fig-bigknight"/> shows the complete graph of possible moves on an
-            <math>8 \times 8</math> board. There are exactly 336 edges in the graph. Notice
+            <m>8 \times 8</m> board. There are exactly 336 edges in the graph. Notice
             that the vertices corresponding to the edges of the board have fewer
             connections (legal moves) than the vertices in the middle of the board.
             Once again we can see how sparse the graph is. If the graph was fully
             connected there would be 4,096 edges. Since there are only 336 edges,
             the adjacency matrix would be only 8.2 percent full.</p>
   <figure align="center" xml:id="i185_id2fig-bigknight">
-    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: All Legal Moves for a Knight on an <math>8 \times 8</math> Chessboard</caption>
+    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: All Legal Moves for a Knight on an <m>8 \times 8</m> Chessboard</caption>
     <image source="Graphs/Figures/bigknight.png" width="50%"/>
   </figure>
 </section>

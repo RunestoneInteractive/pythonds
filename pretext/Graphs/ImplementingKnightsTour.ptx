@@ -120,7 +120,7 @@ def knight_tour(n, path, u, limit):
             list, <c>path</c> has the values <c>[A, B, D, E, F, C]</c>, which is the order
             we need to traverse the graph to visit each node exactly once.</p>
   <p><xref ref="fig-tour"/> shows you what a complete tour around an
-            <math>8 \times 8</math> board looks like. There are many possible tours; some are
+            <m>8 \times 8</m> board looks like. There are many possible tours; some are
             symmetric. With some modification you can make circular tours that start
             and end at the same square.</p>
   <figure align="center" xml:id="file_149_id9">

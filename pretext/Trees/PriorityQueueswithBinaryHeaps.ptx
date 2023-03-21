@@ -13,10 +13,10 @@
             the graph algorithms we will study in the next chapter.</p>
   <p>You can probably think of a couple of easy ways to implement a priority
             queue using sorting functions and lists. However, inserting into a list
-            is <math>O(n)</math> and sorting a list is <math>O(n \log{n})</math>. We can
+            is <m>O(n)</m> and sorting a list is <m>O(n \log{n})</m>. We can
             do better. The classic way to implement a priority queue is using a data
             structure called a <term>binary heap</term>. A binary heap will allow us both
-            to enqueue and dequeue items in <math>O(\log{n})</math>.</p>
+            to enqueue and dequeue items in <m>O(\log{n})</m>.</p>
   <p>The binary heap is interesting to study because when we diagram the heap
             it looks a lot like a tree, but when we implement it we use only a
             single list as an internal representation. The binary heap has two

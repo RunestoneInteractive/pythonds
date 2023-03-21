@@ -2,15 +2,15 @@
 <section xml:id="graphs_analysis-of-dijkstras-algorithm">
   <title>Analysis of Dijkstra's Algorithm</title>
   <p>Finally, let's look at the running time of Dijkstra's algorithm. We
-            first note that building the priority queue takes <math>O(|V|)</math> time
+            first note that building the priority queue takes <m>O(|V|)</m> time
             since we initially add every vertex in the graph to the priority queue.
             Once the queue is constructed, the <c>while</c> loop
             is executed once for every vertex since vertices are all added at the
             beginning and only removed after that. Within that loop each call to
-            <c>delete</c> takes <math>O(\log{|V|})</math> time. Taken together, that part of
-            the loop and the calls to <c>delete</c> take <math>O(|V| \times \log{|V|})</math>. The
+            <c>delete</c> takes <m>O(\log{|V|})</m> time. Taken together, that part of
+            the loop and the calls to <c>delete</c> take <m>O(|V| \times \log{|V|})</m>. The
             <c>for</c> loop is executed once for each edge in the
             graph, and within the <c>for</c> loop the call to <c>change_priority</c> takes
-            <math>O(|E| \times \log{|V|})</math> time. So the combined running time is
-            <math>O((|V|+|E|) \times \log{|V|}).</math></p>
+            <m>O(|E| \times \log{|V|})</m> time. So the combined running time is
+            <m>O((|V|+|E|) \times \log{|V|}).</m></p>
 </section>

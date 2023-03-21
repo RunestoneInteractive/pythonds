@@ -9,8 +9,8 @@
             such sequence is called a <em>tour</em>. The knight's tour puzzle has
             fascinated chess players, mathematicians, and now, computer scientists,
             for over a thousand years. The upper bound on the number of possible legal tours
-            for an <math>8 \times 8</math> chessboard is known to be
-            <math>1.305 \times 10^{35}</math>; however, there are even more possible
+            for an <m>8 \times 8</m> chessboard is known to be
+            <m>1.305 \times 10^{35}</m>; however, there are even more possible
             dead ends. Clearly this is a problem that requires some real brains,
             some real computing power, or both.</p>
   <p>Although researchers have studied many different algorithms to solve the
@@ -24,7 +24,7 @@
       </li>
       <li>
         <p>Use a graph algorithm to find a path of length
-                    <math>rows \times columns - 1</math> where every vertex on the graph is
+                    <m>rows \times columns - 1</m> where every vertex on the graph is
                     visited exactly once.</p>
       </li>
     </ul>

@@ -11,14 +11,14 @@
   <p>Integer values are common data items. They are used in computer programs
             and computation all the time. We learn about them in math class and of
             course represent them using the decimal number system, or base 10. The
-            decimal number <math>233_{10}</math> and its corresponding binary
-            equivalent <math>11101001_{2}</math> are interpreted respectively as</p>
+            decimal number <m>233_{10}</m> and its corresponding binary
+            equivalent <m>11101001_{2}</m> are interpreted respectively as</p>
   <p>
-    <math>2\times10^{2} + 3\times10^{1} + 3\times10^{0}</math>
+    <m>2\times10^{2} + 3\times10^{1} + 3\times10^{0}</m>
   </p>
   <p>and</p>
   <p>
-    <math>1\times2^{7} + 1\times2^{6} + 1\times2^{5} + 0\times2^{4} + 1\times2^{3} + 0\times2^{2} + 0\times2^{1} + 1\times2^{0}</math>
+    <m>1\times2^{7} + 1\times2^{6} + 1\times2^{5} + 0\times2^{4} + 1\times2^{3} + 0\times2^{2} + 0\times2^{1} + 1\times2^{0}</m>
   </p>
   <p>But how can we easily convert integer values into binary numbers? The
             answer is an algorithm called Divide by 2 that uses a stack to keep
@@ -73,15 +73,15 @@ print(divide_by_2(31))
             the conversion for any base. In computer science it is common to use a
             number of different encodings. The most common of these are binary,
             octal (base 8), and hexadecimal (base 16).</p>
-  <p>The decimal number <math>233</math> and its corresponding octal and
-            hexadecimal equivalents <math>351_{8}</math> and <math>E9_{16}</math> are
+  <p>The decimal number <m>233</m> and its corresponding octal and
+            hexadecimal equivalents <m>351_{8}</m> and <m>E9_{16}</m> are
             interpreted as</p>
   <p>
-    <math>3\times8^{2} + 5\times8^{1} + 1\times8^{0}</math>
+    <m>3\times8^{2} + 5\times8^{1} + 1\times8^{0}</m>
   </p>
   <p>and</p>
   <p>
-    <math>14\times16^{1} + 9\times16^{0}</math>
+    <m>14\times16^{1} + 9\times16^{0}</m>
   </p>
   <p>The function <c>divide_by_2</c> can be modified to accept not only a decimal
             value but also a base for the intended conversion. The <q>Divide by 2</q>

@@ -2,146 +2,156 @@
 <section xml:id="introduction_object-oriented-programming-in-python-defining-classes">
   <title>Object-Oriented Programming in Python: Defining Classes</title>
   <p>We stated earlier that Python is an object-oriented programming
-            language. So far, we have used a number of built-in classes to show
-            examples of data and control structures. One of the most powerful
-            features in an object-oriented programming language is the ability to
-            allow a programmer (problem solver) to create new classes that model
-            data that is needed to solve the problem.</p>
+    language. So far, we have used a number of built-in classes to show
+    examples of data and control structures. One of the most powerful
+    features in an object-oriented programming language is the ability to
+    allow a programmer (problem solver) to create new classes that model
+    data that is needed to solve the problem.</p>
   <p>Remember that we use abstract data types to provide the logical
-            description of what a data object looks like (its state) and what it can
-            do (its <term>methods</term>). By building a class that implements an abstract data
-            type, a programmer can take advantage of the abstraction process and at
-            the same time provide the details necessary to actually use the
-            abstraction in a program. Whenever we want to implement an abstract data
-            type, we will do so with a new class.</p>
+    description of what a data object looks like (its state) and what it can
+    do (its <term>methods</term>). By building a class that implements an abstract data
+    type, a programmer can take advantage of the abstraction process and at
+    the same time provide the details necessary to actually use the
+    abstraction in a program. Whenever we want to implement an abstract data
+    type, we will do so with a new class.</p>
   <subsection xml:id="introduction_a-fraction-class">
     <title>A <c>Fraction</c> Class</title>
     <p>A very common example to show the details of implementing a user-defined
-                class is to construct a class to implement the abstract data type
-                <c>Fraction</c>. We have already seen that Python provides a number of
-                numeric classes for our use. There are times, however, that it would be
-                most appropriate to be able to create data objects that look like fractions to the user.</p>
-    <p>A fraction such as <math>\frac {3}{5}</math> consists of two parts. The top
-                value, known as the numerator, can be any integer. The bottom value,
-                called the denominator, can be any integer greater than 0 (negative
-                fractions have a negative numerator). Although it is possible to create
-                a floating point approximation for any fraction, in this case we would
-                like to represent the fraction as an exact value.</p>
+      class is to construct a class to implement the abstract data type
+      <c>Fraction</c>. We have already seen that Python provides a number of
+      numeric classes for our use. There are times, however, that it would be
+      most appropriate to be able to create data objects that look like fractions to the user.
+    </p>
+    <p>A fraction such as <m>\frac{3}{5}</m> consists of two parts. The top
+      value, known as the numerator, can be any integer. The bottom value,
+      called the denominator, can be any integer greater than 0 (negative
+      fractions have a negative numerator). Although it is possible to create
+      a floating point approximation for any fraction, in this case we would
+      like to represent the fraction as an exact value.</p>
     <p>The operations for the <c>Fraction</c> type will allow a <c>Fraction</c> data
-                object to behave like any other numeric value. We need to be able to
-                add, subtract, multiply, and divide fractions. We also want to be able
-                to show fractions using the standard <q>slash</q> form, for example 3/5. In
-                addition, all fraction methods should return results in their lowest
-                terms so that no matter what computation is performed, we always end up
-                with the most common form.</p>
+      object to behave like any other numeric value. We need to be able to
+      add, subtract, multiply, and divide fractions. We also want to be able
+      to show fractions using the standard <q>slash</q> form, for example 3/5. In
+      addition, all fraction methods should return results in their lowest
+      terms so that no matter what computation is performed, we always end up
+      with the most common form.</p>
     <p>In Python, we define a new class by providing a name and a set of method
-                definitions that are syntactically similar to function definitions. For
-                this example,</p>
+      definitions that are syntactically similar to function definitions. For
+      this example,</p>
     <pre>class Fraction:
    # the methods go here</pre>
     <p>provides the framework for us to define the methods. The first method
-                that all classes should provide is the constructor. The constructor
-                defines the way in which data objects are created. To create a
-                <c>Fraction</c> object, we will need to provide two pieces of data, the
-                numerator and the denominator. In Python, the constructor method is
-                always called __init__ (two underscores before and after <c>init</c>),
-                as shown in <xref ref="introduction_lst-pyconstructor"/>.</p>
-    <p xml:id="introduction_lst-pyconstructor" names="lst_pyconstructor">
-      <term>Listing 2</term>
+      that all classes should provide is the constructor. The constructor
+      defines the way in which data objects are created. To create a
+      <c>Fraction</c> object, we will need to provide two pieces of data, the
+      numerator and the denominator. In Python, the constructor method is
+      always called __init__ (two underscores before and after <c>init</c>),
+      as shown in
+      <xref ref="introduction_lst-pyconstructor" />.
     </p>
-    <program language="python">
-      <input>
-class Fraction:
-    """Class Fraction"""
-    def __init__(self, top, bottom):
+
+    <listing xml:id="introduction_lst-pyconstructor" names="lst_pyconstructor">
+
+      <program language="python">
+        <input>
+        class Fraction:
+        """Class Fraction"""
+        def __init__(self, top, bottom):
         """Constructor definition"""
         self.num = top
         self.den = bottom
-</input>
-    </program>
+        </input>
+      </program>
+    </listing>
     <p>Notice that the formal parameter list contains three items (<c>self</c>,
-                <c>top</c>, <c>bottom</c>). <c>self</c> is a special parameter that will always
-                be used as a reference back to the object itself. It must always be the
-                first formal parameter; however, it will never be given an actual
-                parameter value upon invocation. As described earlier, fractions require
-                two pieces of state data, the numerator and the denominator. The
-                notation <c>self.num</c> in the constructor defines the <c>Fraction</c> object
-                to have an internal data object called <c>num</c> as part of its state.
-                Likewise, <c>self.den</c> creates the denominator. The values of the two
-                formal parameters are initially assigned to the state, allowing the new
-                <c>Fraction</c> object to know its starting value.</p>
+      <c>top</c>, <c>bottom</c>). <c>self</c> is a special parameter that will always
+      be used as a reference back to the object itself. It must always be the
+      first formal parameter; however, it will never be given an actual
+      parameter value upon invocation. As described earlier, fractions require
+      two pieces of state data, the numerator and the denominator. The
+      notation <c>self.num</c> in the constructor defines the <c>Fraction</c> object
+      to have an internal data object called <c>num</c> as part of its state.
+      Likewise, <c>self.den</c> creates the denominator. The values of the two
+      formal parameters are initially assigned to the state, allowing the new
+      <c>Fraction</c> object to know its starting value.
+    </p>
     <p>To create an instance of the <c>Fraction</c> class, we must invoke the
-                constructor. This happens by using the name of the class and passing
-                actual values for the necessary state (note that we never directly
-                <c>invoke __init__</c>). For example,</p>
+      constructor. This happens by using the name of the class and passing
+      actual values for the necessary state (note that we never directly
+      <c>invoke __init__</c>). For example,
+    </p>
     <pre>my_fraction = Fraction(3, 5)</pre>
     <p>creates an object called <c>my_fraction</c> representing the fraction
-                <math>\frac {3}{5}</math> (three-fifths). <xref ref="fig-fraction1"/> shows this
-                object as it is now implemented.</p>
+      <m>\frac {3}{5}</m> (three-fifths).
+      <xref ref="fig-fraction1" /> shows this
+      object as it is now implemented.
+    </p>
     <figure align="center" xml:id="fig-fraction1">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: An Instance of the <literal>Fraction</literal> Class</caption>
-      <image source="Introduction/Figures/fraction1.png" width="50%"/>
+      <image source="Introduction/Figures/fraction1.png" width="50%" />
     </figure>
     <p>The next thing we need to do is implement the behavior that the abstract
-                data type requires. To begin, consider what happens when we try to print
-                a <c>Fraction</c> object.</p>
+      data type requires. To begin, consider what happens when we try to print
+      a <c>Fraction</c> object.</p>
     <pre>&gt;&gt;&gt; my_fraction = Fraction(3, 5)
 &gt;&gt;&gt; print(my_fraction)
 &lt;__main__.Fraction object at 0x103203eb8&gt;</pre>
     <p>The <c>Fraction</c> object, <c>my_fraction</c>, does not know how to respond to this
-                request to print. The <c>print</c> function requires that the object
-                convert itself into a string so that the string can be written to the
-                output. The only choice <c>my_fraction</c> has is to show the actual reference that
-                is stored in the variable (the address itself). This is not what we
-                want.</p>
+      request to print. The <c>print</c> function requires that the object
+      convert itself into a string so that the string can be written to the
+      output. The only choice <c>my_fraction</c> has is to show the actual reference that
+      is stored in the variable (the address itself). This is not what we
+      want.</p>
     <p>There are two ways we can solve this problem. One is to define a method
-                called <c>show</c> that will allow the <c>Fraction</c> object to print itself
-                as a string. We can implement this method as shown in
-                <xref ref="introduction_lst-showmethod"/>. If we create a <c>Fraction</c> object as before
-                we can ask it to show itself (in other words, print itself  in the proper format).
-                Unfortunately, this does not work in general. In order to make
-                printing work properly, we need to tell the <c>Fraction</c> class how to
-                convert itself into a string. This is what the <c>print</c> function needs
-                in order to do its job.</p>
-    <p xml:id="introduction_lst-showmethod" names="lst_showmethod">
-      <term>Listing 3</term>
+      called <c>show</c> that will allow the <c>Fraction</c> object to print itself
+      as a string. We can implement this method as shown in
+      <xref ref="introduction_lst-showmethod" />. If we create a <c>Fraction</c> object as before
+      we can ask it to show itself (in other words, print itself in the proper format).
+      Unfortunately, this does not work in general. In order to make
+      printing work properly, we need to tell the <c>Fraction</c> class how to
+      convert itself into a string. This is what the <c>print</c> function needs
+      in order to do its job.
     </p>
-    <program language="python">
-      <input>
-def show(self):
+    <listing xml:id="introduction_lst-showmethod" names="lst_showmethod">
+
+      <program language="python">
+        <input>
+        def show(self):
         print(f"{self.num}/{self.den}")
-</input>
-    </program>
+        </input>
+      </program>
+    </listing>
     <pre>&gt;&gt;&gt; my_fraction = Fraction(3, 5)
 &gt;&gt;&gt; my_fraction.show()
 3/5
 &gt;&gt;&gt; print(my_fraction)
 &lt;__main__.Fraction object at 0x40bce9ac&gt;</pre>
     <p>In Python, all classes have a set of standard methods that are provided
-                but may not work properly. One of these, <c>__str__</c>, is the method to
-                convert an object into a string. The default implementation for this
-                method is to return the instance address string as we have already seen.
-                What we need to do is provide a better implementation for this method.
-                We will say that this implementation <term>overrides</term> the previous one, or
-                that it redefines the method's behavior.</p>
+      but may not work properly. One of these, <c>__str__</c>, is the method to
+      convert an object into a string. The default implementation for this
+      method is to return the instance address string as we have already seen.
+      What we need to do is provide a better implementation for this method.
+      We will say that this implementation <term>overrides</term> the previous one, or
+      that it redefines the method's behavior.</p>
     <p>To do this, we simply define a method with the name <c>__str__</c> and
-                give it a new implementation as shown in <xref ref="introduction_lst-str"/>. This definition
-                does not need any other information except the special parameter
-                <c>self</c>. In turn, the method will build a string representation by
-                converting each piece of internal state data to a string and then
-                placing a <c>/</c> character in between the strings using string
-                concatenation. The resulting string will be returned any time a
-                <c>Fraction</c> object is asked to convert itself to a string. Notice the
-                various ways that this function is used.</p>
-    <p xml:id="introduction_lst-str" names="lst_str">
-      <term>Listing 4</term>
+      give it a new implementation as shown in
+      <xref ref="introduction_lst-str" />. This definition
+      does not need any other information except the special parameter
+      <c>self</c>. In turn, the method will build a string representation by
+      converting each piece of internal state data to a string and then
+      placing a <c>/</c> character in between the strings using string
+      concatenation. The resulting string will be returned any time a
+      <c>Fraction</c> object is asked to convert itself to a string. Notice the
+      various ways that this function is used.
     </p>
-    <program language="python">
-      <input>
-def __str__(self):
-    return f"{self.num}/{self.den}"
-</input>
-    </program>
+    <listing xml:id="introduction_lst-str" names="lst_str">
+      <program language="python">
+        <input>
+        def __str__(self):
+        return f"{self.num}/{self.den}"
+        </input>
+      </program>
+    </listing>
     <pre>&gt;&gt;&gt; my_fraction = Fraction(3, 5)
 &gt;&gt;&gt; print(my_fraction)
 3/5
@@ -152,10 +162,10 @@ I ate 3/5 of pizza
 &gt;&gt;&gt; str(my_fraction)
 '3/5'</pre>
     <p>We can override many other methods for our new <c>Fraction</c> class. Some
-                of the most important of these are the basic arithmetic operations. We
-                would like to be able to create two <c>Fraction</c> objects and then add
-                them together using the standard <c>+</c> notation. At this point, if we try
-                to add two fractions, we get the following:</p>
+      of the most important of these are the basic arithmetic operations. We
+      would like to be able to create two <c>Fraction</c> objects and then add
+      them together using the standard <c>+</c> notation. At this point, if we try
+      to add two fractions, we get the following:</p>
     <pre>&gt;&gt;&gt; f1 = Fraction(1, 4)
 &gt;&gt;&gt; f2 = Fraction(1, 2)
 &gt;&gt;&gt; f1 + f2
@@ -163,181 +173,200 @@ Traceback (most recent call last):
 File "&lt;stdin&gt;", line 1, in &lt;module&gt;
 TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
     <p>If you look closely at the error, you see that the problem is that the
-                <c>+</c> operator does not understand the <c>Fraction</c> operands.
-                We can fix this by providing the <c>Fraction</c> class with a method that
-                overrides the addition method. In Python, this method is called
-                <c>__add__</c> and it requires two parameters. The first, <c>self</c>, is
-                always needed, and the second represents the other operand in the
-                expression. For example,</p>
+      <c>+</c> operator does not understand the <c>Fraction</c> operands.
+      We can fix this by providing the <c>Fraction</c> class with a method that
+      overrides the addition method. In Python, this method is called
+      <c>__add__</c> and it requires two parameters. The first, <c>self</c>, is
+      always needed, and the second represents the other operand in the
+      expression. For example,
+    </p>
     <pre>f1.__add__(f2)</pre>
     <p>would ask the <c>Fraction</c> object <c>f1</c> to add the <c>Fraction</c> object
-                <c>f2</c> to itself. This can be written in the standard notation,
-                <c>f1 + f2</c>.</p>
-    <p>Two fractions must have the same denominator to be added. The easiest
-                way to make sure they have the same denominator is to simply use the
-                product of the two denominators as a common denominator so that
-                <math>\frac {a}{b} + \frac {c}{d} = \frac {ad}{bd} + \frac {cb}{bd} = \frac{ad+cb}{bd}</math>.
-                The implementation is shown in <xref ref="introduction_lst-addmethod"/>. The addition
-                function returns a new <c>Fraction</c> object with the numerator and
-                denominator of the sum. We can use this method by writing a standard
-                arithmetic expression involving fractions, assigning the result of the
-                addition, and then printing our result.</p>
-    <p xml:id="introduction_lst-addmethod" names="lst_addmethod">
-      <term>Listing 5</term>
+      <c>f2</c> to itself. This can be written in the standard notation,
+      <c>f1 + f2</c>.
     </p>
-    <program language="python">
-      <input>
-def __add__(self, other_fraction):
-     new_num = self.num * other_fraction.den + \
-                 self.den * other_fraction.num
-     new_den = self.den * other_fraction.den
+    <p>Two fractions must have the same denominator to be added. The easiest
+      way to make sure they have the same denominator is to simply use the
+      product of the two denominators as a common denominator so that
+      <m>\frac {a}{b} + \frac {c}{d} = \frac {ad}{bd} + \frac {cb}{bd} = \frac{ad+cb}{bd}</m>.
+      The implementation is shown in
+      <xref ref="introduction_lst-addmethod" />. The addition
+      function returns a new <c>Fraction</c> object with the numerator and
+      denominator of the sum. We can use this method by writing a standard
+      arithmetic expression involving fractions, assigning the result of the
+      addition, and then printing our result.
+    </p>
+    <listing xml:id="introduction_lst-addmethod" names="lst_addmethod">
 
-     return Fraction(new_num, new_den)
-</input>
-    </program>
+      <program language="python">
+        <input>
+        def __add__(self, other_fraction):
+        new_num = self.num * other_fraction.den + \
+        self.den * other_fraction.num
+        new_den = self.den * other_fraction.den
+
+        return Fraction(new_num, new_den)
+        </input>
+      </program>
+    </listing>
     <pre>&gt;&gt;&gt; f1 = Fraction(1, 4)
 &gt;&gt;&gt; f2 = Fraction(1, 2)
 &gt;&gt;&gt; print(f1 + f2)
 6/8</pre>
     <p>The addition method works as we desire, but one thing could be better.
-                Note that <math>6/8</math> is the correct result
-                (<math>\frac {1}{4} + \frac {1}{2}</math>) but that it is not in the
-                <q>lowest terms</q> representation. The best representation would be
-                <math>3/4</math>. In order to be sure that our results are always in the
-                lowest terms, we need a helper function that knows how to reduce
-                fractions. This function will need to look for the greatest common
-                divisor, or GCD. We can then divide the numerator and the denominator by
-                the GCD and the result will be reduced to lowest terms.</p>
-    <p>The best-known algorithm for finding the greatest common divisor is
-                Euclid's algorithm, which will be discussed in detail in Chapter 8.
-                It states that the greatest common divisor of two
-                integers <math>m</math> and <math>n</math> is <math>n</math> if <math>n</math>
-                divides <math>m</math> evenly. However, if <math>n</math> does not divide
-                <math>m</math> evenly, then the answer is the greatest common divisor of
-                <math>n</math> and the remainder of <math>m</math> divided by <math>n</math>. We
-                will simply provide an iterative implementation here (see
-                <xref ref="lst-gcd"/>). Note that this implementation of the GCD algorithm
-                works only when the denominator is positive. This is acceptable for our
-                fraction class because we have said that a negative fraction will be
-                represented by a negative numerator.</p>
-    <program xml:id="gcd_cl" interactive="activecode" language="python">
-      <input>
-def gcd(m, n):
-    while m % n != 0:
-        m, n = n, m % n
-    return n
-
-print(gcd(20, 10))
-        </input>
-    </program>
-    <p>Now we can use this function to help reduce any fraction. To put a
-                fraction in lowest terms, we will divide the numerator and the
-                denominator by their greatest common divisor. So, for the fraction
-                <math>6/8</math>, the greatest common divisor is 2. Dividing the top and
-                the bottom by 2 creates a new fraction, <math>3/4</math> (see
-                <xref ref="introduction_lst-newaddmethod"/>).</p>
-    <p xml:id="introduction_lst-newaddmethod" names="lst_newaddmethod">
-      <term>Listing 6</term>
+      Note that <m>6/8</m> is the correct result
+      (<m>\frac {1}{4} + \frac {1}{2}</m>) but that it is not in the
+      <q>lowest terms</q> representation. The best representation would be
+      <m>3/4</m>. In order to be sure that our results are always in the
+      lowest terms, we need a helper function that knows how to reduce
+      fractions. This function will need to look for the greatest common
+      divisor, or GCD. We can then divide the numerator and the denominator by
+      the GCD and the result will be reduced to lowest terms.
     </p>
-    <program language="python">
+    <p>The best-known algorithm for finding the greatest common divisor is
+      Euclid's algorithm, which will be discussed in detail in Chapter 8.
+      It states that the greatest common divisor of two
+      integers <m>m</m> and <m>n</m> is <m>n</m> if <m>n</m>
+      divides <m>m</m> evenly. However, if <m>n</m> does not divide
+      <m>m</m> evenly, then the answer is the greatest common divisor of
+      <m>n</m> and the remainder of <m>m</m> divided by <m>n</m>. We
+      will simply provide an iterative implementation here (see
+      <xref ref="gcd_cl" />). Note that this implementation of the GCD algorithm
+      works only when the denominator is positive. This is acceptable for our
+      fraction class because we have said that a negative fraction will be
+      represented by a negative numerator.
+    </p>
+    <listing xml:id="gcd_cl" >
+    <program interactive="activecode" language="python">
       <input>
-def __add__(self, other_fraction):
-    new_num = self.num * other_fraction.den + \
-                 self.den * other_fraction.num
-    new_den = self.den * other_fraction.den
-    common = gcd(new_num, new_den)
-    return Fraction(new_num // common, new_den // common)
-</input>
+      def gcd(m, n):
+      while m % n != 0:
+      m, n = n, m % n
+      return n
+
+      print(gcd(20, 10))
+      </input>
     </program>
-    <p>Our <c>Fraction</c> object now has two very useful methods as depicted in <xref ref="i19_id2fig-fraction2"/>.</p>
+    </listing>
+
+    <p>Now we can use this function to help reduce any fraction. To put a
+      fraction in lowest terms, we will divide the numerator and the
+      denominator by their greatest common divisor. So, for the fraction
+      <m>6/8</m>, the greatest common divisor is 2. Dividing the top and
+      the bottom by 2 creates a new fraction, <m>3/4</m> (see
+      <xref ref="introduction_lst-newaddmethod" />).
+    </p>
+    <listing xml:id="introduction_lst-newaddmethod" names="lst_newaddmethod">
+      <program language="python">
+        <input>
+        def __add__(self, other_fraction):
+        new_num = self.num * other_fraction.den + \
+        self.den * other_fraction.num
+        new_den = self.den * other_fraction.den
+        common = gcd(new_num, new_den)
+        return Fraction(new_num // common, new_den // common)
+        </input>
+      </program>
+    </listing>
+
+    <p>Our <c>Fraction</c> object now has two very useful methods as depicted in
+      <xref ref="i19_id2fig-fraction2" />.
+    </p>
     <figure align="center" xml:id="i19_id2fig-fraction2">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: An Instance of the <literal>Fraction</literal> Class with Two Methods</caption>
-      <image source="Introduction/Figures/fraction2.png" width="50%"/>
+      <image source="Introduction/Figures/fraction2.png" width="50%" />
     </figure>
     <pre>&gt;&gt;&gt; f1 = Fraction(1, 4)
 &gt;&gt;&gt; f2 = Fraction(1, 2)
 &gt;&gt;&gt; print(f1 + f2)
 3/4</pre>
     <p>An additional group of methods that we need to
-                include in our example <c>Fraction</c> class will allow two fractions to
-                compare themselves to one another. Assume we have two <c>Fraction</c>
-                objects, <c>f1</c> and <c>f2</c>. <c>f1==f2</c> will only be <c>True</c> if they are
-                references to the same object. Two different objects with the same
-                numerators and denominators would not be equal under this
-                implementation. This is called <term>shallow equality</term> (see
-                <xref ref="fig-fraction3"/>).</p>
-    <figure align="center" xml:id="file_72_id3">
+      include in our example <c>Fraction</c> class will allow two fractions to
+      compare themselves to one another. Assume we have two <c>Fraction</c>
+      objects, <c>f1</c> and <c>f2</c>. <c>f1==f2</c> will only be <c>True</c> if they are
+      references to the same object. Two different objects with the same
+      numerators and denominators would not be equal under this
+      implementation. This is called <term>shallow equality</term> (see
+      <xref ref="fig-fraction3" />).
+    </p>
+    <figure align="center" xml:id="fig-fraction3">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 7: Shallow Equality Versus Deep Equality</caption>
-      <image source="Introduction/Figures/fraction3.png" width="50%"/>
+      <image source="Introduction/Figures/fraction3.png" width="50%" />
     </figure>
     <p>We can create <term>deep equality</term>&#x2013;equality by the
-                same value, not the same reference&#x2013;by overriding the <c>__eq__</c>
-                method (see <xref ref="fig-fraction3"/>).
-                The <c>__eq__</c> method is another standard method available in
-                any class. The <c>__eq__</c> method compares two objects and returns
-                <c>True</c> if their values are the same, <c>False</c> otherwise.</p>
-    <p>In the <c>Fraction</c> class, we can implement the <c>__eq__</c> method by
-                again putting the two fractions in common terms and then comparing the
-                numerators (see <xref ref="introduction_lst-cmpmethod"/>). It is important to note that there
-                are other relational operators that can be overridden. For example, the
-                <c>__le__</c> method provides the less than or equal functionality.</p>
-    <p xml:id="introduction_lst-cmpmethod" names="lst_cmpmethod">
-      <term>Listing 7</term>
+      same value, not the same reference&#x2013;by overriding the <c>__eq__</c>
+      method (see
+      <xref ref="fig-fraction3" />).
+      The <c>__eq__</c> method is another standard method available in
+      any class. The <c>__eq__</c> method compares two objects and returns
+      <c>True</c> if their values are the same, <c>False</c> otherwise.
     </p>
-    <program language="python">
-      <input>
-def __eq__(self, other_fraction):
-    first_num = self.num * other_fraction.den
-    second_num = other_fraction.num * self.den
-
-    return first_num == second_num
-</input>
-    </program>
-    <p>The complete <c>Fraction</c> class, up to this point, is shown in
-                <xref ref="lst-fractioncode"/>. We leave the remaining arithmetic and relational
-                methods as exercises.</p>
-    <program xml:id="fraction_class" interactive="activecode" language="python">
-      <input>
-def gcd(m, n):
-    while m % n != 0:
-        m, n = n, m % n
-    return n
-
-class Fraction:
-    def __init__(self, top, bottom):
-        self.num = top
-        self.den = bottom
-
-    def __str__(self):
-        return "{:d}/{:d}".format(self.num, self.den)
-
-    def __eq__(self, other_fraction):
+    <p>In the <c>Fraction</c> class, we can implement the <c>__eq__</c> method by
+      again putting the two fractions in common terms and then comparing the
+      numerators (see
+      <xref ref="introduction_lst-cmpmethod" />). It is important to note that there
+      are other relational operators that can be overridden. For example, the
+      <c>__le__</c> method provides the less than or equal functionality.
+    </p>
+    <listing xml:id="introduction_lst-cmpmethod" names="lst_cmpmethod">
+      <program language="python">
+        <input>
+        def __eq__(self, other_fraction):
         first_num = self.num * other_fraction.den
         second_num = other_fraction.num * self.den
 
         return first_num == second_num
-
-    def __add__(self, other_fraction):
-        new_num = self.num * other_fraction.den \
-        + self.den * other_fraction.num
-        new_den = self.den * other_fraction.den
-        cmmn = gcd(new_num, new_den)
-        return Fraction(new_num // cmmn, new_den // cmmn)
-
-    def show(self):
-        print("{:d}/{:d}".format(self.num, self.den))
-
-x = Fraction(1, 2)
-x.show()
-y = Fraction(2, 3)
-print(y)
-print(x + y)
-print(x == y)
         </input>
+      </program>
+    </listing>
+    <p>The complete <c>Fraction</c> class, up to this point, is shown in
+      <xref ref="lst-fractioncode" />. We leave the remaining arithmetic and relational
+      methods as exercises.
+    </p>
+    <listing xml:id="lst-fractioncode">
+    <program  interactive="activecode" language="python">
+      <input>
+      def gcd(m, n):
+      while m % n != 0:
+      m, n = n, m % n
+      return n
+
+      class Fraction:
+      def __init__(self, top, bottom):
+      self.num = top
+      self.den = bottom
+
+      def __str__(self):
+      return "{:d}/{:d}".format(self.num, self.den)
+
+      def __eq__(self, other_fraction):
+      first_num = self.num * other_fraction.den
+      second_num = other_fraction.num * self.den
+
+      return first_num == second_num
+
+      def __add__(self, other_fraction):
+      new_num = self.num * other_fraction.den \
+      + self.den * other_fraction.num
+      new_den = self.den * other_fraction.den
+      cmmn = gcd(new_num, new_den)
+      return Fraction(new_num // cmmn, new_den // cmmn)
+
+      def show(self):
+      print("{:d}/{:d}".format(self.num, self.den))
+
+      x = Fraction(1, 2)
+      x.show()
+      y = Fraction(2, 3)
+      print(y)
+      print(x + y)
+      print(x == y)
+      </input>
     </program>
+    </listing>
     <note>
-      <title>Self  Check</title>
-      <p>To make sure you understand how operators are implemented in Python classes, and how to properly write methods, write some methods to implement <c>*, /,</c> and <c>-</c> .  Also implement comparison operators &gt; and &lt;</p>
+      <title>Self Check</title>
+      <p>To make sure you understand how operators are implemented in Python classes, and how to properly write methods, write some methods to implement <c>*, /,</c> and <c>-</c> . Also implement comparison operators &gt; and &lt;</p>
       <program xml:id="self_check_4" interactive="activecode" language="python">
         <input>
 
@@ -345,244 +374,260 @@ print(x == y)
         </input>
       </program>
     </note>
-    <video xml:id="fraction" youtube="gFb9tvJZHXo" width="auto"/>
+    <video xml:id="fraction" youtube="gFb9tvJZHXo" width="auto" />
   </subsection>
   <subsection xml:id="introduction_inheritance-logic-gates-and-circuits">
     <title>Inheritance: Logic Gates and Circuits</title>
     <p>Our final section will introduce another important aspect of
-                object-oriented programming. <term>Inheritance</term> is the ability of one
-                class to be related to another class in much the same way that people
-                can be related to one another. Children inherit characteristics from
-                their parents. Similarly, Python child classes can inherit
-                characteristic data and behavior from a parent class. These classes are
-                often referred to as <term>subclasses</term> and <term>superclasses</term>.</p>
-    <p><xref ref="fig-inherit1"/> shows the built-in Python collections and their
-                relationships to one another. We call a relationship structure such as
-                this an <term>inheritance hierarchy</term>. For example, the list is a <em>child</em> of
-                the sequential collection. In this case, we call the list the child and
-                the <em>sequence</em> the parent (or <em>subclass list</em> and <em>superclass sequence</em>). This
-                is often referred to as an <term>Is-a relationship</term> (the list Is-a
-                sequential collection). This implies that lists inherit important
-                characteristics from sequences, namely the ordering of the underlying
-                data and operations such as concatenation, repetition, and indexing.</p>
+      object-oriented programming. <term>Inheritance</term> is the ability of one
+      class to be related to another class in much the same way that people
+      can be related to one another. Children inherit characteristics from
+      their parents. Similarly, Python child classes can inherit
+      characteristic data and behavior from a parent class. These classes are
+      often referred to as <term>subclasses</term> and <term>superclasses</term>.</p>
+    <p>
+      <xref ref="fig-inherit1" /> shows the built-in Python collections and their
+      relationships to one another. We call a relationship structure such as
+      this an <term>inheritance hierarchy</term>. For example, the list is a <em>child</em> of
+      the sequential collection. In this case, we call the list the child and
+      the <em>sequence</em> the parent (or <em>subclass list</em> and <em>superclass sequence</em>). This
+      is often referred to as an <term>Is-a relationship</term> (the list Is-a
+      sequential collection). This implies that lists inherit important
+      characteristics from sequences, namely the ordering of the underlying
+      data and operations such as concatenation, repetition, and indexing.
+    </p>
     <figure align="center" xml:id="file_72_id4">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 8: An Inheritance Hierarchy for Python Collections</caption>
-      <image source="Introduction/Figures/inheritance1.png" width="50%"/>
+      <image source="Introduction/Figures/inheritance1.png" width="50%" />
     </figure>
     <p>Lists, tuples, and strings are all examples of sequential collections. They
-                all inherit common data organization and operations. However, each of
-                them is distinct based on whether the data is homogeneous and whether
-                the collection is immutable. The children all gain from their parents
-                but distinguish themselves by adding additional characteristics.</p>
+      all inherit common data organization and operations. However, each of
+      them is distinct based on whether the data is homogeneous and whether
+      the collection is immutable. The children all gain from their parents
+      but distinguish themselves by adding additional characteristics.</p>
     <p>By organizing classes in this hierarchical fashion, object-oriented
-                programming languages allow previously written code to be extended to
-                meet the needs of a new situation. In addition, by organizing data in
-                this hierarchical manner, we can better understand the relationships
-                that exist. We can be more efficient in building our abstract
-                representations.</p>
+      programming languages allow previously written code to be extended to
+      meet the needs of a new situation. In addition, by organizing data in
+      this hierarchical manner, we can better understand the relationships
+      that exist. We can be more efficient in building our abstract
+      representations.</p>
     <p>To explore this idea further, we will construct a <term>simulation</term>, an
-                application to simulate digital circuits. The basic building block for
-                this simulation will be the logic gate. These electronic switches
-                represent Boolean algebra relationships between their input and their
-                output. In general, gates have a single output line. The value of the
-                output is dependent on the values given on the input lines.</p>
+      application to simulate digital circuits. The basic building block for
+      this simulation will be the logic gate. These electronic switches
+      represent Boolean algebra relationships between their input and their
+      output. In general, gates have a single output line. The value of the
+      output is dependent on the values given on the input lines.</p>
     <p>AND gates have two input lines, each of which can be either 0 or 1
-                (representing <c>False</c> or <c>True</c>, respectively). If both of the input
-                lines have the value 1, the resulting output is 1. However, if either or
-                both of the input lines is 0, the result is 0. OR gates also have two
-                input lines and produce a 1 if one or both of the input values is a 1.
-                In the case where both input lines are 0, the result is 0.</p>
+      (representing <c>False</c> or <c>True</c>, respectively). If both of the input
+      lines have the value 1, the resulting output is 1. However, if either or
+      both of the input lines is 0, the result is 0. OR gates also have two
+      input lines and produce a 1 if one or both of the input values is a 1.
+      In the case where both input lines are 0, the result is 0.</p>
     <p>NOT gates differ from the other two gates in that they have only a
-                single input line. The output value is simply the opposite of the input
-                value. If 0 appears on the input, 1 is produced on the output.
-                Similarly, 1 produces 0. <xref ref="fig-truthtable"/> shows how each of these
-                gates is typically represented. Each gate also has a <term>truth table</term> of
-                values showing the input-to-output mapping that is performed by the
-                gate.</p>
+      single input line. The output value is simply the opposite of the input
+      value. If 0 appears on the input, 1 is produced on the output.
+      Similarly, 1 produces 0.
+      <xref ref="fig-truthtable" /> shows how each of these
+      gates is typically represented. Each gate also has a <term>truth table</term> of
+      values showing the input-to-output mapping that is performed by the
+      gate.
+    </p>
     <figure align="center" xml:id="file_72_id5">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 9: Three Types of Logic Gates</caption>
-      <image source="Introduction/Figures/truthtable.png" width="50%"/>
+      <image source="Introduction/Figures/truthtable.png" width="50%" />
     </figure>
     <p>By combining these gates in various patterns and then applying a set of
-                input values, we can build circuits that have logical functions.
-                <xref ref="fig-circuit1"/> shows a circuit consisting of two AND gates, one OR
-                gate, and a single NOT gate. The output lines from the two AND gates
-                feed directly into the OR gate, and the resulting output from the OR
-                gate is given to the NOT gate. If we apply a set of input values to the
-                four input lines (two for each AND gate), the values are processed and a
-                result appears at the output of the NOT gate. <xref ref="fig-circuit1"/> also
-                shows an example with values.</p>
+      input values, we can build circuits that have logical functions.
+      <xref ref="fig-circuit1" /> shows a circuit consisting of two AND gates, one OR
+      gate, and a single NOT gate. The output lines from the two AND gates
+      feed directly into the OR gate, and the resulting output from the OR
+      gate is given to the NOT gate. If we apply a set of input values to the
+      four input lines (two for each AND gate), the values are processed and a
+      result appears at the output of the NOT gate.
+      <xref ref="fig-circuit1" /> also
+      shows an example with values.
+    </p>
     <figure align="center" xml:id="file_72_id6">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 10: A Circuit</caption>
-      <image source="Introduction/Figures/circuit1.png" width="50%"/>
+      <image source="Introduction/Figures/circuit1.png" width="50%" />
     </figure>
     <p>In order to implement a circuit, we will first build a representation
-                for logic gates. Logic gates are easily organized into a class
-                inheritance hierarchy as shown in <xref ref="fig-gates"/>. At the top of the
-                hierarchy, the <c>LogicGate</c> class represents the most general
-                characteristics of logic gates: namely, a label for the gate and an
-                output line. The next level of subclasses breaks the logic gates into
-                two families, those that have one input line and those that have two.
-                Below that, the specific logic functions of each appear.</p>
+      for logic gates. Logic gates are easily organized into a class
+      inheritance hierarchy as shown in
+      <xref ref="fig-gates" />. At the top of the
+      hierarchy, the <c>LogicGate</c> class represents the most general
+      characteristics of logic gates: namely, a label for the gate and an
+      output line. The next level of subclasses breaks the logic gates into
+      two families, those that have one input line and those that have two.
+      Below that, the specific logic functions of each appear.
+    </p>
     <figure align="center" xml:id="file_72_id7">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 11: An Inheritance Hierarchy for Logic Gates</caption>
-      <image source="Introduction/Figures/gates.png" width="50%"/>
+      <image source="Introduction/Figures/gates.png" width="50%" />
     </figure>
     <p>We can now start to implement the classes by starting with the most
-                general, <c>LogicGate</c>. As noted earlier, each gate has a label for
-                identification and a single output line. In addition, we need methods to
-                allow a user of a gate to ask the gate for its label.</p>
+      general, <c>LogicGate</c>. As noted earlier, each gate has a label for
+      identification and a single output line. In addition, we need methods to
+      allow a user of a gate to ask the gate for its label.</p>
     <p>The other behavior that every logic gate needs is the ability to know
-                its output value. This will require that the gate perform the
-                appropriate logic based on the current input. In order to produce
-                output, the gate needs to know specifically what that logic is. This
-                means calling a method to perform the logic computation. The complete
-                class is shown in <xref ref="introduction_lst-logicgateclass"/>.</p>
-    <p xml:id="introduction_lst-logicgateclass" names="lst_logicgateclass">
-      <term>Listing 8</term>
+      its output value. This will require that the gate perform the
+      appropriate logic based on the current input. In order to produce
+      output, the gate needs to know specifically what that logic is. This
+      means calling a method to perform the logic computation. The complete
+      class is shown in
+      <xref ref="introduction_lst-logicgateclass" />.
     </p>
-    <program language="python">
-      <input>
-class LogicGate:
-    def __init__(self, lbl):
+    <listing xml:id="introduction_lst-logicgateclass" names="lst_logicgateclass">
+      <program language="python">
+        <input>
+        class LogicGate:
+        def __init__(self, lbl):
         self.label = lbl
         self.output = None
 
-    def get_label(self):
+        def get_label(self):
         return self.label
 
-    def get_output(self):
+        def get_output(self):
         self.output = self.perform_gate_logic()
         return self.output
-</input>
-    </program>
+        </input>
+      </program>
+    </listing>
     <p>At this point, we will not implement the <c>perform_gate_logic</c> function.
-                The reason for this is that we do not know how each gate will perform
-                its own logic operation. Those details will be included by each
-                individual gate that is added to the hierarchy. This is a very powerful
-                idea in object-oriented programming. We are writing a method that will
-                use code that does not exist yet. The parameter <c>self</c> is a reference
-                to the actual gate object invoking the method. Any new logic gate that
-                gets added to the hierarchy will simply need to implement the
-                <c>perform_gate_logic</c> function and it will be used at the appropriate
-                time. Once done, the gate can provide its output value. This ability to
-                extend a hierarchy that currently exists and provide the specific
-                functions that the hierarchy needs to use the new class is extremely
-                important for reusing existing code.</p>
-    <p>We categorized the logic gates based on the number of input lines,
-                as shown in <xref ref="fig-gates"/>: the AND gate and OR gate both have two input lines,
-                whereas the NOT gate has only one. <c>LogicGate</c> has two subclasses: <c>BinaryGate</c>,
-                which will add two input lines, and <c>UnaryGate</c>, which will have only a single input line.
-                In computer circuit design, these lines
-                are sometimes called <em>pins</em>, so we will use that terminology in our
-                implementation.</p>
-    <p><xref ref="introduction_lst-logicgateclass"/> and <xref ref="introduction_lst-logicgateclass"/> implement these two
-                classes. The constructors in both of these classes start with an
-                explicit call to the constructor of the parent class using the parent's <c>__init__</c>
-                method. When creating an instance of the <c>BinaryGate</c> class, we
-                first want to initialize any data items that are inherited from
-                <c>LogicGate</c>. In this case, that means the label for the gate. The
-                constructor then goes on to add the two input lines (<c>pin_a</c> and
-                <c>pin_b</c>). This is a very common pattern that you should always use when
-                building class hierarchies. Child class constructors need to call parent
-                class constructors and then move on to their own distinguishing data.</p>
-    <p xml:id="introduction_lst-binarygateclass" names="lst_binarygateclass">
-      <term>Listing 9</term>
+      The reason for this is that we do not know how each gate will perform
+      its own logic operation. Those details will be included by each
+      individual gate that is added to the hierarchy. This is a very powerful
+      idea in object-oriented programming. We are writing a method that will
+      use code that does not exist yet. The parameter <c>self</c> is a reference
+      to the actual gate object invoking the method. Any new logic gate that
+      gets added to the hierarchy will simply need to implement the
+      <c>perform_gate_logic</c> function and it will be used at the appropriate
+      time. Once done, the gate can provide its output value. This ability to
+      extend a hierarchy that currently exists and provide the specific
+      functions that the hierarchy needs to use the new class is extremely
+      important for reusing existing code.
     </p>
-    <program language="python">
-      <input>
-class BinaryGate(LogicGate):
-    def __init__(self, lbl):
+    <p>We categorized the logic gates based on the number of input lines,
+      as shown in
+      <xref ref="fig-gates" />: the AND gate and OR gate both have two input lines,
+      whereas the NOT gate has only one. <c>LogicGate</c> has two subclasses: <c>BinaryGate</c>,
+      which will add two input lines, and <c>UnaryGate</c>, which will have only a single input line.
+      In computer circuit design, these lines
+      are sometimes called <em>pins</em>, so we will use that terminology in our
+      implementation.
+    </p>
+    <p>
+      <xref ref="introduction_lst-logicgateclass" /> and
+      <xref ref="introduction_lst-logicgateclass" /> implement these two
+      classes. The constructors in both of these classes start with an
+      explicit call to the constructor of the parent class using the parent's <c>__init__</c>
+      method. When creating an instance of the <c>BinaryGate</c> class, we
+      first want to initialize any data items that are inherited from
+      <c>LogicGate</c>. In this case, that means the label for the gate. The
+      constructor then goes on to add the two input lines (<c>pin_a</c> and
+      <c>pin_b</c>). This is a very common pattern that you should always use when
+      building class hierarchies. Child class constructors need to call parent
+      class constructors and then move on to their own distinguishing data.
+    </p>
+    <listing xml:id="introduction_lst-binarygateclass" names="lst_binarygateclass">
+      <program language="python">
+        <input>
+        class BinaryGate(LogicGate):
+        def __init__(self, lbl):
         LogicGate.__init__(self, lbl)
         self.pin_a = None
         self.pin_b = None
 
-    def get_pin_a(self):
+        def get_pin_a(self):
         return int(input(f"Enter pin A input for gate \
-            {self.get_label()}: "))
+        {self.get_label()}: "))
 
-    def get_pin_b(self):
+        def get_pin_b(self):
         return int(input(f"Enter pin B input for gate \
-            {self.get_label()}: "))
-</input>
-    </program>
-    <p xml:id="introduction_lst-unarygateclass" names="lst_unarygateclass">
-      <term>Listing 10</term>
-    </p>
-    <program language="python">
-      <input>
-class UnaryGate(LogicGate):
-    def __init__(self, lbl):
+        {self.get_label()}: "))
+        </input>
+      </program>
+    </listing>
+    <listing xml:id="introduction_lst-unarygateclass" names="lst_unarygateclass">
+      <program language="python">
+        <input>
+        class UnaryGate(LogicGate):
+        def __init__(self, lbl):
         LogicGate.__init__(self, lbl)
         self.pin = None
 
-    def get_pin(self):
+        def get_pin(self):
         return int(input(f"Enter pin input for gate \
-            {self.get_label()}: "))
-</input>
-    </program>
+        {self.get_label()}: "))
+        </input>
+      </program>
+    </listing>
     <p>Python also has a function called <c>super</c> which can be used in place of explicitly
-                naming the parent class.  This is a more general mechanism and is widely
-                used, especially when a class has more than one parent. In our example above,
-                <c>LogicGate.__init__(self, lbl)</c> could be replaced with <c>super().__init__(lbl)</c>,
-                <c>super(UnaryGate, self).__init__(lbl)</c>, or <c>super().__init__("UnaryGate", lbl)</c>.
-                The specific details are beyond the scope of this text.</p>
-    <p>The only behavior that the <c>BinaryGate</c> class adds is the ability to
-                get the values from the two input lines. Since these values come from
-                some external place, we will simply ask the user to provide them via an input statement.
-                The same implementation occurs for the <c>UnaryGate</c>
-                class except that there is only one input line.</p>
-    <p>Now that we have a general class for gates depending on the number of
-                input lines, we can build specific gates that have unique behavior. For
-                example, the <c>AndGate</c> class will be a subclass of <c>BinaryGate</c>
-                since AND gates have two input lines. As before, the first line of the
-                constructor calls upon the parent class constructor (<c>BinaryGate</c>),
-                which in turn calls its parent class constructor (<c>LogicGate</c>). Note
-                that the <c>AndGate</c> class does not provide any new data since it
-                inherits two input lines, one output line, and a label.</p>
-    <p>The only thing <c>AndGate</c> needs to add is the specific behavior that
-                performs the Boolean operation that was described earlier. This is the
-                place where we can provide the <c>perform_gate_logic</c> method. For an AND
-                gate, this method first must get the two input values and then only
-                return 1 if both input values are 1. The complete class is shown in
-                <xref ref="introduction_lst-andgateclass"/>.</p>
-    <p xml:id="introduction_lst-andgateclass" names="lst_andgateclass">
-      <term>Listing 11</term>
+      naming the parent class. This is a more general mechanism and is widely
+      used, especially when a class has more than one parent. In our example above,
+      <c>LogicGate.__init__(self, lbl)</c> could be replaced with <c>super().__init__(lbl)</c>,
+      <c>super(UnaryGate, self).__init__(lbl)</c>, or <c>super().__init__("UnaryGate", lbl)</c>.
+      The specific details are beyond the scope of this text.
     </p>
-    <program language="python">
-      <input>
-class AndGate(BinaryGate):
-    def __init__(self, lbl):
+    <p>The only behavior that the <c>BinaryGate</c> class adds is the ability to
+      get the values from the two input lines. Since these values come from
+      some external place, we will simply ask the user to provide them via an input statement.
+      The same implementation occurs for the <c>UnaryGate</c>
+      class except that there is only one input line.</p>
+    <p>Now that we have a general class for gates depending on the number of
+      input lines, we can build specific gates that have unique behavior. For
+      example, the <c>AndGate</c> class will be a subclass of <c>BinaryGate</c>
+      since AND gates have two input lines. As before, the first line of the
+      constructor calls upon the parent class constructor (<c>BinaryGate</c>),
+      which in turn calls its parent class constructor (<c>LogicGate</c>). Note
+      that the <c>AndGate</c> class does not provide any new data since it
+      inherits two input lines, one output line, and a label.</p>
+    <p>The only thing <c>AndGate</c> needs to add is the specific behavior that
+      performs the Boolean operation that was described earlier. This is the
+      place where we can provide the <c>perform_gate_logic</c> method. For an AND
+      gate, this method first must get the two input values and then only
+      return 1 if both input values are 1. The complete class is shown in
+      <xref ref="introduction_lst-andgateclass" />.
+    </p>
+    <listing xml:id="introduction_lst-andgateclass" names="lst_andgateclass">
+      <program language="python">
+        <input>
+        class AndGate(BinaryGate):
+        def __init__(self, lbl):
         super().__init__(lbl)
 
-    def perform_gate_logic(self):
+        def perform_gate_logic(self):
         a = self.get_pin_a()
         b = self.get_pin_b()
         if a == 1 and b == 1:
-            return 1
+        return 1
         else:
-            return 0
-</input>
-    </program>
+        return 0
+        </input>
+      </program>
+    </listing>
     <p>We can show the <c>AndGate</c> class in action by creating an instance and
-                asking it to compute its output. The following session shows an
-                <c>AndGate</c> object, <c>g1</c>, that has an internal label <c>"G1"</c>. When we
-                invoke the <c>get_output</c> method, the object must first call its
-                <c>perform_gate_logic</c> method which in turn queries the two input lines.
-                Once the values are provided, the correct output is shown.</p>
+      asking it to compute its output. The following session shows an
+      <c>AndGate</c> object, <c>g1</c>, that has an internal label <c>"G1"</c>. When we
+      invoke the <c>get_output</c> method, the object must first call its
+      <c>perform_gate_logic</c> method which in turn queries the two input lines.
+      Once the values are provided, the correct output is shown.
+    </p>
     <pre>&gt;&gt;&gt; g1 = AndGate("G1")
 &gt;&gt;&gt; g1.get_output()
 Enter pin A input for gate G1: 1
 Enter pin B input for gate G1: 0
 0</pre>
     <p>The same development can be done for OR gates and NOT gates. The
-                <c>OrGate</c> class will also be a subclass of <c>BinaryGate</c> and the
-                <c>NotGate</c> class will extend the <c>UnaryGate</c> class. Both of these
-                classes will need to provide their own <c>perform_gate_logic</c> functions,
-                as this is their specific behavior.</p>
+      <c>OrGate</c> class will also be a subclass of <c>BinaryGate</c> and the
+      <c>NotGate</c> class will extend the <c>UnaryGate</c> class. Both of these
+      classes will need to provide their own <c>perform_gate_logic</c> functions,
+      as this is their specific behavior.
+    </p>
     <p>We can use a single gate by first constructing an instance of one of the
-                gate classes and then asking the gate for its output (which will in turn
-                need inputs to be provided). For example:</p>
+      gate classes and then asking the gate for its output (which will in turn
+      need inputs to be provided). For example:</p>
     <pre>&gt;&gt;&gt; g2 = OrGate("G2")
 &gt;&gt;&gt; g2.get_output()
 Enter pin A input for gate G2: 1
@@ -597,101 +642,105 @@ Enter pin B input for gate G2: 0
 Enter pin input for gate G3: 0
 1</pre>
     <p>Now that we have the basic gates working, we can turn our attention to
-                building circuits. In order to create a circuit, we need to connect
-                gates together, the output of one flowing into the input of another. To
-                do this, we will implement a new class called <c>Connector</c>.</p>
+      building circuits. In order to create a circuit, we need to connect
+      gates together, the output of one flowing into the input of another. To
+      do this, we will implement a new class called <c>Connector</c>.</p>
     <p>The <c>Connector</c> class will not reside in the gate hierarchy. It will,
-                however, use the gate hierarchy in that each connector will have two
-                gates, one on either end (see <xref ref="fig-connector"/>). This relationship is
-                very important in object-oriented programming. It is called the <term>Has-a
-                    relationship</term>. Recall earlier that we used the phrase <em>Is-a
-                    relationship</em> to say that a child class is related to a parent class,
-                for example <c>UnaryGate</c> Is-a <c>LogicGate</c>.</p>
+      however, use the gate hierarchy in that each connector will have two
+      gates, one on either end (see
+      <xref ref="fig-connector" />). This relationship is
+      very important in object-oriented programming. It is called the <term>Has-a
+        relationship</term>. Recall earlier that we used the phrase <em>Is-a
+        relationship</em> to say that a child class is related to a parent class,
+      for example <c>UnaryGate</c> Is-a <c>LogicGate</c>.
+    </p>
+    <sage/>
     <figure align="center" xml:id="file_72_id8">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 12: A Connector Connects the Output of One Gate to the Input of Another</caption>
-      <image source="Introduction/Figures/connector.png" width="50%"/>
+      <image source="Introduction/Figures/connector.png" width="50%" />
     </figure>
     <p>Now, with the <c>Connector</c> class, we say that a <c>Connector</c> Has-a
-                <c>LogicGate</c>, meaning that connectors will have instances of the
-                <c>LogicGate</c> class within them but are not part of the hierarchy. When
-                designing classes, it is very important to distinguish between those
-                that have the Is-a relationship (which requires inheritance) and those
-                that have Has-a relationships (with no inheritance).</p>
-    <p><xref ref="introduction_lst-connectorclass"/> shows the <c>Connector</c> class. The two gate
-                instances within each connector object will be referred to as the
-                <c>from_gate</c> and the <c>to_gate</c>, recognizing that data values will
-                flow from the output of one gate into an input line of the next. The
-                call to <c>set_next_pin</c> is very important for making connections (see
-                <xref ref="introduction_lst-setpin"/>). We need to add this method to our gate classes so
-                that each <c>to_gate</c> can choose the proper input line for the
-                connection.</p>
-    <p xml:id="introduction_lst-connectorclass" names="lst_connectorclass">
-      <term>Listing 12</term>
+      <c>LogicGate</c>, meaning that connectors will have instances of the
+      <c>LogicGate</c> class within them but are not part of the hierarchy. When
+      designing classes, it is very important to distinguish between those
+      that have the Is-a relationship (which requires inheritance) and those
+      that have Has-a relationships (with no inheritance).
     </p>
-    <program language="python">
-      <input>
-class Connector:
-    def __init__(self, fgate, tgate):
+    <p>
+      <xref ref="introduction_lst-connectorclass" /> shows the <c>Connector</c> class. The two gate
+      instances within each connector object will be referred to as the
+      <c>from_gate</c> and the <c>to_gate</c>, recognizing that data values will
+      flow from the output of one gate into an input line of the next. The
+      call to <c>set_next_pin</c> is very important for making connections (see
+      <xref ref="introduction_lst-setpin" />). We need to add this method to our gate classes so
+      that each <c>to_gate</c> can choose the proper input line for the
+      connection.
+    </p>
+    <listing xml:id="introduction_lst-connectorclass" names="lst_connectorclass">
+      <program language="python">
+        <input>
+        class Connector:
+        def __init__(self, fgate, tgate):
         self.from_gate = fgate
         self.to_gate = tgate
 
         tgate.set_next_pin(self)
 
-    def get_from(self):
+        def get_from(self):
         return self.from_gate
 
-    def get_to(self):
+        def get_to(self):
         return self.to_gate
-</input>
-    </program>
-    <p xml:id="introduction_lst-setpin" names="lst_setpin">
-      <term>Listing 13</term>
-    </p>
-    <program language="python">
-      <input>
-def set_next_pin(self, source):
-    if self.pin_a == None:
+        </input>
+      </program>
+    </listing>
+    <listing xml:id="introduction_lst-setpin" names="lst_setpin">
+      <program language="python">
+        <input>
+        def set_next_pin(self, source):
+        if self.pin_a == None:
         self.pin_a = source
-    else:
-        if self.pin_b == None:
-            self.pin_b = source
         else:
-            raise RuntimeError("Error: NO EMPTY PINS")
-</input>
-    </program>
+        if self.pin_b == None:
+        self.pin_b = source
+        else:
+        raise RuntimeError("Error: NO EMPTY PINS")
+        </input>
+      </program>
+    </listing>
     <p>In the <c>BinaryGate</c> class, for gates with two possible input lines,
-                the connector must be connected to only one line. If both of them are
-                available, we will choose <c>pin_a</c> by default. If <c>pin_a</c> is already
-                connected, then we will choose <c>pin_b</c>. It is not possible to connect
-                to a gate with no available input lines.</p>
+      the connector must be connected to only one line. If both of them are
+      available, we will choose <c>pin_a</c> by default. If <c>pin_a</c> is already
+      connected, then we will choose <c>pin_b</c>. It is not possible to connect
+      to a gate with no available input lines.</p>
     <p>Now it is possible to get input from two places: externally, as before,
-                and from the output of a gate that is connected to that input line. This
-                requires a change to the <c>get_pin_a</c> and <c>get_pin_b</c> methods (see
-                <xref ref="introduction_lst-newgetpin"/>). If the input line is not connected to anything
-                (<c>None</c>), then ask the user externally as before. However, if there is
-                a connection, the connection is accessed and <c>from_gate</c>'s output value
-                is retrieved. This in turn causes that gate to process its logic. This
-                continues until all input is available and the final output value
-                becomes the required input for the gate in question. In a sense, the
-                circuit works backwards to find the input necessary to finally produce
-                output.</p>
-    <p xml:id="introduction_lst-newgetpin" names="lst_newgetpin">
-      <term>Listing 14</term>
+      and from the output of a gate that is connected to that input line. This
+      requires a change to the <c>get_pin_a</c> and <c>get_pin_b</c> methods (see
+      <xref ref="introduction_lst-newgetpin" />). If the input line is not connected to anything
+      (<c>None</c>), then ask the user externally as before. However, if there is
+      a connection, the connection is accessed and <c>from_gate</c>'s output value
+      is retrieved. This in turn causes that gate to process its logic. This
+      continues until all input is available and the final output value
+      becomes the required input for the gate in question. In a sense, the
+      circuit works backwards to find the input necessary to finally produce
+      output.
     </p>
-    <program language="python">
-      <input>
-def get_pin_a(self):
-    if self.pin_a == None:
+    <listing xml:id="introduction_lst-newgetpin" names="lst_newgetpin">
+      <program language="python">
+        <input>
+        def get_pin_a(self):
+        if self.pin_a == None:
         return input(
-            f"Enter pin A input for gate \
-            {self.get_label()}: "
+        f"Enter pin A input for gate \
+        {self.get_label()}: "
         )
-    else:
+        else:
         return self.pin_a.get_from().get_output()
-</input>
-    </program>
+        </input>
+      </program>
+    </listing>
     <p>The following fragment constructs the circuit shown earlier in the
-                section:</p>
+      section:</p>
     <pre>&gt;&gt;&gt; g1 = AndGate("G1")
 &gt;&gt;&gt; g2 = AndGate("G2")
 &gt;&gt;&gt; g3 = OrGate("G3")
@@ -700,9 +749,9 @@ def get_pin_a(self):
 &gt;&gt;&gt; c2 = Connector(g2, g3)
 &gt;&gt;&gt; c3 = Connector(g3, g4)</pre>
     <p>The outputs from the two AND gates (<c>g1</c> and <c>g2</c>) are connected to
-                the OR gate (<c>g3</c>) and that output is connected to the NOT gate
-                (<c>g4</c>). The output from the NOT gate is the output of the entire
-                circuit. For example:</p>
+      the OR gate (<c>g3</c>) and that output is connected to the NOT gate
+      (<c>g4</c>). The output from the NOT gate is the output of the entire
+      circuit. For example:</p>
     <pre>&gt;&gt;&gt; g4.get_output()
 Enter pin A input for gate G1: 0
 Enter pin B input for gate G1: 1
@@ -712,274 +761,274 @@ Enter pin B input for gate G2: 1
     <p>Try it yourself using ActiveCode 4.</p>
     <program xml:id="complete_cuircuit" interactive="activecode" language="python">
       <input>
-class LogicGate:
+      class LogicGate:
 
-    def __init__(self, lbl):
-        self.name = lbl
-        self.output = None
+      def __init__(self, lbl):
+      self.name = lbl
+      self.output = None
 
-    def get_label(self):
-        return self.name
+      def get_label(self):
+      return self.name
 
-    def get_output(self):
-        self.output = self.perform_gate_logic()
-        return self.output
-
-
-class BinaryGate(LogicGate):
-
-    def __init__(self, lbl):
-        super(BinaryGate, self).__init__(lbl)
-
-        self.pin_a = None
-        self.pin_b = None
-
-    def get_pin_a(self):
-        if self.pin_a == None:
-            return int(input("Enter pin A input for gate " + self.get_label() + ": "))
-        else:
-            return self.pin_a.get_from().get_output()
-
-    def get_pin_b(self):
-        if self.pin_b == None:
-            return int(input("Enter pin B input for gate " + self.get_label() + ": "))
-        else:
-            return self.pin_b.get_from().get_output()
-
-    def set_next_pin(self, source):
-        if self.pin_a == None:
-            self.pin_a = source
-        else:
-            if self.pin_b == None:
-                self.pin_b = source
-            else:
-                print("Cannot Connect: NO EMPTY PINS on this gate")
+      def get_output(self):
+      self.output = self.perform_gate_logic()
+      return self.output
 
 
-class AndGate(BinaryGate):
+      class BinaryGate(LogicGate):
 
-    def __init__(self, lbl):
-        BinaryGate.__init__(self, lbl)
+      def __init__(self, lbl):
+      super(BinaryGate, self).__init__(lbl)
 
-    def perform_gate_logic(self):
+      self.pin_a = None
+      self.pin_b = None
 
-        a = self.get_pin_a()
-        b = self.get_pin_b()
-        if a == 1 and b == 1:
-            return 1
-        else:
-            return 0
+      def get_pin_a(self):
+      if self.pin_a == None:
+      return int(input("Enter pin A input for gate " + self.get_label() + ": "))
+      else:
+      return self.pin_a.get_from().get_output()
 
-class OrGate(BinaryGate):
+      def get_pin_b(self):
+      if self.pin_b == None:
+      return int(input("Enter pin B input for gate " + self.get_label() + ": "))
+      else:
+      return self.pin_b.get_from().get_output()
 
-    def __init__(self, lbl):
-        BinaryGate.__init__(self, lbl)
-
-    def perform_gate_logic(self):
-
-        a = self.get_pin_a()
-        b = self.get_pin_b()
-        if a == 1 or b == 1:
-            return 1
-        else:
-            return 0
-
-class UnaryGate(LogicGate):
-
-    def __init__(self, lbl):
-        LogicGate.__init__(self, lbl)
-
-        self.pin = None
-
-    def get_pin(self):
-        if self.pin == None:
-            return int(input("Enter pin input for gate " + self.get_label() + ": "))
-        else:
-            return self.pin.get_from().get_output()
-
-    def set_next_pin(self, source):
-        if self.pin == None:
-            self.pin = source
-        else:
-            print("Cannot Connect: NO EMPTY PINS on this gate")
+      def set_next_pin(self, source):
+      if self.pin_a == None:
+      self.pin_a = source
+      else:
+      if self.pin_b == None:
+      self.pin_b = source
+      else:
+      print("Cannot Connect: NO EMPTY PINS on this gate")
 
 
-class NotGate(UnaryGate):
+      class AndGate(BinaryGate):
 
-    def __init__(self, lbl):
-        UnaryGate.__init__(self, lbl)
+      def __init__(self, lbl):
+      BinaryGate.__init__(self, lbl)
 
-    def perform_gate_logic(self):
-        if self.get_pin():
-            return 0
-        else:
-            return 1
+      def perform_gate_logic(self):
+
+      a = self.get_pin_a()
+      b = self.get_pin_b()
+      if a == 1 and b == 1:
+      return 1
+      else:
+      return 0
+
+      class OrGate(BinaryGate):
+
+      def __init__(self, lbl):
+      BinaryGate.__init__(self, lbl)
+
+      def perform_gate_logic(self):
+
+      a = self.get_pin_a()
+      b = self.get_pin_b()
+      if a == 1 or b == 1:
+      return 1
+      else:
+      return 0
+
+      class UnaryGate(LogicGate):
+
+      def __init__(self, lbl):
+      LogicGate.__init__(self, lbl)
+
+      self.pin = None
+
+      def get_pin(self):
+      if self.pin == None:
+      return int(input("Enter pin input for gate " + self.get_label() + ": "))
+      else:
+      return self.pin.get_from().get_output()
+
+      def set_next_pin(self, source):
+      if self.pin == None:
+      self.pin = source
+      else:
+      print("Cannot Connect: NO EMPTY PINS on this gate")
 
 
-class Connector:
+      class NotGate(UnaryGate):
 
-    def __init__(self, fgate, tgate):
-        self.from_gate = fgate
-        self.to_gate = tgate
+      def __init__(self, lbl):
+      UnaryGate.__init__(self, lbl)
 
-        tgate.set_next_pin(self)
-
-    def get_from(self):
-        return self.from_gate
-
-    def get_to(self):
-        return self.to_gate
+      def perform_gate_logic(self):
+      if self.get_pin():
+      return 0
+      else:
+      return 1
 
 
-def main():
-    g1 = AndGate("G1")
-    g2 = AndGate("G2")
-    g3 = OrGate("G3")
-    g4 = NotGate("G4")
-    c1 = Connector(g1, g3)
-    c2 = Connector(g2, g3)
-    c3 = Connector(g3, g4)
-    print(g4.get_output())
+      class Connector:
 
-main()
-        </input>
+      def __init__(self, fgate, tgate):
+      self.from_gate = fgate
+      self.to_gate = tgate
+
+      tgate.set_next_pin(self)
+
+      def get_from(self):
+      return self.from_gate
+
+      def get_to(self):
+      return self.to_gate
+
+
+      def main():
+      g1 = AndGate("G1")
+      g2 = AndGate("G2")
+      g3 = OrGate("G3")
+      g4 = NotGate("G4")
+      c1 = Connector(g1, g3)
+      c2 = Connector(g2, g3)
+      c3 = Connector(g3, g4)
+      print(g4.get_output())
+
+      main()
+      </input>
     </program>
     <note>
       <title>Self Check</title>
-      <p>Create a two new gate classes,  one called NorGate the other called NandGate.  NandGates work like AndGates that have a Not attached to the output.  NorGates work lake OrGates that have a Not attached to the output.</p>
-      <p>Create a series of gates that prove the following equality NOT (( A and B) or (C and D)) is that same as NOT( A and B ) and NOT (C and D).  Make sure to use some of your new gates in the simulation.</p>
+      <p>Create a two new gate classes, one called NorGate the other called NandGate. NandGates work like AndGates that have a Not attached to the output. NorGates work lake OrGates that have a Not attached to the output.</p>
+      <p>Create a series of gates that prove the following equality NOT (( A and B) or (C and D)) is that same as NOT( A and B ) and NOT (C and D). Make sure to use some of your new gates in the simulation.</p>
       <program xml:id="self_check_5" interactive="activecode" language="python">
         <input>
-class LogicGate:
+        class LogicGate:
 
-    def __init__(self,n):
+        def __init__(self,n):
         self.name = n
         self.output = None
 
-    def get_label(self):
+        def get_label(self):
         return self.name
 
-    def get_output(self):
+        def get_output(self):
         self.output = self.perform_gate_logic()
         return self.output
 
 
-class BinaryGate(LogicGate):
+        class BinaryGate(LogicGate):
 
-    def __init__(self,n):
+        def __init__(self,n):
         LogicGate.__init__(self,n)
 
         self.pin_a = None
         self.pin_b = None
 
-    def get_pin_a(self):
+        def get_pin_a(self):
         if self.pin_a == None:
-            return int(input("Enter Pin A input for gate "+self.get_label()+"--&gt;"))
+        return int(input("Enter Pin A input for gate "+self.get_label()+"--&gt;"))
         else:
-            return self.pin_a.get_from().get_output()
+        return self.pin_a.get_from().get_output()
 
-    def get_pin_b(self):
+        def get_pin_b(self):
         if self.pin_b == None:
-            return int(input("Enter Pin B input for gate "+self.get_label()+"--&gt;"))
+        return int(input("Enter Pin B input for gate "+self.get_label()+"--&gt;"))
         else:
-            return self.pin_b.get_from().get_output()
+        return self.pin_b.get_from().get_output()
 
-    def set_next_pin(self,source):
+        def set_next_pin(self,source):
         if self.pin_a == None:
-            self.pin_a = source
+        self.pin_a = source
         else:
-            if self.pin_b == None:
-                self.pin_b = source
-            else:
-                print("Cannot Connect: NO EMPTY PINS on this gate")
+        if self.pin_b == None:
+        self.pin_b = source
+        else:
+        print("Cannot Connect: NO EMPTY PINS on this gate")
 
 
-class AndGate(BinaryGate):
+        class AndGate(BinaryGate):
 
-    def __init__(self,n):
+        def __init__(self,n):
         BinaryGate.__init__(self,n)
 
-    def perform_gate_logic(self):
+        def perform_gate_logic(self):
 
         a = self.get_pin_a()
         b = self.get_pin_b()
         if a==1 and b==1:
-            return 1
+        return 1
         else:
-            return 0
+        return 0
 
-class OrGate(BinaryGate):
+        class OrGate(BinaryGate):
 
-    def __init__(self,n):
+        def __init__(self,n):
         BinaryGate.__init__(self,n)
 
-    def perform_gate_logic(self):
+        def perform_gate_logic(self):
 
         a = self.get_pin_a()
         b = self.get_pin_b()
         if a ==1 or b==1:
-            return 1
+        return 1
         else:
-            return 0
+        return 0
 
-class UnaryGate(LogicGate):
+        class UnaryGate(LogicGate):
 
-    def __init__(self,n):
+        def __init__(self,n):
         LogicGate.__init__(self,n)
 
         self.pin = None
 
-    def get_pin(self):
+        def get_pin(self):
         if self.pin == None:
-            return int(input("Enter Pin input for gate "+self.get_label()+"--&gt;"))
+        return int(input("Enter Pin input for gate "+self.get_label()+"--&gt;"))
         else:
-            return self.pin.get_from().get_output()
+        return self.pin.get_from().get_output()
 
-    def set_next_pin(self,source):
+        def set_next_pin(self,source):
         if self.pin == None:
-            self.pin = source
+        self.pin = source
         else:
-            print("Cannot Connect: NO EMPTY PINS on this gate")
+        print("Cannot Connect: NO EMPTY PINS on this gate")
 
 
-class NotGate(UnaryGate):
+        class NotGate(UnaryGate):
 
-    def __init__(self,n):
+        def __init__(self,n):
         UnaryGate.__init__(self,n)
 
-    def perform_gate_logic(self):
+        def perform_gate_logic(self):
         if self.get_pin():
-            return 0
+        return 0
         else:
-            return 1
+        return 1
 
 
-class Connector:
+        class Connector:
 
-    def __init__(self, fgate, tgate):
+        def __init__(self, fgate, tgate):
         self.from_gate = fgate
         self.to_gate = tgate
 
         tgate.set_next_pin(self)
 
-    def get_from(self):
+        def get_from(self):
         return self.from_gate
 
-    def get_to(self):
+        def get_to(self):
         return self.to_gate
 
 
 
-def main():
-   g1 = AndGate("G1")
+        def main():
+        g1 = AndGate("G1")
 
-   print(g1.get_output())
+        print(g1.get_output())
 
-main()
+        main()
         </input>
       </program>
     </note>
-    <video xml:id="logicgates" youtube="brrpvAlzOyM" width="auto"/>
+    <video xml:id="logicgates" youtube="brrpvAlzOyM" width="auto" />
     <!--.. admonition:: Self  Check Challenge-->
     <!--One of the fundamental building blocks of a computer is something called a flip flop.  It's not something that computer science professors wear on their feet, but rather a kind of circuit that is stable and stores the last piece of data that was put on it.  A simple flip-flop can be made from two NOR gates that are tied together as in the following diagram.-->
     <!--.. image:: Figures/flipflop.png-->

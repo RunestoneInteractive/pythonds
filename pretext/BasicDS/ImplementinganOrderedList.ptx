@@ -226,16 +226,16 @@ print(my_list.search(100))
     <title>Analysis of Linked Lists</title>
     <p>To analyze the complexity of the linked list operations, we need to
                 consider whether they require traversal. Consider a linked list that has
-                <math>n</math> nodes. The <c>is_empty</c> method is <math>O(1)</math> since it requires
+                <m>n</m> nodes. The <c>is_empty</c> method is <m>O(1)</m> since it requires
                 one step to check the head reference for <c>None</c>. <c>size</c>, on the
-                other hand, will always require <math>n</math> steps since there is no way to know
+                other hand, will always require <m>n</m> steps since there is no way to know
                 how many nodes are in the linked list without traversing from head to
-                end. Therefore, <c>size</c> is <math>O(n)</math>. Adding an item to an
-                unordered list will always be <math>O(1)</math> since we simply place the new node at
+                end. Therefore, <c>size</c> is <m>O(n)</m>. Adding an item to an
+                unordered list will always be <m>O(1)</m> since we simply place the new node at
                 the head of the linked list. However, <c>search</c> and <c>remove</c>, as well
                 as <c>add</c> for an ordered list, all require the traversal process.
                 Although on average they may need to traverse only half of the nodes,
-                these methods are all <math>O(n)</math> since in the worst case each will
+                these methods are all <m>O(n)</m> since in the worst case each will
                 process every node in the list.</p>
     <p>You may also have noticed that the performance of this implementation
                 differs from the actual performance given earlier for Python lists. This

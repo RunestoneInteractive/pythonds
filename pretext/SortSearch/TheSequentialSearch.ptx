@@ -50,8 +50,8 @@ print(sequential_search(test_list, 13))
                 that the item we are looking for is in any particular position is
                 exactly the same for each position of the list.</p>
     <p>If the item is not in the list, the only way to know that is to compare it
-                against every item present. If there are <math>n</math> items, then the
-                sequential search requires <math>n</math> comparisons to discover that the
+                against every item present. If there are <m>n</m> items, then the
+                sequential search requires <m>n</m> comparisons to discover that the
                 item is not there. In the case where the item is in the list, the
                 analysis is not so straightforward. There are actually three different
                 scenarios that can occur. In the best case we will find the item in the
@@ -60,11 +60,11 @@ print(sequential_search(test_list, 13))
                 very last comparison, the <em>n</em>-th comparison.</p>
     <p>What about the average case? On average, we will find the item about
                 half way into the list; that is, we will compare against
-                <math>\frac{n}{2}</math> items. Recall, however, that as <math>n</math> gets large,
+                <m>\frac{n}{2}</m> items. Recall, however, that as <m>n</m> gets large,
                 the coefficients, no matter what they are, become insignificant in our
                 approximation, so the complexity of the sequential search is
-                <math>O(n)</math>. <xref ref="sort-search_tbl-seqsearchtable"/> summarizes these results.</p>
-    <table xml:id="sort-search_id2">
+                <m>O(n)</m>. <xref ref="sort-search_tbl-seqsearchtable"/> summarizes these results.</p>
+    <table xml:id="sort-search_tbl-seqsearchtable">
       <tabular>
         <title>
           <term>Table 1: Comparisons Used in a Sequential Search of an Unordered List</term>
@@ -88,13 +88,13 @@ print(sequential_search(test_list, 13))
                                 item is present
                             </cell>
           <cell>
-            <math>1</math>
+            <m>1</m>
           </cell>
           <cell>
-            <math>n</math>
+            <m>n</m>
           </cell>
           <cell>
-            <math>\frac{n}{2}</math>
+            <m>\frac{n}{2}</m>
           </cell>
         </row>
         <row>
@@ -102,13 +102,13 @@ print(sequential_search(test_list, 13))
                                 item is not present
                             </cell>
           <cell>
-            <math>n</math>
+            <m>n</m>
           </cell>
           <cell>
-            <math>n</math>
+            <m>n</m>
           </cell>
           <cell>
-            <math>n</math>
+            <m>n</m>
           </cell>
         </row>
       </tabular>
@@ -119,7 +119,7 @@ print(sequential_search(test_list, 13))
                 Would we be able to gain any efficiency in our search technique?</p>
     <p>Assume that the list of items was constructed so that the items are in
                 ascending order, from low to high. If the item we are looking for is
-                present in the list, the chance of it being in any one of the <math>n</math>
+                present in the list, the chance of it being in any one of the <m>n</m>
                 positions is still the same as before. We will still have the same
                 number of comparisons to find the item. However, if the item is not
                 present there is a slight advantage. <xref ref="fig-seqsearch2"/> shows this
@@ -158,10 +158,10 @@ print(ordered_sequential_search(test_list, 13))
     <p><xref ref="sort-search_sort-search_tbl-seqsearchtable2"/> summarizes these results. Note that in the best
                 case we might discover that the item is not in the list by looking at
                 only one item. On average, we will know after looking through only
-                <math>\frac {n}{2}</math> items. However, this technique is still
-                <math>O(n)</math>. In summary, a sequential search is improved by ordering
+                <m>\frac {n}{2}</m> items. However, this technique is still
+                <m>O(n)</m>. In summary, a sequential search is improved by ordering
                 the list only in the case where we do not find the item.</p>
-    <table xml:id="sort-search_id4">
+    <table xml:id="sort-search_tbl-seqsearchtable2">
       <tabular>
         <title>
           <term>Table 2: Comparisons Used in Sequential Search of an Ordered List</term>
@@ -181,13 +181,13 @@ print(ordered_sequential_search(test_list, 13))
                                 item is present
                             </cell>
           <cell>
-            <math>1</math>
+            <m>1</m>
           </cell>
           <cell>
-            <math>n</math>
+            <m>n</m>
           </cell>
           <cell>
-            <math>\frac{n}{2}</math>
+            <m>\frac{n}{2}</m>
           </cell>
         </row>
         <row>
@@ -195,13 +195,13 @@ print(ordered_sequential_search(test_list, 13))
                                 item not present
                             </cell>
           <cell>
-            <math>1</math>
+            <m>1</m>
           </cell>
           <cell>
-            <math>n</math>
+            <m>n</m>
           </cell>
           <cell>
-            <math>\frac{n}{2}</math>
+            <m>\frac{n}{2}</m>
           </cell>
         </row>
       </tabular>

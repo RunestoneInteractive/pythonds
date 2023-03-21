@@ -23,8 +23,8 @@
             letter, we can create an edge between them in the graph. For a small set
             of words that approach would work fine; however, let's suppose we have a
             list of 5,110 words. Roughly speaking, comparing one word to every other
-            word on the list is an <math>O(n^2)</math> algorithm. For 5,110 words,
-            <math>n^2</math> is more than 26&#xA0;million comparisons.</p>
+            word on the list is an <m>O(n^2)</m> algorithm. For 5,110 words,
+            <m>n^2</m> is more than 26&#xA0;million comparisons.</p>
   <p>We can do much better by using the approach shown in <xref ref="i190_id2fig-wordbucket"/>.
             Suppose that we have a number of buckets, each labeled with a four-letter word,
             except that one of the letters on the label has been replaced by an underscore.
@@ -72,7 +72,7 @@ def build_graph(filename):
   <p>Since this is our first real-world graph problem, you might be wondering
             how sparse the graph is. The list of four-letter words we have for this
             problem is 5,110 words long. If we were to use an adjacency matrix, the
-            matrix would have <math>5,110 \cdot 5,110</math> = 26,112,100 cells. The graph
+            matrix would have <m>5,110 \cdot 5,110</m> = 26,112,100 cells. The graph
             constructed by the <c>build_graph</c> function has exactly 53,286 edges, so
             the matrix would have only 0.20% of the cells filled! That is a very
             sparse matrix indeed.</p>

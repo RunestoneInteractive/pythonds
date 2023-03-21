@@ -166,17 +166,17 @@ quick_anim_init = function(divid)
   <!--quick_sort(a_list)-->
   <!--print(a_list)-->
   <p>To analyze the <c>quick_sort</c> function, note that for a list of length
-            <math>n</math>, if the partition always occurs in the middle of the list, there
-            will again be <math>\log{n}</math> divisions. In order to find the split
-            point, each of the <math>n</math> items needs to be checked against the pivot
-            value. The result is <math>n\log{n}</math>. In addition, there is no need
+            <m>n</m>, if the partition always occurs in the middle of the list, there
+            will again be <m>\log{n}</m> divisions. In order to find the split
+            point, each of the <m>n</m> items needs to be checked against the pivot
+            value. The result is <m>n\log{n}</m>. In addition, there is no need
             for additional memory as in the merge sort process.</p>
   <p>Unfortunately, in the worst case, the split points may not be in the
             middle and can be very skewed to the left or the right, leaving a very
-            uneven division. In this case, sorting a list of <math>n</math> items divides into
-            sorting a list of 0 items and a list of <math>n - 1</math> items. Then
-            sorting a list of <math>n - 1</math> divides into a list of size 0 and a list
-            of size <math>n - 2</math>, and so on. The result is an <math>O(n^{2})</math>
+            uneven division. In this case, sorting a list of <m>n</m> items divides into
+            sorting a list of 0 items and a list of <m>n - 1</m> items. Then
+            sorting a list of <m>n - 1</m> divides into a list of size 0 and a list
+            of size <m>n - 2</m>, and so on. The result is an <m>O(n^{2})</m>
             sort with all of the overhead that recursion requires.</p>
   <p>We mentioned earlier that there are different ways to choose the pivot
             value. In particular, we can attempt to alleviate some of the potential
