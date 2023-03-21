@@ -86,8 +86,7 @@ my_win.exitonclick()
             trees get smaller and smaller. You should also recognize the initial
             <c>if</c> statement on line 2 as a check for the base case of <c>branch_len</c>
             getting too small.</p>
-  <p xml:id="recursion_lst-fractree" names="lst_fractree"><term>Listing 4.6:</term> Fractal Tree Code</p>
-  <program language="python">
+  <listing xml:id="recursion_lst-fractree"><program language="python">
     <input>
 def tree(branch_len, t):
     if branch_len &gt; 5:
@@ -99,7 +98,7 @@ def tree(branch_len, t):
         t.right(20)
         t.backward(branch_len)
 </input>
-  </program>
+  </program></listing>
   <p>The complete program for this tree example is shown in <xref ref="lst-complete-tree"/>.  Before you run
             the code think about how you expect to see the tree take shape. Look at
             the recursive calls and think about how this tree will unfold. Will it

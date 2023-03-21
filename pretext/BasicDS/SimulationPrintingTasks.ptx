@@ -119,10 +119,7 @@
                 task. The constructor will also allow the pages-per-minute setting to be
                 initialized. The <c>tick</c> method decrements the internal timer and sets
                 the printer to idle (line 11) if the task is completed.</p>
-    <p xml:id="basic-ds_lst-printer" names="lst_printer">
-      <term>Listing 2</term>
-    </p>
-    <program language="python">
+    <listing xml:id="basic-ds_lst-printer"><program language="python">
       <input>
 class Printer:
     def __init__(self, ppm):
@@ -143,7 +140,7 @@ class Printer:
         self.current_task = new_task
         self.time_remaining = new_task.get_pages() * 60 / self.page_rate
 </input>
-    </program>
+    </program></listing>
     <p>The <c>Task</c> class (<xref ref="basic-ds_lst-task"/>) will represent a single printing
                 task. When the task is created, a random number generator will provide a
                 length from 1 to 20 pages. We have chosen to use the <c>randrange</c>
@@ -163,10 +160,7 @@ class Printer:
                 created and placed in the printer queue. The <c>wait_time</c> method can
                 then be used to retrieve the amount of time spent in the queue before
                 printing begins.</p>
-    <p xml:id="basic-ds_lst-task" names="lst_task">
-      <term>Listing 3</term>
-    </p>
-    <program language="python">
+    <listing xml:id="basic-ds_lst-task"><program language="python">
       <input>
 import random
 
@@ -185,7 +179,7 @@ class Task:
     def wait_time(self, current_time):
         return current_time - self.timestamp
 </input>
-    </program>
+    </program></listing>
     <p>The main simulation (<xref ref="basic-ds_lst-qumainsim"/>) implements the algorithm
                 described above. The <c>print_queue</c> object is an instance of our
                 existing queue ADT. A boolean helper function, <c>new_print_task</c>, decides
@@ -196,10 +190,7 @@ class Task:
                 (line 31), we can simulate this random event. The simulation function
                 allows us to set the total time and the pages per minute for the
                 printer.</p>
-    <p xml:id="basic-ds_lst-qumainsim" names="lst_qumainsim">
-      <term>Listing 4</term>
-    </p>
-    <program language="python">
+    <listing xml:id="basic-ds_lst-qumainsim"><program language="python">
       <input>
 import random
 from pythonds3.basic.queue Queue
@@ -237,7 +228,7 @@ def new_print_task():
 for i in range(10):
     simulation(3600, 5)
 </input>
-    </program>
+    </program></listing>
     <p>When we run the simulation, we should not be concerned that the
                 results are different each time. This is due to the probabilistic nature
                 of the random numbers. We are interested in the trends that may be

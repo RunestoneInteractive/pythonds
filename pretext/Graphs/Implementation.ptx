@@ -17,10 +17,7 @@
             the adjacency list, as represented by the <c>neighbors</c> instance
             variable. The <c>get_neighbor</c> method returns the weight of the edge from
             this vertex to the vertex passed as a parameter.</p>
-  <p xml:id="graphs_lst-vertex" names="lst_vertex">
-    <term>Listing 1</term>
-  </p>
-  <pre>class Vertex:
+  <listing xml:id="graphs_lst-vertex"><pre>class Vertex:
     def __init__(self, key):
         self.key = key
         self.neighbors = {}
@@ -45,7 +42,7 @@
         return self.neighbors.keys()
 
     def get_key(self):
-        return self.key</pre>
+        return self.key</pre></listing>
   <p>The <c>Graph</c> class, shown in the next listing, contains a dictionary
             that maps vertex names to vertex objects. In <xref ref="graphs_an-adjacency-list"/> this
             dictionary object is represented by the shaded gray box. <c>Graph</c> also
@@ -56,10 +53,7 @@
             objects in a particular graph. Together, the two methods allow you to
             iterate over the vertices in a graph by name, or by the objects
             themselves.</p>
-  <p xml:id="graphs_lst-graph" names="lst_graph">
-    <term>Listing 2</term>
-  </p>
-  <pre>class Graph:
+  <listing xml:id="graphs_lst-graph"><pre>class Graph:
     def __init__(self):
         self.vertices = {}
 
@@ -83,7 +77,7 @@
         return self.vertices.keys()
 
     def __iter__(self):
-        return iter(self.vertices.values())</pre>
+        return iter(self.vertices.values())</pre></listing>
   <p>Using the <c>Graph</c> and <c>Vertex</c> classes just defined, the following
             Python session creates the graph in <xref ref="graphs_vocabularyand-definitions"/>. First we
             create six vertices numbered 0 through 5. Then we display the vertex

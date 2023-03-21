@@ -66,14 +66,11 @@
             The external function is particularly elegant because our base case is
             simply to check if the tree exists. If the tree parameter is <c>None</c>,
             then the function returns without taking any action.</p>
-  <p xml:id="trees_lst-preorder1" names="lst_preorder1">
-    <term>Listing 2</term>
-  </p>
-  <pre>def preorder(tree):
+  <listing xml:id="trees_lst-preorder1"><pre>def preorder(tree):
     if tree:
         print(tree.key)
         preorder(tree.left_child)
-        preorder(tree.right_child)</pre>
+        preorder(tree.right_child)</pre></listing>
   <p>We can also implement <c>preorder</c> as a method of the <c>BinaryTree</c>
             class. The code for implementing <c>preorder</c> as an internal method is
             shown in <xref ref="trees_lst-preorder2"/>. Notice what happens when we move the
@@ -81,15 +78,12 @@
             with <c>self</c>. However, we also need to modify the base case. The
             internal method must check for the existence of the left and the right
             children <em>before</em> making the recursive call to <c>preorder</c>.</p>
-  <p xml:id="trees_lst-preorder2" names="lst_preorder2">
-    <term>Listing 3</term>
-  </p>
-  <pre>def preorder(self):
+  <listing xml:id="trees_lst-preorder2"><pre>def preorder(self):
     print(self.key)
     if self.left_child:
         self.left_child.preorder()
     if self.right_child:
-        self.right_child.preorder()</pre>
+        self.right_child.preorder()</pre></listing>
   <p>Which of these two ways to implement <c>preorder</c> is best? The answer is
             that implementing <c>preorder</c> as an external function is probably
             better in this case. The reason is that you very rarely want to just
@@ -102,14 +96,11 @@
   <p>The algorithm for the <c>postorder</c> traversal, shown in
             <xref ref="trees_lst-postorder1"/>, is nearly identical to <c>preorder</c> except that
             we move the call to print to the end of the function.</p>
-  <p xml:id="trees_lst-postorder1" names="lst_postorder1">
-    <term>Listing 4</term>
-  </p>
-  <pre>def postorder(tree):
+  <listing xml:id="trees_lst-postorder1"><pre>def postorder(tree):
     if tree:
         postorder(tree.left_child)
         postorder(tree.right_child)
-        print(tree.key)</pre>
+        print(tree.key)</pre></listing>
   <p>We have already seen a common use for the postorder traversal, namely
             evaluating a parse tree. Look back at <xref ref="trees_parse-tree"/> again.
             The algorithm evaluates the left subtree, evaluates the right subtree,
@@ -118,10 +109,7 @@
             Assuming our binary tree is going to store only expression tree data,
             rewrite the evaluation function, but model it even more closely on
             the postorder code in <xref ref="trees_lst-postorder1"/>.</p>
-  <p xml:id="trees_lst-postordereval" names="lst_postordereval">
-    <term>Listing 5</term>
-  </p>
-  <pre>def postordereval(tree):
+  <listing xml:id="trees_lst-postordereval"><pre>def postordereval(tree):
     operators = {
         "+": operator.add,
         "-": operator.sub,
@@ -135,7 +123,7 @@
         result_2 = postordereval(tree.right_child)
         if result_1 and result_2:
             return operators[tree.key](result_1, result_2)
-        return tree.key</pre>
+        return tree.key</pre></listing>
   <p>Notice that the form in <xref ref="trees_lst-postorder1"/> is the same as the form
             in <xref ref="trees_lst-postordereval"/>, except that instead of printing the key at
             the end of the function, we return it. This allows us to save the values
@@ -147,10 +135,7 @@
             our code for the inorder traversal. Notice that in all three of the
             traversal functions we are simply changing the position of the <c>print</c>
             function with respect to the two recursive function calls.</p>
-  <p xml:id="trees_lst-inorder1" names="lst_inorder1">
-    <term>Listing 6</term>
-  </p>
-  <program language="python">
+  <listing xml:id="trees_lst-inorder1"><program language="python">
     <input>
 def inorder(tree):
     if tree:
@@ -158,7 +143,7 @@ def inorder(tree):
         print(tree.key)
         inorder(tree.right_child)
 </input>
-  </program>
+  </program></listing>
   <p>If we perform a simple inorder traversal of a parse tree, we get our
             original expression back without any parentheses. Let's modify the
             basic inorder algorithm to allow us to recover the fully parenthesized
@@ -167,10 +152,7 @@ def inorder(tree):
             recursive call to the left subtree, and print a right parenthesis
             <em>after</em> the recursive call to the right subtree. The modified code is
             shown in <xref ref="trees_lst-printexp"/>.</p>
-  <p xml:id="trees_lst-printexp" names="lst_printexp">
-    <term>Listing 7</term>
-  </p>
-  <program language="python">
+  <listing xml:id="trees_lst-printexp"><program language="python">
     <input>
 def print_exp(tree):
     result = ""
@@ -180,7 +162,7 @@ def print_exp(tree):
         result = result + print_exp(tree.right_child) + ")"
     return result
 </input>
-  </program>
+  </program></listing>
   <p>Notice that the <c>print_exp</c> function as we have implemented it puts
             parentheses around each number. While not incorrect, the parentheses are
             clearly not needed. In the exercises at the end of this chapter you are

@@ -51,12 +51,9 @@
                 Since the entire binary heap can be represented by a single list, all
                 the constructor will do is initialize the list.
                 <xref ref="trees_lst-heap1a"/> shows the Python code for the constructor.</p>
-    <p xml:id="trees_lst-heap1a" names="lst_heap1a">
-      <term>Listing 1</term>
-    </p>
-    <pre>class BinaryHeap:
+    <listing xml:id="trees_lst-heap1a"><pre>class BinaryHeap:
     def __init__(self):
-        self._heap = []</pre>
+        self._heap = []</pre></listing>
     <p>The next method we will implement is <c>insert</c>. The easiest, and most
                 efficient, way to add an item to a list is to simply append the item to
                 the end of the list. The good news about appending is that it guarantees
@@ -87,10 +84,7 @@
                 <c>insert</c> method is really done by <c>_perc_up</c>. Once a new item is
                 appended to the tree, <c>_perc_up</c> takes over and positions the new item
                 properly.</p>
-    <p xml:id="trees_lst-heap2" names="lst_heap2">
-      <term>Listing 2</term>
-    </p>
-    <pre>def _perc_up(self, i):
+    <listing xml:id="trees_lst-heap2"><pre>def _perc_up(self, i):
     while (i - 1) // 2 &gt;= 0:
         parent_idx = (i - 1) // 2
         if self._heap[i] &lt; self._heap[parent_idx]:
@@ -98,13 +92,10 @@
                 self._heap[parent_idx],
                 self._heap[i],
             )
-        i = parent_idx</pre>
-    <p xml:id="trees_lst-heap3" names="lst_heap3">
-      <term>Listing 3</term>
-    </p>
-    <pre>def insert(self, item):
+        i = parent_idx</pre></listing>
+    <listing xml:id="trees_lst-heap3"><pre>def insert(self, item):
     self._heap.append(item)
-    self._perc_up(len(self._heap) - 1)</pre>
+    self._perc_up(len(self._heap) - 1)</pre></listing>
     <p>With the <c>insert</c> method properly defined, we can now look at the
                 <c>delete</c> method. Since the heap property requires that the root of the
                 tree be the smallest item in the tree, finding the minimum item is easy.
@@ -129,10 +120,7 @@
                 already less than both children. The code for percolating a node down
                 the tree is found in the <c>_perc_down</c> and <c>_get_min_child</c> methods in
                 <xref ref="trees_lst-heap4"/>.</p>
-    <p xml:id="trees_lst-heap4" names="lst_heap4">
-      <term>Listing 4</term>
-    </p>
-    <pre>def _perc_down(self, i):
+    <listing xml:id="trees_lst-heap4"><pre>def _perc_down(self, i):
     while 2 * i + 1 &lt; len(self._heap):
         sm_child = self._get_min_child(i)
         if self._heap[i] &gt; self._heap[sm_child]:
@@ -149,18 +137,15 @@ def _get_min_child(self, i):
         return 2 * i + 1
     if self._heap[2 * i + 1] &lt; self._heap[2 * i + 2]:
         return 2 * i + 1
-    return 2 * i + 2</pre>
+    return 2 * i + 2</pre></listing>
     <p>The code for the <c>delete</c> operation is in <xref ref="trees_lst-heap5"/>. Note
                 that once again the hard work is handled by a helper function, in this
                 case <c>_perc_down</c>.</p>
-    <p xml:id="trees_lst-heap5" names="lst_heap5">
-      <term>Listing 5</term>
-    </p>
-    <pre>def delete(self):
+    <listing xml:id="trees_lst-heap5"><pre>def delete(self):
     self._heap[0], self._heap[-1] = self._heap[-1], self._heap[0]
     result = self._heap.pop()
     self._perc_down(0)
-    return result</pre>
+    return result</pre></listing>
     <p>To finish our discussion of binary heaps, we will look at a method to
                 build an entire heap from a list of keys. The first method you might
                 think of may be like the following. Given a list of keys, you could
@@ -175,15 +160,12 @@ def _get_min_child(self, i):
                 However, if we start with an entire list then we can build the whole
                 heap in <m>O(n)</m> operations. <xref ref="trees_lst-heap6"/> shows the code
                 to build the entire heap.</p>
-    <p xml:id="trees_lst-heap6" names="lst_heap6">
-      <term>Listing 6</term>
-    </p>
-    <pre>def heapify(self, not_a_heap):
+    <listing xml:id="trees_lst-heap6"><pre>def heapify(self, not_a_heap):
     self._heap = not_a_heap[:]
     i = len(self._heap) // 2 - 1
     while i &gt;= 0:
         self._perc_down(cuir_idx)
-        i = i - 1</pre>
+        i = i - 1</pre></listing>
     <figure align="center" xml:id="file_32_id5">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Building a Heap from the List [9, 6, 5, 2, 3]</caption>
       <image source="Trees/Figures/buildheap.png" width="50%" alt="image"/>

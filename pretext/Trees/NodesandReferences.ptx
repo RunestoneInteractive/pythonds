@@ -19,14 +19,11 @@
             <c>BinaryTree</c> class. For example, when we insert a new left child into
             the tree, we create another instance of <c>BinaryTree</c> and modify
             <c>self.left_child</c> in the root to reference the new tree.</p>
-  <p xml:id="trees_lst-nar" names="lst_nar">
-    <term>Listing 4</term>
-  </p>
-  <pre>class BinaryTree:
+  <listing xml:id="trees_lst-nar"><pre>class BinaryTree:
     def __init__(self, root_obj):
         self.key = root_obj
         self.left_child = None
-        self.right_child = None</pre>
+        self.right_child = None</pre></listing>
   <p>Notice that in <xref ref="trees_lst-nar"/>, the constructor function expects to
             get some kind of object to store in the root. Just as you can store
             any object you like in a list, the root object of a tree can be a
@@ -39,10 +36,7 @@
             tree object and set the <c>left_child</c> attribute of the root to refer to this
             new object. The code for <c>insert_left</c> is shown in
             <xref ref="trees_lst-insl"/>.</p>
-  <p xml:id="trees_lst-insl" names="lst_insl">
-    <term>Listing 5</term>
-  </p>
-  <program language="python">
+  <listing xml:id="trees_lst-insl"><program language="python">
     <input>
 def insert_left(self, new_node):
     if self.left_child is None:
@@ -52,7 +46,7 @@ def insert_left(self, new_node):
         new_child.left_child = self.left_child
         self.left_child = new_child
 </input>
-  </program>
+  </program></listing>
   <p>We must consider two cases for insertion. The first case is
             characterized by a node with no existing left child. When there is no
             left child, simply add a node to the tree. The second case is
@@ -64,10 +58,7 @@ def insert_left(self, new_node):
             There will either be no right child, or we must insert the node between
             the root and an existing right child. The insertion code is shown in
             <xref ref="trees_lst-insr"/>.</p>
-  <p xml:id="trees_lst-insr" names="lst_insr">
-    <term>Listing 6</term>
-  </p>
-  <program language="python">
+  <listing xml:id="trees_lst-insr"><program language="python">
     <input>
 def insert_right(self, new_node):
     if self.right_child == None:
@@ -77,14 +68,11 @@ def insert_right(self, new_node):
         new_child.right_child = self.right_child
         self.right_child = new_child
 </input>
-  </program>
+  </program></listing>
   <p>To round out the definition for a simple binary tree data structure, we
             will write accessor methods for the left and right children and for
             the root values (see <xref ref="trees_lst-naracc"/>) .</p>
-  <p xml:id="trees_lst-naracc" names="lst_naracc">
-    <term>Listing 7</term>
-  </p>
-  <program language="python">
+  <listing xml:id="trees_lst-naracc"><program language="python">
     <input>
 def get_root_val(self):
     return self.key
@@ -98,7 +86,7 @@ def get_left_child(self):
 def get_right_child(self):
     return self.right_child
 </input>
-  </program>
+  </program></listing>
   <p>Now that we have all the pieces to create and manipulate a binary tree,
             let's use them to check on the structure a bit more. Let's make a simple
             tree with node a as the root, and add nodes <q>b</q> and <q>c</q> as children. <xref ref="lst-comptest"/> creates the tree and looks at the some of the

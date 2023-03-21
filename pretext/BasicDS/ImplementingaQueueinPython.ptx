@@ -12,10 +12,7 @@
             the queue. The <c>pop</c> operation can be used to remove the front element
             (the last element of the list). Recall that this also means that <c>enqueue</c>
             will be <m>O(n)</m> and <c>dequeue</c> will be <m>O(1)</m>.</p>
-  <p xml:id="basic-ds_lst-queuecode" names="lst_queuecode">
-    <term>Listing 1</term>
-  </p>
-  <pre>class Queue:
+  <listing xml:id="basic-ds_lst-queuecode"><pre>class Queue:
     """Queue implementation as a list"""
 
     def __init__(self):
@@ -36,7 +33,7 @@
 
     def size(self):
         """Get the number of items in the queue"""
-        return len(self._items)</pre>
+        return len(self._items)</pre></listing>
   <p>CodeLens 1 shows the <c>Queue</c> class in
             action as we perform the sequence of operations from
             <xref ref="basic-ds_the-queue-abstract-data-type"/>.</p>

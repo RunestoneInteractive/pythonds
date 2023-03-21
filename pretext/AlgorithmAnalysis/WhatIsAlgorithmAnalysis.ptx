@@ -91,10 +91,7 @@ print(foo(10))
             point. By calling this function twice, at the beginning and at the end,
             and then computing the difference, we can get an exact number of seconds
             (fractions in most cases) for execution.</p>
-  <p xml:id="algorithm-analysis_lst-sum11" names="lst_sum11">
-    <term>Listing 1</term>
-  </p>
-  <program language="python">
+  <listing xml:id="algorithm-analysis_lst-sum11"><program language="python">
     <input>
 import time
 
@@ -110,7 +107,7 @@ def sum_of_n_2(n):
 
     return the_sum, end - start
 </input>
-  </program>
+  </program></listing>
   <p><xref ref="algorithm-analysis_lst-sum11"/> shows the original <c>sum_of_n</c> function with the timing
             calls embedded before and after the summation. The function returns a
             tuple consisting of the result and the amount of time (in seconds)

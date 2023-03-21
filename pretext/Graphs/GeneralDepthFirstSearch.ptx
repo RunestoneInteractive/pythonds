@@ -33,10 +33,7 @@
             statement <c>for vertex in self</c>, but remember that in this case <c>self</c>
             is an instance of the <c>DFSGraph</c> class, and iterating over all the
             vertices in an instance of a graph is a natural thing to do.</p>
-  <p xml:id="graphs_lst-dfsgeneral" names="lst_dfsgeneral">
-    <term>Listing 5</term>
-  </p>
-  <program language="python">
+  <listing xml:id="graphs_lst-dfsgeneral"><program language="python">
     <input>
 from pythonds3.graphs import Graph
 
@@ -66,7 +63,7 @@ class DFSGraph(Graph):
         self.time = self.time + 1
         start_vertex.closing_time = self.time
 </input>
-  </program>
+  </program></listing>
   <p>Although our implementation of <c>bfs</c> is only interested in
             considering nodes for which there is a path leading back to the start,
             it is possible to create a breadth-first forest that represents the

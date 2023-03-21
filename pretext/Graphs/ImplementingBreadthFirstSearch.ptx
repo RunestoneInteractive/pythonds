@@ -29,10 +29,7 @@
   <p>The breadth-first search algorithm shown in <xref ref="graphs_lst-wordbucket2"/> below uses the
             adjacency list graph representation we developed earlier. In addition it uses a <c>Queue</c>,
             a crucial point as we will see, to decide which vertex to explore next.</p>
-  <p xml:id="graphs_lst-wordbucket2" names="lst_wordbucket2">
-    <term>Listing 2</term>
-  </p>
-  <pre>from pythonds3.basic import Queue
+  <listing xml:id="graphs_lst-wordbucket2"><pre>from pythonds3.basic import Queue
 from pythonds3.graphs import Graph
 
 
@@ -49,7 +46,7 @@ def bfs(start):
                 neighbor.distance = current.distance + 1
                 neighbor.previous = current
                 vert_queue.enqueue(neighbor)
-        current.color = "black"</pre>
+        current.color = "black"</pre></listing>
   <p>The BFS algorithm uses an extended version of the <c>Vertex</c>
             class that adds three new instance variables:
             <c>distance</c>, <c>previous</c>, and <c>color</c>. Each of these instance variables also
@@ -131,14 +128,11 @@ def bfs(start):
             the shortest word ladder from any word back to FOOL.
             The function below (<xref ref="graphs_lst-wordbucket3"/>) shows
             how to follow the predecessor links to print out the word ladder.</p>
-  <p xml:id="graphs_lst-wordbucket3" names="lst_wordbucket3">
-    <term>Listing 3</term>
-  </p>
-  <pre>def traverse(starting_vertex):
+  <listing xml:id="graphs_lst-wordbucket3"><pre>def traverse(starting_vertex):
     current = starting_vertex
     while current:
         print(current.key)
         current = current.previous
 
-traverse(g.get_vertex("sage"))</pre>
+traverse(g.get_vertex("sage"))</pre></listing>
 </section>

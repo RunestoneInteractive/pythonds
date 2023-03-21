@@ -62,39 +62,30 @@ print("right subtree = ", my_tree[2])
             the second position, we need to keep track of it and push it down the
             tree as the left child of the list we are adding. <xref ref="trees_lst-linsleft"/>
             shows the Python code for inserting a left child.</p>
-  <p xml:id="trees_lst-linsleft" names="lst_linsleft">
-    <term>Listing 1</term>
-  </p>
-  <pre>def insert_left(root, new_child):
+  <listing xml:id="trees_lst-linsleft"><pre>def insert_left(root, new_child):
     old_child = root.pop(1)
     if len(old_child) &gt; 1:
         root.insert(1, [new_child, old_child, []])
     else:
         root.insert(1, [new_child, [], []])
-    return root</pre>
+    return root</pre></listing>
   <p>Notice that to insert a left child, we first obtain the (possibly empty)
             list that corresponds to the current left child. We then add the new
             left child, installing the old left child as the left child of the new
             one. This allows us to splice a new node into the tree at any position.
             The code for <c>insert_right</c> is similar to <c>insert_left</c> and is shown
             in <xref ref="trees_lst-linsright"/>.</p>
-  <p xml:id="trees_lst-linsright" names="lst_linsright">
-    <term>Listing 2</term>
-  </p>
-  <pre>def insert_right(root, new_child):
+  <listing xml:id="trees_lst-linsright"><pre>def insert_right(root, new_child):
     old_child = root.pop(2)
     if len(old_child) &gt; 1:
         root.insert(2, [new_child, [], old_child])
     else:
         root.insert(2, [new_child, [], []])
-    return root</pre>
+    return root</pre></listing>
   <p>To round out this set of tree-making functions, let's write a couple of
             access functions for getting and setting the root value, as well as
             getting the left or right subtrees. These functions can be seen in <xref ref="trees_lst-treeacc"/>.</p>
-  <p xml:id="trees_lst-treeacc" names="lst_treeacc">
-    <term>Listing 3</term>
-  </p>
-  <pre>def get_root_val(root):
+  <listing xml:id="trees_lst-treeacc"><pre>def get_root_val(root):
     return root[0]
 
 
@@ -107,7 +98,7 @@ def get_left_child(root):
 
 
 def get_right_child(root):
-    return root[2]</pre>
+    return root[2]</pre></listing>
   <p><xref ref="lst-bintreetry"/> makes use of the tree
             functions we have just written. You should try it
             out for yourself. One of the exercises at the end of this chapter asks you to draw the tree

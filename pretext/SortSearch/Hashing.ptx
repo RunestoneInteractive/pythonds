@@ -268,11 +268,8 @@
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: Hashing a String Using Ordinal Values</caption>
       <image source="SortSearch/Figures/stringhash.png" width="50%"/>
     </figure>
-    <p xml:id="sort-search_lst-hashfunction1" names="lst_hashfunction1">
-      <term>Listing 1</term>
-    </p>
-    <pre>def hash_str(a_string, table_size):
-    return sum([ord(c) for c in a_string]) % table_size</pre>
+    <listing xml:id="sort-search_lst-hashfunction1"><pre>def hash_str(a_string, table_size):
+    return sum([ord(c) for c in a_string]) % table_size</pre></listing>
     <p>It is interesting to note that when using this hash function, anagrams
                 will always be given the same hash value. To remedy this, we could use
                 the position of the character as a weight. <xref ref="fig-stringhash2"/> shows
@@ -534,14 +531,11 @@
                 been chosen to be 11. Although this is arbitrary, it is important that
                 the size be a prime number so that the collision resolution algorithm
                 can be as efficient as possible.</p>
-    <p xml:id="sort-search_lst-hashtablecodeconstructor" names="lst_hashtablecodeconstructor">
-      <term>Listing 2</term>
-    </p>
-    <pre>class HashTable:
+    <listing xml:id="sort-search_lst-hashtablecodeconstructor"><pre>class HashTable:
     def __init__(self):
         self.size = 11
         self.slots = [None] * self.size
-        self.data = [None] * self.size</pre>
+        self.data = [None] * self.size</pre></listing>
     <p>As seen in <xref ref="sort-search_lst-hashtablecodestore"/>, <c>hash_function</c> implements
                 the simple remainder method. The collision
                 resolution technique is linear probing with a <q>plus 1</q> rehash value.
@@ -551,10 +545,7 @@
                 slot is not empty, iterates the <c>rehash</c> function until an empty slot
                 occurs. If a nonempty slot already contains the key, the old data value
                 is replaced with the new data value.</p>
-    <p xml:id="sort-search_lst-hashtablecodestore" names="lst_hashtablecodestore">
-      <term>Listing 3</term>
-    </p>
-    <pre>def put(self, key, data):
+    <listing xml:id="sort-search_lst-hashtablecodestore"><pre>def put(self, key, data):
     hash_value = self.hash_function(key, len(self.slots))
 
     if self.slots[hash_value] is None:
@@ -581,7 +572,7 @@ def hash_function(self, key, size):
     return key % size
 
 def rehash(self, old_hash, size):
-    return (old_hash + 1) % size</pre>
+    return (old_hash + 1) % size</pre></listing>
     <p>The <c>get</c> function (see <xref ref="sort-search_lst-hashtablecodesearch"/>)
                 begins by computing the initial hash value. If the value is not in the
                 initial slot, <c>rehash</c> is used to locate the next possible position.
@@ -594,10 +585,7 @@ def rehash(self, old_hash, size):
                 <c>__setitem__</c> methods to allow access using <c>[]</c>. This means that
                 once a <c>HashTable</c> has been created, the familiar index operator will
                 be available. We leave the remaining methods as exercises.</p>
-    <p xml:id="sort-search_lst-hashtablecodesearch" names="lst_hashtablecodesearch">
-      <term>Listing 4</term>
-    </p>
-    <program language="python">
+    <listing xml:id="sort-search_lst-hashtablecodesearch"><program language="python">
       <input>
 def get(self, key):
     start_slot = self.hash_function(key, len(self.slots))
@@ -617,7 +605,7 @@ def __getitem__(self, key):
 def __setitem__(self, key, data):
     self.put(key, data)
 </input>
-    </program>
+    </program></listing>
     <p>The following session shows the <c>HashTable</c> class in action. First we
                 will create a hash table and store some items with integer keys and
                 string data values.</p>

@@ -78,10 +78,7 @@
             decisions, and heuristic searches are often used in the field of artificial
             intelligence. This particular heuristic is called Warnsdorff's
             algorithm, named after H. C. von Warnsdorff who published his idea in 1823.</p>
-  <p xml:id="graphs_lst-avail" names="lst_avail">
-    <term>Listing 4</term>
-  </p>
-  <program language="python">
+  <listing xml:id="graphs_lst-avail"><program language="python">
     <input>
 def order_by_avail(n):
     res_list = []
@@ -95,5 +92,5 @@ def order_by_avail(n):
     res_list.sort(key=lambda x: x[0])
     return [y[1] for y in res_list]
 </input>
-  </program>
+  </program></listing>
 </section>

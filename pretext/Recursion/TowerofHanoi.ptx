@@ -23,54 +23,7 @@
             are always on top of the larger disks. If you have not tried to solve
             this puzzle before, you should try it now. You do not need fancy disks
             and poles&#x2014;a pile of books or pieces of paper will work.</p>
-  <p xml:id="recursion_fig-recursion_hanoi" names="fig_recursion_hanoi"><term>Figure 4.11:</term> An Example Arrangement of Disks for the Tower of Hanoi</p>
-  <figure align="center">
-    <image source="Recursion/Figures/recursion_hanoi.png" width="50%" alt="image"/>
-  </figure>
-  <p>How do we go about solving this problem recursively? How would you go
-            about solving this problem at all? What is our base case? Let's think
-            about this problem from the bottom up. Suppose you have a tower of five
-            disks, originally on peg one. If you already knew how to move a tower of
-            four disks to peg two, you could then easily move the bottom disk to peg
-            three, and then move the tower of four from peg two to peg three. But
-            what if you do not know how to move a tower of height four? Suppose that
-            you knew how to move a tower of height three to peg three; then it would
-            be easy to move the fourth disk to peg two and move the three from peg
-            three on top of it. But what if you do not know how to move a tower of
-            three? How about moving a tower of two disks to peg two and then moving
-            the third disk to peg three, and then moving the tower of height two on
-            top of it? But what if you still do not know how to do this? Surely you
-            would agree that moving a single disk to peg three is easy enough,
-            trivial you might even say. This sounds like a base case in the making.</p>
-  <p>Here is a high-level outline of how to move a tower of height <m>h</m> from the starting
-            pole to the goal pole, using an intermediate pole:</p>
-  <p>
-    <ol marker="1">
-      <li>
-        <p>Move a tower of height <m>h-1</m> from the starting pole to an intermediate pole via the goal
-                    pole.</p>
-      </li>
-      <li>
-        <p>Move the remaining disk from the starting pole to the final pole.</p>
-      </li>
-      <li>
-        <p>Move the tower of height <m>h-1</m> from the intermediate pole to the goal
-                    pole via the starting pole.</p>
-      </li>
-    </ol>
-  </p>
-  <p>As long as we always obey the rule that the larger disks remain on the
-            bottom of the stack, we can use the three steps above recursively,
-            treating any larger disks as though they were not even there. The only
-            thing missing from the outline above is the identification of a base
-            case. The simplest Tower of Hanoi problem is a tower of one disk. In
-            this case, we need move only a single disk to its final destination. A
-            tower of one disk will be our base case. In addition, the steps outlined
-            above move us toward the base case by reducing the height of the tower
-            in steps 1 and 3. <xref ref="recursion_lst-recursion_hanoi"/> shows the Python code to solve the
-            Tower of Hanoi puzzle.</p>
-  <p xml:id="recursion_lst-recursion_hanoi" names="lst_recursion_hanoi"><term>Listing 4.9:</term> Python Code for the Tower of Hanoi</p>
-  <program language="python">
+  <listing xml:id="recursion_fig-recursion_hanoi"><program language="python">
     <input>
 def move_tower(height, from_pole, to_pole, with_pole):
     if height &lt; 1:
@@ -79,7 +32,7 @@ def move_tower(height, from_pole, to_pole, with_pole):
     move_disk(from_pole, to_pole)
     move_tower(height - 1, with_pole, to_pole, from_pole)
 </input>
-  </program>
+  </program></listing>
   <p>Notice that the code in <xref ref="recursion_lst-recursion_hanoi"/> is almost identical to the
             English description. The key to the simplicity of the algorithm is that
             we make two different recursive calls, one on line 4 and a
@@ -96,13 +49,12 @@ def move_tower(height, from_pole, to_pole, with_pole):
             simple. All it does is print out that it is moving a disk from one pole
             to another. If you type in and run the <c>move_tower</c> program you can see
             that it gives you a very efficient solution to the puzzle.</p>
-  <p xml:id="recursion_lst-movedisk" names="lst_movedisk"><term>Listing 4.10:</term> Python Code to Move One Disk</p>
-  <program language="python">
+  <listing xml:id="recursion_lst-movedisk"><program language="python">
     <input>
 def move_disk(from_pole, to_pole):
     print(f"moving disk from {from_pole} to {to_pole}")
 </input>
-  </program>
+  </program></listing>
   <p>The program in <xref ref="recursion_hanoi"/> provides the entire solution for three disks.</p>
   <program xml:id="recursion_hanoi" interactive="activecode" language="python">
     <input>

@@ -13,19 +13,7 @@
             You can continue to apply this procedure indefinitely if you have a
             sharp enough pencil. Before you continue reading, you may want to try
             drawing the Sierpinski triangle yourself, using the method described.</p>
-  <p xml:id="recursion_fig-sierpinski" names="fig_sierpinski"><term>Figure 4.9:</term> The Sierpinski Triangle</p>
-  <figure align="center">
-    <image source="Recursion/Figures/sierpinski.png" width="480px%"/>
-  </figure>
-  <p>Since we can continue to apply the algorithm indefinitely, what is the
-            base case? We will see that the base case is set arbitrarily as the
-            number of times we want to divide the triangle into pieces. Sometimes we
-            call this number the <em>degree</em> of the fractal. Each time we make a
-            recursive call, we subtract 1 from the degree until we reach 0. When we
-            reach a degree of 0, we stop making recursive calls. The code that
-            generated the Sierpinski Triangle in <xref ref="recursion_fig-sierpinski"/> is shown in
-            <xref ref="lst-st"/>.</p>
-  <program xml:id="lst_st" interactive="activecode" language="python">
+  <listing xml:id="recursion_fig-sierpinski"><program xml:id="lst_st" interactive="activecode" language="python">
     <input>
 import turtle
 
@@ -77,7 +65,7 @@ def main():
 
 main()
         </input>
-  </program>
+  </program></listing>
   <p>The program in <xref ref="lst-st"/> follows the ideas outlined above. The
             first thing <c>sierpinski</c> does is draw the outer triangle. Next, there
             are three recursive calls, one for each of the new corner triangles we

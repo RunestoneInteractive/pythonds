@@ -15,12 +15,9 @@
             as seen previously with unordered lists. Once again, an empty list will
             be denoted by a <c>head</c> reference to <c>None</c> (see
             <xref ref="basic-ds_lst-orderlist"/>).</p>
-  <p xml:id="basic-ds_lst-orderlist" names="lst_orderlist">
-    <term>Listing 8</term>
-  </p>
-  <pre>class OrderedList:
+  <listing xml:id="basic-ds_lst-orderlist"><pre>class OrderedList:
     def __init__(self):
-        self.head = None</pre>
+        self.head = None</pre></listing>
   <p>As we consider the operations for the ordered list, we should note that
             the <c>is_empty</c> and <c>size</c> methods can be implemented the same as
             with unordered lists since they deal only with the number of nodes in
@@ -55,10 +52,7 @@
             We can continue to look forward in the list (line 3). If any node is ever discovered that
             contains data greater than the item we are looking for, we will immediately return <c>False</c>. The remaining lines are identical to
             the unordered list search.</p>
-  <p xml:id="basic-ds_lst-ordersearch" names="lst_ordersearch">
-    <term>Listing 9</term>
-  </p>
-  <pre>def search(self,item):
+  <listing xml:id="basic-ds_lst-ordersearch"><pre>def search(self,item):
     current = self.head
     while current is not None:
         if current.data == item:
@@ -67,7 +61,7 @@
             return False
         current = current.next
 
-    return False</pre>
+    return False</pre></listing>
   <p>The most significant method modification will take place in <c>add</c>.
             Recall that for unordered lists, the <c>add</c> method could simply place a
             new node at the head of the list. It was the easiest point of access.
@@ -102,10 +96,7 @@
             the only remaining question is whether the new node will be added at the
             beginning of the linked list or some place in the middle. Again,
             <c>previous is None</c> (line 11) can be used to provide the answer.</p>
-  <p xml:id="basic-ds_lst-orderadd" names="lst_orderadd">
-    <term>Listing 10</term>
-  </p>
-  <pre>def add(self, item):
+  <listing xml:id="basic-ds_lst-orderadd"><pre>def add(self, item):
     """Add a new node"""
     current = self.head
     previous = None
@@ -120,7 +111,7 @@
         self.head = temp
     else:
         temp.next = current
-        previous.next = temp</pre>
+        previous.next = temp</pre></listing>
   <p>The <c>OrderedList</c> class with methods discussed thus far can be found
             in ActiveCode 1.
             We leave the remaining methods as exercises. You should carefully

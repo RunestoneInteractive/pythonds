@@ -97,10 +97,7 @@ item</c> and <c>set item</c> operations on a dictionary are <m>O(1)</m>. Another
             performing exactly the same operation, <c>number in container</c>. The
             difference is that on line 8 <c>x</c> is a list, and on line 10 <c>x</c> is a
             dictionary.</p>
-  <p xml:id="algorithm-analysis_lst-listvdict" names="lst_listvdict">
-    <term>Listing 6</term>
-  </p>
-  <program language="python">
+  <listing xml:id="algorithm-analysis_lst-listvdict"><program language="python">
     <input>
 import timeit
 import random
@@ -115,7 +112,7 @@ for i in range(10_000, 1_000_001, 20_000):
     dict_time = t.timeit(number=1000)
     print(f"{i:&lt;10,}{lst_time:&gt;10.3f}{dict_time:&gt;10.3f}")
 </input>
-  </program>
+  </program></listing>
   <p><xref ref="i10_id2fig-listvdict"/> summarizes the results of running
             <xref ref="algorithm-analysis_lst-listvdict"/>. You can see that the dictionary is consistently
             faster. For the smallest list size of 10,000 elements a dictionary is

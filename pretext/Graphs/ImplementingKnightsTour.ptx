@@ -29,10 +29,7 @@
             indicating that we have found a successful tour. If the path is not long
             enough, we continue to explore one level deeper by choosing a new vertex
             to explore and calling <c>knight_tour</c> recursively for that vertex.</p>
-  <p xml:id="graphs_lst-knight" names="lst_knight">
-    <term>Listing 3</term>
-  </p>
-  <pre>from pythonds3.graphs import Graph
+  <listing xml:id="graphs_lst-knight"><pre>from pythonds3.graphs import Graph
 
 
 def knight_tour(n, path, u, limit):
@@ -51,7 +48,7 @@ def knight_tour(n, path, u, limit):
             u.color = "white"
     else:
         done = True
-    return done</pre>
+    return done</pre></listing>
   <p>DFS also uses colors to keep track of which vertices in the graph have
             been visited. Unvisited vertices are colored white, and visited vertices
             are colored gray. If all neighbors of a particular vertex have been

@@ -45,10 +45,7 @@
             create edges between all the vertices we find for words found under the
             same key in the dictionary. <xref ref="graphs_lst-wordbucket1"/> shows the Python
             code required to build the graph.</p>
-  <p xml:id="graphs_lst-wordbucket1" names="lst_wordbucket1">
-    <term>Listing 1</term>
-  </p>
-  <pre>from pythonds3.graphs import Graph
+  <listing xml:id="graphs_lst-wordbucket1"><pre>from pythonds3.graphs import Graph
 
 
 def build_graph(filename):
@@ -68,7 +65,7 @@ def build_graph(filename):
         for word1 in similar_words:
             for word2 in similar_words - {word1}:
                 the_graph.add_edge(word1, word2)
-    return the_graph</pre>
+    return the_graph</pre></listing>
   <p>Since this is our first real-world graph problem, you might be wondering
             how sparse the graph is. The list of four-letter words we have for this
             problem is 5,110 words long. If we were to use an adjacency matrix, the

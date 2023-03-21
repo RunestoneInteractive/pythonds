@@ -158,10 +158,7 @@
             shown in <xref ref="algorithm-analysis_lst-dummycode"/>. Although this program does not really do
             anything, it is instructive to see how we can take actual code and
             analyze performance.</p>
-  <p xml:id="algorithm-analysis_lst-dummycode" names="lst_dummycode">
-    <term>Listing 2</term>
-  </p>
-  <pre>a = 5
+  <listing xml:id="algorithm-analysis_lst-dummycode"><pre>a = 5
 b = 6
 c = 10
 for i in range(n):
@@ -172,7 +169,7 @@ for i in range(n):
 for k in range(n):
     w = a * k + 45
     v = b * b
-d = 33</pre>
+d = 33</pre></listing>
   <p>The number of assignment operations is the sum of four terms. The first
             term is the constant 3, representing the three assignment statements at
             the start of the fragment. The second term is <m>3n^{2}</m>, since

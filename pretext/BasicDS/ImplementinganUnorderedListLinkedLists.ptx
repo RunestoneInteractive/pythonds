@@ -37,10 +37,7 @@
                 should note that we will typically represent a node object as shown in
                 <xref ref="fig-node2"/>. Hidden fields <c>_data</c> and <c>_next</c> of the <c>Node</c> class
                 are turned into properties and can be accessed as <c>data</c> and <c>next</c> respectively.</p>
-    <p xml:id="basic-ds_lst-nodeclass" names="lst_nodeclass">
-      <term>Listing 1</term>
-    </p>
-    <program language="python">
+    <listing xml:id="basic-ds_lst-nodeclass"><program language="python">
       <input>
 class Node:
     """A node of a linked list"""
@@ -73,7 +70,7 @@ class Node:
         """String"""
         return str(self._data)
 </input>
-    </program>
+    </program></listing>
     <p>We create <c>Node</c> objects in the usual way.</p>
     <pre>&gt;&gt;&gt; temp = Node(93)
 &gt;&gt;&gt; temp.data
@@ -105,17 +102,14 @@ class Node:
                 a reference to the first node. <xref ref="basic-ds_lst-listclass"/> shows the
                 constructor. Note that each list object will maintain a single reference
                 to the head of the list.</p>
-    <p xml:id="basic-ds_lst-listclass" names="lst_listclass">
-      <term>Listing 2</term>
-    </p>
-    <program language="python">
+    <listing xml:id="basic-ds_lst-listclass"><program language="python">
       <input>
 class UnorderedList:
 
     def __init__(self):
         self.head = None
 </input>
-    </program>
+    </program></listing>
     <p>Initially when we construct a list, there are no items. The assignment
                 statement</p>
     <pre>&gt;&gt;&gt; my_list = UnorderedList()</pre>
@@ -147,11 +141,8 @@ class UnorderedList:
                 end of the linked structure. In Python, <c>None</c> can be compared to
                 any reference. Two references are equal if they both refer to the same
                 object. We will use this often in our remaining methods.</p>
-    <p xml:id="basic-ds_lst-isempty" names="lst_isempty">
-      <term>Listing 3</term>
-    </p>
-    <pre>def is_empty(self):
-    return self.head == None</pre>
+    <listing xml:id="basic-ds_lst-isempty"><pre>def is_empty(self):
+    return self.head == None</pre></listing>
     <p>So how do we get items into our list? We need to implement the <c>add</c>
                 method. However, before we can do that, we need to address the important
                 question of where in the linked list to place the new item. Since this
@@ -187,17 +178,14 @@ class UnorderedList:
                 rest of the list has been properly attached to the new node, we can
                 modify the head of the list to refer to the new node. The assignment
                 statement in line 4 sets the head of the list.</p>
-    <p xml:id="basic-ds_lst-add" names="lst_add">
-      <term>Listing 4</term>
-    </p>
-    <program language="python">
+    <listing xml:id="basic-ds_lst-add"><program language="python">
       <input>
 def add(self, item):
     temp = Node(item)
     temp.set_next(self.head)
     self.head = temp
 </input>
-    </program>
+    </program></listing>
     <figure align="center" xml:id="file_106_id7">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 7: Adding a New Node is a Two-Step Process</caption>
       <image source="BasicDS/Figures/addtohead.png" width="50%"/>
@@ -231,10 +219,7 @@ def add(self, item):
                 time current moves to a new node, we add <m>1</m> to <c>count</c>.
                 Finally, <c>count</c> gets returned after the iteration stops.
                 <xref ref="fig-traversal"/> shows this process as it proceeds down the list.</p>
-    <p xml:id="basic-ds_lst-length" names="lst_length">
-      <term>Listing 5</term>
-    </p>
-    <program language="python">
+    <listing xml:id="basic-ds_lst-length"><program language="python">
       <input>
 def size(self):
     current = self.head
@@ -245,7 +230,7 @@ def size(self):
 
     return count
 </input>
-    </program>
+    </program></listing>
     <figure align="center" xml:id="file_106_id9">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 9: Traversing the Linked List from the Head to the End</caption>
       <image source="BasicDS/Figures/traversal.png" width="50%"/>
@@ -262,10 +247,7 @@ def size(self):
                 the head of the list (line 2). We continue to iterate over the list as long as there are
                 more nodes to visit. The question in line 4 asks whether
                 the data item is present in the current node. If so, we return <c>True</c> immediately.</p>
-    <p xml:id="basic-ds_lst-search" names="lst_search">
-      <term>Listing 6</term>
-    </p>
-    <program language="python">
+    <listing xml:id="basic-ds_lst-search"><program language="python">
       <input>
 def search(self, item):
     current = self.head
@@ -276,7 +258,7 @@ def search(self, item):
 
     return False
 </input>
-    </program>
+    </program></listing>
     <p>As an example, consider invoking the <c>search</c> method looking for the
                 item 17.</p>
     <program language="python">
@@ -337,10 +319,7 @@ True
                 <c>current</c> before <c>current</c> moves ahead. <xref ref="fig-prevcurr"/> shows
                 the movement of <c>previous</c> and <c>current</c> as they progress down the
                 list looking for the node containing the value 17.</p>
-    <p xml:id="basic-ds_lst-remove" names="lst_remove">
-      <term>Listing 7</term>
-    </p>
-    <program language="python">
+    <listing xml:id="basic-ds_lst-remove"><program language="python">
       <input>
 def remove(self, item):
     current = self.head
@@ -359,7 +338,7 @@ def remove(self, item):
     else:
         previous.next = current.next
 </input>
-    </program>
+    </program></listing>
     <figure align="center" xml:id="file_106_id11">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 11: Initial Values for the <literal>previous</literal> and <literal>current</literal> References</caption>
       <image source="BasicDS/Figures/removeinit.png" width="50%"/>

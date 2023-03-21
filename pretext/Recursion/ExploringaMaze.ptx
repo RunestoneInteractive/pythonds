@@ -13,83 +13,7 @@
             our turtle is dropped down somewhere into the middle of the maze and
             must find its way out. Look at <xref ref="recursion_fig-mazescreen"/> to get an idea of
             where we are going in this section.</p>
-  <p xml:id="recursion_fig-mazescreen" names="fig_mazescreen"><term>Figure 4.12:</term> The Finished Maze Search Program</p>
-  <figure align="center">
-    <image source="Recursion/Figures/maze.png" width="480px%"/>
-  </figure>
-  <p>To make it easier for us we will assume that our maze is divided up into
-            squares. Each square of the maze is either open or occupied by a
-            section of wall. The turtle can only pass through the open squares of
-            the maze. If the turtle bumps into a wall, it must try a different
-            direction. The turtle will require a systematic procedure to find its
-            way out of the maze. Here is the procedure:</p>
-  <p>
-    <ol marker="1">
-      <li>
-        <p>From our starting position we will first try going north one square
-                    and then recursively try our procedure from there.</p>
-      </li>
-      <li>
-        <p>If we are not successful by trying a northern path as the first step
-                    then we will take a step to the south and recursively repeat our
-                    procedure.</p>
-      </li>
-      <li>
-        <p>If south does not work then we will try a step to the West as our
-                    first step and recursively apply our procedure.</p>
-      </li>
-      <li>
-        <p>If north, south, and west have not been successful then we will apply the
-                    procedure recursively from a position one step to our east.</p>
-      </li>
-      <li>
-        <p>If none of these directions works then there is no way to get out of
-                    the maze and we fail.</p>
-      </li>
-    </ol>
-  </p>
-  <p>Now that sounds pretty easy, but there are a couple of details to talk
-            about first. Suppose we take our first recursive step by going north. By
-            following our procedure, our next step would also be to the north. But if
-            the north is blocked by a wall, we must look at the next step of the
-            procedure and try going to the south. Unfortunately, that step to the
-            south brings us right back to our original starting place. If we apply
-            the recursive procedure from there, we will just go back one step to the
-            North and be in an infinite loop. So we must have a strategy to
-            remember where we have been. In this case we will assume that we have a
-            bag of bread crumbs we can drop along our way. If we take a step in a
-            certain direction and find that there is a bread crumb already on that
-            square, we know that we should immediately back up and try the next
-            direction in our procedure. As we will see when we look at the code for
-            this algorithm, backing up is as simple as returning from a recursive
-            function call.</p>
-  <p>As we do for all recursive algorithms, let us review the base cases. Some
-            of them you may already have guessed based on the description in the
-            previous paragraph. In this algorithm, there are four base cases to
-            consider:</p>
-  <p>
-    <ol marker="1">
-      <li>
-        <p>The turtle has run into a wall. Since the square is occupied by a
-                    wall, no further exploration can take place.</p>
-      </li>
-      <li>
-        <p>The turtle has found a square that has already been explored. We do
-                    not want to continue exploring from this position so we don't get into a loop.</p>
-      </li>
-      <li>
-        <p>We have found an outside edge, not occupied by a wall. In other words,
-                    we have found an exit from the maze.</p>
-      </li>
-      <li>
-        <p>We have explored a square unsuccessfully in all four directions.</p>
-      </li>
-    </ol>
-  </p>
-  <p>For our program to work we will need to have a way to represent the
-            maze. <xref ref="recursion_fig-exmaze"/> is an example of a maze data file.</p>
-  <p xml:id="recursion_fig-exmaze" names="fig_exmaze"><term>Figure 4.13:</term> An Example Maze Data File</p>
-  <pre>++++++++++++++++++++++
+  <listing xml:id="recursion_fig-mazescreen"><pre>++++++++++++++++++++++
 +   +   ++ ++     +
 + +   +       +++ + ++
 + + +  ++  ++++   + ++
@@ -99,7 +23,7 @@
 +     +   +++++++  + +
 + +++++++      S +   +
 +                + +++
-++++++++++++++++++ +++</pre>
+++++++++++++++++++ +++</pre></listing>
   <p>To make this even more interesting we are going to use the <c>turtle</c>
             module to draw and explore our maze so we can watch this algorithm in
             action. The <c>Maze</c> object will provide the following methods for us to use
@@ -128,8 +52,7 @@
             algorithm can easily access the status of any particular square.</p>
   <p><xref ref="recursion_lst-maze-globals"/> includes the global constants used by the <c>Maze</c> class methods
             (Listings <xref ref="recursion_lst-maze-init"/>&#x2013;<xref ref="recursion_lst-maze-aux"/>) and the <c>search_from</c> function (<xref ref="recursion_lst-maze-search"/>).</p>
-  <p xml:id="recursion_lst-maze-globals" names="lst_maze_globals"><term>Listing 4.11:</term> The Maze Program Global Constants</p>
-  <program language="python">
+  <listing xml:id="recursion_lst-maze-globals"><program language="python">
     <input>
 START = "S"
 OBSTACLE = "+"
@@ -137,13 +60,12 @@ TRIED = "."
 DEAD_END = "-"
 PART_OF_PATH = "O"
 </input>
-  </program>
+  </program></listing>
   <p>The <c>__init__</c> method takes the name of a file as its
             only parameter. This file is a text file that represents a maze by using
             <q>+</q> characters for walls, spaces for open squares, and the letter <q>S</q> to
             indicate the starting position.</p>
-  <p xml:id="recursion_lst-maze-init" names="lst_maze_init"><term>Listing 4.12:</term> The Maze Class Constructor</p>
-  <program language="python">
+  <listing xml:id="recursion_lst-maze-init"><program language="python">
     <input>
 class Maze:
     def __init__(self, maze_filename):
@@ -172,7 +94,7 @@ class Maze:
             (self.rows_in_maze - 1) / 2 + 0.5,
         )
 </input>
-  </program>
+  </program></listing>
   <p>The internal representation of the maze is a list of
             lists. Each row of the <c>maze_list</c> instance variable is also a list.
             This secondary list contains one character per square using the
@@ -195,8 +117,7 @@ class Maze:
   </program>
   <p>The <c>draw_maze</c> method uses this internal representation to draw the
             initial view of the maze on the screen (<xref ref="recursion_fig-mazescreen"/>).</p>
-  <p xml:id="recursion_lst-maze-draw" names="lst_maze_draw"><term>Listing 4.13:</term> The Maze Class Drawing Methods</p>
-  <program language="python">
+  <listing xml:id="recursion_lst-maze-draw"><program language="python">
     <input>
 def draw_maze(self):
     self.t.speed(10)
@@ -225,7 +146,7 @@ def draw_centered_box(self, x, y, color):
         self.t.right(90)
     self.t.end_fill()
 </input>
-  </program>
+  </program></listing>
   <p>The <c>update_position</c> method, as shown in <xref ref="recursion_lst-maze-update"/> uses the
             same internal representation to see if the turtle has run into a wall.
             It also updates the internal representation with a <q>.</q> or <q>-</q> to
@@ -233,8 +154,7 @@ def draw_centered_box(self, x, y, color):
             square is part of a dead end. In addition, the <c>update_position</c> method
             uses two helper methods, <c>move_turtle</c> and <c>drop_bread_crumb</c>, to
             update the view on the screen.</p>
-  <p xml:id="recursion_lst-maze-update" names="lst_maze_update"><term>Listing 4.14:</term> The Maze Class Moving Methods</p>
-  <program language="python">
+  <listing xml:id="recursion_lst-maze-update"><program language="python">
     <input>
 def update_position(self, row, col, val=None):
     if val:
@@ -263,13 +183,12 @@ def move_turtle(self, x, y):
 def drop_bread_crumb(self, color):
     self.t.dot(10, color)
 </input>
-  </program>
+  </program></listing>
   <p>Finally, the <c>is_exit</c> method uses the current position of the turtle
             to test for an exit condition. An exit condition occurs whenever the turtle
             has navigated to the edge of the maze, either row zero or column zero,
             or the far-right column or the bottom row.</p>
-  <p xml:id="recursion_lst-maze-aux" names="lst_maze_aux"><term>Listing 4.15:</term> The Maze Class Auxiliary Methods</p>
-  <program language="python">
+  <listing xml:id="recursion_lst-maze-aux"><program language="python">
     <input>
 def is_exit(self, row, col):
     return (
@@ -282,14 +201,13 @@ def is_exit(self, row, col):
 def __getitem__(self, idx):
     return self.maze_list[idx]
 </input>
-  </program>
+  </program></listing>
   <p>Let's examine the code for the search function which we call
             <c>search_from</c>. The code is shown in <xref ref="recursion_lst-maze-search"/>. Notice
             that this function takes three parameters: a <c>Maze</c> object, the starting
             row, and the starting column. This is important because as a recursive
             function the search logically starts again with each recursive call.</p>
-  <p xml:id="recursion_lst-maze-search" names="lst_maze_search"><term>Listing 4.16:</term> The Maze Search Function</p>
-  <program language="python">
+  <listing xml:id="recursion_lst-maze-search"><program language="python">
     <input>
 def search_from(maze, row, column):
     # Try each of four directions from this point until we find a way out.
@@ -320,7 +238,7 @@ def search_from(maze, row, column):
         maze.update_position(row, column, DEAD_END)
     return found
 </input>
-  </program>
+  </program></listing>
   <p>As you look through the algorithm you will see that the first thing the
             code does (line 3) is call <c>update_position</c>. This is simply to help
             you visualize the algorithm so that you can watch exactly how the turtle

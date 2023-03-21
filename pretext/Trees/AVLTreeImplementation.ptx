@@ -290,10 +290,7 @@ rotation_root.balance_factor = (
             above is implemented by the <c>if</c> statement starting on line&#xA0;2.
             Rule number 2 is implemented by the <c>elif</c> statement starting on
             line 8.</p>
-  <p xml:id="trees_lst-rebalance" names="lst_rebalance">
-    <term>Listing 3</term>
-  </p>
-  <program language="python">
+  <listing xml:id="trees_lst-rebalance"><program language="python">
     <input>
 def rebalance(self, node):
     if node.balance_factor &lt; 0:
@@ -309,7 +306,7 @@ def rebalance(self, node):
         else:
             self.rotate_right(node)
 </input>
-  </program>
+  </program></listing>
   <p>The <xref ref="trees_key-terms"/> provide you the opportunity to rebalance a tree
             that requires a left rotation followed by a right. In addition the
             discussion questions provide you with the opportunity to rebalance some

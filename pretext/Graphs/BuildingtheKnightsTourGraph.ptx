@@ -18,10 +18,7 @@
             then converted into edges in the graph. Each location on the board is converted into a
             linear vertex number similar to the vertex numbers shown
             in <xref ref="i185_id1fig-knightmoves"/>.</p>
-  <p xml:id="graphs_lst-knighttour1" names="lst_knighttour1">
-    <term>Listing 1</term>
-  </p>
-  <pre>from pythonds3.graphs import Graph
+  <listing xml:id="graphs_lst-knighttour1"><pre>from pythonds3.graphs import Graph
 
 
 def knight_graph(board_size):
@@ -33,14 +30,11 @@ def knight_graph(board_size):
             for row2, col2 in new_positions:
                 other_node_id = row2 * board_size + col2
                 kt_graph.add_edge(node_id, other_node_id)
-    return kt_graph</pre>
+    return kt_graph</pre></listing>
   <p>The <c>gen_legal_moves</c> function (<xref ref="graphs_lst-knighttour2"/>) takes
             the position of the knight on the board and generates each of the eight possible moves,
             making sure those moves are still within the board.</p>
-  <p xml:id="graphs_lst-knighttour2" names="lst_knighttour2">
-    <term>Listing 2</term>
-  </p>
-  <pre>def gen_legal_moves(row, col, board_size):
+  <listing xml:id="graphs_lst-knighttour2"><pre>def gen_legal_moves(row, col, board_size):
     new_moves = []
     move_offsets = [
         (-1, -2),  # left-down-down
@@ -55,7 +49,7 @@ def knight_graph(board_size):
     for r_off, c_off in move_offsets:
         if 0 &lt;= row + r_off &lt; board_size and 0 &lt;= col + c_off &lt; board_size:
             new_moves.append((row + r_off, col + c_off))
-    return new_moves</pre>
+    return new_moves</pre></listing>
   <p><xref ref="i185_id2fig-bigknight"/> shows the complete graph of possible moves on an
             <m>8 \times 8</m> board. There are exactly 336 edges in the graph. Notice
             that the vertices corresponding to the edges of the board have fewer

@@ -179,22 +179,7 @@ print(make_change_2([1, 5, 10, 25], 63, [0] * 64))
   </p>
   <p>Either option 1 or 3 will give us a total of two coins which is the
             minimum number of coins for 11 cents.</p>
-  <p xml:id="recursion_fig-dpcoins" names="fig_dpcoins"><term>Figure 15:</term> Minimum Number of Coins Needed to Make Change</p>
-  <figure align="center">
-    <image source="Recursion/Figures/changeTable.png" width="50%" alt="image"/>
-  </figure>
-  <p xml:id="recursion_fig-eleven" names="fig_eleven"><term>Figure 16:</term> Three Options to Consider for the Minimum Number of Coins for Eleven Cents</p>
-  <figure align="center">
-    <image source="Recursion/Figures/elevenCents.png" width="50%" alt="image"/>
-  </figure>
-  <p><xref ref="recursion_lst-dpchange"/> is a dynamic programming algorithm to solve our
-            change-making problem. <c>make_change_3</c> takes three parameters: a list
-            of valid coin values, the amount of change we want to make, and a list
-            of the minimum number of coins needed to make each value. When the
-            function is done, <c>min_coins</c> will contain the solution for all values
-            from 0 to the value of <c>change</c>.</p>
-  <p xml:id="recursion_lst-dpchange" names="lst_dpchange"><term>Listing 19:</term> Dynamic Programming Solution</p>
-  <program language="python">
+  <listing xml:id="recursion_fig-dpcoins"><program language="python">
     <input>
 def make_change_3(coin_value_list, change, min_coins):
    for cents in range(change + 1):
@@ -205,7 +190,7 @@ def make_change_3(coin_value_list, change, min_coins):
       min_coins[cents] = coin_count
    return min_coins[change]
 </input>
-  </program>
+  </program></listing>
   <p>Note that <c>make_change_3</c> is not a recursive function, even though we
             started with a recursive solution to this problem. It is
             important to realize that a recursive solution to a problem will not

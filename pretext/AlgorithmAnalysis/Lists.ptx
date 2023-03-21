@@ -28,10 +28,7 @@
             and perhaps the most obvious way, using the range function wrapped by a
             call to the list constructor. <xref ref="algorithm-analysis_lst-mklist"/> shows the code for
             making our list four different ways.</p>
-  <p xml:id="algorithm-analysis_lst-mklist" names="lst_mklist">
-    <term>Listing 3</term>
-  </p>
-  <pre>def test1():
+  <listing xml:id="algorithm-analysis_lst-mklist"><pre>def test1():
     l = []
     for i in range(1000):
         l = l + [i]
@@ -48,7 +45,7 @@ def test3():
 
 
 def test4():
-    l = list(range(1000))</pre>
+    l = list(range(1000))</pre></listing>
   <p>To capture the time it takes for each of our functions to execute we
             will use Python's <c>timeit</c> module. The <c>timeit</c> module is designed
             to allow Python developers to make cross-platform timing measurements by
@@ -290,10 +287,7 @@ list range:              0.07 milliseconds</pre>
             that the list is decreasing in size by one each time through the loop. But
             since the initial list is two million elements in size, we only reduce
             the overall size by <m>0.05\%</m>.</p>
-  <p xml:id="algorithm-analysis_lst-popmeas" names="lst_popmeas">
-    <term>Listing 4</term>
-  </p>
-  <pre>pop_zero = Timer("x.pop(0)", "from __main__ import x")
+  <listing xml:id="algorithm-analysis_lst-popmeas"><pre>pop_zero = Timer("x.pop(0)", "from __main__ import x")
 pop_end = Timer("x.pop()", "from __main__ import x")
 
 x = list(range(2000000))
@@ -303,16 +297,13 @@ x = list(range(2000000))
 print(f"pop(): {pop_end.timeit(number=1000):11.5f} milliseconds")
 
 pop(0):    2.09779 milliseconds
-pop():     0.00014 milliseconds</pre>
+pop():     0.00014 milliseconds</pre></listing>
   <p>While our first test does show that <c>pop(0)</c> is indeed slower than
             <c>pop()</c>, it does not validate the claim that <c>pop(0)</c> is
             <m>O(n)</m> while <c>pop()</c> is <m>O(1)</m>. To validate that claim
             we need to look at the performance of both calls over a range of list
             sizes. <xref ref="algorithm-analysis_lst-poplists"/> implements this test.</p>
-  <p xml:id="algorithm-analysis_lst-poplists" names="lst_poplists">
-    <term>Listing 5</term>
-  </p>
-  <pre>pop_zero = Timer("x.pop(0)", "from __main__ import x")
+  <listing xml:id="algorithm-analysis_lst-poplists"><pre>pop_zero = Timer("x.pop(0)", "from __main__ import x")
 pop_end = Timer("x.pop()", "from __main__ import x")
 print(f"{'n':10s}{'pop(0)':&gt;15s}{'pop()':&gt;15s}")
 for i in range(1_000_000, 100_000_001, 1_000_000):
@@ -320,7 +311,7 @@ for i in range(1_000_000, 100_000_001, 1_000_000):
     pop_zero_t = pop_zero.timeit(number=1000)
     x = list(range(i))
     pop_end_t = pop_end.timeit(number=1000)
-    print(f"{i:&lt;10d}{pop_zero_t:&gt;15.5f}{pop_end_t:&gt;15.5f}")</pre>
+    print(f"{i:&lt;10d}{pop_zero_t:&gt;15.5f}{pop_end_t:&gt;15.5f}")</pre></listing>
   <p><xref ref="i15_id2fig-poptest"/> shows the results of our experiment. You can see
             that as the list gets longer and longer the time it takes to <c>pop(0)</c>
             also increases while the time for <c>pop</c> stays very flat. This is
