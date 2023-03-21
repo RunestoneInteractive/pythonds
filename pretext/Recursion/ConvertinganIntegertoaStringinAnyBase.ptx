@@ -77,8 +77,8 @@ print(to_str(1453, 16))
             problem size&#x2013;using division.</p>
   <p>Let's trace the algorithm shown in <xref ref="lst-rectostr"/> again; this time we will convert the number 10
             to its base 2 string representation (<c>"1010"</c>).</p>
-  <p xml:id="recursion_fig-tostr2" names="fig_tostr2"><term>Figure 4.4:</term> Converting the Number 10 to its Base 2 String Representation</p>
-  <figure align="center">
+
+  <figure xml:id="recursion_fig-tostr2" align="center">
     <image source="Recursion/Figures/toStrBase2.png" width="50%" alt="image"/>
   </figure>
   <p><xref ref="recursion_fig-tostr2"/> shows that we get the results we are looking for,

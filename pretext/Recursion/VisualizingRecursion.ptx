@@ -150,6 +150,7 @@ main()
   <figure xml:id="recursion_fig-tree2" align="center">
     <image source="Recursion/Figures/tree2.png" width="50%"/>
   </figure>
+
   <p>This simple tree program is just a starting point for you, and you will
             notice that the tree does not look particularly realistic because nature
             is just not as symmetrical as a computer program. The exercises at the end
