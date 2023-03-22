@@ -12,12 +12,14 @@
       <source>pretext/main.ptx</source>
       <publication>publication/publication.ptx</publication>
       <output-dir>output/web</output-dir>
+      <stringparam key="html.css.extra" value="external/custom-styles.css"/>
     </target>
     <target name="runestone">
       <format>html</format>
       <source>pretext/main.ptx</source>
       <publication>publication/publication-academy.ptx</publication>
       <output-dir>published/pswadsup</output-dir>
+      <stringparam key="html.css.extra" value="external/custom-styles.css"/>
     </target>
     <target name="print" pdf-method="xelatex">
       <format>pdf</format>
