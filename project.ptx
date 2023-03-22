@@ -13,6 +13,12 @@
       <publication>publication/publication.ptx</publication>
       <output-dir>output/web</output-dir>
     </target>
+    <target name="runestone">
+      <format>html</format>
+      <source>pretext/main.ptx</source>
+      <publication>publication/publication-academy.ptx</publication>
+      <output-dir>published/pswadsup</output-dir>
+    </target>
     <target name="print" pdf-method="xelatex">
       <format>pdf</format>
       <source>source/main.ptx</source>

@@ -27,9 +27,9 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
   <!-- the other option is "long" which will produce an -->
   <!-- entire front matter section with more headings   -->
   <author-biographies length="short"/>
-  <document-id edition="4">pswadup</document-id>
+  <document-id edition="4">pswadsup</document-id>
   <!-- Prefix to enhance Sage notebook contents -->
-  <initialism>SB</initialism>
+  <initialism>DS</initialism>
   <blurb shelf="introcs">The original open source intro to computer science textbook.  Great for students of all ages.</blurb>
   <!-- Math-related macros from "macros.tex" in previous LaTeX version -->
   <!-- \notdivide replaces \notmid to avoid conflict with tikz - TWJ 5/6/2010 -->
