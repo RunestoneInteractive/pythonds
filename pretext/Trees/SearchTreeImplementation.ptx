@@ -5,7 +5,7 @@
             keys that are greater than the parent are found in the right subtree. We
             will call this the <term>BST property</term>. As we implement the <c>Map</c> interface
             as described above, the BST property will guide our implementation.
-            <xref ref="i$146_id1fig-simplebst"/> illustrates this property of a binary search
+            <xref ref="i146_id1fig-simplebst"/> illustrates this property of a binary search
             tree, showing the keys without any associated values. Notice that the
             property holds for each parent and child. All of the keys in the left
             subtree are less than the key in the root. All of the keys in the right
@@ -16,7 +16,7 @@
   </figure>
   <p>Now that you know what a binary search tree is, we will look at how a
             binary search tree is constructed. The search tree in
-            <xref ref="i$146_id1fig-simplebst"/> represents the nodes that exist after we have
+            <xref ref="i146_id1fig-simplebst"/> represents the nodes that exist after we have
             inserted the following keys in the order shown:
             <m>70, 31, 93, 94, 14, 23, 73</m>. Since 70 was the first key inserted into
             the tree, it is the root. Next, 31 is less than 70, so it becomes the
@@ -171,7 +171,7 @@ def _put(self, key, value, current_node):
             <c>my_zip_tree['Plymouth'] = 55446</c>, just like a Python dictionary.</p>
   <listing xml:id="trees_lst-bst4"><pre>def __setitem__(self, key, value):
     self.put(key, value)</pre></listing>
-  <p><xref ref="i$146_id2fig-bstput"/> illustrates the process for inserting a new node
+  <p><xref ref="i146_id2fig-bstput"/> illustrates the process for inserting a new node
             into a binary search tree. The lightly shaded nodes indicate the nodes
             that were visited during the insertion process.</p>
   <figure align="center" xml:id="i146_id2fig-bstput">
@@ -313,15 +313,15 @@ def _get(self, key, current_node):
       </li>
     </ol>
   </p>
-  <figure align="center" xml:id="file_22_id3">
+  <figure align="center" xml:id="fig-bstdel1">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: Deleting Node 16, a Node without Children</caption>
     <image source="Trees/Figures/bstdel1.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_22_id4">
+  <figure align="center" xml:id="fig-bstdel2">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Deleting Node 25, a Node That Has a Single Child</caption>
     <image source="Trees/Figures/bstdel2.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_22_id5">
+  <figure align="center" xml:id="fig-bstdel3">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: Deleting Node 5, a Node with Two Children</caption>
     <image source="Trees/Figures/bstdel3.png" width="50%"/>
   </figure>

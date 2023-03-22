@@ -22,7 +22,7 @@
     <li>
       <title>Root</title>
       <p>The <term>root</term> of the tree is the only node in the tree that has no
-                        incoming edges. In <xref ref="trees_examplesof-trees"/>, / is the root of the tree.</p>
+                        incoming edges. In <xref ref="trees_examples-of-trees"/>, / is the root of the tree.</p>
     </li>
     <li>
       <title>Path</title>
@@ -34,20 +34,20 @@
     <li>
       <title>Children</title>
       <p>The set of nodes that have incoming edges from the same
-                        node are said to be the <term>children</term> of that node. In <xref ref="trees_examplesof-trees"/>,
+                        node are said to be the <term>children</term> of that node. In <xref ref="trees_examples-of-trees"/>,
                         nodes log/, spool/, and yp/ are the children of node var/.</p>
     </li>
     <li>
       <title>Parent</title>
       <p>A node is the <term>parent</term> of all the nodes it connects to with outgoing
-                        edges. In <xref ref="trees_examplesof-trees"/> the node var/ is the parent of nodes
+                        edges. In <xref ref="trees_examples-of-trees"/> the node var/ is the parent of nodes
                         log/, spool/, and yp/.</p>
     </li>
     <li>
       <title>Sibling</title>
       <p>Nodes in the tree that are children of the same parent are said to
                         be <term>siblings</term>. The nodes etc/ and usr/ are siblings in the file system
-                        tree shown in <xref ref="trees_examplesof-trees"/>.</p>
+                        tree shown in <xref ref="trees_examples-of-trees"/>.</p>
     </li>
     <li>
       <title>Subtree</title>
@@ -57,19 +57,19 @@
     <li>
       <title>Leaf Node</title>
       <p>A <term>leaf node</term> is a node that has no children. For example, Human and
-                        Chimpanzee are leaf nodes in <xref ref="trees_examplesof-trees"/>.</p>
+                        Chimpanzee are leaf nodes in <xref ref="trees_examples-of-trees"/>.</p>
     </li>
     <li>
       <title>Level</title>
       <p>The <term>level</term> of a node <m>n</m> is the number of edges on the path
                         from the root node to <m>n</m>. For example, the level of the
-                        Felis node in <xref ref="trees_examplesof-trees"/> is five. By definition, the level
+                        Felis node in <xref ref="trees_examples-of-trees"/> is five. By definition, the level
                         of the root node is zero.</p>
     </li>
     <li>
       <title>Height</title>
       <p>The <term>height</term> of a tree is equal to the maximum level of any node in
-                        the tree. The height of the tree in <xref ref="trees_examplesof-trees"/> is two.</p>
+                        the tree. The height of the tree in <xref ref="trees_examples-of-trees"/> is two.</p>
     </li>
   </dl>
   <p>With the basic vocabulary now defined, we can move on to a formal

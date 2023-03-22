@@ -46,7 +46,8 @@ a_list[j] = temp</pre>
   </figure>
   <p>The following activecode example shows the complete <c>bubble_sort</c> function working on the list
             shown above.</p>
-  <program xml:id="lst_bubble" interactive="activecode" language="python">
+<listing xml:id="lst-bubble">
+  <program interactive="activecode" language="python">
     <input>
 def bubble_sort(a_list):
     for i in range(len(a_list) - 1, 0, -1):
@@ -62,6 +63,7 @@ bubble_sort(a_list)
 print(a_list)
         </input>
   </program>
+</listing>
   <p>The following animation shows <c>bubble_sort</c> in action.</p>
   <raw format="html" xml:space="preserve">&lt;script src="../_static/sortmodels.js"&gt;&lt;/script&gt;
 &lt;script src="../_static/sortviewers.js"&gt;&lt;/script&gt;
@@ -118,7 +120,7 @@ bubble_anim_init = function(divid)
             ordered, no exchanges will be made. However, in the worst case, every
             comparison will cause an exchange. On average, we exchange half of the
             time.</p>
-  <table xml:id="sort-search_id3">
+  <table xml:id="sort-search_tbl-bubbleanalysis">
     <tabular>
       <title>
         <term>Table 1: Comparisons for Each Pass of Bubble Sort</term>
@@ -185,7 +187,8 @@ bubble_anim_init = function(divid)
             advantage in that it will recognize the sorted list and stop.
             <xref ref="lst-shortbubble"/> shows this modification, which is often referred
             to as the <term>short bubble</term>.</p>
-  <program xml:id="lst_shortbubble" interactive="activecode" language="python">
+<listing xml:id="lst-shortbubble">
+  <program interactive="activecode" language="python">
     <input>
 def bubble_sort_short(a_list):
     for i in range(len(a_list) - 1, 0, -1):
@@ -203,6 +206,7 @@ bubble_sort_short(a_list)
 print(a_list)
         </input>
   </program>
+</listing>
   <!--Finally, here is ``bubble_sort_short`` in CodeLens (CodeLens 2)..-->
   <!---->
   <!--.. codelens:: shortbubbletrace-->

@@ -39,7 +39,8 @@
             Another nice feature of the list of lists approach is that it
             generalizes to a tree that has many subtrees. In the case where the tree
             is more than a binary tree, another subtree is just another list.</p>
-  <program xml:id="tree_list1" interactive="activecode" language="python">
+<listing xml:id="lst-treelist1">
+  <program interactive="activecode" language="python">
     <input>
 my_tree = ["a", ["b", ["d", [], []], ["e", [], []]], ["c", ["f", [], []], []]]
 print(my_tree)
@@ -48,6 +49,7 @@ print("root = ", my_tree[0])
 print("right subtree = ", my_tree[2])
         </input>
   </program>
+</listing>
   <p>Let's formalize this definition of the tree data structure by providing
             some functions that make it easy for us to use lists as trees. Note that
             we are not going to define a binary tree class. The functions we will
@@ -103,7 +105,8 @@ def get_right_child(root):
             functions we have just written. You should try it
             out for yourself. One of the exercises at the end of this chapter asks you to draw the tree
             structure resulting from this set of calls.</p>
-  <program xml:id="bin_tree" interactive="activecode" language="python">
+<listing xml:id="lst-bintreetry">
+  <program interactive="activecode" language="python">
     <input>
 def make_binary_tree(root):
     return [root, [], []]
@@ -158,6 +161,7 @@ print(a_tree)
 print(get_right_child(get_right_child(a_tree)))
         </input>
   </program>
+</listing>
   <note>
     <title>Self Check</title>
     <exercise label="mctree_1">

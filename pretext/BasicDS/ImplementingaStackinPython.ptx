@@ -22,7 +22,8 @@
             the end of the list will hold the top element of the stack. As the stack
             grows (as <c>push</c> operations occur), new items will be added on the end
             of the list. <c>pop</c> operations will manipulate that same end.</p>
-  <program xml:id="stack_1ac" interactive="activecode" language="python">
+<listing xml:id="lst-stackcode1">
+  <program interactive="activecode" language="python">
     <input>
 class Stack:
     """Stack implementation as a list"""
@@ -52,6 +53,7 @@ class Stack:
         return len(self._items)
         </input>
   </program>
+</listing>
   <p>Remember that nothing happens when we click the <c>run</c> button other than the
             definition of the class.  We must create a <c>Stack</c> object and then use it.
             <xref ref="lst-stackcode1"/> shows the <c>Stack</c> class in
@@ -93,7 +95,8 @@ print(s.size())
             work and we would have to index position 0 (the first item in the list)
             explicitly using <c>pop</c> and <c>insert</c>. The implementation is shown in
             <xref ref="lst-stackcode2"/>.</p>
-  <program xml:id="stack_cl_1" interactive="codelens" language="python">
+<listing xml:id="lst-stackcode2">
+  <program interactive="codelens" language="python">
     <input>
 class Stack:
     def __init__(self):
@@ -120,6 +123,7 @@ s.push("true")
 print(s.pop())
     </input>
   </program>
+</listing>
   <p>This ability to change the physical implementation of an abstract data
             type while maintaining the logical characteristics is an example of
             abstraction at work. However, even though the stack will work either

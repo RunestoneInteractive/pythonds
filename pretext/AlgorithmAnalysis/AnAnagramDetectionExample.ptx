@@ -21,7 +21,8 @@
                 process will be to convert the second string to a list. Each character
                 from the first string can be checked against the characters in the list
                 and if found, checked off by replacement. <xref ref="lst-anagramsolution"/> shows this function.</p>
-    <program xml:id="active5" interactive="activecode" language="python">
+<listing xml:id = "lst-anagramsolution">
+    <program  interactive="activecode" language="python">
       <input>
 def anagram_solution_1(s1, s2):
     still_ok = True
@@ -53,6 +54,7 @@ print(anagram_solution_1("abcd", "dcba"))  # expected: True
 print(anagram_solution_1("abcd", "dcda"))  # expected: False
         </input>
     </program>
+</listing>
     <p>To analyze this algorithm, we need to note that each of the <em>n</em>
                 characters in <c>s1</c> will cause an iteration through up to <em>n</em>
                 characters in the list from <c>s2</c>. Each of the <em>n</em> positions in the
@@ -74,7 +76,8 @@ print(anagram_solution_1("abcd", "dcda"))  # expected: False
                 string if the original two strings are anagrams. <xref ref="lst-ana2"/> shows
                 this solution. Again, in Python we can use the built-in <c>sort</c> method
                 on lists by simply converting each string to a list at the start.</p>
-    <program xml:id="active6" interactive="activecode" language="python">
+  <listing xml:id="lst-ana2">
+    <program  interactive="activecode" language="python">
       <input>
 def anagram_solution_2(s1, s2):
     a_list_1 = list(s1)
@@ -100,6 +103,7 @@ print(anagram_solution_2("abcd", "dcba"))  # expected: True
 print(anagram_solution_2("abcd", "dcda"))  # expected: False
         </input>
     </program>
+  </listing>
     <p>At first glance you may be tempted to think that this algorithm is
                 <m>O(n)</m>, since there is one simple iteration to compare the <em>n</em>
                 characters after the sorting process. However, the two calls to the
@@ -141,7 +145,8 @@ print(anagram_solution_2("abcd", "dcda"))  # expected: False
                 particular character, we will increment the counter at that position. In
                 the end, if the two lists of counters are identical, the strings must be
                 anagrams. <xref ref="lst-ana4"/> shows this solution.</p>
-    <program xml:id="active7" interactive="activecode" language="python">
+<listing xml:id="lst-ana4">
+    <program  interactive="activecode" language="python">
       <input>
 def anagram_solution_4(s1, s2):
     c1 = [0] * 26
@@ -171,6 +176,7 @@ print(anagram_solution_4("abcd", "dcba"))  # expected: True
 print(anagram_solution_4("abcd", "dcda"))  # expected: False
         </input>
     </program>
+</listing>
     <p>Again, the solution has a number of iterations. However, unlike the
                 first solution, none of them are nested. The first two iterations used
                 to count the characters are both based on <em>n</em>. The third iteration,

@@ -108,16 +108,16 @@ list range:              0.07 milliseconds</pre>
             could test the time it takes to call an empty function and subtract that
             from the numbers above.</p>
   <p>Now that we have seen how performance can be measured concretely, you can
-            look at <xref ref="algorithm-analysis_algorithm-analysis_algorithm-analysis_tbl-listbigo"/> to see the Big O efficiency of all the
+            look at <xref ref="algorithm-analysis_tbl-listbigo"/> to see the Big O efficiency of all the
             basic list operations. After thinking carefully about
-            <xref ref="algorithm-analysis_algorithm-analysis_algorithm-analysis_tbl-listbigo"/>, you may be wondering about the two different times
+            <xref ref="algorithm-analysis_tbl-listbigo"/>, you may be wondering about the two different times
             for <c>pop</c>. When <c>pop</c> is called on the end of the list it takes
             <m>O(1)</m>, but when <c>pop</c> is called on the first element in the list&#x2014;or anywhere in the middle it&#x2014;is <m>O(n)</m>
             The reason for this lies
             in how Python chooses to implement lists. When an item is taken from the
             front of the list, all the other elements in
             the list are shifted one position closer to the beginning. This may seem
-            silly to you now, but if you look at <xref ref="algorithm-analysis_algorithm-analysis_algorithm-analysis_tbl-listbigo"/> you will see
+            silly to you now, but if you look at <xref ref="algorithm-analysis_tbl-listbigo"/> you will see
             that this implementation also allows the index operation to be
             <m>O(1)</m>. This is a tradeoff that the Python designers thought
             was a good one.</p>

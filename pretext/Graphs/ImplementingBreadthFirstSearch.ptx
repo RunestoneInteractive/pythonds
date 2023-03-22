@@ -109,11 +109,11 @@ def bfs(start):
             neither of the next two nodes adds anything new to the queue or the tree.
             <xref ref="fig-bfs3"/> shows the tree and the queue after expanding all the
             vertices on the second level of the tree.</p>
-  <figure align="center" xml:id="file_140_id3">
+  <figure align="center" xml:id="fig-bfs3">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: Breadth-First Search Tree After Completing One Level</caption>
     <image source="Graphs/Figures/bfs3.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_140_id4">
+  <figure align="center" xml:id="fig-bfsdone">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">FIgure 6: Final Breadth-First Search Tree</caption>
     <image source="Graphs/Figures/bfsDone.png" width="50%"/>
   </figure>

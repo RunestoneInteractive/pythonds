@@ -30,11 +30,11 @@
             the earlier sublist sorts, we have now reduced the total number of
             shifting operations necessary to put the list in its final order. For
             this case, we need only four more shifts to complete the process.</p>
-  <figure align="center" xml:id="file_102_id3">
+  <figure align="center" xml:id="fig-incrementsc">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 8: ShellSort: A Final Insertion Sort with Increment of 1</caption>
     <image source="SortSearch/Figures/shellsortC.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_102_id4">
+  <figure align="center" xml:id="fig-incrementsd">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 9: Initial Sublists for a Shell Sort</caption>
     <image source="SortSearch/Figures/shellsortD.png" width="50%"/>
   </figure>
@@ -48,7 +48,8 @@
   <p>The following invocation of the <c>shell_sort</c> function shows the
             partially sorted lists after each increment, with the final sort being
             an insertion sort with an increment of one.</p>
-  <program xml:id="lst_shellSort" interactive="activecode" language="python">
+<listing xml:id="lst-shell">
+  <program interactive="activecode" language="python">
     <input>
 def shell_sort(a_list):
     sublist_count = len(a_list) // 2
@@ -74,6 +75,7 @@ shell_sort(a_list)
 print(a_list)
         </input>
   </program>
+</listing>
   <raw format="html" xml:space="preserve">&lt;script src="../_static/sortmodels.js"&gt;&lt;/script&gt;
 &lt;script src="../_static/sortviewers.js"&gt;&lt;/script&gt;
 

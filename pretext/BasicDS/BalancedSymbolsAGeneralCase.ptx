@@ -37,7 +37,8 @@
             assist with symbol-matching. Each symbol that is removed from the stack
             must be checked to see that it matches the current closing symbol. If a
             mismatch occurs, the balance checker returns <c>False</c> immediately.</p>
-  <program xml:id="balcheck" interactive="activecode" language="python">
+<listing xml:id="lst-balcheck">
+  <program interactive="activecode" language="python">
     <input>
 from pythonds3.basic import Stack
 
@@ -66,6 +67,7 @@ print(balance_checker('{({([][])}())}'))
 print(balance_checker('[{()]'))
         </input>
   </program>
+</listing>
   <p>These two examples show that stacks are very important data structures
             for the processing of language constructs in computer science. Almost
             any notation you can think of has some type of nested symbol that must

@@ -95,7 +95,8 @@ def get_right_child(self):
             the <c>BinaryTree</c> class. As we said in our original recursive
             definition for a tree, this allows us to treat any child of a binary
             tree as a binary tree itself.</p>
-  <program xml:id="bintree" interactive="activecode" language="python">
+<listing xml:id="lst-comptest">
+  <program interactive="activecode" language="python">
     <input>
 class BinaryTree:
     def __init__(self, root_obj):
@@ -145,6 +146,7 @@ a_tree.get_right_child().set_root_val("hello")
 print(a_tree.get_right_child().get_root_val())
         </input>
   </program>
+</listing>
   <note>
     <title>Self Check</title>
     <exercise label="mctree_3">

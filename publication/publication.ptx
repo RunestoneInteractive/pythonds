@@ -5,6 +5,8 @@
         <directories external="../assets" generated="../generated-assets"/>
     </source>
     <html>
+    <platform host="web" />
+    <knowl exercise-inline="no" example="no" listing="yes" />
     <css style="oscarlevin" colors="blue_red" toc="crc" banner="crc" navbar="crc" shell="crc"/>
     </html>
 </publication>

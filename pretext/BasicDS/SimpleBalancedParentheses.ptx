@@ -59,7 +59,8 @@
             not balanced properly. At the end of the string, when all symbols have
             been processed, the stack should be empty. The Python code to implement
             this algorithm is shown in <xref ref="lst-parcheck1"/>.</p>
-  <program xml:id="parcheck1" interactive="activecode" language="python">
+<listing xml:id="lst-parcheck1">
+  <program  interactive="activecode" language="python">
     <input>
 from pythonds3.basic import Stack
 
@@ -84,6 +85,7 @@ print(par_checker("(()"))  # expected False
 print(par_checker(")("))  # expected False
         </input>
   </program>
+</listing>
   <p>This function, <c>par_checker</c>, assumes that a <c>Stack</c> class is
             available and returns a Boolean result as to whether the string of
             parentheses is balanced. If the current symbol is <c>(</c>,

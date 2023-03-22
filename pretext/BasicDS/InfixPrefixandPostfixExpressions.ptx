@@ -117,7 +117,7 @@
             of operations within prefix and postfix expressions is completely
             determined by the position of the operator and nothing else. In many
             ways, this makes infix the least desirable notation to use.</p>
-  <table xml:id="basic-ds_id2">
+  <table xml:id="basic-ds_tbl-parexample">
     <tabular>
       <title>
         <term>Table 3: Comparison of Infix, Prefix, and Postfix Expressions</term>
@@ -150,7 +150,7 @@
             the equivalent prefix and postfix expressions. Be sure that you
             understand how they are equivalent in terms of the order of the
             operations being performed.</p>
-  <table xml:id="basic-ds_id3">
+  <table xml:id="basic-ds_tbl-example3">
     <tabular>
       <title>
         <term>Table 4: Additional Examples of Infix, Prefix, and Postfix Expressions</term>
@@ -232,7 +232,7 @@
                 operator were also moved to its corresponding right parenthesis position
                 and the matching left parenthesis were removed, the complete postfix
                 expression would result (see <xref ref="fig-moveright"/>).</p>
-    <figure align="center" xml:id="file_116_id4">
+    <figure align="center" xml:id="fig-moveright">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: Moving Operators to the Right for Postfix Notation</caption>
       <image source="BasicDS/Figures/moveright.png" width="50%"/>
     </figure>
@@ -240,7 +240,7 @@
                 of the right parenthesis, we move it to the left, we get prefix notation
                 (see <xref ref="fig-moveleft"/>). The position of the parenthesis pair is
                 actually a clue to the final position of the enclosed operator.</p>
-    <figure align="center" xml:id="file_116_id5">
+    <figure align="center" xml:id="fig-moveleft">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 7: Moving Operators to the Left for Prefix Notation</caption>
       <image source="BasicDS/Figures/moveleft.png" width="50%"/>
     </figure>
@@ -252,7 +252,7 @@
     <p>Here is a more complex expression: (A + B) &#xB7; C - (D - E) &#xB7; (F + G).
                 <xref ref="fig-complexmove"/> shows the conversion to prefix and postfix
                 notations.</p>
-    <figure align="center" xml:id="file_116_id6">
+    <figure align="center" xml:id="fig-complexmove">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 8: Converting a Complex Expression to Prefix and Postfix Notations</caption>
       <image source="BasicDS/Figures/complexmove.png" width="50%"/>
     </figure>
@@ -350,7 +350,7 @@
                 &#xB7; occurs, since multiplication has precedence over addition. At the end
                 of the infix expression the stack is popped twice, removing both
                 operators and placing + as the last operator in the postfix expression.</p>
-    <figure align="center" xml:id="file_116_id7">
+    <figure align="center" xml:id="fig-intopost">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 9: Converting A &#xB7; B + C &#xB7; D to Postfix Notation</caption>
       <image source="BasicDS/Figures/intopost.png" width="50%"/>
     </figure>
@@ -363,7 +363,8 @@
                 lowest value possible. This way any operator that is compared against it
                 will have higher precedence and will be placed on top of it.
                 Line 15 defines the operands to be any upper-case character or digit.</p>
-    <program xml:id="intopost" interactive="activecode" language="python">
+  <listing xml:id="lst-intopost">
+    <program interactive="activecode" language="python">
       <input>
 from pythonds3.basic import Stack
 
@@ -402,7 +403,8 @@ print(infix_to_postfix("A * B + C * D"))
 print(infix_to_postfix("( A + B ) * C - ( D - E ) * ( F + G )"))
         </input>
     </program>
-    <transition/>
+  </listing>
+
     <p>A few more examples of execution in the Python shell are shown below.</p>
     <pre>&gt;&gt;&gt; infix_to_postfix("( A + B ) * ( C + D )")
 'A B + C D + *'
@@ -438,7 +440,7 @@ print(infix_to_postfix("( A + B ) * C - ( D - E ) * ( F + G )"))
                 on the stack. Pop and return it as the result of the expression.
                 <xref ref="fig-evalpost1"/> shows the stack contents as this entire example
                 expression is being processed.</p>
-    <figure align="center" xml:id="file_116_id8">
+    <figure align="center" xml:id="fig-evalpost1">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 10: Stack Contents During Evaluation</caption>
       <image source="BasicDS/Figures/evalpostfix1.png" width="50%"/>
     </figure>
@@ -452,7 +454,7 @@ print(infix_to_postfix("( A + B ) * C - ( D - E ) * ( F + G )"))
                 Since division is <em>not</em> a commutative operator, in other words
                 <m>15/5</m> is not the same as <m>5/15</m>, we must be sure that
                 the order of the operands is not switched.</p>
-    <figure align="center" xml:id="file_116_id9">
+    <figure align="center" xml:id="fig-evalpost2">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 11: A More Complex Example of Evaluation</caption>
       <image source="BasicDS/Figures/evalpostfix2.png" width="50%"/>
     </figure>
@@ -495,6 +497,7 @@ print(infix_to_postfix("( A + B ) * C - ( D - E ) * ( F + G )"))
                 in <xref ref="lst-postfixeval"/>. To assist with the arithmetic, a helper
                 function <c>do_math</c> is defined. It will take two operands and an
                 operator and then perform the proper arithmetic operation.</p>
+  <listing xml:id="lst-postfixeval">
     <program xml:id="postfixeval" interactive="activecode" language="python">
       <input>
 from pythonds3.basic import Stack
@@ -528,6 +531,7 @@ def do_math(op, op1, op2):
 print(postfix_eval("7 8 + 3 2 + /"))
         </input>
     </program>
+  </listing>
     <p>It is important to note that in both the postfix conversion and the
                 postfix evaluation programs we assumed that there were no errors in the
                 input expression. Using these programs as a starting point, you can

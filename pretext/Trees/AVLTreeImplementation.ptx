@@ -34,9 +34,7 @@
             <xref ref="lst-updbal"/>. You will notice that the definition for <c>_put</c> is
             exactly the same as in simple binary search trees except for the addition of
             the calls to <c>update_balance</c> on lines&#xA0;9 and&#xA0;17.</p>
-  <p>
-    <term>Listing 1</term>
-  </p>
+<listing xml:id="lst-updbal">
   <program language="python">
     <input>
 def _put(self, key, value, current_node):
@@ -71,6 +69,7 @@ def update_balance(self, node):
             self.update_balance(node.parent)
 </input>
   </program>
+</listing>
   <p>The new <c>update_balance</c> method is where most of the work is done. This
             implements the recursive procedure we just described. It first checks to see if the current node is out
             of balance enough to require rebalancing (line&#xA0;20). If that
@@ -195,7 +194,7 @@ def rotate_left(self, rotation_root):
             how can we update the balance factors without completely recalculating
             the heights of the new subtrees? <xref ref="fig-bfderive"/> and the
             following derivation should convince you that these lines are correct.</p>
-  <figure align="center" xml:id="file_20_id3">
+  <figure align="center" xml:id="fig-bfderive">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: A Left Rotation</caption>
     <image source="Trees/Figures/bfderive.png" width="50%"/>
   </figure>
@@ -249,7 +248,7 @@ rotation_root.balance_factor = (
             But take a look at <xref ref="fig-hardrotate"/>. Since node A has a balance
             factor of -2 we should do a left rotation. But what happens when we do
             the left rotation around A?</p>
-  <figure align="center" xml:id="file_20_id4">
+  <figure align="center" xml:id="fig-hardrotate">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: An Unbalanced Tree that is More Difficult to Balance</caption>
     <image source="Trees/Figures/hardunbalanced.png" width="50%"/>
   </figure>
@@ -281,7 +280,7 @@ rotation_root.balance_factor = (
             encountered in <xref ref="fig-hardrotate"/> and <xref ref="fig-badrotate"/>. Starting
             with a right rotation around node C puts the tree in a position where
             the left rotation around A brings the entire subtree back into balance.</p>
-  <figure align="center" xml:id="file_20_id6">
+  <figure align="center" xml:id="fig-rotatelr">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 8: A Right Rotation Followed by a Left Rotation</caption>
     <image source="Trees/Figures/rotatelr.png" width="50%"/>
   </figure>

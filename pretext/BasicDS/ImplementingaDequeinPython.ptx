@@ -6,9 +6,7 @@
             will provide a very nice set of methods upon which to build the details
             of the deque. Our implementation (<xref ref="lst-dequecode"/>) will assume that
             the rear of the deque is at position 0 in the list.</p>
-  <p>
-    <term>Listing 1</term>
-  </p>
+  <listing xml:id="lst-dequecode">
   <program language="python">
     <input>
 class Deque:
@@ -43,6 +41,7 @@ class Deque:
         return len(self._items)
 </input>
   </program>
+  </listing>
   <p>In <c>remove_front</c> we use the <c>pop</c> method to remove the last element
             from the list. However, in <c>remove_rear</c>, the <c>pop(0)</c> method must
             remove the first element of the list. Likewise, we need to use the

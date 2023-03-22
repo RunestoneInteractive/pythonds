@@ -29,7 +29,7 @@
             algorithm our primary data structure is a list, so we must focus our
             state-changing efforts on the list. Since the base case is a list of
             length 1, a natural progression toward the base case is to shorten the
-            list. This is exactly what happens on line 5 of <xref ref="recursion_calculatingthe-sumofa-listof-numbers"/> when we call <c>list_sum</c> with a shorter list.</p>
+            list. This is exactly what happens on line 5 of <xref ref="lst-recsum"/> when we call <c>list_sum</c> with a shorter list.</p>
   <p>The final law is that the algorithm must call itself. This is the very
             definition of recursion. Recursion is a confusing concept to many
             beginning programmers. As a novice programmer, you have learned that

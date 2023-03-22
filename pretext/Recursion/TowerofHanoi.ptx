@@ -17,13 +17,13 @@
             tower of 64 disks is <m>2^{64}-1 = 18,446,744,073,709,551,615</m>. At
             a rate of one move per second, that is <m>584,942,417,355</m> years! Clearly
             there is more to this puzzle than meets the eye.</p>
-  <p><xref ref="recursion_fig-recursion_hanoi"/> shows an example of a configuration of disks in the
+  <p><xref ref="recursion_lst-recursion_hanoi"/> shows an example of a configuration of disks in the
             middle of a move from the first peg to the third. Notice that, as the
             rules specify, the disks on each peg are stacked so that smaller disks
             are always on top of the larger disks. If you have not tried to solve
             this puzzle before, you should try it now. You do not need fancy disks
             and poles&#x2014;a pile of books or pieces of paper will work.</p>
-  <listing xml:id="recursion_fig-recursion_hanoi"><program language="python">
+  <listing xml:id="recursion_lst-recursion_hanoi"><program language="python">
     <input>
 def move_tower(height, from_pole, to_pole, with_pole):
     if height &lt; 1:
@@ -56,7 +56,8 @@ def move_disk(from_pole, to_pole):
 </input>
   </program></listing>
   <p>The program in <xref ref="recursion_hanoi"/> provides the entire solution for three disks.</p>
-  <program xml:id="recursion_hanoi" interactive="activecode" language="python">
+  <listing xml:id="recursion_hanoi">
+  <program  interactive="activecode" language="python">
     <input>
 def move_tower(height, from_pole, to_pole, with_pole):
     if height &gt;= 1:
@@ -72,6 +73,7 @@ def move_disk(from_p, to_p):
 move_tower(3, "A", "B", "C")
         </input>
   </program>
+  </listing>
   <p>Now that you have seen the code for both <c>move_tower</c> and <c>move_disk</c>,
             you may be wondering why we do not have a data structure that explicitly
             keeps track of what disks are on what poles. Here is a hint: if you were

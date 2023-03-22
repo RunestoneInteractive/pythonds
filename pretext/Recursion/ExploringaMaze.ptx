@@ -100,6 +100,7 @@ class Maze:
             This secondary list contains one character per square using the
             characters described above. For the data file in <xref ref="recursion_fig-exmaze"/> the
             internal representation looks like the following:</p>
+<listing xml:id="recursion_fig-exmaze">
   <program language="python">
     <input>
 [  ['+', '+', '+', '+', '+', ..., '+', '+', '+', '+', '+']
@@ -115,6 +116,7 @@ class Maze:
    ['+', '+', '+', '+', '+', ..., '+', ' ', '+', '+', '+'] ]
 </input>
   </program>
+</listing>
   <p>The <c>draw_maze</c> method uses this internal representation to draw the
             initial view of the maze on the screen (<xref ref="recursion_fig-mazescreen"/>).</p>
   <listing xml:id="recursion_lst-maze-draw"><program language="python">
@@ -274,7 +276,8 @@ def search_from(maze, row, column):
 +++++ +  + + +     + +
 ++++++++++++++++++++++
   &lt;/pre&gt;</raw>
-  <program xml:id="recursion_completemaze" interactive="activecode" language="python">
+<listing xml:id="recursion_completemaze">
+  <program  interactive="activecode" language="python">
     <input>
 import turtle
 
@@ -418,6 +421,7 @@ my_maze.update_position(my_maze.start_row, my_maze.start_col)
 search_from(my_maze, my_maze.start_row, my_maze.start_col)
         </input>
   </program>
+</listing>
   <note>
     <title>Self Check</title>
     <p>Modify the maze search program so that the calls to <c>search_from</c> are in a different order.

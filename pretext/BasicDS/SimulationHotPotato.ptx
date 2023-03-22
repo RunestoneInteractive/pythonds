@@ -45,7 +45,8 @@
   </figure>
   <p>The program is shown in <xref ref="lst-josephussim"/>. A call to the
             <c>hot_potato</c> function using 7 as the counting constant returns <c>'Susan'</c>.</p>
-  <program xml:id="qujosephussim" interactive="activecode" language="python">
+<listing  xml:id="lst-josephussim">
+  <program  interactive="activecode" language="python">
     <input>
 from pythonds3.basic import Queue
 
@@ -67,6 +68,7 @@ def hot_potato(name_list, num):
 print(hot_potato(["Bill", "David", "Susan", "Jane", "Kent", "Brad"], 7))
         </input>
   </program>
+</listing>
   <p>Note that in this example the value of the counting constant is greater
             than the number of names in the list. This is not a problem since the
             queue acts like a circle and counting continues back at the beginning

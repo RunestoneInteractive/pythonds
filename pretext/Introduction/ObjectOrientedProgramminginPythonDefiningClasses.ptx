@@ -396,7 +396,7 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
       characteristics from sequences, namely the ordering of the underlying
       data and operations such as concatenation, repetition, and indexing.
     </p>
-    <figure align="center" xml:id="file_72_id4">
+    <figure align="center" xml:id="fig-inherit1">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 8: An Inheritance Hierarchy for Python Collections</caption>
       <image source="Introduction/Figures/inheritance1.png" width="50%" />
     </figure>
@@ -432,7 +432,7 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
       values showing the input-to-output mapping that is performed by the
       gate.
     </p>
-    <figure align="center" xml:id="file_72_id5">
+    <figure align="center" xml:id="fig-truthtable">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 9: Three Types of Logic Gates</caption>
       <image source="Introduction/Figures/truthtable.png" width="50%" />
     </figure>
@@ -447,7 +447,7 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
       <xref ref="fig-circuit1" /> also
       shows an example with values.
     </p>
-    <figure align="center" xml:id="file_72_id6">
+    <figure align="center" xml:id="fig-circuit1">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 10: A Circuit</caption>
       <image source="Introduction/Figures/circuit1.png" width="50%" />
     </figure>
@@ -461,7 +461,7 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
       two families, those that have one input line and those that have two.
       Below that, the specific logic functions of each appear.
     </p>
-    <figure align="center" xml:id="file_72_id7">
+    <figure align="center" xml:id="fig-gates">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 11: An Inheritance Hierarchy for Logic Gates</caption>
       <image source="Introduction/Figures/gates.png" width="50%" />
     </figure>
@@ -655,7 +655,7 @@ Enter pin input for gate G3: 0
       for example <c>UnaryGate</c> Is-a <c>LogicGate</c>.
     </p>
     <sage/>
-    <figure align="center" xml:id="file_72_id8">
+    <figure align="center" xml:id="fig-connector">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 12: A Connector Connects the Output of One Gate to the Input of Another</caption>
       <image source="Introduction/Figures/connector.png" width="50%" />
     </figure>

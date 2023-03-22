@@ -20,7 +20,8 @@
   <p>The Python implementation for this algorithm is shown in
             <xref ref="lst-seqsearchpython"/>. The function needs two items&#x2013;the list and the item we
             are looking for&#x2013;and returns a Boolean value as to whether it is present.</p>
-  <program xml:id="search1" interactive="codelens" language="python">
+<listing xml:id="lst-seqsearchpython">
+  <program  interactive="codelens" language="python">
     <input>
 def sequential_search(a_list, item):
     pos = 0
@@ -38,6 +39,7 @@ print(sequential_search(test_list, 3))
 print(sequential_search(test_list, 13))
     </input>
   </program>
+</listing>
   <subsection xml:id="sort-search_analysis-of-sequential-search">
     <title>Analysis of Sequential Search</title>
     <p>To analyze searching algorithms, we need to decide on a basic unit of
@@ -131,11 +133,12 @@ print(sequential_search(test_list, 13))
                 of the items to report that the item was not found. It can stop
                 immediately. <xref ref="lst-seqsearchpython2"/> shows this variation of the
                 sequential search function.</p>
-    <figure align="center" xml:id="file_94_id3">
+    <figure align="center" xml:id="fig-seqsearch2">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Sequential Search of an Ordered List of Integers</caption>
       <image source="SortSearch/Figures/seqsearch2.png" width="50%"/>
     </figure>
-    <program xml:id="search2" interactive="codelens" language="python">
+<listing xml:id="lst-seqsearchpython2">
+    <program interactive="codelens" language="python">
       <input>
 def ordered_sequential_search(a_list, item):
     pos = 0
@@ -155,7 +158,8 @@ print(ordered_sequential_search(test_list, 3))
 print(ordered_sequential_search(test_list, 13))
     </input>
     </program>
-    <p><xref ref="sort-search_sort-search_tbl-seqsearchtable2"/> summarizes these results. Note that in the best
+</listing>
+    <p><xref ref="sort-search_tbl-seqsearchtable2"/> summarizes these results. Note that in the best
                 case we might discover that the item is not in the list by looking at
                 only one item. On average, we will know after looking through only
                 <m>\frac {n}{2}</m> items. However, this technique is still

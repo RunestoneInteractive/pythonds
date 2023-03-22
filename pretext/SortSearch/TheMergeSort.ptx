@@ -29,7 +29,8 @@
             halves. It is important to note that the list may not have an even
             number of items. That does not matter, as the lengths will differ by at
             most one.</p>
-  <program xml:id="lst_mergeSort" interactive="activecode" language="python">
+<listing xml:id="lst-mergesort">
+  <program  interactive="activecode" language="python">
     <input>
 def merge_sort(a_list):
     print("Splitting", a_list)
@@ -68,6 +69,7 @@ merge_sort(a_list)
 print(a_list)
         </input>
   </program>
+</listing>
   <p>Once the <c>merge_sort</c> function is invoked on the left half and the
             right half (lines 8&#x2013;9), it is assumed they are sorted. The rest of the
             function (lines&#xA0;11&#x2013;29) is responsible for merging the two smaller sorted

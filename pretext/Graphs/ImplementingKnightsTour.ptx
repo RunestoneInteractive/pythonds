@@ -66,41 +66,41 @@ def knight_tour(n, path, u, limit):
             this example we will assume that the call to the <c>get_neighbors</c>
             method on line 6 orders the nodes in
             alphabetical order. We begin by calling <c>knight_tour(0, path, A, 6)</c>.</p>
-  <figure align="center" xml:id="i191_id1fig-kta">
+  <figure align="center" xml:id="fig-kta">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: Start with Node A</caption>
     <image source="Graphs/Figures/ktdfsa.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="i191_id2fig-ktb">
+  <figure align="center" xml:id="fig-ktb">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Explore B</caption>
     <image source="Graphs/Figures/ktdfsb.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_149_id3">
+  <figure align="center" xml:id="fig-ktc">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 5: Node C is a Dead End</caption>
     <image source="Graphs/Figures/ktdfsc.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_149_id4">
+  <figure align="center" xml:id="fig-ktd">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 6: Backtrack to B</caption>
     <image source="Graphs/Figures/ktdfsd.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_149_id5">
+  <figure align="center" xml:id="fig-kte">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 7: Explore D</caption>
     <image source="Graphs/Figures/ktdfse.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_149_id6">
+  <figure align="center" xml:id="fig-ktf">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 8: Explore E</caption>
     <image source="Graphs/Figures/ktdfsf.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_149_id7">
+  <figure align="center" xml:id="fig-ktg">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 9: Explore F</caption>
     <image source="Graphs/Figures/ktdfsg.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_149_id8">
+  <figure align="center" xml:id="fig-kth">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 10: Finish</caption>
     <image source="Graphs/Figures/ktdfsh.png" width="50%"/>
   </figure>
-  <p><c>knight_tour</c> starts with node A in <xref ref="i191_id1fig-kta"/>. The nodes adjacent to A are B and D.
+  <p><c>knight_tour</c> starts with node A in <xref ref="fig-kta"/>. The nodes adjacent to A are B and D.
             Since B is before D alphabetically, DFS selects B to expand next as
-            shown in <xref ref="i191_id2fig-ktb"/>. Exploring B happens when <c>knight_tour</c> is
+            shown in <xref ref="fig-ktb"/>. Exploring B happens when <c>knight_tour</c> is
             called recursively. B is adjacent to C and D, so <c>knight_tour</c> elects
             to explore C next. However, as you can see in <xref ref="fig-ktc"/> node C is
             a dead end with no adjacent white nodes. At this point we change the
@@ -120,7 +120,7 @@ def knight_tour(n, path, u, limit):
             <m>8 \times 8</m> board looks like. There are many possible tours; some are
             symmetric. With some modification you can make circular tours that start
             and end at the same square.</p>
-  <figure align="center" xml:id="file_149_id9">
+  <figure align="center" xml:id="fig-tour">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 11: A Complete Tour of the Board Found by <literal>knight_tour</literal></caption>
     <image source="Graphs/Figures/completeTour.png" width="50%"/>
   </figure>

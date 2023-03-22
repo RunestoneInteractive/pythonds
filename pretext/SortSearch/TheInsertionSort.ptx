@@ -43,7 +43,8 @@
             a shift operation requires approximately a third of the processing work
             of an exchange since only one assignment is performed. In benchmark
             studies, insertion sort will show very good performance.</p>
-  <program xml:id="lst_insertion" interactive="activecode" language="python">
+<listing xml:id="lst-insertion">
+  <program interactive="activecode" language="python">
     <input>
 def insertion_sort(a_list):
     for i in range(1, len(a_list)):
@@ -61,6 +62,7 @@ insertion_sort(a_list)
 print(a_list)
         </input>
   </program>
+</listing>
   <raw format="html" xml:space="preserve">&lt;script src="../_static/sortmodels.js"&gt;&lt;/script&gt;
 &lt;script src="../_static/sortviewers.js"&gt;&lt;/script&gt;
 

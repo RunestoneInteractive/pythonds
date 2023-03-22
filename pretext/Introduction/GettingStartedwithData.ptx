@@ -1145,14 +1145,5 @@ dict_items([('david', 1410), ('brad', 1137), ('roman', 1171)])
 &gt;&gt;&gt; phone_ext.get("kent")
 &gt;&gt;&gt; phone_ext.get("kent", "NO ENTRY")
 'NO ENTRY'</pre>
-    <note>
-      <p>This workspace is provided for your convenience.  You can use this activecode window to try out anything you like.</p>
-      <program xml:id="scratch_01_01" interactive="activecode" language="python">
-        <input>
-
-
-        </input>
-      </program>
-    </note>
   </subsection>
 </section>

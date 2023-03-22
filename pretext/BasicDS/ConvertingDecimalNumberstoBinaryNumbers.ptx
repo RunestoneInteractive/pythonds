@@ -46,7 +46,8 @@
             constructed in lines 12-14. Line 12 creates an empty string. The binary
             digits are popped from the stack one at a time and appended to the
             right-hand end of the string. The binary string is then returned.</p>
-  <program xml:id="divby2" interactive="activecode" language="python">
+<listing xml:id="lst-binconverter">
+  <program interactive="activecode" language="python">
     <input>
 from pythonds3.basic import Stack
 
@@ -69,6 +70,7 @@ print(divide_by_2(42))
 print(divide_by_2(31))
         </input>
   </program>
+</listing>
   <p>The algorithm for binary conversion can easily be extended to perform
             the conversion for any base. In computer science it is common to use a
             number of different encodings. The most common of these are binary,
@@ -97,7 +99,8 @@ print(divide_by_2(31))
             themselves represented as two-digit decimal numbers. Instead we need to
             create a set of digits that can be used to represent those remainders
             beyond 9.</p>
-  <program xml:id="baseconvert" interactive="activecode" language="python">
+<listing xml:id="lst-baseconverter">
+  <program interactive="activecode" language="python">
     <input>
 from pythonds3.basic import Stack
 
@@ -121,6 +124,7 @@ print(base_converter(25, 2))
 print(base_converter(25, 16))
         </input>
   </program>
+</listing>
   <p>A solution to this problem is to extend the digit set to include some
             alphabet characters. For example, hexadecimal uses the ten decimal
             digits along with the first six alphabet characters for the 16 digits.
@@ -132,7 +136,7 @@ print(base_converter(25, 16))
             resulting digit can be appended to the answer. For example, if the
             remainder 13 is removed from the stack, the digit D is appended to the
             resulting string.</p>
-  <note>
+  <exercises>
     <title>Self Check</title>
     <exercise label="baseconvert1">
       <statement>
@@ -185,6 +189,6 @@ print(base_converter(25, 16))
         </var>
       </setup>
     </exercise>
-  </note>
+  </exercises>
   <video xml:id="video_Stack2" youtube="Q6B8k8INeq8" width="auto"/>
 </section>

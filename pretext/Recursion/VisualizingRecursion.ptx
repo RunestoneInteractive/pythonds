@@ -32,7 +32,8 @@
             the function <c>my_win.exitonclick()</c>. This is a handy little method of
             the window that puts the turtle into a wait mode until you click inside
             the window, after which the program cleans up and exits.</p>
-  <program xml:id="lst_turt1" interactive="activecode" language="python">
+<listing xml:id="lst-turt1">
+  <program interactive="activecode" language="python">
     <input>
 import turtle
 
@@ -50,6 +51,7 @@ draw_spiral(my_turtle, 100)
 my_win.exitonclick()
         </input>
   </program>
+</listing>
   <p>That is really about all the turtle graphics you need to know in order
             to make some pretty impressive drawings. For our next program we
             will turn to fractals. Fractals come from a branch of
@@ -104,7 +106,8 @@ def tree(branch_len, t):
             the recursive calls and think about how this tree will unfold. Will it
             be drawn symmetrically with the right and left halves of the tree taking
             shape simultaneously? Will it be drawn right side first then left side?</p>
-  <program xml:id="lst_complete_tree" interactive="activecode" language="python">
+<listing xml:id="lst-complete-tree">
+  <program interactive="activecode" language="python">
     <input>
 import turtle
 
@@ -133,6 +136,7 @@ def main():
 main()
         </input>
   </program>
+</listing>
   <p>Notice how each branch point on the tree corresponds to a recursive
             call, and notice how the tree is drawn to the right all the way down to
             its shortest twig. You can see this in <xref ref="recursion_fig-tree1"/>. Now, notice

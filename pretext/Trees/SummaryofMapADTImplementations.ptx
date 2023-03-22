@@ -7,7 +7,7 @@
             binary search tree. To conclude this section, let's summarize the
             performance of each data structure for the key operations defined by the
             map ADT (see <xref ref="trees_tbl-compare"/>).</p>
-  <table xml:id="trees_id1">
+  <table xml:id="trees_tbl-compare">
     <tabular>
       <title>
         <term>Table 1: Comparing the Performance of Different Map Implementations</term>

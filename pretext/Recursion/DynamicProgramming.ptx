@@ -63,7 +63,7 @@ min
             to our number of coins to account for the fact that we are using a coin.
             Just adding 1 is the same as if we had made a recursive call asking
             where we satisfy the base case condition immediately.</p>
-  <p><term>Listing 17:</term> Recursive Version of Coin Optimization Problem</p>
+  <listing xml:id="lst-change1">
   <program language="python">
     <input>
  def make_change_1(coin_denoms, change):
@@ -81,6 +81,7 @@ min
 print(make_change_1([1, 5, 10, 25], 63))
 </input>
   </program>
+  </listing>
   <p>The trouble with the algorithm in <xref ref="lst-change1"/> is that it is
             extremely inefficient. In fact, it takes 67,716,925 recursive calls to
             find the optimal solution to the 4 coins, 63 cents problem! To
@@ -110,7 +111,8 @@ print(make_change_1([1, 5, 10, 25], 63))
             If there is already a result in the table, we use the value from the
             table rather than recomputing. <xref ref="lst-change2"/> shows a modified
             algorithm to incorporate our table lookup scheme.</p>
-  <program xml:id="lst_change2" interactive="activecode" language="python">
+<listing xml:id="lst-change2">
+  <program interactive="activecode" language="python">
     <input>
 def make_change_2(coin_value_list, change, known_results):
     min_coins = change
@@ -130,6 +132,7 @@ def make_change_2(coin_value_list, change, known_results):
 print(make_change_2([1, 5, 10, 25], 63, [0] * 64))
         </input>
   </program>
+</listing>
   <p>Notice that in line&#xA0;6 we have added a test to see if our table
             contains the minimum number of coins for a certain amount of change. If
             it does not, we compute the minimum recursively and store the computed
@@ -159,7 +162,7 @@ print(make_change_2([1, 5, 10, 25], 63, [0] * 64))
             plus one more penny to make five, equals five coins. Or we can look at
             zero cents plus one more nickel to make five cents equals one coin. Since
             the minimum of one and five is one we store 1 in the table. Fast forward
-            again to the end of the table and consider 11 cents. <xref ref="recursion_fig-eleven"/>
+            again to the end of the table and consider 11 cents.
             shows the three options that we have to consider:</p>
   <p>
     <ol marker="1">
@@ -226,7 +229,8 @@ def make_change_3(coin_value_list, change, min_coins):
             Then we take <m>63 - 21 = 42</m> and look at the 42nd element of the
             list. Once again we find a 21 stored there. Finally, element 21 of the
             array also contains 21, giving us the three 21 cent pieces.</p>
-  <program xml:id="lst_dpremember" interactive="activecode" language="python">
+<listing xml:id="lst-dpremember">
+  <program  interactive="activecode" language="python">
     <input>
 def make_change_4(coin_value_list, change, min_coins, coins_used):
     for cents in range(change + 1):
@@ -270,4 +274,5 @@ def main():
 main()
         </input>
   </program>
+</listing>
 </section>

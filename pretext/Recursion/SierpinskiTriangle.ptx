@@ -13,7 +13,8 @@
             You can continue to apply this procedure indefinitely if you have a
             sharp enough pencil. Before you continue reading, you may want to try
             drawing the Sierpinski triangle yourself, using the method described.</p>
-  <listing xml:id="recursion_fig-sierpinski"><program xml:id="lst_st" interactive="activecode" language="python">
+  <listing xml:id="recursion_fig-sierpinski">
+  <program interactive="activecode" language="python">
     <input>
 import turtle
 
@@ -66,7 +67,7 @@ def main():
 main()
         </input>
   </program></listing>
-  <p>The program in <xref ref="lst-st"/> follows the ideas outlined above. The
+  <p>The program in <xref ref="recursion_fig-sierpinski"/> follows the ideas outlined above. The
             first thing <c>sierpinski</c> does is draw the outer triangle. Next, there
             are three recursive calls, one for each of the new corner triangles we
             get when we connect the midpoints. Once again we make use of the
@@ -90,13 +91,13 @@ main()
             farther you go toward the bottom of <xref ref="recursion_fig-stcalltree"/>, the smaller the
             triangles. The function finishes drawing one level at a time; once it is
             finished with the bottom left it moves to the bottom middle, and so on.</p>
-  <p xml:id="recursion_fig-stcalltree" names="fig_stcalltree"><term>Figure 4.10:</term> Building a Sierpinski Triangle</p>
-  <figure align="center">
+
+  <figure xml:id="recursion_fig-stcalltree" align="center">
     <image source="Recursion/Figures/stCallTree.png" width="50%"/>
   </figure>
   <p>The <c>sierpinski</c> function relies heavily on the <c>get_mid</c> function.
             <c>get_mid</c> takes as arguments two endpoints and returns the point
-            halfway between them. In addition, <xref ref="lst-st"/> has a function that
+            halfway between them. In addition, <xref ref="recursion_fig-sierpinski"/> has a function that
             draws a filled triangle using the <c>begin_fill</c> and <c>end_fill</c> turtle
             methods.</p>
 </section>

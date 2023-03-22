@@ -43,7 +43,7 @@
             a simplified view of the graph by combining all the vertices in one
             strongly connected component into a single larger vertex. The simplified
             version of the graph in <xref ref="i194_id2fig-scc1"/> is shown in <xref ref="fig-scc2"/>.</p>
-  <figure align="center" xml:id="file_152_id3">
+  <figure align="center" xml:id="fig-scc2">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 32: The Reduced Graph</caption>
     <image source="Graphs/Figures/scc2.png" width="50%"/>
   </figure>
@@ -59,7 +59,7 @@
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 33: A Graph <m>G</m></caption>
     <image source="Graphs/Figures/transpose1.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="fig-tbp">
+  <figure align="center" xml:id="fig-tpb">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 34: The Transposition of <m>G</m>, <m>G^T</m></caption>
     <image source="Graphs/Figures/transpose2.png" width="50%"/>
   </figure>
@@ -94,11 +94,11 @@
             closing times computed for the original graph by the DFS algorithm.
             <xref ref="fig-sccalgb"/> shows the starting and closing times computed by
             running DFS on the transposed graph.</p>
-  <figure align="center" xml:id="file_152_id6">
+  <figure align="center" xml:id="fig-sccalga">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 35: Finishing Times for the Original Graph <m>G</m></caption>
     <image source="Graphs/Figures/scc1a.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_152_id7">
+  <figure align="center" xml:id="fig-sccalgb">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 36: Finishing Times for <m>G^T</m></caption>
     <image source="Graphs/Figures/scc1b.png" width="50%"/>
   </figure>
@@ -106,7 +106,7 @@
             in step 3 of the strongly connected components algorithm. You will notice
             that we do not provide you with the Python code for the SCC algorithm;
             we leave writing this program as an exercise.</p>
-  <figure align="center" xml:id="file_152_id8">
+  <figure align="center" xml:id="fig-sccforest">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 37: Strongly Connected Components</caption>
     <image source="Graphs/Figures/sccforest.png" width="50%"/>
   </figure>

@@ -21,7 +21,8 @@
             sum of the first <em>n</em> integers. The algorithm uses the idea of an
             accumulator variable that is initialized to 0. The solution then
             iterates through the <em>n</em> integers, adding each to the accumulator.</p>
-  <program xml:id="active1" interactive="activecode" language="python">
+  <listing xml:id="lst-sum1">
+  <program  interactive="activecode" language="python">
     <input>
 def sum_of_n(n):
     the_sum = 0
@@ -34,13 +35,15 @@ def sum_of_n(n):
 print(sum_of_n(10))
         </input>
   </program>
+  </listing>
   <p>Now look at the function in <xref ref="lst-sum2"/>. At first glance it may look
             strange, but upon further inspection you can see that this function is
             essentially doing the same thing as the previous one. The reason this is
             not obvious is poor coding. We did not use good identifier names to
             assist with readability, and we used an extra assignment statement
             that was not really necessary during the accumulation step.</p>
-  <program xml:id="active2" interactive="activecode" language="python">
+  <listing xml:id="lst-sum2">
+  <program interactive="activecode" language="python">
     <input>
 def foo(tom):
     fred = 0
@@ -54,6 +57,7 @@ def foo(tom):
 print(foo(10))
         </input>
   </program>
+  </listing>
   <p>The question we raised earlier asked whether one function is better than
             another. The answer depends on your criteria. The function <c>sum_of_n</c> is
             certainly better than the function <c>foo</c> if you are concerned with
@@ -158,7 +162,8 @@ Sum is 500000500000 required  0.1646299 seconds
             the summation problem. This function, <c>sum_of_n_3</c>, takes advantage of a
             closed equation <m>\sum_{i=1}^{n} i = \frac {(n)(n+1)}{2}</m> to
             compute the sum of the first <c>n</c> integers without iterating.</p>
-  <program xml:id="active3" interactive="activecode" language="python">
+<listing xml:id="lst-sum3">
+  <program  interactive="activecode" language="python">
     <input>
 def sum_of_n_3(n):
     return (n * (n + 1)) / 2
@@ -167,6 +172,7 @@ def sum_of_n_3(n):
 print(sum_of_n_3(10))
         </input>
   </program>
+</listing>
   <p>If we do the same benchmark measurement for <c>sum_of_n_3</c>, using five
             different values for <c>n</c> (10,000, 100,000, 1,000,000, 10,000,000, and
             100,000,000), we get the following results:</p>

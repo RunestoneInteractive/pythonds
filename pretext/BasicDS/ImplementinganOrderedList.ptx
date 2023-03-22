@@ -77,7 +77,7 @@
             becomes <c>None</c>) or the value of the current node becomes greater than
             the item we wish to add. In our example, seeing the value 54 causes us
             to stop.</p>
-  <figure align="center" xml:id="file_108_id3">
+  <figure align="center" xml:id="fig-orderinsert">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 17: Adding an Item to an Ordered Linked List</caption>
     <image source="BasicDS/Figures/linkedlistinsert.png" width="50%"/>
   </figure>

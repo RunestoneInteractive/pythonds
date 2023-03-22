@@ -80,9 +80,7 @@
             Prim's algorithm is similar to Dijkstra's algorithm
             in that they both use a priority queue to select the next vertex to add
             to the growing graph.</p>
-  <p>
-    <term>Listing 2</term>
-  </p>
+<listing xml:id="lst-prims">
   <pre>import sys
 from pythonds3.graphs import PriorityQueue
 
@@ -102,6 +100,7 @@ def prim(graph, start):
                 next_v.previous = current_v
                 next_v.distance = new_distance
                 pq.change_priority(next_v, new_distance)</pre>
+</listing>
   <p>The following sequence of figures (<xref ref="i187_id2fig-mst1"/>
             through <xref ref="i187_id2fig-mst1"/>) shows the algorithm in operation on our sample
             tree. We begin with the starting vertex as A. The distances to all the

@@ -47,7 +47,7 @@
             all the items to the right of the split point are greater than the pivot
             value. The list can now be divided at the split point and the quicksort
             can be invoked recursively on the two halves.</p>
-  <figure align="center" xml:id="file_98_id3">
+  <figure align="center" xml:id="fig-partitionb">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 14: Completing the Partition Process to Find the Split Point for 54</caption>
     <image source="SortSearch/Figures/partitionB.png" width="50%"/>
   </figure>
@@ -57,7 +57,8 @@
             equal to one, it is already sorted. If it is greater, then it can be
             partitioned and recursively sorted. The <c>partition</c> function
             implements the process described earlier.</p>
-  <program xml:id="lst_quick" interactive="activecode" language="python">
+<listing xml:id="lst-quick">
+  <program interactive="activecode" language="python">
     <input>
 def quick_sort(a_list):
     quick_sort_helper(a_list, 0, len(a_list) - 1)
@@ -98,6 +99,7 @@ quick_sort(a_list)
 print(a_list)
         </input>
   </program>
+</listing>
   <raw format="html" xml:space="preserve">&lt;script src="../_static/sortmodels.js"&gt;&lt;/script&gt;
 &lt;script src="../_static/sortviewers.js"&gt;&lt;/script&gt;
 

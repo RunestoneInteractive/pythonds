@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<section xml:id="graphs_building-the-word-ladder-graph">
+<section xml:id="graphs_buildingthe-word-ladder-graph">
   <title>Building the Word Ladder Graph</title>
   <p>Our first problem is to figure out how to turn a large collection of
             words into a graph. What we would like is to have an edge from one word

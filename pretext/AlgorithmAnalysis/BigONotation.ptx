@@ -69,7 +69,7 @@
             two extremes (average-case performance). It is important for a computer scientist to understand
             these distinctions so they are not misled by one particular case.</p>
   <p>A number of very common order of magnitude functions will come up over
-            and over as you study algorithms. These are shown in <xref ref="algorithm-analysis_algorithm-analysis_tbl-fntable"/>. In
+            and over as you study algorithms. These are shown in <xref ref="algorithm-analysis_tbl-fntable"/>. In
             order to decide which of these functions is the dominant part of any
             <m>T(n)</m> function, we must see how they compare with one another
             as <em>n</em> gets large.</p>
@@ -145,7 +145,7 @@
     </tabular>
   </table>
   <p><xref ref="i11_id2fig-graphfigure"/> shows graphs of the common
-            functions from <xref ref="algorithm-analysis_algorithm-analysis_tbl-fntable"/>. Notice that when <em>n</em> is small, the
+            functions from <xref ref="algorithm-analysis_tbl-fntable"/>. Notice that when <em>n</em> is small, the
             functions are not very well defined with respect to one another. It is
             hard to tell which is dominant. However, as <em>n</em> grows, there is a
             definite relationship and it is easy to see how they compare with one
@@ -182,7 +182,7 @@ d = 33</pre></listing>
             therefore this fragment of code is <m>O(n^{2})</m>. Note that all of
             the other terms as well as the coefficient on the dominant term can be
             ignored as <em>n</em> grows larger.</p>
-  <figure align="" xml:id="file_44_id3">
+  <figure align="" xml:id="fig-graphfigure2">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Comparing <m>T(n)</m> with Common Big O Functions</caption>
     <image source="AlgorithmAnalysis/Figures/newplot2.png" width="50%"/>
   </figure>

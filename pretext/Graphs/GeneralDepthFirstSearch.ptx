@@ -86,35 +86,35 @@ class DFSGraph(Graph):
             indicate edges that are checked, but the node at the other end of the
             edge has already been added to the depth-first tree. In the code this
             test is done by checking that the color of the other node is not white.</p>
-  <figure align="center" xml:id="i192_id1fig-gdfsa">
+  <figure align="center" xml:id="fig-gdfsa">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 14: Constructing the Depth-First Search Tree-10</caption>
     <image source="Graphs/Figures/gendfsa.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="i192_id2fig-gdfsb">
+  <figure align="center" xml:id="fig-gdfsb">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 15: Constructing the Depth-First Search Tree-11</caption>
     <image source="Graphs/Figures/gendfsb.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_150_id3">
+  <figure align="center" xml:id="fig-gdfsc">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 16: Constructing the Depth-First Search Tree-12</caption>
     <image source="Graphs/Figures/gendfsc.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_150_id4">
+  <figure align="center" xml:id="fig-gdfsd">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 17: Constructing the Depth-First Search Tree-13</caption>
     <image source="Graphs/Figures/gendfsd.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_150_id5">
+  <figure align="center" xml:id="fig-gdfse">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 18: Constructing the Depth-First Search Tree-14</caption>
     <image source="Graphs/Figures/gendfse.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_150_id6">
+  <figure align="center" xml:id="fig-gdfsf">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 19: Constructing the Depth-First Search Tree-15</caption>
     <image source="Graphs/Figures/gendfsf.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_150_id7">
+  <figure align="center" xml:id="fig-gdfsg">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 20: Constructing the Depth-First Search Tree-16</caption>
     <image source="Graphs/Figures/gendfsg.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_150_id8">
+  <figure align="center" xml:id="fig-gdfsh">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 21: Constructing the Depth-First Search Tree-17</caption>
     <image source="Graphs/Figures/gendfsh.png" width="50%"/>
   </figure>
@@ -130,18 +130,18 @@ class DFSGraph(Graph):
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 24: Constructing the Depth-First Search Tree-20</caption>
     <image source="Graphs/Figures/gendfsk.png" width="50%"/>
   </figure>
-  <figure align="center" xml:id="file_150_id12">
+  <figure align="center" xml:id="fig-gdfshl">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 25: Constructing the Depth-First Search Tree-21</caption>
     <image source="Graphs/Figures/gendfsl.png" width="50%"/>
   </figure>
-  <p>The search begins at vertex A of the graph (<xref ref="i192_id1fig-gdfsa"/>). Since all of the vertices
+  <p>The search begins at vertex A of the graph (<xref ref="fig-gdfsa"/>). Since all of the vertices
             are white at the beginning of the search the algorithm visits vertex A.
             The first step in visiting a vertex is to set the color to gray, which
             indicates that the vertex is being explored, and the discovery time is
             set to 1. Since vertex A has two adjacent vertices (B, D) each of those
             need to be visited as well. We'll make the arbitrary decision that we
             will visit the adjacent vertices in alphabetical order.</p>
-  <p>Vertex B is visited next (<xref ref="i192_id2fig-gdfsb"/>), so its color is set to gray and its discovery
+  <p>Vertex B is visited next (<xref ref="fig-gdfsb"/>), so its color is set to gray and its discovery
             time is set to 2. Vertex B is also adjacent to two other nodes (C, D) so
             we will follow the alphabetical order and visit node C next.</p>
   <p>Visiting vertex C (<xref ref="fig-gdfsc"/>) brings us to the end of one branch of the tree. After
@@ -162,14 +162,14 @@ class DFSGraph(Graph):
   <p>Vertex F has only one adjacent vertex, C, but since C is colored black
             there is nothing else to explore, and the algorithm has reached the end
             of another branch. From here on, you will see in <xref ref="fig-gdfsh"/> through
-            <xref ref="fig-gdfsl"/> that the algorithm works its way back to the first node,
+            <xref ref="fig-dfstree"/> that the algorithm works its way back to the first node,
             setting closing times and coloring vertices black.</p>
   <p>The discovery and closing times for each node display a property called
             the <term>parenthesis property</term>. This property means that all the children
             of a particular node in the depth-first tree have a later discovery time
             and an earlier closing time than their parent. <xref ref="fig-dfstree"/> shows
             the tree constructed by the depth-first search algorithm.</p>
-  <figure align="center" xml:id="file_150_id13">
+  <figure align="center" xml:id="fig-dfstree">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 26: The Resulting Depth-First Search Tree</caption>
     <image source="Graphs/Figures/dfstree.png" width="50%"/>
   </figure>

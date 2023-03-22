@@ -57,7 +57,8 @@
   </figure>
   <p><xref ref="lst-rectostr"/> shows the Python code that implements the algorithm
             outlined above for any base between 2 and 16.</p>
-  <program xml:id="lst_rectostr" interactive="activecode" language="python">
+<listing xml:id="lst-rectostr">
+  <program interactive="activecode" language="python">
     <input>
 def to_str(n, base):
     convert_string = "0123456789ABCDEF"
@@ -69,6 +70,7 @@ def to_str(n, base):
 print(to_str(1453, 16))
         </input>
   </program>
+</listing>
   <p>Notice that in line 3 we check for the base case where <c>n</c>
             is less than the base we are converting to. When we detect the base
             case, we stop recursing and simply return the string from the
