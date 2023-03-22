@@ -6,7 +6,7 @@
     </source>
     <html>
     <platform host="web" />
-    <knowl exercise-inline="no" example="no" listing="yes" />
+    <knowl exercise-inline="no" example="no" listing="no" />
     <css style="oscarlevin" colors="blue_red" toc="crc" banner="crc" navbar="crc" shell="crc"/>
     </html>
 </publication>

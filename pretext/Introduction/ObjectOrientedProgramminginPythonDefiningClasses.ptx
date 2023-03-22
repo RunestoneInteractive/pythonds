@@ -240,8 +240,8 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
     <program interactive="activecode" language="python">
       <input>
       def gcd(m, n):
-      while m % n != 0:
-      m, n = n, m % n
+          while m % n != 0:
+              m, n = n, m % n
       return n
 
       print(gcd(20, 10))
@@ -260,11 +260,10 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
       <program language="python">
         <input>
         def __add__(self, other_fraction):
-        new_num = self.num * other_fraction.den + \
-        self.den * other_fraction.num
-        new_den = self.den * other_fraction.den
-        common = gcd(new_num, new_den)
-        return Fraction(new_num // common, new_den // common)
+            new_num = self.num * other_fraction.den + self.den * other_fraction.num
+            new_den = self.den * other_fraction.den
+            common = gcd(new_num, new_den)
+            return Fraction(new_num // common, new_den // common)
         </input>
       </program>
     </listing>
