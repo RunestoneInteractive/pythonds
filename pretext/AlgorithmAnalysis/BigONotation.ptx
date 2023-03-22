@@ -192,9 +192,9 @@ d = 33</pre></listing>
             n grows, the cubic function quickly overtakes <m>T(n)</m>. It is easy
             to see that <m>T(n)</m> then follows the quadratic function as
             <m>n</m> continues to grow.</p>
-  <note>
+  <exercises>
     <title>Self Check</title>
     <p>Write two Python functions to find the minimum number in a list.  The first function should compare each number to every other number on the list. <m>O(n^2)</m>.  The second function should be linear <m>O(n)</m>.</p>
-  </note>
+  </exercises>
   <video xml:id="findMinVid" youtube="p0COF_m6H1c" width="auto"/>
 </section>

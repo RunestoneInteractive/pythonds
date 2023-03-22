@@ -501,7 +501,7 @@ except ValueError as ve:
                 else. Also, <c>insert</c>, <c>index</c>, and <c>pop</c> require that we name the
                 positions of the list. We will assume that position names are integers
                 starting with 0.</p>
-    <note>
+    <exercises>
       <title>Self Check</title>
       <p>Part I:  Implement the append method for UnorderedList.  What is the time complexity of the method you created?</p>
       <program xml:id="self_check_list1" interactive="activecode" language="python">
@@ -675,6 +675,6 @@ class UnorderedList:
 my_list = UnorderedList()
         </input>
       </program>
-    </note>
+    </exercises>
   </subsection>
 </section>

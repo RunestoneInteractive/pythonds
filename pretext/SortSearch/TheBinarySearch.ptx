@@ -176,7 +176,7 @@ print(binary_search_rec(test_list, 13))
                 search many times, the cost of the sort is not so significant. However,
                 for large lists, sorting even once can be so expensive that simply
                 performing a sequential search from the start may be the best choice.</p>
-    <note>
+    <exercises>
       <title>Self Check</title>
       <exercise label="BSRCH_1">
         <statement>
@@ -256,6 +256,6 @@ print(binary_search_rec(test_list, 13))
           </choice>
         </choices>
       </exercise>
-    </note>
+    </exercises>
   </subsection>
 </section>

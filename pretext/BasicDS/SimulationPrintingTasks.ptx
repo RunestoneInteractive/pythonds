@@ -397,7 +397,7 @@ for i in range(10):
                 as the assumptions that are used to build it. Real data about the number
                 of print tasks per hour and the number of students per hour was
                 necessary to construct a robust simulation.</p>
-    <note>
+    <exercises>
       <title>Self Check</title>
       <p>How would you modify the printer simulation to reflect a larger number of students?  Suppose that the number of students was doubled.  You make need to make some reasonable assumptions about how this simulation was put together but what would you change?  Modify the code.  Also suppose that the length of the average print task was cut in half.  Change the code to reflect that change.  Finally How would you parametertize the number of students, rather than changing the code we would like
                     to make the number of students a parameter of the simulation.</p>
@@ -472,6 +472,6 @@ for i in range(10):
     simulation(3600, 5)
         </input>
       </program>
-    </note>
+    </exercises>
   </subsection>
 </section>

@@ -173,7 +173,7 @@ merge_anim_init = function(divid)
             operations. This additional space can be a critical factor if the list
             is large and can make this sort problematic when working on large data
             sets.</p>
-  <note>
+  <exercises>
     <title>Self Check</title>
     <exercise label="question_sort_5">
       <statement>
@@ -253,5 +253,5 @@ merge_anim_init = function(divid)
         </choice>
       </choices>
     </exercise>
-  </note>
+  </exercises>
 </section>

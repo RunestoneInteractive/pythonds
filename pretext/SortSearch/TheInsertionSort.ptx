@@ -107,7 +107,7 @@ insertion_anim_init = function(divid)
   <!--a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]-->
   <!--insertion_sort(a_list)-->
   <!--print(a_list)-->
-  <note>
+  <exercises>
     <title>Self Check</title>
     <exercise label="question_sort_3">
       <statement>
@@ -153,5 +153,5 @@ insertion_anim_init = function(divid)
         </choice>
       </choices>
     </exercise>
-  </note>
+  </exercises>
 </section>

@@ -396,7 +396,7 @@
                 advantage is that on the average there are likely to be many fewer items
                 in each slot, so the search is perhaps more efficient. We will look at
                 the analysis for hashing at the end of this section.</p>
-    <note>
+    <exercises>
       <title>Self Check</title>
       <exercise label="HASH_1">
         <statement>
@@ -476,7 +476,7 @@
           </choice>
         </choices>
       </exercise>
-    </note>
+    </exercises>
   </subsection>
   <subsection xml:id="sort-search_implementing-the-map-abstract-data-type">
     <title>Implementing the Map Abstract Data Type</title>

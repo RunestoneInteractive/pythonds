@@ -196,7 +196,7 @@ print(anagram_solution_4("abcd", "dcda"))  # expected: False
                 scientist, when given a choice of algorithms, it will be up to you to
                 determine the best use of computing resources given a particular
                 problem.</p>
-    <note>
+    <exercises>
       <title>Self Check</title>
       <exercise label="analysis_1">
         <statement>
@@ -341,6 +341,6 @@ while i &gt; 0:
           </choice>
         </choices>
       </exercise>
-    </note>
+    </exercises>
   </subsection>
 </section>

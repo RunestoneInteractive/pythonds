@@ -44,7 +44,7 @@
   <p>In the remainder of this chapter we will look at more examples of
             recursion. In each case we will focus on designing a solution to a
             problem by using the three laws of recursion.</p>
-  <note>
+  <exercises>
     <title>Self Check</title>
     <exercise label="question_recsimp_1">
       <statement>
@@ -124,5 +124,5 @@
         </choice>
       </choices>
     </exercise>
-  </note>
+  </exercises>
 </section>

@@ -192,7 +192,7 @@ quick_anim_init = function(divid)
             <q>middle</q> value. This will be particularly useful when the original list
             is somewhat sorted to begin with. We leave the implementation of this
             pivot value selection as an exercise.</p>
-  <note>
+  <exercises>
     <title>Self Check</title>
     <exercise label="question_sort_7">
       <statement>
@@ -311,5 +311,5 @@ quick_anim_init = function(divid)
         </choice>
       </choices>
     </exercise>
-  </note>
+  </exercises>
 </section>

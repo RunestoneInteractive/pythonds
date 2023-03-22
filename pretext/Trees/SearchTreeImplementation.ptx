@@ -178,7 +178,7 @@ def _put(self, key, value, current_node):
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Inserting a Node with Key = 19</caption>
     <image source="Trees/Figures/bstput.png" width="50%"/>
   </figure>
-  <note>
+  <exercises>
     <title>Self Check</title>
     <exercise label="bst_1">
       <statement>
@@ -230,7 +230,7 @@ def _put(self, key, value, current_node):
         </choice>
       </choices>
     </exercise>
-  </note>
+  </exercises>
   <p>Once the tree is constructed, the next task is to implement the
             retrieval of a value for a given key. The <c>get</c> method is even easier
             than the <c>put</c> method because it simply searches the tree recursively

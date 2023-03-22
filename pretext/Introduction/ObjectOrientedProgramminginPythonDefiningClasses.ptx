@@ -364,7 +364,7 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
       </input>
     </program>
     </listing>
-    <note>
+    <exercises>
       <title>Self Check</title>
       <p>To make sure you understand how operators are implemented in Python classes, and how to properly write methods, write some methods to implement <c>*, /,</c> and <c>-</c> . Also implement comparison operators &gt; and &lt;</p>
       <program xml:id="self_check_4" interactive="activecode" language="python">
@@ -373,7 +373,7 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
 
         </input>
       </program>
-    </note>
+    </exercises>
     <video xml:id="fraction" youtube="gFb9tvJZHXo" width="auto" />
   </subsection>
   <subsection xml:id="introduction_inheritance-logic-gates-and-circuits">
@@ -893,7 +893,7 @@ Enter pin B input for gate G2: 1
       main()
       </input>
     </program>
-    <note>
+    <exercises>
       <title>Self Check</title>
       <p>Create a two new gate classes, one called NorGate the other called NandGate. NandGates work like AndGates that have a Not attached to the output. NorGates work lake OrGates that have a Not attached to the output.</p>
       <p>Create a series of gates that prove the following equality NOT (( A and B) or (C and D)) is that same as NOT( A and B ) and NOT (C and D). Make sure to use some of your new gates in the simulation.</p>
@@ -1027,7 +1027,7 @@ Enter pin B input for gate G2: 1
         main()
         </input>
       </program>
-    </note>
+    </exercises>
     <video xml:id="logicgates" youtube="brrpvAlzOyM" width="auto" />
     <!--.. admonition:: Self  Check Challenge-->
     <!--One of the fundamental building blocks of a computer is something called a flip flop.  It's not something that computer science professors wear on their feet, but rather a kind of circuit that is stable and stores the last piece of data that was put on it.  A simple flip-flop can be made from two NOR gates that are tied together as in the following diagram.-->

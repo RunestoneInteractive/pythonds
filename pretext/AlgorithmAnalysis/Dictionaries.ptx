@@ -134,7 +134,7 @@ for i in range(10_000, 1_000_001, 20_000):
             data structures can be found on the Python website. As of this writing
             the Python wiki has a nice <term>time complexity</term> page that can be found at the
             <url href="http://wiki.python.org/moin/TimeComplexity" visual="http://wiki.python.org/moin/TimeComplexity">Time Complexity Wiki</url>.</p>
-  <note>
+  <exercises>
     <title>Self Check</title>
     <exercise label="mcpyperform">
       <statement>
@@ -230,6 +230,6 @@ for i in range(10_000, 1_000_001, 20_000):
         </choice>
       </choices>
     </exercise>
-  </note>
+  </exercises>
   <video xml:id="pythonopsperf" youtube="zKq8iVEX6gU" width="auto"/>
 </section>

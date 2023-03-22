@@ -145,7 +145,7 @@ print(letter_list)
   <pre>if n &lt; 0:
    n = abs(n)
 print(math.sqrt(n))</pre>
-  <note>
+  <exercises>
     <title>Self Check</title>
     <p>Test your understanding of what we have covered so far by trying the following
                 exercise.  Modify the code from Activecode 8 so that the final list only contains
@@ -155,7 +155,7 @@ print(math.sqrt(n))</pre>
 # the answer is: ['c', 'a', 't', 'd', 'o', 'g', 'r', 'b', 'i']
         </input>
     </program>
-  </note>
+  </exercises>
   <video xml:id="list_unique" youtube="vJ_KDaJZ4f4" width="auto"/>
   <p>Returning to lists, there is an alternative method for creating a list
             that uses iteration and selection constructs known as a <term>list
@@ -188,7 +188,7 @@ print(math.sqrt(n))</pre>
             a new list.</p>
   <pre>&gt;&gt;&gt;[ch.upper() for ch in 'comprehension' if ch not in 'aeiou']
 ['C', 'M', 'P', 'R', 'H', 'N', 'S', 'N']</pre>
-  <note>
+  <exercises>
     <title>Self Check</title>
     <p>Test your understanding of list comprehensions by redoing Activecode 1
                 using list comprehensions.  For an extra challenge, see if you can figure out
@@ -198,6 +198,6 @@ print(math.sqrt(n))</pre>
 # the answer is: ['c', 'a', 't', 'd', 'o', 'g', 'r', 'a', 'b', 'b', 'i', 't']
         </input>
     </program>
-  </note>
+  </exercises>
   <video xml:id="listcomp" youtube="pcrcYy9UlVM" width="auto"/>
 </section>

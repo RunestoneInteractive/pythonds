@@ -147,7 +147,7 @@ print(a_tree.get_right_child().get_root_val())
         </input>
   </program>
 </listing>
-  <note>
+  <exercises>
     <title>Self Check</title>
     <exercise label="mctree_3">
       <statement>
@@ -169,5 +169,5 @@ testEqual(ttree.get_right_child().get_left_child().get_root_val(), "e")
         </input>
       </program>
     </exercise>
-  </note>
+  </exercises>
 </section>

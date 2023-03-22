@@ -86,7 +86,7 @@ selection_anim_init = function(divid)
             typically executes faster in benchmark studies. In fact, for our list,
             the bubble sort makes 20 exchanges, while the selection sort makes only
             8.</p>
-  <note>
+  <exercises>
     <title>Self Check</title>
     <exercise label="question_sort_2">
       <statement>
@@ -128,5 +128,5 @@ selection_anim_init = function(divid)
         </choice>
       </choices>
     </exercise>
-  </note>
+  </exercises>
 </section>

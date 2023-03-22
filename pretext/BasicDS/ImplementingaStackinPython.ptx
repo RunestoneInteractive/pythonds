@@ -61,7 +61,7 @@ class Stack:
             <xref ref="basic-ds_the-stack-abstract-data-type"/>.  Notice that the definition of the <c>Stack</c> class is
             imported from the <c>pythonds3</c> module  that is included with the materials for this book
             or can be downloaded from the <url href="https://pypi.org/" visual="https://pypi.org/">Python Package Index</url>.</p>
-  <note>
+  <exercises>
     <p>The <c>pythonds3</c> module contains implementations of all data structures discussed in this book.
                 It is structured according to the sections: basic, trees, and graphs.
                 The module can be downloaded from <url href="https://github.com/psads/pythonds3" visual="https://github.com/psads/pythonds3">GitHub</url>
@@ -69,7 +69,7 @@ class Stack:
     <p>
       <c>python3 -m pip install -U pythonds3</c>
     </p>
-  </note>
+  </exercises>
   <program xml:id="stack_ex_1" interactive="activecode" language="python">
     <input>
 from pythonds3.basic import Stack
@@ -136,7 +136,7 @@ print(s.pop())
             stack of size <c>n</c>. Clearly, even though the implementations are logically
             equivalent, they would have very different timings when performing
             benchmark testing.</p>
-  <note>
+  <exercises>
     <title>Self Check</title>
     <exercise label="stack_1">
       <statement>
@@ -252,6 +252,6 @@ testEqual(rev_string("x"), "x")
 testEqual(rev_string("1234567890"), "0987654321")
         </input>
     </program>
-  </note>
+  </exercises>
   <video xml:id="stack1_video" youtube="fZtLSM7k_54" width="auto"/>
 </section>

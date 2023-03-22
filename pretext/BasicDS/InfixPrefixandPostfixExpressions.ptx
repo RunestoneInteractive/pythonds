@@ -537,7 +537,7 @@ print(postfix_eval("7 8 + 3 2 + /"))
                 input expression. Using these programs as a starting point, you can
                 easily see how error detection and reporting can be included. We leave
                 this as an exercise at the end of the chapter.</p>
-    <note>
+    <exercises>
       <title>Self Check</title>
       <exercise label="postfix1">
         <statement>
@@ -595,7 +595,7 @@ print(postfix_eval("7 8 + 3 2 + /"))
           </var>
         </setup>
       </exercise>
-    </note>
+    </exercises>
     <video xml:id="video_Stack3" youtube="LO-2q4pSsdM" width="auto"/>
   </subsection>
 </section>

@@ -92,7 +92,7 @@ print(to_str(1453, 16))
             the concatenation operation until after the recursive call has returned,
             we get the result in the proper order. This should remind you of our
             discussion of stacks back in the previous chapter.</p>
-  <note>
+  <exercises>
     <title>Self Check</title>
     <p>Write a function that takes a string as a parameter and returns a new string that is the reverse of the old string.</p>
     <program xml:id="recursion_sc_1" interactive="activecode" language="python">
@@ -157,5 +157,5 @@ testEqual(is_pal(remove_white("hannah")), True)
 testEqual(is_pal(remove_white("madam i'm adam")), True)
         </input>
     </program>
-  </note>
+  </exercises>
 </section>

@@ -81,7 +81,7 @@ False
 'dog'
 &gt;&gt;&gt; q.size()
 2</pre>
-  <note>
+  <exercises>
     <title>Self Check</title>
     <exercise label="queue_1">
       <statement>
@@ -128,5 +128,5 @@ q.dequeue()</pre>
         </choice>
       </choices>
     </exercise>
-  </note>
+  </exercises>
 </section>
