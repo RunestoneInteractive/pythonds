@@ -242,7 +242,7 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
       def gcd(m, n):
           while m % n != 0:
               m, n = n, m % n
-      return n
+          return n
 
       print(gcd(20, 10))
       </input>
