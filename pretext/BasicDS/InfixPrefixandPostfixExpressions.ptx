@@ -363,8 +363,7 @@
                 lowest value possible. This way any operator that is compared against it
                 will have higher precedence and will be placed on top of it.
                 Line 15 defines the operands to be any upper-case character or digit.</p>
-  <listing xml:id="lst-intopost">
-    <program interactive="activecode" language="python">
+  <listing xml:id="lst-intopost"> <program label="lst-intopost"  interactive="activecode" language="python">
       <input>
 from pythonds3.basic import Stack
 
@@ -497,8 +496,7 @@ print(infix_to_postfix("( A + B ) * C - ( D - E ) * ( F + G )"))
                 in <xref ref="lst-postfixeval"/>. To assist with the arithmetic, a helper
                 function <c>do_math</c> is defined. It will take two operands and an
                 operator and then perform the proper arithmetic operation.</p>
-  <listing xml:id="lst-postfixeval">
-    <program xml:id="postfixeval" interactive="activecode" language="python">
+  <listing xml:id="lst-postfixeval"> <program label="lst-postfixeval"  xml:id="postfixeval" interactive="activecode" language="python">
       <input>
 from pythonds3.basic import Stack
 

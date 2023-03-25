@@ -48,8 +48,7 @@
   <p>The following invocation of the <c>shell_sort</c> function shows the
             partially sorted lists after each increment, with the final sort being
             an insertion sort with an increment of one.</p>
-<listing xml:id="lst-shell">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-shell"> <program label="lst-shell"  interactive="activecode" language="python">
     <input>
 def shell_sort(a_list):
     sublist_count = len(a_list) // 2

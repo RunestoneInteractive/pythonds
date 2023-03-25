@@ -57,8 +57,7 @@
             equal to one, it is already sorted. If it is greater, then it can be
             partitioned and recursively sorted. The <c>partition</c> function
             implements the process described earlier.</p>
-<listing xml:id="lst-quick">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-quick"> <program label="lst-quick"  interactive="activecode" language="python">
     <input>
 def quick_sort(a_list):
     quick_sort_helper(a_list, 0, len(a_list) - 1)

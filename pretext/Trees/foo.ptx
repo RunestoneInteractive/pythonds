@@ -161,8 +161,7 @@ def update_balance(self, node):
             Finally we set the parent of the old root to be the new root. This is a
             lot of complicated bookkeeping, so we encourage you to trace through
             this function while looking at <xref ref="i18_id1fig-unbalsimple"/>.</p>
-  <listing xml:id="trees_lst-bothrotations" names="lst_bothrotations">
-  <program language="python">
+  <listing xml:id="trees_lst-bothrotations" names="lst_bothrotations"> <program label="trees_lst-bothrotations" names="lst_bothrotations"  language="python">
     <input>
 def rotate_left(self, rotation_root):
     new_root = rotation_root.right_child

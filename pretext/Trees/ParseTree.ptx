@@ -180,8 +180,7 @@
             <c>BinaryTree</c> operations, we are now ready to write a Python function
             to create a parse tree. The code for our parse tree builder is presented
             in <xref ref="lst-buildparse"/>.</p>
-<listing xml:id="lst-buildparse">
-  <program  interactive="activecode" language="python">
+<listing xml:id="lst-buildparse"> <program label="lst-buildparse"   interactive="activecode" language="python">
     <input>
 from pythonds3.basic import Stack
 from pythonds3.trees import BinaryTree
@@ -260,9 +259,7 @@ pt.postorder()  # defined and explained in the next section
             leaf node. This check is on line 7. If the current node is not
             a leaf node, look up the operator in the current node and apply it to
             the results from recursively evaluating the left and right children.</p>
-  <listing xml:id="trees_lst-eval" names="lst_eval">
-
-  <program language="python">
+  <listing xml:id="trees_lst-eval" names="lst_eval"> <program label="trees_lst-eval" names="lst_eval"  language="python">
     <input>
 import operator
 

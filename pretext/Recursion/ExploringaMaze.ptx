@@ -100,8 +100,7 @@ class Maze:
             This secondary list contains one character per square using the
             characters described above. For the data file in <xref ref="recursion_fig-exmaze"/> the
             internal representation looks like the following:</p>
-<listing xml:id="recursion_fig-exmaze">
-  <program language="python">
+<listing xml:id="recursion_fig-exmaze"> <program label="recursion_fig-exmaze"  language="python">
     <input>
 [  ['+', '+', '+', '+', '+', ..., '+', '+', '+', '+', '+']
    ['+', ' ', ' ', ' ', '+', ..., ' ', '+', ' ', ' ', ' ']
@@ -276,8 +275,7 @@ def search_from(maze, row, column):
 +++++ +  + + +     + +
 ++++++++++++++++++++++
   &lt;/pre&gt;</raw>
-<listing xml:id="recursion_completemaze">
-  <program  interactive="activecode" language="python">
+<listing xml:id="recursion_completemaze"> <program label="recursion_completemaze"   interactive="activecode" language="python">
     <input>
 import turtle
 

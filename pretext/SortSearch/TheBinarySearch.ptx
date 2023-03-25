@@ -23,8 +23,7 @@
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: Binary Search of an Ordered List of Integers</caption>
     <image source="SortSearch/Figures/binsearch.png" width="50%"/>
   </figure>
-  <listing xml:id="lst-binarysearchpy">
-  <program  interactive="codelens" language="python">
+  <listing xml:id="lst-binarysearchpy"> <program label="lst-binarysearchpy"   interactive="codelens" language="python">
     <input>
 def binary_search(a_list, item):
     first = 0
@@ -60,8 +59,7 @@ print(binary_search(test_list, 13))
             search of the right half. Either way, this is a recursive call to the
             binary search function passing a smaller list. <xref ref="lst-recbinarysearch"/>
             shows this recursive version.</p>
-<listing xml:id="lst-recbinarysearch">
-  <program interactive="codelens" language="python">
+<listing xml:id="lst-recbinarysearch"> <program label="lst-recbinarysearch"  interactive="codelens" language="python">
     <input>
 def binary_search_rec(a_list, item):
     if len(a_list) == 0:

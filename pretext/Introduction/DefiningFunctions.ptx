@@ -41,8 +41,7 @@
             <xref ref="introduction_lst-root"/> also shows the use of the <c>#</c> character as a comment
             marker. Any characters that follow the <c>#</c> on a line are ignored.</p>
 
-<listing xml:id="introduction_lst-root">
-  <program language="python" interactive="activecode">
+<listing xml:id="introduction_lst-root"> <program label="introduction_lst-root"  language="python" interactive="activecode">
     <input>
 def square_root(n):
     root = n / 2  # initial guess will be 1/2 of n

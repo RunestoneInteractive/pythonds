@@ -63,8 +63,7 @@ min
             to our number of coins to account for the fact that we are using a coin.
             Just adding 1 is the same as if we had made a recursive call asking
             where we satisfy the base case condition immediately.</p>
-  <listing xml:id="lst-change1">
-  <program language="python">
+  <listing xml:id="lst-change1"> <program label="lst-change1"  language="python">
     <input>
  def make_change_1(coin_denoms, change):
      if change in coin_denoms:
@@ -111,8 +110,7 @@ print(make_change_1([1, 5, 10, 25], 63))
             If there is already a result in the table, we use the value from the
             table rather than recomputing. <xref ref="lst-change2"/> shows a modified
             algorithm to incorporate our table lookup scheme.</p>
-<listing xml:id="lst-change2">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-change2"> <program label="lst-change2"  interactive="activecode" language="python">
     <input>
 def make_change_2(coin_value_list, change, known_results):
     min_coins = change
@@ -229,8 +227,7 @@ def make_change_3(coin_value_list, change, min_coins):
             Then we take <m>63 - 21 = 42</m> and look at the 42nd element of the
             list. Once again we find a 21 stored there. Finally, element 21 of the
             array also contains 21, giving us the three 21 cent pieces.</p>
-<listing xml:id="lst-dpremember">
-  <program  interactive="activecode" language="python">
+<listing xml:id="lst-dpremember"> <program label="lst-dpremember"   interactive="activecode" language="python">
     <input>
 def make_change_4(coin_value_list, change, min_coins, coins_used):
     for cents in range(change + 1):

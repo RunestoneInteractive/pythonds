@@ -46,8 +46,7 @@
             constructed in lines 12-14. Line 12 creates an empty string. The binary
             digits are popped from the stack one at a time and appended to the
             right-hand end of the string. The binary string is then returned.</p>
-<listing xml:id="lst-binconverter">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-binconverter"> <program label="lst-binconverter"  interactive="activecode" language="python">
     <input>
 from pythonds3.basic import Stack
 
@@ -99,8 +98,7 @@ print(divide_by_2(31))
             themselves represented as two-digit decimal numbers. Instead we need to
             create a set of digits that can be used to represent those remainders
             beyond 9.</p>
-<listing xml:id="lst-baseconverter">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-baseconverter"> <program label="lst-baseconverter"  interactive="activecode" language="python">
     <input>
 from pythonds3.basic import Stack
 
