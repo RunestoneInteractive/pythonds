@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<section xml:id="sort-search_key-terms">
+  <title>Key Terms</title>
+  <table>
+    <tabular>
+      <row>
+        <cell>
+                            binary search
+                        </cell>
+        <cell>
+                            insertion sort
+                        </cell>
+        <cell>
+                            pivot value
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            bubble sort
+                        </cell>
+        <cell>
+                            linear probing
+                        </cell>
+        <cell>
+                            quadratic probing
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            chaining
+                        </cell>
+        <cell>
+                            load factor
+                        </cell>
+        <cell>
+                            quicksort
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            clustering
+                        </cell>
+        <cell>
+                            map
+                        </cell>
+        <cell>
+                            rehashing
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            collision
+                        </cell>
+        <cell>
+                            median of three
+                        </cell>
+        <cell>
+                            selection sort
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            collision resolution
+                        </cell>
+        <cell>
+                            merge
+                        </cell>
+        <cell>
+                            sequential search
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            folding method
+                        </cell>
+        <cell>
+                            merge sort
+                        </cell>
+        <cell>
+                            Shell sort
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            gap
+                        </cell>
+        <cell>
+                            mid-square method
+                        </cell>
+        <cell>
+                            short bubble
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            hash function
+                        </cell>
+        <cell>
+                            open addressing
+                        </cell>
+        <cell>
+                            slot
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            hash table
+                        </cell>
+        <cell>
+                            partition
+                        </cell>
+        <cell>
+                            split point
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            hashing
+                        </cell>
+        <cell>
+                            perfect hash function
+                        </cell>
+        <cell>
+                            stable algorithm
+                        </cell>
+      </row>
+    </tabular>
+  </table>
+</section>

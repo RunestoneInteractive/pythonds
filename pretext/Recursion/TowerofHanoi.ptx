@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<section xml:id="recursion_tower-of-recursion_hanoi">
+  <title>Tower of Hanoi</title>
+  <p>The Tower of Hanoi puzzle was invented by the French mathematician
+            Edouard Lucas in 1883. He was inspired by a legend that tells of a Hindu
+            temple where the puzzle was presented to young priests. At the beginning
+            of time, the priests were given three poles and a stack of 64 gold
+            disks, each disk a little smaller than the one beneath it. Their
+            assignment was to transfer all 64 disks from one of the three poles to
+            another, with two important constraints. They could only move one disk
+            at a time, and they could never place a larger disk on top of a smaller
+            one. The priests worked very efficiently, day and night, moving one disk
+            every second. When they finished their work, the legend said, the temple
+            would crumble into dust and the world would vanish.</p>
+  <p>Although the legend is interesting, you need not worry about the world
+            ending any time soon. The number of moves required to correctly move a
+            tower of 64 disks is <m>2^{64}-1 = 18,446,744,073,709,551,615</m>. At
+            a rate of one move per second, that is <m>584,942,417,355</m> years! Clearly
+            there is more to this puzzle than meets the eye.</p>
+  <p><xref ref="recursion_lst-recursion_hanoi"/> shows an example of a configuration of disks in the
+            middle of a move from the first peg to the third. Notice that, as the
+            rules specify, the disks on each peg are stacked so that smaller disks
+            are always on top of the larger disks. If you have not tried to solve
+            this puzzle before, you should try it now. You do not need fancy disks
+            and poles&#x2014;a pile of books or pieces of paper will work.</p>
+  <listing xml:id="recursion_lst-recursion_hanoi"><program language="python">
+    <input>
+def move_tower(height, from_pole, to_pole, with_pole):
+    if height &lt; 1:
+        return
+    move_tower(height - 1, from_pole, with_pole, to_pole)
+    move_disk(from_pole, to_pole)
+    move_tower(height - 1, with_pole, to_pole, from_pole)
+</input>
+  </program></listing>
+  <p>Notice that the code in <xref ref="recursion_lst-recursion_hanoi"/> is almost identical to the
+            English description. The key to the simplicity of the algorithm is that
+            we make two different recursive calls, one on line 4 and a
+            second on line 6. On line 4 we move all but the bottom
+            disk on the initial tower to an intermediate pole. The next line
+            moves the bottom disk to its final resting place. Then on line
+            6 we move the tower from the intermediate pole to the top of
+            the largest disk. The base case is the tower of height 0;
+            in this case there is nothing to do, so the <c>move_tower</c> function returns.
+            The important thing to remember about handling the base
+            case this way is that simply returning from <c>move_tower</c> is what
+            finally allows the <c>move_disk</c> function to be called.</p>
+  <p>The function <c>move_disk</c>, shown in <xref ref="recursion_lst-movedisk"/>, is very
+            simple. All it does is print out that it is moving a disk from one pole
+            to another. If you type in and run the <c>move_tower</c> program you can see
+            that it gives you a very efficient solution to the puzzle.</p>
+  <listing xml:id="recursion_lst-movedisk"><program language="python">
+    <input>
+def move_disk(from_pole, to_pole):
+    print(f"moving disk from {from_pole} to {to_pole}")
+</input>
+  </program></listing>
+  <p>The program in <xref ref="recursion_hanoi"/> provides the entire solution for three disks.</p>
+  <listing xml:id="recursion_hanoi">
+  <program  interactive="activecode" language="python">
+    <input>
+def move_tower(height, from_pole, to_pole, with_pole):
+    if height &gt;= 1:
+        move_tower(height - 1, from_pole, with_pole, to_pole)
+        move_disk(from_pole, to_pole)
+        move_tower(height - 1, with_pole, to_pole, from_pole)
+
+
+def move_disk(from_p, to_p):
+    print("moving disk from", from_p, "to", to_p)
+
+
+move_tower(3, "A", "B", "C")
+        </input>
+  </program>
+  </listing>
+  <p>Now that you have seen the code for both <c>move_tower</c> and <c>move_disk</c>,
+            you may be wondering why we do not have a data structure that explicitly
+            keeps track of what disks are on what poles. Here is a hint: if you were
+            going to explicitly keep track of the disks, you would probably use
+            three <c>Stack</c> objects, one for each pole. The answer is that Python
+            provides the stacks that we need implicitly through the call stack.</p>
+</section>

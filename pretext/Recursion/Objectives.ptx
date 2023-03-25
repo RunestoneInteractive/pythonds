@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<section xml:id="recursion_objectives">
+  <title>Objectives</title>
+  <p>The goals for this chapter are as follows:</p>
+  <p>
+    <ul>
+      <li>
+        <p>To understand that complex problems that may otherwise be difficult
+                    to solve may have a simple recursive solution.</p>
+      </li>
+      <li>
+        <p>To learn how to formulate programs recursively.</p>
+      </li>
+      <li>
+        <p>To understand and apply the three laws of recursion.</p>
+      </li>
+      <li>
+        <p>To understand recursion as a form of iteration.</p>
+      </li>
+      <li>
+        <p>To implement the recursive formulation of a problem.</p>
+      </li>
+      <li>
+        <p>To understand how recursion is implemented by a computer system.</p>
+      </li>
+    </ul>
+  </p>
+</section>

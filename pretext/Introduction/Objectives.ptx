@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<section xml:id="introduction_objectives">
+  <title>Objectives</title>
+  <p>
+    <ul>
+      <li>
+        <p>To review the ideas of computer science, programming, and
+                    problem-solving.</p>
+      </li>
+      <li>
+        <p>To understand abstraction and the role it plays in the
+                    problem-solving process.</p>
+      </li>
+      <li>
+        <p>To understand and implement the notion of an abstract data type.</p>
+      </li>
+      <li>
+        <p>To review the Python programming language.</p>
+      </li>
+    </ul>
+  </p>
+</section>

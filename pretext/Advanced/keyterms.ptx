@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<section xml:id="advanced_key-terms">
+  <title>Key Terms</title>
+  <table>
+    <tabular>
+      <row>
+        <cell>
+                            amortized analysis
+                        </cell>
+        <cell>
+                            map
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            deterministic finite automaton (DFA)
+                        </cell>
+        <cell>
+                            octree
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            DFA graph
+                        </cell>
+        <cell>
+                            pixel
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            dictionary
+                        </cell>
+        <cell>
+                            public key encryption
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            dithering
+                        </cell>
+        <cell>
+                            quantization
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            DNA string
+                        </cell>
+        <cell>
+                            RSA algorithm
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            KMP graph
+                        </cell>
+        <cell>
+                            skip list
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            Knuth-Morris-Pratt (KMP)
+                        </cell>
+        <cell>
+                            substring
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            level
+                        </cell>
+        <cell>
+                            tower
+                        </cell>
+      </row>
+    </tabular>
+  </table>
+</section>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+  <title>A Proper Class</title>
+  <xi:include href="./a_proper_python_class.ptx"/>
+  <xi:include href="./make_your_class_comparable.ptx"/>
+</chapter>

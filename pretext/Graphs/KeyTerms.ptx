@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<section xml:id="graphs_key-terms">
+  <title>Key Terms</title>
+  <table>
+    <tabular>
+      <row>
+        <cell>
+                            acyclic graph
+                        </cell>
+        <cell>
+                            edge
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            adjacency list
+                        </cell>
+        <cell>
+                            edge cost
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            adjacency matrix
+                        </cell>
+        <cell>
+                            graph
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            adjacent
+                        </cell>
+        <cell>
+                            parenthesis property
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            breadth-first forest
+                        </cell>
+        <cell>
+                            path
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            breadth-first search (BFS)
+                        </cell>
+        <cell>
+                            shortest path
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            cycle
+                        </cell>
+        <cell>
+                            spanning tree
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            depth-first forest
+                        </cell>
+        <cell>
+                            strongly connected components (SCC)
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            depth-first search (DFS)
+                        </cell>
+        <cell>
+                            topological sort
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            digraph
+                        </cell>
+        <cell>
+                            uncontrolled flooding
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            directed acyclic graph (DAG)
+                        </cell>
+        <cell>
+                            vertex
+                        </cell>
+      </row>
+      <row>
+        <cell>
+                            directed graph
+                        </cell>
+        <cell>
+                            weight
+                        </cell>
+      </row>
+    </tabular>
+  </table>
+</section>

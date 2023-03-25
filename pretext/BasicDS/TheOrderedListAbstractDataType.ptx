@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<section xml:id="basic-ds_the-ordered-list-abstract-data-type">
+  <title>The Ordered List Abstract Data Type</title>
+  <p>We will now consider a type of list known as an <em>ordered list</em>. For
+            example, if the list of integers shown above were an ordered list
+            (ascending order), then it could be written as 17, 26, 31, 54, 77, and
+            93. Since 17 is the smallest item, it occupies the first position in the
+            list. Likewise, since 93 is the largest, it occupies the last position.</p>
+  <p>The structure of an ordered list is a collection of items where each
+            item holds a relative position that is based upon some underlying
+            characteristic of the item. The ordering is typically either ascending
+            or descending and we assume that list items have a meaningful comparison
+            operation that is already defined. Many of the ordered list operations
+            are the same as those of the unordered list.</p>
+  <p>
+    <ul>
+      <li>
+        <p><c>OrderedList()</c> creates a new ordered list that is empty. It needs
+                    no parameters and returns an empty list.</p>
+      </li>
+      <li>
+        <p><c>add(item)</c> adds a new item to the list making sure that the order
+                    is preserved. It needs the item and returns nothing. Assume the item
+                    is not already in the list.</p>
+      </li>
+      <li>
+        <p><c>remove(item)</c> removes the item from the list. It needs the item
+                    and modifies the list. It will raise an error if the item is not present in the list.</p>
+      </li>
+      <li>
+        <p><c>search(item)</c> searches for the item in the list. It needs the item
+                    and returns a Boolean value.</p>
+      </li>
+      <li>
+        <p><c>is_empty()</c> tests to see whether the list is empty. It needs no
+                    parameters and returns a Boolean value.</p>
+      </li>
+      <li>
+        <p><c>size()</c> returns the number of items in the list. It needs no
+                    parameters and returns an integer.</p>
+      </li>
+      <li>
+        <p><c>index(item)</c> returns the position of an item in the list. It needs
+                    the item and returns the index. Assume the item is in the list.</p>
+      </li>
+      <li>
+        <p><c>pop()</c> removes and returns the last item in the list. It needs
+                    nothing and returns an item. Assume the list has at least one item.</p>
+      </li>
+      <li>
+        <p><c>pop(pos)</c> removes and returns the item at position <c>pos</c>. It needs
+                    the position and returns the item. Assume the item is in the list.</p>
+      </li>
+    </ul>
+  </p>
+</section>

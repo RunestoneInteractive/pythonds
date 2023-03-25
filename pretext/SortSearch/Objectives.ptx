@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<section xml:id="sort-search_objectives">
+  <title>Objectives</title>
+  <p>
+    <ul>
+      <li>
+        <p>To be able to explain and implement sequential search and binary
+                    search.</p>
+      </li>
+      <li>
+        <p>To be able to explain and implement selection sort, bubble sort,
+                    merge sort, quick sort, insertion sort, and Shell sort.</p>
+      </li>
+      <li>
+        <p>To understand the idea of hashing as a search technique.</p>
+      </li>
+      <li>
+        <p>To understand the map abstract data type.</p>
+      </li>
+      <li>
+        <p>To implement the map abstract data type using hashing.</p>
+      </li>
+    </ul>
+  </p>
+</section>

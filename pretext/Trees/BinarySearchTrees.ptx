@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<section xml:id="trees_binary-search-trees">
+  <title>Binary Search Trees</title>
+  <p>We have already seen two different ways to get key-value pairs in a
+            collection. Recall that these collections implement the <term>map</term> abstract
+            data type. The two implementations of the map ADT that we have discussed were binary
+            search on a list and hash tables. In this section we will study <term>binary
+                search trees</term> as yet another way to map from a key to a value. In this
+            case we are not interested in the exact placement of items in the tree,
+            but we are interested in using the binary tree structure to provide for
+            efficient searching.</p>
+</section>

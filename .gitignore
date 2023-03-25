@@ -7,3 +7,6 @@ __pycache__
 .venv/
 .DS_Store
 build_info
+cli.log
+.nova
+output

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<section xml:id="recursion_summary">
+  <title>Summary</title>
+  <p>In this chapter we have looked at examples of several recursive
+            algorithms. These algorithms were chosen to expose you to several
+            different problems where recursion is an effective problem-solving
+            technique. The key points to remember from this chapter are as follows:</p>
+  <p>
+    <ul>
+      <li>
+        <p>All recursive algorithms must have a base case.</p>
+      </li>
+      <li>
+        <p>A recursive algorithm must change its state and make progress toward
+                    the base case.</p>
+      </li>
+      <li>
+        <p>A recursive algorithm must call itself (recursively).</p>
+      </li>
+      <li>
+        <p>Recursion can take the place of iteration in some cases.</p>
+      </li>
+      <li>
+        <p>Recursive algorithms often map very naturally to a formal expression
+                    of the problem you are trying to solve.</p>
+      </li>
+      <li>
+        <p>Recursion is not always the answer. Sometimes a recursive solution
+                    may be more computationally expensive than an alternative algorithm.</p>
+      </li>
+    </ul>
+  </p>
+</section>
