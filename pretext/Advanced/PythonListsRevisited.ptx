@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <section xml:id="advanced_python-lists-revisited">
   <title>Python Lists Revisited</title>
-  <p>In Chapter&#xA0;<url href="#analysis" visual="#analysis">[analysis]</url> we introduced some Big-O
+  <p>In <xref ref="chapter-analysis" /> we introduced some Big-O
             performance limits on Python's list data type. However, we did not yet
             have the knowledge necessary to understand how Python implements its
             list data type. in
-            Chapter&#xA0;<url href="#basic-data-structures" visual="#basic-data-structures">[basic-data-structures]</url> you learned
+            <xref ref="basic-data-structures"/> you learned
             how to implement a linked list using the nodes and references pattern.
             However, the nodes and references implementation still did not match the
             performance of the Python list. In this section we will look at the
@@ -24,14 +24,14 @@
   <p>The best way to think about an array is that it is one continuous block
             of bytes in the computer's memory. This block is divided up into <m>n</m>-byte
             chunks where <m>n</m> is based on the data type that is stored in the array.
-            Figure&#xA0;<url href="#fig_array" visual="#fig_array">1</url> illustrates the idea of an array that is sized
+            <xref href="fig-array" /> illustrates the idea of an array that is sized
             to hold six floating point values.</p>
   <figure align="" xml:id="fig-array">
-    <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">An Array of Floating Point Numbers</caption>
+    <caption>An Array of Floating Point Numbers</caption>
     <image source="Advanced/Figures/array.png" width="50%" alt="An Array of Floating Point Numbers"/>
   </figure>
   <p>In Python, each floating point number uses 16 <footnote_reference docname="Advanced/PythonListsRevisited" xml:id="advanced_id1" refid="id3">1</footnote_reference> bytes of memory. So
-            the array in Figure&#xA0;<url href="#fig_array" visual="#fig_array">1</url> uses a total of 96 <footnote_reference docname="Advanced/PythonListsRevisited" xml:id="advanced_id2" refid="id4">2</footnote_reference> bytes.
+            the array in <xref ref="fig-array" /> uses a total of 96 <footnote_reference docname="Advanced/PythonListsRevisited" xml:id="advanced_id2" refid="id4">2</footnote_reference> bytes.
             The base address is the location in memory where the array starts. You
             have seen addresses before in Python for different objects that you have
             defined. For example: <c>&lt;__main__.Foo object at 0x5eca30&gt;</c> shows that
@@ -103,13 +103,16 @@
             keep track of the current end of the list; we will call this one
             <c>last_index</c>. Since Python does not have an array data type, we will
             use a list to simulate an array.
-            Listing&#xA0;<url href="#lst_arraylistinit" visual="#lst_arraylistinit">[lst_arraylistinit]</url> contains the code
+            Listing&#xA0;<xref ref="lst_arraylistinit" /> contains the code
             for the first three methods of <c>ArrayList</c>. Notice that the
             constructor method initializes the two instance variables described
             above and then creates a zero element array called <c>my_array</c>. The
             constructor also creates an instance variable called <c>size_exponent</c>.
             We will understand how this variable is used shortly.</p>
-  <pre>class ArrayList:
+  <listing xml:id="lst_arraylistinit">
+  <program language="python">
+  <input>
+  class ArrayList:
     def __init__(self):
         self.size_exponent = 0
         self.max_size = 0
@@ -131,11 +134,14 @@
 
         self.max_size = new_size
         self.my_array = new_array
-        self.size_exponent += 1</pre>
+        self.size_exponent += 1
+  </input>
+  </program>
+  </listing>
   <p>Next, we will implement the <c>append</c> method. The first thing <c>append</c>
             does is test for
             the condition where <c>last_index</c> is greater than the number of
-            available index positions in the array (line&#xA0;<url href="#line:lst_arr_size" visual="#line:lst_arr_size">[line:lst_arr_size]</url>).
+            available index positions in the array (line&#xA0; <!-- <url href="#line:lst_arr_size" visual="#line:lst_arr_size">[line:lst_arr_size]</url> -->).
             If this is the case then
             <c>__resize</c> is called. Notice that we are using the double underscore
             convention to make the <c>resize</c> method private. Once the array is resized
@@ -153,7 +159,7 @@
             one time, but is much easier to analyze. Once a new array has been
             allocated, the values from the old list must be copied into the new
             array; this is done in the loop starting on
-            line&#xA0;<url href="#line:lst_arr_cop1" visual="#line:lst_arr_cop1">[line:lst_arr_cop1]</url>. Finally the values
+            line&#xA0; <!--<url href="#line:lst_arr_cop1" visual="#line:lst_arr_cop1">[line:lst_arr_cop1]</url>. --> Finally the values
             <c>max_size</c> and <c>last_index</c> must be updated, <c>size_exponent</c> must
             be incremented, and <c>new_array</c> is saved as <c>self.my_array</c>. In a
             language like C the old block of memory referenced by <c>self.my_array</c>
@@ -167,11 +173,11 @@
             of 2. When <c>last_index</c> is a power of 2 then the cost to append an
             item is <m>O(last\_index)</m>. We can summarize the cost to insert the
             <m>i_{th}</m> item as follows:</p>
-  <math_block docname="Advanced/PythonListsRevisited"  nowrap="False" number="True" xml:space="preserve">c_i =
+  <md>c_i =
 \begin{cases}
-  i \text{ if } i \text{ is a power of 2} \\
-  1 \text{ otherwise}
-\end{cases}</math_block>
+  <mrow>i \text{ if } i \text{ is a power of 2} </mrow>
+  <mrow>1 \text{ otherwise}</mrow>
+\end{cases}</md>
   <p>Since the expensive cost of copying <c>last_index</c> items occurs
             relatively infrequently we spread the cost out, or <em>amortize</em>, the
             cost of insertion over all of the appends. When we do this the cost of
@@ -182,12 +188,14 @@
             array of size 8 is allocated and the four old items are copied. But now
             you have room in the array for four additional low cost appends.
             Mathematically we can show this as follows:</p>
-  <math_block docname="Advanced/PythonListsRevisited"  nowrap="False" number="True" xml:space="preserve">\begin{aligned}
-  cost_{total} &amp;= n + \sum_{j=0}^{\log_2{n}}{2^j}  \\
-            &amp;= n + 2n \\
-            &amp;= 3n\end{aligned}</math_block>
+  <md>\begin{aligned}
+  <mrow>cost_{total} &amp;= n + \sum_{j=0}^{\log_2{n}}{2^j}  </mrow>
+  <mrow>          &amp;= n + 2n </mrow>
+  <mrow>          &amp;= 3n</mrow>
+  \end{aligned}
+  </md>
   <p>The summation in the previous equation may not be obvious to you, so
-            let's think about that a bit more. The sum goes from zero to <m>\log_2{n}</m>.
+      let's think about that a bit more. The sum goes from zero to <m>\log_2{n}</m>.
             The upper bound on the summation tells us how many times we
             need to double the size of the array. The term <m>2^j</m> accounts for
             the copies that we need to do when the array is doubled. Since the total
@@ -196,7 +204,7 @@
             <m>O(1)</m>. This kind of analysis is called <term>amortized analysis</term> and
             is very useful in analyzing more advanced algorithms.</p>
   <p>Next, let us turn to the index operators.
-            Listing&#xA0;<url href="#lst_arrindex" visual="#lst_arrindex">[lst_arrindex]</url> shows our Python
+            Listing&#xA0;<xref ref="lst_arrindex" /> shows our Python
             implementation for index and assignment to an array location. Recall
             that we discussed above that the calculation required to find the memory
             location of the <m>i_{th}</m> item in an array is a simple <m>O(1)</m>
@@ -207,7 +215,10 @@
             this so we will just rely on list's built-in index operator. To confirm this,
             you can always get the Python source code and look at
             the file <c>listobject.c</c>.</p>
-  <pre>def __getitem__(self, idx):
+  <listing xml:id="lst_arrindex">
+  <program language="python">
+  <input>
+def __getitem__(self, idx):
     if idx &lt; self.last_index:
         return self.my_array[idx]
     raise LookupError("index out of bounds")
@@ -215,24 +226,27 @@
 def __setitem__(self, idx, val):
     if idx &lt; self.last_index:
         self.my_array[idx] = val
-    raise LookupError("index out of bounds")</pre>
+    raise LookupError("index out of bounds")
+  </input>
+  </program>
+  </listing>
   <p>Finally, let's take a look at one of the more expensive list operations,
             insertion. When we insert an item into an <c>ArrayList</c> we will need to
             first shift everything in the list at the insertion point and beyond
             ahead by one index position in order to make room for the item we are
-            inserting. The process is illustrated in Figure&#xA0;<url href="#fig_arrlistins" visual="#fig_arrlistins">2</url>.</p>
+            inserting. The process is illustrated in <xref ref="fig-arrlistins" />.</p>
   <figure align="" xml:id="fig-arrlistins">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Inserting 27.1 at Index 2 in an ArrayList</caption>
-    <image source="Advanced/Figures/insertArray.png" width="5in%" alt="Inserting 27.1 at index 2 in an ArrayList"/>
+    <image source="Advanced/Figures/insertArray.png" width="50%" alt="Inserting 27.1 at index 2 in an ArrayList"/>
   </figure>
   <p>The key to implementing <c>insert</c> correctly is to realize that as you
             are shifting values in the array you do not want to overwrite any
             important data. The way to do this is to work from the end of the list
             back toward the insertion point, copying data forward. Our implementation
             of <c>insert</c> is shown in
-            Listing&#xA0;<url href="#lst_arrlistins" visual="#lst_arrlistins">[lst_arrlistins]</url>. Note how the <c>range</c> is
+            <xref ref="lst_arrlistins" />. Note how the <c>range</c> is
             set up on
-            line&#xA0;<url href="#line:lst_arrlistins_range" visual="#line:lst_arrlistins_range">[line:lst_arrlistins_range]</url> to
+            line&#xA0;<!-- <url href="#line:lst_arrlistins_range" visual="#line:lst_arrlistins_range">[line:lst_arrlistins_range]</url> --> to
             ensure that we are copying existing data into the unused part of the
             array first, and then subsequent values are copied over old values that
             have already been shifted. If the loop had started at the insertion
@@ -249,7 +263,7 @@ def __setitem__(self, idx, val):
             want to insert something at index 0 and we have to shift the entire
             array forward by one. On average we will only need to shift half of the
             array, but this is still <m>O(n)</m>. You may want to go back to
-            Chapter&#xA0;<url href="#basicds" visual="#basicds">[basicds]</url> and remind yourself how all of these
+            <xref ref="basic-data-structures"/> and remind yourself how all of these
             list operations are done using nodes and references. Neither
             implementation is right or wrong; they just have different performance
             guarantees that may be better or worse depending on the kind of
@@ -261,6 +275,7 @@ def __setitem__(self, idx, val):
             implemented for our <c>ArrayList</c> including: <c>pop</c>, <c>del</c>,
             <c>index</c>, and making the <c>ArrayList</c> iterable. We leave these
             enhancements to the <c>ArrayList</c> as an exercise for you.</p>
+<!--
   <footnote backrefs="id1" docname="Advanced/PythonListsRevisited" xml:id="advanced_id3" names="1">
     <label>1</label>
     <p>8 bytes reference count + 8 bytes pointer to the type object + 8
@@ -270,4 +285,5 @@ def __setitem__(self, idx, val):
     <label>2</label>
     <p>sys.getsizeof([3.1415, 2.189, 0.0, 0.0, 9.87]) is 104</p>
   </footnote>
+-->
 </section>

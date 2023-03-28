@@ -75,7 +75,7 @@
                 list structure.</p>
     <figure align="" xml:id="fig-initskiplist">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">An Example Skip List</caption>
-      <image source="Advanced/Figures/initskiplist.png" width="5in%" alt="An Example Skip List"/>
+      <image source="Advanced/Figures/initskiplist.png" width="50%" alt="An Example Skip List"/>
     </figure>
     <p>Before moving on to the details of skip-list processing it will be
                 useful to explain some vocabulary. Figure&#xA0;<url href="#fig_vocab1" visual="#fig_vocab1">3</url> shows that
@@ -86,7 +86,7 @@
                 node.</p>
     <figure align="" xml:id="fig-vocab1">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">The Body of the Skip List Is Made Up of Data Nodes</caption>
-      <image source="Advanced/Figures/vocabskiplist1.png" width="5in%" alt="The Body of the Skip List Is Made Up of Data Nodes"/>
+      <image source="Advanced/Figures/vocabskiplist1.png" width="50%" alt="The Body of the Skip List Is Made Up of Data Nodes"/>
     </figure>
     <figure align="" xml:id="fig-skipdatanode">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">A Single Data Node</caption>
@@ -100,7 +100,7 @@
                 can be seen in Figure&#xA0;<url href="#fig_headernode" visual="#fig_headernode">6</url>.</p>
     <figure align="" xml:id="fig-vocab2">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Header Nodes and Towers</caption>
-      <image source="Advanced/Figures/vocabskiplist2.png" width="5in%" alt="Header Nodes and Towers"/>
+      <image source="Advanced/Figures/vocabskiplist2.png" width="50%" alt="Header Nodes and Towers"/>
     </figure>
     <figure align="" xml:id="fig-headernode">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Each Header Node Holds Two References</caption>
@@ -124,7 +124,7 @@
                 directly related to the height of the towers.</p>
     <figure align="" xml:id="fig-vocab3">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Each Horizontal Group of Data Nodes Is a Level</caption>
-      <image source="Advanced/Figures/vocabskiplist3.png" width="5in%" alt="Each Horizontal Group of Data Nodes Is a Level"/>
+      <image source="Advanced/Figures/vocabskiplist3.png" width="50%" alt="Each Horizontal Group of Data Nodes Is a Level"/>
     </figure>
     <p>Classes for the two types of nodes described above can easily be
                 constructed in the same fashion as for simple linked lists in the
@@ -210,7 +210,7 @@
                     search process.</p>
       <figure align="" xml:id="fig-searchskip">
         <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Searching for the Key 77</caption>
-        <image source="Advanced/Figures/searchskiplist.png" width="5in%" alt="Searching for the Key 77"/>
+        <image source="Advanced/Figures/searchskiplist.png" width="50%" alt="Searching for the Key 77"/>
       </figure>
       <p>As we search for 77, we begin at the head of the skip list. The first
                     header node refers to the data node holding 31. Since 31 is less than
@@ -280,7 +280,7 @@
                     proceeds through the skip list.</p>
       <figure align="" xml:id="fig-skiplistadd">
         <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Searching for the Key 65</caption>
-        <image source="Advanced/Figures/addskiplist.png" width="5in%" alt="Searching for the Key 65"/>
+        <image source="Advanced/Figures/addskiplist.png" width="50%" alt="Searching for the Key 65"/>
       </figure>
       <p>As we proceed using the same search strategy as in the previous
                     section, we find that 65 is greater than 31. Since there are no more

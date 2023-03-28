@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US" xml:id="basic-data-structures">
   <title>Basic Data Structures</title>
   <xi:include href="./Objectives.ptx"/>
   <xi:include href="./WhatAreLinearStructures.ptx"/>
