@@ -1,0 +1,202 @@
+<preface xml:id="front-back-matter_preface-to-the-first-and-second-editions">
+ <title>Preface to the Interactive Editions</title>
+ <paragraphs>
+ <title>To the Student</title>
+<p>Since you have started to read this book, we can only assume that you have an interest
+in computer science.  You may also be interested in the programming language Python and
+have likely done some programming, either in an earlier computer science course or
+perhaps on your own.  In any case, you are hoping to learn more.
+</p><p>
+This textbook is about computer science.  It is also about Python.  However, there is
+much more.  The study of algorithms and data structures is central to understanding  what
+computer science is all about.
+</p>
+<p>
+Learning computer science is not unlike learning any other type of difficult subject matter.
+The only way to be successful is through deliberate and incremental exposure to the
+fundamental ideas.  A beginning computer scientist needs
+practice so that there is a thorough understanding before continuing on to the
+more complex parts of the curriculum.  In addition, a beginner needs to be
+given the opportunity to be successful and gain confidence.
+</p><p>
+This textbook is designed to serve as a text for a first course on data
+structures and algorithms, typically taught as the second course in the
+computer science curriculum.  Even though the second course is considered
+more advanced than the first course, we still assume that you are
+beginners at this level.  You may still be struggling with some of the basic
+ideas and skills from your first computer science course and yet you are
+ready to further explore the discipline and continue to practice problem
+solving.
+</p><p>
+As we said earlier, this book is about computer science.  It is about abstract data types and
+data structures.  It is also about writing algorithms and solving problems.  In the following
+chapters, we will look at a number of data structures and solve classic problems that
+arise.  The tools and techniques that you learn in these chapters will be applied over and
+over as you continue your study of computer science.
+</p>
+ </paragraphs>
+<paragraphs>
+<title>To the Instructor</title>
+<p>
+Many students discover at this point that there is much more to
+computer science than just writing programs.  Data structures and
+algorithms can be studied and understood at a level that is independent of
+writing code.
+</p><p>
+We assume that students have had a traditional first course in computer
+science, preferably although not necessarily in Python.  They understand
+basic programming constructs such as selection, iteration, and function
+definition.  They have been exposed to object-oriented programming in that
+they can construct and use simple classes.  Students also understand the
+basic Python data structures such as sequences (lists and strings) and
+dictionaries.
+</p><p>
+This textbook has three key features:
+<ul>
+<li>A strong focus on problem solving introduces students to the
+fundamental data structures and algorithms by providing a very
+readable text without introducing an overwhelming amount of new
+language syntax.</li>
+<li>Algorithm analysis in terms of Big-O running time is introduced
+  early and applied throughout.</li>
+<li> Python is used to facilitate the success of beginning students in using
+and mastering data structures and algorithms.</li>
+
+</ul>
+</p>
+<p>
+We begin our study of data structures by considering the linear
+structures, in particular, stacks, queues, deques, and lists.  Python
+lists as well as linked lists are used for implementation.  We then
+transition to the nonlinear structures related to trees and introduce
+a number of techniques including linked node and reference
+architectures (linked lists).  We conclude with graphs, using linked
+structures, lists, and Python dictionaries for implementation.  In
+each case, we have strived to show a variety of implementation
+techniques while also taking advantage of the built-in collections
+that Python provides.  This mix exposes the students to all of the
+major implementation approaches while focusing on the ease of use with
+Python.
+</p><p>
+Python is a compelling language for algorithm education.  It has a clean,
+simple syntax and an intuitive user environment.  The basic collections are
+very powerful and yet easy to use.  The interactive nature of the language
+creates an obvious place to test data structure components without the need
+for additional coding of driver functions.  Finally, Python provides a textbook
+like notation for representing algorithms alleviating the need for an
+additional layer of pseudocode.  This allows the illustration of many relevant,
+modern, and interesting problems that make use of the algorithm and data
+structure ideas.
+</p><p>
+We believe that it is advantageous for beginning students to spend time
+learning the rudimentary ideas relating to algorithms and data structures.
+We also believe that Python is an exceptional language for teaching
+beginning computer science students, in both the first course and the second.
+Many languages require that students jump right into more advanced
+programming concepts clouding the basic understanding that these students
+need.  This sets them up for possible failure, not because of the computer
+science but because of the language vehicle being used.  Our goal is to provide
+a textbook that is tailored to the material these students need to understand,
+written in a way that is within their ability, and that creates and fosters an
+environment where success can happen.
+</p>
+</paragraphs>
+<paragraphs>
+<title>Organization</title>
+<p>
+We have designed this textbook around problem solving using classic data structures and
+techniques.  The organizational chart depicts possible ways to use the material.
+</p>
+<p>
+<image source="Preface/roadmap3.png" width="100%" />
+
+
+Chapter 1 is intended to provide background material with a review of computer science, problem solving,
+object-oriented programming, and Python.  It is very possible that well-prepared students can skim this
+chapter and quickly move to Chapter 2.  However, we find that a bit of review is never a waste of time.
+</p>
+<p>
+Chapter 2 introduces the ideas behind algorithm analysis, with an
+emphasis on Big-O notation.  In addition we do an analysis of the key
+Python data structures used throughout the book.  This helps students
+understand the tradeoffs between different implementations of the
+various abstract data types.  This chapter also includes examples of
+experimental measurement of Python primitives used at runtime.
+</p><p>
+
+Chapters 3 through 7 provide a thorough mix of algorithms and data
+structures, often presented in context of a classic computer science
+problem.  Although there is some latitude in terms of order, many of
+the topics have a sequential dependency and should be completed in the
+order provided.  For example, in Chapter 3, we introduce stacks.  We
+use stacks to explain recursion in Chapter 4 and then use recursion to
+implement binary search in Chapter 5.
+</p><p>
+Chapter 8, Additional Topics, is an optional chapter consisting of
+individual sections, each of which is linked back to a previous
+chapter.  As noted in the organization chart, it is possible to take
+these topics together after completing Chapter 7.  The individual
+sections can also be linked to their specific chapters.  For example,
+instructors wishing to introduce arrays early can move to
+Section 8.1 immediately after Chapter 3.
+</p>
+</paragraphs>
+<paragraphs>
+<title>Changes From the Second Edition</title>
+<p>
+<ul>
+<li> All code is now written using Python 3.6</li>
+<li> Chapter 1 now introduces Python sets and exception processing.</li>
+<li> Eliminated third party graphics package.  All graphics are now
+  done with the built-in \texttt{turtle} module.</li>
+<li> Focus on algorithm analysis in a newly written Chapter 2.  In
+  addition, this chapter includes an analysis of the key Python data
+  structures used throughout the book.</li>
+<li> New section on linked list implementation in Chapter 3.</li>
+<li> Moved Dynamic Programming section to the end of Chapter 4.</li>
+<li> Introduction to C style arrays and array management in Chapter 8.</li>
+<li> More focus on graphical recursive algorithms, including
+  recursive tree drawing, and a recursive maze search program.</li>
+<li> All source code for data structures has been organized into a
+  single Python package to make it easy to incorporate into homework
+  assignments.</li>
+<li> Source for complete examples from each chapter are included so
+  you do not need to piece together code from each listing.</li>
+<li> A new improved version of binary search trees in Chapter 6.</li>
+<li> New section on balanced binary trees (AVL trees) added to
+  Chapter 6.</li>
+
+</ul>
+</p>
+</paragraphs>
+<paragraphs>
+<title>Acknowledgments</title>
+<p>
+There are many people who have helped us to complete this book.
+Thanks to our Computer Science colleague Steve Hubbard who provided
+substantial feedback on the first edition and on the new material for
+this edition. Thanks to our colleagues around the country who sent
+helpful emails kindly pointing out mistakes in the first edition and
+suggesting topics for this new edition.
+</p><p>
+Thanks to our friends Mary, Bob, and the rest of the crew at Java
+John's in Decorah for allowing us to become ``authors in residence''
+during Brad's sabbatical.  Somehow David managed to make it through
+all those months in the coffee shop without becoming a coffee drinker.
+And yes, we acknowledge the irony of writing a Python book in
+Java Johns.
+</p>
+<p>
+Thanks to the staff at Franklin, Beedle, and Associates, especially
+Jim Leisy and Tom Sumner.  They were great to work with.  And finally,
+special thanks goes to our wives, Jane Miller, Brenda Ranum, and Nataliya Yasinovska.  Their
+love and support helped make this book a reality.
+</p>
+Bradley N. Miller
+
+David L. Ranum
+
+Roman Yasinovskyy
+
+</paragraphs>
+</preface>

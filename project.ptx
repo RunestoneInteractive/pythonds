@@ -23,7 +23,7 @@
     </target>
     <target name="print" pdf-method="xelatex">
       <format>pdf</format>
-      <source>source/main.ptx</source>
+      <source>pretext/main.ptx</source>
       <publication>publication/publication.ptx</publication>
       <output-dir>output/print</output-dir>
     </target>

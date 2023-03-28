@@ -4,6 +4,22 @@
   <book xml:id="pythonds" permid="pyt">
     <title>Problem Solving with Algorithms and Data Structures using Python</title>
     <subtitle>The PreTeXt Interactive Edition</subtitle>
+    <frontmatter>
+    <titlepage>
+    <author>
+     <personname>Bradley N. Miller</personname>
+     <institution>Runestone Academy</institution>
+     </author>
+     <author>
+     <personname>David L. Ranum</personname>
+     </author>
+     <author>
+     <personname>Roman Yasinovskyy</personname>
+     <institution>Luther College</institution>
+     </author>
+    </titlepage>
+    <xi:include href="./FrontMatter/preface.ptx"/>
+    </frontmatter>
     <xi:include href="./Introduction/toctree.ptx"/>
     <xi:include href="./AlgorithmAnalysis/toctree.ptx"/>
     <xi:include href="./BasicDS/toctree.ptx"/>
