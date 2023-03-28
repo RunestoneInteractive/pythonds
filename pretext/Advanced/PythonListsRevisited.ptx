@@ -173,11 +173,11 @@
             of 2. When <c>last_index</c> is a power of 2 then the cost to append an
             item is <m>O(last\_index)</m>. We can summarize the cost to insert the
             <m>i_{th}</m> item as follows:</p>
-  <md>c_i =
+  <me>c_i =
 \begin{cases}
-  <mrow>i \text{ if } i \text{ is a power of 2} </mrow>
-  <mrow>1 \text{ otherwise}</mrow>
-\end{cases}</md>
+   \text{ if } i \text{ is a power of 2} \\
+   \text{ otherwise}
+\end{cases}</me>
   <p>Since the expensive cost of copying <c>last_index</c> items occurs
             relatively infrequently we spread the cost out, or <em>amortize</em>, the
             cost of insertion over all of the appends. When we do this the cost of
@@ -188,12 +188,12 @@
             array of size 8 is allocated and the four old items are copied. But now
             you have room in the array for four additional low cost appends.
             Mathematically we can show this as follows:</p>
-  <md>\begin{aligned}
-  <mrow>cost_{total} &amp;= n + \sum_{j=0}^{\log_2{n}}{2^j}  </mrow>
-  <mrow>          &amp;= n + 2n </mrow>
-  <mrow>          &amp;= 3n</mrow>
+  <me>\begin{aligned}
+  cost_{total} &amp;= n + \sum_{j=0}^{\log_2{n}}{2^j}  \\
+            &amp;= n + 2n \\
+            &amp;= 3n \\
   \end{aligned}
-  </md>
+  </me>
   <p>The summation in the previous equation may not be obvious to you, so
       let's think about that a bit more. The sum goes from zero to <m>\log_2{n}</m>.
             The upper bound on the summation tells us how many times we

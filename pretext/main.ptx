@@ -3,7 +3,7 @@
   <xi:include href="./bookinfo.ptx"/>
   <book xml:id="pythonds" permid="pyt">
     <title>Problem Solving with Algorithms and Data Structures using Python</title>
-    <subtitle>The PreTeXt Interactive Edition</subtitle>
+    <subtitle>The Interactive Edition</subtitle>
     <frontmatter>
     <titlepage>
     <author>
