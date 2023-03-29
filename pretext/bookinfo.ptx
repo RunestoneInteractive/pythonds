@@ -31,7 +31,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
   <brandlogo url="https://runestone.academy"  visual="runestone.academy" source="cover.jpg"/>
   <!-- Prefix to enhance Sage notebook contents -->
   <initialism>DS</initialism>
-  <blurb shelf="introcs">The original open source intro to computer science textbook.  Great for students of all ages.</blurb>
+  <blurb shelf="Data Structures">A solid introduction to algorithms and data structures. Not overly rigorous to keep it very accessible and practical. This book covers the basics very well plus one advanced topic to augment most chapters if you need them.  Designed for a 15 week semester (without advanced topics) as a second course in CS, but very adaptable for other schedules.</blurb>
   <!-- Math-related macros from "macros.tex" in previous LaTeX version -->
   <!-- \notdivide replaces \notmid to avoid conflict with tikz - TWJ 5/6/2010 -->
   <!-- Added operator \gf  - TWJ 2/26/2013 -->
