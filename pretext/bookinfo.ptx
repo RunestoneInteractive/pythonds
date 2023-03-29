@@ -28,6 +28,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
   <!-- entire front matter section with more headings   -->
   <author-biographies length="short"/>
   <document-id edition="4">pswadsup</document-id>
+  <brandlogo url="https://runestone.academy"  visual="runestone.academy" source="cover.jpg"/>
   <!-- Prefix to enhance Sage notebook contents -->
   <initialism>DS</initialism>
   <blurb shelf="introcs">The original open source intro to computer science textbook.  Great for students of all ages.</blurb>

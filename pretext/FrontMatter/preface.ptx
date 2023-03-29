@@ -169,34 +169,4 @@ Section 8.1 immediately after Chapter 3.
 </ul>
 </p>
 </paragraphs>
-<paragraphs>
-<title>Acknowledgments</title>
-<p>
-There are many people who have helped us to complete this book.
-Thanks to our Computer Science colleague Steve Hubbard who provided
-substantial feedback on the first edition and on the new material for
-this edition. Thanks to our colleagues around the country who sent
-helpful emails kindly pointing out mistakes in the first edition and
-suggesting topics for this new edition.
-</p><p>
-Thanks to our friends Mary, Bob, and the rest of the crew at Java
-John's in Decorah for allowing us to become ``authors in residence''
-during Brad's sabbatical.  Somehow David managed to make it through
-all those months in the coffee shop without becoming a coffee drinker.
-And yes, we acknowledge the irony of writing a Python book in
-Java Johns.
-</p>
-<p>
-Thanks to the staff at Franklin, Beedle, and Associates, especially
-Jim Leisy and Tom Sumner.  They were great to work with.  And finally,
-special thanks goes to our wives, Jane Miller, Brenda Ranum, and Nataliya Yasinovska.  Their
-love and support helped make this book a reality.
-</p>
-Bradley N. Miller
-
-David L. Ranum
-
-Roman Yasinovskyy
-
-</paragraphs>
 </preface>
