@@ -24,8 +24,7 @@
             was even or odd. In either case, the string must be a palindrome. The
             complete function for palindrome-checking appears in
             <xref ref="lst-palchecker"/>.</p>
-<listing xml:id="lst-palchecker">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-palchecker"> <program label="lst-palchecker"  interactive="activecode" language="python">
     <input>
 from pythonds3.basic import Deque
 

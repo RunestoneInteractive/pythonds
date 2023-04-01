@@ -22,8 +22,7 @@
             the end of the list will hold the top element of the stack. As the stack
             grows (as <c>push</c> operations occur), new items will be added on the end
             of the list. <c>pop</c> operations will manipulate that same end.</p>
-<listing xml:id="lst-stackcode1">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-stackcode1"> <program label="lst-stackcode1"  interactive="activecode" language="python">
     <input>
 class Stack:
     """Stack implementation as a list"""
@@ -95,8 +94,7 @@ print(s.size())
             work and we would have to index position 0 (the first item in the list)
             explicitly using <c>pop</c> and <c>insert</c>. The implementation is shown in
             <xref ref="lst-stackcode2"/>.</p>
-<listing xml:id="lst-stackcode2">
-  <program interactive="codelens" language="python">
+<listing xml:id="lst-stackcode2"> <program label="lst-stackcode2"  interactive="codelens" language="python">
     <input>
 class Stack:
     def __init__(self):

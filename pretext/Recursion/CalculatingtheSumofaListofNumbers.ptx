@@ -52,8 +52,7 @@ total = \  25</math_block>
             the list and <m>rest(num\_list)</m> returns a list of everything but
             the first element. This is easily expressed in Python as shown in
             <xref ref="lst-recsum"/>.</p>
-<listing xml:id="lst-recsum">
-  <program  interactive="activecode" language="python">
+<listing xml:id="lst-recsum"> <program label="lst-recsum"   interactive="activecode" language="python">
     <input>
 def list_sum(num_list):
     if len(num_list) == 1:

@@ -189,7 +189,7 @@ def _put(self, key, value, current_node):
         <choice>
           <statement>
             <p>
-              <image source="../_static/bintree_a.png" width="50%">
+              <image source="SortSearch/Figures/bintree_a.png" width="50%">
                 <description>
                   <p/>
                 </description>
@@ -203,7 +203,7 @@ def _put(self, key, value, current_node):
         <choice correct="yes">
           <statement>
             <p>
-              <image source="../_static/bintree_b.png" width="50%">
+              <image source="SortSearch/Figures/bintree_b.png" width="50%">
                 <description>
                   <p/>
                 </description>
@@ -217,7 +217,7 @@ def _put(self, key, value, current_node):
         <choice>
           <statement>
             <p>
-              <image source="../_static/bintree_c.png" width="50%">
+              <image source="SortSearch/Figures/bintree_c.png" width="50%">
                 <description>
                   <p/>
                 </description>

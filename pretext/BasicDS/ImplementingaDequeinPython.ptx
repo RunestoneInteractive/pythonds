@@ -6,8 +6,7 @@
             will provide a very nice set of methods upon which to build the details
             of the deque. Our implementation (<xref ref="lst-dequecode"/>) will assume that
             the rear of the deque is at position 0 in the list.</p>
-  <listing xml:id="lst-dequecode">
-  <program language="python">
+  <listing xml:id="lst-dequecode"> <program label="lst-dequecode"  language="python">
     <input>
 class Deque:
     """Deque implementation as a list"""

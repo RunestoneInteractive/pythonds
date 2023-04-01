@@ -32,8 +32,7 @@
             the function <c>my_win.exitonclick()</c>. This is a handy little method of
             the window that puts the turtle into a wait mode until you click inside
             the window, after which the program cleans up and exits.</p>
-<listing xml:id="lst-turt1">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-turt1"> <program label="lst-turt1"  interactive="activecode" language="python">
     <input>
 import turtle
 
@@ -106,8 +105,7 @@ def tree(branch_len, t):
             the recursive calls and think about how this tree will unfold. Will it
             be drawn symmetrically with the right and left halves of the tree taking
             shape simultaneously? Will it be drawn right side first then left side?</p>
-<listing xml:id="lst-complete-tree">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-complete-tree"> <program label="lst-complete-tree"  interactive="activecode" language="python">
     <input>
 import turtle
 

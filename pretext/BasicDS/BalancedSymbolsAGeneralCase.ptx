@@ -37,8 +37,7 @@
             assist with symbol-matching. Each symbol that is removed from the stack
             must be checked to see that it matches the current closing symbol. If a
             mismatch occurs, the balance checker returns <c>False</c> immediately.</p>
-<listing xml:id="lst-balcheck">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-balcheck"> <program label="lst-balcheck"  interactive="activecode" language="python">
     <input>
 from pythonds3.basic import Stack
 

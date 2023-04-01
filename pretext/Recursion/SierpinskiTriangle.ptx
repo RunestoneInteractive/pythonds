@@ -13,8 +13,7 @@
             You can continue to apply this procedure indefinitely if you have a
             sharp enough pencil. Before you continue reading, you may want to try
             drawing the Sierpinski triangle yourself, using the method described.</p>
-  <listing xml:id="recursion_fig-sierpinski">
-  <program interactive="activecode" language="python">
+  <listing xml:id="recursion_fig-sierpinski"> <program label="recursion_fig-sierpinski"  interactive="activecode" language="python">
     <input>
 import turtle
 

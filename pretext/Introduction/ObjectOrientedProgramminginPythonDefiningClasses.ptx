@@ -50,16 +50,14 @@
       <xref ref="introduction_lst-pyconstructor" />.
     </p>
 
-    <listing xml:id="introduction_lst-pyconstructor" names="lst_pyconstructor">
-
-      <program language="python">
+    <listing xml:id="introduction_lst-pyconstructor" names="lst_pyconstructor"> <program label="introduction_lst-pyconstructor" names="lst_pyconstructor"  language="python">
         <input>
         class Fraction:
-        """Class Fraction"""
-        def __init__(self, top, bottom):
-        """Constructor definition"""
-        self.num = top
-        self.den = bottom
+          """Class Fraction"""
+          def __init__(self, top, bottom):
+            """Constructor definition"""
+            self.num = top
+            self.den = bottom
         </input>
       </program>
     </listing>
@@ -112,9 +110,7 @@
       convert itself into a string. This is what the <c>print</c> function needs
       in order to do its job.
     </p>
-    <listing xml:id="introduction_lst-showmethod" names="lst_showmethod">
-
-      <program language="python">
+    <listing xml:id="introduction_lst-showmethod" names="lst_showmethod"> <program label="introduction_lst-showmethod" names="lst_showmethod"  language="python">
         <input>
         def show(self):
         print(f"{self.num}/{self.den}")
@@ -144,8 +140,7 @@
       <c>Fraction</c> object is asked to convert itself to a string. Notice the
       various ways that this function is used.
     </p>
-    <listing xml:id="introduction_lst-str" names="lst_str">
-      <program language="python">
+    <listing xml:id="introduction_lst-str" names="lst_str"> <program label="introduction_lst-str" names="lst_str"  language="python">
         <input>
         def __str__(self):
         return f"{self.num}/{self.den}"
@@ -196,16 +191,14 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
       arithmetic expression involving fractions, assigning the result of the
       addition, and then printing our result.
     </p>
-    <listing xml:id="introduction_lst-addmethod" names="lst_addmethod">
-
-      <program language="python">
+    <listing xml:id="introduction_lst-addmethod" names="lst_addmethod"> <program label="introduction_lst-addmethod" names="lst_addmethod"  language="python">
         <input>
         def __add__(self, other_fraction):
-        new_num = self.num * other_fraction.den + \
-        self.den * other_fraction.num
-        new_den = self.den * other_fraction.den
+            new_num = self.num * other_fraction.den + \
+            self.den * other_fraction.num
+            new_den = self.den * other_fraction.den
 
-        return Fraction(new_num, new_den)
+            return Fraction(new_num, new_den)
         </input>
       </program>
     </listing>
@@ -237,7 +230,7 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
       represented by a negative numerator.
     </p>
     <listing xml:id="gcd_cl" >
-    <program interactive="activecode" language="python">
+    <program label="gcd_cl" interactive="activecode" language="python">
       <input>
       def gcd(m, n):
           while m % n != 0:
@@ -256,8 +249,7 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
       the bottom by 2 creates a new fraction, <m>3/4</m> (see
       <xref ref="introduction_lst-newaddmethod" />).
     </p>
-    <listing xml:id="introduction_lst-newaddmethod" names="lst_newaddmethod">
-      <program language="python">
+    <listing xml:id="introduction_lst-newaddmethod" names="lst_newaddmethod"> <program label="introduction_lst-newaddmethod" names="lst_newaddmethod"  language="python">
         <input>
         def __add__(self, other_fraction):
             new_num = self.num * other_fraction.den + self.den * other_fraction.num
@@ -307,14 +299,13 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
       are other relational operators that can be overridden. For example, the
       <c>__le__</c> method provides the less than or equal functionality.
     </p>
-    <listing xml:id="introduction_lst-cmpmethod" names="lst_cmpmethod">
-      <program language="python">
+    <listing xml:id="introduction_lst-cmpmethod" names="lst_cmpmethod"> <program label="introduction_lst-cmpmethod" names="lst_cmpmethod"  language="python">
         <input>
         def __eq__(self, other_fraction):
-        first_num = self.num * other_fraction.den
-        second_num = other_fraction.num * self.den
+            first_num = self.num * other_fraction.den
+            second_num = other_fraction.num * self.den
 
-        return first_num == second_num
+            return first_num == second_num
         </input>
       </program>
     </listing>
@@ -322,37 +313,35 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
       <xref ref="lst-fractioncode" />. We leave the remaining arithmetic and relational
       methods as exercises.
     </p>
-    <listing xml:id="lst-fractioncode">
-    <program  interactive="activecode" language="python">
+    <listing xml:id="lst-fractioncode"> <program label="lst-fractioncode"   interactive="activecode" language="python">
       <input>
       def gcd(m, n):
-      while m % n != 0:
-      m, n = n, m % n
-      return n
+          while m % n != 0:
+              m, n = n, m % n
+          return n
 
       class Fraction:
-      def __init__(self, top, bottom):
-      self.num = top
-      self.den = bottom
+          def __init__(self, top, bottom):
+              self.num = top
+              self.den = bottom
 
-      def __str__(self):
-      return "{:d}/{:d}".format(self.num, self.den)
+          def __str__(self):
+              return "{:d}/{:d}".format(self.num, self.den)
 
-      def __eq__(self, other_fraction):
-      first_num = self.num * other_fraction.den
-      second_num = other_fraction.num * self.den
+          def __eq__(self, other_fraction):
+              first_num = self.num * other_fraction.den
+              second_num = other_fraction.num * self.den
 
-      return first_num == second_num
+              return first_num == second_num
 
-      def __add__(self, other_fraction):
-      new_num = self.num * other_fraction.den \
-      + self.den * other_fraction.num
-      new_den = self.den * other_fraction.den
-      cmmn = gcd(new_num, new_den)
-      return Fraction(new_num // cmmn, new_den // cmmn)
+          def __add__(self, other_fraction):
+              new_num = self.num * other_fraction.den + self.den * other_fraction.num
+              new_den = self.den * other_fraction.den
+              cmmn = gcd(new_num, new_den)
+              return Fraction(new_num // cmmn, new_den // cmmn)
 
-      def show(self):
-      print("{:d}/{:d}".format(self.num, self.den))
+          def show(self):
+              print("{:d}/{:d}".format(self.num, self.den))
 
       x = Fraction(1, 2)
       x.show()
@@ -476,20 +465,19 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
       class is shown in
       <xref ref="introduction_lst-logicgateclass" />.
     </p>
-    <listing xml:id="introduction_lst-logicgateclass" names="lst_logicgateclass">
-      <program language="python">
+    <listing xml:id="introduction_lst-logicgateclass" names="lst_logicgateclass"> <program label="introduction_lst-logicgateclass" names="lst_logicgateclass"  language="python">
         <input>
         class LogicGate:
-        def __init__(self, lbl):
-        self.label = lbl
-        self.output = None
+            def __init__(self, lbl):
+                self.label = lbl
+                self.output = None
 
-        def get_label(self):
-        return self.label
+            def get_label(self):
+                return self.label
 
-        def get_output(self):
-        self.output = self.perform_gate_logic()
-        return self.output
+            def get_output(self):
+                self.output = self.perform_gate_logic()
+                return self.output
         </input>
       </program>
     </listing>
@@ -529,36 +517,34 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
       building class hierarchies. Child class constructors need to call parent
       class constructors and then move on to their own distinguishing data.
     </p>
-    <listing xml:id="introduction_lst-binarygateclass" names="lst_binarygateclass">
-      <program language="python">
+    <listing xml:id="introduction_lst-binarygateclass" names="lst_binarygateclass"> <program label="introduction_lst-binarygateclass" names="lst_binarygateclass"  language="python">
         <input>
         class BinaryGate(LogicGate):
-        def __init__(self, lbl):
-        LogicGate.__init__(self, lbl)
-        self.pin_a = None
-        self.pin_b = None
+            def __init__(self, lbl):
+                LogicGate.__init__(self, lbl)
+                self.pin_a = None
+                self.pin_b = None
 
-        def get_pin_a(self):
-        return int(input(f"Enter pin A input for gate \
-        {self.get_label()}: "))
+            def get_pin_a(self):
+                return int(input(f"Enter pin A input for gate \
+                {self.get_label()}: "))
 
-        def get_pin_b(self):
-        return int(input(f"Enter pin B input for gate \
-        {self.get_label()}: "))
+            def get_pin_b(self):
+                return int(input(f"Enter pin B input for gate \
+                {self.get_label()}: "))
         </input>
       </program>
     </listing>
-    <listing xml:id="introduction_lst-unarygateclass" names="lst_unarygateclass">
-      <program language="python">
+    <listing xml:id="introduction_lst-unarygateclass" names="lst_unarygateclass"> <program label="introduction_lst-unarygateclass" names="lst_unarygateclass"  language="python">
         <input>
         class UnaryGate(LogicGate):
-        def __init__(self, lbl):
-        LogicGate.__init__(self, lbl)
-        self.pin = None
+            def __init__(self, lbl):
+                LogicGate.__init__(self, lbl)
+                self.pin = None
 
-        def get_pin(self):
-        return int(input(f"Enter pin input for gate \
-        {self.get_label()}: "))
+            def get_pin(self):
+                return int(input(f"Enter pin input for gate \
+                {self.get_label()}: "))
         </input>
       </program>
     </listing>
@@ -589,20 +575,19 @@ TypeError: unsupported operand type(s) for +: 'Fraction' and 'Fraction'</pre>
       return 1 if both input values are 1. The complete class is shown in
       <xref ref="introduction_lst-andgateclass" />.
     </p>
-    <listing xml:id="introduction_lst-andgateclass" names="lst_andgateclass">
-      <program language="python">
+    <listing xml:id="introduction_lst-andgateclass" names="lst_andgateclass"> <program label="introduction_lst-andgateclass" names="lst_andgateclass"  language="python">
         <input>
         class AndGate(BinaryGate):
-        def __init__(self, lbl):
-        super().__init__(lbl)
+            def __init__(self, lbl):
+                super().__init__(lbl)
 
-        def perform_gate_logic(self):
-        a = self.get_pin_a()
-        b = self.get_pin_b()
-        if a == 1 and b == 1:
-        return 1
-        else:
-        return 0
+            def perform_gate_logic(self):
+                a = self.get_pin_a()
+                b = self.get_pin_b()
+                if a == 1 and b == 1:
+                    return 1
+                else:
+                    return 0
         </input>
       </program>
     </listing>
@@ -675,35 +660,33 @@ Enter pin input for gate G3: 0
       that each <c>to_gate</c> can choose the proper input line for the
       connection.
     </p>
-    <listing xml:id="introduction_lst-connectorclass" names="lst_connectorclass">
-      <program language="python">
+    <listing xml:id="introduction_lst-connectorclass" names="lst_connectorclass"> <program label="introduction_lst-connectorclass" names="lst_connectorclass"  language="python">
         <input>
         class Connector:
-        def __init__(self, fgate, tgate):
-        self.from_gate = fgate
-        self.to_gate = tgate
+            def __init__(self, fgate, tgate):
+                self.from_gate = fgate
+                self.to_gate = tgate
 
-        tgate.set_next_pin(self)
+                tgate.set_next_pin(self)
 
-        def get_from(self):
-        return self.from_gate
+            def get_from(self):
+                return self.from_gate
 
-        def get_to(self):
-        return self.to_gate
+            def get_to(self):
+                return self.to_gate
         </input>
       </program>
     </listing>
-    <listing xml:id="introduction_lst-setpin" names="lst_setpin">
-      <program language="python">
+    <listing xml:id="introduction_lst-setpin" names="lst_setpin"> <program label="introduction_lst-setpin" names="lst_setpin"  language="python">
         <input>
         def set_next_pin(self, source):
-        if self.pin_a == None:
-        self.pin_a = source
-        else:
-        if self.pin_b == None:
-        self.pin_b = source
-        else:
-        raise RuntimeError("Error: NO EMPTY PINS")
+            if self.pin_a == None:
+                self.pin_a = source
+            else:
+                if self.pin_b == None:
+                    self.pin_b = source
+                else:
+                    raise RuntimeError("Error: NO EMPTY PINS")
         </input>
       </program>
     </listing>
@@ -724,17 +707,16 @@ Enter pin input for gate G3: 0
       circuit works backwards to find the input necessary to finally produce
       output.
     </p>
-    <listing xml:id="introduction_lst-newgetpin" names="lst_newgetpin">
-      <program language="python">
+    <listing xml:id="introduction_lst-newgetpin" names="lst_newgetpin"> <program label="introduction_lst-newgetpin" names="lst_newgetpin"  language="python">
         <input>
         def get_pin_a(self):
-        if self.pin_a == None:
-        return input(
-        f"Enter pin A input for gate \
-        {self.get_label()}: "
-        )
-        else:
-        return self.pin_a.get_from().get_output()
+            if self.pin_a == None:
+                return input(
+                    f"Enter pin A input for gate \
+                    {self.get_label()}: "
+                )
+            else:
+                return self.pin_a.get_from().get_output()
         </input>
       </program>
     </listing>
@@ -757,137 +739,138 @@ Enter pin B input for gate G1: 1
 Enter pin A input for gate G2: 1
 Enter pin B input for gate G2: 1
 0</pre>
+
     <p>Try it yourself using ActiveCode 4.</p>
     <program xml:id="complete_cuircuit" interactive="activecode" language="python">
       <input>
       class LogicGate:
 
-      def __init__(self, lbl):
-      self.name = lbl
-      self.output = None
+          def __init__(self, lbl):
+              self.name = lbl
+              self.output = None
 
-      def get_label(self):
-      return self.name
+          def get_label(self):
+              return self.name
 
-      def get_output(self):
-      self.output = self.perform_gate_logic()
-      return self.output
+          def get_output(self):
+              self.output = self.perform_gate_logic()
+              return self.output
 
 
       class BinaryGate(LogicGate):
 
-      def __init__(self, lbl):
-      super(BinaryGate, self).__init__(lbl)
+          def __init__(self, lbl):
+              super(BinaryGate, self).__init__(lbl)
 
-      self.pin_a = None
-      self.pin_b = None
+              self.pin_a = None
+              self.pin_b = None
 
-      def get_pin_a(self):
-      if self.pin_a == None:
-      return int(input("Enter pin A input for gate " + self.get_label() + ": "))
-      else:
-      return self.pin_a.get_from().get_output()
+          def get_pin_a(self):
+              if self.pin_a == None:
+                  return int(input("Enter pin A input for gate " + self.get_label() + ": "))
+              else:
+                  return self.pin_a.get_from().get_output()
 
-      def get_pin_b(self):
-      if self.pin_b == None:
-      return int(input("Enter pin B input for gate " + self.get_label() + ": "))
-      else:
-      return self.pin_b.get_from().get_output()
+          def get_pin_b(self):
+              if self.pin_b == None:
+                  return int(input("Enter pin B input for gate " + self.get_label() + ": "))
+              else:
+                  return self.pin_b.get_from().get_output()
 
-      def set_next_pin(self, source):
-      if self.pin_a == None:
-      self.pin_a = source
-      else:
-      if self.pin_b == None:
-      self.pin_b = source
-      else:
-      print("Cannot Connect: NO EMPTY PINS on this gate")
+          def set_next_pin(self, source):
+              if self.pin_a == None:
+                  self.pin_a = source
+              else:
+                  if self.pin_b == None:
+                      self.pin_b = source
+                  else:
+                      print("Cannot Connect: NO EMPTY PINS on this gate")
 
 
       class AndGate(BinaryGate):
 
-      def __init__(self, lbl):
-      BinaryGate.__init__(self, lbl)
+          def __init__(self, lbl):
+              BinaryGate.__init__(self, lbl)
 
-      def perform_gate_logic(self):
+          def perform_gate_logic(self):
 
-      a = self.get_pin_a()
-      b = self.get_pin_b()
-      if a == 1 and b == 1:
-      return 1
-      else:
-      return 0
+              a = self.get_pin_a()
+              b = self.get_pin_b()
+              if a == 1 and b == 1:
+                  return 1
+              else:
+                  return 0
 
       class OrGate(BinaryGate):
 
-      def __init__(self, lbl):
-      BinaryGate.__init__(self, lbl)
+          def __init__(self, lbl):
+              BinaryGate.__init__(self, lbl)
 
-      def perform_gate_logic(self):
+          def perform_gate_logic(self):
 
-      a = self.get_pin_a()
-      b = self.get_pin_b()
-      if a == 1 or b == 1:
-      return 1
-      else:
-      return 0
+              a = self.get_pin_a()
+              b = self.get_pin_b()
+              if a == 1 or b == 1:
+                  return 1
+              else:
+                  return 0
 
       class UnaryGate(LogicGate):
 
-      def __init__(self, lbl):
-      LogicGate.__init__(self, lbl)
+          def __init__(self, lbl):
+              LogicGate.__init__(self, lbl)
 
-      self.pin = None
+              self.pin = None
 
-      def get_pin(self):
-      if self.pin == None:
-      return int(input("Enter pin input for gate " + self.get_label() + ": "))
-      else:
-      return self.pin.get_from().get_output()
+          def get_pin(self):
+              if self.pin == None:
+                  return int(input("Enter pin input for gate " + self.get_label() + ": "))
+              else:
+                  return self.pin.get_from().get_output()
 
-      def set_next_pin(self, source):
-      if self.pin == None:
-      self.pin = source
-      else:
-      print("Cannot Connect: NO EMPTY PINS on this gate")
+          def set_next_pin(self, source):
+              if self.pin == None:
+                  self.pin = source
+              else:
+                  print("Cannot Connect: NO EMPTY PINS on this gate")
 
 
       class NotGate(UnaryGate):
 
-      def __init__(self, lbl):
-      UnaryGate.__init__(self, lbl)
+          def __init__(self, lbl):
+              UnaryGate.__init__(self, lbl)
 
-      def perform_gate_logic(self):
-      if self.get_pin():
-      return 0
-      else:
-      return 1
+          def perform_gate_logic(self):
+              if self.get_pin():
+                  return 0
+              else:
+                  return 1
 
 
       class Connector:
 
-      def __init__(self, fgate, tgate):
-      self.from_gate = fgate
-      self.to_gate = tgate
+          def __init__(self, fgate, tgate):
+              self.from_gate = fgate
+              self.to_gate = tgate
 
-      tgate.set_next_pin(self)
+              tgate.set_next_pin(self)
 
-      def get_from(self):
-      return self.from_gate
+          def get_from(self):
+              return self.from_gate
 
-      def get_to(self):
-      return self.to_gate
+          def get_to(self):
+              return self.to_gate
 
 
       def main():
-      g1 = AndGate("G1")
-      g2 = AndGate("G2")
-      g3 = OrGate("G3")
-      g4 = NotGate("G4")
-      c1 = Connector(g1, g3)
-      c2 = Connector(g2, g3)
-      c3 = Connector(g3, g4)
-      print(g4.get_output())
+          g1 = AndGate("G1")
+          g2 = AndGate("G2")
+          g3 = OrGate("G3")
+          g4 = NotGate("G4")
+          c1 = Connector(g1, g3)
+          c2 = Connector(g2, g3)
+          c3 = Connector(g3, g4)
+          print(g4.get_output())
 
       main()
       </input>
@@ -900,128 +883,128 @@ Enter pin B input for gate G2: 1
         <input>
         class LogicGate:
 
-        def __init__(self,n):
-        self.name = n
-        self.output = None
+            def __init__(self,n):
+                self.name = n
+                self.output = None
 
-        def get_label(self):
-        return self.name
+            def get_label(self):
+                return self.name
 
-        def get_output(self):
-        self.output = self.perform_gate_logic()
-        return self.output
+            def get_output(self):
+                self.output = self.perform_gate_logic()
+                return self.output
 
 
         class BinaryGate(LogicGate):
 
-        def __init__(self,n):
-        LogicGate.__init__(self,n)
+            def __init__(self,n):
+                LogicGate.__init__(self,n)
 
-        self.pin_a = None
-        self.pin_b = None
+                self.pin_a = None
+                self.pin_b = None
 
-        def get_pin_a(self):
-        if self.pin_a == None:
-        return int(input("Enter Pin A input for gate "+self.get_label()+"--&gt;"))
-        else:
-        return self.pin_a.get_from().get_output()
+            def get_pin_a(self):
+                if self.pin_a == None:
+                    return int(input("Enter Pin A input for gate "+self.get_label()+"--&gt;"))
+                else:
+                    return self.pin_a.get_from().get_output()
 
-        def get_pin_b(self):
-        if self.pin_b == None:
-        return int(input("Enter Pin B input for gate "+self.get_label()+"--&gt;"))
-        else:
-        return self.pin_b.get_from().get_output()
+            def get_pin_b(self):
+                if self.pin_b == None:
+                    return int(input("Enter Pin B input for gate "+self.get_label()+"--&gt;"))
+                else:
+                    return self.pin_b.get_from().get_output()
 
-        def set_next_pin(self,source):
-        if self.pin_a == None:
-        self.pin_a = source
-        else:
-        if self.pin_b == None:
-        self.pin_b = source
-        else:
-        print("Cannot Connect: NO EMPTY PINS on this gate")
+            def set_next_pin(self,source):
+                if self.pin_a == None:
+                    self.pin_a = source
+                else:
+                    if self.pin_b == None:
+                        self.pin_b = source
+                    else:
+                        print("Cannot Connect: NO EMPTY PINS on this gate")
 
 
         class AndGate(BinaryGate):
 
-        def __init__(self,n):
-        BinaryGate.__init__(self,n)
+            def __init__(self,n):
+                BinaryGate.__init__(self,n)
 
-        def perform_gate_logic(self):
+            def perform_gate_logic(self):
 
-        a = self.get_pin_a()
-        b = self.get_pin_b()
-        if a==1 and b==1:
-        return 1
-        else:
-        return 0
+                a = self.get_pin_a()
+                b = self.get_pin_b()
+                if a==1 and b==1:
+                    return 1
+                else:
+                    return 0
 
         class OrGate(BinaryGate):
 
-        def __init__(self,n):
-        BinaryGate.__init__(self,n)
+            def __init__(self,n):
+                BinaryGate.__init__(self,n)
 
-        def perform_gate_logic(self):
+            def perform_gate_logic(self):
 
-        a = self.get_pin_a()
-        b = self.get_pin_b()
-        if a ==1 or b==1:
-        return 1
-        else:
-        return 0
+                a = self.get_pin_a()
+                b = self.get_pin_b()
+                if a ==1 or b==1:
+                    return 1
+                else:
+                    return 0
 
         class UnaryGate(LogicGate):
 
-        def __init__(self,n):
-        LogicGate.__init__(self,n)
+            def __init__(self,n):
+                LogicGate.__init__(self,n)
 
-        self.pin = None
+                self.pin = None
 
-        def get_pin(self):
-        if self.pin == None:
-        return int(input("Enter Pin input for gate "+self.get_label()+"--&gt;"))
-        else:
-        return self.pin.get_from().get_output()
+            def get_pin(self):
+                if self.pin == None:
+                    return int(input("Enter Pin input for gate "+self.get_label()+"--&gt;"))
+                else:
+                    return self.pin.get_from().get_output()
 
-        def set_next_pin(self,source):
-        if self.pin == None:
-        self.pin = source
-        else:
-        print("Cannot Connect: NO EMPTY PINS on this gate")
+            def set_next_pin(self,source):
+                if self.pin == None:
+                    self.pin = source
+                else:
+                    print("Cannot Connect: NO EMPTY PINS on this gate")
 
 
         class NotGate(UnaryGate):
 
-        def __init__(self,n):
-        UnaryGate.__init__(self,n)
+            def __init__(self,n):
+                UnaryGate.__init__(self,n)
 
-        def perform_gate_logic(self):
-        if self.get_pin():
-        return 0
-        else:
-        return 1
+            def perform_gate_logic(self):
+                if self.get_pin():
+                    return 0
+                else:
+                    return 1
 
 
         class Connector:
 
-        def __init__(self, fgate, tgate):
-        self.from_gate = fgate
-        self.to_gate = tgate
+            def __init__(self, fgate, tgate):
+                self.from_gate = fgate
+                self.to_gate = tgate
 
-        tgate.set_next_pin(self)
+                tgate.set_next_pin(self)
 
-        def get_from(self):
-        return self.from_gate
+            def get_from(self):
+                return self.from_gate
 
-        def get_to(self):
-        return self.to_gate
+            def get_to(self):
+                return self.to_gate
 
 
 
         def main():
-        g1 = AndGate("G1")
+           g1 = AndGate("G1")
 
-        print(g1.get_output())
+           print(g1.get_output())
 
         main()
         </input>

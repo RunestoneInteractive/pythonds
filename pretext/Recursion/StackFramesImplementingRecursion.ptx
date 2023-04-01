@@ -6,8 +6,7 @@
             algorithm to push the strings onto a stack instead of making the recursive
             call. The code for this modified algorithm is shown in
             <xref ref="lst-recstack"/>.</p>
-<listing xml:id="lst-recstack">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-recstack"> <program label="lst-recstack"  interactive="activecode" language="python">
     <input>
 from pythonds3.basic import Stack
 

@@ -57,8 +57,7 @@
   </figure>
   <p><xref ref="lst-rectostr"/> shows the Python code that implements the algorithm
             outlined above for any base between 2 and 16.</p>
-<listing xml:id="lst-rectostr">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-rectostr"> <program label="lst-rectostr"  interactive="activecode" language="python">
     <input>
 def to_str(n, base):
     convert_string = "0123456789ABCDEF"

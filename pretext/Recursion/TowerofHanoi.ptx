@@ -56,8 +56,7 @@ def move_disk(from_pole, to_pole):
 </input>
   </program></listing>
   <p>The program in <xref ref="recursion_hanoi"/> provides the entire solution for three disks.</p>
-  <listing xml:id="recursion_hanoi">
-  <program  interactive="activecode" language="python">
+  <listing xml:id="recursion_hanoi"> <program label="recursion_hanoi"   interactive="activecode" language="python">
     <input>
 def move_tower(height, from_pole, to_pole, with_pole):
     if height &gt;= 1:

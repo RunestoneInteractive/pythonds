@@ -33,8 +33,7 @@
   <p><xref ref="lst-heap1"/> demonstrates the use of some of the binary
             heap methods.  Notice that no matter what order we add items to the heap, the smallest
             is removed each time.</p>
-<listing xml:id="lst-heap1">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-heap1"> <program label="lst-heap1"  interactive="activecode" language="python">
     <input>
 from pythonds3.trees import BinaryHeap
 

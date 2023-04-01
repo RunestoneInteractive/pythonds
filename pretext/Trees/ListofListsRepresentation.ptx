@@ -39,8 +39,7 @@
             Another nice feature of the list of lists approach is that it
             generalizes to a tree that has many subtrees. In the case where the tree
             is more than a binary tree, another subtree is just another list.</p>
-<listing xml:id="lst-treelist1">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-treelist1"> <program label="lst-treelist1"  interactive="activecode" language="python">
     <input>
 my_tree = ["a", ["b", ["d", [], []], ["e", [], []]], ["c", ["f", [], []], []]]
 print(my_tree)
@@ -105,8 +104,7 @@ def get_right_child(root):
             functions we have just written. You should try it
             out for yourself. One of the exercises at the end of this chapter asks you to draw the tree
             structure resulting from this set of calls.</p>
-<listing xml:id="lst-bintreetry">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-bintreetry"> <program label="lst-bintreetry"  interactive="activecode" language="python">
     <input>
 def make_binary_tree(root):
     return [root, [], []]

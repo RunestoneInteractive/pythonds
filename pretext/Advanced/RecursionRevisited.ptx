@@ -270,7 +270,7 @@ d = &amp; ay + b(x \mod{y}) \\
                 this is how we would normally calculate the remainder of x / y
                 (<m>x \mod{y}</m>). Looking at the rearranged equation, we can see that
                 <m>A = b</m> and <m>B = a - \lfloor x / y \rfloor b</m>. Notice that
-                this is exactly what line <url href="#line:gcd3_return" visual="#line:gcd3_return">[line:gcd3_return]</url>
+                this is exactly what line <!-- <url href="#line:gcd3_return" visual="#line:gcd3_return">[line:gcd3_return]</url> -->
                 does! To check this, note that at each return step in the algorithm the
                 return values satisfy the equation <m>d = ax + by</m>.
                 To understand how our extended GCD algorithm works, let's start with an

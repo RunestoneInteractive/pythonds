@@ -18,8 +18,7 @@
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 3: Selection Sort: Complete</caption>
     <image source="SortSearch/Figures/selectionsortnew.png" width="50%"/>
   </figure>
-  <listing xml:id="lst-selectionsortcode">
-  <program  interactive="activecode" language="python">
+  <listing xml:id="lst-selectionsortcode"> <program label="lst-selectionsortcode"   interactive="activecode" language="python">
     <input>
 def selection_sort(a_list):
     for i, item in enumerate(a_list):

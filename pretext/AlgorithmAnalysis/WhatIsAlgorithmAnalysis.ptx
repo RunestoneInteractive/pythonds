@@ -21,8 +21,7 @@
             sum of the first <em>n</em> integers. The algorithm uses the idea of an
             accumulator variable that is initialized to 0. The solution then
             iterates through the <em>n</em> integers, adding each to the accumulator.</p>
-  <listing xml:id="lst-sum1">
-  <program  interactive="activecode" language="python">
+  <listing xml:id="lst-sum1"> <program label="lst-sum1"   interactive="activecode" language="python">
     <input>
 def sum_of_n(n):
     the_sum = 0
@@ -42,8 +41,7 @@ print(sum_of_n(10))
             not obvious is poor coding. We did not use good identifier names to
             assist with readability, and we used an extra assignment statement
             that was not really necessary during the accumulation step.</p>
-  <listing xml:id="lst-sum2">
-  <program interactive="activecode" language="python">
+  <listing xml:id="lst-sum2"> <program label="lst-sum2"  interactive="activecode" language="python">
     <input>
 def foo(tom):
     fred = 0
@@ -162,8 +160,7 @@ Sum is 500000500000 required  0.1646299 seconds
             the summation problem. This function, <c>sum_of_n_3</c>, takes advantage of a
             closed equation <m>\sum_{i=1}^{n} i = \frac {(n)(n+1)}{2}</m> to
             compute the sum of the first <c>n</c> integers without iterating.</p>
-<listing xml:id="lst-sum3">
-  <program  interactive="activecode" language="python">
+<listing xml:id="lst-sum3"> <program label="lst-sum3"   interactive="activecode" language="python">
     <input>
 def sum_of_n_3(n):
     return (n * (n + 1)) / 2

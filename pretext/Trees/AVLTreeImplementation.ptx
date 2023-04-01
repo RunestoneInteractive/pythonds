@@ -34,8 +34,7 @@
             <xref ref="lst-updbal"/>. You will notice that the definition for <c>_put</c> is
             exactly the same as in simple binary search trees except for the addition of
             the calls to <c>update_balance</c> on lines&#xA0;9 and&#xA0;17.</p>
-<listing xml:id="lst-updbal">
-  <program language="python">
+<listing xml:id="lst-updbal"> <program label="lst-updbal"  language="python">
     <input>
 def _put(self, key, value, current_node):
     if key &lt; current_node.key:
@@ -160,8 +159,7 @@ def update_balance(self, node):
             Finally we set the parent of the old root to be the new root. This is a
             lot of complicated bookkeeping, so we encourage you to trace through
             this function while looking at <xref ref="i18_id1fig-unbalsimple"/>.</p>
-  <listing xml:id="trees_lst-bothrotations" names="lst_bothrotations">
-  <program language="python">
+  <listing xml:id="trees_lst-bothrotations" names="lst_bothrotations"> <program label="trees_lst-bothrotations" names="lst_bothrotations"  language="python">
     <input>
 def rotate_left(self, rotation_root):
     new_root = rotation_root.right_child

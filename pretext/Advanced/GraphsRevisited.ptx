@@ -58,7 +58,7 @@
                 simply slide the pattern one position to the right and start over.</p>
     <figure align="" xml:id="fig-bruteforce">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">A Simple Pattern-Matching Algorithm</caption>
-      <image source="Advanced/Figures/simplematch.png" width="5in%" alt="A Simple Pattern-Matching Algorithm"/>
+      <image source="Advanced/Figures/simplematch.png" width="50%" alt="A Simple Pattern-Matching Algorithm"/>
     </figure>
     <p>In this example, we have found a match on the sixth attempt, starting at
                 position 5. The shaded characters denote the partial matches that
@@ -174,7 +174,7 @@
                 where the previous mismatch happened.</p>
     <figure align="" xml:id="fig-simplematch2">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Simple Pattern Matcher with Longer Shifts</caption>
-      <image source="Advanced/Figures/simplematch2.png" width="5in%" alt="Simple Pattern Matcher with Longer Shifts"/>
+      <image source="Advanced/Figures/simplematch2.png" width="50%" alt="Simple Pattern Matcher with Longer Shifts"/>
     </figure>
     <p>In step 1, we find that the first two positions match. Since the
                 mismatch occurs in the third character (the shaded character), we slide

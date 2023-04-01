@@ -46,8 +46,7 @@ a_list[j] = temp</pre>
   </figure>
   <p>The following activecode example shows the complete <c>bubble_sort</c> function working on the list
             shown above.</p>
-<listing xml:id="lst-bubble">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-bubble"> <program label="lst-bubble"  interactive="activecode" language="python">
     <input>
 def bubble_sort(a_list):
     for i in range(len(a_list) - 1, 0, -1):
@@ -187,8 +186,7 @@ bubble_anim_init = function(divid)
             advantage in that it will recognize the sorted list and stop.
             <xref ref="lst-shortbubble"/> shows this modification, which is often referred
             to as the <term>short bubble</term>.</p>
-<listing xml:id="lst-shortbubble">
-  <program interactive="activecode" language="python">
+<listing xml:id="lst-shortbubble"> <program label="lst-shortbubble"  interactive="activecode" language="python">
     <input>
 def bubble_sort_short(a_list):
     for i in range(len(a_list) - 1, 0, -1):

@@ -76,8 +76,7 @@ print(anagram_solution_1("abcd", "dcda"))  # expected: False
                 string if the original two strings are anagrams. <xref ref="lst-ana2"/> shows
                 this solution. Again, in Python we can use the built-in <c>sort</c> method
                 on lists by simply converting each string to a list at the start.</p>
-  <listing xml:id="lst-ana2">
-    <program  interactive="activecode" language="python">
+  <listing xml:id="lst-ana2"> <program label="lst-ana2"   interactive="activecode" language="python">
       <input>
 def anagram_solution_2(s1, s2):
     a_list_1 = list(s1)
@@ -145,8 +144,7 @@ print(anagram_solution_2("abcd", "dcda"))  # expected: False
                 particular character, we will increment the counter at that position. In
                 the end, if the two lists of counters are identical, the strings must be
                 anagrams. <xref ref="lst-ana4"/> shows this solution.</p>
-<listing xml:id="lst-ana4">
-    <program  interactive="activecode" language="python">
+<listing xml:id="lst-ana4"> <program label="lst-ana4"   interactive="activecode" language="python">
       <input>
 def anagram_solution_4(s1, s2):
     c1 = [0] * 26
