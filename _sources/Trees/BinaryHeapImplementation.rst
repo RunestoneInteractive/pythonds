@@ -243,7 +243,7 @@ to build the entire heap.
         self._heap = not_a_heap[:]
         i = len(self._heap) // 2 - 1
         while i >= 0:
-            self._perc_down(cuir_idx)
+            self._perc_down(i)
             i = i - 1
 
 

@@ -13,7 +13,7 @@
 Problem Solving with Algorithms and Data Structures using Python
 ================================================================
 
-.. image:: _static/PythonDScover.jpg
+.. image:: _static/pds3_cover.jpg
     :alt: PythonDS Cover
 
 By Brad Miller and David Ranum, Luther College

@@ -34,6 +34,10 @@ templates_path = [pkg_resources.resource_filename('runestone', 'common/project_t
 # The suffix of source filenames.
 source_suffix = '.rst'
 
+setup.custom_js_files = [
+    "https://media.ethicalads.io/media/client/ethicalads.min.js"
+    ]
+
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
 
