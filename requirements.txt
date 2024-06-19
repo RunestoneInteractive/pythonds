@@ -1,3 +1,2 @@
-runestone
-SQLAlchemy
-psycopg2-binary
+# <!-- Managed automatically by PreTeXt authoring tools -->
+pretext == 2.3.8
