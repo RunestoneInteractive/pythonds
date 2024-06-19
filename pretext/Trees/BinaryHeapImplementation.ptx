@@ -164,7 +164,7 @@ def _get_min_child(self, i):
     self._heap = not_a_heap[:]
     i = len(self._heap) // 2 - 1
     while i &gt;= 0:
-        self._perc_down(cuir_idx)
+        self._perc_down(i)
         i = i - 1</pre></listing>
     <figure align="center" xml:id="fig-buildheap">
       <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 4: Building a Heap from the List [9, 6, 5, 2, 3]</caption>
