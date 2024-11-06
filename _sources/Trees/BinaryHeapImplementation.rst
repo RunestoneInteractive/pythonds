@@ -255,7 +255,7 @@ to build the entire heap.
 
    Figure 4: Building a Heap from the List [9, 6, 5, 2, 3]
 
-:ref:`Figure 4 <fig_buildheap>` shows the swaps that the ``hepify`` method
+:ref:`Figure 4 <fig_buildheap>` shows the swaps that the ``heapify`` method
 makes as it moves the nodes in an initial tree of [9, 6, 5, 2, 3] into
 their proper positions. Although we start out in the middle of the tree
 and work our way back toward the root, the ``_perc_down`` method ensures
