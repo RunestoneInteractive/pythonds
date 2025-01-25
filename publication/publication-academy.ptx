@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <publication>
     <!-- directories are relative to the main source PreTeXt file -->
     <source>
-        <directories external="../assets" generated="../generated-assets"/>
+        <directories external="../assets" generated="../generated-assets" />
     </source>
     <html>
-    <platform host="runestone" />
-    <knowl exercise-inline="no" example="no" listing="no" />
-    <css style="oscarlevin" colors="blue_red" toc="crc" banner="crc" navbar="crc" shell="crc"/>
+        <platform host="runestone" />
+        <knowl exercise-inline="no" example="no" listing="no" />
+        <!-- <css style="oscarlevin" colors="blue_red" toc="crc" banner="crc" navbar="crc"
+        shell="crc"/> -->
+        <css theme="salem" pallete="slate" />
     </html>
 </publication>

@@ -4,56 +4,29 @@
     project. To edit the content of your document, open `source/main.ptx`
     (default location).
 -->
-<project>
+<project ptx-version="2" source="pretext" publication="publication">
   <targets>
     <!-- To build this target, run `pretext build web` -->
-    <target name="web">
-      <format>html</format>
-      <source>pretext/main.ptx</source>
-      <publication>publication/publication.ptx</publication>
-      <output-dir>output/web</output-dir>
-      <stringparam key="html.css.extra" value="external/custom-styles.css"/>
-    </target>
-    <target name="runestone">
-      <format>html</format>
-      <source>pretext/main.ptx</source>
-      <publication>publication/publication-academy.ptx</publication>
-      <output-dir>published/pswadsup</output-dir>
-      <stringparam key="html.css.extra" value="external/custom-styles.css"/>
-    </target>
-    <target name="print" pdf-method="xelatex">
-      <format>pdf</format>
-      <source>pretext/main.ptx</source>
-      <publication>publication/publication.ptx</publication>
-      <output-dir>output/print</output-dir>
-    </target>
-    <target name="print-latex">
-      <format>latex</format>
-      <source>source/main.ptx</source>
-      <publication>publication/publication.ptx</publication>
-      <output-dir>output/print-latex</output-dir>
-    </target>
-    <target name="subset">
-      <format>html</format>
-      <source>source/main.ptx</source>
-      <publication>publication/publication.ptx</publication>
-      <output-dir>output/subset</output-dir>
-      <stringparam key="debug.skip-knowls" value="yes"/>
-      <!-- edit this to change the section/chapter/etc. to include
-           in your subset build -->
-      <xmlid-root>ch_first</xmlid-root>
-    </target>
+    <target name="web"
+      format="html"
+      source="main.ptx"
+      publication="publication.ptx" />
+
+    <target
+      name="runestone"
+      format="html"
+      source="main.ptx"
+      publication="publication-academy.ptx" />
+
+    <target name="pdf"
+      format="pdf"
+      source="main.ptx"
+      publication="publication.ptx" />
+
+    <target name="latex"
+      format="latex"
+      source="main.ptx"
+      publication="publication.ptx" />
+
   </targets>
-  <executables>
-      <latex>latex</latex>
-      <pdflatex>pdflatex</pdflatex>
-      <xelatex>xelatex</xelatex>
-      <pdfsvg>pdf2svg</pdfsvg>
-      <asy>asy</asy>
-      <sage>sage</sage>
-      <pdfpng>convert</pdfpng>
-      <pdfeps>pdftops</pdfeps>
-      <node>node</node>
-      <liblouis>file2brl</liblouis>
-    </executables>
 </project>
