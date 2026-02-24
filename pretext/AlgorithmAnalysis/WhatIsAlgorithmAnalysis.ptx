@@ -555,8 +555,12 @@ def mystery(n):
             programming language we use, the iterative algorithm will always
             perform <m>n</m> additions, the nested-loop version will always perform
             approximately <m>\frac{n^2}{2}</m> additions, and the formula will
-            always perform one calculation. This idea&#x2014;characterizing an
-            algorithm by counting its dominant operations as a function of the
-            input size&#x2014;is the foundation of what we will formalize in the
-            next section as <term>Big-O notation</term>.</p>
+            always perform one calculation. We would say these algorithms have
+            <em>linear</em>, <em>quadratic</em>, and <em>constant</em>
+            performance, or more formally, that they are <m>O(n)</m>,
+            <m>O(n^{2})</m>, and <m>O(1)</m> respectively. This
+            idea&#x2014;characterizing an algorithm by counting its dominant
+            operations as a function of the input size&#x2014;is the foundation
+            of what we will formalize in the next section as
+            <term>Big-O notation</term>.</p>
 </section>

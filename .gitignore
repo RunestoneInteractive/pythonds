@@ -5,8 +5,9 @@
 # ensure this file is tracked
 !.gitignore
 
-# don't track unpublished builds or stage
+# don't track unpublished builds or stage (note: Runestone uses `published`)
 output
+published
 
 # don't track assets generated from source
 generated-assets
@@ -51,12 +52,23 @@ ehthumbs_vista.db
 .fuse_hidden*
 .Trash-*
 .nfs*
+.cache
+__pycache__
 
 # Don't include VSCode generated files
 .vscode
 *.code-workspace
+.nova
+*.log
+*.bak
+build.out
+build_info
+build_success
+sync_success
+sphinx_settings.json
+rs-substitutes.xml
 
-# Don't inlucde SublimeText files
+# Don't include SublimeText files
 # Cache files for Sublime Text
 *.tmlanguage.cache
 *.tmPreferences.cache
@@ -97,3 +109,7 @@ GitHub.sublime-settings
 
 # Don't track codechat config (will be generated automatically)
 codechat_config.yaml
+
+# Don't track deprecated workflows
+.github/workflows/deploy.yml
+.github/workflows/test-build.yml

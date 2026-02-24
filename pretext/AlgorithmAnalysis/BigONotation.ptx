@@ -4,11 +4,18 @@
   <p>When trying to characterize an algorithm's efficiency in terms of
             execution time, independent of any particular program or computer, it is
             important to quantify the number of operations or steps that the
-            algorithm will require. If each of these steps is considered to be a
-            basic unit of computation, then the execution time for an algorithm can
-            be expressed as the number of steps required to solve the problem.
-            Deciding on an appropriate basic unit of computation can be a
-            complicated problem and will depend on how the algorithm is implemented.</p>
+            algorithm will require. In the previous section, we saw that counting
+            the dominant operation&#x2014;rather than measuring wall-clock
+            time&#x2014;gave us a machine-independent way to compare our three
+            summation algorithms. The iterative version performed <m>n</m>
+            operations, the nested-loop version performed roughly
+            <m>\frac{n^2}{2}</m>, and the formula performed just 1. Now we need
+            a concise notation to express these differences. If each of these steps
+            is considered to be a basic unit of computation, then the execution time
+            for an algorithm can be expressed as the number of steps required to
+            solve the problem. Deciding on an appropriate basic unit of computation
+            can be a complicated problem and will depend on how the algorithm is
+            implemented.</p>
   <p>A good basic unit of computation for comparing the summation algorithms
             shown earlier might be the number of assignment statements
             performed to compute the sum. In the function <c>sum_of_n</c>, the number of
@@ -57,6 +64,56 @@
             coefficient <m>5</m> becomes insignificant as <em>n</em> gets large. We
             would say then that the function <m>T(n)</m> has an order of
             magnitude <m>f(n) = n^{2}</m>, or simply that it is <m>O(n^{2})</m>.</p>
+  <exercises>
+    <title>Self Check</title>
+    <exercise label="bigo_sc1">
+      <statement>
+        <p>An algorithm has a step count of
+                    <m>T(n) = 3n + 100</m>. What is its Big-O classification?</p>
+      </statement>
+      <choices>
+        <choice>
+          <statement>
+            <p><m>O(100)</m></p>
+          </statement>
+          <feedback>
+            <p>Although 100 is larger than 3n when n is small, as n grows
+                        the 3n term will dominate. Constants are never the dominant
+                        term when a variable term is present.</p>
+          </feedback>
+        </choice>
+        <choice correct="yes">
+          <statement>
+            <p><m>O(n)</m></p>
+          </statement>
+          <feedback>
+            <p>Correct! The dominant term is <m>3n</m>. We drop the
+                        coefficient 3 and the constant 100, leaving <m>O(n)</m>.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p><m>O(3n)</m></p>
+          </statement>
+          <feedback>
+            <p>You correctly identified <m>3n</m> as the dominant term, but
+                        in Big-O notation we also drop the constant coefficient.
+                        <m>O(3n)</m> simplifies to <m>O(n)</m>.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p><m>O(3n + 100)</m></p>
+          </statement>
+          <feedback>
+            <p>Big-O captures only the dominant term, not the entire
+                        expression. As <m>n</m> grows, which part of
+                        <m>3n + 100</m> grows the fastest?</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+  </exercises>
   <p>Although we do not see this in the summation example, sometimes the
             performance of an algorithm depends on the exact values of the data
             rather than simply the size of the problem. For these kinds of
@@ -68,6 +125,16 @@
             However, in most cases the algorithm performs somewhere in between these
             two extremes (average-case performance). It is important for a computer scientist to understand
             these distinctions so they are not misled by one particular case.</p>
+  <p>For example, consider searching for a specific item in a list of
+            <m>n</m> items by checking each one from the beginning. In the
+            <em>best case</em>, the item is the very first one we check&#x2014;just
+            1 operation. In the <em>worst case</em>, the item is last (or not in
+            the list at all), requiring all <m>n</m> checks. On
+            <em>average</em>, we would expect to check about <m>\frac{n}{2}</m>
+            items. All three cases are <m>O(n)</m> in Big-O terms (since we drop
+            the constant <m>\frac{1}{2}</m>), but the actual running time can
+            vary significantly. When we say an algorithm is <m>O(n)</m>, we
+            typically mean the <em>worst case</em> unless stated otherwise.</p>
   <p>A number of very common order of magnitude functions will come up over
             and over as you study algorithms. These are shown in <xref ref="algorithm-analysis_tbl-fntable"/>. In
             order to decide which of these functions is the dominant part of any
@@ -158,18 +225,35 @@
             shown in <xref ref="algorithm-analysis_lst-dummycode"/>. Although this program does not really do
             anything, it is instructive to see how we can take actual code and
             analyze performance.</p>
-  <listing xml:id="algorithm-analysis_lst-dummycode"><pre>a = 5
-b = 6
-c = 10
+  <listing xml:id="algorithm-analysis_lst-dummycode"><program label="algorithm-analysis_lst-dummycode" interactive="activecode" language="python">
+    <input>
+# Counting assignment operations
+# --------------------------------
+# This code does not do anything useful, but it lets us practice
+# counting the number of assignment operations as a function of n.
+# Try changing n and observe how the count changes.
+
+n = 10
+count = 0
+
+a = 5;  count += 1
+b = 6;  count += 1
+c = 10; count += 1
 for i in range(n):
     for j in range(n):
-        x = i * i
-        y = j * j
-        z = i * j
+        x = i * i; count += 1
+        y = j * j; count += 1
+        z = i * j; count += 1
 for k in range(n):
-    w = a * k + 45
-    v = b * b
-d = 33</pre></listing>
+    w = a * k + 45; count += 1
+    v = b * b;      count += 1
+d = 33; count += 1
+
+print("n = %d" % n)
+print("Total assignments = %d" % count)
+print("Formula: 3n^2 + 2n + 4 = %d" % (3*n**2 + 2*n + 4))
+</input>
+  </program></listing>
   <p>The number of assignment operations is the sum of four terms. The first
             term is the constant 3, representing the three assignment statements at
             the start of the fragment. The second term is <m>3n^{2}</m>, since
@@ -182,6 +266,56 @@ d = 33</pre></listing>
             therefore this fragment of code is <m>O(n^{2})</m>. Note that all of
             the other terms as well as the coefficient on the dominant term can be
             ignored as <em>n</em> grows larger.</p>
+  <exercises>
+    <title>Self Check</title>
+    <exercise label="bigo_sc2">
+      <statement>
+        <p>An algorithm has a step count of
+                    <m>T(n) = 2n^{3} + n^{2} + 5n + 10</m>. What is its Big-O?</p>
+      </statement>
+      <choices>
+        <choice>
+          <statement>
+            <p><m>O(n^{2})</m></p>
+          </statement>
+          <feedback>
+            <p>Look at the exponents. The <m>n^{2}</m> term is not the
+                        highest power of <m>n</m> in this expression.</p>
+          </feedback>
+        </choice>
+        <choice correct="yes">
+          <statement>
+            <p><m>O(n^{3})</m></p>
+          </statement>
+          <feedback>
+            <p>Correct! The term <m>2n^{3}</m> has the highest exponent, so
+                        it dominates as <m>n</m> grows. We drop the coefficient 2
+                        and all lower-order terms, giving <m>O(n^{3})</m>.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p><m>O(2n^{3})</m></p>
+          </statement>
+          <feedback>
+            <p>You found the right dominant term, but remember to drop the
+                        constant coefficient. <m>O(2n^{3})</m> simplifies to
+                        <m>O(n^{3})</m>.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p><m>O(n)</m></p>
+          </statement>
+          <feedback>
+            <p>The linear term <m>5n</m> is present, but it is not the
+                        dominant term. Look for the term with the highest power
+                        of <m>n</m>.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+  </exercises>
   <figure align="" xml:id="fig-graphfigure2">
     <caption xmlns:c="https://www.sphinx-doc.org/" xmlns:changeset="https://www.sphinx-doc.org/" xmlns:citation="https://www.sphinx-doc.org/" xmlns:cpp="https://www.sphinx-doc.org/" xmlns:index="https://www.sphinx-doc.org/" xmlns:js="https://www.sphinx-doc.org/" xmlns:math="https://www.sphinx-doc.org/" xmlns:py="https://www.sphinx-doc.org/" xmlns:rst="https://www.sphinx-doc.org/" xmlns:std="https://www.sphinx-doc.org/">Figure 2: Comparing <m>T(n)</m> with Common Big O Functions</caption>
     <image source="AlgorithmAnalysis/Figures/newplot2.png" width="50%"/>
@@ -194,7 +328,87 @@ d = 33</pre></listing>
             <m>n</m> continues to grow.</p>
   <exercises>
     <title>Self Check</title>
-    <p>Write two Python functions to find the minimum number in a list.  The first function should compare each number to every other number on the list. <m>O(n^2)</m>.  The second function should be linear <m>O(n)</m>.</p>
+    <exercise label="bigo_sc3">
+      <statement>
+        <p>Consider the following code fragment. What is its Big-O?</p>
+        <program language="python">
+          <input>
+for i in range(n):
+    for j in range(n):
+        k = 2 + 2
+print(k)
+          </input>
+        </program>
+      </statement>
+      <choices>
+        <choice>
+          <statement>
+            <p><m>O(n)</m></p>
+          </statement>
+          <feedback>
+            <p>There are two nested loops, each running <m>n</m> times.
+                        That gives <m>n \times n</m> iterations of the inner
+                        statement.</p>
+          </feedback>
+        </choice>
+        <choice correct="yes">
+          <statement>
+            <p><m>O(n^{2})</m></p>
+          </statement>
+          <feedback>
+            <p>Correct! The nested loops produce <m>n^{2}</m> iterations.
+                        The <c>print</c> statement runs once (<m>O(1)</m>), which is
+                        insignificant compared to <m>n^{2}</m>.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p><m>O(n^{3})</m></p>
+          </statement>
+          <feedback>
+            <p>There are only two nested loops, not three. Count the
+                        levels of nesting carefully.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p><m>O(1)</m></p>
+          </statement>
+          <feedback>
+            <p>The loops depend on <m>n</m>, so the running time cannot be
+                        constant. As <m>n</m> grows, the number of iterations
+                        grows too.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+    <exercise label="bigo_sc4">
+      <statement>
+        <p>Write two Python functions to find the minimum number in a list.
+                    The first function should compare each number to every other number
+                    on the list <m>O(n^{2})</m>. The second function should be linear
+                    <m>O(n)</m>.</p>
+      </statement>
+      <program label="bigo_sc4_editor" interactive="activecode" language="python">
+        <input>
+# O(n^2) solution: compare every pair
+def find_min_quadratic(lst):
+    # Your code here
+    pass
+
+
+# O(n) solution: single pass through the list
+def find_min_linear(lst):
+    # Your code here
+    pass
+
+
+test_list = [5, 3, 8, 1, 9, 2, 7]
+print("Quadratic:", find_min_quadratic(test_list))
+print("Linear:", find_min_linear(test_list))
+        </input>
+      </program>
+    </exercise>
   </exercises>
   <video xml:id="findMinVid" youtube="p0COF_m6H1c" width="auto"/>
 </section>
