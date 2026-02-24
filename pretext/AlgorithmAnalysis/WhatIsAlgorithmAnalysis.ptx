@@ -65,6 +65,54 @@ print(foo(10))
             this course, however, we are also interested in characterizing the
             algorithm itself. (We certainly hope that you will continue to strive to
             write readable, understandable code.)</p>
+  <exercises>
+    <title>Self Check</title>
+    <exercise label="algo_analysis_sc1">
+      <statement>
+        <p>Which of the following best describes the relationship between
+                    <c>sum_of_n</c> and <c>foo</c>?</p>
+      </statement>
+      <choices>
+        <choice>
+          <statement>
+            <p><c>foo</c> is more efficient because it uses fewer variables.</p>
+          </statement>
+          <feedback>
+            <p>The extra variable <c>barney</c> does not change the number of
+                        fundamental operations the algorithm performs.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>They use different algorithms to solve the problem.</p>
+          </statement>
+          <feedback>
+            <p>Look more carefully&#x2014;both iterate through the integers and
+                        accumulate a sum. The underlying algorithm is the same.</p>
+          </feedback>
+        </choice>
+        <choice correct="yes">
+          <statement>
+            <p>They use the same algorithm, but <c>sum_of_n</c> is more readable.</p>
+          </statement>
+          <feedback>
+            <p>Correct! Both functions implement the same accumulation algorithm.
+                        The only difference is readability&#x2014;good variable names and
+                        clean structure make <c>sum_of_n</c> easier to understand.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p><c>sum_of_n</c> is faster because it uses better variable names.</p>
+          </statement>
+          <feedback>
+            <p>Variable names have no effect on execution speed. The computer
+                        does not care what you call your variables.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+  </exercises>
   <p>Algorithm analysis is concerned with comparing algorithms based upon the
             amount of computing resources that each algorithm uses. We want to be
             able to consider two algorithms and say that one is better than the
@@ -72,6 +120,27 @@ print(foo(10))
             perhaps because it simply uses fewer. From this perspective, the two
             functions above seem very similar. They both use essentially the same
             algorithm to solve the summation problem.</p>
+  <p>To see what a genuinely different algorithm looks like, consider the
+            function in <xref ref="lst-sum-nested"/>. This version uses a nested
+            loop to compute the same sum: for each value of <c>i</c>, an inner loop
+            adds 1 exactly <c>i</c> times. It produces the correct answer, but
+            as we will soon see, the amount of work it performs grows much faster
+            as <c>n</c> increases.</p>
+  <listing xml:id="lst-sum-nested"> <program label="lst-sum-nested" interactive="activecode" language="python">
+    <input>
+def sum_of_n_nested(n):
+    the_sum = 0
+    for i in range(1, n + 1):
+        for j in range(i):
+            the_sum = the_sum + 1
+
+    return the_sum
+
+
+print(sum_of_n_nested(10))
+        </input>
+  </program>
+  </listing>
   <p>At this point, it is important to think more about what we really mean
             by computing resources. There are two different ways to look at this.
             One way is to consider the amount of space or memory an algorithm
@@ -93,8 +162,15 @@ print(foo(10))
             point. By calling this function twice, at the beginning and at the end,
             and then computing the difference, we can get an exact number of seconds
             (fractions in most cases) for execution.</p>
-  <listing xml:id="algorithm-analysis_lst-sum11"><program language="python">
+  <listing xml:id="algorithm-analysis_lst-sum11"><program label="algorithm-analysis_lst-sum11" interactive="activecode" language="python">
     <input>
+# Benchmarking the Iterative Approach
+# ------------------------------------
+# This function wraps our simple iterative summation with timing code.
+# We record the clock before and after the loop, then report the
+# difference so we can see how long the computation takes.
+# Try to spot the pattern: what happens to the time each time n doubles?
+
 import time
 
 
@@ -108,81 +184,162 @@ def sum_of_n_2(n):
     end = time.time()
 
     return the_sum, end - start
+
+
+for n in [100, 200, 400, 800]:
+    result, elapsed = sum_of_n_2(n)
+    print("n=%4d | Sum=%10d | Time=%10.7f seconds" % (n, result, elapsed))
 </input>
   </program></listing>
   <p><xref ref="algorithm-analysis_lst-sum11"/> shows the original <c>sum_of_n</c> function with the timing
             calls embedded before and after the summation. The function returns a
             tuple consisting of the result and the amount of time (in seconds)
-            required for the calculation. If we perform five invocations of the
-            function, each computing the sum of the first 10,000 integers, we get
-            the following:</p>
-  <pre>&gt;&gt;&gt; for i in range(5):
-...     print("Sum is %d required %10.7f seconds" % sum_of_n_2(10000))
-...
-Sum is 50005000 required  0.0018950 seconds
-Sum is 50005000 required  0.0018620 seconds
-Sum is 50005000 required  0.0019171 seconds
-Sum is 50005000 required  0.0019162 seconds
-Sum is 50005000 required  0.0019360 seconds
-&gt;&gt;&gt;</pre>
-  <p>We discover that the time is fairly consistent and it takes on average
-            about 0.0019 seconds to execute that code. What if we run the function
-            adding the first 100,000 integers?</p>
-  <pre>&gt;&gt;&gt; for i in range(5):
-...     print("Sum is %d required %10.7f seconds" % sum_of_n_2(100000))
-...
-Sum is 5000050000 required  0.0199420 seconds
-Sum is 5000050000 required  0.0180972 seconds
-Sum is 5000050000 required  0.0194821 seconds
-Sum is 5000050000 required  0.0178988 seconds
-Sum is 5000050000 required  0.0188949 seconds
-&gt;&gt;&gt;</pre>
-  <p>Again, the time required for each run, although longer, is very
-            consistent, averaging about 10 times more seconds. For <c>n</c> equal to
-            1,000,000 we get:</p>
-  <dl>
-    <li>
-      <title>::</title>
-      <doctest_block classes="doctest" xml:space="preserve">&gt;&gt;&gt; for i in range(5):
-...     print("Sum is %d required %10.7f seconds" % sum_of_n_2(1000000))
-...
-Sum is 500000500000 required  0.1948988 seconds
-Sum is 500000500000 required  0.1850290 seconds
-Sum is 500000500000 required  0.1809771 seconds
-Sum is 500000500000 required  0.1729250 seconds
-Sum is 500000500000 required  0.1646299 seconds
-&gt;&gt;&gt;</doctest_block>
-    </li>
-  </dl>
-  <p>In this case, the average again turns out to be about 10 times the
-            previous experiment.</p>
-  <p>Now consider <xref ref="lst-sum3"/>, which shows a different means of solving
-            the summation problem. This function, <c>sum_of_n_3</c>, takes advantage of a
-            closed equation <m>\sum_{i=1}^{n} i = \frac {(n)(n+1)}{2}</m> to
-            compute the sum of the first <c>n</c> integers without iterating.</p>
+            required for the calculation. Run the code above and observe the
+            output for each value of <c>n</c>. You should notice that as <c>n</c>
+            doubles, the time roughly doubles as well&#x2014;a proportional
+            relationship.</p>
+  <p>Now let us apply the same benchmarking technique to our nested-loop
+            version. Run the code in <xref ref="lst-sum-nested-2"/> and compare
+            the results to what you observed above.</p>
+  <listing xml:id="lst-sum-nested-2"><program label="lst-sum-nested-2" interactive="activecode" language="python">
+    <input>
+# Benchmarking the Nested-Loop Approach
+# ---------------------------------------
+# This function computes the same sum, but uses a nested loop:
+# for each value of i, an inner loop adds 1 exactly i times.
+# The result is the same, but watch the time column carefully.
+# How does the time change each time n doubles?
+
+import time
+
+
+def sum_of_n_nested_2(n):
+    start = time.time()
+
+    the_sum = 0
+    for i in range(1, n + 1):
+        for j in range(i):
+            the_sum = the_sum + 1
+
+    end = time.time()
+
+    return the_sum, end - start
+
+
+for n in [100, 200, 400, 800]:
+    result, elapsed = sum_of_n_nested_2(n)
+    print("n=%4d | Sum=%10d | Time=%10.7f seconds" % (n, result, elapsed))
+</input>
+  </program></listing>
+  <p>Notice the dramatic difference. While the iterative version's time
+            roughly doubles when <c>n</c> doubles, the nested-loop version's time
+            roughly <em>quadruples</em>. This is because the nested loop performs
+            approximately <m>\frac{n^2}{2}</m> operations<fn>Where does
+            <m>\frac{n^2}{2}</m> come from? The inner loop runs 1 time when
+            <c>i=1</c>, then 2 times when <c>i=2</c>, then 3 times when
+            <c>i=3</c>, and so on up to <c>n</c> times when <c>i=n</c>. The
+            total number of inner-loop executions is therefore
+            <m>1 + 2 + 3 + \cdots + n</m>. This is a well-known arithmetic series
+            whose sum equals <m>\frac{n(n+1)}{2} = \frac{n^2 + n}{2}</m>. For
+            large values of <c>n</c>, the <m>n^2</m> term dominates, so we
+            approximate this as <m>\frac{n^2}{2}</m>.</fn>&#x2014;doubling <c>n</c>
+            means four times the work. This contrast between doubling and
+            quadrupling is the difference between linear and quadratic growth.</p>
+  <exercises>
+    <title>Self Check</title>
+    <exercise label="algo_analysis_sc2">
+      <statement>
+        <p>The iterative <c>sum_of_n</c> takes approximately 0.0019 seconds
+                    for <c>n</c> = 10,000 and about 10 times longer each time we
+                    multiply <c>n</c> by 10. Based on this pattern, approximately how
+                    long would you expect it to take for <c>n</c> = 10,000,000?</p>
+      </statement>
+      <choices>
+        <choice>
+          <statement>
+            <p>0.019 seconds</p>
+          </statement>
+          <feedback>
+            <p>That would only be 10 times longer than <c>n</c> = 10,000. But
+                        10,000,000 is 1,000 times larger than 10,000.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>0.19 seconds</p>
+          </statement>
+          <feedback>
+            <p>That would be 100 times longer. We need to go from 10,000 to
+                        10,000,000&#x2014;three factors of 10.</p>
+          </feedback>
+        </choice>
+        <choice correct="yes">
+          <statement>
+            <p>1.9 seconds</p>
+          </statement>
+          <feedback>
+            <p>Correct! Each 10x increase in <c>n</c> causes a 10x increase in
+                        time. Going from 10,000 to 10,000,000 is three factors of 10,
+                        so the time increases by 10 &#xD7; 10 &#xD7; 10 = 1,000.
+                        That gives us 0.0019 &#xD7; 1,000 &#x2248; 1.9 seconds.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>19 seconds</p>
+          </statement>
+          <feedback>
+            <p>That would be 10,000 times longer, which is one factor of 10
+                        too many. Count the steps: 10,000 &#x2192; 100,000 &#x2192;
+                        1,000,000 &#x2192; 10,000,000 is only three jumps of 10x.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+  </exercises>
+  <p>Now consider <xref ref="lst-sum3"/>, which shows a very different means of
+            solving the summation problem. Instead of using a loop, this function
+            takes advantage of a well-known mathematical formula attributed to the
+            mathematician Carl Friedrich Gauss. The notation
+            <m>\sum_{i=1}^{n} i</m> is called <term>summation notation</term>
+            (or sigma notation) and is a compact way of writing
+            <q>add up all values of <m>i</m> from 1 to <m>n</m></q>&#x2014;in
+            other words, <m>1 + 2 + 3 + \cdots + n</m>. Gauss discovered that
+            this sum always equals <m>\frac{n(n+1)}{2}</m>. For example, the sum
+            of the first 10 integers is <m>\frac{10 \times 11}{2} = 55</m>.
+            This means we can compute the answer with a single arithmetic
+            expression&#x2014;no loop required.</p>
 <listing xml:id="lst-sum3"> <program label="lst-sum3"   interactive="activecode" language="python">
     <input>
+# Benchmarking the Closed-Form (Formula) Approach
+# -------------------------------------------------
+# This function uses Gauss's formula: n*(n+1)/2
+# There is no loop at all -- just one multiplication, one addition,
+# and one division. Watch what happens to the time as n grows.
+
+import time
+
+
 def sum_of_n_3(n):
-    return (n * (n + 1)) / 2
+    start = time.time()
+    the_sum = (n * (n + 1)) / 2
+    end = time.time()
+    return the_sum, end - start
 
 
-print(sum_of_n_3(10))
+for n in [100, 200, 400, 800]:
+    result, elapsed = sum_of_n_3(n)
+    print("n=%4d | Sum=%10d | Time=%10.7f seconds" % (n, result, elapsed))
         </input>
   </program>
 </listing>
-  <p>If we do the same benchmark measurement for <c>sum_of_n_3</c>, using five
-            different values for <c>n</c> (10,000, 100,000, 1,000,000, 10,000,000, and
-            100,000,000), we get the following results:</p>
-  <pre>Sum is 50005000 required 0.00000095 seconds
-Sum is 5000050000 required 0.00000191 seconds
-Sum is 500000500000 required 0.00000095 seconds
-Sum is 50000005000000 required 0.00000095 seconds
-Sum is 5000000050000000 required 0.00000119 seconds</pre>
-  <p>There are two important things to notice about this output. First, the
-            times recorded above are shorter than any of the previous examples.
-            Second, they are very consistent no matter what the value of <c>n</c>. It
-            appears that <c>sum_of_n_3</c> is hardly impacted by the number of integers
-            being added.</p>
+  <p>Run the code above and compare the times to what you saw for the
+            iterative and nested-loop versions. There are two important things to
+            notice. First, the times are dramatically shorter than any of the
+            previous examples. Second, they are essentially the same no matter
+            what the value of <c>n</c>. It appears that <c>sum_of_n_3</c> is
+            hardly impacted by the number of integers being added&#x2014;this is
+            constant-time behavior.</p>
   <p>But what does this benchmark really tell us? Intuitively, we can see
             that the iterative solutions seem to be doing more work since some
             program steps are being repeated. This is likely the reason it is taking
@@ -191,12 +348,215 @@ Sum is 5000000050000000 required 0.00000119 seconds</pre>
             function on a different computer or used a different
             programming language, we would likely get different results. It could
             take even longer to perform <c>sum_of_n_3</c> if the computer were older.</p>
-  <p>We need a better way to characterize these algorithms with respect to
-            execution time. The benchmark technique computes the actual time to
-            execute. It does not really provide us with a useful measurement
-            because it is dependent on a particular machine, program, time of day,
-            compiler, and programming language. Instead, we would like to have a
-            characterization that is independent of the program or computer being
-            used. This measure would then be useful for judging the algorithm alone
-            and could be used to compare algorithms across implementations.</p>
+  <p>What about our nested-loop version, <c>sum_of_n_nested</c>? Try
+            running the combined benchmark in <xref ref="lst-benchmark-all"/> to
+            compare all three approaches side by side.</p>
+  <listing xml:id="lst-benchmark-all"> <program label="lst-benchmark-all" interactive="activecode" language="python">
+    <input>
+import time
+
+def sum_of_n(n):
+    the_sum = 0
+    for i in range(1, n + 1):
+        the_sum = the_sum + i
+    return the_sum
+
+def sum_of_n_nested(n):
+    the_sum = 0
+    for i in range(1, n + 1):
+        for j in range(i):
+            the_sum = the_sum + 1
+    return the_sum
+
+def sum_of_n_formula(n):
+    return (n * (n + 1)) / 2
+
+for size in [100, 200, 400, 800]:
+    start = time.time()
+    sum_of_n(size)
+    iter_time = time.time() - start
+
+    start = time.time()
+    sum_of_n_nested(size)
+    nested_time = time.time() - start
+
+    start = time.time()
+    sum_of_n_formula(size)
+    formula_time = time.time() - start
+
+    print("n=%6d: iterative=%10.7fs  nested=%10.7fs  formula=%10.7fs"
+          % (size, iter_time, nested_time, formula_time))
+        </input>
+  </program>
+  </listing>
+  <p>When you run this benchmark, you will notice three distinct growth
+            patterns. The iterative version's time increases proportionally with
+            <c>n</c>&#x2014;double <c>n</c>, and the time roughly doubles. We call
+            this <term>linear</term> growth. The nested-loop version grows much
+            faster: double <c>n</c>, and the time roughly quadruples. This is
+            <term>quadratic</term> growth. The formula-based version takes essentially
+            the same time regardless of <c>n</c>. This is <term>constant</term> time.</p>
+  <exercises>
+    <title>Self Check</title>
+    <exercise label="algo_analysis_sc3">
+      <statement>
+        <p>Suppose an algorithm uses a triply-nested loop, where each
+                    loop runs <c>n</c> times. If you double the input size <c>n</c>,
+                    approximately how much longer will the algorithm take?</p>
+      </statement>
+      <choices>
+        <choice>
+          <statement>
+            <p>2 times as long</p>
+          </statement>
+          <feedback>
+            <p>That would be linear growth (one loop). Three nested loops
+                        means the input size is multiplied together three times.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>4 times as long</p>
+          </statement>
+          <feedback>
+            <p>That would be quadratic growth (two nested loops). Think about
+                        what happens with three.</p>
+          </feedback>
+        </choice>
+        <choice correct="yes">
+          <statement>
+            <p>8 times as long</p>
+          </statement>
+          <feedback>
+            <p>Correct! With three nested loops, the work is proportional to
+                        <m>n^3</m>. Doubling <c>n</c> gives <m>2^3 = 8</m> times the
+                        work. This is called <em>cubic</em> growth.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p>6 times as long</p>
+          </statement>
+          <feedback>
+            <p>The growth isn't additive (2+2+2). Each loop multiplies
+                        the amount of work: <m>2 \times 2 \times 2 = 8</m>.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+  </exercises>
+  <p>These growth patterns become even clearer if, instead of measuring
+            wall-clock time, we simply count the number of operations each
+            algorithm performs. Consider the assignment
+            <c>the_sum = the_sum + i</c> as the dominant operation in the
+            iterative solution. It executes exactly <m>n</m> times. For the
+            nested-loop version, the inner assignment
+            <c>the_sum = the_sum + 1</c> executes
+            <m>1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}</m> times. For the
+            closed-form solution, there is just one calculation regardless of
+            <c>n</c>.</p>
+  <table>
+    <title>Operation Counts for Three Summation Algorithms</title>
+    <tabular halign="center">
+      <row header="yes" bottom="medium">
+        <cell right="minor"><m>n</m></cell>
+        <cell right="minor">Iterative</cell>
+        <cell right="minor">Nested Loop</cell>
+        <cell>Formula</cell>
+      </row>
+      <row bottom="minor">
+        <cell right="minor">100</cell>
+        <cell right="minor">100</cell>
+        <cell right="minor">5,050</cell>
+        <cell>1</cell>
+      </row>
+      <row bottom="minor">
+        <cell right="minor">1,000</cell>
+        <cell right="minor">1,000</cell>
+        <cell right="minor">500,500</cell>
+        <cell>1</cell>
+      </row>
+      <row bottom="minor">
+        <cell right="minor">10,000</cell>
+        <cell right="minor">10,000</cell>
+        <cell right="minor">50,005,000</cell>
+        <cell>1</cell>
+      </row>
+      <row>
+        <cell right="minor">100,000</cell>
+        <cell right="minor">100,000</cell>
+        <cell right="minor">5,000,050,000</cell>
+        <cell>1</cell>
+      </row>
+    </tabular>
+  </table>
+  <exercises>
+    <title>Self Check</title>
+    <exercise label="algo_analysis_sc4">
+      <statement>
+        <p>Consider the following function. How many times does the
+                    assignment <c>total = total + i * j</c> execute?</p>
+        <program language="python">
+          <input>
+def mystery(n):
+    total = 0
+    for i in range(n):
+        for j in range(n):
+            total = total + i * j
+    return total
+          </input>
+        </program>
+      </statement>
+      <choices>
+        <choice>
+          <statement>
+            <p><m>n</m></p>
+          </statement>
+          <feedback>
+            <p>That would be the case if there were only a single loop.
+                        Look carefully&#x2014;there are two nested loops.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p><m>2n</m></p>
+          </statement>
+          <feedback>
+            <p>The two loops do not run one after the other; they are
+                        <em>nested</em>. The inner loop runs completely for each
+                        iteration of the outer loop.</p>
+          </feedback>
+        </choice>
+        <choice>
+          <statement>
+            <p><m>\frac{n(n+1)}{2}</m></p>
+          </statement>
+          <feedback>
+            <p>This would be the count if the inner loop ran <c>i</c> times
+                        instead of <c>n</c> times (like our <c>sum_of_n_nested</c>
+                        example). Here, both loops go up to <c>n</c>.</p>
+          </feedback>
+        </choice>
+        <choice correct="yes">
+          <statement>
+            <p><m>n^2</m></p>
+          </statement>
+          <feedback>
+            <p>Correct! The outer loop runs <m>n</m> times, and for each
+                        iteration the inner loop also runs <m>n</m> times, giving
+                        <m>n \times n = n^2</m> total executions.</p>
+          </feedback>
+        </choice>
+      </choices>
+    </exercise>
+  </exercises>
+  <p>Counting operations gives us a <em>machine-independent</em> way to
+            evaluate an algorithm's efficiency. No matter what computer or
+            programming language we use, the iterative algorithm will always
+            perform <m>n</m> additions, the nested-loop version will always perform
+            approximately <m>\frac{n^2}{2}</m> additions, and the formula will
+            always perform one calculation. This idea&#x2014;characterizing an
+            algorithm by counting its dominant operations as a function of the
+            input size&#x2014;is the foundation of what we will formalize in the
+            next section as <term>Big-O notation</term>.</p>
 </section>
