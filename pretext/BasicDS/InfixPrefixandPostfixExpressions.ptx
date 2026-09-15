@@ -363,7 +363,7 @@
                 lowest value possible. This way any operator that is compared against it
                 will have higher precedence and will be placed on top of it.
                 Line 15 defines the operands to be any upper-case character or digit.</p>
-  <listing xml:id="lst-intopost"> <program label="lst-intopost"  interactive="activecode" language="python">
+  <listing xml:id="lst-intopost"><program label="lst-intopost"  interactive="activecode" language="python">
       <input>
 from pythonds3.basic import Stack
 
@@ -496,7 +496,7 @@ print(infix_to_postfix("( A + B ) * C - ( D - E ) * ( F + G )"))
                 in <xref ref="lst-postfixeval"/>. To assist with the arithmetic, a helper
                 function <c>do_math</c> is defined. It will take two operands and an
                 operator and then perform the proper arithmetic operation.</p>
-  <listing xml:id="lst-postfixeval"> <program label="lst-postfixeval"  xml:id="postfixeval" interactive="activecode" language="python">
+  <listing xml:id="lst-postfixeval"><program label="lst-postfixeval"  xml:id="postfixeval" interactive="activecode" language="python">
       <input>
 from pythonds3.basic import Stack
 
@@ -543,9 +543,6 @@ print(postfix_eval("7 8 + 3 2 + /"))
         </statement>
         <setup>
           <var>
-            <p>
-              <BlankNode/>
-            </p>
             <condition string="^\s*10\s+3\s+5\s*\*\s*16\s+4\s*-\s*/\s*\+\s*$">
               <feedback>
                 <p>Correct.</p>
@@ -565,12 +562,14 @@ print(postfix_eval("7 8 + 3 2 + /"))
         </statement>
         <setup>
           <var>
-            <p>
-              <BlankNode/>
-            </p>
-            <condition number="[9, 9]">
+            <condition number="9">
               <feedback>
                 <p>Correct.</p>
+              </feedback>
+            </condition>
+            <condition string=".*">
+              <feedback>
+                <p>Incorrect.</p>
               </feedback>
             </condition>
           </var>
@@ -582,12 +581,14 @@ print(postfix_eval("7 8 + 3 2 + /"))
         </statement>
         <setup>
           <var>
-            <p>
-              <BlankNode/>
-            </p>
             <condition string="^\s*5\s+3\s+4\s+2\s*-\s*\*\*\s*\*\s*$">
               <feedback>
                 <p>Correct.</p>
+              </feedback>
+            </condition>
+            <condition string=".*">
+              <feedback>
+                <p>Incorrect.</p>
               </feedback>
             </condition>
           </var>
